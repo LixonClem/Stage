@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.11)  28 MAY 2018 18:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.11)  28 MAY 2018 18:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -623,24 +623,24 @@ File: test4_20_LKopt.png Graphic file (type png)
 Package pdftex.def Info: test4_20_LKopt.png used on input line 96.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
 
-<test1CE_init.png, id=24, 462.528pt x 346.896pt>
+[3 <./test4_20_init.png> <./test4_20_LKopt.png>]
+<test1CE_init.png, id=29, 462.528pt x 346.896pt>
 File: test1CE_init.png Graphic file (type png)
  <use test1CE_init.png>
-Package pdftex.def Info: test1CE_init.png used on input line 109.
+Package pdftex.def Info: test1CE_init.png used on input line 111.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
 
-[3 <./test4_20_init.png> <./test4_20_LKopt.png>]
 <test1CE_imp.png, id=30, 462.528pt x 346.896pt>
 File: test1CE_imp.png Graphic file (type png)
  <use test1CE_imp.png>
-Package pdftex.def Info: test1CE_imp.png used on input line 116.
+Package pdftex.def Info: test1CE_imp.png used on input line 118.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
  [4 <./test1CE_init.png> <./test1CE_imp.png>] (./Activité.aux) ) 
 Here is how much of TeX's memory you used:
- 5882 strings out of 493029
- 84845 string characters out of 6136234
+ 5884 strings out of 493029
+ 84868 string characters out of 6136234
  149430 words of memory out of 5000000
- 9316 multiletter control sequences out of 15000+600000
+ 9318 multiletter control sequences out of 15000+600000
  29506 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,6n,40p,556b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -651,7 +651,7 @@ ts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type
 ic/mathpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/
 uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on Activité.pdf (4 pages, 320360 bytes).
+Output written on Activité.pdf (4 pages, 323356 bytes).
 PDF statistics:
  57 PDF objects out of 1000 (max. 8388607)
  30 compressed objects within 1 object stream

@@ -97,6 +97,8 @@ Rencontre de problèmes avec des instances supérieures, et LK. $\rightarrow$ A 
 	\caption{Solution obtenue avec Lin-Kernighan}	\label{test4_20_LKopt}
 \end{figure}
 
+Création (enfin !) d'un dépôt GIT, pour partager mes documents (travail, présentations...)
+
 Début implémentation de Cross-exchange (local). Article détaillant cet opérateur : \emph{A Tabu Search Heuristic for the Vehicle Routing Problem with Soft Time Windows}. Cet opérateur consiste en l'échange de toute séquence de clients entre 2 tournées. L'aspect local est d'autant plus intéressant, que la complexité passe en quadratique dans le pire cas, au lieu de $O(n^4)$. 
 On commence par calculer $k$ pp voisins pour chaque nœud (pré-calcul). Après avoir choisi une arête $(a,b)$, on regarde les plus proches voisins du premier nœud, on prend le premier qui est sur une tournée différente, $(c,v_a)$. 
 On construit les deux arêtes $(a,v_a)$ et $(c,b)$. Puis on essaye d'échanger $(v_a+1, v_a+2)$, avec $(b+1,b+2)$, ou $(b+2,b+3)$ ainsi de suite jusqu'à retomber sur l'arête de départ ou trouver une amélioration. 
