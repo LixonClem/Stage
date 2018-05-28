@@ -4,11 +4,10 @@ import matplotlib.pyplot as py
 import random as rd
 import math as m
 
-# Bornes de la zone
 ylim = 200
 xlim = 200
 
-#Affichage des tournées
+
 def create_instance(n):
     inst = [(0, 0)]
     route = [0]
@@ -38,7 +37,11 @@ def print_route(route, inst):
     py.plot(x, y, color='black')
 
 
-#Implémentation de 2-Opt
+def print_costs(costs):
+    for i in range(len(costs)):
+        py.plot(i, costs[i], color="blue", marker='o')
+
+
 def distance(p1, p2):
     return m.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
 
@@ -59,16 +62,29 @@ def DeuxOpt(route, inst):
     for i in range(l-1):
         pi = inst[route[i]]
         spi = inst[route[i+1]]
-        for j in range(i+2,l-1):
-            pj = inst[route[j]]
-            spj = inst[route[j+1]]
-            d = (distance(pi, spi) + distance(pj, spj)) - \
-                distance(pi, pj)-distance(spi, spj)
-            if d > best:
-                best_tuple = (i, j)
-                best = d
-    if best_tuple[0]!=best_tuple[1]:
+        for j in range(i,l-1):
+            if j != i-1 and j != i and j != i+1:
+                pj = inst[route[j]]
+                spj = inst[route[j+1]]
+                d = (distance(pi, spi) + distance(pj, spj)) - \
+                    distance(pi, pj)-distance(spi, spj)
+                if d > best:
+                    best_tuple = (i, j)
+                    best = d
+    
+    if best_tuple[0] != best_tuple[1]:
         cand = route.copy()
+        """
+        print_instance(inst)
+        py.plot(inst[route[best_tuple[0]+1]][0],
+                inst[route[best_tuple[0]+1]][1], color="green", marker="o")
+        py.plot(inst[route[best_tuple[1]]][0],
+                inst[route[best_tuple[1]]][1], color="yellow", marker="o")
+        py.plot(inst[route[best_tuple[0]]][0],
+                inst[route[best_tuple[0]]][1], color="green", marker="o")
+        py.plot(inst[route[best_tuple[1]+1]][0],
+                inst[route[best_tuple[1]+1]][1], color="yellow", marker="o")
+"""
         cand[best_tuple[0]+1], cand[best_tuple[1]
                                   ] = cand[best_tuple[1]], cand[best_tuple[0]+1]
         return cand
@@ -76,20 +92,37 @@ def DeuxOpt(route, inst):
         return route
 
 
-#Itérations successives de 2-opt. Pas suffisant si grandes tournées, 
-# mais suffisant sur des petits morceaux de tournées (en considérant les plus 
-# proches voisins de la zone autour de l'arête à éliminer).
-
-def LK(route, inst):    
+def LK(route, inst):
     next_cand = DeuxOpt(route, inst)
     while next_cand != route:
         route = next_cand.copy()
+        print(cost_sol(route, inst))
+
         next_cand = DeuxOpt(route, inst)
     return next_cand
 
-#Exécution
+    '''
+    print(possible_cand)
+    for i in range(k-1):
+        next_possible_cand=[]
+        for p in possible_cand:
+            next_possible_cand + = DeuxOpt(p,inst)
+        possible_cand = next_possible_cand.copy()
+    return (possible(cand))
+    '''
 
-inst, route = create_instance(10)
+
+"""
+def divided_lk(lim,routes,inst):
+    mini_routes = decoupe_route(route)
+    cand = []
+    for i in mini_routes:
+        cand = cand + LK(lim,i,inst)
+    cand = LK(lim,cand,inst)
+    return cand
+"""
+
+inst, route = create_instance(100)
 print_instance(inst)
 print_route(route, inst)
 

@@ -21,10 +21,10 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Description}
 \underline{Intérêt}: heuristique simple à mettre en place, et performante.
 
-Etapes de l'algorithme:
+\begin{block}{Etapes de l'algorithme:}
 \begin{itemize}
 \item Recherche solution initiale: Algorithme Clarke and Wright
 
@@ -32,19 +32,25 @@ Etapes de l'algorithme:
 
 \item Optimisations locales ensuite par 3 opérateurs
 \end{itemize}
+\end{block}
 
 \end{frame}
 
 \section{Obtention de la pire arête}
 
-\begin{frame}
-Lien entre les solutions (presque) optimales ? 
+\subsection{Caractériser une arête}
 
-Modèle prédictif qui distingue les solutions en s'aidant de caractéristiques:
+\begin{frame}{Comment caractériser une arête ?}
+\begin{block}{Idée}
+Trouver des liens entre les solutions (quasi-) optimales
+\end{block}
+
+Entraînement d'un modèle prédictif pour distinguer
+les arêtes optimales des autres en s'aidant de caractéristiques:
 \begin{itemize}
-\item Largeur de la route
-\item Profondeur de la route
-\item Compacité de la route: moyenne des distances de chaque client au centre de gravité de la route.
+\item Largeur de la tournée
+\item Profondeur de la tournée
+\item Coût de la tournée
 \end{itemize}
 
 	\centering
@@ -52,7 +58,9 @@ Modèle prédictif qui distingue les solutions en s'aidant de caractéristiques:
 	
 \end{frame}
 
-\begin{frame}
+\subsection{Déterminer la pire arête}
+
+\begin{frame}{Déterminer la pire arête}
 Description spatiale précise d'une arête avec ces caractéristiques. 
 \begin{center}
 $b(i,j) = \frac{[\lambda_w w(i,j) + \lambda_c c(i,j)] [\frac{d(i,j)}{max_{k,l}d(k,l)}] ^ {\frac{\lambda_d}{2}}}{1+p(i,j)}$
@@ -61,9 +69,12 @@ $b(i,j) = \frac{[\lambda_w w(i,j) + \lambda_c c(i,j)] [\frac{d(i,j)}{max_{k,l}d(
 \begin{itemize}
 \item $p$ représente le nombre de fois où l'arête a été pénalisée (initialement 0)
 
-\item Les paramètres $\lambda_w$,$\lambda_c$ et $\lambda_d$ valent $0$ ou $1$, et sont choisis selon le type d'instance. 
+\item Les paramètres $\lambda_w$,$\lambda_c$ et $\lambda_d$ valent $0$ ou $1$, et sont choisis selon le type d'instance.
 \end{itemize}
 
+\begin{exampleblock}{Pire arête}
+La pire arête est celle qui maximise la fonction $b$.
+\end{exampleblock}
 \end{frame}
 
 \section{Opérateurs locaux}
@@ -91,11 +102,36 @@ Agit (potentiellement) sur toutes les tournées. Commence par déplacer un clien
 
 \subsection{Lin-Kernighan Heuristic}
 \begin{frame}
-Utilisé en général sur TSP. Optimisation intra-tournée (chaque tournée est améliorée indépendamment ds autres). LK essaie de trouver un déplacement k-opt, pour améliorer la solution. Il commence par 2-opt, puis passe à 3-opt seulement si une meilleure solution a été trouvée. S'il atteint k, il exécute la meilleure i-opt et recommence à 2.
 
-Complexité en $O(n^k)$. En général les changements sont mineurs et l'algo s'arrête après 2-opt.
+\begin{block}{Utilisation}
+\begin{itemize}
+\item Utilisé en général pour TSP;
+\item Optimisation intra-tournée (chaque tournée est améliorée indépendamment des autres).
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Implémentation}
+\begin{itemize}
+\item Exécute i-opt (échange l'ordre de $i$ clients sur la tournée).
+\item Si $i=k$ ou plus d'améliorations possibles $\rightarrow$ réalise la meilleure i-opt; recommence avec $i=2$
+\item Si amélioration possible $\rightarrow$ recommence avec $i+1$
+\item Si $i=2$ et pas d'améliorations possibles $\rightarrow$ on sort de la boucle.
+\end{itemize}
+\end{exampleblock}
 
 \end{frame} 
+
+\begin{frame}
+\begin{alertblock}{Complexité}
+Complexité en $O(n^k)$, $k$ choisi par l'utilisateur. En général exécution sur des morceaux de tournée.
+\end{alertblock}
+
+\begin{center}
+
+\end{center}
+
+\end{frame}
+
 
 \section{Améliorations}
 \begin{frame}
