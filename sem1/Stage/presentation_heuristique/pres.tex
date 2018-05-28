@@ -11,7 +11,7 @@
 \usetheme{Warsaw}
 \title{Nouvelle heuristique pour VRP}
 \author{Clément Legrand}
-\date{28 février 2018} 
+\date{31 Mai 2018} 
 
 \begin{document}
 
@@ -46,7 +46,7 @@ Trouver des liens entre les solutions (quasi-) optimales
 \end{block}
 
 Entraînement d'un modèle prédictif pour distinguer
-les arêtes optimales des autres en s'aidant de caractéristiques:
+les arêtes à supprimer des autres en s'aidant de caractéristiques:
 \begin{itemize}
 \item Largeur de la tournée
 \item Profondeur de la tournée
@@ -127,38 +127,25 @@ Complexité en $O(n^k)$, $k$ choisi par l'utilisateur. En général exécution s
 \end{alertblock}
 
 \begin{center}
-
+\includegraphics[scale=0.32]{test4_20_init.png}
+\includegraphics[scale=0.32]{test4_20_LKopt.png}
 \end{center}
 
 \end{frame}
 
 
 \section{Améliorations}
-\begin{frame}
-Si on ne trouve plus d'améliorations
+
+\begin{frame}{Que faire si on ne trouve plus d'améliorations ?}
+\begin{block}{Idées}
+
 \begin{itemize}
 \item Optimisation globale (application des opérateurs sur l'ensemble du graphe): très coûteux
 \item Remise à zéro des pénalités
 \item Changement de la fonction de pénalisation
-
 \end{itemize}
 
+\end{block}
 \end{frame}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \end{document}
