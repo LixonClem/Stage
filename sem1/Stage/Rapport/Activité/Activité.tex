@@ -3,7 +3,7 @@
 \usepackage{fullpage}%
 \usepackage[T1]{fontenc}%
 \usepackage[utf8]{inputenc}%
-\usepackage[main=francais,english]{babel}% % Adjust the main language
+\usepackage[main=francais]{babel}% % Adjust the main language
 
 \usepackage{graphicx}%
 \usepackage{url}%
@@ -102,5 +102,26 @@ On commence par calculer $k$ pp voisins pour chaque nœud (pré-calcul). Après 
 On construit les deux arêtes $(a,v_a)$ et $(c,b)$. Puis on essaye d'échanger $(v_a+1, v_a+2)$, avec $(b+1,b+2)$, ou $(b+2,b+3)$ ainsi de suite jusqu'à retomber sur l'arête de départ ou trouver une amélioration. 
 En pratique on trouve rapidement une amélioration d'où une complexité en général linéaire. 
 Il faut aussi veiller à ne pas dépasser les contraintes de capacité (non prises en compte dans un premier temps). 
-Fin implémentation, tests réalisés sur une instance particulière (cf ...), 3 exécutions ont été réalisées sur des arêtes différentes, (arête choisie en rouge). 
+Fin implémentation, tests réalisés sur une instance particulière (cf ...), 3 exécutions ont été réalisées sur des arêtes différentes, (arête choisie en rouge). Exemple avec l'image \ref{test1CE_init}, on obtient le résultat sur l'image \ref{test1CE_imp}. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{test1CE_init.png}
+	\caption{Instance initiale pour $10$ clients répartis sur 2 tournées}
+	\label{test1CE_init}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{test1CE_imp.png}
+	\caption{Amélioration obtenue avec Cross-exchange}	
+	\label{test1CE_imp}
+\end{figure}
+
+\paragraph*{29 Mai 2018}
+
+\underline{Objectifs} : Corriger présentation pour cross-exchange. Faire implémentation de ejection-chain, tester. Finir présentation ? Finir de corriger code C++ ?
+
+\underline{Réalisation} :
+
 \end{document}
