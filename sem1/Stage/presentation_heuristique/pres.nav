@@ -20,26 +20,30 @@
 \headcommand {\beamer@subsectionpages {4}{4}}
 \headcommand {\sectionentry {3}{Op\IeC {\'e}rateurs locaux}{5}{Op\IeC {\'e}rateurs locaux}{0}}
 \headcommand {\beamer@subsectionpages {5}{4}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{5}{Cross\_exchange}}
-\headcommand {\slideentry {3}{1}{1}{5/5}{Cross\_exchange}{0}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{5}{Cross-exchange}}
+\headcommand {\slideentry {3}{1}{1}{5/5}{Cross-exchange}{0}}
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\beamer@subsectionpages {5}{5}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{6}{Ejection\_chain}}
-\headcommand {\slideentry {3}{2}{1}{6/6}{Ejection\_chain}{0}}
+\headcommand {\slideentry {3}{1}{2}{6/6}{Cross-exchange}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\beamer@subsectionpages {6}{6}}
-\headcommand {\beamer@subsectionentry {0}{3}{3}{7}{Lin-Kernighan Heuristic}}
-\headcommand {\slideentry {3}{3}{1}{7/7}{Lin-Kernighan Heuristic}{0}}
+\headcommand {\slideentry {3}{1}{3}{7/7}{Cross-exchange}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {3}{3}{2}{8/8}{Lin-Kernighan Heuristic}{0}}
+\headcommand {\beamer@subsectionpages {5}{7}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{8}{Ejection-chain}}
+\headcommand {\slideentry {3}{2}{1}{8/8}{Ejection-chain}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\beamer@sectionpages {5}{8}}
-\headcommand {\beamer@subsectionpages {7}{8}}
-\headcommand {\sectionentry {4}{Am\IeC {\'e}liorations}{9}{Am\IeC {\'e}liorations}{0}}
-\headcommand {\slideentry {4}{0}{1}{9/9}{}{0}}
+\headcommand {\beamer@subsectionpages {8}{8}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{9}{Lin-Kernighan Heuristic}}
+\headcommand {\slideentry {3}{3}{1}{9/9}{Lin-Kernighan Heuristic}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\beamer@partpages {1}{9}}
-\headcommand {\beamer@subsectionpages {9}{9}}
-\headcommand {\beamer@sectionpages {9}{9}}
-\headcommand {\beamer@documentpages {9}}
-\headcommand {\gdef \inserttotalframenumber {9}}
+\headcommand {\slideentry {3}{3}{2}{10/10}{Lin-Kernighan Heuristic}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\beamer@sectionpages {5}{10}}
+\headcommand {\beamer@subsectionpages {9}{10}}
+\headcommand {\sectionentry {4}{Am\IeC {\'e}liorations}{11}{Am\IeC {\'e}liorations}{0}}
+\headcommand {\slideentry {4}{0}{1}{11/11}{}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\beamer@partpages {1}{11}}
+\headcommand {\beamer@subsectionpages {11}{11}}
+\headcommand {\beamer@sectionpages {11}{11}}
+\headcommand {\beamer@documentpages {11}}
+\headcommand {\gdef \inserttotalframenumber {11}}

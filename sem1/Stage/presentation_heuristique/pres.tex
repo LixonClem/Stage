@@ -10,8 +10,10 @@
 
 \usetheme{Warsaw}
 \title{Nouvelle heuristique pour VRP}
+
 \author{Clément Legrand}
-\date{31 Mai 2018} 
+\date{31 Mai 2018 \footnote{D'après l'article \emph{A simple, deterministic, and efficient knowledge-driven heuristic
+for the vehicle routing problem} de Florian Arnold et Kenneth Sorensen}} 
 
 \begin{document}
 
@@ -79,20 +81,52 @@ La pire arête est celle qui maximise la fonction $b$.
 
 \section{Opérateurs locaux}
 
-\subsection{Cross\_exchange}
-\begin{frame}
-Agit sur un couple de tournées, et essaie d'échanger toutes paires de séquence de clients consécutifs entre les deux routes. Complexité en $O(n^4)$: beaucoup trop...
+\subsection{Cross-exchange}
 
-\underline{Réduction}: si on connaît une arête à éliminer, on choisit la tournée correspondante. Et on ne s'intéresse qu'aux tournées qui ont des n\oe uds dans le voisinage de l'arête.
+\begin{frame}{Cross-exchange}
 
-Complexité en théorie quadratique, mais proche de linéaire en général (beaucoup de solutions violent les contraintes)
+\begin{block}{Objectif}
+Essaie d'échanger deux séquences de clients entre deux tournées. 
+\end{block}
+
+\begin{alertblock}{Complexité}
+Complexité en $O(n^4)$: beaucoup trop...
+\end{alertblock}
 
 	\centering
 	\includegraphics[height=0.4\textheight]{cross_exchange.png}
 \end{frame}
 
-\subsection{Ejection\_chain}
 \begin{frame}
+\begin{exampleblock}{Amélioration locale}
+\begin{itemize}
+\item Choisir une arête $(c_1,c_2)$ à éliminer;
+\item Trouver une autre tournée grâce aux voisins de $c_1$; (e.g. premier voisin $c_4$ sur une tournée différente, sur arête $(c_3,c_4)$);
+\item Premier échange: $(c_1,c_4)$ et $(c_3,c_2)$;
+\item On essaie d'échanger $n(c_4)$ avec $n(c_2)$, $n(n(c_2))$, ... jusqu'à trouver une amélioration ou avoir parcouru toute la tournée (dans ce cas on poursuit avec $n(n(c_4))$).
+\end{itemize}
+\end{exampleblock}
+
+\begin{alertblock}{Nouvelle complexité}
+$O(n^2)$ dans le pire cas, mais proche de linéaire en général.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Exemple}
+Test de l'opérateur sur une tournée de 10 clients. L'arête rouge est l'arête à éliminer.
+
+\begin{center}
+\includegraphics[scale=0.32]{test1CE_init.png}
+\includegraphics[scale=0.32]{test1CE_imp.png}
+\end{center}
+
+\end{frame}
+
+
+
+\subsection{Ejection-chain}
+
+\begin{frame}{Ejection-chain}
 Agit (potentiellement) sur toutes les tournées. Commence par déplacer un client de la route $a$ vers la route $b$, de même en partant de $b$ vers $c$, jusque $l$ déplacements. 
 
 	\centering
@@ -101,7 +135,7 @@ Agit (potentiellement) sur toutes les tournées. Commence par déplacer un clien
 
 
 \subsection{Lin-Kernighan Heuristic}
-\begin{frame}
+\begin{frame}{Lin-Kernighan Heuristic}
 
 \begin{block}{Utilisation}
 \begin{itemize}
@@ -112,7 +146,7 @@ Agit (potentiellement) sur toutes les tournées. Commence par déplacer un clien
 
 \begin{exampleblock}{Implémentation}
 \begin{itemize}
-\item Exécute i-opt (échange l'ordre de $i$ clients sur la tournée).
+\item Exécute i-opt (échange l'ordre de $i$ clients sur la tournée; au départ $i=2$).
 \item Si $i=k$ ou plus d'améliorations possibles $\rightarrow$ réalise la meilleure i-opt; recommence avec $i=2$
 \item Si amélioration possible $\rightarrow$ recommence avec $i+1$
 \item Si $i=2$ et pas d'améliorations possibles $\rightarrow$ on sort de la boucle.
