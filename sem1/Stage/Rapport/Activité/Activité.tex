@@ -124,6 +124,36 @@ Fin implémentation, tests réalisés sur une instance particulière (cf ...), 3
 
 \underline{Objectifs} : Corriger présentation pour cross-exchange. Faire implémentation de ejection-chain, tester. Finir présentation ? Finir de corriger code C++ ?
 
-\underline{Réalisation} :
+\underline{Réalisation} : Ajout de cross-exchange dans la présentation. Implémentation de l'ejection-chain, reste quelques problèmes (ajout/suppression de routes, manque les capacités). Ajout des capacités pour le cross-exchange, et découverte problème dans implémentation $\rightarrow$ correction et nouveaux tests. Epuration code et homogénéisation des notations. Commentaires ajoutés. Tests pour correction de CE (et ajout de capacités): 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{test2CE_init.png}
+	\caption{Instance initiale pour $10$ clients répartis sur 2 tournées}
+	\label{test2CE_init}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{test2CE_imp.png}
+	\caption{Amélioration obtenue avec Cross-exchange}	
+	\label{test2CE_imp}
+\end{figure}
+
+Tests pour ejection-chain (sans capacités): initialement avec image \ref{test1EC_init}, pour obtenir l'image \ref{test1EC_imp} (21 clients, 3 routes, 15 replacements).
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{test1EC_init.png}
+	\caption{Instance initiale pour $10$ clients répartis sur 2 tournées}
+	\label{test1EC_init}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{test1EC_imp.png}
+	\caption{Amélioration obtenue avec Cross-exchange}
+	\label{test1EC_imp}
+\end{figure}
 
 \end{document}

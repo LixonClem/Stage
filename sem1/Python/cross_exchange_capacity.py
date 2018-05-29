@@ -18,6 +18,8 @@ nb_cust = 10
 kNN = 5
 Capacity = 75
 
+#Note : instances and voisins will be define globally in a future version
+
 # Creation of a test instance
 inst_test = [(0, 0), (3, -168), (150, -157), (-195, 68), (105, 4),
              (-114, -23), (72, -152), (135, -129), (65, -87), (-27, 158), (53, -46)]
@@ -101,18 +103,19 @@ def cost_sol(routes, inst):
 
 
 def voisins(k, inst):
-    v = []
-    for i in range(len(inst)):
-        vi = []
+    neighbours = []
+    n = len(inst)
+    for i in range(n):
+        neighbours_i = []
         couples = []
-        for j in range(len(inst)):
+        for j in range(n):
             if i != j:
-                vi.append([distance(inst[i], inst[j]), j])
-        vi.sort()
-        for l in vi:
-            couples.append(l[1])
-        v.append(couples[:k])
-    return v
+                couples.append([distance(inst[i], inst[j]), j])
+        couples.sort()
+        for l in couples:
+            neighbours_i.append(l[1])
+        neighbours.append(neighbours_i[:k])
+    return neighbours
 
 # Find the route, which contains customer i
 
@@ -130,28 +133,31 @@ def another_route(edge, voisins, routes, demand):
     r1 = find_route(a, routes)
     for i in voisins[a]:
         r2 = find_route(i, routes)
-        if r2 != r1 and i != 0 and r1[1]-demand[b]+demand[i] <= Capacity and r2[1]-demand[i]+demand[b] <= Capacity:
+        if r2 != r1 and i != 0 and r1[1]-demand[b]+demand[i] <= Capacity and r2[1]-demand[i]+demand[b] <= Capacity:     #we verify that the future deman on the route won't exceed his capacity
             return ((r1, r2), i)
-    return ((r1, r1), -1)
+    return ((r1, r1), -1)       #error case, we haven't found a second route, so no modifications
 
 # Apply the cross-exchange operator
 
 
 def cross_exchange(edge, voisins, routes, inst, demand):
     (a, b) = edge
-    (r1, r2), v = another_route(edge, voisins, routes, demand)
+    
+    (r1, r2), v = another_route(edge, voisins, routes, demand)  # compute the two routes considered, and the NN of the point we remove (a). v is a point 
     if v < 0:
         return (routes)
-    c_init = cost_sol(routes, inst)
 
-    i_v = r2[0].index(v)
+    c_init = cost_sol(routes, inst)     # for a future comparison
+    print(c_init)
+    i_v = r2[0].index(v)    
     i_b = r1[0].index(b)
 
     r1[0][i_b], r2[0][i_v] = v, b
-    r1[1] = r1[1] - demand[b] + demand[v]
+
+    r1[1] = r1[1] - demand[b] + demand[v]   #update the demands on each road
     r2[1] = r2[1] - demand[v] + demand[b]
 
-    current_cand = [[r1[0].copy(), r1[1]].copy(), [r2[0].copy(), r2[1]].copy()]
+    current_cand = [[r1[0].copy(), r1[1]].copy(), [r2[0].copy(), r2[1]].copy()]     #copy of the current solution 
 
     for i in range(len(r2[0])-1):
         if i != i_v-1:
@@ -166,12 +172,12 @@ def cross_exchange(edge, voisins, routes, inst, demand):
 
                     current_cand[0][0][j+1], current_cand[1][0][i + 1] = p2, p1
 
-                    print(current_cand)
+                    
                     if cost_sol(current_cand, inst) < c_init and current_cand[0][1] <= Capacity and current_cand[1][1] <= Capacity:
-
+                        print(cost_sol(current_cand, inst))
                         return current_cand
-                current_cand = [[r1[0].copy(), r1[1]].copy(), [
-                    r2[0].copy(), r2[1]].copy()]
+
+                current_cand = [[r1[0].copy(), r1[1]].copy(), [r2[0].copy(), r2[1]].copy()]
     return routes
 
 
@@ -180,15 +186,15 @@ routes = [r1_test, r2_test]
 
 
 print_current_sol(routes, inst_test)
-py.plot([inst_test[edge_1[0]][0], inst_test[edge_1[1]][0]], [
-        inst_test[edge_1[0]][1], inst_test[edge_1[1]][1]], color='red', label='chosen')
+py.plot([inst_test[edge_2[0]][0], inst_test[edge_2[1]][0]], [
+        inst_test[edge_2[0]][1], inst_test[edge_2[1]][1]], color='red', label='chosen')
 py.title("Test de l'opérateur Cross-exchange")
 py.legend()
 py.show()
 v = voisins(kNN, inst_test)
 
 
-new_routes = cross_exchange(edge_1, v, routes, inst_test, demand)
+new_routes = cross_exchange(edge_2, v, routes, inst_test, demand)
 print(new_routes)
 print_current_sol(new_routes, inst_test)
 py.title("Test de l'opérateur Cross-exchange")

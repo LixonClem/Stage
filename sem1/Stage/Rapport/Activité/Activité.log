@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.11)  28 MAY 2018 18:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.11)  29 MAY 2018 19:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -635,26 +635,51 @@ File: test1CE_imp.png Graphic file (type png)
  <use test1CE_imp.png>
 Package pdftex.def Info: test1CE_imp.png used on input line 118.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
- [4 <./test1CE_init.png> <./test1CE_imp.png>] (./Activité.aux) ) 
+
+<test2CE_init.png, id=31, 578.16pt x 433.62pt>
+File: test2CE_init.png Graphic file (type png)
+ <use test2CE_init.png>
+Package pdftex.def Info: test2CE_init.png used on input line 131.
+(pdftex.def)             Requested size: 226.48395pt x 169.85878pt.
+
+<test2CE_imp.png, id=32, 578.16pt x 433.62pt>
+File: test2CE_imp.png Graphic file (type png)
+ <use test2CE_imp.png>
+Package pdftex.def Info: test2CE_imp.png used on input line 138.
+(pdftex.def)             Requested size: 226.48395pt x 169.85878pt.
+
+<test1EC_init.png, id=33, 578.16pt x 433.62pt>
+File: test1EC_init.png Graphic file (type png)
+ <use test1EC_init.png>
+Package pdftex.def Info: test1EC_init.png used on input line 147.
+(pdftex.def)             Requested size: 226.48395pt x 169.85878pt.
+
+<test1EC_imp.png, id=34, 578.16pt x 433.62pt>
+File: test1EC_imp.png Graphic file (type png)
+ <use test1EC_imp.png>
+Package pdftex.def Info: test1EC_imp.png used on input line 154.
+(pdftex.def)             Requested size: 226.48395pt x 169.85878pt.
+ [4 <./test1CE_init.png> <./test1CE_imp.png>] [5 <./test2CE_init.png> <./test2C
+E_imp.png> <./test1EC_init.png>] [6 <./test1EC_imp.png>] (./Activité.aux) ) 
 Here is how much of TeX's memory you used:
- 5884 strings out of 493029
- 84868 string characters out of 6136234
- 149430 words of memory out of 5000000
- 9318 multiletter control sequences out of 15000+600000
+ 5908 strings out of 493029
+ 85308 string characters out of 6136234
+ 149464 words of memory out of 5000000
+ 9338 multiletter control sequences out of 15000+600000
  29506 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,6n,40p,556b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/te
-xlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/mathpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/
-uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on Activité.pdf (4 pages, 323356 bytes).
+{/u
+sr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/mathpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
+w/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/u
+plr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on Activité.pdf (6 pages, 604828 bytes).
 PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
- 30 compressed objects within 1 object stream
+ 71 PDF objects out of 1000 (max. 8388607)
+ 34 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

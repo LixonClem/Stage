@@ -136,7 +136,7 @@ def another_route(a, voisins, routes):
             return ((r1, r2), i)
     return ()
 
-
+#Compute the saving of the new edge
 def saving(i, ri, j, rj, inst):
     ri.append(0)
     rj.append(0)
@@ -197,7 +197,7 @@ routes = [r1_test2, r2_test2,r3_test3]
 
 print_current_sol(routes, inst_test2)
 py.plot([inst_test2[edge2_1[0]][0], inst_test2[edge2_1[1]][0]], [
-        inst_test2[edge2_1[0]][1], inst_test2[edge2_1[1]][1]], color='red', label='chosen')
+        inst_test2[edge2_1[0]][1], inst_test2[edge2_1[1]][1]], color='black', label='chosen')
 py.title("Test de l'opérateur ejection_chain")
 py.legend()
 py.show()
