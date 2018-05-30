@@ -98,12 +98,12 @@ Complexité en $O(n^4)$: beaucoup trop...
 \end{frame}
 
 \begin{frame}
-\begin{exampleblock}{Amélioration locale}
+\begin{exampleblock}{Algorithme}
 \begin{itemize}
 \item Choisir une arête $(c_1,c_2)$ à éliminer;
-\item Trouver une autre tournée grâce aux voisins de $c_1$; (e.g. premier voisin $c_4$ sur une tournée différente, sur arête $(c_3,c_4)$);
+\item Trouver une autre tournée grâce aux voisins de $c_1$; (e.g. premier voisin sur une tournée différente $c_4$ , prendre arête $(c_3,c_4)$);
 \item Premier échange: $(c_1,c_4)$ et $(c_3,c_2)$;
-\item On essaie d'échanger $n(c_4)$ avec $n(c_2)$, $n(n(c_2))$, ... jusqu'à trouver une amélioration ou avoir parcouru toute la tournée (dans ce cas on poursuit avec $n(n(c_4))$).
+\item On essaie d'échanger $s(c_4)$ avec $s(c_2)$, $s(s(c_2))$, ... jusqu'à trouver une amélioration ou avoir parcouru toute la tournée (dans ce cas on poursuit avec $s(s(c_4))$).
 \end{itemize}
 \end{exampleblock}
 
@@ -116,8 +116,8 @@ $O(n^2)$ dans le pire cas, mais proche de linéaire en général.
 Test de l'opérateur sur une tournée de 10 clients. L'arête rouge est l'arête à éliminer.
 
 \begin{center}
-\includegraphics[scale=0.28]{test2CE_init.png}
-\includegraphics[scale=0.28]{test2CE_imp.png}
+\includegraphics[scale=0.25]{test1CE_init.png}
+\includegraphics[scale=0.25]{test1CE_imp(corrige).png}
 \end{center}
 
 \end{frame}
@@ -132,13 +132,13 @@ Test de l'opérateur sur une tournée de 10 clients. L'arête rouge est l'arête
 Déplacer au plus $l$ clients sur des tournées plus adaptées. 
 \end{block}
 
-\begin{exampleblock}{Implémentation}
+\begin{exampleblock}{Algorithme}
 \begin{itemize}
 \item Déterminer une arête à éliminer; considérer un des deux clients;
 \item Regarder parmi les pp-voisins pour trouver une tournée;
 \item Déplacer le client sur cette tournée;
-\item Essayer de déplacer un client de cette tournée sur une autre tournée, tel que le saving soit positif;
-\item Recommencer l'étape précédente $l$ fois.
+\item Essayer de déplacer un client de cette tournée sur une autre tournée, tel que le saving soit maximal;
+\item Recommencer l'étape précédente $l$ fois; On applique les changements si le saving final est positif.
 \end{itemize}
 \end{exampleblock}
 
@@ -165,7 +165,7 @@ Complexité en $O(n^{l-1})$. En pratique $l=3$.
 \end{itemize}
 \end{block}
 
-\begin{exampleblock}{Implémentation}
+\begin{exampleblock}{Algorithme}
 \begin{itemize}
 \item Exécute i-opt (échange l'ordre de $i$ clients sur la tournée; au départ $i=2$).
 \item Si $i=k$ ou plus d'améliorations possibles $\rightarrow$ réalise la meilleure i-opt; recommence avec $i=2$
@@ -178,7 +178,7 @@ Complexité en $O(n^{l-1})$. En pratique $l=3$.
 
 \begin{frame}
 \begin{alertblock}{Complexité}
-Complexité en $O(n^k)$, $k$ choisi par l'utilisateur. En général exécution sur des morceaux de tournée.
+Complexité en $O(n^k)$, $k$ choisi par l'utilisateur. En général exécution sur des morceaux de tournée, et $k=2$.
 \end{alertblock}
 
 \begin{center}

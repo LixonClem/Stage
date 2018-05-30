@@ -1,5 +1,4 @@
-\beamer@endinputifotherversion {3.36pt}
-\select@language {english}
+\babel@toc {english}{}
 \beamer@sectionintoc {1}{Pr\IeC {\'e}sentation heuristique}{1}{0}{1}
 \beamer@sectionintoc {2}{Obtention de la pire ar\IeC {\^e}te}{3}{0}{2}
 \beamer@subsectionintoc {2}{1}{Caract\IeC {\'e}riser une ar\IeC {\^e}te}{3}{0}{2}
