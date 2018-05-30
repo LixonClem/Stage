@@ -8,24 +8,21 @@ global ylim
 global xlim
 global nb_cust
 global kNN
+global clim
+global Capacity
 
 ylim = 200
 xlim = 200
+clim = 20
 nb_cust = 10
-kNN = 10
+kNN = 5
+Capacity = 75
 
 # Creation of a test instance
-inst_test = [(0, 0), (3, -168), (150, -157), (-195, 68), (105, 4),
-             (-114, -23), (72, -152), (135, -129), (65, -87), (-27, 158), (53, -46)]
-r1_test = [0, 2, 4, 6, 8, 10]
-r2_test = [0, 1, 3, 5, 7, 9]
-edge_1 = (4, 6)
-edge_2 = (5, 3)
-edge_3 = (7, 9)
-
 inst_test2 = [(0, 0), (11, 120), (-142, -149), (-83, 39), (-168, -46), (-83, -146), (4, -99),
               (32, -16), (-117, 12), (-132, 33), (51, 44), (-29, 76), (-98, -33), (-26, -190),
               (-89, 128), (124, -95), (-108, -1), (24, -158), (-115, -106), (80, -160), (-167, 3), (185, -72)]
+
 
 r1_test2 = [0, 3, 6, 9, 12, 15, 18, 21] 
 r2_test2 = [0, 1, 4, 7, 10, 13, 16, 19] 
@@ -36,20 +33,23 @@ edge2_1 = (9,12)
 # Creation of a random instance
 def create_instance(n):
     inst = [(0, 0)]
+    demand = []
     route1 = [0]
     route2 = [0]
     route3 = [0]
     for i in range(n):
         x = rd.randint(-xlim, xlim)
         y = rd.randint(-ylim, ylim)
+        c = rd.randint(0, clim)
         inst.append((x, y))
+        demand.append(c)
         if i % 3 == 0:
             route1.append(i)
         elif i % 3 == 1:
             route2.append(i)
         else:
             route3.append(i)
-    return inst, route1, route2, route3
+    return inst, route1, route2, route3,demand
 
 # Print the routes
 

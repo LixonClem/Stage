@@ -164,10 +164,11 @@ print_routes(routes,inst)
 merge_routes((i,j,s), routes, savings, inst)
 """
 
-instance_test,demand = create_instance(nb_cust)
-
+instance_test,demand = create_instance(20)
+print(instance_test,demand)
+"""
 cost = ClarkeWright(instance_test, demand, lam)
-print(cost)
+print(cost)"""
 
 
 

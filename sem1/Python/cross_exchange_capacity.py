@@ -150,19 +150,19 @@ def cross_exchange(edge, voisins, routes, inst, demand):
     c_init = cost_sol(routes, inst)     # for a future comparison
     print(c_init)
     i_v = r2[0].index(v)    
-    i_b = r1[0].index(b)
+    i_a = r1[0].index(a)
 
-    r1[0][i_b], r2[0][i_v] = v, b
+    r1[0][i_a], r2[0][i_v-1] = r2[0][i_v-1], a
 
-    r1[1] = r1[1] - demand[b] + demand[v]   #update the demands on each road
-    r2[1] = r2[1] - demand[v] + demand[b]
+    r1[1] = r1[1] - demand[a] + demand[v]   #update the demands on each road
+    r2[1] = r2[1] - demand[v] + demand[a]
 
     current_cand = [[r1[0].copy(), r1[1]].copy(), [r2[0].copy(), r2[1]].copy()]     #copy of the current solution 
 
     for i in range(len(r2[0])-1):
         if i != i_v-1:
             for j in range(len(r1[0])-1):
-                if j != i_b-1:
+                if j != i_a-1:
                     p1 = current_cand[0][0][j+1]
                     p2 = current_cand[1][0][i+1]
                     current_cand[0][1] = current_cand[0][1] - \
@@ -186,15 +186,15 @@ routes = [r1_test, r2_test]
 
 
 print_current_sol(routes, inst_test)
-py.plot([inst_test[edge_2[0]][0], inst_test[edge_2[1]][0]], [
-        inst_test[edge_2[0]][1], inst_test[edge_2[1]][1]], color='red', label='chosen')
+py.plot([inst_test[edge_1[0]][0], inst_test[edge_1[1]][0]], [
+        inst_test[edge_1[0]][1], inst_test[edge_1[1]][1]], color='red', label='chosen')
 py.title("Test de l'opérateur Cross-exchange")
 py.legend()
 py.show()
 v = voisins(kNN, inst_test)
 
 
-new_routes = cross_exchange(edge_2, v, routes, inst_test, demand)
+new_routes = cross_exchange(edge_1, v, routes, inst_test, demand)
 print(new_routes)
 print_current_sol(new_routes, inst_test)
 py.title("Test de l'opérateur Cross-exchange")

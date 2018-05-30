@@ -68,7 +68,7 @@ def DeuxOpt(route, inst):
                 best_tuple = (i, j)
                 best = d
     if best_tuple[0]!=best_tuple[1]:
-        cand = route.copy()
+        cand = list(np.copy(route))
         cand[best_tuple[0]+1], cand[best_tuple[1]
                                   ] = cand[best_tuple[1]], cand[best_tuple[0]+1]
         return cand
@@ -79,24 +79,31 @@ def DeuxOpt(route, inst):
 #Itérations successives de 2-opt. Pas suffisant si grandes tournées, 
 # mais suffisant sur des petits morceaux de tournées (en considérant les plus 
 # proches voisins de la zone autour de l'arête à éliminer).
+# i et j délimitent la partie de la tournée à optimiser
 
-def LK(route, inst):    
-    next_cand = DeuxOpt(route, inst)
-    while next_cand != route:
-        route = next_cand.copy()
-        next_cand = DeuxOpt(route, inst)
-    return next_cand
+def LK(route,i,j, inst):
+    route_part = route[i:j]   
+    next_cand = DeuxOpt(route_part, inst)
+    while next_cand != route_part:
+        route_part = list(np.copy(next_cand))
+        next_cand = DeuxOpt(route_part, inst)
+    route[i:j] = route_part
+    return route
 
 #Exécution
 
-inst, route = create_instance(10)
+inst, route = create_instance(20)
+
+print(cost_sol(route,inst))
+
 print_instance(inst)
 print_route(route, inst)
 
 py.show()
 
-opt_route = LK(route, inst)
+opt_route = LK(route,0,21, inst)    
 
+print(cost_sol(opt_route,inst))
 
 print_instance(inst)
 print_route(opt_route, inst)

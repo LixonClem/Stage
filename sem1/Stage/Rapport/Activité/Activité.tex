@@ -145,15 +145,22 @@ Tests pour ejection-chain (sans capacités): initialement avec image \ref{test1E
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.5\textwidth]{test1EC_init.png}
-	\caption{Instance initiale pour $10$ clients répartis sur 2 tournées}
+	\caption{Instance initiale pour $21$ clients répartis sur 3 tournées}
 	\label{test1EC_init}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.5\textwidth]{test1EC_imp.png}
-	\caption{Amélioration obtenue avec Cross-exchange}
+	\caption{Amélioration obtenue avec Ejection-chain (15 replacements)}
 	\label{test1EC_imp}
 \end{figure}
+
+\paragraph*{30 Mai 2018}
+
+Fin implémentation ejection-chain (avec gestion de capacité), \underline{création et suppression de route à faire}. Ajout à la présentation, et fin (?) de celle-ci. Re-correction du cross-exchange (et cette fois c'est bon!, les clients échangés initialement n'étaient pas bons). Article pour ejection-chain dans vrp with time-window: \emph{Fast Ejection Chain Algorithms for
+Vehicle Routing with Time Windows} de Herman Sontrop, Pieter van der Horn, and Marc Uetz.
+Regroupement des opérateurs, et début implémentation de l'heuristique (fonction de pénalisation).
+
 
 \end{document}
