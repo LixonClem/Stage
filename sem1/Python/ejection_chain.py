@@ -194,7 +194,7 @@ def ejection_chain(l, edge, voisins, routes, inst):
 
 
 routes = [r1_test2, r2_test2,r3_test3]
-
+print(cost_sol(routes,inst))
 print_current_sol(routes, inst_test2)
 py.plot([inst_test2[edge2_1[0]][0], inst_test2[edge2_1[1]][0]], [
         inst_test2[edge2_1[0]][1], inst_test2[edge2_1[1]][1]], color='black', label='chosen')

@@ -19,9 +19,9 @@ ylim = 200
 xlim = 200
 clim = 20
 nb_cust = 100
-Capacity = 75
+Capacity = 100
 KNN = 10
-relocation = 3
+relocation = 10
 
 lam = 1.4
 
@@ -368,7 +368,6 @@ def ejection_chain(l, edge, voisins, routes, inst, demand):
 
 
 def DeuxOpt(route, inst):
-    route.append(0)
     l = len(route)-1
     best_tuple = (0, 0)
     best = 0
@@ -387,10 +386,8 @@ def DeuxOpt(route, inst):
         cand = route.copy()
         cand[best_tuple[0]+1], cand[best_tuple[1]
                                     ] = cand[best_tuple[1]], cand[best_tuple[0]+1]
-        route.pop()
         return cand
     else:
-        route.pop()
         return route
 
 
@@ -400,11 +397,13 @@ def DeuxOpt(route, inst):
 # i et j délimitent la partie de la tournée à optimiser
 
 def LK(route, inst):
+    route.append(0)
     next_cand = DeuxOpt(route, inst)
     while next_cand != route:
         print("yes")
         route = next_cand.copy()
         next_cand = DeuxOpt(route, inst)
+    route.pop()
     return next_cand
 
  #############

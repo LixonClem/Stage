@@ -81,13 +81,11 @@ def DeuxOpt(route, inst):
 # proches voisins de la zone autour de l'arête à éliminer).
 # i et j délimitent la partie de la tournée à optimiser
 
-def LK(route,i,j, inst):
-    route_part = route[i:j]   
-    next_cand = DeuxOpt(route_part, inst)
-    while next_cand != route_part:
-        route_part = list(np.copy(next_cand))
-        next_cand = DeuxOpt(route_part, inst)
-    route[i:j] = route_part
+def LK(route, inst):   
+    next_cand = DeuxOpt(route, inst)
+    while next_cand != route:
+        route = next_cand.copy()
+        next_cand = DeuxOpt(route, inst)
     return route
 
 #Exécution
@@ -101,7 +99,7 @@ print_route(route, inst)
 
 py.show()
 
-opt_route = LK(route,0,21, inst)    
+opt_route = LK(route,inst)    
 
 print(cost_sol(opt_route,inst))
 

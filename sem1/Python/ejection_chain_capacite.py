@@ -234,7 +234,7 @@ def ejection_chain(l, edge, voisins, routes, inst, demand):
 # Test execution
 
 routes = [r1_test1, r2_test1, r3_test1]
-
+print(cost_sol(routes,inst_test1))
 print_current_sol(routes, inst_test1)
 
 py.plot([inst_test1[edge1[0]][0], inst_test1[edge1[1]][0]], [
@@ -247,6 +247,6 @@ v = voisins(kNN, inst_test1)
 
 
 new_routes = ejection_chain(15, edge1, v, routes, inst_test1, demand1)
-
+print(cost_sol(new_routes,inst_test1))
 print_current_sol(new_routes, inst_test1)
 py.show()
