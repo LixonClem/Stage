@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  30 MAY 2018 13:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  1 JUN 2018 09:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -676,36 +676,49 @@ File: test1EC_imp.png Graphic file (type png)
 Package pdftex.def Info: test1EC_imp.png  used on input line 154.
 (pdftex.def)             Requested size: 226.48395pt x 169.85878pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 161--163
+Underfull \hbox (badness 10000) in paragraph at lines 161--164
  \T1/ppl/b/n/10.95 30 Mai 2018 \T1/ppl/m/n/10.95 Fin im-plÈ-men-ta-tion ejectio
 n-chain (avec ges-tion de ca-pa-citÈ),
  []
 
-[4 <./test1CE_init.png> <./test1CE_imp.png>] [5 <./test2CE_init.png> <./test2CE
-_imp.png>] [6 <./test1EC_init.png> <./test1EC_imp.png>] (./Activit√©.aux)
+[4 <./test1CE_init.png> <./test1CE_imp.png>]
+<test2_heuristic_init.png, id=40, 462.528pt x 346.896pt>
+File: test2_heuristic_init.png Graphic file (type png)
+<use test2_heuristic_init.png>
+Package pdftex.def Info: test2_heuristic_init.png  used on input line 171.
+(pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
+<test2_heuristic_res.png, id=41, 462.528pt x 346.896pt>
+File: test2_heuristic_res.png Graphic file (type png)
+<use test2_heuristic_res.png>
+Package pdftex.def Info: test2_heuristic_res.png  used on input line 178.
+(pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+Underfull \hbox (badness 2875) in paragraph at lines 187--189
+[]$[]$ \T1/ppl/m/n/10.95 : PrÈ-sen-ta-tion des
+ []
 
- ) 
+[5 <./test2CE_init.png> <./test2CE_imp.png>] [6 <./test1EC_init.png> <./test1EC
+_imp.png>] [7 <./test2_heuristic_init.png> <./test2_heuristic_res.png>]
+(./Activit√©.aux) ) 
 Here is how much of TeX's memory you used:
- 6032 strings out of 492982
- 87453 string characters out of 6134896
- 153371 words of memory out of 5000000
- 9483 multiletter control sequences out of 15000+600000
+ 6046 strings out of 492982
+ 87780 string characters out of 6134896
+ 154389 words of memory out of 5000000
+ 9495 multiletter control sequences out of 15000+600000
  29506 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,6n,40p,556b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/mathpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palat
-ino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.
-pfb>
-Output written on Activit√©.pdf (6 pages, 479190 bytes).
+ 42i,6n,40p,604b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}<
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
+palatino/uplri8a.pfb>
+Output written on Activit√©.pdf (7 pages, 592804 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 34 compressed objects within 1 object stream
+ 80 PDF objects out of 1000 (max. 8388607)
+ 38 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

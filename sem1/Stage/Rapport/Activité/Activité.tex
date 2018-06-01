@@ -160,7 +160,46 @@ Tests pour ejection-chain (sans capacités): initialement avec image \ref{test1E
 
 Fin implémentation ejection-chain (avec gestion de capacité), \underline{création et suppression de route à faire}. Ajout à la présentation, et fin (?) de celle-ci. Re-correction du cross-exchange (et cette fois c'est bon!, les clients échangés initialement n'étaient pas bons). Article pour ejection-chain dans vrp with time-window: \emph{Fast Ejection Chain Algorithms for
 Vehicle Routing with Time Windows} de Herman Sontrop, Pieter van der Horn, and Marc Uetz.
-Regroupement des opérateurs, et début implémentation de l'heuristique (fonction de pénalisation).
+Regroupement des opérateurs, et début implémentation de l'heuristique (fonction de pénalisation, recuperation de la pire arête, execution des opérateurs). Premier test (beaucoup d'erreurs...). Correction, principal problème : opérateurs pas utilisables si beaucoup de tournées (CE, n'est censé géré que 2 tournées...). 
+
+\paragraph*{31 Mai 2018}
+
+Correction heuristique, ajout de l'optimisation globale, reset et update des fonctions de pénalisation. Tests sur différentes instances avec capacité totale variable. Premiers tests plutôt concluants, calcul assez rapide (30 sec pour 100 clients). Résultats présents sur les images \ref{test2_Heu_init} et \ref{test2_Heu_imp}. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{test2_heuristic_init.png}
+	\caption{Instance initiale pour 100 clients, avec Clark and Wright}
+	\label{test2_Heu_init}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{test2_heuristic_res.png}
+	\caption{Amélioration obtenue avec l'heuristique}
+	\label{test2_Heu_imp}
+\end{figure}
 
 
+Remarques: toujours quelques erreurs au niveau du dépôt à cause de LK (par ailleurs qui se contente de 2-opt, à voir s'il est utile d'aller plus loin). Actuellement, l'heuristique ne choisit que des solutions améliorantes, il est possible de passer à côtés de grosses optimisations (ou alors capacités trop restrictives...).  
+
+
+\underline{Conférence, Blockchains et Cryptomonnaies, par Jean-Paul Delahaye}: Présentation des notions (utilisation des Blockchains, développement sur les crypto-monnaies). Limites et future.
+Principales notes:
+\begin{itemize}
+\item Blockchain: fichier multiplié sur un réseau P2P (donc indestructible). On peut écrire dessus en respectant des contraintes définies sur le réseau.
+\item Cryptomonnaies (ou crypto-actif $\rightarrow$ pas vraiment une monnaie à cause de sa volatilité).
+\item Pour ajouter une page au blockchain du bitcoin (justification de transaction), il faut inverser partiellement une fonction de hash, pour que la page ajoutée ait la bonne signature. Contrainte sur la taille de la page 1 MO (suscite un fork en 2017 $\rightarrow$ division bitcoin et bitcoin cash). Preuve d'intérêt: toutes les 10 min un certain nb de bitcoins sont attribués (jusque 2140) à ceux qui ont trouvé la solution. Difficulté ajustée si + ou - de 10 min en moyenne, de sorte à ce que la puissance de calcul nécessaire soit toujours plus importante. 
+\item Aujourd'hui minage = 3 centrales nucléaires (dont la puissance principale est en Chine). Cette quantité démentielle d'electricité pose problème. (il faut effectuer de l'ordre de $10^{18}$ calculs pour miner le bitcoin en 10 min.
+
+\item Ces monnaies (même toutes réunies) ne peuvent concurrencer l'or sur le marché financier (8000 milliards de dollars pour l'or contre 300 milliards pour les crypto-actifs).
+
+\item D'autres crypto-monnaies voient le jour, moins énergivores : preuve d'enjeu.
+
+\item Vulnérabilités possibles (prédiction Adi Shamir): attaques sur les courbes elliptiques, ou fonctions de hash; attaque à 51\%, qqun possède plus de la moitié de la puissance de calcul du réseau. 
+
+\item Pas assez de transactions par seconde (environ 4/s), pour etre adapté au marché financier (comme Paypal). 
+\end{itemize}
+
+\underline{Bilan réunion}: Ajout/supp de routes inutiles à priori pour ce qu'on veut faire. Améliorer l'algo CW (au moins un 2 opt supp). Retravailler la partie sur la pire arête dans l'article. Utiliser les instances de la littérature pour les tests. Objectif principal semaine prochaine : trouver (?) un lien entre solutions améliorées et solutions CW.
 \end{document}

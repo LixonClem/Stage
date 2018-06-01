@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  30 MAY 2018 13:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  31 MAY 2018 11:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1234,7 +1234,7 @@ thkerncmss.
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
 ]
-<metrics.png, id=135, 235.88126pt x 164.615pt>
+<metrics.png, id=136, 235.88126pt x 164.615pt>
 File: metrics.png Graphic file (type png)
 <use metrics.png>
 Package pdftex.def Info: metrics.png  used on input line 61.
@@ -1245,7 +1245,7 @@ Package pdftex.def Info: metrics.png  used on input line 61.
 [4
 
 ]
-<cross_exchange.png, id=213, 546.04pt x 251.94125pt>
+<cross_exchange.png, id=214, 546.04pt x 251.94125pt>
 File: cross_exchange.png Graphic file (type png)
 <use cross_exchange.png>
 Package pdftex.def Info: cross_exchange.png  used on input line 98.
@@ -1255,12 +1255,12 @@ Package pdftex.def Info: cross_exchange.png  used on input line 98.
  <./cross_exchange.png>] [6
 
 ]
-<test1CE_init.png, id=287, 462.528pt x 346.896pt>
+<test1CE_init.png, id=288, 462.528pt x 346.896pt>
 File: test1CE_init.png Graphic file (type png)
 <use test1CE_init.png>
 Package pdftex.def Info: test1CE_init.png  used on input line 123.
 (pdftex.def)             Requested size: 115.63171pt x 86.72379pt.
-<test1CE_imp(corrige).png, id=288, 462.528pt x 346.896pt>
+<test1CE_imp(corrige).png, id=289, 462.528pt x 346.896pt>
 File: test1CE_imp(corrige).png Graphic file (type png)
 <use test1CE_imp(corrige).png>
 Package pdftex.def Info: test1CE_imp(corrige).png  used on input line 123.
@@ -1270,7 +1270,7 @@ Package pdftex.def Info: test1CE_imp(corrige).png  used on input line 123.
  <./test1CE_init.png> <./test1CE_imp(corrige).png>] [8
 
 ]
-<ejection_chain.png, id=357, 445.665pt x 226.8475pt>
+<ejection_chain.png, id=358, 445.665pt x 226.8475pt>
 File: ejection_chain.png Graphic file (type png)
 <use ejection_chain.png>
 Package pdftex.def Info: ejection_chain.png  used on input line 155.
@@ -1280,12 +1280,12 @@ Package pdftex.def Info: ejection_chain.png  used on input line 155.
  <./ejection_chain.png>] [10
 
 ]
-<test4_20_init.png, id=426, 462.528pt x 346.896pt>
+<test4_20_init.png, id=427, 462.528pt x 346.896pt>
 File: test4_20_init.png Graphic file (type png)
 <use test4_20_init.png>
 Package pdftex.def Info: test4_20_init.png  used on input line 189.
 (pdftex.def)             Requested size: 148.01198pt x 111.00897pt.
-<test4_20_LKopt.png, id=427, 462.528pt x 346.896pt>
+<test4_20_LKopt.png, id=428, 462.528pt x 346.896pt>
 File: test4_20_LKopt.png Graphic file (type png)
 <use test4_20_LKopt.png>
 Package pdftex.def Info: test4_20_LKopt.png  used on input line 189.
@@ -1295,6 +1295,19 @@ Package pdftex.def Info: test4_20_LKopt.png  used on input line 189.
  <./test4_20_init.png> <./test4_20_LKopt.png>] [12
 
 ]
+<test2_heuristic_init.png, id=493, 462.528pt x 346.896pt>
+File: test2_heuristic_init.png Graphic file (type png)
+<use test2_heuristic_init.png>
+Package pdftex.def Info: test2_heuristic_init.png  used on input line 213.
+(pdftex.def)             Requested size: 148.01198pt x 111.00897pt.
+<test2_heuristic_res.png, id=494, 462.528pt x 346.896pt>
+File: test2_heuristic_res.png Graphic file (type png)
+<use test2_heuristic_res.png>
+Package pdftex.def Info: test2_heuristic_res.png  used on input line 213.
+(pdftex.def)             Requested size: 148.01198pt x 111.00897pt.
+ [13
+
+ <./test2_heuristic_init.png> <./test2_heuristic_res.png>]
 \tf@nav=\write6
 \openout6 = `pres.nav'.
 
@@ -1304,19 +1317,19 @@ Package pdftex.def Info: test4_20_LKopt.png  used on input line 189.
 \tf@snm=\write8
 \openout8 = `pres.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 206.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 206.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 215.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 215.
  (./pres.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 206.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 206.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 215.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 215.
 Package rerunfilecheck Info: File `pres.out' has not changed.
 (rerunfilecheck)             Checksum: 25EB7AA3B788A4C77ADCCDF84A81B5B5;587.
  ) 
 Here is how much of TeX's memory you used:
- 18913 strings out of 492982
- 351496 string characters out of 6134896
+ 18927 strings out of 492982
+ 351804 string characters out of 6134896
  439403 words of memory out of 5000000
- 21994 multiletter control sequences out of 15000+600000
+ 22004 multiletter control sequences out of 15000+600000
  19292 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,19n,63p,771b,681s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1334,10 +1347,10 @@ f/fonts/type1/public/cm-super/sfss0600.pfb></usr/share/texmf/fonts/type1/public
 /cm-super/sfss0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0900.p
 fb></usr/share/texmf/fonts/type1/public/cm-super/sfss1095.pfb></usr/share/texmf
 /fonts/type1/public/cm-super/sfss1440.pfb>
-Output written on pres.pdf (12 pages, 333960 bytes).
+Output written on pres.pdf (13 pages, 446175 bytes).
 PDF statistics:
- 550 PDF objects out of 1000 (max. 8388607)
- 480 compressed objects within 5 object streams
- 34 named destinations out of 1000 (max. 500000)
- 216 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 586 PDF objects out of 1000 (max. 8388607)
+ 510 compressed objects within 6 object streams
+ 36 named destinations out of 1000 (max. 500000)
+ 226 words of extra memory for PDF output out of 10000 (max. 10000000)
 

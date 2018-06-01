@@ -3,7 +3,7 @@
 
 
 #include <vector>
-#include "Solution.h"
+#include <Solution.h>
 
 //#include "UtilsDistGreedy.h"
 //#include <../representation/representation>

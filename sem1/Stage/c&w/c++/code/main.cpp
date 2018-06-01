@@ -41,7 +41,7 @@ int main(int argc, char** argv)
 				solutionBest.control();
 				for(int i=0; i<10; ++i) 
 				{
-					srand(i+1)
+					srand(i+1);
 					cout << "*******\n";
 					Solution solution(&pbData, lambda, mu, nu);
 					solver.clarkeAndWrightRnd(solution, lambda, mu, nu);
@@ -51,7 +51,7 @@ int main(int argc, char** argv)
 						cout << "best updated\n";
 						solutionBest = solution;
 					}
-					allcosts.push_back(solution.getCost())
+					allcosts.push_back(solution.getCost());
 				}
 				mysolutions.push_back(solutionBest);
 			}

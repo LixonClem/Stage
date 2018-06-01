@@ -14,7 +14,7 @@ global lam
 
 ylim = 200
 xlim = 200
-clim = 20
+clim = 50
 nb_cust = 100
 Capacity = 100
 
@@ -164,7 +164,7 @@ print_routes(routes,inst)
 merge_routes((i,j,s), routes, savings, inst)
 """
 
-instance_test,demand = create_instance(20)
+instance_test,demand = create_instance(100)
 print(instance_test,demand)
 """
 cost = ClarkeWright(instance_test, demand, lam)

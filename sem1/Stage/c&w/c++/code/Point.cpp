@@ -71,7 +71,7 @@ void Point::calculateTravelTime(Point &p)
 }
 string Point::toString() 
 {
-	string str = "id:" + convertToString(this->id) + " (" + convertToString(this->x) + ", " + convertToString(this->y) + ")\n";
-	for(int i=0; i<travelTime.size(); ++i) str += "\t distTo(" + convertToString(i) + "): " + convertToString(travelTime.at(i)) + "\n";
+	string str = "id:" + to_string(this->id) + " (" + to_string(this->x) + ", " + to_string(this->y) + ")\n";
+	for(int i=0; i<travelTime.size(); ++i) str += "\t distTo(" + to_string(i) + "): " + to_string(travelTime.at(i)) + "\n";
 	return str;
 }
