@@ -1,0 +1,10 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Pr\IeC {\'e}sentation heuristique}{1}{0}{1}
+\beamer@sectionintoc {2}{Obtention de la pire ar\IeC {\^e}te}{3}{0}{2}
+\beamer@subsectionintoc {2}{1}{Caract\IeC {\'e}riser une ar\IeC {\^e}te}{3}{0}{2}
+\beamer@subsectionintoc {2}{2}{D\IeC {\'e}terminer la pire ar\IeC {\^e}te}{4}{0}{2}
+\beamer@sectionintoc {3}{Op\IeC {\'e}rateurs locaux}{5}{0}{3}
+\beamer@subsectionintoc {3}{1}{Cross-exchange}{5}{0}{3}
+\beamer@subsectionintoc {3}{2}{Ejection-chain}{8}{0}{3}
+\beamer@subsectionintoc {3}{3}{Lin-Kernighan Heuristic}{10}{0}{3}
+\beamer@sectionintoc {4}{Am\IeC {\'e}liorations}{12}{0}{4}
