@@ -24,7 +24,7 @@ Capacity = 100
 KNN = 30
 relocation = 3
 
-
+lam = 1.2
 
 Error = (0, (0, 0), ([[0], 0], [[0], 0]))
 
@@ -68,7 +68,7 @@ def print_route(route, inst, c):
         y.append(inst[route[i]][1])
     x.append(inst[route[0]][0])
     y.append(inst[route[0]][1])
-    py.plot(x, y)#, label="route " + str(c))
+    py.plot(x, y, label="route " + str(c))
 
 
 def print_routes(routes, inst):
@@ -434,8 +434,8 @@ def decross_route(route,inst):
 def DeuxOpt(route, inst):
     l = len(route)-1
     best_tuple = (0, 0)
-    best = 2e-15
-    for i in range(l-1):
+    best = 0
+    for i in range(l):
         pi = inst[route[i]]
         spi = inst[route[i+1]]
 
@@ -445,7 +445,7 @@ def DeuxOpt(route, inst):
             d = (distance(pi, spi) + distance(pj, spj)) - \
                 distance(pi, pj)-distance(spi, spj)
 
-            if d > best :
+            if d > best:
                 best_tuple = (i, j)
                 best = d
     if best_tuple[0] != best_tuple[1]:
@@ -465,7 +465,7 @@ def DeuxOpt(route, inst):
 def LK(route, inst):
     route.append(0)
     next_cand = DeuxOpt(route, inst)
-    while  route!=next_cand:
+    while route!=next_cand:
         route = next_cand.copy()
         next_cand = DeuxOpt(route, inst)
     route.pop()
@@ -561,7 +561,7 @@ def apply_heuristic(inst, demand, lam, k, l):
     c_init = cost_sol(routes, inst)
     print(c_init)
     # find the worst edge
-    for time in range(6000):
+    for time in range(5000):
         worst = bad_edge(b, p, routes, inst)[1]
 
         p[worst[0]][worst[1]] += 1
@@ -672,85 +672,64 @@ def common_edges(sol1, sol2):
 
 # Tests #
 
-##########
+
 A_n32_k05 = read("Instances/A-n32-k05.xml")
 
 #sol_A3205 = [[[0, 30, 16, 1, 12], 100], [[0, 14, 24], 82], [[0, 20, 5, 25, 10, 29, 15, 22, 9, 18, 8, 28, 4, 11], 82], [[0, 7, 13, 26], 47], [[0, 27, 6, 23, 3, 2, 17, 19, 31, 21], 99]]
 sol_A3205 = [[0, 21, 31, 19, 17, 13, 7, 26], [0, 28, 11, 4, 23, 2, 3, 6], [0, 20, 5, 25, 10, 29, 15, 22, 9, 8, 18], [0, 27, 24, 14], [0, 12, 1, 16, 30]]
-##########
+
 A_n33_k05 = read("Instances/A-n33-k05.xml")
 
 #sol_A3305 = [[[0, 22, 15, 16, 3, 9, 17], 94], [[0, 23, 11, 6, 24, 2], 82], [[0, 28, 18, 19, 14, 21, 1, 31, 29], 98], [[0, 20, 32, 13, 8, 7, 26, 4], 78], [[0, 10, 30, 25, 27, 5, 12], 94]]
 sol_A3305 = [[0, 20, 32, 13, 8, 7, 26, 4, 22], [0, 10, 30, 25, 27, 5, 12], [0, 11, 19, 14, 21, 1, 31, 18, 28], [0, 2, 24, 6, 23], [0, 15, 17, 9, 3, 16, 29]]
-##########
+
 A_n33_k06 = read("Instances/A-n33-k06.xml")
 
 #sol_A3306 = [[[0, 21, 12], 91], [[0, 1, 7, 6, 18, 14], 96], [[0, 4, 8, 3, 2, 15, 9, 20, 19], 100], [[0, 32, 10, 11, 29, 17], 80], [[0, 13, 5, 22, 26, 24, 23, 31], 80], [[0, 28, 27, 30, 16, 25],94]]
 sol_A3306 = [[0, 4, 8, 3, 9, 15, 20, 2], [0, 18, 6, 19, 7, 1], [0, 13, 5, 22, 26, 24, 23, 31], [0, 21, 12, 10], [0, 28, 27, 30, 16, 25], [0, 14, 17, 29, 11, 32]]
-##########
+
 A_n34_k05 = read("Instances/A-n34-k05.xml")
 
 sol_A3405 = [[0, 33, 16, 22, 3, 12, 9, 2, 18], [0, 26, 4, 20], [0, 5, 30, 24], [0, 21, 32, 28, 31, 25, 13, 10], [0, 14, 29, 8, 15, 6, 7], [0, 27, 1, 23, 11, 19, 17]]
-##########
+
 A_n36_k05 = read("Instances/A-n36-k05.xml")
 
 sol_A3605 = [[0, 28, 14, 34, 23, 2, 35, 8, 15], [0, 21, 18, 33, 29, 30, 17, 13, 32, 22, 1], [0, 12, 31, 19, 4, 3, 6, 9], [0, 10, 7, 26], [0, 16, 11, 24, 27, 25, 5, 20]]
-##########
+
 A_n37_k05 = read("Instances/A-n37-k05.xml")
 
 sol_A3705 = [[0, 17, 14, 23, 20, 19, 2, 12, 1], [0, 22, 13, 10, 6, 5, 33, 4, 7], [0, 16, 21], [0, 30, 31, 28, 32, 29, 36, 34, 15], [0, 3, 24, 9, 11, 27, 8, 25, 35, 18, 26]]
-##########
+
 A_n37_k06 = read("Instances/A-n37-k06.xml")
 
 #sol_A3706 = [[[0, 29, 36, 14], 65], [[0, 24, 16, 7], 47], [[0, 27, 32, 15, 30, 13], 89], [[0, 25, 35], 81], [[0, 26, 21, 9, 1, 3, 5, 8], 96], [[0, 10, 11, 12, 22, 23, 28, 2, 33, 20], 97], [[0, 18, 4, 17, 34, 19, 31, 6], 95]]
 sol_A3706 = [[0, 7, 25, 35, 16], [0, 13, 30, 15, 32, 27], [0, 10, 11, 12, 22, 23, 28, 2, 33], [0, 24, 29, 36, 6, 14], [0, 4, 26, 19, 31, 34, 17, 18], [0, 20, 8, 5, 3, 1, 9, 21]]
-##########
-A_n38_k05 = read("Instances/A-n38-k05.xml")
-init_A3805 = [[0, 22, 5, 27, 11, 37, 31, 28, 0], [0, 18, 19, 34, 29, 10, 30], [0, 21, 6, 25, 4, 1, 3, 12, 26, 35, 33], [0, 35, 23, 8, 33, 0], [0, 32, 15, 20, 7, 5, 0], [0, 24, 9, 14, 15, 13, 36, 17, 2, 0]]
-sol_A3805 = [[0, 5, 22, 27, 11, 37, 31, 28], [0, 7, 20, 32, 15, 13, 36, 17, 2,24], [0, 19, 6, 25, 16, 4, 1, 3, 12, 26, 21], [0, 18, 34, 29, 30, 10], [0, 14, 33, 35, 23, 8, 9]]
-##########
-A_n39_k05 = read("Instances/A-n39-k05.xml")
-init_A3905 = [[0, 2, 3, 22, 7, 16, 32, 10, 0], [0, 38, 15, 5, 29, 23, 20, 1, 31, 12, 0], [0, 8, 11, 17, 26, 6, 13, 30, 28, 0], [0, 24, 35, 37, 34, 27, 36, 8, 0], [0, 4, 14, 21, 30, 19, 25, 18, 9]]
-sol_A3905 = [[0, 38, 15, 5, 29, 20, 23, 1, 31, 12], [0, 14, 19, 25, 33, 18, 9, 4], [0, 2, 22, 3, 7, 16, 32, 10], [0, 17, 24, 35, 37, 34, 26, 11, 8], [0, 21, 30, 13, 28, 27, 36, 6]]
-##########
-A_n39_k06 = read("Instances/A-n39-k06.xml")
-init_A3906 = [[0, 10, 16, 4, 19, 33, 8], [0, 7, 2, 35, 25, 14, 31, 37, 38], [0, 36, 17, 23, 21, 22, 34, 27, 32, 20], [0, 5, 28, 9, 29, 24, 3, 12, 0], [0, 6, 1, 18, 11, 26], [0, 15, 13, 30]]
-sol_A3906 = [[0, 2, 33, 25, 35, 14, 31, 37, 38, 12], [0, 24, 3, 29, 28, 9, 5, 26], [0, 15, 13], [0, 10, 16, 4, 19, 8, 7], [0, 21, 18, 22, 34, 27, 32, 20, 30], [0, 6, 1, 23, 17, 36, 11]]
-
-lam = 0.9
-t = "A-n39-k06"
-instance,demand = A_n39_k06
-initiale = init_A3906
-solution = sol_A3906
 
 """
-init, reso = apply_heuristic(instance, demand, lam, KNN, relocation)
-print(init)
+init, reso = apply_heuristic(A_n37_k05[0], A_n37_k05[1], lam, KNN, relocation)
 print(reso)
 """
-
 """
+print(A_n32_k05[1])
+print(route_demand([0, 30, 16, 1, 12],A_n32_k05[1]))
+"""
+instance,demand = A_n32_k05
+solution = sol_A3205
+
 initial_solution = ClarkeWright(instance,demand, lam)
 
 for i in range(len(initial_solution)):
     initial_solution[i] = LK(initial_solution[i].copy(), instance)
-"""
 
-print_current_sol(initiale,instance)
-py.title("Solution initiale " + t)
-py.savefig("resultats/Heuristic_results/Common_edges_litterature_instances/"+t+"/initiale_"+t+".png")
-py.close()
-
+print_current_sol(initial_solution,instance)
+py.show()
 
 print_current_sol(solution,instance)
-py.title("Solution obtenue pour " + t)
-py.savefig("resultats/Heuristic_results/Common_edges_litterature_instances/"+t+"/solution_"+t+".png")
-py.close()
+py.show()
 
-E = common_edges(initiale,solution)
+E = common_edges(initial_solution,solution)
+print(E)
 
 print_instance(instance)
 print_edges(E,instance)
-py.title("Arêtes communes pour " + t)
-py.savefig("resultats/Heuristic_results/Common_edges_litterature_instances/"+t+"/commonEdges_"+t+".png")
-py.close()
+py.show()
