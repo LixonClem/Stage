@@ -1,4 +1,6 @@
 
+#-*- coding: utf-8 -*-
+
 
 import numpy as np
 import scipy as sp
@@ -674,8 +676,7 @@ def common_edges(sol1, sol2):
 A_n32_k05 = read("Instances/A-n32-k05.xml")
 
 sol_A3205 = [[[0, 30, 16, 1, 12], 100], [[0, 14, 24], 82], [[0, 20, 5, 25, 10, 29, 15, 22, 9, 18, 8, 28, 4, 11], 82], [[0, 7, 13, 26], 47], [[0, 27, 6, 23, 3, 2, 17, 19, 31, 21], 99]]
-print_current_sol(sol_A3205,A_n32_k05[0])
-py.show()
+
 A_n33_k05 = read("Instances/A-n33-k05.xml")
 
 sol_A3305 = [[[0, 22, 15, 16, 3, 9, 17], 94], [[0, 23, 11, 6, 24, 2], 82], [[0, 28, 18, 19, 14, 21, 1, 31, 29], 98], [[0, 20, 32, 13, 8, 7, 26, 4], 78], [[0, 10, 30, 25, 27, 5, 12], 94]]
@@ -690,14 +691,21 @@ print(reso)
 """
 
 initial_solution = ClarkeWright(A_n33_k05[0],A_n33_k05[1], lam)
+print_current_sol(initial_solution,A_n33_k05[0])
+py.show()
+
 for i in range(len(initial_solution)):
     initial_solution[i][0] = LK(initial_solution[i][0].copy(), A_n33_k05[0])
 print_current_sol(initial_solution,A_n33_k05[0])
 py.show()
+
+print_current_sol(sol_A3305,A_n33_k05[0])
+py.show()
+"""
 E = common_edges(initial_solution,sol_A3305)
 print(E)
 
 print_instance(A_n33_k05[0])
 print_edges(E,A_n33_k05[0])
 py.show()
-
+"""
