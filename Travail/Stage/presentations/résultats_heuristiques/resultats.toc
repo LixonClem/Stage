@@ -1,6 +1,7 @@
-\babel@toc {english}{}
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
 \beamer@sectionintoc {1}{Ex\IeC {\'e}cution de l'heuristique}{1}{0}{1}
 \beamer@sectionintoc {2}{Pr\IeC {\'e}sentation r\IeC {\'e}sultats}{3}{0}{2}
 \beamer@subsectionintoc {2}{1}{R\IeC {\'e}sultats}{3}{0}{2}
-\beamer@subsectionintoc {2}{2}{Analyse}{5}{0}{2}
-\beamer@sectionintoc {3}{Ar\IeC {\^e}tes communes}{8}{0}{3}
+\beamer@subsectionintoc {2}{2}{Analyse}{7}{0}{2}
+\beamer@sectionintoc {3}{Ar\IeC {\^e}tes communes}{9}{0}{3}

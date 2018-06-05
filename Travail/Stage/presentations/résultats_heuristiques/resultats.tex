@@ -79,25 +79,42 @@ Coût global de $822$ à gauche, contre $831$ à droite.
 \subsection{Analyse}
 
 \begin{frame}{Paramètres utilisés}
-\begin{block}
+Paramètres qui restent fixes dans l'heuristique:
+\begin{block}{Valeurs choisies}
+\begin{itemize}
 \item Calcul des 30 pp-voisins;
 \item Au plus 3 déplacements dans EC;
 \item $5000$ itérations.
+\end{itemize}
 \end{block}
+Déterminées grâce à l'article et de manière empirique.
 \end{frame}
 
-\begin{frame}{Pourcentage d'erreur}
-a
-\end{frame}
+\begin{frame}{Analyse}
+Calcul du pourcentage d'erreur avec $1-\frac{c_{opt}}{c_{sol}}$
+\begin{exampleblock}{Pourcentage d'erreur}
+Sur $10$ instances, $0.89\%$ d'erreurs entre les solutions calculées et les solutions optimales. min = 0.37\% et max = 2.2\%. $Q_1 = 0.56$, $ med = 0.8$, $Q_3 = 1.2$. 
+\end{exampleblock}
 
-\begin{frame}{Influence solution initiale}
-a
+\begin{alertblock}{Influence solution initiale}
+Les solutions obtenues avec l'heuristique dépendent de la solution initiale: meilleures SI $\nRightarrow$ meilleures SG %à illustrer
+\end{alertblock}
+
 \end{frame}
 
 \section{Arêtes communes}
 
-\begin{frame}
-a
+\begin{frame}{Présentation}
+Arêtes restées inchangées lors de l'algorithme:
+
+\begin{center}
+\includegraphics[scale=0.30]{commonEdges_A-n37-k06.png}
+\includegraphics[scale=0.30]{commonEdges_A-n39-k05.png}
+\end{center}
+
 \end{frame}
 
+\begin{frame}{Caractéristiques de ces arêtes}
+
+\end{frame}
 \end{document}
