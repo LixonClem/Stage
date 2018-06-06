@@ -830,9 +830,9 @@ A_n65_k09 = read("Instances/A-n65-k09.xml")
 
 lam = 1.5
 t = "A-n36-k05"
-instance,demand = A_n34_k05
-initiale = init_A3405
-solution = sol_A3405
+instance,demand = A_n33_k05
+initiale = init_A3305
+solution = sol_A3305
 
 """
 init, reso = apply_heuristic(instance, demand, lam, KNN, relocation)
@@ -871,12 +871,19 @@ print(n)
 r_mean.sort()
 r_meanref.sort()
 
-print(reiref)
+#print(reiref)
 
+#print(rei)
+print(r_meanref)
+print(reiref)
+print(r_mean)
 print(rei)
 
+
+"""
 instanceA = np.array(instance)
 tri = Delaunay(instanceA)
 print_instance(instance)
 py.triplot(instanceA[:,0], instanceA[:,1], tri.simplices)
 py.show()
+"""

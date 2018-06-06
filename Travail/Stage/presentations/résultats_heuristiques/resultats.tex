@@ -103,30 +103,92 @@ Les solutions obtenues avec l'heuristique dépendent de la solution initiale: me
 \end{frame}
 
 \begin{frame}{Exemples}
+\begin{center}
 \includegraphics[scale=0.3]{bestInitiale_A-n37-k06.png}
 \includegraphics[scale=0.3]{badSolution_A-n37-k06.png}
+\end{center}
 Passage d'un coût de $1093$ (à gauche), à $1004$ (à droite).
 \end{frame}
 
 \begin{frame}{Exemples}
+\begin{center}
 \includegraphics[scale=0.3]{bestInitiale_A-n39-k05.png}
 \includegraphics[scale=0.3]{badSolution_A-n39-k05.png}
+\end{center}
 Passage d'un coût de $1010$ (à gauche), à $837$ (à droite).
 \end{frame}
 
-\section{Arêtes communes}
+\section{Arêtes fixes}
 
 \begin{frame}{Présentation}
-Arêtes restées inchangées lors de l'algorithme:
+Des arêtes peuvent rester inchangées lors de l'algorithme:
 
 \begin{center}
 \includegraphics[scale=0.30]{commonEdges_A-n37-k06.png}
 \includegraphics[scale=0.30]{commonEdges_A-n39-k05.png}
 \end{center}
+\begin{block}{Objectif}
+Peut-on repérer à l'avance ces arêtes ?
+\end{block}
 
 \end{frame}
 
-\begin{frame}{Caractéristiques de ces arêtes}
+\begin{frame}{Comment caractériser ces arêtes ?}
+\begin{block}{Remarques}
+\begin{itemize}
+\item Arêtes fixes autour du dépôt et en bordure de zone;
+\item Une des tournée initiale n'est presque pas modifiée;
+\end{itemize}
+\end{block}
+
+\begin{alertblock}{Idée}
+
+Utiliser les métriques définies dans l'heuristique: coût, largeur et profondeur.
+
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Rang d'une arête}
+\begin{block}{Calcul du rang moyen}
+\begin{itemize}
+\item Pour chaque arête $(i,j)$, calculer sa profondeur $d$, sa largeur $w$ et son coût $c$;
+\item On trie les arêtes pour chaque métrique, puis lui attribuer un rang avec la métrique considérée;
+\item Chaque arête possède ainsi $3$ rangs ($r_d$,$r_w$,$r_c$); son rang moyen est la moyenne de ses rangs;
+\item Comparaison entre arêtes conservées et arêtes dans la solution.
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Résultats}
+Correspondance sur les premières arêtes. Les arêtes de pire rang moyen de sont jamais prises.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Nouvelle idée}
+\begin{alertblock}{Idée}
+Regarder les rangs séparément
+\end{alertblock}
+
+\begin{block}{Mise en place}
+\begin{itemize}
+\item Compter le nombre d'arêtes conservées qui possèdent au moins un certain rang (e.g. les arêtes qui ont au moins un rang inférieur à 5);
+\item Comparer avec le nombre total d'arêtes qui ont cette propriété;
+\item Essayer de trouver des rangs critiques, qui permettent de conserver ou d'éliminer une arête.
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Résultats}
+On conserve à coups sûrs des arêtes qui ont leurs trois rangs inférieurs à 10.
+\end{exampleblock}
 
 \end{frame}
+
+\begin{frame}{Prochainement}
+
+\begin{itemize}
+\item Faire converger l'algorithme indépendamment de la solution initiale;
+\item Poursuivre la caractérisation des arêtes conservées.
+\end{itemize}
+
+\end{frame}
+
 \end{document}
