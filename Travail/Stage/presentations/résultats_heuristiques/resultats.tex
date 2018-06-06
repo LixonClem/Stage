@@ -23,14 +23,14 @@
 \end{frame}
 
 \begin{frame}{Exécution}
-Algorithme légèrement différent.
 \begin{block}{Détail}
 \begin{itemize}
 \item Calcul SI avec CW, et amélioration avec LK;
-\item Boucle de $5000$ itérations en exécutant successivement EC, CE, LK.
+\item Itérations en exécutant successivement EC, CE, LK.
 \item On repart de la dernière solution globale toutes les $25$ itérations sans améliorations;
 \item Si on trouve une amélioration, on met à jour la solution globale;
 \item Toutes les $100$ itérations sans améliorations, on change de fonction de pénalisation.
+\item On quitte la boucle au bout de $1500$ itérations successives sans améliorations;
 \item A la fin on essaie de supprimer toutes les routes qui n'ont qu'un client.
 \end{itemize}
 \end{block}
@@ -55,7 +55,7 @@ Pour pouvoir comparer entre la solution optimale et la solution obtenue:
 \includegraphics[scale=0.25]{A-n37-k6.png}
 \includegraphics[scale=0.35]{solution_A-n37-k06.png}
 \end{center}
-Coût global de $949$ à gauche, contre $956$ à droite.
+Coût global de $949$ (à gauche), contre $952$ (à droite).
 \end{frame}
 
 \begin{frame}{Instance A-n39-k05}
@@ -73,7 +73,7 @@ Comparaison avec la solution optimale:
 \includegraphics[scale=0.25]{A-n39-k5.png}
 \includegraphics[scale=0.35]{solution_A-n39-k05.png}
 \end{center}
-Coût global de $822$ à gauche, contre $831$ à droite.
+Coût global de $822$ (à gauche), contre $831$ (à droite).
 \end{frame}
 
 \subsection{Analyse}
@@ -84,7 +84,7 @@ Paramètres qui restent fixes dans l'heuristique:
 \begin{itemize}
 \item Calcul des 30 pp-voisins;
 \item Au plus 3 déplacements dans EC;
-\item $5000$ itérations.
+\item Arrêt au bout de $1500$ itérations sans améliorations.
 \end{itemize}
 \end{block}
 Déterminées grâce à l'article et de manière empirique.
@@ -93,13 +93,25 @@ Déterminées grâce à l'article et de manière empirique.
 \begin{frame}{Analyse}
 Calcul du pourcentage d'erreur avec $1-\frac{c_{opt}}{c_{sol}}$
 \begin{exampleblock}{Pourcentage d'erreur}
-Sur $10$ instances, $0.89\%$ d'erreurs entre les solutions calculées et les solutions optimales. min = 0.37\% et max = 2.2\%. $Q_1 = 0.56$, $ med = 0.8$, $Q_3 = 1.2$. 
+Sur $10$ instances, $0.8\%$ d'erreurs entre les solutions calculées et les solutions optimales. min = 0\% et max = 2.2\%. ($Q_1 = 0.34$, $ med = 0.69$, $Q_3 = 1.18$). 
 \end{exampleblock}
 
 \begin{alertblock}{Influence solution initiale}
-Les solutions obtenues avec l'heuristique dépendent de la solution initiale: meilleures SI $\nRightarrow$ meilleures SG %à illustrer
+Les solutions obtenues avec l'heuristique dépendent de la solution initiale: meilleures SI $\nRightarrow$ meilleures SG 
 \end{alertblock}
 
+\end{frame}
+
+\begin{frame}{Exemples}
+\includegraphics[scale=0.3]{bestInitiale_A-n37-k06.png}
+\includegraphics[scale=0.3]{badSolution_A-n37-k06.png}
+Passage d'un coût de $1093$ (à gauche), à $1004$ (à droite).
+\end{frame}
+
+\begin{frame}{Exemples}
+\includegraphics[scale=0.3]{bestInitiale_A-n39-k05.png}
+\includegraphics[scale=0.3]{badSolution_A-n39-k05.png}
+Passage d'un coût de $1010$ (à gauche), à $837$ (à droite).
 \end{frame}
 
 \section{Arêtes communes}

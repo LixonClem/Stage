@@ -1,7 +1,7 @@
 
 #-*- coding: utf-8 -*-
 
-
+from scipy.spatial import Delaunay
 import numpy as np
 import scipy as sp
 import matplotlib.pyplot as py
@@ -305,6 +305,7 @@ def reject(route,routes,voisins,inst,demand):
             routes.remove(route)
             r.insert(r.index(i)+1,point)
             return routes
+    return routes
 
 # Compute the saving of the new edge
 
@@ -438,7 +439,7 @@ def decross_route(route,inst):
 def DeuxOpt(route, inst):
     l = len(route)-1
     best_tuple = (0, 0)
-    best = 2e-15
+    best = 2e-10
     for i in range(l-1):
         pi = inst[route[i]]
         spi = inst[route[i+1]]
@@ -539,12 +540,13 @@ def apply_heuristic(inst, demand, lam, k, l):
 
     initial_solution = ClarkeWright(inst, demand, lam)
     print(cost_sol(initial_solution,inst))
+    print(initial_solution)
     for i in range(len(initial_solution)):
-        #initial_solution[i][0] = decross_route(initial_solution[i][0].copy(), inst)
+        initial_solution[i] = decross_route(initial_solution[i].copy(), inst)
         initial_solution[i] = LK(initial_solution[i].copy(), inst)
-
+    print(initial_solution)
     routes2 = copy_sol(initial_solution)
-    routes = initial_solution
+    routes = copy_sol(initial_solution)
 
 
     # compute global variables
@@ -559,13 +561,15 @@ def apply_heuristic(inst, demand, lam, k, l):
     p = [[0 for j in range(len(inst))] for i in range(len(inst))]
 
     print_current_sol(routes, inst)
-    py.show()
+    #py.show()
     N = 0  # laps without improvement
     gs = 0  # laps for last improvement
     c_init = cost_sol(routes, inst)
     print(c_init)
+    time = 0
     # find the worst edge
-    for time in range(6000):
+    while time < 1500:
+        
         worst = bad_edge(b, p, routes, inst)[1]
 
         p[worst[0]][worst[1]] += 1
@@ -590,46 +594,41 @@ def apply_heuristic(inst, demand, lam, k, l):
             gs = 0
 
         if c_final < c_init:
-
+            print(c_final)
             routes2 = copy_sol(routes)  # new optimum
+            routes = copy_sol(routes2)
+            gs = 0
             N = 0
             c_init = cost_sol(routes2, inst)
-            print("youpi")
+            print("youpi", time)
+            time = 0
 
         if N > 100:
+            gs = 0 
             b_i += 1
-            print("boom")
+            
             if b_i < len(B):
                 b = B[b_i]
                 
                 N = 0
             else:
-                print("try it")
+                
                 b_i = 0
                 b = B[b_i]
                 p = [[0 for j in range(len(inst))]
                      for i in range(len(inst))]
                 N = 0
-                
                 for i in (routes2):
                     if len(i)==2:
                         routes2 = reject(i,routes2,v,inst,demand)
-
-
-                for i in range(len(routes2)):
+                for i in range(len(routes2)):  
                     routes2[i] = decross_route(routes2[i].copy(), inst)
                     routes2[i] = LK(routes2[i], inst)
-
-                print(cost_sol(routes2,inst))
                 routes = copy_sol(routes2)
-                
-
         gs += 1
         N += 1
+        time +=1
 
-
-    print_current_sol(routes2, inst)
-    py.show()
 
     for i in (routes2):
         if len(i)==2:
@@ -641,7 +640,7 @@ def apply_heuristic(inst, demand, lam, k, l):
 
     print(cost_sol(routes2,inst))
     print_current_sol(routes2, inst)
-    py.show()
+    #py.show()
     return initial_solution, routes2
 
  ###########
@@ -674,58 +673,166 @@ def common_edges(sol1, sol2):
                 E.append(i)
     return E
 
+def rank_costs(E,inst):
+    r = []
+    rc=[]
+    for e in E:
+        c = distance(inst[e[0]],inst[e[1]])
+        r.append((c,e))
+    r.sort()
+    for i in r:
+        rc.append(i[1])
+    return rc
+
+def rank_depth(E,inst):
+    r = []
+    rd = []
+    dmax = max_depth(inst)
+    for e in E:
+        d = depth(inst[e[0]],inst[e[1]])/dmax
+        r.append((d,e))
+    r.sort()
+    for i in r:
+        rd.append(i[1])
+    return rd
+
+def rank_width(E,sol,inst):
+    r = []
+    rw = []
+    for e in E:
+        route = find_route(e[0],sol)
+        G = gravity_center(route,inst)
+        w = width(inst[e[0]],inst[e[1]],G)
+        r.append((w,e))
+    r.sort()
+    for i in r:
+        rw.append(i[1])
+    return rw
+
+def rank_edges(sol,inst):
+    E = all_edges(sol)
+    n = len(E)
+    rc = rank_costs(E,inst)
+    rd = rank_depth(E,inst)
+    rw = rank_width(E,sol,inst)
+    return n,rc,rd,rw
+
+def give_rank(e,rank):
+    for i in range(len(rank)):
+        if are_equal(e,rank[i]):
+            return (i+1)
+
+def all_ranks(cE,sol,inst):
+    n,rc,rd,rw = rank_edges(sol,inst)
+    r = []
+    r_mean = []
+    for e in cE:
+        g1 = give_rank(e,rc)
+        g2 = give_rank(e,rd)
+        g3 = give_rank(e,rw)
+
+        r_mean.append((g1+g2+g3)/3)
+        g= [g1,g2,g3]
+        g.sort()
+        r.append(g)
+        r.sort()
+    return n,r,r_mean
+    
+def analyse(n,ranks):
+    a = [0 for i in range(16)]
+    for r in ranks:
+        if r[0]<n/3 or r[1]<n/3 or r[2]<n/3:
+            a[0]+=1
+        if r[0]<n/3 and r[1]<n/3 and r[2]<n/3:
+            a[1]+=1
+        if r[0]<15 or r[1]<15 or r[2]<15:
+            a[2]+=1
+        if r[0]<15 and r[1]<15 and r[2]<15:
+            a[3]+=1
+        if r[0]<10 or r[1]<10 or r[2]<10:
+            a[4]+=1
+        if r[0]<10 and r[1]<10 and r[2]<10:
+            a[5]+=1
+        if r[0]<5 or r[1]<5 or r[2]<5:
+            a[6]+=1
+        if r[0]<5 and r[1]<5 and r[2]<5:
+            a[7]+=1
+
+        if r[0]>n-n/3 or r[1]>n-n/3 or r[2]>n-n/3:
+            a[8]+=1
+        if r[0]>n-n/3 and r[1]>n-n/3 and r[2]>n-n/3:
+            a[9]+=1
+        if r[0]>n-15 or r[1]>n-15 or r[2]>n-15:
+            a[10]+=1
+        if r[0]>n-15 and r[1]>n-15 and r[2]>n-15:
+            a[11]+=1
+        if r[0]>n-10 or r[1]>n-10 or r[2]>n-10:
+            a[12]+=1
+        if r[0]>n-10 and r[1]>n-10 and r[2]>n-10:
+            a[13]+=1
+        if r[0]>n-5 or r[1]>n-5 or r[2]>n-5:
+            a[14]+=1
+        if r[0]>n-5 and r[1]>n-5 and r[2]>n-5:
+            a[15]+=1
+    return a
+
 # Tests #
 
 ##########
 A_n32_k05 = read("Instances/A-n32-k05.xml")
-
 #sol_A3205 = [[[0, 30, 16, 1, 12], 100], [[0, 14, 24], 82], [[0, 20, 5, 25, 10, 29, 15, 22, 9, 18, 8, 28, 4, 11], 82], [[0, 7, 13, 26], 47], [[0, 27, 6, 23, 3, 2, 17, 19, 31, 21], 99]]
+init_A3205 = [[0, 18, 22, 9, 11, 4, 28, 8], [0, 29, 15, 10, 25, 5, 20], [0, 21, 31, 19, 17, 13, 7, 26], [0, 27, 23, 2, 3, 6, 14, 24], [0, 12, 1, 16, 30]]
 sol_A3205 = [[0, 21, 31, 19, 17, 13, 7, 26], [0, 28, 11, 4, 23, 2, 3, 6], [0, 20, 5, 25, 10, 29, 15, 22, 9, 8, 18], [0, 27, 24, 14], [0, 12, 1, 16, 30]]
 ##########
 A_n33_k05 = read("Instances/A-n33-k05.xml")
 
 #sol_A3305 = [[[0, 22, 15, 16, 3, 9, 17], 94], [[0, 23, 11, 6, 24, 2], 82], [[0, 28, 18, 19, 14, 21, 1, 31, 29], 98], [[0, 20, 32, 13, 8, 7, 26, 4], 78], [[0, 10, 30, 25, 27, 5, 12], 94]]
+init_A3305 = [[0, 10, 30, 25, 27, 5, 12], [0, 4, 26, 7, 8, 13, 32, 20], [0, 29, 3, 9, 17, 16, 15], [0, 28, 18, 31, 1, 21, 14, 19, 11], [0, 2, 24, 6, 23, 22]]
 sol_A3305 = [[0, 20, 32, 13, 8, 7, 26, 4, 22], [0, 10, 30, 25, 27, 5, 12], [0, 11, 19, 14, 21, 1, 31, 18, 28], [0, 2, 24, 6, 23], [0, 15, 17, 9, 3, 16, 29]]
 ##########
 A_n33_k06 = read("Instances/A-n33-k06.xml")
-
-#sol_A3306 = [[[0, 21, 12], 91], [[0, 1, 7, 6, 18, 14], 96], [[0, 4, 8, 3, 2, 15, 9, 20, 19], 100], [[0, 32, 10, 11, 29, 17], 80], [[0, 13, 5, 22, 26, 24, 23, 31], 80], [[0, 28, 27, 30, 16, 25],94]]
-sol_A3306 = [[0, 4, 8, 3, 9, 15, 20, 2], [0, 18, 6, 19, 7, 1], [0, 13, 5, 22, 26, 24, 23, 31], [0, 21, 12, 10], [0, 28, 27, 30, 16, 25], [0, 14, 17, 29, 11, 32]]
+init_A3306 = [[0, 4, 8, 3, 9, 15, 20, 2, 5], [0, 11, 29, 6, 7, 19], [0, 13, 1, 18, 17], [0, 21, 12, 10], [0, 31, 23, 24, 26, 22, 14], [0, 32, 25, 16, 30, 27, 28]]
+sol_A3306 = [[0, 4, 8, 3, 9, 15, 20, 2, 5], [0, 17, 11, 29, 19, 7], [0, 21, 12, 10], [0, 32, 25, 16, 30, 27, 28], [0, 31, 23, 24, 26, 22], [0, 13, 6, 18, 1, 14]]
 ##########
 A_n34_k05 = read("Instances/A-n34-k05.xml")
-
-sol_A3405 = [[0, 33, 16, 22, 3, 12, 9, 2, 18], [0, 26, 4, 20], [0, 5, 30, 24], [0, 21, 32, 28, 31, 25, 13, 10], [0, 14, 29, 8, 15, 6, 7], [0, 27, 1, 23, 11, 19, 17]]
+init_A3405 = [[0, 8, 11, 23, 27, 1, 29], [0, 7, 15, 19, 17, 25, 28, 32, 31], [0, 21, 3, 12, 9, 22, 16, 2, 33], [0, 4, 26, 30, 24, 5], [0, 14, 6, 13, 10, 20, 18]]
+sol_A3405 = [[0, 5, 30, 24, 29, 6, 7], [0, 27, 1, 23, 11, 8, 15, 14], [0, 19, 17, 25, 31, 28, 13, 10], [0, 26, 4, 33, 16, 2, 18], [0, 21, 32, 3, 12, 9, 22, 20]]
 ##########
 A_n36_k05 = read("Instances/A-n36-k05.xml")
-
-sol_A3605 = [[0, 28, 14, 34, 23, 2, 35, 8, 15], [0, 21, 18, 33, 29, 30, 17, 13, 32, 22, 1], [0, 12, 31, 19, 4, 3, 6, 9], [0, 10, 7, 26], [0, 16, 11, 24, 27, 25, 5, 20]]
+init_A3605 = [[0, 9, 23, 2, 35, 8, 34, 14], [0, 21, 18, 33, 29, 30, 17, 13, 32, 22, 1], [0, 12, 31, 19, 4, 3, 6, 28, 15], [0, 26, 7, 10], [0, 20, 5, 25, 27, 24, 11, 16]]
+sol_A3605 = [[0, 28, 14, 34, 23, 2, 35, 8, 15], [0, 1, 22, 32, 13, 17, 30, 29, 33, 18, 21], [0, 12, 31, 19, 4, 3, 6, 9], [0, 10, 7, 26], [0, 20, 5, 25, 27, 24, 11, 16]]
 ##########
 A_n37_k05 = read("Instances/A-n37-k05.xml")
-
-sol_A3705 = [[0, 17, 14, 23, 20, 19, 2, 12, 1], [0, 22, 13, 10, 6, 5, 33, 4, 7], [0, 16, 21], [0, 30, 31, 28, 32, 29, 36, 34, 15], [0, 3, 24, 9, 11, 27, 8, 25, 35, 18, 26]]
+init_A3705 = [[0, 30, 25, 35, 18, 26, 31, 28, 32, 29], [0, 17, 14, 23, 20, 19, 2, 12, 1], [0, 22, 13, 10, 6, 5, 33, 4, 7], [0, 21, 16], [0, 3, 24, 9, 11, 27, 8, 34, 36, 15]]
+sol_A3705 = [[0, 22, 13, 10, 6, 5, 33, 4, 7], [0, 21, 16], [0, 1, 12, 2, 19, 20, 23, 14, 17], [0, 3, 24, 9, 11, 27, 8, 25, 35, 18, 26, 15], [0, 34, 36, 29, 32, 28, 31, 30]]
 ##########
 A_n37_k06 = read("Instances/A-n37-k06.xml")
-
+init_A3706 = [[0, 4], [0, 5, 3], [0, 6], [0, 7], [0, 8], [0, 9], [0, 10], [0, 11], [0, 12], [0, 13], [0, 14], [0, 16], [0, 18], [0, 20], [0, 21], [0, 22], [0, 23], [0, 24], [0, 26], [0, 27], [0, 29], [0, 32], [0, 33], [0, 36], [0, 25, 35], [0, 19, 31], [0, 15, 30], [0, 2, 28], [0, 17, 34], [0, 1]]
 #sol_A3706 = [[[0, 29, 36, 14], 65], [[0, 24, 16, 7], 47], [[0, 27, 32, 15, 30, 13], 89], [[0, 25, 35], 81], [[0, 26, 21, 9, 1, 3, 5, 8], 96], [[0, 10, 11, 12, 22, 23, 28, 2, 33, 20], 97], [[0, 18, 4, 17, 34, 19, 31, 6], 95]]
-sol_A3706 = [[0, 7, 25, 35, 16], [0, 13, 30, 15, 32, 27], [0, 10, 11, 12, 22, 23, 28, 2, 33], [0, 24, 29, 36, 6, 14], [0, 4, 26, 19, 31, 34, 17, 18], [0, 20, 8, 5, 3, 1, 9, 21]]
+#sol_A3706 = [[0, 7, 25, 35, 16], [0, 13, 30, 15, 32, 27], [0, 10, 11, 12, 22, 23, 28, 2, 33], [0, 24, 29, 36, 6, 14], [0, 4, 26, 19, 31, 34, 17, 18], [0, 20, 8, 5, 3, 1, 9, 21]]
+sol_A3706 = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 20, 33, 2, 28, 23, 22, 12, 11, 10], [0, 14, 6, 36, 29, 24], [0, 31, 19, 9, 21, 26, 4], [0, 18, 17, 34, 1, 3, 5, 8]]
 ##########
 A_n38_k05 = read("Instances/A-n38-k05.xml")
-init_A3805 = [[0, 22, 5, 27, 11, 37, 31, 28, 0], [0, 18, 19, 34, 29, 10, 30], [0, 21, 6, 25, 4, 1, 3, 12, 26, 35, 33], [0, 35, 23, 8, 33, 0], [0, 32, 15, 20, 7, 5, 0], [0, 24, 9, 14, 15, 13, 36, 17, 2, 0]]
-sol_A3805 = [[0, 5, 22, 27, 11, 37, 31, 28], [0, 7, 20, 32, 15, 13, 36, 17, 2,24], [0, 19, 6, 25, 16, 4, 1, 3, 12, 26, 21], [0, 18, 34, 29, 30, 10], [0, 14, 33, 35, 23, 8, 9]]
+init_A3805 = [[0, 2], [0, 9], [0, 14], [0, 15], [0, 24], [0, 4, 16, 25], [0, 12, 1, 3, 26], [0, 7, 22, 27, 11, 5], [0, 31, 37, 28], [0, 8, 23, 35, 33], [0, 18, 6, 34, 29, 19], [0, 10, 30, 21], [0, 17, 36, 13], [0, 20, 32]]
+sol_A3805 = [[0, 18, 19, 34, 29, 30, 10], [0, 28, 31, 37, 11, 27, 22, 5], [0, 7, 20, 32, 15, 13, 36, 17, 2, 24], [0, 9, 8, 23, 35, 33, 14], [0, 6, 25, 16, 4, 1, 3, 12, 26, 21]]
 ##########
 A_n39_k05 = read("Instances/A-n39-k05.xml")
-init_A3905 = [[0, 2, 3, 22, 7, 16, 32, 10, 0], [0, 38, 15, 5, 29, 23, 20, 1, 31, 12, 0], [0, 8, 11, 17, 26, 6, 13, 30, 28, 0], [0, 24, 35, 37, 34, 27, 36, 8, 0], [0, 4, 14, 21, 30, 19, 25, 18, 9]]
-sol_A3905 = [[0, 38, 15, 5, 29, 20, 23, 1, 31, 12], [0, 14, 19, 25, 33, 18, 9, 4], [0, 2, 22, 3, 7, 16, 32, 10], [0, 17, 24, 35, 37, 34, 26, 11, 8], [0, 21, 30, 13, 28, 27, 36, 6]]
+init_A3905 = [[0, 2, 22, 3, 7, 16, 32, 10, 20], [0, 38, 15, 5, 29, 23, 1, 31, 12], [0, 13, 28, 6, 26, 17, 11, 8, 9], [0, 24, 35, 37, 34, 27, 36, 30, 21], [0, 4, 18, 33, 25, 19, 14]]
+sol_A3905 = [[0, 2, 22, 3, 7, 16, 32, 10], [0, 38, 15, 5, 29, 20, 23, 1, 31, 12], [0, 14, 19, 25, 33, 18, 9, 4], [0, 6, 36, 27, 28, 13, 30, 21], [0, 17, 24, 35, 37, 34, 26, 11, 8]]
 ##########
 A_n39_k06 = read("Instances/A-n39-k06.xml")
-init_A3906 = [[0, 10, 16, 4, 19, 33, 8], [0, 7, 2, 35, 25, 14, 31, 37, 38], [0, 36, 17, 23, 21, 22, 34, 27, 32, 20], [0, 5, 28, 9, 29, 24, 3, 12, 0], [0, 6, 1, 18, 11, 26], [0, 15, 13, 30]]
-sol_A3906 = [[0, 2, 33, 25, 35, 14, 31, 37, 38, 12], [0, 24, 3, 29, 28, 9, 5, 26], [0, 15, 13], [0, 10, 16, 4, 19, 8, 7], [0, 21, 18, 22, 34, 27, 32, 20, 30], [0, 6, 1, 23, 17, 36, 11]]
+init_A3906 = [[0, 3], [0, 5], [0, 11], [0, 13], [0, 15], [0, 20], [0, 24], [0, 26], [0, 30], [0, 27, 16, 10], [0, 2, 33, 19, 4, 7, 8], [0, 12, 38], [0, 9, 28, 29], [0, 32, 34, 22, 18], [0, 21, 23, 17, 36, 1, 6], [0, 37, 31, 35, 25, 14]]
+sol_A3906 = [[0, 15, 30, 13], [0, 24, 3, 38, 12, 9, 28, 29], [0, 7, 8, 4, 16, 10, 27, 18], [0, 5, 26, 11], [0, 37, 31, 14, 35, 25, 33, 19, 2], [0, 6, 1, 36, 17, 23, 21, 22, 34, 32, 20]]
+##########
+A_n65_k09 = read("Instances/A-n65-k09.xml")
 
-lam = 0.9
-t = "A-n39-k06"
-instance,demand = A_n39_k06
-initiale = init_A3906
-solution = sol_A3906
+
+
+lam = 1.5
+t = "A-n36-k05"
+instance,demand = A_n34_k05
+initiale = init_A3405
+solution = sol_A3405
 
 """
 init, reso = apply_heuristic(instance, demand, lam, KNN, relocation)
@@ -734,12 +841,6 @@ print(reso)
 """
 
 """
-initial_solution = ClarkeWright(instance,demand, lam)
-
-for i in range(len(initial_solution)):
-    initial_solution[i] = LK(initial_solution[i].copy(), instance)
-"""
-
 print_current_sol(initiale,instance)
 py.title("Solution initiale " + t)
 py.savefig("resultats/Heuristic_results/Common_edges_litterature_instances/"+t+"/initiale_"+t+".png")
@@ -758,3 +859,24 @@ print_edges(E,instance)
 py.title("Arêtes communes pour " + t)
 py.savefig("resultats/Heuristic_results/Common_edges_litterature_instances/"+t+"/commonEdges_"+t+".png")
 py.close()
+"""
+
+Eref = all_edges(initiale)
+E = common_edges(initiale,solution)
+
+n,rei,r_mean = all_ranks(E,initiale,instance)
+nref,reiref,r_meanref = all_ranks(Eref,initiale,instance)
+print(n)
+
+r_mean.sort()
+r_meanref.sort()
+
+print(reiref)
+
+print(rei)
+
+instanceA = np.array(instance)
+tri = Delaunay(instanceA)
+print_instance(instance)
+py.triplot(instanceA[:,0], instanceA[:,1], tri.simplices)
+py.show()

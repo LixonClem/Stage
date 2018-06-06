@@ -5,6 +5,6 @@ Route #4: 10 7 26
 Route #5: 1 22 32 13 17 30 29 33 18 21
 cost 799
 
-obtenu = 802 (lambda = 1.1)
+obtenu = 802 (lambda = 1.2, gs = 30)
 
 gap = 0.37%
