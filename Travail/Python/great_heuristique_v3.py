@@ -542,7 +542,7 @@ def apply_heuristic(inst, demand, lam, k, l):
     print(cost_sol(initial_solution,inst))
     print(initial_solution)
     for i in range(len(initial_solution)):
-        initial_solution[i] = decross_route(initial_solution[i].copy(), inst)
+        #initial_solution[i] = decross_route(initial_solution[i].copy(), inst)
         initial_solution[i] = LK(initial_solution[i].copy(), inst)
     print(initial_solution)
     routes2 = copy_sol(initial_solution)
@@ -561,7 +561,7 @@ def apply_heuristic(inst, demand, lam, k, l):
     p = [[0 for j in range(len(inst))] for i in range(len(inst))]
 
     print_current_sol(routes, inst)
-    #py.show()
+    py.show()
     N = 0  # laps without improvement
     gs = 0  # laps for last improvement
     c_init = cost_sol(routes, inst)
@@ -576,8 +576,10 @@ def apply_heuristic(inst, demand, lam, k, l):
 
         # apply ejection-chain
         cp = best_point(worst, routes, inst)
+        
         routes = ejection_chain(l, cp, v, routes, inst, demand)
-
+        for i in range(len(routes)):
+            routes[i] = LK(routes[i], inst)
         # apply cross-exchange
 
         routes = cross_exchange(worst, v, routes, inst, demand)
@@ -588,7 +590,7 @@ def apply_heuristic(inst, demand, lam, k, l):
 
         c_final = cost_sol(routes, inst)
 
-        if gs > 25:
+        if gs > 30:
             # return to the last global solution, for gs iterations
             routes = copy_sol(routes2)
             gs = 0
@@ -596,7 +598,7 @@ def apply_heuristic(inst, demand, lam, k, l):
         if c_final < c_init:
             print(c_final)
             routes2 = copy_sol(routes)  # new optimum
-            routes = copy_sol(routes2)
+
             gs = 0
             N = 0
             c_init = cost_sol(routes2, inst)
@@ -604,12 +606,13 @@ def apply_heuristic(inst, demand, lam, k, l):
             time = 0
 
         if N > 100:
-            gs = 0 
+            
             b_i += 1
             
             if b_i < len(B):
                 b = B[b_i]
-                
+                p = [[0 for j in range(len(inst))]
+                    for i in range(len(inst))]
                 N = 0
             else:
                 
@@ -618,6 +621,7 @@ def apply_heuristic(inst, demand, lam, k, l):
                 p = [[0 for j in range(len(inst))]
                      for i in range(len(inst))]
                 N = 0
+                
                 for i in (routes2):
                     if len(i)==2:
                         routes2 = reject(i,routes2,v,inst,demand)
@@ -625,6 +629,7 @@ def apply_heuristic(inst, demand, lam, k, l):
                     routes2[i] = decross_route(routes2[i].copy(), inst)
                     routes2[i] = LK(routes2[i], inst)
                 routes = copy_sol(routes2)
+                
         gs += 1
         N += 1
         time +=1
@@ -640,7 +645,7 @@ def apply_heuristic(inst, demand, lam, k, l):
 
     print(cost_sol(routes2,inst))
     print_current_sol(routes2, inst)
-    #py.show()
+    py.show()
     return initial_solution, routes2
 
  ###########
@@ -829,18 +834,23 @@ A_n65_k09 = read("Instances/A-n65-k09.xml")
 
 
 lam = 1.5
-t = "A-n36-k05"
-instance,demand = A_n33_k05
-initiale = init_A3305
-solution = sol_A3305
+t = "A-n34-k05"
+instance,demand = A_n34_k05
+initiale = init_A3405
+solution = sol_A3405
 
-"""
+#print(route_demand([0, 22, 13, 10, 6, 5, 33, 4, 7],demand)) # 3705
+#print(route_demand([0, 21, 31, 19, 17, 13, 7, 26],demand)) # 3205
+#print(route_demand([0, 10, 30, 25, 27, 5, 12],demand))  # 3305
+for r in initiale:
+    print(route_demand(r,demand))
+
 init, reso = apply_heuristic(instance, demand, lam, KNN, relocation)
 print(init)
 print(reso)
-"""
 
 """
+
 print_current_sol(initiale,instance)
 py.title("Solution initiale " + t)
 py.savefig("resultats/Heuristic_results/Common_edges_litterature_instances/"+t+"/initiale_"+t+".png")
@@ -860,7 +870,7 @@ py.title("Arêtes communes pour " + t)
 py.savefig("resultats/Heuristic_results/Common_edges_litterature_instances/"+t+"/commonEdges_"+t+".png")
 py.close()
 """
-
+"""
 Eref = all_edges(initiale)
 E = common_edges(initiale,solution)
 
@@ -878,7 +888,7 @@ print(r_meanref)
 print(reiref)
 print(r_mean)
 print(rei)
-
+"""
 
 """
 instanceA = np.array(instance)
