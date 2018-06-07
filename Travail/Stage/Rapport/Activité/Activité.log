@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.11)  5 JUN 2018 19:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  7 JUN 2018 15:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **Activité.tex
 (./Activité.tex
-LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
@@ -28,10 +28,10 @@ Package: fullpage 1999/02/23 1.1 (PWD)
 \FP@margin=\skip43
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
-File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
@@ -40,14 +40,14 @@ Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@posthook=\toks15
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2015/12/03 v1.1r UTF-8 support for inputenc
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -259,11 +259,17 @@ File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+0219 (decimal 537)
    defining Unicode char U+021A (decimal 538)
    defining Unicode char U+021B (decimal 539)
-   defining Unicode char U+01E02 (decimal 7682)
-   defining Unicode char U+01E03 (decimal 7683)
+   defining Unicode char U+0232 (decimal 562)
+   defining Unicode char U+0233 (decimal 563)
+   defining Unicode char U+1E02 (decimal 7682)
+   defining Unicode char U+1E03 (decimal 7683)
    defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2010 (decimal 8208)
+   defining Unicode char U+2011 (decimal 8209)
+   defining Unicode char U+2012 (decimal 8210)
    defining Unicode char U+2013 (decimal 8211)
    defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2015 (decimal 8213)
    defining Unicode char U+2018 (decimal 8216)
    defining Unicode char U+2019 (decimal 8217)
    defining Unicode char U+201A (decimal 8218)
@@ -275,12 +281,14 @@ File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+2039 (decimal 8249)
    defining Unicode char U+203A (decimal 8250)
    defining Unicode char U+2423 (decimal 9251)
+   defining Unicode char U+1E20 (decimal 7712)
+   defining Unicode char U+1E21 (decimal 7713)
 )
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -321,7 +329,7 @@ Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+File: omsenc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
    defining Unicode char U+00B7 (decimal 183)
@@ -345,64 +353,73 @@ Now handling font encoding U ...
    defining Unicode char U+2423 (decimal 9251)
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2016/02/24 3.9q The Babel package
+Package: babel 2018/02/14 3.18 The Babel package
 
-(/usr/share/texlive/texmf-dist/tex/generic/babel-french/frenchb.ldf
-Language: frenchb 2016/02/13 v3.1l French support from the babel system
+(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2018/02/14 3.18 Babel switching mechanism
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-french/francais.ldf
+Language: francais 2018/02/04 v3.4b French support from the babel system
+
+
+Package francais.ldf Warning: Option `francais' for Babel is *deprecated*,
+(francais.ldf)                it might be removed sooner or later. Please
+(francais.ldf)                use `french' instead; reported on input line 31.
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-french/french.ldf
+Language: french 2018/02/04 v3.4b French support from the babel system
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2016/02/24 3.9q Babel common definitions
+File: babel.def 2018/02/14 3.18 Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@dirlevel=\count88
 )
 \l@acadian = a dialect from \language\l@french 
-\l@canadien = a dialect from \language\l@french 
-\FBcolonskip=\skip44
-\FBthinskip=\skip45
-Package babel Info: Making : an active character on input line 342.
-Package babel Info: Making ; an active character on input line 343.
-Package babel Info: Making ! an active character on input line 344.
-Package babel Info: Making ? an active character on input line 345.
-\FBguillskip=\skip46
-\FBguill@level=\count88
+\FB@nonchar=\count89
+Package babel Info: Making : an active character on input line 411.
+Package babel Info: Making ; an active character on input line 412.
+Package babel Info: Making ! an active character on input line 413.
+Package babel Info: Making ? an active character on input line 414.
+\FBguill@level=\count90
 \FB@everypar=\toks16
 \FB@Mht=\dimen104
-\std@mcc=\count89
-\dec@mcc=\count90
-\listindentFB=\skip47
-\labelwidthFB=\skip48
-\leftmarginFB=\skip49
+\mc@charclass=\count91
+\mc@charfam=\count92
+\mc@charslot=\count93
+\std@mcc=\count94
+\dec@mcc=\count95
+\c@FBcaption@count=\count96
+\listindentFB=\skip44
+\descindentFB=\skip45
+\labelwidthFB=\skip46
+\leftmarginFB=\skip47
 \parindentFFN=\dimen105
-))
+\FBfnindent=\skip48
+)))
 (/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 95.
+Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-)
-\Gread@gobject=\count91
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen106
 \Gin@req@width=\dimen107
@@ -413,34 +430,34 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/abstract/abstract.sty
 Package: abstract 2009/06/08 v1.2a configurable abstracts
-\abstitleskip=\skip50
-\absleftindent=\skip51
-\absrightindent=\skip52
-\absparindent=\skip53
-\absparsep=\skip54
+\abstitleskip=\skip49
+\absleftindent=\skip50
+\absrightindent=\skip51
+\absparindent=\skip52
+\absparsep=\skip53
 )
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/mathpazo.sty
 Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
 \symupright=\mathgroup4
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count92
+\lst@mode=\count97
 \lst@gtempboxa=\box26
 \lst@token=\toks18
-\lst@length=\count93
+\lst@length=\count98
 \lst@currlwidth=\dimen108
-\lst@column=\count94
-\lst@pos=\count95
+\lst@column=\count99
+\lst@pos=\count100
 \lst@lostspace=\dimen109
 \lst@width=\dimen110
-\lst@newlines=\count96
-\lst@lineno=\count97
+\lst@newlines=\count101
+\lst@lineno=\count102
 \lst@maxwidth=\dimen111
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count98
-\lst@skipnumbers=\count99
+\c@lstnumber=\count103
+\lst@skipnumbers=\count104
 \lst@framebox=\box27
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
@@ -449,13 +466,13 @@ File: listings.cfg 2015/06/04 1.6 listings configuration
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen112
 \captionmargin@=\dimen113
@@ -465,11 +482,11 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \caption@parindent=\dimen117
 \caption@hangindent=\dimen118
 )
-\c@ContinuedFloat=\count100
+\c@ContinuedFloat=\count105
 Package caption Info: listings package is loaded.
 )
-\c@subfigure=\count101
-\c@subtable=\count102
+\c@subfigure=\count106
+\c@subtable=\count107
 )
 (./Activité.aux)
 \openout1 = `Activité.aux'.
@@ -494,69 +511,77 @@ LaTeX Info: Redefining \degres on input line 22.
 LaTeX Info: Redefining \dots on input line 22.
 LaTeX Info: Redefining \up on input line 22.
 
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count103
+\scratchcounter=\count108
 \scratchdimen=\dimen119
 \scratchbox=\box28
-\nofMPsegments=\count104
-\nofMParguments=\count105
+\nofMPsegments=\count109
+\nofMParguments=\count110
 \everyMPshowfont=\toks19
-\MPscratchCnt=\count106
+\MPscratchCnt=\count111
 \MPscratchDim=\dimen120
-\MPnumerator=\count107
-\makeMPintoPDFobject=\count108
+\MPnumerator=\count112
+\makeMPintoPDFobject=\count113
 \everyMPtoPDFconversion=\toks20
-) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
+)
+
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
 Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
+(grfext)             \AppendGraphicsExtensions on input line 456.
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \big@size=\dimen121
-\c@lstlisting=\count109
+\c@lstlisting=\count114
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Try loading font information for OT1+ppl on input line 30.
@@ -590,74 +615,65 @@ File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 34.
-
 <best_lambda.png, id=1, 462.528pt x 346.896pt>
 File: best_lambda.png Graphic file (type png)
- <use best_lambda.png>
-Package pdftex.def Info: best_lambda.png used on input line 47.
+<use best_lambda.png>
+Package pdftex.def Info: best_lambda.png  used on input line 47.
 (pdftex.def)             Requested size: 317.07614pt x 237.81816pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./best_lambda.png>]
 <test1_init.png, id=13, 462.528pt x 346.896pt>
 File: test1_init.png Graphic file (type png)
- <use test1_init.png>
-Package pdftex.def Info: test1_init.png used on input line 67.
+<use test1_init.png>
+Package pdftex.def Info: test1_init.png  used on input line 67.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
-
 <test1_2opt.png, id=14, 462.528pt x 346.896pt>
 File: test1_2opt.png Graphic file (type png)
- <use test1_2opt.png>
-Package pdftex.def Info: test1_2opt.png used on input line 74.
+<use test1_2opt.png>
+Package pdftex.def Info: test1_2opt.png  used on input line 74.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
  [2 <./test1_init.png> <./test1_2opt.png>]
 <test4_20_init.png, id=22, 462.528pt x 346.896pt>
 File: test4_20_init.png Graphic file (type png)
- <use test4_20_init.png>
-Package pdftex.def Info: test4_20_init.png used on input line 89.
+<use test4_20_init.png>
+Package pdftex.def Info: test4_20_init.png  used on input line 89.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
-
 <test4_20_LKopt.png, id=23, 462.528pt x 346.896pt>
 File: test4_20_LKopt.png Graphic file (type png)
- <use test4_20_LKopt.png>
-Package pdftex.def Info: test4_20_LKopt.png used on input line 96.
+<use test4_20_LKopt.png>
+Package pdftex.def Info: test4_20_LKopt.png  used on input line 96.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
-
-[3 <./test4_20_init.png> <./test4_20_LKopt.png>]
+ [3 <./test4_20_init.png> <./test4_20_LKopt.png>]
 <test1CE_init.png, id=29, 462.528pt x 346.896pt>
 File: test1CE_init.png Graphic file (type png)
- <use test1CE_init.png>
-Package pdftex.def Info: test1CE_init.png used on input line 111.
+<use test1CE_init.png>
+Package pdftex.def Info: test1CE_init.png  used on input line 111.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
-
 <test1CE_imp.png, id=30, 462.528pt x 346.896pt>
 File: test1CE_imp.png Graphic file (type png)
- <use test1CE_imp.png>
-Package pdftex.def Info: test1CE_imp.png used on input line 118.
+<use test1CE_imp.png>
+Package pdftex.def Info: test1CE_imp.png  used on input line 118.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
-
 <test2CE_init.png, id=31, 578.16pt x 433.62pt>
 File: test2CE_init.png Graphic file (type png)
- <use test2CE_init.png>
-Package pdftex.def Info: test2CE_init.png used on input line 131.
+<use test2CE_init.png>
+Package pdftex.def Info: test2CE_init.png  used on input line 131.
 (pdftex.def)             Requested size: 226.48395pt x 169.85878pt.
-
 <test2CE_imp.png, id=32, 578.16pt x 433.62pt>
 File: test2CE_imp.png Graphic file (type png)
- <use test2CE_imp.png>
-Package pdftex.def Info: test2CE_imp.png used on input line 138.
+<use test2CE_imp.png>
+Package pdftex.def Info: test2CE_imp.png  used on input line 138.
 (pdftex.def)             Requested size: 226.48395pt x 169.85878pt.
-
 <test1EC_init.png, id=33, 578.16pt x 433.62pt>
 File: test1EC_init.png Graphic file (type png)
- <use test1EC_init.png>
-Package pdftex.def Info: test1EC_init.png used on input line 147.
+<use test1EC_init.png>
+Package pdftex.def Info: test1EC_init.png  used on input line 147.
 (pdftex.def)             Requested size: 226.48395pt x 169.85878pt.
-
 <test1EC_imp.png, id=34, 578.16pt x 433.62pt>
 File: test1EC_imp.png Graphic file (type png)
- <use test1EC_imp.png>
-Package pdftex.def Info: test1EC_imp.png used on input line 154.
+<use test1EC_imp.png>
+Package pdftex.def Info: test1EC_imp.png  used on input line 154.
 (pdftex.def)             Requested size: 226.48395pt x 169.85878pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 161--164
@@ -668,16 +684,13 @@ n-chain (avec ges-tion de ca-pa-cit�),
 [4 <./test1CE_init.png> <./test1CE_imp.png>]
 <test2_heuristic_init.png, id=40, 462.528pt x 346.896pt>
 File: test2_heuristic_init.png Graphic file (type png)
-
 <use test2_heuristic_init.png>
-Package pdftex.def Info: test2_heuristic_init.png used on input line 171.
+Package pdftex.def Info: test2_heuristic_init.png  used on input line 171.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
-
 <test2_heuristic_res.png, id=41, 462.528pt x 346.896pt>
 File: test2_heuristic_res.png Graphic file (type png)
-
 <use test2_heuristic_res.png>
-Package pdftex.def Info: test2_heuristic_res.png used on input line 178.
+Package pdftex.def Info: test2_heuristic_res.png  used on input line 178.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
 
 Underfull \hbox (badness 2875) in paragraph at lines 187--189
@@ -688,41 +701,38 @@ Underfull \hbox (badness 2875) in paragraph at lines 187--189
 _imp.png>] [7 <./test2_heuristic_init.png> <./test2_heuristic_res.png>]
 <initial_An32k05.png, id=58, 462.528pt x 346.896pt>
 File: initial_An32k05.png Graphic file (type png)
- <use initial_An32k05.png>
-Package pdftex.def Info: initial_An32k05.png used on input line 218.
+<use initial_An32k05.png>
+Package pdftex.def Info: initial_An32k05.png  used on input line 218.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
-
 <solution_An32k05.png, id=59, 462.528pt x 346.896pt>
 File: solution_An32k05.png Graphic file (type png)
-
 <use solution_An32k05.png>
-Package pdftex.def Info: solution_An32k05.png used on input line 225.
+Package pdftex.def Info: solution_An32k05.png  used on input line 225.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
-
 <commonEdges_An32k05.png, id=60, 462.528pt x 346.896pt>
 File: commonEdges_An32k05.png Graphic file (type png)
-
 <use commonEdges_An32k05.png>
-Package pdftex.def Info: commonEdges_An32k05.png used on input line 232.
+Package pdftex.def Info: commonEdges_An32k05.png  used on input line 232.
 (pdftex.def)             Requested size: 226.48395pt x 169.86406pt.
- [8 <./initial_An32k05.png> <./solution_An32k05.png>] [9 <./commonEdges_An32k05
-.png>] (./Activité.aux) ) 
+
+[8 <./initial_An32k05.png> <./solution_An32k05.png>] [9 <./commonEdges_An32k05.
+png>] (./Activité.aux) ) 
 Here is how much of TeX's memory you used:
- 5938 strings out of 493029
- 86024 string characters out of 6136234
- 151484 words of memory out of 5000000
- 9363 multiletter control sequences out of 15000+600000
+ 6062 strings out of 492982
+ 88169 string characters out of 6134896
+ 154403 words of memory out of 5000000
+ 9508 multiletter control sequences out of 15000+600000
  29506 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,6n,40p,660b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8
-r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/urw/palatino/uplri8a.pfb>
-Output written on Activité.pdf (9 pages, 904833 bytes).
+ 42i,6n,40p,660b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r
+.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/urw/palatino/uplri8a.pfb>
+Output written on Activité.pdf (9 pages, 696369 bytes).
 PDF statistics:
  92 PDF objects out of 1000 (max. 8388607)
  42 compressed objects within 1 object stream
