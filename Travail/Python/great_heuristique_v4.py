@@ -271,7 +271,7 @@ def another_routeCE(edge, voisins, routes, demand):
 
 def cross_exchange(edge, voisins, routes, inst, demand):
     (a, b) = edge
-
+    feasible = []
     # compute the two routes considered, and the NN of the point we remove (a). v is a point
     (r1, r2), v = another_routeCE(edge, voisins, routes, demand)
     if v < 0:
@@ -299,14 +299,23 @@ def cross_exchange(edge, voisins, routes, inst, demand):
                     p2 = current_cand[1][i+1]
 
                     current_cand[0][j+1], current_cand[1][i + 1] = p2, p1
+#cost_sol(current_cand, inst) < c_init and
+                    if  route_demand(current_cand[0], demand) <= Capacity and route_demand(current_cand[1], demand) <= Capacity:
+                        feasible.append((i,j))
+                    current_cand = [r1.copy(), r2.copy()]
 
-                    if cost_sol(current_cand, inst) < c_init and route_demand(current_cand[0], demand) <= Capacity and route_demand(current_cand[1], demand) <= Capacity:
-                        routes.remove(r1)
-                        routes.remove(r2)
-                        routes = routes + current_cand
-                        return routes
+    if len(feasible)==0:
+        return routes
 
-                current_cand = [r1.copy(), r2.copy()]
+    pivot = feasible[rd.randint(0,len(feasible)-1)]
+
+    routes.remove(r1)
+    routes.remove(r2)
+    p1 = current_cand[0][pivot[1]+1]
+    p2 = current_cand[1][pivot[0]+1]
+    current_cand[0][pivot[1]+1], current_cand[1][pivot[0] + 1] = p2, p1
+    routes = routes + current_cand
+                
     return routes
 
  ##################
@@ -578,7 +587,7 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
     c_init = cost_sol(routes, inst)
     time = 0
     # find the worst edge
-    while time < 1000:
+    while time < 2000:
 
         worst = bad_edge(b, p, routes, inst)[1]
 
@@ -602,7 +611,7 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
 
         c_final = cost_sol(routes, inst)
 
-        if gs > 30:
+        if gs > 10:
             # return to the last global solution, for gs iterations
             routes = copy_sol(routes2)
             gs = 0
@@ -882,13 +891,34 @@ v = voisins(KNN, instance)
 # print(route_demand([0, 21, 31, 19, 17, 13, 7, 26],demand)) # 3205
 # print(route_demand([0, 10, 30, 25, 27, 5, 12],demand))  # 3305
 """
-for r in initiale:
+record = [[0, 16, 35, 25, 7], [0, 4, 18, 14, 36, 29, 24], [0, 31, 33, 5, 3, 1, 8, 6], [0, 27, 32, 15, 21, 34, 17], [0, 13, 30, 10, 26, 20], [0, 11, 12, 22, 23, 28, 2, 9, 19]]
+
+for r in record:
     print(route_demand(r, demand))
+
+
+print_current_sol(record,instance)
+py.show()
 """
 
-init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
-print(cost_sol(init,instance),cost_sol(reso,instance))
+costs = []
+best = []
+for i in range(40):
+    c_best = 100000
+    init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
+    c_sol = cost_sol(reso,instance)
+    print(i,c_sol)
+    costs.append(c_sol)
+    if c_sol < c_best:
+        best = reso
 
+print(costs)
+mean = 0
+for c in costs:
+    mean += c
+print(mean/len(costs))
+print(min(costs))
+print(best)
 
 """
 sol_para = []
