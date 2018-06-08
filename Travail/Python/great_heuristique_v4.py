@@ -607,7 +607,7 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
     c_init = cost_sol(routes, inst)
     time = 0
     # find the worst edge
-    while time < 1500:
+    while time < 300:
 
         worst = bad_edge(b, p, routes, inst)[1]
 
@@ -958,7 +958,7 @@ writef(namefile,str(best))
 
 def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu,execute):
     for li in range(int(10*min_lam),int(10*max_lam),2):
-        for mi in range(int(10*min_mu),int(10*max_mu,2)):
+        for mi in range(int(10*min_mu),int(10*max_mu),2):
             for ni in range(int(10*min_nu),int(10*max_nu),3):
                 c_best = 100000
                 lam = 0.1*li
@@ -995,11 +995,11 @@ def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu,execute):
                 writef(namefile,'')
                 writef(namefile,'mean = ' + str(round(mean/len(costs),3)))
                 writef(namefile,'min = ' + str(min(costs)))
-                writef(namefile,'gap = ' + str((1-(949/min(costs)))*100)
+                writef(namefile,'gap = ' + str((1-(949/min(costs)))*100))
                 writef(namefile,'')
                 writef(namefile,str(best))
 
-total_execution(0.0,2.1,0.0,2.0,0.0,2.0,20)
+total_execution(0.0,0.5,0.0,0.5,0.0,1.0,25)
 
 """
 sol_para = []
