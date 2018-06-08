@@ -548,6 +548,8 @@ min = 967.7978323963131
 Nouvelle instance: lam = 0.8, mu = 1.1, nu = 0.8
 on fixe times = 2000 et gs = 10 au regard des résultats précédents
 
+valeur algo déterministe : 999
+
 0 998.6776225889349
 1 982.0423897992363
 2 984.6203881737383

@@ -107,6 +107,11 @@ def route_demand(route, demand):
         d += demand[i]
     return d
 
+def verification(sol,demand):
+    for r in sol:
+        if route_demand(r,demand)>Capacity:
+            return False
+    return True
  # Compute the cost of a solution
 
 
@@ -868,9 +873,9 @@ sol_A3906 = [[0, 15, 30, 13], [0, 24, 3, 38, 12, 9, 28, 29], [0, 7, 8, 4, 16, 10
 A_n65_k09 = read("Instances/A-n65-k09.xml")
 
 
-lam = 0.8
-mu = 1.1
-nu = 0.8
+lam = 0.3
+mu = 0.0
+nu = 0.9
 t = "A-n37-k06"
 instance, demand = A_n37_k06
 initiale = init_A3706
@@ -882,9 +887,14 @@ v = voisins(KNN, instance)
 # print(route_demand([0, 21, 31, 19, 17, 13, 7, 26],demand)) # 3205
 # print(route_demand([0, 10, 30, 25, 27, 5, 12],demand))  # 3305
 """
-for r in initiale:
+record = [[0, 15, 30, 11, 10, 26], [0, 27, 32, 35, 25], [0, 7, 16, 24, 29, 36], [0, 13, 19, 31, 34, 17, 18], [0, 4, 12, 22, 23, 28, 2, 21, 9, 33], [0, 14, 20, 1, 3, 5, 8, 6]]
+print(cost_sol(record,instance))
+print_current_sol(record,instance)
+py.show()
+for r in record:
     print(route_demand(r, demand))
 """
+
 
 init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
 print(cost_sol(init,instance),cost_sol(reso,instance))
