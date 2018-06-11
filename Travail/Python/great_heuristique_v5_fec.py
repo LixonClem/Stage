@@ -435,7 +435,7 @@ def best_cand(route, np, voisins, routes, inst, demand,fe):
     S = []
     for p in route:
         i = route.index(p)
-        if p != np and len(adjacents(p,fe))==0 and len(adjacents(route[i-1],fe))==0:
+        if p != np:
             cp = best_point((route[i-1], p), routes, inst)
             S.append(eval_cand(cp, voisins, routes, inst, demand,fe))
 
@@ -623,9 +623,10 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
     c_init = cost_sol(routes, inst)
     time = 0
     fixed_edges = fixed(all_edges(initial_solution))
+    print(fixed_edges)
     # find the worst edge
-    while time < 1000:
-
+    while time < 2:
+        print(c_init)
         worst = bad_edge(b, p, routes, inst,fixed_edges)[1]
 
         p[worst[0]][worst[1]] += 1
@@ -633,9 +634,9 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
 
         # apply ejection-chain
         cp = best_point(worst, routes, inst)
-
+        print(all_edges(routes))
         routes = ejection_chain(l, cp, v, routes, inst, demand,fixed_edges)
-
+        print(all_edges(routes))
         for i in range(len(routes)):
             routes[i] = LK(routes[i], inst)
         # apply cross-exchange
@@ -648,7 +649,7 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
 
         c_final = cost_sol(routes, inst)
 
-        if gs > 30:
+        if gs > 10:
             # return to the last global solution, for gs iterations
             routes = copy_sol(routes2)
             fixed_edges = fixed(all_edges(routes2))
@@ -679,14 +680,14 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
                 p = [[0 for j in range(len(inst))]
                      for i in range(len(inst))]
                 N = 0
-
+                """
                 for i in (routes2):
                     if len(i) == 2:
                         routes2 = reject(i, routes2, v, inst, demand)
                 for i in range(len(routes2)):
                     routes2[i] = decross_route(routes2[i].copy(), inst)
                     routes2[i] = LK(routes2[i], inst)
-                
+                """
                 routes = copy_sol(routes2)
                 fixed_edges = fixed(all_edges(routes2))
         gs += 1

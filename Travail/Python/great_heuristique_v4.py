@@ -895,12 +895,12 @@ sol_A3906 = [[0, 15, 30, 13], [0, 24, 3, 38, 12, 9, 28, 29], [0, 7, 8, 4, 16, 10
 A_n65_k09 = read("Instances/A-n65-k09.xml")
 
 
-#lam = 0.8
-#mu = 1.1
-#nu = 0.8
+lam = 0.9
+mu = 0.1
+nu = 1.6
 #execute = 40
-t = "A-n39-k05"
-instance, demand = A_n39_k05
+t = "A-n37-k06"
+instance, demand = A_n37_k06
 initiale = init_A3706
 solution = sol_A3706
 
@@ -919,6 +919,9 @@ for r in record:
 print_current_sol(record,instance)
 py.show()
 """
+init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
+print(cost_sol(init,instance),cost_sol(reso,instance))
+
 '''
 costs = []
 best = []
@@ -955,7 +958,7 @@ writef(namefile,'min = ' + str(min(costs)))
 writef(namefile,'')
 writef(namefile,str(best))
 '''
-
+"""
 def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu,execute):
     for li in range(int(10*min_lam),int(10*max_lam)):
         for mi in range(int(10*min_mu),int(10*max_mu)):
@@ -1000,7 +1003,7 @@ def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu,execute):
                 writef(namefile,str(best))
 
 total_execution(0.0,0.1,1.3,1.4,1.7,1.8,30)
-
+"""
 """
 sol_para = []
 
