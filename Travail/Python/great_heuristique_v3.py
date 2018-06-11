@@ -8,6 +8,7 @@ import matplotlib.pyplot as py
 import random as rd
 import math as m
 from lxml import etree
+import os.path
 
 global ylim
 global xlim
@@ -52,6 +53,16 @@ def read(file):  # give the path of the file
         demand.append(int(float(dem.text)))
     return inst, demand
 
+def writef(namefile, text):
+    if not os.path.isfile(namefile):
+        f = open(namefile,'w')
+        f.write(text + '\n')
+        f.close()
+    else:
+        f = open(namefile,'a')
+        f.write(text + '\n')
+        f.close()
+
 #######################
 # fonctions d'affichage #
 #######################
@@ -83,11 +94,11 @@ def print_routes(routes, inst):
         c += 1
 
 
-def print_edges(edges, inst):
+def print_edges(edges, inst,col):
     for e in edges:
         x = [inst[e[0]][0], inst[e[1]][0]]
         y = [inst[e[0]][1], inst[e[1]][1]]
-        py.plot(x, y, color='red')
+        py.plot(x, y, color=col)
 
 
 def print_current_sol(routes, inst):
@@ -160,6 +171,26 @@ def copy_sol(sol):
         new_sol += [r.copy()]
     return new_sol
 
+def all_edges(sol):
+    E = []
+    for r in sol:
+        for i in range(len(r)-1):
+            pi = r[i]
+            pj = r[i+1]
+            E.append((pi, pj))
+        E.append((r[len(r)-1], r[0]))
+    return E
+
+def fixed(edges):
+    fe = []
+    n = len(edges)
+    for i in range(n//2):
+        alea = rd.randint(0,n-i-1)
+        choice = edges[alea]
+        edges.remove(choice)
+        fe.append(choice)
+    return fe
+    
  #####################
 # Implemenation of CW #
  #####################
@@ -459,7 +490,7 @@ def decross_route(route, inst):
 def DeuxOpt(route, inst):
     l = len(route)-1
     best_tuple = (0, 0)
-    best = 2e-10
+    best = 2e-5
     for i in range(l-1):
         pi = inst[route[i]]
         spi = inst[route[i+1]]
@@ -670,26 +701,27 @@ def are_equal(edge1, edge2):
     return (edge1 == edge2) or (edge1[1] == edge2[0] and edge1[0] == edge2[1])
 
 
-def all_edges(sol):
-    E = []
-    for r in sol:
-        for i in range(len(r)-1):
-            pi = r[i]
-            pj = r[i+1]
-            E.append((pi, pj))
-        E.append((r[len(r)-1], r[0]))
-    return E
+
 
 
 def common_edges(sol1, sol2):
     E1 = all_edges(sol1)
     E2 = all_edges(sol2)
     E = []
+    E_init = []
+    E_final = []
     for i in E1:
         for j in E2:
             if are_equal(i, j) and (i[0], i[1]) not in E and (i[1], i[0]) not in E:
                 E.append(i)
-    return E
+    
+    for i in E1:
+        if i not in E and (i[1],i[0]) not in E:
+            E_init.append(i)
+    for j in E2:
+        if j not in E and (j[1],j[0]) not in E:
+            E_final.append(j)
+    return E,E_init,E_final
 
 
 def rank_costs(E, inst):
@@ -849,8 +881,7 @@ init_A3706 = [[0, 4], [0, 5, 3], [0, 6], [0, 7], [0, 8], [0, 9], [0, 10], [0, 11
     0, 22], [0, 23], [0, 24], [0, 26], [0, 27], [0, 29], [0, 32], [0, 33], [0, 36], [0, 25, 35], [0, 19, 31], [0, 15, 30], [0, 2, 28], [0, 17, 34], [0, 1]]
 # sol_A3706 = [[[0, 29, 36, 14], 65], [[0, 24, 16, 7], 47], [[0, 27, 32, 15, 30, 13], 89], [[0, 25, 35], 81], [[0, 26, 21, 9, 1, 3, 5, 8], 96], [[0, 10, 11, 12, 22, 23, 28, 2, 33, 20], 97], [[0, 18, 4, 17, 34, 19, 31, 6], 95]]
 # sol_A3706 = [[0, 7, 25, 35, 16], [0, 13, 30, 15, 32, 27], [0, 10, 11, 12, 22, 23, 28, 2, 33], [0, 24, 29, 36, 6, 14], [0, 4, 26, 19, 31, 34, 17, 18], [0, 20, 8, 5, 3, 1, 9, 21]]
-sol_A3706 = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 20, 33, 2, 28, 23, 22, 12, 11, 10], [
-    0, 14, 6, 36, 29, 24], [0, 31, 19, 9, 21, 26, 4], [0, 18, 17, 34, 1, 3, 5, 8]]
+sol_A3706 = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17, 18], [0, 31, 19, 9, 21, 26, 4]]
 ##########
 A_n38_k05 = read("Instances/A-n38-k05.xml")
 init_A3805 = [[0, 2], [0, 9], [0, 14], [0, 15], [0, 24], [0, 4, 16, 25], [0, 12, 1, 3, 26], [0, 7, 22, 27, 11, 5], [
@@ -873,9 +904,9 @@ sol_A3906 = [[0, 15, 30, 13], [0, 24, 3, 38, 12, 9, 28, 29], [0, 7, 8, 4, 16, 10
 A_n65_k09 = read("Instances/A-n65-k09.xml")
 
 
-lam = 0.3
-mu = 0.0
-nu = 0.9
+lam = 0.9
+mu = 0.1
+nu = 1.6
 t = "A-n37-k06"
 instance, demand = A_n37_k06
 initiale = init_A3706
@@ -887,19 +918,95 @@ v = voisins(KNN, instance)
 # print(route_demand([0, 21, 31, 19, 17, 13, 7, 26],demand)) # 3205
 # print(route_demand([0, 10, 30, 25, 27, 5, 12],demand))  # 3305
 """
-record = [[0, 15, 30, 11, 10, 26], [0, 27, 32, 35, 25], [0, 7, 16, 24, 29, 36], [0, 13, 19, 31, 34, 17, 18], [0, 4, 12, 22, 23, 28, 2, 21, 9, 33], [0, 14, 20, 1, 3, 5, 8, 6]]
+initial_solution = ClarkeWright(instance, demand, lam, mu, nu)
+for i in range(len(initial_solution)):
+    initial_solution[i] = decross_route(initial_solution[i].copy(), instance)
+    initial_solution[i] = LK(initial_solution[i].copy(), instance)
+
+
+record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
 print(cost_sol(record,instance))
-print_current_sol(record,instance)
+
+
+aE = all_edges(initial_solution)
+E,Ei,Ef = common_edges(initial_solution,record)
+
+print_edges(E,instance,'green')
+print_edges(Ei,instance,'red')
+print_instance(instance)
 py.show()
-for r in record:
-    print(route_demand(r, demand))
+
+print_edges(E,instance,'green')
+print_edges(Ef,instance,'blue')
+print_instance(instance)
+py.show()
+
+n,rei,r_mean = all_ranks(E,initial_solution,instance)
+nref,reiref,r_meanref = all_ranks(aE,initial_solution,instance)
+print(n,len(rei))
+
+r_mean.sort()
+r_meanref.sort()
 """
 
 
 init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
 print(cost_sol(init,instance),cost_sol(reso,instance))
 
+"""
+def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
+    deja_com = []
+    for li in range(int(10*min_lam),int(10*max_lam)):
+        for mi in range(int(10*min_mu),int(10*max_mu)):
+            for ni in range(int(10*min_nu),int(10*max_nu)):
 
+                lam = 0.1*li
+                mu = 0.1 * mi
+                nu = 0.1*ni
+                print(lam,mu,nu)
+
+                initial_solution = ClarkeWright(instance, demand, lam, mu, nu)
+                for i in range(len(initial_solution)):
+                    initial_solution[i] = decross_route(initial_solution[i].copy(), instance)
+                    initial_solution[i] = LK(initial_solution[i].copy(), instance)
+                
+                if round(cost_sol(initial_solution,instance),3) not in deja_com:
+                    deja_com.append(round(cost_sol(initial_solution,instance),3))
+                    aE = all_edges(initial_solution)
+                    E,Ei,Ef = common_edges(initial_solution,record)
+
+                    n,rei,r_mean = all_ranks(E,initial_solution,instance)
+                    nref,reiref,r_meanref = all_ranks(aE,initial_solution,instance)
+                    #init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
+                    #c_sol = cost_sol(reso,instance)
+                    c_init = cost_sol(initial_solution,instance)
+                    print(c_init,n,len(Ei))
+
+                    namefile = "resultats/Heuristic_results/Values/"+t+"/edges_opt-init.txt"
+
+
+                    writef(namefile,'\n')
+                    writef(namefile,'#################')
+                    writef(namefile,'lambda = '+ str(lam))
+                    writef(namefile,'mu = ' + str(mu))
+                    writef(namefile,'nu = ' + str(nu))
+                    writef(namefile,'')
+                    writef(namefile,'init = ' + str(round(c_init,3)))
+                    writef(namefile,'all edges = ' + str(n))
+                    writef(namefile,'common edges = ' + str(len(rei)))
+                    #writef(namefile,'det = ' + str(round(c_sol,3)))
+                    #writef(namefile,'gap = ' + str(round((1-822/c_sol)*100,3)))
+                    writef(namefile,'')
+                    writef(namefile,str(E))
+                    writef(namefile,'')
+                    writef(namefile,str(reiref))
+                    writef(namefile,'')
+                    writef(namefile,str(rei))                
+                else:
+                    print("deja calculé !")
+
+total_execution(0.0,2.0,0.0,2.0,0.0,2.0)
+"""
 """
 sol_para = []
 
@@ -930,7 +1037,7 @@ py.title("Solution obtenue pour " + t)
 py.savefig("resultats/Heuristic_results/litterature_instances/"+t+"/solution_"+t+".png")
 py.close()
 
-E = common_edges(initiale,solution)
+E,Ei,Ef = common_edges(initiale,solution)
 
 print_instance(instance)
 print_edges(E,instance)
@@ -938,25 +1045,9 @@ py.title("Arêtes communes pour " + t)
 py.savefig("resultats/Heuristic_results/litterature_instances/"+t+"/commonEdges_"+t+".png")
 py.close()
 """
-"""
-Eref = all_edges(initiale)
-E = common_edges(initiale,solution)
 
-n,rei,r_mean = all_ranks(E,initiale,instance)
-nref,reiref,r_meanref = all_ranks(Eref,initiale,instance)
-print(n)
 
-r_mean.sort()
-r_meanref.sort()
 
-# print(reiref)
-
-# print(rei)
-print(r_meanref)
-print(reiref)
-print(r_mean)
-print(rei)
-"""
 
 """
 instanceA = np.array(instance)
