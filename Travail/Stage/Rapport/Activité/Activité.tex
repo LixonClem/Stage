@@ -257,5 +257,24 @@ Amélioration de CW (prise en compte des trois paramètres cf article de Altmel/
 
 Choix d'un pivot aléatoire dans l'opérateur Cross-exchange: permet un parcours plus large de l'ensemble des solutions. Tests effectuées pour regarder l'influence de certains paramètres (times et gs). Choix de prendre $times = 1500$ pour compromis résultats-temps, et $gs = 10$ car meilleurs résultats. Tous les tests qui suivent seront effectuées sur l'instance A-n37-k06. Ecriture des résultats au fur et à mesure dans un fichier (results.txt conservé dans un dossier portant le nom de l'instance). Le résultat est en moyenne inférieur au résultat de l'heuristique déterministe. Calcul pour des valeurs (lam,mu,nu) différentes. 
 
+\paragraph*{11 Juin 2018}
+On continue les tests sur les deux heuristiques. Résultats placés dans des fichiers (determinists.txt et stochastics.txt), l'heuristique deterministe renvoie un meilleur résultat que l'heuristique stochastique, en testant pour toutes les valeurs possibles de lam,mu,nu. 
 
+Etude de la conservation des arêtes, en partant de la meilleure solution initiale, environ la moitié des arêtes sont conservées par rapport à la meilleure solution connue. Ajout de la conservation d'arêtes dans l'heuristique. Plusieurs idées pour les choisir: 
+\begin{itemize}
+\item Aléatoirement (a)
+\item Garder celles qui sont rattachées au dépôt (r)
+\item Par apprentissage (l)
+\end{itemize}
+\underline{Comment utiliser ces arêtes ?}
+2 idées:
+\begin{itemize}
+\item Les arêtes choisies ne sont pas touchées lors des opérations locales et l'algo suit son cours. Les arêtes choisies peuvent réinitialisées si on trouve une meilleure solution. (C)
+\item Les arêtes qui ne sont pas choisies sont supprimées (création de nouvelles tournées). On essaie de construire une meilleure solution à partir de là. (D)
+\end{itemize}
+
+Pour l'instant seules ont été implémentées les versions C-a-(d,s) et C-r-(d,s). Tests: peu concluants, amélioration par au déterministe et au stochastique sur quelques SI.
+
+\paragraph*{12 Juin 2018}
+ Début implémentation heuristique D versions (d et s)
 \end{document}

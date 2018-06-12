@@ -1,7 +1,6 @@
 
 # -*- coding: utf-8 -*-
 
-from scipy.spatial import Delaunay
 import numpy as np
 import scipy as sp
 import matplotlib.pyplot as py
@@ -588,7 +587,7 @@ def bad_edge(b, p, routes, inst):
 
 def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
     # Initial solution
-
+    
     initial_solution = ClarkeWright(inst, demand, lam, mu, nu)
     
     for i in range(len(initial_solution)):
@@ -614,7 +613,7 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
     c_init = cost_sol(routes, inst)
     time = 0
     # find the worst edge
-    while time < 1000:
+    while time < 1500:
 
         worst = bad_edge(b, p, routes, inst)[1]
 
@@ -917,7 +916,10 @@ v = voisins(KNN, instance)
 # print(route_demand([0, 22, 13, 10, 6, 5, 33, 4, 7],demand)) # 3705
 # print(route_demand([0, 21, 31, 19, 17, 13, 7, 26],demand)) # 3205
 # print(route_demand([0, 10, 30, 25, 27, 5, 12],demand))  # 3305
-"""
+
+
+
+
 initial_solution = ClarkeWright(instance, demand, lam, mu, nu)
 for i in range(len(initial_solution)):
     initial_solution[i] = decross_route(initial_solution[i].copy(), instance)
@@ -926,7 +928,7 @@ for i in range(len(initial_solution)):
 
 record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
 print(cost_sol(record,instance))
-
+"""
 
 aE = all_edges(initial_solution)
 E,Ei,Ef = common_edges(initial_solution,record)
@@ -934,21 +936,26 @@ E,Ei,Ef = common_edges(initial_solution,record)
 print_edges(E,instance,'green')
 print_edges(Ei,instance,'red')
 print_instance(instance)
+py.title("Meilleure solution initiale pour " + t)
+py.savefig("resultats/Heuristic_results/Values/"+t+"/Best_initiale_"+t+".png")
 py.show()
 
 print_edges(E,instance,'green')
 print_edges(Ef,instance,'blue')
 print_instance(instance)
+py.title("Solution obtenue pour " + t)
+py.savefig("resultats/Heuristic_results/Values/"+t+"/Best_solution_"+t+".png")
 py.show()
-
+"""
+"""
 n,rei,r_mean = all_ranks(E,initial_solution,instance)
 nref,reiref,r_meanref = all_ranks(aE,initial_solution,instance)
 print(n,len(rei))
 
 r_mean.sort()
 r_meanref.sort()
-"""
 
+"""
 
 init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
 print(cost_sol(init,instance),cost_sol(reso,instance))

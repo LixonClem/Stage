@@ -1,7 +1,7 @@
 
 # -*- coding: utf-8 -*-
 
-from scipy.spatial import Delaunay
+
 import numpy as np
 import scipy as sp
 import matplotlib.pyplot as py
@@ -181,15 +181,25 @@ def all_edges(sol):
         E.append((r[len(r)-1], r[0]))
     return E
 
-def fixed(edges):
+def fixed_alea(edges):
     fe = []
     n = len(edges)
-    for i in range(n//2):
+    for i in range(n//10):
         alea = rd.randint(0,n-i-1)
         choice = edges[alea]
         edges.remove(choice)
         fe.append(choice)
     return fe
+
+def fixed_0(edges):
+    fe = []
+    n = len(edges)
+    for i in range(n//2):
+        if 0 in edges[i]:
+            fe.append(edges[i])
+            edges.remove(edges[i])
+    return fe
+
 
 def adjacents(pi,fe):
     a = []
@@ -349,6 +359,7 @@ def cross_exchange(edge, voisins, routes, inst, demand,fe):
                     adj1 = adjacents(p1,fe)
                     adj2 = adjacents(p2,fe)
                     if cost_sol(current_cand, inst) < c_init and len(adj1)==0 and len(adj2)==0 and route_demand(current_cand[0], demand) <= Capacity and route_demand(current_cand[1], demand) <= Capacity:
+                        print("YOYU")
                         routes.remove(r1)
                         routes.remove(r2)
                         routes = routes + current_cand
@@ -471,6 +482,7 @@ def ejection_chain(l, point, voisins, routes, inst, demand,fe):
         relocated_cust = R[0][I[0]]
         R[1].insert(I[1]+1, relocated_cust)
         R[0].remove(relocated_cust)
+        print("FHEU")
 
     return routes
 
@@ -597,7 +609,7 @@ def bad_edge(b, p, routes, inst,fixed):
 
 def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
     # Initial solution
-
+    record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
     initial_solution = ClarkeWright(inst, demand, lam, mu, nu)
     
     for i in range(len(initial_solution)):
@@ -622,11 +634,17 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
     gs = 0  # laps for last improvement
     c_init = cost_sol(routes, inst)
     time = 0
-    fixed_edges = fixed(all_edges(initial_solution))
+    e,ei,ef = common_edges(initial_solution,record)
+    fixed_edges = e
+    print_current_sol(initial_solution,inst)
+    py.show()
     print(fixed_edges)
+    print_instance(inst)
+    print_edges(fixed_edges,inst,'black')
+    py.show()
+
     # find the worst edge
-    while time < 2:
-        print(c_init)
+    while time < 1500:
         worst = bad_edge(b, p, routes, inst,fixed_edges)[1]
 
         p[worst[0]][worst[1]] += 1
@@ -634,9 +652,9 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
 
         # apply ejection-chain
         cp = best_point(worst, routes, inst)
-        print(all_edges(routes))
+
         routes = ejection_chain(l, cp, v, routes, inst, demand,fixed_edges)
-        print(all_edges(routes))
+
         for i in range(len(routes)):
             routes[i] = LK(routes[i], inst)
         # apply cross-exchange
@@ -649,20 +667,23 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
 
         c_final = cost_sol(routes, inst)
 
-        if gs > 10:
-            # return to the last global solution, for gs iterations
-            routes = copy_sol(routes2)
-            fixed_edges = fixed(all_edges(routes2))
-            gs = 0
-
         if c_final < c_init:
             routes2 = copy_sol(routes)  # new optimum
-            fixed_edges = fixed(all_edges(routes2))
+            #fixed_edges = fixed(all_edges(routes2))
+            print("NB")
 
             gs = 0
             N = 0
             c_init = cost_sol(routes2, inst)
             time = 0
+
+        if gs > 10:
+            # return to the last global solution, for gs iterations
+            routes = copy_sol(routes2)
+            #fixed_edges = fixed(all_edges(routes2))
+            gs = 0
+
+
 
         if N > 100:
 
@@ -681,15 +702,43 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
                      for i in range(len(inst))]
                 N = 0
                 """
+                print("try")
+                current_edges = all_edges(routes)
+                print(current_edges)
+                print(fixed_edges)
+                for e in current_edges:
+                    if e not in fixed_edges:
+                        routes = cross_exchange(e,v,routes,inst,demand,fixed_edges)
+                        for i in range(len(routes)):
+                            routes[i] = LK(routes[i], inst)
+                        
+                        cp = best_point(e, routes, inst)
+                        print(cp)
+                        routes = ejection_chain(l,cp,v,routes,inst,demand,fixed_edges)
+                        for i in range(len(routes)):
+                            routes[i] = LK(routes[i], inst)
+                        print(cost_sol(routes,inst))
+
+                        if cost_sol(routes,inst)<cost_sol(routes2,inst):
+                            print("ALDXJ")
+                            routes2 = copy_sol(routes)
+                            c_init = cost_sol(routes2, inst)
+                            time = 0
+                            gs = 0
+                        else:
+                            routes = copy_sol(routes2)
+"""
                 for i in (routes2):
                     if len(i) == 2:
                         routes2 = reject(i, routes2, v, inst, demand)
+
+
                 for i in range(len(routes2)):
                     routes2[i] = decross_route(routes2[i].copy(), inst)
                     routes2[i] = LK(routes2[i], inst)
-                """
+                
                 routes = copy_sol(routes2)
-                fixed_edges = fixed(all_edges(routes2))
+                #fixed_edges = fixed(all_edges(routes2))
         gs += 1
         N += 1
         time += 1
@@ -701,6 +750,11 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
     for i in range(len(routes2)):
         routes2[i] = decross_route(routes2[i].copy(), inst)
         routes2[i] = LK(routes2[i], inst)
+
+    E_1,Ei_1,Ef_1 = common_edges(routes2,record)
+    print_instance(inst)
+    print_edges(E_1,inst,'red')
+    py.show()
 
     return initial_solution, routes2
 
@@ -913,9 +967,9 @@ sol_A3906 = [[0, 15, 30, 13], [0, 24, 3, 38, 12, 9, 28, 29], [0, 7, 8, 4, 16, 10
 A_n65_k09 = read("Instances/A-n65-k09.xml")
 
 
-lam = 0.9
-mu = 0.1
-nu = 1.6
+lam = 1.0
+mu = 0.2
+nu = 0.6
 t = "A-n37-k06"
 instance, demand = A_n37_k06
 initiale = init_A3706
