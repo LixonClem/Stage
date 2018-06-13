@@ -276,5 +276,21 @@ Etude de la conservation des arêtes, en partant de la meilleure solution initia
 Pour l'instant seules ont été implémentées les versions C-a-(d,s) et C-r-(d,s). Tests: peu concluants, amélioration par au déterministe et au stochastique sur quelques SI.
 
 \paragraph*{12 Juin 2018}
- Début implémentation heuristique D versions (d et s)
+ Implémentation heuristique D versions déterministes et stochastiques. Description de la méthode:
+ \begin{itemize}
+ \item On fait CW
+ \item On commence par déterminer des arêtes à conserver
+ \item On élimine les autres 
+ \item On reconstruit les morceaux de tournée en rattachant toutes les extrémités au dépôt
+ \item On applique de nouveau CW (choix des paramètres ?, on divise tout par 2, on prend les meilleurs paramètres)
+ \item On applique l'heuristique normalement
+\end{itemize}
+
+Au final on a 2 algos qui travaillent sur les arêtes communes. Un qui conserve les arêtes choisies, et essaie d'améliorer la solution. Les arêtes à conserver sont modifiées aléatoirement si une nouvelle solution est trouvée, ou lorsqu'on réinitialise la solution courante (meilleurs résultats de cette manière). 
+L'autre méthode, détruit les arêtes que l'on ne veut pas conserver et reconstruit une nouvelle solution en s'appuyant sur les arêtes conservées. Cette méthode est d'autant plus efficace que les arêtes choisies sont optimales, et que la solution initiale a de nombreuses arêtes en commun avec la solution optimale.
+Ces deux algos ont une variante au niveau du CE (soit déterministe, soit stochastique).
+\paragraph*{13 Juin 2018}
+Divers tests pour préparer la réunion. Récup d'images. Présentation.
+ 
+
 \end{document}

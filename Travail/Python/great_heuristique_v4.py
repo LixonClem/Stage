@@ -891,10 +891,10 @@ sol_A3906 = [[0, 15, 30, 13], [0, 24, 3, 38, 12, 9, 28, 29], [0, 7, 8, 4, 16, 10
 A_n65_k09 = read("Instances/A-n65-k09.xml")
 
 
-lam = 1.0
-mu = 0.2
-nu = 0.6
-execute = 20
+lam = 0.0
+mu = 1.1
+nu = 1.4
+execute = 30
 t = "A-n37-k06"
 instance, demand = A_n37_k06
 initiale = init_A3706

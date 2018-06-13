@@ -195,7 +195,6 @@ def fixed_alea(edges):
     for i in range(n):
         if b[i]:
             fe.append(edges[i])
-    print(b)
     return fe
 
 def fixed_0(edges):
@@ -706,12 +705,12 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
     time = 0
 
     e,ei,ef = common_edges(initial_solution,record)
-    fixed_edges = e
+    fixed_edges = fixed_alea(all_edges(initial_solution))
  
     routes = complete(destruction(fixed_edges),inst)
 
 
-    routes = ClarkeWright(routes,inst,demand,lam/2,mu/2,nu/2)
+    routes = ClarkeWright(routes,inst,demand,1.0,0.2,0.6)
     for i in range(len(routes)):
         routes[i] = decross_route(routes[i].copy(), inst)
         routes[i] = LK(routes[i].copy(), inst)
@@ -1009,9 +1008,9 @@ sol_A3906 = [[0, 15, 30, 13], [0, 24, 3, 38, 12, 9, 28, 29], [0, 7, 8, 4, 16, 10
 A_n65_k09 = read("Instances/A-n65-k09.xml")
 
 
-lam = 0.6
-mu = 1.8
-nu = 0.9
+lam = 0.0
+mu = 1.1
+nu = 1.4
 execute = 20
 t = "A-n37-k06"
 instance, demand = A_n37_k06
@@ -1021,7 +1020,17 @@ solution = sol_A3706
 max_d = max_depth(instance)
 v = voisins(KNN, instance)
 
-record = [[0, 16, 35, 25, 7], [0, 4, 18, 14, 36, 29, 24], [0, 31, 33, 5, 3, 1, 8, 6], [0, 27, 32, 15, 21, 34, 17], [0, 13, 30, 10, 26, 20], [0, 11, 12, 22, 23, 28, 2, 9, 19]]
+record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
+best = [[0, 27, 32, 15, 30, 13], [0, 10, 11, 12, 22, 23, 28, 2, 33], [0, 18, 17, 34, 1, 3, 5, 8, 20], [0, 7, 25, 35, 16], [0, 31, 19, 9, 21, 26, 4], [0, 24, 29, 36, 6, 14]]
+print(verification(best,demand))
+print(cost_sol(best,instance))
+print_current_sol(best,instance)
+py.show()
+
+print(cost_sol(record,instance))
+print_current_sol(record,instance)
+py.show()
+
 """
 initial_solution = init_routes(instance, demand)
 initial_solution = ClarkeWright(initial_solution,instance, demand, lam, mu, nu)
@@ -1033,24 +1042,26 @@ init, reso = apply_heuristic(
     instance, demand, lam, mu, nu, relocation, max_d, v)
 print(cost_sol(init, instance), cost_sol(reso, instance))
 """
-
+"""
 costs = []
 best = []
+c_best = 100000
 for i in range(execute):
-    c_best = 100000
+    
     init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
     c_sol = cost_sol(reso,instance)
     print(i,c_sol)
     costs.append(round(c_sol,3))
     if c_sol < c_best:
         best = reso
-"""
+        c_best = c_sol
+        
 namefile = "resultats/Heuristic_results/Values/"+t+"/results.txt"
-"""
+
 print(costs)
 mean = 0
 for c in costs:
     mean += c
 print(mean/len(costs))
 print(min(costs))
-print(best)
+print(best)"""

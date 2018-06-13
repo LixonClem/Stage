@@ -637,7 +637,7 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
     c_init = cost_sol(routes, inst)
     time = 0
     e,ei,ef = common_edges(initial_solution,record)
-    fixed_edges = e
+    fixed_edges = fixed_alea(all_edges(initial_solution))
     # find the worst edge
     while time < 1500:
 
@@ -665,7 +665,7 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
 
         if c_final < c_init:
             routes2 = copy_sol(routes)  # new optimum
-            fixed_edges = fixed_alea(all_edges(routes))
+            #fixed_edges = fixed_alea(all_edges(routes))
 
             gs = 0
             N = 0
@@ -675,7 +675,7 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
         if gs > 10:
             # return to the last global solution, for gs iterations
             routes = copy_sol(routes2)
-            fixed_edges = fixed_alea(all_edges(routes2))
+            #fixed_edges = fixed_alea(all_edges(routes2))
             gs = 0
 
         if N > 100:
@@ -971,14 +971,15 @@ print(cost_sol(init,instance),cost_sol(reso,instance))
 
 costs = []
 best = []
+c_best = 100000
 for i in range(execute):
-    c_best = 100000
     init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
     c_sol = cost_sol(reso,instance)
     print(i,c_sol)
     costs.append(round(c_sol,3))
     if c_sol < c_best:
         best = reso
+        c_best  = c_sol
 """
 namefile = "resultats/Heuristic_results/Values/"+t+"/results.txt"
 """

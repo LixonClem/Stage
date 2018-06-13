@@ -194,7 +194,6 @@ def fixed_alea(edges):
     for i in range(n):
         if b[i]:
             fe.append(edges[i])
-    print(b)
     return fe
 
 def fixed_0(edges):
@@ -412,7 +411,6 @@ def cross_exchange(edge, voisins, routes, inst, demand,fe):
                     adj1 = adjacents(p1,fe)
                     adj2 = adjacents(p2,fe)
                     if cost_sol(current_cand, inst) < c_init and len(adj1)==0 and len(adj2)==0 and route_demand(current_cand[0], demand) <= Capacity and route_demand(current_cand[1], demand) <= Capacity:
-                        print("YOYU")
                         routes.remove(r1)
                         routes.remove(r2)
                         routes = routes + current_cand
@@ -535,7 +533,7 @@ def ejection_chain(l, point, voisins, routes, inst, demand,fe):
         relocated_cust = R[0][I[0]]
         R[1].insert(I[1]+1, relocated_cust)
         R[0].remove(relocated_cust)
-        print("FHEU")
+
 
     return routes
 
@@ -689,24 +687,15 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
     time = 0
 
     e,ei,ef = common_edges(initial_solution,record)
-    fixed_edges = e
-    print_current_sol(initial_solution,inst)
-    py.show()
-    print(fixed_edges)
-    print_instance(inst)
-    print_edges(fixed_edges,inst,'black')
-    py.show()
-    routes = complete(destruction(fixed_edges),inst)
-    print(routes)
-    print_current_sol(routes,inst)
-    py.show()
+    fixed_edges = e #fixed_alea(all_edges(initial_solution))
 
-    routes = ClarkeWright(routes,inst,demand,lam/2,mu/2,nu/2)
+    routes = complete(destruction(fixed_edges),inst)
+
+    routes = ClarkeWright(routes,inst,demand,lam,mu,nu)
     for i in range(len(routes)):
         routes[i] = decross_route(routes[i].copy(), inst)
         routes[i] = LK(routes[i].copy(), inst)
-    print_current_sol(routes,inst)
-    py.show()
+
     routes2 = copy_sol(routes)
     fixed_edges = []
     # find the worst edge
@@ -736,7 +725,7 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
         if c_final < c_init:
             routes2 = copy_sol(routes)  # new optimum
             #fixed_edges = fixed(all_edges(routes2))
-            print("NB")
+
 
             gs = 0
             N = 0
@@ -747,8 +736,6 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
             # return to the last global solution, for gs iterations
             routes = copy_sol(routes2)
             gs = 0
-
-
 
         if N > 100:
 
@@ -789,8 +776,6 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
         routes2[i] = decross_route(routes2[i].copy(), inst)
         routes2[i] = LK(routes2[i], inst)
 
-    print_current_sol(routes2,inst)
-    py.show()
     return initial_solution, routes2
 
  ###########
@@ -1002,9 +987,9 @@ sol_A3906 = [[0, 15, 30, 13], [0, 24, 3, 38, 12, 9, 28, 29], [0, 7, 8, 4, 16, 10
 A_n65_k09 = read("Instances/A-n65-k09.xml")
 
 
-lam = 1.0
-mu = 0.2
-nu = 0.6
+lam = 1.7
+mu = 1.0
+nu = 0.4
 t = "A-n37-k06"
 instance, demand = A_n37_k06
 initiale = init_A3706
@@ -1025,4 +1010,74 @@ init, reso = apply_heuristic(
     instance, demand, lam, mu, nu, relocation, max_d, v)
 print(cost_sol(init, instance), cost_sol(reso, instance))
 
+
+"""
+costs = []
+best = []
+c_best = 100000
+for i in range(20):
+    
+    init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
+    c_sol = cost_sol(reso,instance)
+    print(i,c_sol)
+    costs.append(round(c_sol,3))
+    if c_sol < c_best:
+        best = reso
+        c_best  = c_sol
+
+namefile = "resultats/Heuristic_results/Values/"+t+"/results.txt"
+
+print(costs)
+mean = 0
+for c in costs:
+    mean += c
+print(mean/len(costs))
+print(min(costs))
+print(best)
+"""
+"""
+def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
+    deja_com = []
+    for li in range(int(10*min_lam),int(10*max_lam)):
+        for mi in range(int(10*min_mu),int(10*max_mu)):
+            for ni in range(int(10*min_nu),int(10*max_nu)):
+
+                lam = 0.1*li
+                mu = 0.1 * mi
+                nu = 0.1*ni
+                print(lam,mu,nu)
+                routes = init_routes(instance,demand)
+                initial_solution = ClarkeWright(routes,instance, demand, lam, mu, nu)
+                for i in range(len(initial_solution)):
+                    initial_solution[i] = decross_route(initial_solution[i].copy(), instance)
+                    initial_solution[i] = LK(initial_solution[i].copy(), instance)
+                
+                if round(cost_sol(initial_solution,instance),3) not in deja_com:
+                    deja_com.append(round(cost_sol(initial_solution,instance),3))
+
+                    init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
+                    c_sol = cost_sol(reso,instance)
+                    c_init = cost_sol(initial_solution,instance)
+                    
+
+                    namefile = "resultats/Heuristic_results/Values/"+t+"/results_det-De.txt"
+
+
+                    writef(namefile,'\n')
+                    writef(namefile,'#################')
+                    writef(namefile,'lambda = '+ str(lam))
+                    writef(namefile,'mu = ' + str(mu))
+                    writef(namefile,'nu = ' + str(nu))
+                    writef(namefile,'')
+                    writef(namefile,'init = ' + str(round(c_init,3)))
+                    writef(namefile,'det = ' + str(round(c_sol,3)))
+                    writef(namefile,'gap = ' + str(round((1-949/c_sol)*100,3)))
+                    writef(namefile,'')
+                    writef(namefile,'solution = ' + str(reso))
+             
+                else:
+                    print("deja calculé !")
+
+total_execution(0.0,2.0,0.0,2.0,0.0,2.0)
+"""
 
