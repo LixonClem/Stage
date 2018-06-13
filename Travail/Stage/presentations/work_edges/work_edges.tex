@@ -172,38 +172,93 @@ Permet de savoir si prendre les arêtes communes à la SI et à la best vont avo
 \begin{alertblock}{Problème}
 On ne connaît pas forcément la meilleure solution au problème. 
 \end{alertblock}
+\end{frame}
 
-
+\begin{frame}{Résultats}
+Résultats observés sur quelques instances pour les heuristiques n'ayant pas d'aléatoire dans CE.
 \begin{tabular}{|c|c|c|c|c|}
    \hline
    ($\lambda;\mu;\nu$) & CW & Det-classic & Det-cons & Det-dest \\
    \hline
    0.8;0.0;1.0 & 981 & 970 & 961 $|$ 957 & 954 \\
    \hline
-   1.0;0.0;0.7 & 1016 & 992 & 983 & 998 \\
+   1.0;0.0;0.7 & 1016 & 992 & 998 $|$ 977 & 962 \\
    \hline
-   0.6;1.8;0.9 & 1532 & 1044 & 972 & 1006\\
+   0.6;1.8;0.9 & 1532 & 1034 & 1078 $|$ 957 & 977\\
    \hline
-   1.0;0.2;0.6 & 968 & 958 & 957 & 963 \\
+   1.0;0.2;0.6 & 968 & 968 & 957 $|$ 957 & 955 \\
+   \hline
+\end{tabular}
+
+Idem pour les heuristiques ayant de l'aléatoire dans CE.
+\begin{tabular}{|c|c|c|c|c|}
+   \hline
+   ($\lambda;\mu;\nu$) & CW & Sto-classic & Sto-cons & Sto-dest \\
+   \hline
+   0.8;0.0;1.0 &981 & 980 $|$ 973 & 972 $|$ 957 & 963 $|$ 960 \\
+   \hline
+   1.0;0.0;0.7 &1016& 1001 $|$ 973 & 993 $|$ 952 & 987 $|$ 965 \\
+   \hline
+   0.6;1.8;0.9 &1532& 1033 $|$ 990 & 1028 $|$ 963 & 1010 $|$ 973\\
+   \hline
+   1.0;0.2;0.6 &968& 968 $|$ 968 & 965 $|$ 957 & 988 $|$ 988 \\
    \hline
 \end{tabular}
 \end{frame}
+
+
 \subsection{Choix aléatoire d'arêtes}
 
+\begin{frame}{Arêtes aléatoires}
+
+\begin{block}{Intérêt}
+Toujours possible de les calculer
+\end{block}
+
+\begin{alertblock}{Problème}
+Peu de contrôle sur les résultats
+\end{alertblock}
 
 
+\underline{Remarque}: pour les algorithmes "cons" on conserve $\frac{n}{10}$ arêtes, pour les algorithmes "dest" on en conserve $\frac{n}{2}$.
 
+\end{frame}
 
+\begin{frame}{Résultats}
 
+\begin{tabular}{|c|c|c|c|c|}
+   \hline
+   ($\lambda;\mu;\nu$) & CW & Det-classic & Det-cons & Det-dest \\
+   \hline
+   0.8;0.0;1.0 &981 & 970 & 962 $|$ 957 & 1019 $|$ 957 \\
+   \hline
+   1.0;0.0;0.7 &1016& 992 & 1001 $|$ 975 & 1018 $|$ 963 \\
+   \hline
+   0.6;1.8;0.9 &1532& 1034& 1063 $|$ 963 & 1005 $|$ 957\\
+   \hline
+   1.0;0.2;0.6 &968& 968 & 958 $|$ 957 & 1016 $|$ 957 \\
+   \hline
+\end{tabular}
 
+\begin{tabular}{|c|c|c|c|c|}
+   \hline
+   ($\lambda;\mu;\nu$) & CW & Sto-classic & Sto-cons & Sto-dest \\
+   \hline
+   0.8;0.0;1.0 &981 & 970 & 975 $|$ 957 & 1042 $|$ 986 \\
+   \hline
+   1.0;0.0;0.7 &1016& 992 & 997 $|$ 952 & 1072 $|$ 978 \\
+   \hline
+   0.6;1.8;0.9 &1532& 1034& 1021 $|$ 971 & 1008 $|$ 952\\
+   \hline
+   1.0;0.2;0.6 &968& 968 & 962 $|$ 957 & 1020 $|$ 970 \\
+   \hline
+\end{tabular}
+\end{frame}
 
-
-
-
-
-
-
-
-
-
+\begin{frame}{Conclusion}
+\begin{itemize}
+\item Nouvel algo en préparation
+\item Etude de l'algo Det-dest
+\end{itemize}
+\end{frame}
 \end{document}

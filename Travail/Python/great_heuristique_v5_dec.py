@@ -660,7 +660,7 @@ def bad_edge(b, p, routes, inst,fixed):
 
 def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
     # Initial solution
-    record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
+    record = [[0,17, 24, 35, 37, 34, 26, 11, 8], [0,2, 22, 3, 7, 16, 32, 10], [0, 21, 30, 13, 28, 27, 36, 6 ], [0, 14, 19, 25, 33, 12, 18, 4 ], [0, 9, 38, 15, 5, 29, 20, 23, 1, 31]]
     initial_solution = init_routes(inst, demand)
     initial_solution = ClarkeWright(initial_solution, inst, demand, lam, mu, nu)
     
@@ -990,16 +990,20 @@ A_n65_k09 = read("Instances/A-n65-k09.xml")
 lam = 1.7
 mu = 1.0
 nu = 0.4
-t = "A-n37-k06"
-instance, demand = A_n37_k06
+t = "A-n39-k05"
+instance, demand = A_n39_k05
 initiale = init_A3706
 solution = sol_A3706
 
 max_d = max_depth(instance)
 v = voisins(KNN, instance)
-
-record = [[0, 16, 35, 25, 7], [0, 4, 18, 14, 36, 29, 24], [0, 31, 33, 5, 3, 1, 8, 6], [0, 27, 32, 15, 21, 34, 17], [0, 13, 30, 10, 26, 20], [0, 11, 12, 22, 23, 28, 2, 9, 19]]
-
+"""
+record = [[0,17, 24, 35, 37, 34, 26, 11, 8], [0,2, 22, 3, 7, 16, 32, 10], [0, 21, 30, 13, 28, 27, 36, 6 ], [0, 14, 19, 25, 33, 12, 18, 4 ], [0, 9, 38, 15, 5, 29, 20, 23, 1, 31]]
+print(cost_sol(record,instance))
+print_current_sol(record,instance)
+py.show()
+"""
+""""
 initial_solution = init_routes(instance, demand)
 initial_solution = ClarkeWright(initial_solution,instance, demand, lam, mu, nu)
 for i in range(len(initial_solution)):
@@ -1009,7 +1013,7 @@ for i in range(len(initial_solution)):
 init, reso = apply_heuristic(
     instance, demand, lam, mu, nu, relocation, max_d, v)
 print(cost_sol(init, instance), cost_sol(reso, instance))
-
+"""
 
 """
 costs = []
@@ -1035,7 +1039,7 @@ print(mean/len(costs))
 print(min(costs))
 print(best)
 """
-"""
+
 def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
     deja_com = []
     for li in range(int(10*min_lam),int(10*max_lam)):
@@ -1071,7 +1075,7 @@ def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
                     writef(namefile,'')
                     writef(namefile,'init = ' + str(round(c_init,3)))
                     writef(namefile,'det = ' + str(round(c_sol,3)))
-                    writef(namefile,'gap = ' + str(round((1-949/c_sol)*100,3)))
+                    writef(namefile,'gap = ' + str(round((1-822/c_sol)*100,3)))
                     writef(namefile,'')
                     writef(namefile,'solution = ' + str(reso))
              
@@ -1079,5 +1083,4 @@ def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
                     print("deja calculé !")
 
 total_execution(0.0,2.0,0.0,2.0,0.0,2.0)
-"""
 
