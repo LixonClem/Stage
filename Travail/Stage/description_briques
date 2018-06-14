@@ -1,0 +1,10 @@
+DÉCRIRE dans un doc tex l'algo + différentes briques utilisées
+
+- Condition d'arrêt
+- Voisinage parcouru
+- No,bre de runs
+- lam,mu,nu
+
+Puis pour chaque brique (opérateur) décrire son voisinage : Best improve (BI) ou First improve (FI), avec la méthode de parcours du voisinage (ordonnée, semi-ordonnée, aléatoire).
+
+Ecrire le pseudo code, pour chaque brique (cf 1ere pres).
