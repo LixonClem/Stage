@@ -1,5 +1,4 @@
-\beamer@endinputifotherversion {3.36pt}
-\select@language {english}
+\babel@toc {english}{}
 \beamer@sectionintoc {1}{Stochastisation}{2}{0}{1}
 \beamer@sectionintoc {2}{Utilisation des ar\IeC {\^e}tes conserv\IeC {\'e}es}{3}{0}{2}
 \beamer@subsectionintoc {2}{1}{Conservation}{4}{0}{2}

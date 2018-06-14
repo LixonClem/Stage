@@ -133,11 +133,16 @@ def distance(p1, p2):
 def cost_sol(routes, inst):
     c = 0
     for r in routes:
+        print(r)
         for i in range(len(r)-1):
             a = inst[r[i]]
             b = inst[r[i+1]]
-            c += distance(a, b)
-        c += distance(inst[r[len(r)-1]], inst[r[0]])
+            print(a,b)
+            c += round(distance(a, b))
+            
+            print(distance(a,b))
+        c += round(distance(inst[r[len(r)-1]], inst[r[0]]))
+        print(c)
     return c
 
 # Compute the kNN for each node
@@ -990,19 +995,21 @@ A_n65_k09 = read("Instances/A-n65-k09.xml")
 lam = 1.7
 mu = 1.0
 nu = 0.4
-t = "A-n39-k05"
-instance, demand = A_n39_k05
+t = "A-n37-k06"
+instance, demand = A_n37_k06
 initiale = init_A3706
 solution = sol_A3706
-
+print(instance)
 max_d = max_depth(instance)
 v = voisins(KNN, instance)
-"""
-record = [[0,17, 24, 35, 37, 34, 26, 11, 8], [0,2, 22, 3, 7, 16, 32, 10], [0, 21, 30, 13, 28, 27, 36, 6 ], [0, 14, 19, 25, 33, 12, 18, 4 ], [0, 9, 38, 15, 5, 29, 20, 23, 1, 31]]
+
+record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
+#record = [[0, 27, 32, 15, 30, 13], [0, 10, 11, 12, 22, 23, 28, 2, 33], [0, 7, 25, 35, 16], [0, 24, 29, 36, 6, 14], [0, 18, 17, 34, 1, 3, 5, 8, 20], [0, 31, 19, 9, 21, 26, 4]]
+
 print(cost_sol(record,instance))
 print_current_sol(record,instance)
 py.show()
-"""
+
 """"
 initial_solution = init_routes(instance, demand)
 initial_solution = ClarkeWright(initial_solution,instance, demand, lam, mu, nu)
@@ -1082,5 +1089,5 @@ def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
                 else:
                     print("deja calculé !")
 
-total_execution(0.0,2.0,0.0,2.0,0.0,2.0)
+#total_execution(0.0,2.0,0.0,2.0,0.0,2.0)
 
