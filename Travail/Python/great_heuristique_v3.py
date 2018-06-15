@@ -919,7 +919,7 @@ v = voisins(KNN, instance)
 
 
 
-
+"""
 initial_solution = ClarkeWright(instance, demand, lam, mu, nu)
 for i in range(len(initial_solution)):
     initial_solution[i] = decross_route(initial_solution[i].copy(), instance)
@@ -928,6 +928,7 @@ for i in range(len(initial_solution)):
 
 record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
 print(cost_sol(record,instance))
+"""
 """
 
 aE = all_edges(initial_solution)
@@ -956,11 +957,11 @@ r_mean.sort()
 r_meanref.sort()
 
 """
-
+"""
 init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
 print(cost_sol(init,instance),cost_sol(reso,instance))
-
 """
+
 def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
     deja_com = []
     for li in range(int(10*min_lam),int(10*max_lam)):
@@ -973,23 +974,19 @@ def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
                 print(lam,mu,nu)
 
                 initial_solution = ClarkeWright(instance, demand, lam, mu, nu)
-                for i in range(len(initial_solution)):
+                """for i in range(len(initial_solution)):
                     initial_solution[i] = decross_route(initial_solution[i].copy(), instance)
-                    initial_solution[i] = LK(initial_solution[i].copy(), instance)
+                    initial_solution[i] = LK(initial_solution[i].copy(), instance)"""
                 
                 if round(cost_sol(initial_solution,instance),3) not in deja_com:
                     deja_com.append(round(cost_sol(initial_solution,instance),3))
-                    aE = all_edges(initial_solution)
-                    E,Ei,Ef = common_edges(initial_solution,record)
 
-                    n,rei,r_mean = all_ranks(E,initial_solution,instance)
-                    nref,reiref,r_meanref = all_ranks(aE,initial_solution,instance)
                     #init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
                     #c_sol = cost_sol(reso,instance)
                     c_init = cost_sol(initial_solution,instance)
-                    print(c_init,n,len(Ei))
+                    
 
-                    namefile = "resultats/Heuristic_results/Values/"+t+"/edges_opt-init.txt"
+                    namefile = "resultats/Heuristic_results/Values/"+t+"/results_CW.txt"
 
 
                     writef(namefile,'\n')
@@ -998,22 +995,15 @@ def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
                     writef(namefile,'mu = ' + str(mu))
                     writef(namefile,'nu = ' + str(nu))
                     writef(namefile,'')
-                    writef(namefile,'init = ' + str(round(c_init,3)))
-                    writef(namefile,'all edges = ' + str(n))
-                    writef(namefile,'common edges = ' + str(len(rei)))
-                    #writef(namefile,'det = ' + str(round(c_sol,3)))
-                    #writef(namefile,'gap = ' + str(round((1-822/c_sol)*100,3)))
+                    writef(namefile,'CW = ' + str(round(c_init,3)))
                     writef(namefile,'')
-                    writef(namefile,str(E))
-                    writef(namefile,'')
-                    writef(namefile,str(reiref))
-                    writef(namefile,'')
-                    writef(namefile,str(rei))                
+                    writef(namefile,'solution = ' + str(initial_solution))
+             
                 else:
                     print("deja calculé !")
 
 total_execution(0.0,2.0,0.0,2.0,0.0,2.0)
-"""
+
 """
 sol_para = []
 

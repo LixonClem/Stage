@@ -1,0 +1,188 @@
+
+
+#################
+lambda = 0.0
+mu = 0.0
+nu = 0.0
+
+CW = 1686.261
+
+solution = [[0, 1, 33, 21, 5, 11, 2, 22, 28, 12, 23], [0, 9, 10, 32, 15, 26], [0, 20, 19, 25, 8, 27, 3, 30], [0, 18, 4, 31, 35], [0, 13, 34, 17, 6, 36], [0, 24, 14, 16, 7, 29]]
+
+
+#################
+lambda = 0.0
+mu = 0.0
+nu = 0.30000000000000004
+
+CW = 1683.504
+
+solution = [[0, 1, 33, 21, 5, 11, 2, 22, 28, 12, 23], [0, 9, 10, 32, 15, 26], [0, 20, 19, 25, 8, 27, 3, 30], [0, 18, 4, 31, 35], [0, 13, 34, 17, 6, 36], [0, 24, 14, 7, 16, 29]]
+
+
+#################
+lambda = 0.0
+mu = 0.0
+nu = 0.9
+
+CW = 1676.803
+
+solution = [[0, 1, 33, 21, 5, 11, 2, 22, 28, 12, 23], [0, 9, 10, 32, 15, 26], [0, 20, 19, 25, 8, 27, 3, 30], [0, 4, 13, 35], [0, 31, 34, 17, 6, 18, 29], [0, 24, 14, 7, 16, 36]]
+
+
+#################
+lambda = 0.0
+mu = 0.0
+nu = 1.9000000000000001
+
+CW = 1526.29
+
+solution = [[0, 1, 33, 21, 5, 11, 2, 22, 28, 12, 23], [0, 9, 10, 32, 15, 26], [0, 20, 19, 25, 27, 8, 3, 30], [0, 4, 13, 35], [0, 31, 34, 17, 6, 18, 29], [0, 24, 14, 7, 16, 36]]
+
+
+#################
+lambda = 0.0
+mu = 0.2
+nu = 1.8
+
+CW = 1566.507
+
+solution = [[0, 1, 33, 21, 5, 11, 2, 22, 28, 12, 23], [0, 9, 32, 10, 15, 26], [0, 20, 19, 25, 27, 8, 3, 30], [0, 4, 13, 35], [0, 31, 34, 17, 6, 18, 29], [0, 24, 14, 7, 16, 36]]
+
+
+#################
+lambda = 0.0
+mu = 0.2
+nu = 1.9000000000000001
+
+CW = 1506.301
+
+solution = [[0, 1, 33, 21, 5, 11, 2, 28, 22, 12, 23], [0, 9, 32, 10, 15, 26], [0, 20, 19, 25, 27, 8, 3, 30], [0, 4, 13, 35], [0, 31, 34, 17, 6, 18, 29], [0, 24, 14, 7, 16, 36]]
+
+
+#################
+lambda = 0.0
+mu = 0.30000000000000004
+nu = 1.9000000000000001
+
+CW = 1491.039
+
+solution = [[0, 1, 33, 21, 5, 11, 2, 28, 22, 12, 23], [0, 9, 32, 10, 30, 27, 25], [0, 20, 19, 8, 26, 3, 15], [0, 4, 13, 35], [0, 31, 34, 17, 6, 18, 29], [0, 24, 14, 7, 16, 36]]
+
+
+
+
+
+
+
+
+
+
+def rank_costs(E, inst):
+    r = []
+    rc = []
+    for e in E:
+        c = distance(inst[e[0]], inst[e[1]])
+        r.append((c, e))
+    r.sort()
+    for i in r:
+        rc.append(i[1])
+    return rc
+
+
+def rank_depth(E, inst):
+    r = []
+    rd = []
+    dmax = max_depth(inst)
+    for e in E:
+        d = depth(inst[e[0]], inst[e[1]])/dmax
+        r.append((d, e))
+    r.sort()
+    for i in r:
+        rd.append(i[1])
+    return rd
+
+
+def rank_width(E, sol, inst):
+    r = []
+    rw = []
+    for e in E:
+        route = find_route(e[0], sol)
+        G = gravity_center(route, inst)
+        w = width(inst[e[0]], inst[e[1]], G)
+        r.append((w, e))
+    r.sort()
+    for i in r:
+        rw.append(i[1])
+    return rw
+
+
+def rank_edges(sol, inst):
+    E = all_edges(sol)
+    n = len(E)
+    rc = rank_costs(E, inst)
+    rd = rank_depth(E, inst)
+    rw = rank_width(E, sol, inst)
+    return n, rc, rd, rw
+
+
+def give_rank(e, rank):
+    for i in range(len(rank)):
+        if are_equal(e, rank[i]):
+            return (i+1)
+
+
+def all_ranks(cE, sol, inst):
+    n, rc, rd, rw = rank_edges(sol, inst)
+    r = []
+    r_mean = []
+    for e in cE:
+        g1 = give_rank(e, rc)
+        g2 = give_rank(e, rd)
+        g3 = give_rank(e, rw)
+
+        r_mean.append((g1+g2+g3)/3)
+        g = [g1, g2, g3]
+        g.sort()
+        r.append(g)
+        r.sort()
+    return n, r, r_mean
+
+
+def analyse(n, ranks):
+    a = [0 for i in range(16)]
+    for r in ranks:
+        if r[0] < n/3 or r[1] < n/3 or r[2] < n/3:
+            a[0] += 1
+        if r[0] < n/3 and r[1] < n/3 and r[2] < n/3:
+            a[1] += 1
+        if r[0] < 15 or r[1] < 15 or r[2] < 15:
+            a[2] += 1
+        if r[0] < 15 and r[1] < 15 and r[2] < 15:
+            a[3] += 1
+        if r[0] < 10 or r[1] < 10 or r[2] < 10:
+            a[4] += 1
+        if r[0] < 10 and r[1] < 10 and r[2] < 10:
+            a[5] += 1
+        if r[0] < 5 or r[1] < 5 or r[2] < 5:
+            a[6] += 1
+        if r[0] < 5 and r[1] < 5 and r[2] < 5:
+            a[7] += 1
+
+        if r[0] > n-n/3 or r[1] > n-n/3 or r[2] > n-n/3:
+            a[8] += 1
+        if r[0] > n-n/3 and r[1] > n-n/3 and r[2] > n-n/3:
+            a[9] += 1
+        if r[0] > n-15 or r[1] > n-15 or r[2] > n-15:
+            a[10] += 1
+        if r[0] > n-15 and r[1] > n-15 and r[2] > n-15:
+            a[11] += 1
+        if r[0] > n-10 or r[1] > n-10 or r[2] > n-10:
+            a[12] += 1
+        if r[0] > n-10 and r[1] > n-10 and r[2] > n-10:
+            a[13] += 1
+        if r[0] > n-5 or r[1] > n-5 or r[2] > n-5:
+            a[14] += 1
+        if r[0] > n-5 and r[1] > n-5 and r[2] > n-5:
+            a[15] += 1
+    return a
