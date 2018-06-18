@@ -903,9 +903,9 @@ sol_A3906 = [[0, 15, 30, 13], [0, 24, 3, 38, 12, 9, 28, 29], [0, 7, 8, 4, 16, 10
 A_n65_k09 = read("Instances/A-n65-k09.xml")
 
 
-lam = 0.0
-mu = 1.1
-nu = 1.4
+lam = 0.8
+mu = 0.0
+nu = 1.0
 t = "A-n37-k06"
 instance, demand = A_n37_k06
 initiale = init_A3706
@@ -957,10 +957,10 @@ r_mean.sort()
 r_meanref.sort()
 
 """
-"""
+
 init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
 print(cost_sol(init,instance),cost_sol(reso,instance))
-"""
+
 
 def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
     deja_com = []
@@ -1002,7 +1002,7 @@ def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
                 else:
                     print("deja calculé !")
 
-total_execution(0.0,2.0,0.0,2.0,0.0,2.0)
+#total_execution(0.0,2.0,0.0,2.0,0.0,2.0)
 
 """
 sol_para = []

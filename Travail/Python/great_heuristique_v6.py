@@ -997,7 +997,7 @@ total_execution(0.0,2.0,0.0,2.0,0.0,2.0)
 """
 
 def improved_heuristic(instance,demand,lam,mu,nu):
-    record = [[0,21, 31, 19, 17, 13, 7, 26],[0,12, 1, 16, 30],[0,27, 24],[0,29, 18, 8, 9, 22, 15, 10, 25, 5, 20],[0,14, 28, 11, 4, 23, 3, 2, 6]]
+    record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
     routes = init_routes(instance,demand)
     initial_solution = ClarkeWright(routes,instance, demand, lam, mu, nu)
     for i in range(len(initial_solution)):
@@ -1010,10 +1010,10 @@ def improved_heuristic(instance,demand,lam,mu,nu):
     print(cost_sol(last_solution,instance))
     for i in range(10):
         print(i)
-        e,ei,ef = common_edges(initial_solution,record)
-        fixed_edges = e 
+        e,ei,ef = common_edges(initial_solution,last_solution)
+        fixed_edges = e
         initial_solution = complete(destruction(fixed_edges),instance)
-        initial_solution = ClarkeWright(initial_solution,instance,demand,lam,mu,nu)
+        initial_solution = ClarkeWright(initial_solution,instance,demand,lam,mu/2,nu/2)
         for i in range(len(routes)):
             initial_solution[i] = decross_route(initial_solution[i].copy(), instance)
             initial_solution[i] = LK(initial_solution[i].copy(), instance)
@@ -1022,11 +1022,11 @@ def improved_heuristic(instance,demand,lam,mu,nu):
         print(cost_sol(initial_solution,instance))
         print(cost_sol(last_solution,instance))
 
-improved_heuristic(instance,demand,lam,mu,nu)
+#improved_heuristic(instance,demand,lam,mu,nu)
 
-"""
+
 def CW_iteration(instance,demand,lam,mu,nu):
-    record = [[0,21, 31, 19, 17, 13, 7, 26],[0,12, 1, 16, 30],[0,27, 24],[0,29, 18, 8, 9, 22, 15, 10, 25, 5, 20],[0,14, 28, 11, 4, 23, 3, 2, 6]]
+    record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
     routes = init_routes(instance,demand)
     initial_solution = ClarkeWright(routes,instance, demand, lam, mu, nu)
     for i in range(len(initial_solution)):
@@ -1035,14 +1035,13 @@ def CW_iteration(instance,demand,lam,mu,nu):
     
     print(cost_sol(initial_solution,instance))
 
-    for i in range(10):
-        lam += 0.1
-        mu += 0.1
-        nu += 0.1
+    for i in range(100):
+        lam /= 1.2
+        mu /= 1.1
+        nu /= 1.1
         print(i)
         e,ei,ef = common_edges(initial_solution,record)
         fixed_edges = e
-        print(e)
         initial_solution = complete(destruction(fixed_edges),instance)
         initial_solution = ClarkeWright(initial_solution,instance,demand,lam,mu,nu)
         for i in range(len(initial_solution)):
@@ -1051,4 +1050,4 @@ def CW_iteration(instance,demand,lam,mu,nu):
 
         print(cost_sol(initial_solution,instance))
 
-CW_iteration(instance,demand,lam,mu,nu)"""
+CW_iteration(instance,demand,lam,mu,nu)

@@ -9,6 +9,7 @@ import math as m
 from lxml import etree
 import os.path
 import itertools as it
+import time 
 
 global ylim
 global xlim
@@ -660,7 +661,7 @@ def bad_edge(b, p, routes, inst,fixed):
 
 def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
     # Initial solution
-    record = [[0,21, 31, 19, 17, 13, 7, 26],[0,12, 1, 16, 30],[0,27, 24],[0,29, 18, 8, 9, 22, 15, 10, 25, 5, 20],[0,14, 28, 11, 4, 23, 3, 2, 6]]
+    record = [[0, 27, 32, 15, 30, 13], [0, 10, 11, 12, 22, 23, 28, 2, 33], [0, 7, 25, 35, 16], [0, 24, 29, 36, 6, 14], [0, 18, 17, 34, 1, 3, 5, 8, 20], [0, 31, 19, 9, 21, 26, 4]]
     initial_solution = init_routes(inst, demand)
     initial_solution = ClarkeWright(initial_solution, inst, demand, lam, mu, nu)
     
@@ -811,6 +812,12 @@ def common_edges(sol1, sol2):
 # Apprentissage #
 #################
 
+def is_edge_in (e,l):
+    for i in l:
+        if are_equal(e,i):
+            return True
+    return False
+
 def normalize_solution(sol):
     for i in range(len(sol)):
         if sol[i][1] > sol[i][len(sol[i])-1]:
@@ -826,15 +833,17 @@ def init_matrix(nb):
 def update_matrix(mat,sol):
     for r in sol:
         for i in range(len(r)-1):
-            mat[r[i]][r[i+1]] += 1
-        mat[r[len(r)-1]][0] += 1
+            e = [r[i],r[i+1]]
+            e.sort()
+            mat[e[0]][e[1]] += 1
+        mat[0][r[len(r)-1]] += 1
     return mat
 
-def generate(nb,inst,demand):
+def rd_generate(nb,inst,demand):
     initial = init_routes(inst,demand)
     Base = []
+    me = 0
     for j in range(nb):
-        print(j)
         l = 0.1*rd.randint(1,20)
         m = 0.1*rd.randint(1,20)
         n = 0.1*rd.randint(1,20)
@@ -843,15 +852,45 @@ def generate(nb,inst,demand):
             routes[i] = decross_route(routes[i].copy(), instance)
             routes[i] = LK(routes[i].copy(), instance)
         routes = normalize_solution(routes)
+        me += cost_sol(routes,inst)
         Base.append((cost_sol(routes,inst),routes))
         Base.sort()
-    return Base
+    return Base,[Base[0][0],Base[len(Base)-1][0],me/nb]
 
-def learning_set(Base,percent):
+def all_generate(inst,demand):
+    initial = init_routes(inst,demand)
+    Base = []
+    me = 0
+    for li in range(1,20):
+        for mi in range(1,20):
+            for ni in range(1,20): 
+                print(li,mi,ni)
+                l = 0.1*li
+                m = 0.1*mi
+                n = 0.1*ni
+                routes = ClarkeWright(copy_sol(initial),inst,demand,l,m,n)
+                for i in range(len(routes)):
+                    routes[i] = decross_route(routes[i].copy(), instance)
+                    routes[i] = LK(routes[i].copy(), instance)
+                routes = normalize_solution(routes)
+                me += cost_sol(routes,inst)
+                Base.append((cost_sol(routes,inst),routes))
+    Base.sort()
+    return Base,[Base[0][0],Base[len(Base)-1][0],me/8000]
+
+def learning_set_quantity(Base,percent):
     ens = Base[:len(Base)//percent]
     ls = []
     for s in ens:
         ls.append(s[1])
+    return ls
+
+def learning_set_quality(Base,lim):
+    ls=[]
+    i = 0
+    while Base[i][0] <= lim:
+        ls.append(Base[i][1])
+        i += 1
     return ls
 
 def learn(mat,ls):
@@ -859,7 +898,7 @@ def learn(mat,ls):
         update_matrix(mat,sol)
     return mat
 
-def mat_info(lim,mat):
+def mat_info_req(lim,mat):
     ed_brut = []
     ed = []
     for i in range(len(mat)):
@@ -870,13 +909,27 @@ def mat_info(lim,mat):
     for e in ed_brut:
         ed.append((e[1],e[2]))
     return ed
+
+def mat_info_rg(rg,mat):
+    ed_brut = []
+    ed = []
+    for i in range(len(mat)):
+        for j in range(len(mat)):
+            if mat[i][j]>0:
+                ed_brut.append((mat[i][j],i,j))
+    ed_brut.sort()
+    ed_brut.reverse()
+    for i in range(rg):
+        e = ed_brut[i]
+        ed.append((e[1],e[2]))
+    return ed
     
 
 A_n37_k06 = read("Instances/A-n37-k06.xml")
 
-lam = 0.8
-mu = 0.0
-nu = 1.0
+lam = 1.0
+mu = 0.2
+nu = 0.6
 t = "A-n37-k06"
 instance, demand = A_n37_k06
 
@@ -884,11 +937,12 @@ instance, demand = A_n37_k06
 max_d = max_depth(instance)
 v = voisins(KNN, instance)
 
-#record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
-#record = [[0, 27, 32, 15, 30, 13], [0, 10, 11, 12, 22, 23, 28, 2, 33], [0, 7, 25, 35, 16], [0, 24, 29, 36, 6, 14], [0, 18, 17, 34, 1, 3, 5, 8, 20], [0, 31, 19, 9, 21, 26, 4]]
+record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
+record1 = [[0, 27, 32, 15, 30, 13], [0, 10, 11, 12, 22, 23, 28, 2, 33], [0, 7, 25, 35, 16], [0, 24, 29, 36, 6, 14], [0, 18, 17, 34, 1, 3, 5, 8, 20], [0, 31, 19, 9, 21, 26, 4]]
 #record = [[0,55, 29, 62, 39, 51, 17 ],[0,45, 61, 42, 38, 2, 41, 16, 50, 60],[0,21, 25, 52, 24, 13, 12, 1, 33],[0,49, 4, 3, 36, 35, 37, 30],[0,47, 34, 31, 26, 6, 64, 46],[0,28, 23, 57, 48, 54, 63, 11, 7],[0,44, 59, 40, 58, 20, 32],[0,5, 53, 56, 10, 8, 19, 18],[0,43, 27, 14, 9, 22, 15]]
-record = [[0,21, 31, 19, 17, 13, 7, 26],[0,12, 1, 16, 30],[0,27, 24],[0,29, 18, 8, 9, 22, 15, 10, 25, 5, 20],[0,14, 28, 11, 4, 23, 3, 2, 6]]
+#record = [[0,21, 31, 19, 17, 13, 7, 26],[0,12, 1, 16, 30],[0,27, 24],[0,29, 18, 8, 9, 22, 15, 10, 25, 5, 20],[0,14, 28, 11, 4, 23, 3, 2, 6]]
 record = normalize_solution(record)
+record1 = normalize_solution(record1)
 
 """"
 initial_solution = init_routes(instance, demand)
@@ -897,10 +951,12 @@ for i in range(len(initial_solution)):
     initial_solution[i] = decross_route(initial_solution[i].copy(), instance)
     initial_solution[i] = LK(initial_solution[i].copy(), instance)
 """
+"""
+print(cost_sol(record,instance),cost_sol(record1,instance))
 init, reso = apply_heuristic(
     instance, demand, lam, mu, nu, relocation, max_d, v)
 print(cost_sol(init, instance), cost_sol(reso, instance))
-
+"""
 
 """
 costs = []
@@ -971,33 +1027,103 @@ def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
 
 total_execution(0.0,2.0,0.0,2.0,0.0,2.0)
 """
+tps_deb = time.time()
+Base,stat = all_generate(instance,demand)
+print(Base,stat)
+tps_fin = time.time()
+print(tps_fin-tps_deb)
+for b in Base:
+    namefile = "resultats/Heuristic_results/Values/"+t+"/Base_complète.txt"
+    writef(namefile, str(b))
+writef(namefile,'Statistiques = ' + str(stat))
 """
-base = generate(500,instance,demand)
+for lg in range(5):
+    print(lg)
+    base,stat = rd_generate(1000,instance,demand)
+    print(stat)
+    quality = (stat[1]-stat[0])/10 + stat[0]
+    print(quality)
+    ls_quan = learning_set_quantity(base,10)
+    ls_qual = learning_set_quality(base,quality)
+    print(len(ls_qual))
+    mat_quan = init_matrix(len(instance))
+    mat_qual = init_matrix(len(instance))
+    mat_quan = learn(mat_quan,ls_quan)
+    mat_qual = learn(mat_qual,ls_qual)
+    print('')
+    e_quan = mat_info_rg(20,mat_quan)
+    e_qual = mat_info_rg(20,mat_qual)
 
-ls = learning_set(base,10)
-
-mat = init_matrix(len(instance))
-mat = learn(mat,ls)
-e = mat_info(25,mat)
-print(e)
-namefile = "resultats/Heuristic_results/Values/"+t+"/learn_edges_bests.txt"
 
 
-writef(namefile,'\n')
-writef(namefile,'#################')
-writef(namefile,'Base = '+ str(500))
-writef(namefile,'Percent = '+ str(10))
-writef(namefile,'Lim = '+ str(25))
-writef(namefile,'')
-writef(namefile,'edges = ' + str(e))
-writef(namefile,'')
+    true_edges = all_edges(record)
+    print(all_edges(record))
+    print(len(e_quan),e_quan)
+    pre = []
+    accuracy = 0
+    for i in e_quan:
+        if is_edge_in(i,true_edges):
+            pre.append(True)
+            accuracy += 1
+        else:
+            pre.append(False)
 
-true_edges = all_edges(record)
-pre = []
-for i in e:
-    pre.append(i in true_edges)
 
-print(all_edges(record))
+    print(pre)
+    print(accuracy/len(e_quan))
+    
+    namefile = "resultats/Heuristic_results/Values/"+t+"/learn_edges_quantity.txt"
 
-print(pre)
+
+    writef(namefile,'\n')
+    writef(namefile,'#################')
+    writef(namefile,'Generate = '+ str(1000))
+    writef(namefile,'Stat = '+ str(stat))
+    writef(namefile,'Percent = '+ str(10))
+    writef(namefile,'Rang max = '+ str(20))
+    writef(namefile,'')
+    writef(namefile,'edges = ' + str(e_quan))
+    writef(namefile,'')
+    writef(namefile,'true = ' + str(pre))
+    writef(namefile,'nb corrects = ' + str(accuracy))
+    writef(namefile,'nb aretes = ' + str(len(e_quan)))
+    writef(namefile,'accuracy = ' + str(accuracy/len(e_quan)))
+    writef(namefile,'')
+
+
+    print(len(e_qual),e_qual)
+    pre = []
+    accuracy = 0
+    for i in e_qual:
+        if is_edge_in(i,true_edges):
+            pre.append(True)
+            accuracy += 1
+        else:
+            pre.append(False)
+            
+    namefile = "resultats/Heuristic_results/Values/"+t+"/learn_edges_quality.txt"
+
+
+    writef(namefile,'\n')
+    writef(namefile,'#################')
+    writef(namefile,'Generate = '+ str(1000))
+    writef(namefile,'Stat = '+ str(stat))
+    writef(namefile,'Quality = '+ str(10))
+    writef(namefile,'Rang max = '+ str(20))
+    writef(namefile,'')
+    writef(namefile,'edges = ' + str(e_qual))
+    writef(namefile,'')
+    writef(namefile,'true = ' + str(pre))
+    writef(namefile,'nb corrects = ' + str(accuracy))
+    writef(namefile,'nb aretes = ' + str(len(e_qual)))
+    writef(namefile,'accuracy = ' + str(accuracy/len(e_qual)))
+    writef(namefile,'')
+
+    print(pre)
+    print(accuracy/len(e_qual))
+
+tps_fin = time.time()
+
+print(tps_fin-tps_deb)
+
 """

@@ -200,6 +200,8 @@ Cette heuristique se compose de la manière suivante :
    \hline
    Condition d'arrêt : 3 minutes depuis la dernière amélioration  \\
    \hline
+   Compute worst edge \\
+   \hline
    EC$_{BI-O}$ \\
    \hline
    LK$_{BI-O}$ \\
@@ -226,7 +228,7 @@ Les auteurs calculent aussi à l'avance $30$ plus proches voisins pour chacun de
 
 \subsubsection{Algorithme utilisé}
 
-L'algorithme que j'utilise se compose de la manière suivante :
+L'algorithme (A$_d$) que j'utilise se compose de la manière suivante :
 
 \begin{center}
 \begin{tabular}{|c|}
@@ -238,6 +240,8 @@ L'algorithme que j'utilise se compose de la manière suivante :
    \hline
    \hline
    Condition d'arrêt : 1500 itérations depuis la dernière amélioration  \\
+   \hline
+   Compute worst edge \\
    \hline
    EC$_{BI-O}$ \\
    \hline
@@ -261,7 +265,7 @@ L'algorithme que j'utilise se compose de la manière suivante :
 \end{itemize} 
 
 
-Un autre algorithme (seul le bloc CE est modifié):
+Un autre algorithme (A$_a$, où seul le bloc CE est modifié):
 \begin{center}
 \begin{tabular}{|c|}
 
@@ -272,6 +276,8 @@ Un autre algorithme (seul le bloc CE est modifié):
    \hline
    \hline
    Condition d'arrêt : 1500 itérations depuis la dernière amélioration  \\
+   \hline
+   Compute worst edge \\
    \hline
    EC$_{BI-O}$ \\
    \hline
@@ -289,4 +295,9 @@ Un autre algorithme (seul le bloc CE est modifié):
 \end{center}
 
 Pour cet algorithme, j'effectue $25$ itérations en gardant la moyenne des coûts obtenus, ainsi que la solution qui a donné le meilleur coût.
+
+Temps d'exécution moyen des algos ?
+En théorie, avec un nombre suffisant d'itérations, le meilleur résultat donné par A$_a$ est au moins aussi bon que celui donné par A$_d$, mais cela implique un plus grand temps de calcul.
+
+Au vu de l'efficacité de l'algo A\& S montrée dans l'article, il serait peut-être plus judicieux de partir de l'algo A$_d$ qui s'en rapproche le plus. Par ailleurs, en regardant les premiers résultats obtenus, il semblerait que l'algo A$_{dd}$ soit plus adapté pour l'intégration des connaissances, puisqu'il donne de meilleurs résultats jusqu'à maintenant. 
 \end{document}
