@@ -1,0 +1,116 @@
+tests apprentissages
+
+
+"""
+tps_deb = time.time()
+Base,stat = all_generate(instance,demand)
+quality = (stat[1]-stat[0])/10 + stat[0]
+ls_qual = learning_set_quality(Base,quality)
+ls_quan = learning_set_quantity(Base,10)
+print(ls_qual,stat)
+print(ls_quan)
+tps_fin = time.time()
+print(tps_fin-tps_deb)
+namefile = "resultats/Heuristic_results/Values/"+t+"/set_complet_quantity.txt"
+File = open(namefile,'wb')
+pickle.dump(ls_quan,File)
+File.close()
+namefile = "resultats/Heuristic_results/Values/"+t+"/set_complet_quality.txt"
+File = open(namefile,'wb')
+pickle.dump(ls_qual,File)
+File.close()
+"""
+tps_deb = time.time()
+"""
+namefile = "resultats/Heuristic_results/Values/"+t+"/set_complet_quantity.txt"
+File = open(namefile,'rb')
+ls_quan = pickle.load(File)
+namefile = "resultats/Heuristic_results/Values/"+t+"/set_complet_quality.txt"
+File = open(namefile,'rb')
+ls_qual = pickle.load(File)
+"""
+for lg in range(5):
+    print(lg)
+    Base,stat = rd_generate(1000,instance,demand)
+    quality = (stat[1]-stat[0])/10 + stat[0]
+    ls_quan = learning_set_quantity(Base,1)
+    #ls_qual = learning_set_quality(Base,quality)
+    mat_quan = init_matrix(len(instance))
+    #mat_qual = init_matrix(len(instance))
+    mat_quan = learn(mat_quan,ls_quan)
+    #mat_qual = learn(mat_qual,ls_qual)
+    print('')
+    e_quan = mat_info_rg(20,mat_quan)
+    #e_qual = mat_info_req(len(ls_qual)/2,mat_qual)
+
+
+
+    true_edges = all_edges(record)
+    print(all_edges(record))
+    print(len(e_quan),e_quan)
+    pre = []
+    accuracy = 0
+    for i in e_quan:
+        if is_edge_in(i,true_edges):
+            pre.append(True)
+            accuracy += 1
+        else:
+            pre.append(False)
+
+
+    print(pre)
+    print(accuracy/len(e_quan))
+    
+    namefile = "resultats/Heuristic_results/Values/"+t+"/all_edges.txt"
+
+
+    writef(namefile,'\n')
+    writef(namefile,'#################')
+    writef(namefile,'Generate = '+ str(1000))
+    writef(namefile,'Stat = '+ str(stat))
+    writef(namefile,'Percent = '+ str(10))
+    writef(namefile,'Rang max = '+ str(20))
+    writef(namefile,'')
+    writef(namefile,'edges = ' + str(e_quan))
+    writef(namefile,'')
+    writef(namefile,'true = ' + str(pre))
+    writef(namefile,'nb corrects = ' + str(accuracy))
+    writef(namefile,'nb aretes = ' + str(len(e_quan)))
+    writef(namefile,'accuracy = ' + str(accuracy/len(e_quan)))
+    writef(namefile,'')
+
+"""
+    print(len(e_qual),e_qual)
+    pre = []
+    accuracy = 0
+    for i in e_qual:
+        if is_edge_in(i,true_edges):
+            pre.append(True)
+            accuracy += 1
+        else:
+            pre.append(False)
+            
+    namefile = "resultats/Heuristic_results/Values/"+t+"/learn_edges_quality.txt"
+
+
+    writef(namefile,'\n')
+    writef(namefile,'#################')
+    writef(namefile,'Generate = '+ str(500))
+    writef(namefile,'Stat = '+ str(stat))
+    writef(namefile,'Quality = '+ str(10))
+    writef(namefile,'Requis = '+ str(len(ls_qual)/2))
+    writef(namefile,'')
+    writef(namefile,'edges = ' + str(e_qual))
+    writef(namefile,'')
+    writef(namefile,'true = ' + str(pre))
+    writef(namefile,'nb corrects = ' + str(accuracy))
+    writef(namefile,'nb aretes = ' + str(len(e_qual)))
+    writef(namefile,'accuracy = ' + str(accuracy/len(e_qual)))
+    writef(namefile,'')
+
+    print(pre)
+    print(accuracy/len(e_qual))
+"""
+tps_fin = time.time()
+
+print(tps_fin-tps_deb)

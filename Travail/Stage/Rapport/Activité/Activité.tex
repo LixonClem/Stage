@@ -3,7 +3,7 @@
 \usepackage{fullpage}%
 \usepackage[T1]{fontenc}%
 \usepackage[utf8]{inputenc}%
-\usepackage[francais]{babel}% % Adjust the main language
+\usepackage[french]{babel}% % Adjust the main language
 
 \usepackage{graphicx}%
 \usepackage{url}%
@@ -304,5 +304,24 @@ Rédaction 1ere partie rapport. Premiers tests pour trouver les arêtes optimale
 
 \paragraph*{18 Juin 2018}
 Avancée sur la recherche des arêtes optimales, résultats actuels satisfaisants. 
- 
+Tests sur les différentes bases possibles effectués. Les principales remarques que l'on peut en tirer sont
+\begin{itemize}
+\item Les sets basés sur la quantité ($10\%$), sont plus efficaces si on demande que l'arête soit prise un certain nombre de fois. (resultats pour 3*ls/4 meilleurs que ceux de ls/2, mais moins d'arêtes considérées).
+\item Les sets basés sur la qualité (la pire solution considérée doit être à $10\%$ de l'amplitude de la base), sont plus efficaces si on demande les k premières arêtes de la matrice.
+\item Considérer l'ensemble de la base apporte de meilleurs résultats globalement mais fixe moins d'arêtes
+\item Il est inutile à priori de considérer toutes les SI
+\end{itemize}
+
+\paragraph*{19 Juin 2018}
+Intégration de la connaissance dans le modèle $A_{dd}$. 
+
+(rapport)
+
+Temps d'exécution moyen des algos ?
+En théorie, avec un nombre suffisant d'itérations, le meilleur résultat donné par A$_a$ est au moins aussi bon que celui donné par A$_d$, mais cela implique un plus grand temps de calcul.
+Au vu de l'efficacité de l'algo A\& S montrée dans l'article, il serait peut-être plus judicieux de partir de l'algo A$_d$ qui s'en rapproche le plus. Par ailleurs, en regardant les premiers résultats obtenus, il semblerait que l'algo A$_{dd}$ soit plus adapté pour l'intégration des connaissances, puisqu'il donne de meilleurs résultats jusqu'à maintenant. 
+
+(fin)
+
+Accélérer le calcul CW en modifiant la structure de données (pas une matrice...) 
 \end{document}

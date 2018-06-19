@@ -348,6 +348,19 @@ def compute_savings(inst, demand, lam, mu, nu):
                 savings[i][j] = distance(inst[i+1], inst[0]) + distance(inst[j+1], inst[0])- lam*distance(inst[i+1], inst[j+1])+ mu*abs(distance(inst[i+1], inst[0]) -distance(inst[j+1], inst[0]))+ (nu*(demand[i+1] + demand[j+1])/d_bar)
     return savings
 
+def compute_savings2(inst,demand,lam,mu,nu):
+    savings = []
+    d_bar = mean_demand(demand)
+    for i in range(len(inst)-1):
+        s=0
+        for j in range(i+1,len(inst)-1):
+            if (i == j):
+                savings.append([0,(i+1,j+1)])
+            else:
+                s = distance(inst[i+1], inst[0]) + distance(inst[j+1], inst[0])- lam*distance(inst[i+1], inst[j+1])+ mu*abs(distance(inst[i+1], inst[0]) -distance(inst[j+1], inst[0]))+ (nu*(demand[i+1] + demand[j+1])/d_bar)
+                savings.append([s,(i+1,j+1)])
+    savings.sort()
+    return savings
 
 def max_savings(n, savings):
     cand = (-1, 0, 0)
@@ -357,6 +370,11 @@ def max_savings(n, savings):
                 cand = (i+1, j+1, savings[i][j])
     return cand
 
+def max_savings2(savings):
+    maximum = savings[-1]
+    savings[-1][0] = 0
+    savings.sort()
+    return maximum
 
 def can_merge(i, r1, j, r2, demand):
     if r1 == r2:
@@ -369,8 +387,7 @@ def can_merge(i, r1, j, r2, demand):
         return -1
 
 
-def merge_routes(cand, routes, savings, inst, demand):
-    i, j = cand[0], cand[1]
+def merge_routes(i,j, routes, savings, inst, demand):
     r1, r2 = find_route(i, routes), find_route(j, routes)
     mrge = can_merge(i, r1, j, r2, demand)
     new_road = []
@@ -386,20 +403,15 @@ def merge_routes(cand, routes, savings, inst, demand):
             r1.remove(0)
             new_road = r2 + r1
         routes.append(new_road)
-    savings[i-1][j-1] = 0
-    savings[j-1][i-1] = 0
-    n = len(new_road)
-
-
-
 
 
 def ClarkeWright(routes,inst, demand, lam, mu, nu):
-    savings = compute_savings(inst, demand, lam, mu, nu)
-    (i, j, s) = max_savings(len(inst)-1, savings)
+    savings = compute_savings2(inst, demand, lam, mu, nu)
+    print(savings)
+    [s,(i,j)] = max_savings2(savings)
     while s > 0:
-        merge_routes((i, j, s), routes, savings, inst, demand)
-        (i, j, s) = max_savings(len(inst)-1, savings)
+        merge_routes(i,j, routes, savings, inst, demand)
+        [s,(i,j)] = max_savings2(savings)
     for i in range(len(routes)):
         routes[i].pop()
     return routes
@@ -840,49 +852,34 @@ def bad_edge(b, p, routes, inst,fixed):
     return cand
 
 
-def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
-    # Initial solution
+def core_heuristic(initial_routes,inst,demand,lam,mu,nu,l,max_d,v,dejaCalc):
     
-    initial_solution = init_routes(inst, demand)
-    initial_solution = ClarkeWright(initial_solution, inst, demand, lam, mu, nu)
-    
-    for i in range(len(initial_solution)):
-        initial_solution[i] = decross_route(initial_solution[i].copy(), inst)
-        initial_solution[i] = LK(initial_solution[i].copy(), inst)
-    print(cost_sol(initial_solution,inst))
-    routes = copy_sol(initial_solution)
-
-    # compute global variables
-
-
     B = [penalization_function(1, 0, 0, max_d), penalization_function(1, 1, 0, max_d), penalization_function(
         1, 0, 1, max_d), penalization_function(1, 1, 1, max_d), penalization_function(0, 1, 0, max_d), penalization_function(0, 1, 1, max_d)]
+
     b_i = 0
     b = B[b_i]
 
     p = [[0 for j in range(len(inst))] for i in range(len(inst))]
-
-
     N = 0  # laps without improvement
     gs = 0  # laps for last improvement
-    c_init = cost_sol(routes, inst)
     time = 0
 
-    e,ei,ef = common_edges(initial_solution,record)
-
-    fixed_edges = e #fixed_alea(all_edges(initial_solution))
-    print("start learning")
-    routes = complete(destruction2(ignore_0(learning_results(2,500,inst,demand))),inst)
-    print(routes)
-    routes = ClarkeWright(routes,inst,demand,lam/2,mu/2,nu/2)
-    for i in range(len(routes)):
-        routes[i] = decross_route(routes[i].copy(), inst)
-        routes[i] = LK(routes[i].copy(), inst)
-    print(cost_sol(routes,inst))
+    initial_routes = ClarkeWright(initial_routes,inst,demand,lam,mu,nu)
+    for i in range(len(initial_routes)):
+        initial_routes[i] = decross_route(initial_routes[i].copy(), inst)
+        initial_routes[i] = LK(initial_routes[i].copy(), inst)
+    routes = copy_sol(initial_routes)
+    if round(cost_sol(routes,inst),3) in dejaCalc:
+        return initial_routes,routes,False
+    dejaCalc.append(round(cost_sol(routes,inst),3))
     routes2 = copy_sol(routes)
     fixed_edges = []
-    # find the worst edge
+    c_init = cost_sol(routes,inst)
+
+    
     while time < 1500:
+        # find the worst edge
         worst = bad_edge(b, p, routes, inst,fixed_edges)[1]
 
         p[worst[0]][worst[1]] += 1
@@ -959,7 +956,49 @@ def apply_heuristic(inst, demand, lam, mu, nu, l,max_d,v):
         routes2[i] = decross_route(routes2[i].copy(), inst)
         routes2[i] = LK(routes2[i], inst)
 
-    return initial_solution, routes2
+    return  initial_routes,routes2,True
+
+def apply_heuristic(inst, demand, l):
+# compute global variables
+    tps_deb = time.time()
+    max_d = max_depth(instance)
+    v = voisins(KNN, instance)
+    dejaCalc = []
+    print("start learning")
+    initial_routes = complete(destruction2(ignore_0(learning_results(4,500,inst,demand))),inst)
+    namefile = "resultats/Heuristic_results/Values/"+t+"/results_det-De-Learn.txt"
+    writef(namefile,'Aretes fixées après apprentissage pour cette exécution')
+    writef(namefile,'Fixed edges = '+ str(initial_routes))
+    print(initial_routes)
+    for li in range(1,20):
+        for mi in range(1,20):
+            for ni in range(1,20):
+                print(li,mi,ni)
+                init,sol,new = core_heuristic(copy_sol(initial_routes),inst,demand,li*0.1,mi*0.1,ni*0.1,l,max_d,v,dejaCalc)
+                c_sol = cost_sol(sol,inst)
+                c_init = cost_sol(init,inst)
+                if new:
+                    namefile = "resultats/Heuristic_results/Values/"+t+"/results_det-De-Learn.txt"
+                    writef(namefile,'\n')
+                    writef(namefile,'#################')
+                    writef(namefile,'lambda = '+ str(li*0.1))
+                    writef(namefile,'mu = ' + str(mi*0.1))
+                    writef(namefile,'nu = ' + str(ni*0.1))
+                    writef(namefile,'')
+                    writef(namefile,'init = ' + str(round(c_init,3)))
+                    writef(namefile,'res = ' + str(round(c_sol,3)))
+                    writef(namefile,'gap = ' + str(round((1-1182/c_sol)*100,3)))
+                    writef(namefile,'')
+                    writef(namefile,'solution = ' + str(sol))
+                    print(c_sol)
+                else:
+                    print("deja calculé")
+    tps_fin = time.time()
+    print(tps_fin-tps_deb)
+    
+    
+
+
 
  ###########
 # Solutions #
@@ -993,22 +1032,18 @@ def common_edges(sol1, sol2):
 
 A_n37_k06 = read("Instances/A-n37-k06.xml")
 
-lam = 0.8
-mu = 0.0
-nu = 1.0
 t = "A-n37-k06"
 instance, demand = A_n37_k06
 
 
-max_d = max_depth(instance)
-v = voisins(KNN, instance)
+
 
 record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
-record1 = [[0, 27, 32, 15, 30, 13], [0, 10, 11, 12, 22, 23, 28, 2, 33], [0, 7, 25, 35, 16], [0, 24, 29, 36, 6, 14], [0, 18, 17, 34, 1, 3, 5, 8, 20], [0, 31, 19, 9, 21, 26, 4]]
+#record1 = [[0, 27, 32, 15, 30, 13], [0, 10, 11, 12, 22, 23, 28, 2, 33], [0, 7, 25, 35, 16], [0, 24, 29, 36, 6, 14], [0, 18, 17, 34, 1, 3, 5, 8, 20], [0, 31, 19, 9, 21, 26, 4]]
 #record = [[0,55, 29, 62, 39, 51, 17 ],[0,45, 61, 42, 38, 2, 41, 16, 50, 60],[0,21, 25, 52, 24, 13, 12, 1, 33],[0,49, 4, 3, 36, 35, 37, 30],[0,47, 34, 31, 26, 6, 64, 46],[0,28, 23, 57, 48, 54, 63, 11, 7],[0,44, 59, 40, 58, 20, 32],[0,5, 53, 56, 10, 8, 19, 18],[0,43, 27, 14, 9, 22, 15]]
 #record = [[0,21, 31, 19, 17, 13, 7, 26],[0,12, 1, 16, 30],[0,27, 24],[0,29, 18, 8, 9, 22, 15, 10, 25, 5, 20],[0,14, 28, 11, 4, 23, 3, 2, 6]]
 record = normalize_solution(record)
-record1 = normalize_solution(record1)
+#record1 = normalize_solution(record1)
 
 """"
 initial_solution = init_routes(instance, demand)
@@ -1018,11 +1053,8 @@ for i in range(len(initial_solution)):
     initial_solution[i] = LK(initial_solution[i].copy(), instance)
 """
 
-print(cost_sol(record,instance),cost_sol(record1,instance))
-init, reso = apply_heuristic(
-    instance, demand, lam, mu, nu, relocation, max_d, v)
-print(cost_sol(init, instance), cost_sol(reso, instance))
-
+print(cost_sol(record,instance))
+apply_heuristic(instance, demand, relocation)
 
 """
 costs = []
