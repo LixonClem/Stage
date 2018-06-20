@@ -1,4 +1,4 @@
-Aretes fixées après apprentissage pour cette exécution
+Aretes fixées après apprentissage pour cette exécution (4 gen de 500, mode 10% quantité)
 Fixed edges = [[0, 6, 3, 2, 23, 24, 0], [0, 9, 22, 27, 0], [0, 21, 31, 19, 17, 13, 7, 26, 0], [0, 12, 1, 16, 0], [0, 20, 5, 25, 10, 15, 29, 0], [0, 28, 4, 11, 0], [0, 8, 0], [0, 14, 0], [0, 18, 0], [0, 30, 0]]
 
 
