@@ -372,8 +372,6 @@ def max_savings(n, savings):
 
 def max_savings2(savings):
     maximum = savings[-1]
-    savings[-1][0] = 0
-    savings.sort()
     return maximum
 
 def can_merge(i, r1, j, r2, demand):
@@ -387,7 +385,7 @@ def can_merge(i, r1, j, r2, demand):
         return -1
 
 
-def merge_routes(i,j, routes, savings, inst, demand):
+def merge_routes(i,j, routes, inst, demand):
     r1, r2 = find_route(i, routes), find_route(j, routes)
     mrge = can_merge(i, r1, j, r2, demand)
     new_road = []
@@ -405,12 +403,14 @@ def merge_routes(i,j, routes, savings, inst, demand):
         routes.append(new_road)
 
 
+
 def ClarkeWright(routes,inst, demand, lam, mu, nu):
     savings = compute_savings2(inst, demand, lam, mu, nu)
-    print(savings)
     [s,(i,j)] = max_savings2(savings)
     while s > 0:
-        merge_routes(i,j, routes, savings, inst, demand)
+        savings[-1][0] = 0
+        savings.sort()
+        merge_routes(i,j, routes, inst, demand)
         [s,(i,j)] = max_savings2(savings)
     for i in range(len(routes)):
         routes[i].pop()
@@ -966,9 +966,11 @@ def apply_heuristic(inst, demand, l):
     dejaCalc = []
     print("start learning")
     initial_routes = complete(destruction2(ignore_0(learning_results(4,500,inst,demand))),inst)
+    """
     namefile = "resultats/Heuristic_results/Values/"+t+"/results_det-De-Learn.txt"
     writef(namefile,'Aretes fixées après apprentissage pour cette exécution')
     writef(namefile,'Fixed edges = '+ str(initial_routes))
+    """
     print(initial_routes)
     for li in range(1,20):
         for mi in range(1,20):
@@ -978,6 +980,7 @@ def apply_heuristic(inst, demand, l):
                 c_sol = cost_sol(sol,inst)
                 c_init = cost_sol(init,inst)
                 if new:
+                    """
                     namefile = "resultats/Heuristic_results/Values/"+t+"/results_det-De-Learn.txt"
                     writef(namefile,'\n')
                     writef(namefile,'#################')
@@ -990,9 +993,12 @@ def apply_heuristic(inst, demand, l):
                     writef(namefile,'gap = ' + str(round((1-1182/c_sol)*100,3)))
                     writef(namefile,'')
                     writef(namefile,'solution = ' + str(sol))
+                    """
                     print(c_sol)
                 else:
+                    """
                     print("deja calculé")
+                    """
     tps_fin = time.time()
     print(tps_fin-tps_deb)
     
@@ -1030,19 +1036,17 @@ def common_edges(sol1, sol2):
 
 
 
-A_n37_k06 = read("Instances/A-n37-k06.xml")
+A_n32_k05 = read("Instances/A-n32-k05.xml")
 
-t = "A-n37-k06"
-instance, demand = A_n37_k06
-
-
+t = "A-n32-k05"
+instance, demand = A_n32_k05
 
 
-record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
+#record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
 #record1 = [[0, 27, 32, 15, 30, 13], [0, 10, 11, 12, 22, 23, 28, 2, 33], [0, 7, 25, 35, 16], [0, 24, 29, 36, 6, 14], [0, 18, 17, 34, 1, 3, 5, 8, 20], [0, 31, 19, 9, 21, 26, 4]]
 #record = [[0,55, 29, 62, 39, 51, 17 ],[0,45, 61, 42, 38, 2, 41, 16, 50, 60],[0,21, 25, 52, 24, 13, 12, 1, 33],[0,49, 4, 3, 36, 35, 37, 30],[0,47, 34, 31, 26, 6, 64, 46],[0,28, 23, 57, 48, 54, 63, 11, 7],[0,44, 59, 40, 58, 20, 32],[0,5, 53, 56, 10, 8, 19, 18],[0,43, 27, 14, 9, 22, 15]]
 #record = [[0,21, 31, 19, 17, 13, 7, 26],[0,12, 1, 16, 30],[0,27, 24],[0,29, 18, 8, 9, 22, 15, 10, 25, 5, 20],[0,14, 28, 11, 4, 23, 3, 2, 6]]
-record = normalize_solution(record)
+#record = normalize_solution(record)
 #record1 = normalize_solution(record1)
 
 """"
@@ -1053,7 +1057,7 @@ for i in range(len(initial_solution)):
     initial_solution[i] = LK(initial_solution[i].copy(), instance)
 """
 
-print(cost_sol(record,instance))
+#print(cost_sol(record,instance))
 apply_heuristic(instance, demand, relocation)
 
 """
