@@ -1,5 +1,5 @@
 Arêtes communes entre la solution initiale de CW et la solution
-obtenue avec l'heuristique. 
+obtenue avec l'heuristique (v3). 
 Paramètres choisis:
 	- KNN = 30
 	- Reloc = 3 

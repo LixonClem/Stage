@@ -37,8 +37,8 @@ Les solutions données par CW.
 \begin{block}{Base d'apprentissage}
 On ne garde qu'une partie de la base générée pour apprendre.
 \begin{itemize}
-\item On garde $10\%$ des meilleurs solutions (quantité privilégiée);
-\item On garde les solutions qui ont un coût inférieur à $c_{min} + \frac{c_{max}-c_{min}}{10}$ (qualité privilégiée).
+\item On garde $10\%$ des meilleurs solutions (quantité privilégiée, Quan$_{10}$);
+\item On garde les solutions qui ont un coût inférieur à $c_{min} + \frac{c_{max}-c_{min}}{10}$ (qualité privilégiée, Qual$_{10}$).
 \end{itemize}
 \end{block}
 \end{frame}
@@ -83,7 +83,7 @@ Pour chaque test on effectue 5 itérations.
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
    \hline
-   Taille base & Requis & Quan$_{10}$ & Qual$_{10}$ & Tout & Time (s)\\
+   Taille base & Seuil & Rés Quan$_{10}$ & Rés Qual$_{10}$ & Tout & Time (s)\\
    \hline
    100 & L$_{lb}$/2 & 0.71 & 0.73 & 0.72 & 2.54 \\
    \hline
@@ -177,7 +177,7 @@ Qual$_{10}$ reste la base la plus performante pour le critère Rang.
 	\hline
  	\textbf{Apprentissage} \\
    \hline
-   \textbf{Boucle sur $(\lambda, \nu, \mu)$} \\
+   Boucle sur $(\lambda, \nu, \mu)$ \\
    \hline
    \hline
    Initialisation$_{CW}$ + \textbf{utilisation apprentissage} \\
@@ -209,19 +209,36 @@ Qual$_{10}$ reste la base la plus performante pour le critère Rang.
 
 \begin{frame}{Premiers résultats}
 
-\flushleft
 \begin{tabular}{|c|c|c|c|c|}
    \hline
-   Méthode & A-n32-k05 & A-n34-k05 & A-n37-k06 & Time (s)\\
+   Méthode  & A-n34-k05 (779) & Time (s) & A-n37-k06 (952) & Time (s) \\
    \hline
-   Sans & 791.57 & 1 & 1& 1  \\
+   Sans & 781.96  & 614 & 950.85 & 1325  \\
    \hline
-   Quan$_{10}$ & 791.57 & 795.88 & 950.8 & 1   \\
+   Quan$_{10}$ & 795.88 & 56 & 950.85 & 1158   \\
    \hline
-   Qual$_{10}$ & 791.57 & 788.98 & 950.8 & 1  \\
+   Qual$_{10}$ & 788.98 & 495 & 951.85 & 601  \\
    \hline
 \end{tabular}
 
+\begin{tabular}{|c|c|c|}
+   \hline
+   Méthode  & A-n65-k09 (1182) & Time (s) \\
+   \hline
+   Quan$_{10}$ & 1189.64 & 2085    \\
+   \hline
+   Qual$_{10-10}$ & 1200.11 & 2442   \\
+   \hline
+   Qual$_{10-half}$ & 1183.31 & 2541  \\
+   \hline
+\end{tabular}
+
+\begin{block}{Modifications}
+\begin{itemize}
+\item Changement Algorithme ?
+\item Nouveau choix des paramètres ?
+\end{itemize}
+\end{block}
 
 \end{frame}
 
