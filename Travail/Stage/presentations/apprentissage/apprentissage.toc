@@ -1,7 +1,8 @@
-\babel@toc {english}{}
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
 \beamer@sectionintoc {1}{Apprentissage}{2}{0}{1}
 \beamer@subsectionintoc {1}{1}{Description}{2}{0}{1}
 \beamer@subsectionintoc {1}{2}{R\IeC {\'e}sultats apprentissage}{4}{0}{1}
-\beamer@sectionintoc {2}{Int\IeC {\'e}gration de la connaissance dans un algorithme}{8}{0}{2}
-\beamer@subsectionintoc {2}{1}{Pr\IeC {\'e}sentation algorithme}{8}{0}{2}
-\beamer@subsectionintoc {2}{2}{R\IeC {\'e}sultats}{9}{0}{2}
+\beamer@sectionintoc {2}{Int\IeC {\'e}gration de la connaissance dans un algorithme}{14}{0}{2}
+\beamer@subsectionintoc {2}{1}{Pr\IeC {\'e}sentation algorithme}{14}{0}{2}
+\beamer@subsectionintoc {2}{2}{R\IeC {\'e}sultats}{15}{0}{2}

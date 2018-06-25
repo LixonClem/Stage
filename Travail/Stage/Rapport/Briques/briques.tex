@@ -4,6 +4,7 @@
 \usepackage[T1]{fontenc}%
 \usepackage[utf8]{inputenc}%
 \usepackage[french]{babel}% % Adjust the main language
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 
 \usepackage{graphicx}%
 \usepackage{url}%
@@ -25,7 +26,6 @@
 
 \author{Clément Legrand-Lixon}
 
-\date{}
 
 \maketitle
 
@@ -115,6 +115,36 @@ où $c_{ij}$ dénote la distance entre les clients $i$ et $j$ (le client 0 étan
 \item Elle peut être calculée grâce à l'intégration de connaissances (Learn) (objectif du stage).
 \end{itemize}
 
+\begin{algorithm}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{Un ensemble de points I, un ensemble d'entiers $D = {d_1,...,d_n}$ et un triplet $(\lambda,\mu,\nu)$ de flottants}
+\KwOut{Une solution au problème I}
+
+\For{$i \gets 1$ \textbf{to} $n$} {
+	$Sol \gets Sol \cup [0,i,0]$\;
+}
+\For{$i \gets 0$ \textbf{to} $n$} {
+	\For{$j \gets i+1$ \textbf{to} $n$} {
+		$Saving \gets Saving \cup [saving(I,D,\lambda,\mu,\nu),i,j]$\;
+		}
+	}
+$Saving \gets reverse(sort(Saving))$\;
+$ cand \gets Saving[0] $\;
+\While{$ cand[0] > 0$} {
+	$Saving \gets Saving \setminus Saving[0]$\;
+	$r_i \gets findRoute(Sol,cand[1])$\;
+	$r_j \gets findRoute(Sol,cand[2])$\;
+	\If{$ canMerge(r_i,r_j) $} {
+		$ Sol \gets (Sol \setminus r_i) \setminus r_j$\;
+		$ Sol \gets Sol \cup merge(r_i,r_j)$\;
+	}
+	$ cand \gets Saving[0]$\;
+}
+
+\Return{$Sol$}\;
+\caption{{\sc Clarke-Wright} calcule une solution initiale}
+\label{algo:max}
+\end{algorithm}
 
 \subsubsection{Pire arête et pénalisation}
 A chaque tour de boucle, on calcule l'arête $(i,j)$ qui maximise la fonction suivante (donnée dans l'article):
