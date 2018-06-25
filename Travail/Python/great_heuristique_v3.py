@@ -26,7 +26,7 @@ ylim = 200
 xlim = 200
 clim = 20
 nb_cust = 100
-Capacity = 100
+Capacity = 400
 KNN = 30
 relocation = 3
 
@@ -906,10 +906,11 @@ A_n65_k09 = read("Instances/A-n65-k09.xml")
 lam = 0.8
 mu = 0.0
 nu = 1.0
-t = "A-n37-k06"
-instance, demand = A_n37_k06
-initiale = init_A3706
-solution = sol_A3706
+t = "P-n101-k04"
+P_n101_k04 = read("Instances/"+t+".xml")
+instance, demand = P_n101_k04
+#initiale = init_A3706
+#solution = sol_A3706
 
 max_d = max_depth(instance)
 v = voisins(KNN, instance)
@@ -958,8 +959,8 @@ r_meanref.sort()
 
 """
 
-init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
-print(cost_sol(init,instance),cost_sol(reso,instance))
+#init, reso = apply_heuristic(instance, demand, lam, mu,nu, relocation,max_d,v)
+#print(cost_sol(init,instance),cost_sol(reso,instance))
 
 
 def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
@@ -1002,7 +1003,7 @@ def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
                 else:
                     print("deja calculé !")
 
-#total_execution(0.0,2.0,0.0,2.0,0.0,2.0)
+total_execution(0.0,2.0,0.0,2.0,0.0,2.0)
 
 """
 sol_para = []

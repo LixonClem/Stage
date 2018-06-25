@@ -13,34 +13,57 @@
 \usepackage{mathpazo}%
 \usepackage{multicol}
 \usepackage{listings}%
-
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage{subcaption}
 
 \parskip=0.5\baselineskip
+
+
 
 \sloppy
 
 \begin{document}
 
-\title{Rapport de stage (mise en place de l'algorithme)}
+\title{Rapport de stage}
 
 \author{Clément Legrand-Lixon}
 
-
 \maketitle
 
-Ce papier présente l'algorithme mis en œuvre dans le cadre du problème CVRP (Capacitated Vehicle Routing Problem), qui s'inspire en grande partie de l'article d'Arnold et Sörensen. 
 
 \section*{Introduction}
-Le Vehicle Routing Problem (VRP), consiste à relier un nombre $n$ de clients par des tournées, commençant et finissant toutes à un même point défini, le dépôt. Ce problème est NP-complet, et dispose de nombreuses applications dans le monde d'aujourd'hui (notamment gestion d'un réseau routier). D'autant plus que ce problème dispose de nombreuses variantes (ajout d'une contrainte de temps, plusieurs dépôts possibles...). L'une des variantes les plus connus consiste à prendre en compte pour chaque client sa demande, de sorte à ce que les tournées créées ne dépassent pas une certaine capacité définie à l'avance. On nomme ce problème CVRP (pour Capacitated Vehicle Routing Problem). 
+Le Vehicle Routing Problem (VRP), consiste à relier un nombre $n$ de clients par des tournées, commençant et finissant toutes à un même point défini, le dépôt. Ce problème est NP-complet, et dispose de nombreuses applications dans le monde d'aujourd'hui (notamment gestion d'un réseau routier). D'autant plus que ce problème dispose de nombreuses variantes (ajout d'une contrainte de temps, plusieurs dépôts possibles...). L'une des variantes les plus connues consiste à prendre en compte pour chaque client sa demande, de sorte à ce que les tournées créées ne dépassent pas une certaine capacité définie à l'avance. On nomme ce problème Capacitated Vehicle Routing Problem (CVRP). 
 
-Si de nombreuses heuristiques ont vu le jour pour résoudre ce problème, aucune d'entre elles ne parvient à trouver des solutions optimales pour toutes les instances de la littérature, malgré de très bons résultats dans la plupart des cas. Récemment \footnote{A simple, deterministic, and efficient knowledge-driven heuristic
-for the vehicle routing problem (Florian Arnold, Kenneth Sorensen)}, une nouvelle heuristique efficace a vu le jour. L'objectif de mon stage est de s'inspirer de cette heuristique, et d'y intégrer de la connaissance pour rendre l'algorithme plus performant.
+Si de nombreuses heuristiques ont vu le jour pour résoudre ce problème, aucune d'entre elles ne parvient à trouver des solutions optimales pour toutes les instances de la littérature, malgré de très bons résultats dans la plupart des cas. Récemment~\cite{Sorensen_2017}, une nouvelle heuristique efficace a vu le jour. L'objectif de mon stage est de s'inspirer de cette heuristique, et d'y intégrer de la connaissance pour rendre l'algorithme plus performant.
 
-Ce rapport, commence par introduire les notations et opérateurs utilisés dans la suite.   
-L'algorithme commence par initialiser une solution. Il applique ensuite des opérateurs locaux, tant que la condition d'arrêt n'est pas respectée. Lors de certaines itérations, il peut effectuer des opérations spéciales. A la sortie de la boucle, il effectue un raffinement de la solution.
+Ce rapport commence par présenter le problème étudié, et introduit les notations et opérateurs utilisés dans la suite. Il décrit ensuite comment a été mise en place l'intégration de connaissances au sein de l'algorithme, puis présente les résultats obtenus.   
 
 \section{Présentations}
+
+\subsection{Description du problème}
+
+\subsubsection{Vehicle Routing Problem (VRP)}
+
+Le problème de tournées de véhicules, est un problème NP-complet, qui consiste à déterminer $k$ tournées pour desservir l'ensemble des $n$ clients présents.  Ces tournées doivent toutes passer par un dépôt fixé par l'instance. 
+Ainsi les tournées créées doivent respecter les règles suivantes :
+\begin{itemize}
+\item Chaque client doit être desservi par une et une seule tournée;
+\item Chaque tournée doit partir et s'arrêter au dépôt.
+\end{itemize}
+L'objectif est alors de minimiser la longueur du réseau (ensemble des tournées). La distance euclidienne est privilégiée pour la majorité des instances.
+De nombreux algorithmes ont vu le jour pour tenter de résoudre ce problème, ainsi que les nombreuses variantes qui existent (ajout de contraintes de capacité, temps ou longueur sur les tournées, ces contraintes sont cumulables). 
+C'est l'ajout de capacité aux tournées qui nous intéressera plus particulièrement.
+
+\subsubsection{Capacitated VRP (CVRP)}
+
+L'une des extensions les plus étudiées du VRP, est celle où on rajoute une contrainte de capacités sur les tournées, cette contrainte étant la même pour toutes les tournées. 
+Dorénavant, chaque client a une certaine demande, mais la demande présente sur une tournée ne doit pas excéder la capacité disponible sur la tournée.
+Les tournées doivent donc respecter la règle suivante, en plus de celles décrites à la section précédente :
+\begin{itemize}
+\item La demande totale sur chaque tournée ne doit pas excéder la capacité disponible.
+\end{itemize}
+Ce problème est beaucoup étudié car il a de nombreuses applications (comme le trafic routier), et peu de solutions optimales ont été trouvées pour des instances de plus de $500$ clients. 
+
 
 \subsection{Parcours et exploration des voisinages}
 \label{voisinage}
@@ -51,30 +74,30 @@ L'\underline{exploration} d'un voisinage de solutions peut être plus ou moins e
 On distingue principalement, deux conditions d'arrêt lorsqu'il s'agit d'explorer des voisinages :
 
 \begin{itemize}
-\item First improvement (FI) : on parcourt le voisinage jusqu'à trouver un changement qui améliore la solution actuelle (on s'arrête donc à la première amélioration trouvée);
-\item Best improvement (BI) : on parcourt tout le voisinage, et on applique le changement qui va le plus améliorer notre solution actuelle. \\
+\item First improvement (\emph{FI}) : on parcourt le voisinage jusqu'à trouver un changement qui améliore la solution actuelle (on s'arrête donc à la première amélioration trouvée);
+\item Best improvement (\emph{BI}) : on parcourt tout le voisinage, et on applique le changement qui va le plus améliorer notre solution actuelle. \\
 \end{itemize}
 
 Pour explorer un voisinage, on peut le \underline{parcourir} de différentes manières de sorte à ne pas toujours favoriser les mêmes voisins. On considérera ici 3 parcours différents : 
 
 \begin{itemize}
-\item Dans l'ordre (O) : les voisins sont parcourus dans un ordre naturel (du premier au dernier);
-\item Dans un semi-ordre (SO) : on commence le parcours là où on s'était arrêté au dernier parcours, on parcourt ensuite les voisins dans l'ordre;
-\item Aléatoirement (RD) : on tire aléatoirement l'ordre dans lequel on va parcourir les voisins. \\
+\item Dans l'ordre (\emph{O}) : les voisins sont parcourus dans un ordre naturel (du premier au dernier);
+\item Dans un semi-ordre (\emph{SO}) : on commence le parcours là où on s'était arrêté au dernier parcours, on parcourt ensuite les voisins dans l'ordre;
+\item Aléatoirement (\emph{RD}) : on tire aléatoirement l'ordre dans lequel on va parcourir les voisins. \\
 \end{itemize}
 
-On peut remarquer que peut importe le parcours effectué, pour faire une exploration BI, il faudra passer par tous les voisins. On retiendra le tableau récapitulatif suivant:
+On peut remarquer que peu importe le parcours effectué, pour faire une exploration \emph{BI}, il faudra passer par tous les voisins. Pour qu'une exploration \emph{FI} soit efficace, il faut éviter un parcours \emph{O}, car dans ce cas on privilégie une certains voisinages qui seront choisis plus souvent. On retiendra le tableau récapitulatif suivant:
 
 \begin{center}
 \begin{tabular}{|c|c|c|}
    \hline
-     & BI & FI  \\
+     & \emph{BI} & \emph{FI}  \\
    \hline
-   O & Oui & Oui \\
+   \emph{O} & Oui & Non \\
    \hline
-   SO & Non & Oui \\
+   \emph{SO} & Non & Oui \\
    \hline
-   RD & Non & Oui  \\
+   \emph{RD} & Non & Oui  \\
    \hline
 \end{tabular}
 \end{center}
@@ -88,7 +111,7 @@ Cette partie décrit l'ensemble des briques utilisées pour construire l'algorit
 Lors de la recherche d'une solution optimale d'un problème, il est indispensable de s'intéresser à la condition d'arrêt de l'heuristique utilisée. En effet, on doit trouver un compromis entre temps de calcul et qualité de la solution recherchée. On ne peut jamais être totalement sûr que la solution obtenue est bien optimale, mais on ne peut pas non plus explorer l'intégralité des solutions. Les principales conditions d'arrêt rencontrées sont les suivantes :
 \begin{itemize}
 \item Un nombre d'itérations à ne pas dépasser;
-\item Un certain temps d'itérations à ne pas dépasser (3 minutes dans l'article);
+\item Un certain temps d'itérations sans solutions améliorantes à ne pas dépasser (3 minutes dans l'article~\cite{Sorensen_2017});
 \item Un nombre d'itérations sans solutions améliorantes à ne pas dépasser (de l'ordre de $n^2$ dans mon algorithme). 
 \end{itemize}
 
@@ -99,7 +122,7 @@ Cette solution peut être créée de différentes manières:
 
 \begin{itemize}
 \item Elle peut être générée aléatoirement (Alea);
-\item Elle peut être obtenue grâce à l'algorithme de Clarke \& Wright (CW), avec les paramètres ($\lambda,\mu,\nu$):
+\item Elle peut être obtenue grâce à l'algorithme de Clarke \& Wright (CW), avec les paramètres ($\lambda,\mu,\nu$)~\cite{Altinel_2005}: 
 \begin{itemize}
 \item Construire autant de tournées que de clients qui passent par le dépôt;
 \item Pour toutes les paires de clients $(i,j)$ calculer le saving $s(i,j)$ via la formule : 
@@ -165,54 +188,85 @@ C'est autour de l'arête calculée ici que vont s'orienter les recherches des op
  
 \subsubsection{Ejection-Chain}
 
-Cet opérateur va essayer de déplacer au plus $l$ clients sur des tournées plus adaptées. Dans l'article $l = 2$.
+Cet opérateur va essayer de déplacer au plus $l$ clients sur des tournées plus adaptées. Dans l'article~\cite{Sorensen_2017} $l = 3$.
+L'algorithme~\ref{algo:EC} décrit le fonctionnement de cet opérateur.
 
-Cet opérateur s'exécute de la manière suivante :
-\begin{itemize}
-\item Déterminer une arête à éliminer; 
-\item Considérer un des deux clients;
-\item Regarder parmi les pp-voisins pour trouver une deuxième tournée;
-\item Déplacer le client sur cette tournée (après le voisin trouvée);
-\item Essayer de déplacer un client de cette tournée sur une autre tournée (en répétant les étapes précédentes);
-\item Recommencer l'étape précédente $l$ fois; \\
-\end{itemize} 
+\begin{algorithm}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{Une arête $(a,b)$, la liste des plus proches voisins des clients $voisins$, un entier $l$, la solution actuelle $sol$}
+\KwOut{Une nouvelle solution au moins aussi bonne que $sol$}
+$initialCost \gets cost(sol)$\;
+$possibleSol \gets sol$\;
+$cand \gets choose(a,b)$\;
+$nextRoute \gets findNextRoute(cand,voisins,possibleSol)$\;
+$possibleSol \gets $ déplacer $cand$ après son voisin sur $nextRoute$\;
+\For{$i \gets 1$ \textbf{to} $l-1$} {
+  $cand \gets $un client de nextRoute différent de celui ajouté\;
+  $nextRoute \gets findNextRoute(cand,voisins,possibleSol)$\;
+  $possibleSol \gets$ déplacer $cand$ après son voisin sur $nextRoute$\;
+}
+\If {$cost < cost(sol)$} {
+	\Return{$sol$}\;
+}
+\Return{$possibleSol$}\;
+\caption{{\sc Ejection-Chain} applique l'opérateur ejection-chain}
+\label{algo:EC}
+\end{algorithm}
 
-Pour les étapes $2$, $3$ et $5$, il est possible d'utiliser les méthodes de la section \ref{voisinage} pour explorer les voisinages.
+Aux lignes $3, 4, 7$ et $8$ de l'algorithme~\ref{algo:EC}, il est possible d'utiliser les méthodes de la section~\ref{voisinage} pour explorer les voisinages.
 
 \subsubsection{Cross-Exchange}
 
-Cet opérateur essaie d'échanger deux séquences de clients successifs entre deux tournées. Il est possible de limiter le nombre de clients par séquence échangée (non implémenté). 
+Cet opérateur essaie d'échanger deux séquences de clients successifs entre deux tournées. Il est possible de limiter le nombre de clients par séquence échangée.
+L'algorithme~\ref{algo:CE} présente l'exécution de l'opérateur.
 
-Cet opérateur s'exécute de la manière suivante :
-\begin{itemize}
-\item Choisir une arête $(c_1,c_2)$ à éliminer;
-\item Trouver une autre tournée grâce aux pp-voisins de $c_1$; 
-\item On note $c_4$ le voisin considéré, et $c_3$ le client précédent $c_4$ sur la nouvelle tournée;
-\item On échange $c_1$ et $c_3$;
-\item On essaie d'échanger deux autres clients entre les deux tournées. \\
-\end{itemize}
+\begin{algorithm}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{Une arête $(c_1,c_2)$, la liste des plus proches voisins des clients $voisins$, la solution actuelle $sol$}
+\KwOut{Une nouvelle solution au moins aussi bonne que $sol$}
+$initialCost \gets cost(sol)$\;
+$possibleSol \gets sol$\;
+$nextRoute \gets findNextRoute(c_1,voisins,possibleSol)$\;
+Considérer l'arête $(c_3,c_4)$ de $nextRoute$, où $c_4$ est le proche voisin de $c_1$ utilisé\;
+$possibleSol \gets exchange(c_1,c_3,possibleSol)$\;
+Choisir 2 clients $c_5$ et $c_6$ qui n'appartiennent pas à la même tournée\;
+$possibleSol \gets exchange(c_5,c_6,possibleSol)$\;
+\If {$cost < cost(sol)$} {
+	\Return{$sol$}\;
+}
+\Return{$possibleSol$}\;
+\caption{{\sc Cross-Exchange} applique l'opérateur cross-exchange}
+\label{algo:CE}
+\end{algorithm}
 
-Pour les étapes $2$ et $5$, il est possible d'utiliser les méthodes de la section \ref{voisinage} pour explorer les voisinages.
+A la ligne $6$ de l'algorithme~\ref{algo:CE}, il est possible d'utiliser les méthodes de la section \ref{voisinage} pour explorer les voisinages, et choisir les clients à échanger.
 
 \subsubsection{Lin-Kernighan}
 
-Utilisé en général pour résoudre le problème du voyageur de commerce (TSP). Il effectue une optimisation intra-tournée (c'est-à-dire que la tournée considérée est améliorée indépendamment des autres). Cela consiste en une réorganisation des clients sur la tournée. On choisit $k$ tel que \emph{LK} ne dépasse pas \emph{k-opt} au cours de son exécution. D'après l'article on peut prendre $k = 2$.
+L'heuristique Lin-Kernighan est utilisé en général pour résoudre le problème du voyageur de commerce (TSP). Il effectue une optimisation intra-tournée (c'est-à-dire que la tournée considérée est améliorée indépendamment des autres). Cela consiste en une réorganisation des clients sur la tournée. On choisit $k$ tel que \emph{LK} ne dépasse pas \emph{k-opt} au cours de son exécution. On appelle \emph{k-opt}, l'opération qui consiste à échanger $k$ clients différents sur la tournée. D'après l'article~\cite{Sorensen_2017}, on peut prendre $k = 2$.
+L'algorithme~\ref{algo:LK} décrit l'exécution de l'opérateur.
 
-LK va donc s'exécuter de la manière suivante:
-\begin{itemize}
-\item On considère la tournée à améliorer;
-\item On applique 2-opt sur la tournée (on échange deux clients sur la tournée);
-\item Tant qu'on a des améliorations on applique 2-opt sur la tournée;
-\item On renvoie la tournée améliorée. \\
-\end{itemize}
+\begin{algorithm}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{Une tournée $r$ à améliorer}
+\KwOut{Une permutation de $r$ ayant un meilleur coût que $r$}
+$r_{next} \gets 2$-$opt(r) $\;
+\While{$ r_{next} \neq r$} {
+  $r \gets r_{next}$\;
+  $r_{next} \gets 2$-$opt(r)$\;
+}
+\Return{$r$}\;
+\caption{{\sc Lin-Kernighan} applique l'opérateur Lin-Kernighan}
+\label{algo:LK}
+\end{algorithm}
 
-Pour l'étape $2$, il est possible d'utiliser les méthodes de la section \ref{voisinage} pour explorer les voisinages.
+Lorsqu'il s'agit d'appliquer \emph{2-opt}, il est possible d'utiliser les méthodes de la section \ref{voisinage} pour explorer les voisinages.
 
 \subsubsection{Raffinement}
 
 Il est possible que la solution actuelle puisse être améliorée simplement. En effet, la solution considérée peut contenir une tournée qui ne contient qu'un client, et les solutions optimales ne contiennent en général pas ce genre de tournées.  
 
-Une fonction \lstinline|reject| vient donc compléter l'opérateur EC, et sert à supprimer les routes qui n'ont qu'un client. Pour cela elle essaie d'intégrer le client sur une tournée proche (en parcourant les pp-voisins du client).
+Une fonction \lstinline|reject| vient donc compléter l'opérateur \emph{EC}, et sert à supprimer les routes qui n'ont qu'un client. Pour cela elle essaie d'intégrer le client sur une tournée proche (en parcourant les plus proches voisins du client).
 
 \subsection{Algorithmes mis en œuvre}
 Nous présentons ici les algorithmes utilisés.
@@ -326,5 +380,10 @@ Un autre algorithme (A$_a$, où seul le bloc CE est modifié):
 
 Pour cet algorithme, j'effectue $25$ itérations en gardant la moyenne des coûts obtenus, ainsi que la solution qui a donné le meilleur coût.
 
- 
+\section{Intégration de connaissances}
+
+
+\bibliographystyle{plain}
+\bibliography{biblio}
+
 \end{document}
