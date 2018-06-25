@@ -29,7 +29,7 @@ ylim = 200
 xlim = 200
 clim = 20
 nb_cust = 100
-Capacity = 100
+Capacity = 550
 KNN = 30
 relocation = 3
 
@@ -440,7 +440,8 @@ def another_routeCE(edge, voisins, routes, demand,fe):
     (a, b) = edge
     r1 = find_route(a, routes)
     adja = adjacents(a,fe)
-    for i in voisins[a]:
+    permut_voisins = permut(voisins[a])
+    for i in permut_voisins:
         r2 = find_route(i, routes)
         adjpi = adjacents(r2[r2.index(i)-1],fe)
         # we verify that the future demand on the route won't exceed his capacity
@@ -474,9 +475,12 @@ def cross_exchange(edge, voisins, routes, inst, demand,fe):
     else:
         current_cand[0][i_a], current_cand[1][i_v] = current_cand[1][i_v], a
 
-    for i in range(len(r2)-1):
+    parcours_i = permut([i for i in range(len(r2)-1)])
+    parcours_j = permut([j for j in range(len(r1)-1)])
+
+    for i in parcours_i:
         if i != i_v-1:
-            for j in range(len(r1)-1):
+            for j in parcours_j:
                 if j != i_a-1:
                     p1 = current_cand[0][j+1]
                     p2 = current_cand[1][i+1]
@@ -530,9 +534,9 @@ def saving(i, ri, j, rj, inst):
 def another_routeEC(a, voisins, routes, demand, inst,fe):
     r1 = find_route(a, routes)
     adja = adjacents(a,fe)
-    for i in voisins[a]:
+    permut_voisins = permut(voisins[a])
+    for i in permut_voisins:
         r2 = find_route(i, routes)
-
         if r2 != r1 and i != 0 and len(adja)==0 and route_demand(r2, demand)+demand[a] <= Capacity:
             return ((r1, r2), i)
     return (r1, r1), -1
@@ -540,22 +544,15 @@ def another_routeEC(a, voisins, routes, demand, inst,fe):
 
 # evalue a possible next edge.
 
-def best_point(edge, routes, inst):
+def rd_point(edge, routes, inst):
     (a, b) = edge
     if a == 0:
         return b
     elif b == 0:
         return a
     else:
-        
-        r = find_route(a, routes)
-        a0 = r[r.index(a)-1]
-        b1 = r[r.index(b)-1]
-
-        if distance(inst[a0], inst[a])+distance(inst[a], inst[b1]) > distance(inst[a0], inst[b])+distance(inst[b], inst[b1]):
-            return a
-        else:
-            return b
+        i = rd.randint(0,1)
+        return edge[i]
 
 
 def eval_cand(point, voisins, routes, inst, demand,fe):
@@ -569,16 +566,16 @@ def eval_cand(point, voisins, routes, inst, demand,fe):
 # Return the point to relocate and his neighbour considered.
 
 
-def best_cand(route, np, voisins, routes, inst, demand,fe):
-    S = []
-    for p in route:
-        i = route.index(p)
+def rd_cand(route, np, voisins, routes, inst, demand,fe):
+    parcours = permut([i for i in range(len(route))])
+    for i in parcours:
+        p = route[i]
         if p != np:
-            cp = best_point((route[i-1], p), routes, inst)
-            S.append(eval_cand(cp, voisins, routes, inst, demand,fe))
-
-    S.sort()
-    return S[-1]
+            cp = rd_point((route[i-1], p), routes, inst)
+            cand = eval_cand(cp, voisins, routes, inst, demand,fe)
+            if cand[0]>0:
+                return cand
+    return Error
 
 
 def ejection_chain(l, point, voisins, routes, inst, demand,fe):
@@ -599,7 +596,7 @@ def ejection_chain(l, point, voisins, routes, inst, demand,fe):
 
     for k in range(l-1):
         curr_route = R[1]
-        s, I, R = best_cand(curr_route, relocated_cust,
+        s, I, R = rd_cand(curr_route, relocated_cust,
                             voisins, routes, inst, demand,fe)
 
         if (s, I, R) == Error:
@@ -804,7 +801,7 @@ def learning_results(iterations,generate,inst,demmand):
         ls_qual = learning_set_quality(Base,quality)
         mat_qual = init_matrix(len(instance))
         mat_qual = learn(mat_qual,ls_qual)
-        e_qual = mat_info_rg(50,mat_qual)
+        e_qual = mat_info_rg(125,mat_qual)
         for e in e_qual:
             if not is_edge_in(e,edges):
                 edges.append(e)
@@ -899,7 +896,8 @@ def core_heuristic(initial_routes,inst,demand,lam,mu,nu,l,max_d,v,dejaCalc):
     c_init = cost_sol(routes,inst)
 
     tps2 = time.time()
-    while limit < 8000:
+    while tps2-tps1 < 60:
+        print(tps2-tps1, c_init)
         # find the worst edge
         worst = bad_edge(b, p, routes, inst,fixed_edges)[1]
 
@@ -907,7 +905,7 @@ def core_heuristic(initial_routes,inst,demand,lam,mu,nu,l,max_d,v,dejaCalc):
         p[worst[1]][worst[0]] += 1
 
         # apply ejection-chain
-        cp = best_point(worst, routes, inst)
+        cp = rd_point(worst, routes, inst)
 
         routes = ejection_chain(l, cp, v, routes, inst, demand,fixed_edges)
 
@@ -989,36 +987,32 @@ def apply_heuristic(inst, demand, l):
     dejaCalc = []
     
     print("start learning")
-    initial_routes = complete(destruction2(ignore_0(learning_results(10,100,inst,demand))),inst)
+    initial_routes = complete(destruction2(ignore_0(learning_results(5,100,inst,demand))),inst)
     
     namefile = "resultats/Heuristic_results/Values/"+t+"/results_det-De-LearnQual_mid.txt"
     writef(namefile,'Aretes fixées après apprentissage pour cette exécution')
     writef(namefile,'Fixed edges = '+ str(initial_routes))
     
     #initial_routes = init_routes(inst,demand)
-    for li in range(5,15):
-        for mi in range(1,20):
-            for ni in range(1,20):
-                
-                init,sol,new = core_heuristic(copy_sol(initial_routes),inst,demand,li*0.1,mi*0.1,ni*0.1,l,max_d,v,dejaCalc)
-                c_sol = cost_sol(sol,inst)
-                c_init = cost_sol(init,inst)
-                if new:
-                    
-                    namefile = "resultats/Heuristic_results/Values/"+t+"/results_det-De-LearnQual_mid.txt"
-                    writef(namefile,'\n')
-                    writef(namefile,'#################')
-                    writef(namefile,'lambda = '+ str(li*0.1))
-                    writef(namefile,'mu = ' + str(mi*0.1))
-                    writef(namefile,'nu = ' + str(ni*0.1))
-                    writef(namefile,'')
-                    writef(namefile,'init = ' + str(round(c_init,3)))
-                    writef(namefile,'res = ' + str(round(c_sol,3)))
-                    writef(namefile,'gap = ' + str(round((1-682/c_sol)*100,3)))
-                    writef(namefile,'')
-                    writef(namefile,'solution = ' + str(sol))
-                    
-                    print((li,mi,ni),c_sol)
+    for i in range(5):
+        print(i)
+        dejaCalc = []
+        init,sol,new = core_heuristic(copy_sol(initial_routes),inst,demand,1.0,0.5,0.5,l,max_d,v,dejaCalc)
+        c_sol = cost_sol(sol,inst)
+        c_init = cost_sol(init,inst)
+        if new:
+            """        
+            namefile = "resultats/Heuristic_results/Values/"+t+"/results_alea-De-LearnQual_mid.txt"
+            writef(namefile,'\n')
+            writef(namefile,'#################')
+            writef(namefile,'')
+            writef(namefile,'init = ' + str(round(c_init,3)))
+            writef(namefile,'res = ' + str(round(c_sol,3)))
+            writef(namefile,'gap = ' + str(round((1-952/c_sol)*100,3)))
+            writef(namefile,'')
+            writef(namefile,'solution = ' + str(sol))
+            """
+            print(c_sol)
                     
     tps_fin = time.time()
     print(tps_fin-tps_deb)
@@ -1056,10 +1050,10 @@ def common_edges(sol1, sol2):
     return E,E_init,E_final
 
 
-t = "P-n101-k04"
-P_n101_k04 = read("Instances/"+t+".xml")
-#G01 = read("Instances/Golden_01.xml")
-instance, demand = P_n101_k04
+t = "Golden-01"
+#P_n101_k04 = read("Instances/"+t+".xml")
+G01 = read("Instances/Golden_01.xml")
+instance, demand = G01
 
 
 #record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
@@ -1154,9 +1148,8 @@ def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
              
                 else:
                     print("deja calculé !")
+                    """
 
-total_execution(0.0,2.0,0.0,2.0,0.0,2.0)
-"""
 
 
 #print(learning_results(instance,demand))
