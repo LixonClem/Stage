@@ -1,15 +1,16 @@
-\beamer@endinputifotherversion {3.36pt}
 \headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
 \headcommand {\beamer@framepages {1}{1}}
-\headcommand {\sectionentry {1}{Apprentissage}{2}{Apprentissage}{0}}
 \headcommand {\beamer@sectionpages {1}{1}}
 \headcommand {\beamer@subsectionpages {1}{1}}
-\headcommand {\beamer@subsectionentry {0}{1}{1}{2}{Description}}\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\sectionentry {1}{Apprentissage}{2}{Apprentissage}{0}}
+\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{2}{Description}}
 \headcommand {\slideentry {1}{1}{1}{2/2}{Description}{0}}
 \headcommand {\beamer@framepages {2}{2}}
 \headcommand {\slideentry {1}{1}{2}{3/3}{Description}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\beamer@subsectionentry {0}{1}{2}{4}{R\IeC {\'e}sultats apprentissage}}\headcommand {\beamer@subsectionpages {2}{3}}
+\headcommand {\beamer@subsectionpages {2}{3}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{4}{R\IeC {\'e}sultats apprentissage}}
 \headcommand {\slideentry {1}{2}{1}{4/4}{R\IeC {\'e}sultats apprentissage}{0}}
 \headcommand {\beamer@framepages {4}{4}}
 \headcommand {\slideentry {1}{2}{2}{5/5}{R\IeC {\'e}sultats apprentissage}{0}}
@@ -30,17 +31,19 @@
 \headcommand {\beamer@framepages {12}{12}}
 \headcommand {\slideentry {1}{2}{10}{13/13}{R\IeC {\'e}sultats apprentissage}{0}}
 \headcommand {\beamer@framepages {13}{13}}
-\headcommand {\sectionentry {2}{Int\IeC {\'e}gration de la connaissance dans un algorithme}{14}{Int\IeC {\'e}gration de la connaissance dans un algorithme}{0}}
 \headcommand {\beamer@sectionpages {2}{13}}
 \headcommand {\beamer@subsectionpages {4}{13}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{14}{Pr\IeC {\'e}sentation algorithme}}\headcommand {\beamer@subsectionpages {14}{13}}
+\headcommand {\sectionentry {2}{Int\IeC {\'e}gration de la connaissance dans un algorithme}{14}{Int\IeC {\'e}gration de la connaissance dans un algorithme}{0}}
+\headcommand {\beamer@subsectionpages {14}{13}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{14}{Pr\IeC {\'e}sentation algorithme}}
 \headcommand {\slideentry {2}{1}{1}{14/14}{Pr\IeC {\'e}sentation algorithme}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{15}{R\IeC {\'e}sultats}}\headcommand {\beamer@subsectionpages {14}{14}}
+\headcommand {\beamer@subsectionpages {14}{14}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{15}{R\IeC {\'e}sultats}}
 \headcommand {\slideentry {2}{2}{1}{15/15}{R\IeC {\'e}sultats}{0}}
 \headcommand {\beamer@framepages {15}{15}}
 \headcommand {\beamer@partpages {1}{15}}
 \headcommand {\beamer@subsectionpages {15}{15}}
 \headcommand {\beamer@sectionpages {14}{15}}
 \headcommand {\beamer@documentpages {15}}
-\headcommand {\def \inserttotalframenumber {15}}
+\headcommand {\gdef \inserttotalframenumber {15}}

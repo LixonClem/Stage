@@ -3,6 +3,8 @@
 \usepackage{fullpage}%
 \usepackage[T1]{fontenc}%
 \usepackage[utf8]{inputenc}%
+
+
 \usepackage[french]{babel}% % Adjust the main language
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 
@@ -56,8 +58,8 @@ C'est l'ajout de capacité aux tournées qui nous intéressera plus particulièr
 
 \subsubsection{Capacitated VRP (CVRP)}
 
-L'une des extensions les plus étudiées du VRP, est celle où on rajoute une contrainte de capacités sur les tournées, cette contrainte étant la même pour toutes les tournées. 
-Dorénavant, chaque client a une certaine demande, mais la demande présente sur une tournée ne doit pas excéder la capacité disponible sur la tournée.
+L'une des extensions les plus étudiées du VRP, est celle où l'on rajoute une contrainte de capacités sur les tournées, cette contrainte étant la même pour toutes les tournées. 
+Dorénavant, chaque client a une certaine demande, mais la demande présente sur une tournée ne doit pas excéder la capacité disponible sur celle-ci.
 Les tournées doivent donc respecter la règle suivante, en plus de celles décrites à la section précédente :
 \begin{itemize}
 \item La demande totale sur chaque tournée ne doit pas excéder la capacité disponible.
@@ -116,25 +118,21 @@ Lors de la recherche d'une solution optimale d'un problème, il est indispensabl
 \end{itemize}
 
 \subsubsection{Initialisation}
-Cette brique consiste en la création d'une solution initiale, sur laquelle seront appliquées des modifications. 
+Avant de pouvoir appliquer l'heuristique, il faut pouvoir déterminer une solution initiale sur laquelle les modifications vont être appliquées. 
 
 Cette solution peut être créée de différentes manières:
 
 \begin{itemize}
 \item Elle peut être générée aléatoirement (Alea);
-\item Elle peut être obtenue grâce à l'algorithme de Clarke \& Wright (CW), avec les paramètres ($\lambda,\mu,\nu$)~\cite{Altinel_2005}: 
-\begin{itemize}
-\item Construire autant de tournées que de clients qui passent par le dépôt;
-\item Pour toutes les paires de clients $(i,j)$ calculer le saving $s(i,j)$ via la formule : 
+\item Elle peut être obtenue grâce à l'algorithme de Clarke \& Wright (CW) (algorithme \ref{algo:CW}), avec les paramètres ($\lambda,\mu,\nu$)~\cite{Altinel_2005}. Les savings se calculent via la formule suivante:
+
 \begin{center}
 $s(i,j) = c_{i0} + c_{0j} - \lambda c_{ij} + \mu \vert c_{i0} - c_{0j} \vert + \nu \frac{d_i + d_j}{\overline{d}}$
 \end{center}
-où $c_{ij}$ dénote la distance entre les clients $i$ et $j$ (le client 0 étant le dépôt), et $d_i$ dénote la demande du client $i$.
-\item Considérer le couple $(i,j)$ possédant le saving le plus élevée;
-\item Fusionner les tournées auxquelles appartiennent $i$ et $j$, si possible (tournées différentes, et $i$ et $j$ doivent être premier et dernier clients de leur tournée);
-\item Mettre $s(i,j) = 0$
-\item Recommencer tant que le saving maximal n'est pas négatif.
-\end{itemize}
+
+où $c_{ij}$ dénote la distance entre les clients $i$ et $j$ (le client 0 étant le dépôt), et $d_i$ dénote la demande du client $i$. 
+
+L'intérêt de cet algorithme est qu'il donne une bonne solution initiale en peu de temps, ce qui permet de l'exécuter un grand nombre de fois rapidement.
 \item Elle peut être calculée grâce à l'intégration de connaissances (Learn) (objectif du stage).
 \end{itemize}
 
@@ -146,27 +144,22 @@ où $c_{ij}$ dénote la distance entre les clients $i$ et $j$ (le client 0 étan
 \For{$i \gets 1$ \textbf{to} $n$} {
 	$Sol \gets Sol \cup [0,i,0]$\;
 }
-\For{$i \gets 0$ \textbf{to} $n$} {
-	\For{$j \gets i+1$ \textbf{to} $n$} {
-		$Saving \gets Saving \cup [saving(I,D,\lambda,\mu,\nu),i,j]$\;
-		}
-	}
-$Saving \gets reverse(sort(Saving))$\;
-$ cand \gets Saving[0] $\;
-\While{$ cand[0] > 0$} {
-	$Saving \gets Saving \setminus Saving[0]$\;
-	$r_i \gets findRoute(Sol,cand[1])$\;
-	$r_j \gets findRoute(Sol,cand[2])$\;
+Calculer les savings de toutes les arêtes\;
+
+\While{le saving maximal est positif} {
+	$(i,j) \gets argmax_{(i,j)} s(i,j)$\;
+	$r_i \gets findRoute(Sol,i)$\;
+	$r_j \gets findRoute(Sol,j)$\;
 	\If{$ canMerge(r_i,r_j) $} {
-		$ Sol \gets (Sol \setminus r_i) \setminus r_j$\;
-		$ Sol \gets Sol \cup merge(r_i,r_j)$\;
+		Retirer $r_i$ et $r_j$ de $Sol$\;
+		Fusionner $r_i$ et $r_j$\;
+		Ajouter le résultat dans $Sol$ et mettre $s(i,j) = 0$\;
 	}
-	$ cand \gets Saving[0]$\;
 }
 
 \Return{$Sol$}\;
 \caption{{\sc Clarke-Wright} calcule une solution initiale}
-\label{algo:max}
+\label{algo:CW}
 \end{algorithm}
 
 \subsubsection{Pire arête et pénalisation}
@@ -262,125 +255,97 @@ $r_{next} \gets 2$-$opt(r) $\;
 
 Lorsqu'il s'agit d'appliquer \emph{2-opt}, il est possible d'utiliser les méthodes de la section \ref{voisinage} pour explorer les voisinages.
 
-\subsubsection{Raffinement}
-
-Il est possible que la solution actuelle puisse être améliorée simplement. En effet, la solution considérée peut contenir une tournée qui ne contient qu'un client, et les solutions optimales ne contiennent en général pas ce genre de tournées.  
-
-Une fonction \lstinline|reject| vient donc compléter l'opérateur \emph{EC}, et sert à supprimer les routes qui n'ont qu'un client. Pour cela elle essaie d'intégrer le client sur une tournée proche (en parcourant les plus proches voisins du client).
-
 \subsection{Algorithmes mis en œuvre}
-Nous présentons ici les algorithmes utilisés.
+Les algorithmes présentés précédemment peuvent être enchaînés dans l'ordre que l'on veut. 
+En effet, seule le résultat obtenu importe, les algorithmes sont donc indépendants. 
+Nous présentons ici l'algorithme utilisé par Arnold et S\"\o rensen dans~\cite{Sorensen_2017}, ainsi que l'algorithme que nous utiliserons pour la suite.
+
 \subsubsection{Heuristique d'Arnold et Sörensen}
 
-Cette heuristique se compose de la manière suivante :
+L'heuristique décrite par Arnold et Sörensen est présentée dans l'algorithme~\ref{algo:AS}. Elle est à la fois déterministe et efficace, c'est-à-dire qu'elle trouve de bonnes solutions pour de nombreuses instances en un temps raisonnable. Les auteurs pré-calculent également les $30$ plus proches voisins de chacun des clients.
 
 
-\begin{center}
-\begin{tabular}{|c|}
+\begin{algorithm}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{Un ensemble de points I, les demandes des clients D, un triplet de flottants $(\lambda,\mu,\nu)$}
+\KwOut{Une solution au problème I}
+$Sol \gets CW(I,D,\lambda,\mu,\nu)$\;
+$N \gets length(D)$\;
+$nextSol \gets Sol$\;
+\While {Pas 3 minutes depuis la dernière amélioration} {
+	$worstEdge \gets argmax_{(i,j)} b(i,j) $\;
+	$nextSol \gets EC_{BI-O}(worstEdge,I,D)$\;
+	Améliorer chaque tournée avec $LK_{BI-O}$\;
+	$nextSol \gets CE_{BI-O}(worstEdge,I,D)$\;
+	Améliorer chaque tournée avec $LK_{BI-O}$\;
+	\If {$cost(Sol) > cost (nextSol)$} {
+		$ Sol \gets nextSol$\;
+	}
+	\If {Pas d'améliorations depuis $N/10$ itérations} {
+		Appliquer les opérateurs sur toutes les arêtes de la solution\;
+	}
+	\If {Pas d'améliorations depuis $20N$ itérations} {
+		Changer de fonction de pénalisation en prenant un autre triplet $(\lambda_w,\lambda_c,\lambda_d)$\;
+	}
+	\If {Pas d'améliorations depuis $100N$ itérations} {
+		Réinitialiser les pénalités des arêtes\;
+	}
+}
+\Return{$Sol$}\;
+\caption{{\sc AS} applique l'heuristique A\& S au problème considéré}
+\label{algo:AS}
+\end{algorithm}
 
-   \hline
-   Initialisation$_{CW}$  \\
-   \hline
-   \hline
-   Condition d'arrêt : 3 minutes depuis la dernière amélioration  \\
-   \hline
-   Compute worst edge \\
-   \hline
-   EC$_{BI-O}$ \\
-   \hline
-   LK$_{BI-O}$ \\
-   \hline
-   CE$_{BI-O}$ \\
-   \hline
-   LK$_{BI-O}$ \\
-   \hline
-   Itérations spéciales \\
-   \hline
-   \hline
-   
-\end{tabular}
-\end{center}
 
-\underline{Remarques}: La brique itérations spéciales, contient des opérations qui ne sont effectuées qu'après un certain nombre d'itérations sans améliorations. En effet, il peut souvent arriver que la solution actuelle soit bloquée sur un optimum local. Les auteurs ont choisi les opérations suivantes ($N$ désigne le nombre de clients):
-\begin{itemize}
-\item $N/10$ itérations sans améliorations $\rightarrow$ Optimisation global;
-\item $20N$ itérations sans améliorations $\rightarrow$ Changement fonction de pénalisation;
-\item $100N$ itérations sans améliorations $\rightarrow$ Reset des pénalités.
-\end{itemize} 
-
-Les auteurs calculent aussi à l'avance $30$ plus proches voisins pour chacun des clients.
 
 \subsubsection{Algorithme utilisé}
 
-L'algorithme (A$_d$) que j'utilise se compose de la manière suivante :
+L'algorithme (A) que j'utilise est décrit à travers l'algorithme~\ref{algo:A}. Cet algorithme étant stochastique (non déterministe), j'effectue $20$ itérations, puis détermine le minimum et la moyenne des résultats obtenus.
 
-\begin{center}
-\begin{tabular}{|c|}
-
-   \hline
-   Initialisation$_{CW}$  \\
-   \hline
-   LK$_{BI-O}$ \\
-   \hline
-   \hline
-   Condition d'arrêt : 1500 itérations depuis la dernière amélioration  \\
-   \hline
-   Compute worst edge \\
-   \hline
-   EC$_{BI-O}$ \\
-   \hline
-   LK$_{BI-O}$ \\
-   \hline
-   CE$_{FI-O}$ \\
-   \hline
-   LK$_{BI-O}$ \\
-   \hline
-   Itérations spéciales \\
-   \hline
-   \hline
-   
-\end{tabular}
-\end{center}
-
-\underline{Remarques}: Ici la brique itérations spéciales contient ($N$ désigne le nombre de clients):
-\begin{itemize}
-\item $N/2$ itérations sans améliorations $\rightarrow$ Retour à la dernière meilleure solution;
-\item $5N/2$ itérations sans améliorations $\rightarrow$ Changement fonction de pénalisation et reset des pénalités;
-\end{itemize} 
+\begin{algorithm}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{Un ensemble de points I, les demandes des clients D, un triplet de flottants $(\lambda,\mu,\nu)$}
+\KwOut{Une solution au problème I}
+$Sol \gets CW(I,D,\lambda,\mu,\nu)$\;
+Améliorer chaque tournée avec $LK_{BI-O}$\;
+$N \gets length(D)$\;
+$nextSol \gets Sol$\;
+\While {Pas 1 minute depuis la dernière amélioration} {
+	$worstEdge \gets argmax_{(i,j)} b(i,j) $\;
+	$nextSol \gets EC_{FI-RD}(worstEdge,I,D)$\;
+	Améliorer chaque tournée avec $LK_{BI-O}$\;
+	$nextSol \gets CE_{FI-RD}(worstEdge,I,D)$\;
+	Améliorer chaque tournée avec $LK_{BI-O}$\;
+	\If {$cost(Sol) > cost (nextSol)$} {
+		$ Sol \gets nextSol$\;
+	}
+	\If {Pas d'améliorations depuis $N/2$ itérations} {
+		$nextSol \gets Sol$\;
+	}
+	\If {Pas d'améliorations depuis $5N/2$ itérations} {
+		Changer de fonction de pénalisation en prenant un autre triplet $(\lambda_w,\lambda_c,\lambda_d)$\;
+		Réinitialiser les pénalités des arêtes\;
+		Améliorer chaque tournée de $Sol$ avec $LK_{BI-O}$\;
+	}
+}
+\Return{$Sol$}\;
+\caption{{\sc A} calcule une solution du problème considéré}
+\label{algo:A}
+\end{algorithm}
 
 
-Un autre algorithme (A$_a$, où seul le bloc CE est modifié):
-\begin{center}
-\begin{tabular}{|c|}
+\section{Utilisation de connaissances}
 
-   \hline
-   Initialisation$_{CW}$  \\
-   \hline
-   LK$_{BI-O}$ \\
-   \hline
-   \hline
-   Condition d'arrêt : 1500 itérations depuis la dernière amélioration  \\
-   \hline
-   Compute worst edge \\
-   \hline
-   EC$_{BI-O}$ \\
-   \hline
-   LK$_{BI-O}$ \\
-   \hline
-   CE$_{FI-RD}$ \\
-   \hline
-   LK$_{BI-O}$ \\
-   \hline
-   Itérations spéciales \\
-   \hline
-   \hline
-   
-\end{tabular}
-\end{center}
+Maintenant que nous disposons d'un algorithme performant pour calculer des solutions aux instances considérées, nous allons essayer d'extraire de la connaissance à partir des solutions initiales fournies par Clarke-Wright, pour les intégrer ensuite à l'algorithme A.
+ 
+\subsection{Motivation}
 
-Pour cet algorithme, j'effectue $25$ itérations en gardant la moyenne des coûts obtenus, ainsi que la solution qui a donné le meilleur coût.
 
-\section{Intégration de connaissances}
+\subsection{Extraction des connaissances}
+décrire algo d'apprentissage + résultats
+
+\subsection{Intégration des connaissances}
+décrire nouvel algo + résultats
 
 
 \bibliographystyle{plain}

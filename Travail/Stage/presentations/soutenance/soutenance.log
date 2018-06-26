@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  26 JUN 2018 16:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  26 JUN 2018 11:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**apprentissage.tex
-(./apprentissage.tex
+**soutenance.tex
+(./soutenance.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
@@ -1024,8 +1024,8 @@ Now handling font encoding PD1 ...
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerouterthemesplit.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamercolorthemeorchid.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamercolorthemewhale.sty))
-(./apprentissage.aux)
-\openout1 = `apprentissage.aux'.
+(./soutenance.aux)
+\openout1 = `soutenance.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
@@ -1122,9 +1122,9 @@ LaTeX Info: Redefining \ref on input line 16.
 LaTeX Info: Redefining \pageref on input line 16.
 LaTeX Info: Redefining \nameref on input line 16.
 
-(./apprentissage.out) (./apprentissage.out)
+(./soutenance.out) (./soutenance.out)
 \@outlinefile=\write5
-\openout5 = `apprentissage.out'.
+\openout5 = `soutenance.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 16.
@@ -1211,47 +1211,15 @@ Dictionary: translator-theorem-dictionary, Language: English
 LaTeX Info: Redefining \degres on input line 16.
 LaTeX Info: Redefining \dots on input line 16.
 LaTeX Info: Redefining \up on input line 16.
- (./apprentissage.nav) [1
+ (./soutenance.nav) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for U+msa on input line 44.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 44.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 44.
+] [3
 
-(/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
-File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
-thkerncmss.
-)
-[2
+] [4
 
-]
-Overfull \vbox (4.91582pt too high) detected at line 65
- []
-
-[3
-
-]
-<instance3706.png, id=158, 462.528pt x 346.896pt>
-File: instance3706.png Graphic file (type png)
-<use instance3706.png>
-Package pdftex.def Info: instance3706.png  used on input line 78.
-(pdftex.def)             Requested size: 138.75946pt x 104.0696pt.
-<best3706.png, id=160, 462.528pt x 346.896pt>
-File: best3706.png Graphic file (type png)
-<use best3706.png>
-Package pdftex.def Info: best3706.png  used on input line 78.
-(pdftex.def)             Requested size: 138.75946pt x 104.0696pt.
- [4
-
- <./instance3706.png> <./best3706.png>] [5
+] [5
 
 ] [6
 
@@ -1265,67 +1233,47 @@ Package pdftex.def Info: best3706.png  used on input line 78.
 
 ] [11
 
-]
-[12
+] [12
 
 ] [13
 
-]
-Overfull \hbox (2.20027pt too wide) in paragraph at lines 306--306
- [] 
- []
-
-[14
-
-]
-Overfull \hbox (23.13434pt too wide) in paragraph at lines 343--343
-[][]  
- []
-
-[15
+] [14
 
 ]
 \tf@nav=\write6
-\openout6 = `apprentissage.nav'.
+\openout6 = `soutenance.nav'.
 
 \tf@toc=\write7
-\openout7 = `apprentissage.toc'.
+\openout7 = `soutenance.toc'.
 
 \tf@snm=\write8
-\openout8 = `apprentissage.snm'.
+\openout8 = `soutenance.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 345.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 345.
- (./apprentissage.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 345.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 345.
-Package rerunfilecheck Info: File `apprentissage.out' has not changed.
-(rerunfilecheck)             Checksum: 22DDF46E7CB2D0F1CD60E73F35566174;408.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 102.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 102.
+
+(./soutenance.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 102.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 102.
+Package rerunfilecheck Info: File `soutenance.out' has not changed.
+(rerunfilecheck)             Checksum: EA5381DFCA972FA91ECFF5B8247C7161;644.
  ) 
 Here is how much of TeX's memory you used:
- 18848 strings out of 492982
- 349917 string characters out of 6134896
- 439129 words of memory out of 5000000
- 21933 multiletter control sequences out of 15000+600000
- 21178 words of font info for 61 fonts, out of 8000000 for 9000
+ 18690 strings out of 492982
+ 345943 string characters out of 6134896
+ 435076 words of memory out of 5000000
+ 21805 multiletter control sequences out of 15000+600000
+ 8093 words of font info for 21 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,19n,63p,780b,681s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsi1095
-.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0600.pfb></usr/share/tex
-mf/fonts/type1/public/cm-super/sfss0800.pfb></usr/share/texmf/fonts/type1/publi
-c/cm-super/sfss1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1095.
-pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1440.pfb></usr/share/texm
-f/fonts/type1/public/cm-super/sfsx1095.pfb>
-Output written on apprentissage.pdf (15 pages, 203493 bytes).
+ 56i,19n,55p,777b,553s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf/
+fonts/type1/public/cm-super/sfss0600.pfb></usr/share/texmf/fonts/type1/public/c
+m-super/sfss1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1440.pfb
+>
+Output written on soutenance.pdf (14 pages, 63880 bytes).
 PDF statistics:
- 586 PDF objects out of 1000 (max. 8388607)
- 527 compressed objects within 6 object streams
- 37 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 538 PDF objects out of 1000 (max. 8388607)
+ 498 compressed objects within 5 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 159 words of extra memory for PDF output out of 10000 (max. 10000000)
 

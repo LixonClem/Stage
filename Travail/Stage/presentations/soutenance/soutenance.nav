@@ -1,0 +1,56 @@
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\beamer@sectionpages {1}{1}}
+\headcommand {\beamer@subsectionpages {1}{1}}
+\headcommand {\sectionentry {1}{Pr\IeC {\'e}sentation du probl\IeC {\`e}me}{2}{Pr\IeC {\'e}sentation du probl\IeC {\`e}me}{0}}
+\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{2}{Vehicle Routing Problem}}
+\headcommand {\slideentry {1}{1}{1}{2/2}{Vehicle Routing Problem}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\slideentry {1}{1}{2}{3/3}{Vehicle Routing Problem}{0}}
+\headcommand {\beamer@framepages {3}{3}}
+\headcommand {\beamer@subsectionpages {2}{3}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{4}{Capacitated VRP}}
+\headcommand {\slideentry {1}{2}{1}{4/4}{Capacitated VRP}{0}}
+\headcommand {\beamer@framepages {4}{4}}
+\headcommand {\slideentry {1}{2}{2}{5/5}{Capacitated VRP}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\beamer@sectionpages {2}{5}}
+\headcommand {\beamer@subsectionpages {4}{5}}
+\headcommand {\sectionentry {2}{Motivation}{6}{Motivation}{0}}
+\headcommand {\beamer@subsectionpages {6}{5}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{6}{Travaux r\IeC {\'e}cents}}
+\headcommand {\slideentry {2}{1}{1}{6/6}{Travaux r\IeC {\'e}cents}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\slideentry {2}{1}{2}{7/7}{Travaux r\IeC {\'e}cents}{0}}
+\headcommand {\beamer@framepages {7}{7}}
+\headcommand {\beamer@subsectionpages {6}{7}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{8}{Objectif}}
+\headcommand {\slideentry {2}{2}{1}{8/8}{Objectif}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\beamer@sectionpages {6}{8}}
+\headcommand {\beamer@subsectionpages {8}{8}}
+\headcommand {\sectionentry {3}{R\IeC {\'e}sultats}{9}{R\IeC {\'e}sultats}{0}}
+\headcommand {\beamer@subsectionpages {9}{8}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{9}{Algorithme de base}}
+\headcommand {\slideentry {3}{1}{1}{9/9}{Algorithme de base}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\slideentry {3}{1}{2}{10/10}{Algorithme de base}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\beamer@subsectionpages {9}{10}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{11}{Extraction de connaissances}}
+\headcommand {\slideentry {3}{2}{1}{11/11}{Extraction de connaissances}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\slideentry {3}{2}{2}{12/12}{Extraction de connaissances}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\beamer@subsectionpages {11}{12}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{13}{Int\IeC {\'e}gration des connaissances}}
+\headcommand {\slideentry {3}{3}{1}{13/13}{Int\IeC {\'e}gration des connaissances}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\slideentry {3}{3}{2}{14/14}{Int\IeC {\'e}gration des connaissances}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\beamer@partpages {1}{14}}
+\headcommand {\beamer@subsectionpages {13}{14}}
+\headcommand {\beamer@sectionpages {9}{14}}
+\headcommand {\beamer@documentpages {14}}
+\headcommand {\gdef \inserttotalframenumber {14}}

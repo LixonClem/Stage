@@ -895,32 +895,35 @@ lam = 0.0
 mu = 1.1
 nu = 1.4
 execute = 30
-t = "A-n37-k06"
-instance, demand = A_n37_k06
-initiale = init_A3706
-solution = sol_A3706
+t = "Golden-01"
+G01 = read("Instances/Golden_01.xml")
+instance, demand = G01
+
 
 max_d = max_depth(instance)
 v = voisins(KNN, instance)
 # print(route_demand([0, 22, 13, 10, 6, 5, 33, 4, 7],demand)) # 3705
 # print(route_demand([0, 21, 31, 19, 17, 13, 7, 26],demand)) # 3205
 # print(route_demand([0, 10, 30, 25, 27, 5, 12],demand))  # 3305
+
+record = [[0, 57, 56, 55, 96, 97, 98, 99, 139, 138, 137, 177, 178, 218, 217, 216, 215, 175, 176, 136, 135, 134, 94, 95, 54, 53, 52, 12], [0, 35, 75, 115, 114, 113, 112, 111, 151, 152, 153, 154, 155, 195, 194, 234, 235, 236, 237, 238, 198, 197, 196, 156, 157, 158], [0, 34, 33, 32, 31, 30, 29, 28, 27, 67, 68, 69, 70, 71, 72, 73, 74, 36, 37, 38, 39, 40, 1, 2], [0, 46, 45, 44, 43, 42, 41, 80, 79, 78, 77, 76, 116, 117, 118, 119, 120, 81, 82, 83, 84, 85, 86, 87, 49, 50, 51, 11], [0, 24, 25, 26, 66, 65, 64, 63, 62, 61, 60, 59, 58, 19, 18, 17, 16, 15, 14, 13, 10, 9, 8, 7, 6, 5, 4, 3], [0, 159, 160, 121, 122, 123, 124, 125, 166, 165, 164, 163, 162, 161, 200, 199, 239, 240, 201, 202, 203, 204, 205, 206, 207, 167, 126], [0, 48, 89, 90, 91, 92, 93, 133, 173, 174, 214, 213, 212, 211, 210, 209, 208, 168, 168, 169, 170, 171, 172, 132, 131, 130, 129, 128, 127, 88, 47], [0, 101, 100, 140, 180, 179, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 193, 192, 191, 190, 150, 110, 109, 108, 107], [0, 20, 21, 22, 23, 102, 142, 141, 181, 182, 183, 184, 185, 186, 187, 188, 189, 149, 148, 147, 146, 145, 144, 143, 103, 104, 105, 106]]
 """
 record = [[0, 16, 35, 25, 7], [0, 4, 18, 14, 36, 29, 24], [0, 31, 33, 5, 3, 1, 8, 6], [0, 27, 32, 15, 21, 34, 17], [0, 13, 30, 10, 26, 20], [0, 11, 12, 22, 23, 28, 2, 9, 19]]
+"""
 
 for r in record:
     print(route_demand(r, demand))
 
-
+print(cost_sol(record,instance))
 print_current_sol(record,instance)
 py.show()
-"""
+
 """
 init, reso = apply_heuristic(
     instance, demand, lam, mu, nu, relocation, max_d, v)
 print(cost_sol(init, instance), cost_sol(reso, instance))
 """
-
+"""
 costs = []
 best = []
 for i in range(execute):
@@ -931,9 +934,9 @@ for i in range(execute):
     costs.append(round(c_sol,3))
     if c_sol < c_best:
         best = reso
-"""
+
 namefile = "resultats/Heuristic_results/Values/"+t+"/results.txt"
-"""
+
 print(costs)
 mean = 0
 for c in costs:
@@ -941,6 +944,7 @@ for c in costs:
 print(mean/len(costs))
 print(min(costs))
 print(best)
+"""
 """
 writef(namefile,'\n')
 writef(namefile,'#################')
