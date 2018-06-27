@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  26 JUN 2018 15:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  27 JUN 2018 10:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -721,42 +721,60 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 80--81
+<Instance.png, id=9, 462.528pt x 346.896pt>
+File: Instance.png Graphic file (type png)
+<use Instance.png>
+Package pdftex.def Info: Instance.png  used on input line 64.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+<solutionNoCapacity.png, id=11, 462.528pt x 346.896pt>
+File: solutionNoCapacity.png Graphic file (type png)
+<use solutionNoCapacity.png>
+Package pdftex.def Info: solutionNoCapacity.png  used on input line 72.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+ [2 <./Instance.png> <./solutionNoCapacity.png>]
+<solutionCapacity.png, id=17, 462.528pt x 346.896pt>
+File: solutionCapacity.png Graphic file (type png)
+<use solutionCapacity.png>
+Package pdftex.def Info: solutionCapacity.png  used on input line 90.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--89
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
  []
 
-[2]
+[3 <./solutionCapacity.png>]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 147.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 171.
 LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <10.95> not available
-(Font)              Font shape `T1/ppl/b/it' tried instead on input line 147.
- [3] [4] [5] (./briques.bbl [6]) [7] [8] (./briques.aux) ) 
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 171.
+ [4] [5] [6] [7] (./briques.bbl) [8] [9]
+(./briques.aux) ) 
 Here is how much of TeX's memory you used:
- 7282 strings out of 492982
- 106175 string characters out of 6134896
- 293221 words of memory out of 5000000
- 10707 multiletter control sequences out of 15000+600000
+ 7303 strings out of 492982
+ 106573 string characters out of 6134896
+ 293245 words of memory out of 5000000
+ 10724 multiletter control sequences out of 15000+600000
  39679 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,14n,40p,738b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/t
-exmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/f
-plmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf
--dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on briques.pdf (8 pages, 114225 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatin
+o/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pf
+b>
+Output written on briques.pdf (9 pages, 186340 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 74 PDF objects out of 1000 (max. 8388607)
+ 48 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

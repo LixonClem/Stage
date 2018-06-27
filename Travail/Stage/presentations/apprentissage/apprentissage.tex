@@ -6,7 +6,7 @@
 \usepackage[T1]{fontenc}
 
 \usepackage[utf8]{inputenc}
-
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 
 \usetheme{Warsaw}
 \title{Apprentissage et résultats}
@@ -48,7 +48,7 @@ On peut ne garder qu'une partie de la base générée pour apprendre
 \begin{exampleblock}{Protocole}
 \begin{itemize}
 \item Génération de la base de départ
-\item Génération de la base d'apprentissage
+\item Calcul de la base d'apprentissage
 \item On initialise une matrice MAT de taille $n^2$
 \item Pour chaque arête (a,b) on incrémente la valeur MAT[a][b] (si a>b, on commence par échanger a et b)
 \item On regarde si les arêtes obtenues sont effectivement dans la solution optimale.
@@ -64,10 +64,10 @@ On peut ne garder qu'une partie de la base générée pour apprendre
 
 \end{frame}
 
-\subsection{Résultats apprentissage}
+\subsection{Résultats A3706}
 
 \begin{frame}{Instance test}
-Tous les tests qui suivent n'ont été réalisés que sur l'instance A-n37-k06.
+3 instances ont été choisies pour réaliser ces tests: A-n37-k06, A-n65-k09 et P-n101-k04.
 
 La solution employée pour comparer les résultats est celle de la littérature.
 
@@ -88,12 +88,16 @@ On utilise la méthode Quan$_{10}$ avec certaines valeurs de seuil.
    \hline
    Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
    \hline
+   50 & L$_{lb}$/2 & 34 & 21 & 0.5  \\   
+   \hline
    100 & L$_{lb}$/2 & 30 & 21 & 0.5  \\
    \hline
    500 & L$_{lb}$/2 & 32 & 24 & 0.57  \\
    \hline
    1000 & L$_{lb}$/2 & 33 & 24 & 0.57  \\
    \hline
+   \hline
+   50 & 3L$_{lb}$/4 & 23 & 14 & 0.33  \\
    \hline
    100 & 3L$_{lb}$/4 & 16 & 15 & 0.36  \\
    \hline
@@ -111,6 +115,8 @@ On utilise la méthode Qual$_{10}$ avec certaines valeurs de seuil.
 \begin{tabular}{|c|c|c|c|c|}
    \hline
    Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+    \hline
+   50 & L$_{lb}$/2 & 33 & 21 & 0.50  \\
    \hline
    100 & L$_{lb}$/2 & 31 & 23 & 0.55  \\
    \hline
@@ -118,6 +124,8 @@ On utilise la méthode Qual$_{10}$ avec certaines valeurs de seuil.
    \hline
    1000 & L$_{lb}$/2 & 31 & 23 & 0.53  \\
    \hline
+   \hline
+   50 & 3L$_{lb}$/4 & 17 & 12 & 0.28  \\
    \hline
    100 & 3L$_{lb}$/4 & 17 & 14 & 0.33  \\
    \hline
@@ -134,12 +142,16 @@ On utilise la méthode Tout avec certaines valeurs de seuil.
    \hline
    Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
    \hline
+   50 & L$_{lb}$/2 & 23 & 15 & 0.35  \\
+   \hline
    100 & L$_{lb}$/2 & 24 & 17 & 0.40  \\
    \hline
    500 & L$_{lb}$/2 & 22 & 15 & 0.36  \\
    \hline
    1000 & L$_{lb}$/2 & 23 & 16 & 0.38  \\
    \hline
+   \hline
+   50 & 3L$_{lb}$/4 & 10 & 7 & 0.16  \\
    \hline
    100 & 3L$_{lb}$/4 & 6 & 6 & 0.14  \\
    \hline
@@ -150,18 +162,6 @@ On utilise la méthode Tout avec certaines valeurs de seuil.
 \end{tabular}
 \end{frame}
 
-\begin{frame}{Bilan avec critère Seuil}
-
-\begin{itemize}
-\item Quan$_{10}$ et Qual$_{10}$ renvoient en moyenne 22 arêtes correctes lorsque Seuil vaut L$_{lb}$/2, et 15 lorsque Seuil vaut 3L$_{lb}$/4;
-\item Tout renvoie en moyenne respectivement 15 et 6 arêtes correctes.
-\end{itemize}
-
-\begin{exampleblock}{Remarque}
-Quan$_{10}$ semble être la base la plus adaptée pour le critère de choix Requis.
-\end{exampleblock}
-
-\end{frame}
 
 \begin{frame}{Résultats avec critère Rang et Quan$_{10}$}
 
@@ -170,6 +170,8 @@ On utilise la méthode Quan$_{10}$ avec certaines valeurs de rang.
    \hline
    Taille base & Rang max & Nb correctes & Proportion\\
    \hline
+   50 & 10  & 6 & 0.14  \\
+   \hline
    100 & 10  & 9 & 0.21  \\
    \hline
    500 & 10  & 9 & 0.21  \\
@@ -177,11 +179,21 @@ On utilise la méthode Quan$_{10}$ avec certaines valeurs de rang.
    1000 & 10 & 9 & 0.21  \\
    \hline
    \hline
+   50 & 20 & 13 & 0.31  \\
+   \hline
    100 & 20 & 16 & 0.38  \\
    \hline
    500 & 20 & 16 & 0.38  \\
    \hline
    1000 & 20 & 17 & 0.40  \\
+   \hline
+   50 & n/2 & 12 & 0.28  \\
+   \hline
+   100 & n/2 & 13 & 0.3  \\
+   \hline
+   500 & n/2 & 13 & 0.3  \\
+   \hline
+   1000 & n/2 & 13 & 0.3  \\
    \hline
 \end{tabular}
 
@@ -194,6 +206,8 @@ On utilise la méthode Qual$_{10}$ avec certaines valeurs de rang.
    \hline
    Taille base & Rang max & Nb correctes & Proportion\\
    \hline
+   50 & 10  & 6 & 0.14  \\
+   \hline
    100 & 10  & 9 & 0.21  \\
    \hline
    500 & 10  & 10 & 0.24  \\
@@ -201,11 +215,21 @@ On utilise la méthode Qual$_{10}$ avec certaines valeurs de rang.
    1000 & 10 & 10 & 0.24  \\
    \hline
    \hline
+   50 & 20  & 13 & 0.32  \\
+   \hline
    100 & 20 & 16 & 0.38  \\
    \hline
    500 & 20 & 16 & 0.38  \\
    \hline
    1000 & 20 & 16 & 0.38  \\
+   \hline
+   50 & n/2 & 13 & 0.3  \\
+   \hline
+   100 & n/2 & 13 & 0.3  \\
+   \hline
+   500 & n/2 & 13 & 0.3  \\
+   \hline
+   1000 & n/2 & 12 & 0.29  \\
    \hline
 \end{tabular}
 \end{frame}
@@ -217,6 +241,8 @@ On utilise la méthode Tout avec certaines valeurs de rang.
    \hline
    Taille base & Rang max & Nb correctes & Proportion\\
    \hline
+   50 & 10  & 7 & 0.16  \\
+   \hline
    100 & 10  & 10 & 0.24  \\
    \hline
    500 & 10  & 9 & 0.21  \\
@@ -224,18 +250,23 @@ On utilise la méthode Tout avec certaines valeurs de rang.
    1000 & 10 & 10 & 0.24  \\
    \hline
    \hline
+   50 & 20  & 13 & 0.31  \\
+   \hline
    100 & 20 & 15 & 0.36  \\
    \hline
    500 & 20 & 15 & 0.36  \\
    \hline
    1000 & 20 & 15 & 0.36  \\
    \hline
+   50 & n/2 & 12 & 0.28  \\
+   \hline
+   100 & n/2 & 12 & 0.29  \\
+   \hline
+   500 & n/2 & 12 & 0.28  \\
+   \hline
+   1000 & n/2 & 12 & 0.28  \\
+   \hline
 \end{tabular}
-\end{frame}
-\begin{frame}{Bilan avec critère Seuil}
-\begin{exampleblock}{Remarque}
-Qual$_{10}$ semble être la base la plus adaptée pour le critère de choix Rang.
-\end{exampleblock}
 \end{frame}
 
 \begin{frame}{Résultats avec toutes les SI}
@@ -262,6 +293,453 @@ Quan$_{10}$ reste la base la plus performante pour le critère Requis.
    \hline
    20 & 17 - 0.40 & 17 - 0.40 & 0.076 \\
    \hline
+   n/2 & 12 - 0.30 & 12 - 0.30 & 0.076 \\
+   \hline
+\end{tabular}
+
+Qual$_{10}$ reste la base la plus performante pour le critère Rang.
+\end{frame}
+
+\subsection{Résultats A6509}
+
+\begin{frame}{Instance test}
+
+La solution employée pour comparer les résultats est celle de la littérature.
+
+La meilleure solution comporte 73 arêtes.
+
+\includegraphics[scale=0.3]{Instance6509.png}
+\includegraphics[scale=0.3]{Solution6509.png}
+
+Pour chaque test on effectue 5 itérations.
+\end{frame}
+
+\begin{frame}{Résultats avec critère Seuil et Quan$_{10}$}
+\emph{L$_{lb}$} est la taille de la base d'apprentissage. 
+
+
+On utilise la méthode Quan$_{10}$ avec certaines valeurs de seuil.
+
+\begin{tabular}{|c|c|c|c|c|}
+   \hline
+   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+   \hline
+   50 & L$_{lb}$/2 & 73 & 43 & 0.59  \\   
+   \hline
+   100 & L$_{lb}$/2 & 70 & 44 & 0.6  \\
+   \hline
+   500 & L$_{lb}$/2 & 71 & 43 & 0.59  \\
+   \hline
+   1000 & L$_{lb}$/2 & 71 & 43 & 0.59  \\
+   \hline
+   \hline
+   50 & 3L$_{lb}$/4 & 61 & 40 & 0.55  \\
+   \hline
+   100 & 3L$_{lb}$/4 & 63 & 41 & 0.56  \\
+   \hline
+   500 & 3L$_{lb}$/4 & 60 & 40 & 0.55  \\
+   \hline
+   1000 & 3L$_{lb}$/4 & 57 & 40 & 0.54  \\
+   \hline
+\end{tabular}
+
+
+\end{frame}
+
+\begin{frame}{Résultats Seuil avec Qual$_{10}$}
+On utilise la méthode Qual$_{10}$ avec certaines valeurs de seuil.
+\begin{tabular}{|c|c|c|c|c|}
+   \hline
+   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+    \hline
+   50 & L$_{lb}$/2 & 64 & 44 & 0.60  \\
+   \hline
+   100 & L$_{lb}$/2 & 58 & 42 & 0.58  \\
+   \hline
+   500 & L$_{lb}$/2 & 56 & 41 & 0.56  \\
+   \hline
+   1000 & L$_{lb}$/2 & 55 & 41 & 0.56  \\
+   \hline
+   \hline
+   50 & 3L$_{lb}$/4 & 39 & 29 & 0.40  \\
+   \hline
+   100 & 3L$_{lb}$/4 & 36 & 28 & 0.39  \\
+   \hline
+   500 & 3L$_{lb}$/4 & 35 & 28 & 0.39  \\
+   \hline
+   1000 & 3L$_{lb}$/4 & 35 & 27 & 0.38  \\
+   \hline
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Résultats Seuil avec Tout}
+On utilise la méthode Tout avec certaines valeurs de seuil.
+\begin{tabular}{|c|c|c|c|c|}
+   \hline
+   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+   \hline
+   50 & L$_{lb}$/2 & 40 & 31 & 0.43  \\
+   \hline
+   100 & L$_{lb}$/2 & 43 & 33 & 0.45  \\
+   \hline
+   500 & L$_{lb}$/2 & 45 & 35 & 0.48  \\
+   \hline
+   1000 & L$_{lb}$/2 & 45 & 35 & 0.48  \\
+   \hline
+   \hline
+   50 & 3L$_{lb}$/4 & 14 & 9 & 0.13  \\
+   \hline
+   100 & 3L$_{lb}$/4 & 15 & 10 & 0.14  \\
+   \hline
+   500 & 3L$_{lb}$/4 & 14 & 9 & 0.13  \\
+   \hline
+   1000 & 3L$_{lb}$/4 & 13 & 9 & 0.13  \\
+   \hline
+\end{tabular}
+\end{frame}
+
+
+\begin{frame}{Résultats avec critère Rang et Quan$_{10}$}
+
+On utilise la méthode Quan$_{10}$ avec certaines valeurs de rang.
+\begin{tabular}{|c|c|c|c|}
+   \hline
+   Taille base & Rang max & Nb correctes & Proportion\\
+   \hline
+   50 & 10  & 6 & 0.08  \\
+   \hline
+   100 & 10  & 6 & 0.08  \\
+   \hline
+   500 & 10  & 7 & 0.1  \\
+   \hline
+   1000 & 10 & 7 & 0.1  \\
+   \hline
+   \hline
+   50 & 20 & 14 & 0.2  \\
+   \hline
+   100 & 20 & 16 & 0.22  \\
+   \hline
+   500 & 20 & 17 & 0.23  \\
+   \hline
+   1000 & 20 & 17 & 0.23  \\
+   \hline
+   50 & n/2 & 23 & 0.32  \\
+   \hline
+   100 & n/2 & 26 & 0.36  \\
+   \hline
+   500 & n/2 & 27 & 0.36  \\
+   \hline
+   1000 & n/2 & 26 & 0.36  \\
+   \hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Résultats avec critère Rang et Qual$_{10}$}
+
+On utilise la méthode Qual$_{10}$ avec certaines valeurs de rang.
+\begin{tabular}{|c|c|c|c|}
+   \hline
+   Taille base & Rang max & Nb correctes & Proportion\\
+   \hline
+   50 & 10  & 7 & 0.1  \\
+   \hline
+   100 & 10  & 7 & 0.1  \\
+   \hline
+   500 & 10  & 7 & 0.1  \\
+   \hline
+   1000 & 10 & 7 & 0.1  \\
+   \hline
+   \hline
+   50 & 20  & 15 & 0.21  \\
+   \hline
+   100 & 20 & 16 & 0.22  \\
+   \hline
+   500 & 20 & 15 & 0.21  \\
+   \hline
+   1000 & 20 & 15 & 0.21  \\
+   \hline
+   50 & n/2 & 26 & 0.36  \\
+   \hline
+   100 & n/2 & 26 & 0.36  \\
+   \hline
+   500 & n/2 & 26 & 0.36  \\
+   \hline
+   1000 & n/2 & 26 & 0.36  \\
+   \hline
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Résultats avec critère Rang et Tout}
+
+On utilise la méthode Tout avec certaines valeurs de rang.
+\begin{tabular}{|c|c|c|c|}
+   \hline
+   Taille base & Rang max & Nb correctes & Proportion\\
+   \hline
+   50 & 10  & 7 & 0.1  \\
+   \hline
+   100 & 10  & 7 & 0.1  \\
+   \hline
+   500 & 10  & 6 & 0.08  \\
+   \hline
+   1000 & 10 & 6 & 0.08  \\
+   \hline
+   \hline
+   50 & 20  & 14 & 0.19  \\
+   \hline
+   100 & 20 & 14 & 0.19  \\
+   \hline
+   500 & 20 & 13 & 0.18  \\
+   \hline
+   1000 & 20 & 13 & 0.18  \\
+   \hline
+   50 & n/2 & 24 & 0.33  \\
+   \hline
+   100 & n/2 & 25 & 0.34  \\
+   \hline
+   500 & n/2 & 25 & 0.34  \\
+   \hline
+   1000 & n/2 & 25 & 0.34  \\
+   \hline
+\end{tabular}
+\end{frame}
+
+
+\begin{frame}{Résultats avec toutes les SI}
+Temps de calcul pour avoir la base : 110 s
+
+\centering
+\begin{tabular}{|c|c|c|c|}
+   \hline
+   Requis & Rés Quan$_{10}$ & Rés Qual$_{10}$ & Tout \\
+   \hline
+   L$_{lb}$/2 & 73 - 45 - 0.62 & 56 - 40 - 0.55 & 45 - 35 - 0.48 \\
+   \hline
+   3L$_{lb}$/4 & 62 - 41 - 0.56 & 35 - 28 - 0.38  & 13 - 9 - 0.12 \\
+   \hline
+\end{tabular}
+
+Quan$_{10}$ reste la base la plus performante pour le critère Requis.
+
+\begin{tabular}{|c|c|c|c|}
+   \hline
+   Rang max & Rés Quan$_{10}$ & Rés Qual$_{10}$ & Tout \\
+   \hline
+   10 & 7 - 0.1 & 7 - 0.1 & 6 - 0.08 \\
+   \hline
+   20 & 17 - 0.23 & 17 - 0.23 & 13 - 0.18 \\
+   \hline
+   n/2 & 27 - 0.37 & 27 - 0.37 & 25 - 0.34 \\
+   \hline
+\end{tabular}
+
+Qual$_{10}$ reste la base la plus performante pour le critère Rang.
+\end{frame}
+
+
+\subsection{Résultats P-n101-k04}
+
+\begin{frame}{Instance test}
+
+La solution employée pour comparer les résultats est celle de la littérature.
+
+La meilleure solution comporte 104 arêtes.
+
+\includegraphics[scale=0.3]{Instance10104.png}
+\includegraphics[scale=0.3]{Solution10104.png}
+
+Pour chaque test on effectue 5 itérations.
+\end{frame}
+
+\begin{frame}{Résultats avec critère Seuil et Quan$_{10}$}
+\emph{L$_{lb}$} est la taille de la base d'apprentissage. 
+
+
+On utilise la méthode Quan$_{10}$ avec certaines valeurs de seuil.
+
+\begin{tabular}{|c|c|c|c|c|}
+   \hline
+   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+   \hline
+   50 & L$_{lb}$/2 & 93 & 65 & 0.62  \\   
+   \hline
+   100 & L$_{lb}$/2 & 80 & 66 & 0.64  \\
+   \hline
+   500 & L$_{lb}$/2 & 83 & 69 & 0.67  \\
+   \hline
+   \hline
+   50 & 3L$_{lb}$/4 & 54 & 44 & 0.42  \\
+   \hline
+   100 & 3L$_{lb}$/4 & 45 & 41 & 0.39  \\
+   \hline
+   500 & 3L$_{lb}$/4 & 43 & 39 & 0.37  \\
+   \hline
+\end{tabular}
+
+
+\end{frame}
+
+\begin{frame}{Résultats Seuil avec Qual$_{10}$}
+On utilise la méthode Qual$_{10}$ avec certaines valeurs de seuil.
+\begin{tabular}{|c|c|c|c|c|}
+   \hline
+   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+    \hline
+   50 & L$_{lb}$/2 & 83 & 66 & 0.64  \\
+   \hline
+   100 & L$_{lb}$/2 & 79 & 66 & 0.63  \\
+   \hline
+   500 & L$_{lb}$/2 & 81 & 68 & 0.66  \\
+   \hline
+   \hline
+   50 & 3L$_{lb}$/4 & 42 & 37 & 0.36  \\
+   \hline
+   100 & 3L$_{lb}$/4 & 42 & 39 & 0.37  \\
+   \hline
+   500 & 3L$_{lb}$/4 & 39 & 36 & 0.35  \\
+   \hline
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Résultats Seuil avec Tout}
+On utilise la méthode Tout avec certaines valeurs de seuil.
+\begin{tabular}{|c|c|c|c|c|}
+   \hline
+   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+   \hline
+   50 & L$_{lb}$/2 & 71 & 61 & 0.59  \\
+   \hline
+   100 & L$_{lb}$/2 & 72 & 62 & 0.60  \\
+   \hline
+   500 & L$_{lb}$/2 & 72 & 63 & 0.60  \\
+   \hline
+   \hline
+   50 & 3L$_{lb}$/4 & 24 & 21 & 0.20  \\
+   \hline
+   100 & 3L$_{lb}$/4 & 24 & 22 & 0.21  \\
+   \hline
+   500 & 3L$_{lb}$/4 & 22 & 20 & 0.19  \\
+   \hline
+\end{tabular}
+\end{frame}
+
+
+\begin{frame}{Résultats avec critère Rang et Quan$_{10}$}
+
+On utilise la méthode Quan$_{10}$ avec certaines valeurs de rang.
+\begin{tabular}{|c|c|c|c|}
+   \hline
+   Taille base & Rang max & Nb correctes & Proportion\\
+   \hline
+   50 & 10  & 8 & 0.08  \\
+   \hline
+   100 & 10  & 8 & 0.08  \\
+   \hline
+   500 & 10  & 8 & 0.08  \\
+   \hline
+   \hline
+   50 & 20 & 18 & 0.17  \\
+   \hline
+   100 & 20 & 18 & 0.17  \\
+   \hline
+   500 & 20 & 18 & 0.17  \\
+   \hline
+   50 & n/2 & 43 & 0.41  \\
+   \hline
+   100 & n/2 & 45 & 0.43  \\
+   \hline
+   500 & n/2 & 46 & 0.44  \\
+   \hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Résultats avec critère Rang et Qual$_{10}$}
+
+On utilise la méthode Qual$_{10}$ avec certaines valeurs de rang.
+\begin{tabular}{|c|c|c|c|}
+   \hline
+   Taille base & Rang max & Nb correctes & Proportion\\
+   \hline
+   50 & 10  & 8 & 0.08  \\
+   \hline
+   100 & 10  & 8 & 0.08  \\
+   \hline
+   500 & 10  & 8 & 0.08  \\
+   \hline
+   \hline
+   50 & 20  & 17 & 0.16  \\
+   \hline
+   100 & 20 & 18 & 0.17  \\
+   \hline
+   500 & 20 & 18 & 0.17  \\
+   \hline
+   50 & n/2 & 44 & 0.43  \\
+   \hline
+   100 & n/2 & 45 & 0.43  \\
+   \hline
+   500 & n/2 & 46 & 0.44  \\
+   \hline
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Résultats avec critère Rang et Tout}
+
+On utilise la méthode Tout avec certaines valeurs de rang.
+\begin{tabular}{|c|c|c|c|}
+   \hline
+   Taille base & Rang max & Nb correctes & Proportion\\
+   \hline
+   50 & 10  & 8 & 0.08  \\
+   \hline
+   100 & 10  & 8 & 0.08  \\
+   \hline
+   500 & 10  & 8 & 0.08  \\
+   \hline
+   \hline
+   50 & 20  & 18 & 0.17  \\
+   \hline
+   100 & 20 & 18 & 0.17  \\
+   \hline
+   500 & 20 & 18 & 0.17  \\
+   \hline
+   50 & n/2 & 44 & 0.43  \\
+   \hline
+   100 & n/2 & 46 & 0.44  \\
+   \hline
+   500 & n/2 & 46 & 0.44  \\
+   \hline
+\end{tabular}
+\end{frame}
+
+
+\begin{frame}{Résultats avec toutes les SI}
+Temps de calcul pour avoir la base : 110 s
+
+\centering
+\begin{tabular}{|c|c|c|c|}
+   \hline
+   Requis & Rés Quan$_{10}$ & Rés Qual$_{10}$ & Tout \\
+   \hline
+   L$_{lb}$/2 & 73 - 45 - 0.62 & 56 - 40 - 0.55 & 45 - 35 - 0.48 \\
+   \hline
+   3L$_{lb}$/4 & 62 - 41 - 0.56 & 35 - 28 - 0.38  & 13 - 9 - 0.12 \\
+   \hline
+\end{tabular}
+
+Quan$_{10}$ reste la base la plus performante pour le critère Requis.
+
+\begin{tabular}{|c|c|c|c|}
+   \hline
+   Rang max & Rés Quan$_{10}$ & Rés Qual$_{10}$ & Tout \\
+   \hline
+   10 & 7 - 0.1 & 7 - 0.1 & 6 - 0.08 \\
+   \hline
+   20 & 17 - 0.23 & 17 - 0.23 & 13 - 0.18 \\
+   \hline
+   n/2 & 27 - 0.37 & 27 - 0.37 & 25 - 0.34 \\
+   \hline
 \end{tabular}
 
 Qual$_{10}$ reste la base la plus performante pour le critère Rang.
@@ -272,37 +750,28 @@ Qual$_{10}$ reste la base la plus performante pour le critère Rang.
 \subsection{Présentation algorithme}
 \begin{frame}{Algorithme actuel}
 
-\begin{center}
-\begin{tabular}{|c|}
-	\hline
- 	\textbf{Apprentissage} \\
-   \hline
-   Boucle sur $(\lambda, \nu, \mu)$ \\
-   \hline
-   \hline
-   Initialisation$_{CW}$ + \textbf{utilisation apprentissage} \\
-   \hline
-   LK$_{BI-O}$ \\
-   \hline
-   \hline
-   Condition d'arrêt : 1500 itérations depuis la dernière amélioration  \\
-   \hline
-   Compute worst edge \\
-   \hline
-   EC$_{BI-O}$ \\
-   \hline
-   LK$_{BI-O}$ \\
-   \hline
-   CE$_{FI-O}$ \\
-   \hline
-   LK$_{BI-O}$ \\
-   \hline
-   Itérations spéciales \\
-   \hline
-   \hline
+\begin{algorithm}[H]
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
 
-\end{tabular}
-\end{center}
+$Base \gets []$\;
+\For {$i \gets 1$ \textbf{to} $10$} {
+	$\lambda \gets random(0.9,1.1)$\;
+	$\mu \gets random(0,1.8)$\;
+	$\nu \gets random(0.5,1.5)$\;
+	\If {$i = 1$} {
+		$Sol \gets Heuristique(Init,I,D,\lambda,\mu,\nu)$\;
+		$Base \gets Base \cup Sol$\;
+	}
+	\Else {
+		Déterminer $Init$ avec les connaissances de $Base$\;
+		 $Sol \gets Heuristique(Init,I,D,\lambda,\mu,\nu)$\;
+		$Base \gets Base \cup Sol$\;
+	}
+}
+\Return{La meilleure solution}\;
+
+\end{algorithm}
+
 \end{frame}
 
 \subsection{Résultats}

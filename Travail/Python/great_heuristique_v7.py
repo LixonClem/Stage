@@ -824,7 +824,7 @@ def learning_results(iterations, generate, inst, demmand):
         ls_qual = learning_set_quality(Base, quality)
         mat_qual = init_matrix(len(instance))
         mat_qual = learn(mat_qual, ls_qual)
-        e_qual = mat_info_rg(16, mat_qual)
+        e_qual = mat_info_rg(int(len(demand)/2), mat_qual)
         for e in e_qual:
             if not is_edge_in(e, edges):
                 edges.append(e)
@@ -1008,6 +1008,7 @@ def apply_heuristic(inst, demand, l):
     print("start learning")
     initial_routes = complete(destruction2(ignore_0(learning_results(5,100,inst,demand))),inst)
     tps_learn = time.time()
+    
     namefile = "resultats/Heuristic_results/Values/"+t+"/results_Learn.txt"
     writef(namefile,'Aretes fixées après apprentissage pour cette exécution')
     writef(namefile,'Fixed edges = '+ str(initial_routes))
@@ -1026,14 +1027,14 @@ def apply_heuristic(inst, demand, l):
             c_sol = cost_sol(sol, inst)
             c_init = cost_sol(init, inst)
             new_base.append(sol)
-                 
+              
             namefile = "resultats/Heuristic_results/Values/"+t+"/results_Learn.txt"
             writef(namefile,'\n')
             writef(namefile,'#################')
             writef(namefile,'')
             writef(namefile,'init = ' + str(round(c_init,3)))
             writef(namefile,'res = ' + str(round(c_sol,3)))
-            writef(namefile,'gap = ' + str(round((1-786/c_sol)*100,3)))
+            writef(namefile,'gap = ' + str(round((1-742/c_sol)*100,3)))
             writef(namefile,'')
             writef(namefile,'solution = ' + str(sol))
             
@@ -1045,7 +1046,7 @@ def apply_heuristic(inst, demand, l):
             edges = []
             mat_qual = init_matrix(len(instance))
             mat_qual = learn(mat_qual, new_base)
-            e_qual = mat_info_rg(16, mat_qual)
+            e_qual = mat_info_rg(int(len(demand)/2), mat_qual)
             for e in e_qual:
                 if not is_edge_in(e, edges):
                     edges.append(e)
@@ -1057,20 +1058,22 @@ def apply_heuristic(inst, demand, l):
             print(c_sol)
             new_base.append(sol)
 
-            namefile = "resultats/Heuristic_results/Values/"+t+"/results_Learn.txt"
+            namefile = "resultats/Heuristic_results/Values/"+t+"/results_Learn_exampleTest.txt"
             writef(namefile,'\n')
             writef(namefile,'#################')
             writef(namefile,'')
             writef(namefile,'init = ' + str(round(c_init,3)))
             writef(namefile,'res = ' + str(round(c_sol,3)))
-            writef(namefile,'gap = ' + str(round((1-786/c_sol)*100,3)))
+            writef(namefile,'gap = ' + str(round((1-742/c_sol)*100,3)))
             writef(namefile,'')
             writef(namefile,'solution = ' + str(sol))
 
     tps_fin = time.time()
     print(tps_fin-tps_deb)
+    
     namefile = "resultats/Heuristic_results/Values/"+t+"/results_Learn.txt"
     writef(namefile,'Execution = ' + str(tps_fin-tps_deb))
+    
  ###########
 # Solutions #
  ###########
@@ -1100,23 +1103,24 @@ def common_edges(sol1, sol2):
     return E, E_init, E_final
 
 
-t = "A-n32-k05"
-A_n32_k05 = read("Instances/"+t+".xml")
+t = "A-n33-k06"
+A_n33_k06 = read("Instances/"+t+".xml")
 #G01 = read("Instances/Golden_01.xml")
-instance, demand = A_n32_k05
+instance, demand = A_n33_k06
 
 
 #record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
 #record1 = [[0, 27, 32, 15, 30, 13], [0, 10, 11, 12, 22, 23, 28, 2, 33], [0, 7, 25, 35, 16], [0, 24, 29, 36, 6, 14], [0, 18, 17, 34, 1, 3, 5, 8, 20], [0, 31, 19, 9, 21, 26, 4]]
-record = [[0, 55, 29, 62, 39, 51, 17], [0, 45, 61, 42, 38, 2, 41, 16, 50, 60], [0, 21, 25, 52, 24, 13, 12, 1, 33], [0, 49, 4, 3, 36, 35, 37, 30], [
-    0, 47, 34, 31, 26, 6, 64, 46], [0, 28, 23, 57, 48, 54, 63, 11, 7], [0, 44, 59, 40, 58, 20, 32], [0, 5, 53, 56, 10, 8, 19, 18], [0, 43, 27, 14, 9, 22, 15]]
+#record = [[0, 55, 29, 62, 39, 51, 17], [0, 45, 61, 42, 38, 2, 41, 16, 50, 60], [0, 21, 25, 52, 24, 13, 12, 1, 33], [0, 49, 4, 3, 36, 35, 37, 30], [
+#    0, 47, 34, 31, 26, 6, 64, 46], [0, 28, 23, 57, 48, 54, 63, 11, 7], [0, 44, 59, 40, 58, 20, 32], [0, 5, 53, 56, 10, 8, 19, 18], [0, 43, 27, 14, 9, 22, 15]]
 #record = [[0,21, 31, 19, 17, 13, 7, 26],[0,12, 1, 16, 30],[0,27, 24],[0,29, 18, 8, 9, 22, 15, 10, 25, 5, 20],[0,14, 28, 11, 4, 23, 3, 2, 6]]
 #record3305 = [[0, 15, 17, 9, 3, 16, 29],[0, 12, 5, 26, 7, 8, 13, 32, 2],[0, 20, 4, 27, 25, 30, 10],[0, 23, 28, 18, 22],[0, 24, 6, 19, 14, 21, 1, 31, 11]]
-record = normalize_solution(record)
+#record = normalize_solution(record)
 #record1 = normalize_solution(record1)
-best = [[0, 30, 37, 35, 36, 3, 4, 49], [0, 7, 11, 63, 54, 48, 57, 23, 28], [0, 15, 22, 9, 14, 27, 43], [0, 47, 34, 31, 26, 6, 64, 46], [0, 53, 44, 56,
-                                                                                                                                        25, 21], [0, 8, 10, 24, 13, 12, 1, 33], [0, 17, 51, 39, 62, 29, 55], [0, 5, 32, 20, 58, 40, 59, 52, 19, 18], [0, 60, 50, 16, 41, 2, 38, 42, 61, 45]]
-best = normalize_solution(best)
+#best = [[0, 30, 37, 35, 36, 3, 4, 49], [0, 7, 11, 63, 54, 48, 57, 23, 28], [0, 15, 22, 9, 14, 27, 43], [0, 47, 34, 31, 26, 6, 64, 46], [0, 53, 44, 56,
+ #                                                                                                                                       25, 21], [0, 8, 10, 24, 13, 12, 1, 33], [0, 17, 51, 39, 62, 29, 55], [0, 5, 32, 20, 58, 40, 59, 52, 19, 18], [0, 60, 50, 16, 41, 2, 38, 42, 61, 45]]
+#best = normalize_solution(best)
+
 """"
 initial_solution = init_routes(instance, demand)
 initial_solution = ClarkeWright(initial_solution,instance, demand, lam, mu, nu)
@@ -1131,6 +1135,7 @@ print_current_sol(record,instance)
 py.show()
 print_current_sol(best,instance)
 py.show()"""
+
 apply_heuristic(instance, demand, relocation)
 
 

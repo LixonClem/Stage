@@ -6,7 +6,7 @@
 
 
 \usepackage[french]{babel}% % Adjust the main language
-\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+
 
 \usepackage{graphicx}%
 \usepackage{url}%
@@ -52,9 +52,27 @@ Ainsi les tournées créées doivent respecter les règles suivantes :
 \item Chaque client doit être desservi par une et une seule tournée;
 \item Chaque tournée doit partir et s'arrêter au dépôt.
 \end{itemize}
-L'objectif est alors de minimiser la longueur du réseau (ensemble des tournées). La distance euclidienne est privilégiée pour la majorité des instances.
+L'objectif est alors de minimiser la longueur du réseau (ensemble des tournées) et c'est la distance euclidienne, qui est privilégiée pour la majorité des instances. 
+Un exemple d'instance est présenté en figure~\ref{Instance3205}, où les points rouges représentent les clients et le point bleu le dépôt. Une solution possible au problème est représenté en figure~\ref{SNC3205} mais n'est à priori pas optimale. 
 De nombreux algorithmes ont vu le jour pour tenter de résoudre ce problème, ainsi que les nombreuses variantes qui existent (ajout de contraintes de capacité, temps ou longueur sur les tournées, ces contraintes sont cumulables). 
 C'est l'ajout de capacité aux tournées qui nous intéressera plus particulièrement.
+
+
+\begin{figure}
+
+\centering
+\includegraphics[scale=0.5]{Instance.png}
+\caption{Représentation de l'instance A-n32-k05 de la littérature}
+\label{Instance3205}
+\end{figure}
+
+\begin{figure}
+
+\centering
+\includegraphics[scale=0.5]{solutionNoCapacity.png}
+\caption{Représentation d'une solution de l'instance A-n32-k05}
+\label{SNC3205}
+\end{figure}
 
 \subsubsection{Capacitated VRP (CVRP)}
 
@@ -64,8 +82,15 @@ Les tournées doivent donc respecter la règle suivante, en plus de celles décr
 \begin{itemize}
 \item La demande totale sur chaque tournée ne doit pas excéder la capacité disponible.
 \end{itemize}
+Si on reprend l'instance A-n32-k05, en considérant les demandes des clients ainsi que la capacité disponible pour chaque véhicule, on obtient une solution présente sur la figure~\ref{SC3205}, qui n'est pas optimale. 
 Ce problème est beaucoup étudié car il a de nombreuses applications (comme le trafic routier), et peu de solutions optimales ont été trouvées pour des instances de plus de $500$ clients. 
 
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{solutionCapacity.png}
+\caption{Représentation d'une solution de l'instance A-n32-k05, où les demandes des clients sont prises en compte}
+\label{SC3205}
+\end{figure}
 
 \subsection{Parcours et exploration des voisinages}
 \label{voisinage}
@@ -112,7 +137,6 @@ Cette partie décrit l'ensemble des briques utilisées pour construire l'algorit
 
 Lors de la recherche d'une solution optimale d'un problème, il est indispensable de s'intéresser à la condition d'arrêt de l'heuristique utilisée. En effet, on doit trouver un compromis entre temps de calcul et qualité de la solution recherchée. On ne peut jamais être totalement sûr que la solution obtenue est bien optimale, mais on ne peut pas non plus explorer l'intégralité des solutions. Les principales conditions d'arrêt rencontrées sont les suivantes :
 \begin{itemize}
-\item Un nombre d'itérations à ne pas dépasser;
 \item Un certain temps d'itérations sans solutions améliorantes à ne pas dépasser (3 minutes dans l'article~\cite{Sorensen_2017});
 \item Un nombre d'itérations sans solutions améliorantes à ne pas dépasser (de l'ordre de $n^2$ dans mon algorithme). 
 \end{itemize}
@@ -133,7 +157,7 @@ $s(i,j) = c_{i0} + c_{0j} - \lambda c_{ij} + \mu \vert c_{i0} - c_{0j} \vert + \
 où $c_{ij}$ dénote la distance entre les clients $i$ et $j$ (le client 0 étant le dépôt), et $d_i$ dénote la demande du client $i$. 
 
 L'intérêt de cet algorithme est qu'il donne une bonne solution initiale en peu de temps, ce qui permet de l'exécuter un grand nombre de fois rapidement.
-\item Elle peut être calculée grâce à l'intégration de connaissances (Learn) (objectif du stage).
+\item Elle peut être calculée grâce à l'intégration de connaissances (Learn). C'est ce dernier point que nous tenterons de mettre en œuvre par la suite.
 \end{itemize}
 
 \begin{algorithm}
@@ -173,7 +197,7 @@ où:
 \item $w(i,j)$ est la largeur de l'arête $(i,j)$;
 \item $c(i,j)$ est le coût de l'arête $(i,j)$ ($c(i,j) = c_{ij}(1 + \lambda p(i,j)$, avec $\lambda = 0.1$ dans l'article);
 \item $d(i,j)$ est la profondeur de l'arête $(i,j)$ (max de $c_{0i}$ et $c_{0j}$);
-\item les paramètres $\lambda_w,\lambda_c,\lambda_d$, prennent comme valeurs $0$ ou $1$, selon les caractéristiques que l'on veut considérer. Il y a ainsi 6 fonctions de pénalisation différentes, que l'on peut choisir au cours de l'exécution.
+\item les paramètres $\lambda_w,\lambda_c,\lambda_d$, prennent comme valeurs $0$ ou $1$, selon les caractéristiques que l'on veut considérer. Il y a ainsi 6 fonctions de pénalisation différentes, que l'on peut choisir au cours de l'exécution (on ne considère pas le cas où $\lambda_w = \lambda_c = 0$, puisqu'il fournit $b(i,j) = 0$.
 
 \end{itemize}
 
@@ -181,8 +205,7 @@ C'est autour de l'arête calculée ici que vont s'orienter les recherches des op
  
 \subsubsection{Ejection-Chain}
 
-Cet opérateur va essayer de déplacer au plus $l$ clients sur des tournées plus adaptées. Dans l'article~\cite{Sorensen_2017} $l = 3$.
-L'algorithme~\ref{algo:EC} décrit le fonctionnement de cet opérateur.
+Cet opérateur va essayer de déplacer au plus $l$ clients sur des tournées plus adaptées. Dans l'article~\cite{Sorensen_2017} $l = 3$. En effet l'algorithme~\ref{algo:EC}, qui décrit le fonctionnement de cet opérateur, s'exécute en $O(n^{l-1})$. Il vaut donc mieux choisir une valeur de $l$ assez petite, pour que la complexité n'explose pas. 
 
 \begin{algorithm}
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
@@ -194,7 +217,7 @@ $cand \gets choose(a,b)$\;
 $nextRoute \gets findNextRoute(cand,voisins,possibleSol)$\;
 $possibleSol \gets $ déplacer $cand$ après son voisin sur $nextRoute$\;
 \For{$i \gets 1$ \textbf{to} $l-1$} {
-  $cand \gets $un client de nextRoute différent de celui ajouté\;
+  $cand \gets $un client de $nextRoute$ différent de celui ajouté\;
   $nextRoute \gets findNextRoute(cand,voisins,possibleSol)$\;
   $possibleSol \gets$ déplacer $cand$ après son voisin sur $nextRoute$\;
 }
@@ -211,7 +234,7 @@ Aux lignes $3, 4, 7$ et $8$ de l'algorithme~\ref{algo:EC}, il est possible d'uti
 \subsubsection{Cross-Exchange}
 
 Cet opérateur essaie d'échanger deux séquences de clients successifs entre deux tournées. Il est possible de limiter le nombre de clients par séquence échangée.
-L'algorithme~\ref{algo:CE} présente l'exécution de l'opérateur.
+L'algorithme~\ref{algo:CE} présente l'exécution de l'opérateur et s'exécute en $O(n^2)$.
 
 \begin{algorithm}
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
@@ -300,7 +323,11 @@ $nextSol \gets Sol$\;
 
 \subsubsection{Algorithme utilisé}
 
-L'algorithme (A) que j'utilise est décrit à travers l'algorithme~\ref{algo:A}. Cet algorithme étant stochastique (non déterministe), j'effectue $20$ itérations, puis détermine le minimum et la moyenne des résultats obtenus.
+Il est possible de construire de nombreuses variantes de l'algorithme précédent, selon l'ordre dans lequel on exécute les opérateurs. 
+Après avoir testé quelques possibilités, c'est finalement l'algorithme~\ref{algo:A} que nous retiendrons. 
+Il permet en effet le parcours de nombreux voisinages, puisqu'ils sont choisis aléatoirement. Mais le temps d'exécution est plus long, car les solutions obtenues étant aléatoires, nous exécutons $20$ fois l'algorithme. 
+Cela permet d'obtenir le coût moyen d'une solution renvoyée, et nous retenons la meilleure solution trouvée lors des $20$ exécutions. 
+
 
 \begin{algorithm}
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
@@ -322,7 +349,7 @@ $nextSol \gets Sol$\;
 	\If {Pas d'améliorations depuis $N/2$ itérations} {
 		$nextSol \gets Sol$\;
 	}
-	\If {Pas d'améliorations depuis $5N/2$ itérations} {
+	\If {Pas d'améliorations depuis $2N$ itérations} {
 		Changer de fonction de pénalisation en prenant un autre triplet $(\lambda_w,\lambda_c,\lambda_d)$\;
 		Réinitialiser les pénalités des arêtes\;
 		Améliorer chaque tournée de $Sol$ avec $LK_{BI-O}$\;

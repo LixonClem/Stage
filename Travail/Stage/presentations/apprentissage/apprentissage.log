@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  26 JUN 2018 16:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  27 JUN 2018 16:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1018,6 +1018,61 @@ Now handling font encoding PD1 ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
+(/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count164
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\algocf@hangindent=\skip62
+
+(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count165
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip63
+\skiplinenumber=\skip64
+\skiprule=\skip65
+\skiphlne=\skip66
+\skiptext=\skip67
+\skiplength=\skip68
+\algomargin=\skip69
+\skipalgocfslide=\skip70
+\algowidth=\dimen193
+\inoutsize=\dimen194
+\inoutindent=\dimen195
+\interspacetitleruled=\dimen196
+\interspacealgoruled=\dimen197
+\interspacetitleboxruled=\dimen198
+\algocf@ruledwidth=\skip71
+\algocf@inoutbox=\box53
+\algocf@inputbox=\box54
+\AlCapSkip=\skip72
+\AlCapHSkip=\skip73
+\algoskipindent=\skip74
+\algocf@nlbox=\box55
+\algocf@hangingbox=\box56
+\algocf@untilbox=\box57
+\algocf@skipuntil=\skip75
+\algocf@capbox=\box58
+\algocf@lcaptionbox=\skip76
+\algoheightruledefault=\skip77
+\algoheightrule=\skip78
+\algotitleheightruledefault=\skip79
+\algotitleheightrule=\skip80
+\c@algocfline=\count166
+\c@algocfproc=\count167
+\c@algocf=\count168
+\algocf@algoframe=\box59
+\algocf@algobox=\box60
+)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerthemeWarsaw.sty
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerinnerthemerounded.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerouterthemeshadow.sty
@@ -1078,16 +1133,16 @@ LaTeX Font Info:    ... okay on input line 16.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count164
-\scratchdimen=\dimen193
-\scratchbox=\box53
-\nofMPsegments=\count165
-\nofMParguments=\count166
+\scratchcounter=\count169
+\scratchdimen=\dimen199
+\scratchbox=\box61
+\nofMPsegments=\count170
+\nofMParguments=\count171
 \everyMPshowfont=\toks46
-\MPscratchCnt=\count167
-\MPscratchDim=\dimen194
-\MPnumerator=\count168
-\makeMPintoPDFobject=\count169
+\MPscratchCnt=\count172
+\MPscratchDim=\dimen256
+\MPnumerator=\count173
+\makeMPintoPDFobject=\count174
 \everyMPtoPDFconversion=\toks47
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1107,7 +1162,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box54
+\AtBeginShipoutBox=\box62
 Package hyperref Info: Link coloring OFF on input line 16.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -1116,7 +1171,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count170
+\c@section@level=\count175
 )
 LaTeX Info: Redefining \ref on input line 16.
 LaTeX Info: Redefining \pageref on input line 16.
@@ -1230,21 +1285,24 @@ line 44.
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
+Overfull \vbox (5.3994pt too high) detected at line 44
+ []
+
 [2
 
 ]
-Overfull \vbox (4.91582pt too high) detected at line 65
+Overfull \vbox (17.92387pt too high) detected at line 65
  []
 
 [3
 
 ]
-<instance3706.png, id=158, 462.528pt x 346.896pt>
+<instance3706.png, id=172, 462.528pt x 346.896pt>
 File: instance3706.png Graphic file (type png)
 <use instance3706.png>
 Package pdftex.def Info: instance3706.png  used on input line 78.
 (pdftex.def)             Requested size: 138.75946pt x 104.0696pt.
-<best3706.png, id=160, 462.528pt x 346.896pt>
+<best3706.png, id=174, 462.528pt x 346.896pt>
 File: best3706.png Graphic file (type png)
 <use best3706.png>
 Package pdftex.def Info: best3706.png  used on input line 78.
@@ -1266,23 +1324,74 @@ Package pdftex.def Info: best3706.png  used on input line 78.
 ] [11
 
 ]
+<Instance6509.png, id=437, 462.528pt x 346.896pt>
+File: Instance6509.png Graphic file (type png)
+<use Instance6509.png>
+Package pdftex.def Info: Instance6509.png  used on input line 315.
+(pdftex.def)             Requested size: 138.75946pt x 104.0696pt.
+<Solution6509.png, id=438, 462.528pt x 346.896pt>
+File: Solution6509.png Graphic file (type png)
+<use Solution6509.png>
+Package pdftex.def Info: Solution6509.png  used on input line 315.
+(pdftex.def)             Requested size: 138.75946pt x 104.0696pt.
+
 [12
 
-] [13
+ <./Instance6509.png> <./Solution6509.png>] [13
+
+] [14
+
+] [15
+
+] [16
+
+] [17
 
 ]
-Overfull \hbox (2.20027pt too wide) in paragraph at lines 306--306
- [] 
+[18
+
+] [19
+
+]
+<Instance10104.png, id=701, 462.528pt x 346.896pt>
+File: Instance10104.png Graphic file (type png)
+<use Instance10104.png>
+Package pdftex.def Info: Instance10104.png  used on input line 553.
+(pdftex.def)             Requested size: 138.75946pt x 104.0696pt.
+<Solution10104.png, id=702, 462.528pt x 346.896pt>
+File: Solution10104.png Graphic file (type png)
+<use Solution10104.png>
+Package pdftex.def Info: Solution10104.png  used on input line 553.
+(pdftex.def)             Requested size: 138.75946pt x 104.0696pt.
+ [20
+
+ <./Instance10104.png> <./Solution10104.png>] [21
+
+] [22
+
+] [23
+
+]
+[24
+
+] [25
+
+] [26
+
+] [27
+
+]
+Overfull \vbox (3.53146pt too high) detected at line 776
  []
 
-[14
+[28
 
 ]
-Overfull \hbox (23.13434pt too wide) in paragraph at lines 343--343
+Overfull \hbox (23.13434pt too wide) in paragraph at lines 813--813
 [][]  
  []
 
-[15
+[29
 
 ]
 \tf@nav=\write6
@@ -1294,20 +1403,20 @@ Overfull \hbox (23.13434pt too wide) in paragraph at lines 343--343
 \tf@snm=\write8
 \openout8 = `apprentissage.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 345.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 345.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 815.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 815.
  (./apprentissage.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 345.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 345.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 815.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 815.
 Package rerunfilecheck Info: File `apprentissage.out' has not changed.
-(rerunfilecheck)             Checksum: 22DDF46E7CB2D0F1CD60E73F35566174;408.
+(rerunfilecheck)             Checksum: 688226ECCBB78D209B0F6DB340FBCFCB;541.
  ) 
 Here is how much of TeX's memory you used:
- 18848 strings out of 492982
- 349917 string characters out of 6134896
- 439129 words of memory out of 5000000
- 21933 multiletter control sequences out of 15000+600000
- 21178 words of font info for 61 fonts, out of 8000000 for 9000
+ 19908 strings out of 492982
+ 366643 string characters out of 6134896
+ 464941 words of memory out of 5000000
+ 22941 multiletter control sequences out of 15000+600000
+ 22782 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,19n,63p,780b,681s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
@@ -1317,15 +1426,17 @@ f-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist
 s/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsi1095
-.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0600.pfb></usr/share/tex
-mf/fonts/type1/public/cm-super/sfss0800.pfb></usr/share/texmf/fonts/type1/publi
-c/cm-super/sfss1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1095.
-pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1440.pfb></usr/share/texm
-f/fonts/type1/public/cm-super/sfsx1095.pfb>
-Output written on apprentissage.pdf (15 pages, 203493 bytes).
+.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfso1095.pfb></usr/share/tex
+mf/fonts/type1/public/cm-super/sfss0600.pfb></usr/share/texmf/fonts/type1/publi
+c/cm-super/sfss0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1000.
+pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1095.pfb></usr/share/texm
+f/fonts/type1/public/cm-super/sfss1440.pfb></usr/share/texmf/fonts/type1/public
+/cm-super/sfsx0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1095.p
+fb>
+Output written on apprentissage.pdf (29 pages, 383883 bytes).
 PDF statistics:
- 586 PDF objects out of 1000 (max. 8388607)
- 527 compressed objects within 6 object streams
- 37 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1092 PDF objects out of 1200 (max. 8388607)
+ 1005 compressed objects within 11 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 191 words of extra memory for PDF output out of 10000 (max. 10000000)
 
