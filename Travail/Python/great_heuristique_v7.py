@@ -27,7 +27,7 @@ global nu
 ylim = 200
 xlim = 200
 clim = 20
-Capacity = 100
+Capacity = 900
 KNN = 30
 relocation = 3
 
@@ -957,7 +957,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
             routes = copy_sol(routes2)
             gs = 0
 
-        if N > 2*len(demand):
+        if N > 2*len(demand)/4:
 
             b_i += 1
 
@@ -1006,7 +1006,7 @@ def apply_heuristic(inst, demand, l):
     v = voisins(KNN, instance)
     
     print("start learning")
-    initial_routes = complete(destruction2(ignore_0(learning_results(5,100,inst,demand))),inst)
+    initial_routes = complete(destruction2(ignore_0(learning_results(5,50,inst,demand))),inst)
     tps_learn = time.time()
     
     namefile = "resultats/Heuristic_results/Values/"+t+"/results_Learn.txt"
@@ -1016,14 +1016,16 @@ def apply_heuristic(inst, demand, l):
     
     new_base = []
 
-    for i in range(10):
+    for i in range(20):
         print(i)
+        """
         lam = rd.randint(9,11)/10
         mu = rd.randint(0,18)/10
         nu = rd.randint(5,15)/10
+        """
         if new_base==[]:
             init, sol = core_heuristic(
-                copy_sol(initial_routes), inst, demand, lam, mu, nu, l, max_d, v)
+                copy_sol(initial_routes), inst, demand, 1, 1, 1, l, max_d, v)
             c_sol = cost_sol(sol, inst)
             c_init = cost_sol(init, inst)
             new_base.append(sol)
@@ -1034,13 +1036,13 @@ def apply_heuristic(inst, demand, l):
             writef(namefile,'')
             writef(namefile,'init = ' + str(round(c_init,3)))
             writef(namefile,'res = ' + str(round(c_sol,3)))
-            writef(namefile,'gap = ' + str(round((1-742/c_sol)*100,3)))
+            writef(namefile,'gap = ' + str(round((1-6461/c_sol)*100,3)))
             writef(namefile,'')
             writef(namefile,'solution = ' + str(sol))
             
     
             print(c_sol)
-            
+        
         else:
             print("learn")
             edges = []
@@ -1052,19 +1054,19 @@ def apply_heuristic(inst, demand, l):
                     edges.append(e)
             initial_routes = complete(destruction2(ignore_0(edges)),inst)
             init, sol = core_heuristic(
-                copy_sol(initial_routes), inst, demand, lam, mu, nu, l, max_d, v)
+                copy_sol(initial_routes), inst, demand, 1, 1, 1, l, max_d, v)
             c_sol = cost_sol(sol, inst)
             c_init = cost_sol(init, inst)
             print(c_sol)
             new_base.append(sol)
 
-            namefile = "resultats/Heuristic_results/Values/"+t+"/results_Learn_exampleTest.txt"
+            namefile = "resultats/Heuristic_results/Values/"+t+"/results_Learn.txt"
             writef(namefile,'\n')
             writef(namefile,'#################')
             writef(namefile,'')
             writef(namefile,'init = ' + str(round(c_init,3)))
             writef(namefile,'res = ' + str(round(c_sol,3)))
-            writef(namefile,'gap = ' + str(round((1-742/c_sol)*100,3)))
+            writef(namefile,'gap = ' + str(round((1-6461/c_sol)*100,3)))
             writef(namefile,'')
             writef(namefile,'solution = ' + str(sol))
 
@@ -1103,10 +1105,10 @@ def common_edges(sol1, sol2):
     return E, E_init, E_final
 
 
-t = "A-n33-k06"
-A_n33_k06 = read("Instances/"+t+".xml")
-#G01 = read("Instances/Golden_01.xml")
-instance, demand = A_n33_k06
+t = "Golden-05"
+#P_n101_k04 = read("Instances/"+t+".xml")
+G05 = read("Instances/Golden_05.xml")
+instance, demand = G05
 
 
 #record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]

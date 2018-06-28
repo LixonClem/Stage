@@ -2,10 +2,11 @@
 \beamer@sectionintoc {1}{Pr\IeC {\'e}sentation du probl\IeC {\`e}me}{2}{0}{1}
 \beamer@subsectionintoc {1}{1}{Vehicle Routing Problem}{2}{0}{1}
 \beamer@subsectionintoc {1}{2}{Capacitated VRP}{4}{0}{1}
-\beamer@sectionintoc {2}{Motivation}{6}{0}{2}
-\beamer@subsectionintoc {2}{1}{Travaux r\IeC {\'e}cents}{6}{0}{2}
-\beamer@subsectionintoc {2}{2}{Objectif}{8}{0}{2}
-\beamer@sectionintoc {3}{R\IeC {\'e}sultats}{9}{0}{3}
-\beamer@subsectionintoc {3}{1}{Algorithme de base}{9}{0}{3}
-\beamer@subsectionintoc {3}{2}{Extraction de connaissances}{11}{0}{3}
-\beamer@subsectionintoc {3}{3}{Int\IeC {\'e}gration des connaissances}{13}{0}{3}
+\beamer@sectionintoc {2}{Contexte}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Algorithme CW}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{Heuristique A \& S}{7}{0}{2}
+\beamer@subsectionintoc {2}{3}{Motivation}{11}{0}{2}
+\beamer@sectionintoc {3}{R\IeC {\'e}sultats}{12}{0}{3}
+\beamer@subsectionintoc {3}{1}{Algorithme de base}{12}{0}{3}
+\beamer@subsectionintoc {3}{2}{Extraction de connaissances}{14}{0}{3}
+\beamer@subsectionintoc {3}{3}{Int\IeC {\'e}gration des connaissances}{16}{0}{3}
