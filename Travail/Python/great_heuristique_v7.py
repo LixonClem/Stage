@@ -27,7 +27,7 @@ global nu
 ylim = 200
 xlim = 200
 clim = 20
-Capacity = 100
+Capacity = 900
 KNN = 30
 relocation = 3
 
@@ -1025,7 +1025,7 @@ def apply_heuristic(inst, demand, l):
         """
         if new_base==[]:
             init, sol = core_heuristic(
-                copy_sol(initial_routes), inst, demand, 1.6, 1.4, 1.6, l, max_d, v)
+                copy_sol(initial_routes), inst, demand, 0.8, 1.6, 1.6, l, max_d, v)
             c_sol = cost_sol(sol, inst)
             c_init = cost_sol(init, inst)
             new_base.append(sol)
@@ -1036,7 +1036,7 @@ def apply_heuristic(inst, demand, l):
             writef(namefile,'')
             writef(namefile,'init = ' + str(round(c_init,3)))
             writef(namefile,'res = ' + str(round(c_sol,3)))
-            writef(namefile,'gap = ' + str(round((1-1182/c_sol)*100,3)))
+            writef(namefile,'gap = ' + str(round((1-6461/c_sol)*100,3)))
             writef(namefile,'')
             writef(namefile,'solution = ' + str(sol))
             
@@ -1054,7 +1054,7 @@ def apply_heuristic(inst, demand, l):
                     edges.append(e)
             initial_routes = complete(destruction2(ignore_0(edges)),inst)
             init, sol = core_heuristic(
-                copy_sol(initial_routes), inst, demand, 1.6, 1.4, 1.6, l, max_d, v)
+                copy_sol(initial_routes), inst, demand, 0.8, 1.6, 1.6, l, max_d, v)
             c_sol = cost_sol(sol, inst)
             c_init = cost_sol(init, inst)
             print(c_sol)
@@ -1066,7 +1066,7 @@ def apply_heuristic(inst, demand, l):
             writef(namefile,'')
             writef(namefile,'init = ' + str(round(c_init,3)))
             writef(namefile,'res = ' + str(round(c_sol,3)))
-            writef(namefile,'gap = ' + str(round((1-1182/c_sol)*100,3)))
+            writef(namefile,'gap = ' + str(round((1-6461/c_sol)*100,3)))
             writef(namefile,'')
             writef(namefile,'solution = ' + str(sol))
 
@@ -1105,10 +1105,10 @@ def common_edges(sol1, sol2):
     return E, E_init, E_final
 
 
-t = "A-n65-k09"
-A_n65_k09 = read("Instances/"+t+".xml")
-#G05 = read("Instances/Golden_05.xml")
-instance, demand = A_n65_k09
+t = "Golden-05"
+#A_n65_k09 = read("Instances/"+t+".xml")
+G05 = read("Instances/Golden_05.xml")
+instance, demand = G05
 
 
 #record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
@@ -1164,7 +1164,7 @@ print(mean/len(costs))
 print(min(costs))
 print(best)
 """
-"""
+
 def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
     deja_com = []
     for li in range(int(10*min_lam),int(10*max_lam)):
@@ -1211,7 +1211,7 @@ def total_execution(min_lam,max_lam,min_mu,max_mu,min_nu,max_nu):
                 else:
                     print("deja calculé !")
                     
-"""
+
 
 # print(learning_results(instance,demand))
-#total_execution(0,2,0,2,0,2)
+#total_execution(0.1,2,0.1,2,0.1,2)

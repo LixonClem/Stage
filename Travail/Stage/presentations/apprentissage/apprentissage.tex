@@ -47,7 +47,7 @@ On peut ne garder qu'une partie de la base générée pour apprendre
 
 \begin{exampleblock}{Protocole}
 \begin{itemize}
-\item Génération de la base de départ
+\item Génération d'un échantillon de taille $N_{ech}$
 \item Calcul de la base d'apprentissage
 \item On initialise une matrice MAT de taille $n^2$
 \item Pour chaque arête (a,b) on incrémente la valeur MAT[a][b] (si a>b, on commence par échanger a et b)
@@ -82,41 +82,39 @@ Temps de calcul: 2 s (50), 4 s (100), 20 s (500), 44 s (1000).
 \end{frame}
 
 \begin{frame}{Résultats avec critère Seuil et base Quan$_{10}$}
-\emph{L$_{lb}$} est la taille de la base d'apprentissage. 
-
-On utilise la base Quan$_{10}$ avec certaines valeurs de seuil.
 
 \begin{tabular}{|c|c|c|c|c|}
    \hline
-   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
    \hline
-   50 & L$_{lb}$/2 & 34 & 21 & 0.5  \\   
+   50 & 3 & 34 & 21 & 0.5  \\   
    \hline
-   100 & L$_{lb}$/2 & 30 & 21 & 0.5  \\
+   100 & 5 & 30 & 21 & 0.5  \\
    \hline
-   500 & L$_{lb}$/2 & 32 & 24 & 0.57  \\
+   500 & 25 & 32 & 24 & 0.57  \\
    \hline
-   1000 & L$_{lb}$/2 & 33 & 24 & 0.57  \\
+   Tout & 400 & 33 & 24 & 0.57 \\
    \hline
    \hline
-   50 & 3L$_{lb}$/4 & 23 & 14 & 0.33  \\
+   50 & 4 & 23 & 14 & 0.33  \\
    \hline
-   100 & 3L$_{lb}$/4 & 16 & 15 & 0.36  \\
+   100 & 8 & 16 & 15 & 0.36  \\
    \hline
-   500 & 3L$_{lb}$/4 & 15 & 14 & 0.33  \\
+   500 & 38 & 15 & 14 & 0.33  \\
    \hline
-   1000 & 3L$_{lb}$/4 & 16 & 14 & 0.33  \\
+   Tout & 400 & 15 & 14 & 0.33 \\
    \hline
+
 \end{tabular}
 
 
 \end{frame}
 
 \begin{frame}{Résultats avec critère Seuil et base Qual$_{10}$}
-On utilise la base Qual$_{10}$ avec certaines valeurs de seuil.
+
 \begin{tabular}{|c|c|c|c|c|}
    \hline
-   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
     \hline
    50 & L$_{lb}$/2 & 33 & 21 & 0.50  \\
    \hline
@@ -124,7 +122,7 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de seuil.
    \hline
    500 & L$_{lb}$/2 & 31 & 22 & 0.52  \\
    \hline
-   1000 & L$_{lb}$/2 & 31 & 23 & 0.53  \\
+   Tout & L$_{lb}$/2 & 30 & 23 & 0.55 \\
    \hline
    \hline
    50 & 3L$_{lb}$/4 & 17 & 12 & 0.28  \\
@@ -133,44 +131,45 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de seuil.
    \hline
    500 & 3L$_{lb}$/4 & 20 & 16 & 0.38  \\
    \hline
-   1000 & 3L$_{lb}$/4 & 19 & 16 & 0.38  \\
+   Tout & 3L$_{lb}$/4 & 18 & 16 & 0.38 \\
    \hline
+
 \end{tabular}
 \end{frame}
 
 \begin{frame}{Résultats avec critère Seuil et base Tout}
-On utilise la base Tout avec certaines valeurs de seuil.
+
 \begin{tabular}{|c|c|c|c|c|}
    \hline
-   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
    \hline
-   50 & L$_{lb}$/2 & 23 & 15 & 0.35  \\
+   50 & 25 & 23 & 15 & 0.35  \\
    \hline
-   100 & L$_{lb}$/2 & 24 & 17 & 0.40  \\
+   100 & 50 & 24 & 17 & 0.40  \\
    \hline
-   500 & L$_{lb}$/2 & 22 & 15 & 0.36  \\
+   500 & 250 & 22 & 15 & 0.36  \\
    \hline
-   1000 & L$_{lb}$/2 & 23 & 16 & 0.38  \\
+   Tout & 4000 & 25 & 16 & 0.38 \\
    \hline
    \hline
-   50 & 3L$_{lb}$/4 & 10 & 7 & 0.16  \\
+   50 & 38 & 10 & 7 & 0.16  \\
    \hline
-   100 & 3L$_{lb}$/4 & 6 & 6 & 0.14  \\
+   100 & 75 & 6 & 6 & 0.14  \\
    \hline
-   500 & 3L$_{lb}$/4 & 7 & 7 & 0.18  \\
+   500 & 375 & 7 & 7 & 0.18  \\
    \hline
-   1000 & 3L$_{lb}$/4 & 6 & 6 & 0.14  \\
+   Tout & 4000 & 9 & 6 & 0.14 \\
    \hline
+
 \end{tabular}
 \end{frame}
 
 
 \begin{frame}{Résultats avec critère Rang et base Quan$_{10}$}
 
-On utilise la base Quan$_{10}$ avec certaines valeurs de rang.
 \begin{tabular}{|c|c|c|c|}
    \hline
-   Taille base & Rang max & Nb correctes & Proportion\\
+   Taille échantillon & Rang max & Nb correctes & Proportion\\
    \hline
    50 & 10  & 6 & 0.14  \\
    \hline
@@ -178,7 +177,7 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de rang.
    \hline
    500 & 10  & 9 & 0.21  \\
    \hline
-   1000 & 10 & 9 & 0.21  \\
+   Tout & 10 & 8 & 0.19 \\
    \hline
    \hline
    50 & 20 & 13 & 0.31  \\
@@ -187,27 +186,26 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de rang.
    \hline
    500 & 20 & 16 & 0.38  \\
    \hline
-   1000 & 20 & 17 & 0.40  \\
+   Tout & 20 & 14 & 0.33 \\
    \hline
    \hline
-   50 & n/2 & 12 & 0.28  \\
+   50 & 18 & 12 & 0.28  \\
    \hline
-   100 & n/2 & 13 & 0.3  \\
+   100 & 18 & 13 & 0.3  \\
    \hline
-   500 & n/2 & 13 & 0.3  \\
+   500 & 18 & 13 & 0.3  \\
    \hline
-   1000 & n/2 & 13 & 0.3  \\
-   \hline
+	Tout & 18 & 12 & 0.29 \\
+	\hline
 \end{tabular}
 
 \end{frame}
 
 \begin{frame}{Résultats avec critère Rang et base Qual$_{10}$}
 
-On utilise la base Qual$_{10}$ avec certaines valeurs de rang.
 \begin{tabular}{|c|c|c|c|}
    \hline
-   Taille base & Rang max & Nb correctes & Proportion\\
+   Taille échantillon & Rang max & Nb correctes & Proportion\\
    \hline
    50 & 10  & 6 & 0.14  \\
    \hline
@@ -215,7 +213,7 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de rang.
    \hline
    500 & 10  & 10 & 0.24  \\
    \hline
-   1000 & 10 & 10 & 0.24  \\
+   Tout & 10 & 9 & 0.21 \\
    \hline
    \hline
    50 & 20  & 13 & 0.32  \\
@@ -223,27 +221,26 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de rang.
    100 & 20 & 16 & 0.38  \\
    \hline
    500 & 20 & 16 & 0.38  \\
+	\hline
+	Tout & 20 & 14 & 0.33 \\  
    \hline
-   1000 & 20 & 16 & 0.38  \\
    \hline
+   50 & 18 & 13 & 0.3  \\
    \hline
-   50 & n/2 & 13 & 0.3  \\
+   100 & 18 & 13 & 0.3  \\
    \hline
-   100 & n/2 & 13 & 0.3  \\
+   500 & 18 & 13 & 0.3  \\
    \hline
-   500 & n/2 & 13 & 0.3  \\
-   \hline
-   1000 & n/2 & 12 & 0.29  \\
+   Tout & 18 & 12 & 0.29 \\
    \hline
 \end{tabular}
 \end{frame}
 
 \begin{frame}{Résultats avec critère Rang et base Tout}
 
-On utilise la base Tout avec certaines valeurs de rang.
 \begin{tabular}{|c|c|c|c|}
    \hline
-   Taille base & Rang max & Nb correctes & Proportion\\
+   Taille échantillon & Rang max & Nb correctes & Proportion\\
    \hline
    50 & 10  & 7 & 0.16  \\
    \hline
@@ -251,7 +248,7 @@ On utilise la base Tout avec certaines valeurs de rang.
    \hline
    500 & 10  & 9 & 0.21  \\
    \hline
-   1000 & 10 & 10 & 0.24  \\
+   Tout & 10 & 7 & 0.17  \\
    \hline
    \hline
    50 & 20  & 13 & 0.31  \\
@@ -260,46 +257,18 @@ On utilise la base Tout avec certaines valeurs de rang.
    \hline
    500 & 20 & 15 & 0.36  \\
    \hline
-   1000 & 20 & 15 & 0.36  \\
+   Tout & 20 & 14 & 0.33 \\
    \hline
    \hline
-   50 & n/2 & 12 & 0.28  \\
+   50 & 18 & 12 & 0.28  \\
    \hline
-   100 & n/2 & 12 & 0.29  \\
+   100 & 18 & 12 & 0.29  \\
    \hline
-   500 & n/2 & 12 & 0.28  \\
+   500 & 18 & 12 & 0.28  \\
    \hline
-   1000 & n/2 & 12 & 0.28  \\
-   \hline
-\end{tabular}
-\end{frame}
-
-\begin{frame}{Résultats avec toutes les SI}
-Temps de calcul pour avoir la base : 37.5 s
-
-\centering
-\begin{tabular}{|c|c|c|c|}
-   \hline
-   Seuil & Rés Quan$_{10}$ & Rés Qual$_{10}$ & Tout \\
-   \hline
-   L$_{lb}$/2 & 33 - 24 - 0.57 & 30 - 23 - 0.55 & 25 - 16 - 0.38 \\
-   \hline
-   3L$_{lb}$/4 & 15 - 14 - 0.33 & 18 - 16 - 0.38  & 9 - 6 - 0.14 \\
+   Tout & 18 & 12 & 0.29 \\
    \hline
 \end{tabular}
-
-\begin{tabular}{|c|c|c|c|}
-   \hline
-   Rang max & Rés Quan$_{10}$ & Rés Qual$_{10}$ & Tout\\
-   \hline
-   10 & 8 - 0.19 & 9 - 0.21 & 7 - 0.17 \\
-   \hline
-   20 & 14 - 0.33 & 14 - 0.33 & 13 - 0.31\\
-   \hline
-   n/2 & 12 - 0.29 & 12 - 0.29 & 12 - 0.29 \\
-   \hline
-\end{tabular}
-
 \end{frame}
 
 \subsection{Résultats A-n65-k09}
@@ -326,24 +295,20 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de seuil.
 
 \begin{tabular}{|c|c|c|c|c|}
    \hline
-   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
    \hline
-   50 & L$_{lb}$/2 & 73 & 43 & 0.59  \\   
+   50 & 3 & 73 & 43 & 0.59  \\   
    \hline
-   100 & L$_{lb}$/2 & 70 & 44 & 0.6  \\
+   100 & 5 & 70 & 44 & 0.6  \\
    \hline
-   500 & L$_{lb}$/2 & 71 & 43 & 0.59  \\
-   \hline
-   1000 & L$_{lb}$/2 & 71 & 43 & 0.59  \\
+   500 & 25 & 71 & 43 & 0.59  \\
    \hline
    \hline
-   50 & 3L$_{lb}$/4 & 61 & 40 & 0.55  \\
+   50 & 4 & 61 & 40 & 0.55  \\
    \hline
-   100 & 3L$_{lb}$/4 & 63 & 41 & 0.56  \\
+   100 & 8 & 63 & 41 & 0.56  \\
    \hline
-   500 & 3L$_{lb}$/4 & 60 & 40 & 0.55  \\
-   \hline
-   1000 & 3L$_{lb}$/4 & 57 & 40 & 0.54  \\
+   500 & 38 & 60 & 40 & 0.55  \\
    \hline
 \end{tabular}
 
@@ -354,15 +319,13 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de seuil.
 On utilise la base Qual$_{10}$ avec certaines valeurs de seuil.
 \begin{tabular}{|c|c|c|c|c|}
    \hline
-   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
     \hline
    50 & L$_{lb}$/2 & 64 & 44 & 0.60  \\
    \hline
    100 & L$_{lb}$/2 & 58 & 42 & 0.58  \\
    \hline
    500 & L$_{lb}$/2 & 56 & 41 & 0.56  \\
-   \hline
-   1000 & L$_{lb}$/2 & 55 & 41 & 0.56  \\
    \hline
    \hline
    50 & 3L$_{lb}$/4 & 39 & 29 & 0.40  \\
@@ -371,8 +334,6 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de seuil.
    \hline
    500 & 3L$_{lb}$/4 & 35 & 28 & 0.39  \\
    \hline
-   1000 & 3L$_{lb}$/4 & 35 & 27 & 0.38  \\
-   \hline
 \end{tabular}
 \end{frame}
 
@@ -380,24 +341,20 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de seuil.
 On utilise la base Tout avec certaines valeurs de seuil.
 \begin{tabular}{|c|c|c|c|c|}
    \hline
-   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
    \hline
-   50 & L$_{lb}$/2 & 40 & 31 & 0.43  \\
+   50 & 25 & 40 & 31 & 0.43  \\
    \hline
-   100 & L$_{lb}$/2 & 43 & 33 & 0.45  \\
+   100 & 50 & 43 & 33 & 0.45  \\
    \hline
-   500 & L$_{lb}$/2 & 45 & 35 & 0.48  \\
-   \hline
-   1000 & L$_{lb}$/2 & 45 & 35 & 0.48  \\
+   500 & 250 & 45 & 35 & 0.48  \\
    \hline
    \hline
-   50 & 3L$_{lb}$/4 & 14 & 9 & 0.13  \\
+   50 & 38 & 14 & 9 & 0.13  \\
    \hline
-   100 & 3L$_{lb}$/4 & 15 & 10 & 0.14  \\
+   100 & 75 & 15 & 10 & 0.14  \\
    \hline
-   500 & 3L$_{lb}$/4 & 14 & 9 & 0.13  \\
-   \hline
-   1000 & 3L$_{lb}$/4 & 13 & 9 & 0.13  \\
+   500 & 375 & 14 & 9 & 0.13  \\
    \hline
 \end{tabular}
 \end{frame}
@@ -408,15 +365,13 @@ On utilise la base Tout avec certaines valeurs de seuil.
 On utilise la base Quan$_{10}$ avec certaines valeurs de rang.
 \begin{tabular}{|c|c|c|c|}
    \hline
-   Taille base & Rang max & Nb correctes & Proportion\\
+   Taille échantillon & Rang max & Nb correctes & Proportion\\
    \hline
    50 & 10  & 6 & 0.08  \\
    \hline
    100 & 10  & 6 & 0.08  \\
    \hline
    500 & 10  & 7 & 0.1  \\
-   \hline
-   1000 & 10 & 7 & 0.1  \\
    \hline
    \hline
    50 & 20 & 14 & 0.2  \\
@@ -425,16 +380,12 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de rang.
    \hline
    500 & 20 & 17 & 0.23  \\
    \hline
-   1000 & 20 & 17 & 0.23  \\
    \hline
+   50 & 33 & 23 & 0.32  \\
    \hline
-   50 & n/2 & 23 & 0.32  \\
+   100 & 33 & 26 & 0.36  \\
    \hline
-   100 & n/2 & 26 & 0.36  \\
-   \hline
-   500 & n/2 & 27 & 0.36  \\
-   \hline
-   1000 & n/2 & 26 & 0.36  \\
+   500 & 33 & 27 & 0.36  \\
    \hline
 \end{tabular}
 
@@ -445,15 +396,13 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de rang.
 On utilise la base Qual$_{10}$ avec certaines valeurs de rang.
 \begin{tabular}{|c|c|c|c|}
    \hline
-   Taille base & Rang max & Nb correctes & Proportion\\
+   Taille échantillon & Rang max & Nb correctes & Proportion\\
    \hline
    50 & 10  & 7 & 0.1  \\
    \hline
    100 & 10  & 7 & 0.1  \\
    \hline
    500 & 10  & 7 & 0.1  \\
-   \hline
-   1000 & 10 & 7 & 0.1  \\
    \hline
    \hline
    50 & 20  & 15 & 0.21  \\
@@ -462,16 +411,12 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de rang.
    \hline
    500 & 20 & 15 & 0.21  \\
    \hline
-   1000 & 20 & 15 & 0.21  \\
    \hline
+   50 & 33 & 26 & 0.36  \\
    \hline
-   50 & n/2 & 26 & 0.36  \\
+   100 & 33 & 26 & 0.36  \\
    \hline
-   100 & n/2 & 26 & 0.36  \\
-   \hline
-   500 & n/2 & 26 & 0.36  \\
-   \hline
-   1000 & n/2 & 26 & 0.36  \\
+   500 & 33 & 26 & 0.36  \\
    \hline
 \end{tabular}
 \end{frame}
@@ -481,15 +426,13 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de rang.
 On utilise la base Tout avec certaines valeurs de rang.
 \begin{tabular}{|c|c|c|c|}
    \hline
-   Taille base & Rang max & Nb correctes & Proportion\\
+   Taille échantillon & Rang max & Nb correctes & Proportion\\
    \hline
    50 & 10  & 7 & 0.1  \\
    \hline
    100 & 10  & 7 & 0.1  \\
    \hline
    500 & 10  & 6 & 0.08  \\
-   \hline
-   1000 & 10 & 6 & 0.08  \\
    \hline
    \hline
    50 & 20  & 14 & 0.19  \\
@@ -498,16 +441,12 @@ On utilise la base Tout avec certaines valeurs de rang.
    \hline
    500 & 20 & 13 & 0.18  \\
    \hline
-   1000 & 20 & 13 & 0.18  \\
    \hline
+   50 & 33 & 24 & 0.33  \\
    \hline
-   50 & n/2 & 24 & 0.33  \\
+   100 & 33 & 25 & 0.34  \\
    \hline
-   100 & n/2 & 25 & 0.34  \\
-   \hline
-   500 & n/2 & 25 & 0.34  \\
-   \hline
-   1000 & n/2 & 25 & 0.34  \\
+   500 & 33 & 25 & 0.34  \\
    \hline
 \end{tabular}
 \end{frame}
@@ -535,7 +474,7 @@ Temps de calcul pour avoir la base : 110 s
    \hline
    20 & 17 - 0.23 & 17 - 0.23 & 13 - 0.18 \\
    \hline
-   n/2 & 27 - 0.37 & 27 - 0.37 & 25 - 0.34 \\
+   33 & 27 - 0.37 & 27 - 0.37 & 25 - 0.34 \\
    \hline
 \end{tabular}
 
@@ -566,20 +505,20 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de seuil.
 
 \begin{tabular}{|c|c|c|c|c|}
    \hline
-   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
    \hline
-   50 & L$_{lb}$/2 & 93 & 65 & 0.62  \\   
+   50 & 3 & 93 & 65 & 0.62  \\   
    \hline
-   100 & L$_{lb}$/2 & 80 & 66 & 0.64  \\
+   100 & 5 & 80 & 66 & 0.64  \\
    \hline
-   500 & L$_{lb}$/2 & 83 & 69 & 0.67  \\
+   500 & 25 & 83 & 69 & 0.67  \\
    \hline
    \hline
-   50 & 3L$_{lb}$/4 & 54 & 44 & 0.42  \\
+   50 & 4 & 54 & 44 & 0.42  \\
    \hline
-   100 & 3L$_{lb}$/4 & 45 & 41 & 0.39  \\
+   100 & 8 & 45 & 41 & 0.39  \\
    \hline
-   500 & 3L$_{lb}$/4 & 43 & 39 & 0.37  \\
+   500 & 38 & 43 & 39 & 0.37  \\
    \hline
 \end{tabular}
 
@@ -590,7 +529,7 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de seuil.
 On utilise la base Qual$_{10}$ avec certaines valeurs de seuil.
 \begin{tabular}{|c|c|c|c|c|}
    \hline
-   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
     \hline
    50 & L$_{lb}$/2 & 83 & 66 & 0.64  \\
    \hline
@@ -612,20 +551,20 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de seuil.
 On utilise la base Tout avec certaines valeurs de seuil.
 \begin{tabular}{|c|c|c|c|c|}
    \hline
-   Taille base & Seuil & Nb arêtes & Nb correctes & Proportion\\
+   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
    \hline
-   50 & L$_{lb}$/2 & 71 & 61 & 0.59  \\
+   50 & 25 & 71 & 61 & 0.59  \\
    \hline
-   100 & L$_{lb}$/2 & 72 & 62 & 0.60  \\
+   100 & 50 & 72 & 62 & 0.60  \\
    \hline
-   500 & L$_{lb}$/2 & 72 & 63 & 0.60  \\
+   500 & 250 & 72 & 63 & 0.60  \\
    \hline
    \hline
-   50 & 3L$_{lb}$/4 & 24 & 21 & 0.20  \\
+   50 & 38 & 24 & 21 & 0.20  \\
    \hline
-   100 & 3L$_{lb}$/4 & 24 & 22 & 0.21  \\
+   100 & 75 & 24 & 22 & 0.21  \\
    \hline
-   500 & 3L$_{lb}$/4 & 22 & 20 & 0.19  \\
+   500 & 375 & 22 & 20 & 0.19  \\
    \hline
 \end{tabular}
 \end{frame}
@@ -636,7 +575,7 @@ On utilise la base Tout avec certaines valeurs de seuil.
 On utilise la base Quan$_{10}$ avec certaines valeurs de rang.
 \begin{tabular}{|c|c|c|c|}
    \hline
-   Taille base & Rang max & Nb correctes & Proportion\\
+   Taille échantillon & Rang max & Nb correctes & Proportion\\
    \hline
    50 & 10  & 8 & 0.08  \\
    \hline
@@ -652,11 +591,11 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de rang.
    500 & 20 & 18 & 0.17  \\
    \hline
    \hline
-   50 & n/2 & 43 & 0.41  \\
+   50 & 50 & 43 & 0.41  \\
    \hline
-   100 & n/2 & 45 & 0.43  \\
+   100 & 50 & 45 & 0.43  \\
    \hline
-   500 & n/2 & 46 & 0.44  \\
+   500 & 50 & 46 & 0.44  \\
    \hline
 \end{tabular}
 
@@ -667,7 +606,7 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de rang.
 On utilise la base Qual$_{10}$ avec certaines valeurs de rang.
 \begin{tabular}{|c|c|c|c|}
    \hline
-   Taille base & Rang max & Nb correctes & Proportion\\
+   Taille échantillon & Rang max & Nb correctes & Proportion\\
    \hline
    50 & 10  & 8 & 0.08  \\
    \hline
@@ -683,11 +622,11 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de rang.
    500 & 20 & 18 & 0.17  \\
    \hline
    \hline
-   50 & n/2 & 44 & 0.43  \\
+   50 & 50 & 44 & 0.43  \\
    \hline
-   100 & n/2 & 45 & 0.43  \\
+   100 & 50 & 45 & 0.43  \\
    \hline
-   500 & n/2 & 46 & 0.44  \\
+   500 & 50 & 46 & 0.44  \\
    \hline
 \end{tabular}
 \end{frame}
@@ -697,7 +636,7 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de rang.
 On utilise la base Tout avec certaines valeurs de rang.
 \begin{tabular}{|c|c|c|c|}
    \hline
-   Taille base & Rang max & Nb correctes & Proportion\\
+   Taille échantillon & Rang max & Nb correctes & Proportion\\
    \hline
    50 & 10  & 8 & 0.08  \\
    \hline
@@ -713,11 +652,11 @@ On utilise la base Tout avec certaines valeurs de rang.
    500 & 20 & 18 & 0.17  \\
    \hline
    \hline
-   50 & n/2 & 44 & 0.43  \\
+   50 & 50 & 44 & 0.43  \\
    \hline
-   100 & n/2 & 46 & 0.44  \\
+   100 & 50 & 46 & 0.44  \\
    \hline
-   500 & n/2 & 46 & 0.44  \\
+   500 & 50 & 46 & 0.44  \\
    \hline
 \end{tabular}
 \end{frame}
@@ -731,9 +670,9 @@ Temps de calcul pour avoir la base : 1060 s
    \hline
    Seuil & Rés Quan$_{10}$ & Rés Qual$_{10}$ & Tout \\
    \hline
-   L$_{lb}$/2 & 87 - 73 - 0.7 & 85 - 71 - 0.68 & 70 - 60 - 0.58 \\
+   S$_{b}$/2 & 87 - 73 - 0.7 & 85 - 71 - 0.68 & 70 - 60 - 0.58 \\
    \hline
-   3L$_{lb}$/4 & 42 - 39 - 0.38 & 41 - 38 - 0.37  & 23 - 21 - 0.2 \\
+   3S$_{b}$/4 & 42 - 39 - 0.38 & 41 - 38 - 0.37  & 23 - 21 - 0.2 \\
    \hline
 \end{tabular}
 
@@ -792,7 +731,7 @@ Pour extraire les connaissances, je prends :
 Résultats pour les coûts obtenus
 \begin{tabular}{|c|c|c|c|}
    \hline
-   Méthode  & A-n37-k06 (952) & A-n65-k09 (1182) & P-n101-k04 (692)  \\
+   Connaissance & A-n37-k06 (952) & A-n65-k09 (1182) & P-n101-k04 (692)  \\
    \hline
    Sans & 963 - 974  & 1189 - 1236 & 696 - 708   \\
    \hline
@@ -803,7 +742,7 @@ Résultats pour les coûts obtenus
 Résultats pour le temps d'exécution (en sec)
 \begin{tabular}{|c|c|c|c|}
    \hline
-   Méthode  & A-n37-k06 & A-n65-k09 & P-n101-k04  \\
+   Connaissance  & A-n37-k06 & A-n65-k09 & P-n101-k04  \\
    \hline
    Sans & 805  & 776 &  1739  \\
    \hline
