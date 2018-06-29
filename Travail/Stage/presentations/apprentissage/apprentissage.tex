@@ -36,7 +36,7 @@ Les solutions données par CW.
 \begin{block}{Base d'apprentissage}
 On peut ne garder qu'une partie de la base générée pour apprendre
 \begin{itemize}
-\item On garde $x\%$ des meilleurs solutions (quantité privilégiée, Quan$_{x}$);
+\item On garde $x\%$ des meilleures solutions (quantité privilégiée, Quan$_{x}$);
 \item On garde les solutions qui ont un coût inférieur à $c_{min} + (c_{max}-c_{min})\frac{x}{100}$ (qualité privilégiée, Qual$_{x}$).
 \item On choisit d'utiliser toute la base générée pour apprendre (Tout)
 \end{itemize}
@@ -761,7 +761,7 @@ Temps de calcul pour avoir la base : 1060 s
 Déterminer $Init$ par apprentissage\;
 $newBase \gets []$\;
 \For {$i \gets 1$ \textbf{to} $10$} {
-	$(\lambda,\mu,\nu) \gets (random(0.9,1.1),random(0,1.8),random(0.5,1.5)$\;
+	$(\lambda,\mu,\nu) \gets argmin_{(\lambda,\mu,\nu)}CW(I,D,\lambda,\mu,\nu)$\;
 	\If {$i = 1$} {
 		$Sol \gets Heuristique(Init,I,D,\lambda,\mu,\nu)$\;
 		$newBase \gets newBase \cup Sol$\;
@@ -796,7 +796,7 @@ Résultats pour les coûts obtenus
    \hline
    Sans & 963 - 974  & 1189 - 1236 & 696 - 708   \\
    \hline
-   Avec & 950 - 966 & 1199 - 1214 & 694 - 704  \\
+   Avec & 950 - 966 & 1186 - 1193 & 694 - 704  \\
    \hline
 \end{tabular}
 

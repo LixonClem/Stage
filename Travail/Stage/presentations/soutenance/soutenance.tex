@@ -180,12 +180,14 @@ Utiliser les résultats de CW pour tenter de prédire des arêtes qui appartiend
 \subsection{Algorithme de base}
 
 \begin{frame}{Description}
-L'algorithme s'inspire de l'heuristique A\&S. 
+L'algorithme utilisé s'inspire de l'heuristique A\&S. 
+\begin{block}{Modifications}
 \begin{itemize}
 \item On applique LK à la solution initiale;
 \item Les opérateurs explorent les voisinages de manière aléatoire;
 \item On repart de la dernière meilleure solution obtenue, après N/2 itérations sans améliorations.
 \end{itemize}
+\end{block}
 \end{frame}
 
 \begin{frame}{Résultats}
@@ -195,12 +197,15 @@ L'algorithme s'inspire de l'heuristique A\&S.
 \subsection{Extraction de connaissances}
 
 \begin{frame}{Description}
+Création d'une base de solutions pour extraire des connaissances.
+\begin{block}{Protocole}
 \begin{itemize}
 \item Génération d'une base de 100 solutions aléatoirement;
-\item On garde les solutions qui ont un coût inférieur à $c_{min} + (c_{max}-c_{min})\frac{10}{100}$ (qualité privilégiée, Qual$_{10}$);
-\item Pour chaque arête (i,j) (ou (j,i) si j<i), on incrémente la valeur de MAT[i][j];
+\item On garde les solutions qui ont un coût inférieur à $c_{min} + (c_{max}-c_{min})\frac{10}{100}$ : qualité privilégiée. On appelle cette base Qual$_{10}$;
+\item Pour chaque arête (i,j) (resp (j,i) si j<i), on incrémente la valeur de MAT[i][j] (resp MAT[j][i]);
 \item On ne conserve que les $n/2$ premières arêtes dans la matrice.
 \end{itemize}
+\end{block}
 \end{frame}
 
 \begin{frame}{Résultats}

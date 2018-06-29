@@ -34,11 +34,16 @@
 
 
 \section*{Introduction}
-Le Vehicle Routing Problem (VRP), consiste à relier un nombre $n$ de clients par des tournées, commençant et finissant toutes à un même point défini, le dépôt. Ce problème est NP-complet, et dispose de nombreuses applications dans le monde d'aujourd'hui (notamment gestion d'un réseau routier). D'autant plus que ce problème dispose de nombreuses variantes (ajout d'une contrainte de temps, plusieurs dépôts possibles...). L'une des variantes les plus connues consiste à prendre en compte pour chaque client sa demande, de sorte à ce que les tournées créées ne dépassent pas une certaine capacité définie à l'avance. On nomme ce problème Capacitated Vehicle Routing Problem (CVRP). 
+Le Vehicle Routing Problem (VRP), consiste à relier un nombre $n$ de clients par des tournées, commençant et finissant toutes à un même point défini, le dépôt. 
+Ce problème est NP-complet, et dispose de nombreuses applications dans le monde d'aujourd'hui (notamment gestion d'un réseau routier). 
+D'autant plus que ce problème dispose de nombreuses variantes (ajout d'une contrainte de temps, plusieurs dépôts possibles...). 
+L'une des variantes les plus connues consiste à prendre en compte pour chaque client sa demande, de sorte à ce que les tournées créées ne dépassent pas une certaine capacité définie à l'avance. 
+On nomme ce problème Capacitated Vehicle Routing Problem (CVRP). 
 
 Si de nombreuses heuristiques ont vu le jour pour résoudre ce problème, aucune d'entre elles ne parvient à trouver des solutions optimales pour toutes les instances de la littérature, malgré de très bons résultats dans la plupart des cas. Récemment~\cite{Sorensen_2017}, une nouvelle heuristique efficace a vu le jour. L'objectif de mon stage est de s'inspirer de cette heuristique, et d'y intégrer de la connaissance pour rendre l'algorithme plus performant.
 
-Ce rapport commence par présenter le problème étudié, et introduit les notations et opérateurs utilisés dans la suite. Il décrit ensuite comment a été mise en place l'intégration de connaissances au sein de l'algorithme, puis présente les résultats obtenus.   
+Ce rapport commence par présenter le problème étudié, et introduit les notations et opérateurs utilisés dans la suite. 
+Il décrit ensuite comment a été mise en place l'intégration de connaissances au sein de l'algorithme, puis présente les résultats obtenus.   
 
 \section{Présentations}
 
@@ -46,7 +51,8 @@ Ce rapport commence par présenter le problème étudié, et introduit les notat
 
 \subsubsection{Vehicle Routing Problem (VRP)}
 
-Le problème de tournées de véhicules, est un problème NP-complet, qui consiste à déterminer $k$ tournées pour desservir l'ensemble des $n$ clients présents.  Ces tournées doivent toutes passer par un dépôt fixé par l'instance. 
+Le problème de tournées de véhicules, est un problème NP-complet, qui consiste à déterminer $k$ tournées pour desservir l'ensemble des $n$ clients présents.  
+Ces tournées doivent toutes passer par un dépôt fixé par l'instance. 
 Ainsi les tournées créées doivent respecter les règles suivantes :
 \begin{itemize}
 \item Chaque client doit être desservi par une et une seule tournée;
@@ -135,7 +141,10 @@ Cette partie décrit l'ensemble des briques utilisées pour construire l'algorit
 
 \subsubsection{Condition d'arrêt}
 
-Lors de la recherche d'une solution optimale d'un problème, il est indispensable de s'intéresser à la condition d'arrêt de l'heuristique utilisée. En effet, on doit trouver un compromis entre temps de calcul et qualité de la solution recherchée. On ne peut jamais être totalement sûr que la solution obtenue est bien optimale, mais on ne peut pas non plus explorer l'intégralité des solutions. Les principales conditions d'arrêt rencontrées sont les suivantes :
+Lors de la recherche d'une solution optimale d'un problème, il est indispensable de s'intéresser à la condition d'arrêt de l'heuristique utilisée. 
+En effet, on doit trouver un compromis entre temps de calcul et qualité de la solution recherchée. 
+On ne peut jamais être totalement sûr que la solution obtenue est bien optimale, mais on ne peut pas non plus explorer l'intégralité des solutions. 
+Les principales conditions d'arrêt rencontrées sont les suivantes :
 \begin{itemize}
 \item Un certain temps d'itérations sans solutions améliorantes à ne pas dépasser (3 minutes dans l'article~\cite{Sorensen_2017});
 \item Un nombre d'itérations sans solutions améliorantes à ne pas dépasser (de l'ordre de $n^2$ dans mon algorithme). 
@@ -148,7 +157,9 @@ Cette solution peut être créée de différentes manières:
 
 \begin{itemize}
 \item Elle peut être générée aléatoirement (Alea);
-\item Elle peut être obtenue grâce à l'algorithme de Clarke \& Wright (CW) (algorithme \ref{algo:CW}), avec les paramètres ($\lambda,\mu,\nu$)~\cite{Altinel_2005}. Les savings se calculent via la formule suivante:
+\item Elle peut être obtenue grâce à l'algorithme de Clarke \& Wright (CW) (algorithme \ref{algo:CW}), avec les paramètres ($\lambda,\mu,\nu$)~\cite{Altinel_2005}. 
+Altinel a aussi montré ~\cite{Altinel_2005} que l'on pouvait se contenter de choisir les paramètres dans l'intervalle $[0,2]$ pour trouver de bons résultats. 
+Les savings se calculent via la formule suivante:
 
 \begin{center}
 $s(i,j) = c_{i0} + c_{0j} - \lambda c_{ij} + \mu \vert c_{i0} - c_{0j} \vert + \nu \frac{d_i + d_j}{\overline{d}}$
@@ -195,9 +206,21 @@ où:
 \begin{itemize}
 \item $p(i,j)$ est la pénalisation de l'arête $(i,j)$ (nombre de fois où l'arête a maximisé $b$);
 \item $w(i,j)$ est la largeur de l'arête $(i,j)$;
-\item $c(i,j)$ est le coût de l'arête $(i,j)$ ($c(i,j) = c_{ij}(1 + \lambda p(i,j)$, avec $\lambda = 0.1$ dans l'article);
+\item $c(i,j)$ est le coût de l'arête $(i,j)$ ($c(i,j) = c_{ij}(1 + \lambda p(i,j)$, avec $\lambda = 0.1$ dans l'article \cite{Sorensen_2017});
 \item $d(i,j)$ est la profondeur de l'arête $(i,j)$ (max de $c_{0i}$ et $c_{0j}$);
-\item les paramètres $\lambda_w,\lambda_c,\lambda_d$, prennent comme valeurs $0$ ou $1$, selon les caractéristiques que l'on veut considérer. Il y a ainsi 6 fonctions de pénalisation différentes, que l'on peut choisir au cours de l'exécution (on ne considère pas le cas où $\lambda_w = \lambda_c = 0$, puisqu'il fournit $b(i,j) = 0$.
+\item les paramètres $\lambda_w,\lambda_c,\lambda_d$, prennent comme valeurs $0$ ou $1$, selon les caractéristiques que l'on veut considérer. 
+Il y a ainsi 6 fonctions de pénalisation différentes, que l'on peut choisir au cours de l'exécution (on ne considère pas le cas où $\lambda_w = \lambda_c = 0$, puisqu'il fournit $b(i,j) = 0$.
+
+Les notions de largeur, profondeur et coût sont illustrées par la figure~\ref{metrics}. 
+Plus précisément, la largeur est la différence de longueur entre les projetés de $i$ et $j$ sur la droite issue du dépôt passant par le centre de gravité de la tournée. 
+Le centre de gravité d'une tournée étant obtenu en faisant la moyenne, pour chaque composante, des points de cette tournée.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.6]{metrics.png}
+\caption{Illustration des caractéristiques d'une arête}
+\label{metrics}
+\end{figure}
 
 \end{itemize}
 
@@ -205,7 +228,16 @@ C'est autour de l'arête calculée ici que vont s'orienter les recherches des op
  
 \subsubsection{Ejection-Chain}
 
-Cet opérateur va essayer de déplacer au plus $l$ clients sur des tournées plus adaptées. Dans l'article~\cite{Sorensen_2017} $l = 3$. En effet l'algorithme~\ref{algo:EC}, qui décrit le fonctionnement de cet opérateur, s'exécute en $O(n^{l-1})$. Il vaut donc mieux choisir une valeur de $l$ assez petite, pour que la complexité n'explose pas. 
+Cet opérateur va essayer de déplacer au plus $l$ clients sur des tournées plus adaptées. Le fonctionnement de cet opérateur est présenté sur la figure~\ref{EC}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{ejection_chain.png}
+\caption{Exemple de fonctionnement de l'opérateur ejection-chain}
+\label{EC}
+\end{figure}
+
+Dans l'article~\cite{Sorensen_2017} $l = 3$. En effet l'algorithme~\ref{algo:EC}, qui décrit le fonctionnement de cet opérateur, s'exécute en $O(n^{l-1})$. Il vaut donc mieux choisir une valeur de $l$ assez petite, pour que la complexité n'explose pas. 
 
 \begin{algorithm}
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
@@ -232,7 +264,16 @@ Aux lignes $3, 4, 7$ et $8$ de l'algorithme~\ref{algo:EC}, il est possible d'uti
 
 \subsubsection{Cross-Exchange}
 
-Cet opérateur essaie d'échanger deux séquences de clients successifs entre deux tournées. Il est possible de limiter le nombre de clients par séquence échangée.
+Cet opérateur essaie d'échanger deux séquences de clients successifs entre deux tournées. Le fonctionnement de cet opérateur est présenté sur la figure~\ref{CE}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{cross_exchange.png}
+\caption{Exemple de fonctionnement de l'opérateur cross-exchange}
+\label{CE}
+\end{figure}
+
+Il est possible de limiter le nombre de clients par séquence échangée.
 L'algorithme~\ref{algo:CE} présente l'exécution de l'opérateur et s'exécute en $O(n^2)$.
 
 \begin{algorithm}
@@ -258,6 +299,17 @@ A la ligne $6$ de l'algorithme~\ref{algo:CE}, il est possible d'utiliser les mé
 \subsubsection{Lin-Kernighan}
 
 L'heuristique Lin-Kernighan est utilisé en général pour résoudre le problème du voyageur de commerce (TSP). Il effectue une optimisation intra-tournée (c'est-à-dire que la tournée considérée est améliorée indépendamment des autres). 
+Un exemple d'utilisation de cet opérateur est présent sur la figure~
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{test4_20_init.png}
+\includegraphics[scale=0.4]{test4_20_LKopt.png}
+
+\caption{Exemple de fonctionnement de l'opérateur LK}
+\label{LK}
+\end{figure}
+
 Cela consiste en une réorganisation des clients sur la tournée. On choisit $k$ tel que \emph{LK} ne dépasse pas \emph{k-opt} au cours de son exécution. 
 On appelle \emph{k-opt}, l'opération qui consiste à échanger $k$ clients différents sur la tournée. 
 On commence alors par appliquer 2-opt, si une amélioration est trouvée, on passe à 3-opt, et ainsi de suite jusqu'à atteindre k-opt. 
@@ -369,14 +421,36 @@ $nextSol \gets Sol$\;
 
 \section{Utilisation de connaissances}
 
-Maintenant que nous disposons d'un algorithme performant pour calculer des solutions aux instances considérées, nous allons essayer d'extraire de la connaissance à partir des solutions initiales fournies par Clarke-Wright, pour les intégrer ensuite à l'algorithme A.
+Maintenant que nous disposons d'un algorithme performant pour calculer des solutions aux instances considérées, nous allons essayer d'extraire de la connaissance à partir des solutions initiales fournies par Clarke-Wright, pour l' intégrer ensuite à l'algorithme A.
  
 \subsection{Motivation}
-
+L'intérêt d'intégrer des connaissances dans un algorithme est de le rendre plus performant, autant en efficacité qu'en rapidité. 
+L'algorithme A \& S, est décrit comme l'un des plus performants algorithme à ce jour pour résoudre les problèmes liés à VRP. 
+En effet, il est initialement destiné aux problèmes CVRP, mais peut très bien s'adapter à d'autres problèmes~\cite{Sorensen_2017}, comme le \emph{multi-depot VRP} (MDVRP), qui est un problème VRP où plusieurs dépôts sont disponibles.
+Il serait donc intéressant de pouvoir intégrer de la connaissance à cet algorithme pour le rendre encore plus performant.
 
 \subsection{Extraction des connaissances}
-décrire algo d'apprentissage + résultats
+L'objectif lors de l'extraction des connaissances est de pouvoir retrouver un maximum d'arêtes qui appartiennent à la solution optimale que l'on recherche. 
+Cette étape ne doit pas être trop longue par rapport à l'exécution de l'heuristique, pour que cela reste exploitable.
+Un choix évident a semblé être l'utilisation de l'algorithme de Clarke and Wright pour générer des solutions rapidement, et ainsi construire des bases d'apprentissage.
 
+\subsubsection{Construction de la base de départ}
+Cette base a pour objectif de représenter au mieux les solutions trouvées lors de l'exécution de CW. 
+Générer les solutions pour tous les couples $(\lambda,\mu,\nu)$ prendrait trop de temps, c'est pourquoi nous nous contenterons de tirer $NB$ couples $(\lambda,\mu,\nu)$ aléatoirement (de manière uniforme), pour créer notre base.
+
+\subsubsection{Construction de la base d'apprentissage}
+A priori, toutes les solutions stockées dans la base de départ ne sont pas bonnes à prendre. 
+Il faut donc extraire un ensemble de solutions que l'on juge utile pour représenter la connaissance et ainsi pouvoir l'utiliser par la suite.
+Deux méthodes ont été retenues pour extraire ces solution :
+\begin{itemize}
+\item On conserve $x\%$ des meilleures solutions de la base de départ. C'est la quantité qui est privilégiée ici. On appellera cette base Quantity$_x$;
+\item On conserve les solutions qui ont un coût inférieur à $coût_{min} + (coût_{max}-coût_{min})\frac{x}{100}$. On privilégie ici la qualité. On appellera cette base Quality$_x$.
+\end{itemize}
+
+A présent que nous disposons d'une base d'apprentissage, nous allons pouvoir en extraire des connaissances.
+
+\subsubsection{Récupération des arêtes jugées importantes}
+ 
 \subsection{Intégration des connaissances}
 décrire nouvel algo + résultats
 
