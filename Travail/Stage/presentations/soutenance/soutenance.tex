@@ -22,44 +22,28 @@
 
 \section{Présentation du problème}
 
-\subsection{Vehicle Routing Problem}
+\subsection{Capacitated Vehicle Routing Problem (CVRP)}
 
-\begin{frame}{Vehicle Routing Problem}
-\begin{block}{Objectif}
-Construire un ensemble de tournées qui respectent les règles suivantes:
-\begin{itemize}
-\item Chaque client doit être desservi par une et une seule tournée;
-\item Chaque tournée doit partir et s'arrêter au dépôt;
-\item La longueur du réseau est minimale.
-\end{itemize}
-\end{block}
-
+\begin{frame}{Capacitated Vehicle Routing Problem}
 \begin{block}{Données}
-Les instances utilisées sont celles de la littérature. 
+Instance $I$ : $n$ clients et 1 dépôt
 
-Pour chaque instance clients et dépôt sont définis.
+Solution $Sol$ : $k$ tournées
 
+La demande $d_i$ du client $i$, une capacité $C$
 \end{block}
-
-\end{frame}
-
-\begin{frame}{Exemple} 
-Instance A-n32-k05 de la littérature.
-\begin{center}
-\includegraphics[scale=0.3]{Instance.png}
-\includegraphics[scale=0.3]{solutionNoCapacity.png}
-\end{center}
-\end{frame}
-
-\subsection{Capacitated VRP}
-
-\begin{frame}{Ajout des demandes}
-Problème plus intéressant : gestion des demandes des clients et de la capacité des véhicules.
-\begin{block}{Nouvel objectif}
-Une nouvelle règle vient s'ajouter aux règles précédentes:
+\begin{block}{Règles}
 \begin{itemize}
-\item La demande totale sur une tournée ne doit pas excéder sa capacité.
+\item $\forall i > 0 \in I$, $\exists! R_j \in Sol, i \in R_j$;
+\item Chaque tournée doit partir et s'arrêter au dépôt;
+\item $ \forall R_j \in Sol, \sum_{i \in R_j} d_i \leq C$.
 \end{itemize}
+\end{block}
+\begin{block}{Objectif}
+Déterminer $Sol$ tel que:
+
+\centering
+$ Sol = argmin_{Sol} \sum_{R_j \in Sol} \sum_{i = 0}^{|R_j|-1} dist(R_j[i],R_j[i+1])$
 \end{block}
 \end{frame}
 
@@ -71,12 +55,20 @@ Reprenons A-n32-k05, en ajoutant les demandes des clients et une capacité limit
 \end{center}
 \end{frame}
 
+\begin{frame}
+Intégrer de la connaissance au problème
+\begin{itemize}
+\item Comment construire une solution initiale de bonne qualité
+\item Comment apprendre
+\item Mettre en oeuvre un algo qui répond au problème
+\end{itemize}
+\end{frame}
 \section{Contexte}
 
 \subsection{Algorithme CW}
 
 \begin{frame}{Algorithme Clarke \& Wright}
-Algorithme glouton, qui permet de trouver une solution initiale pas trop mauvaise. 
+Algorithme glouton. 
 
 \begin{block}{Description}
 Pour chaque couple de clients $(i,j)$ on calcule le saving de $i$ et $j$ avec:
