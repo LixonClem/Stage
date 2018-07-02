@@ -1,10 +1,17 @@
 \BOOKMARK [2][]{Outline0.1}{Pr\351sentation du probl\350me}{}% 1
 \BOOKMARK [3][]{Outline0.1.1.2}{Capacitated Vehicle Routing Problem \(CVRP\)}{Outline0.1}% 2
-\BOOKMARK [2][]{Outline0.2}{Contexte}{}% 3
-\BOOKMARK [3][]{Outline0.2.1.4}{Algorithme CW}{Outline0.2}% 4
-\BOOKMARK [3][]{Outline0.2.2.5}{Heuristique A \046 S}{Outline0.2}% 5
-\BOOKMARK [3][]{Outline0.2.3.9}{Motivation}{Outline0.2}% 6
-\BOOKMARK [2][]{Outline0.3}{R\351sultats}{}% 7
-\BOOKMARK [3][]{Outline0.3.1.10}{Algorithme de base}{Outline0.3}% 8
-\BOOKMARK [3][]{Outline0.3.2.12}{Extraction de connaissances}{Outline0.3}% 9
-\BOOKMARK [3][]{Outline0.3.3.14}{Int\351gration des connaissances}{Outline0.3}% 10
+\BOOKMARK [3][]{Outline0.1.2.4}{Motivation}{Outline0.1}% 3
+\BOOKMARK [2][]{Outline0.2}{Construction solution initiale}{}% 4
+\BOOKMARK [3][]{Outline0.2.1.5}{Algorithme CW}{Outline0.2}% 5
+\BOOKMARK [3][]{Outline0.2.2.6}{Exemple d'ex\351cution}{Outline0.2}% 6
+\BOOKMARK [3][]{Outline0.2.3.7}{Probl\350me de \(,,\)}{Outline0.2}% 7
+\BOOKMARK [2][]{Outline0.3}{Choix de l'heuristique}{}% 8
+\BOOKMARK [3][]{Outline0.3.1.8}{Heuristique A \046 S}{Outline0.3}% 9
+\BOOKMARK [3][]{Outline0.3.2.9}{D\351tail des op\351rations}{Outline0.3}% 10
+\BOOKMARK [3][]{Outline0.3.3.12}{Heuristique utilis\351e}{Outline0.3}% 11
+\BOOKMARK [2][]{Outline0.4}{Extraction des connaissances}{}% 12
+\BOOKMARK [3][]{Outline0.4.1.14}{Contribution}{Outline0.4}% 13
+\BOOKMARK [3][]{Outline0.4.2.17}{Validation}{Outline0.4}% 14
+\BOOKMARK [2][]{Outline0.5}{Int\351gration des connaissances}{}% 15
+\BOOKMARK [3][]{Outline0.5.1.20}{Contribution}{Outline0.5}% 16
+\BOOKMARK [3][]{Outline0.5.2.21}{Validation}{Outline0.5}% 17

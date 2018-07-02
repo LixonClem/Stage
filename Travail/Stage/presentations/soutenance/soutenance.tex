@@ -9,6 +9,7 @@
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 
 \usetheme{Warsaw}
+\definecolor{rouge}{HTML}{DD0000}
 \title{Présentation stage}
 
 \author{Clément Legrand}
@@ -23,115 +24,214 @@
 \section{Présentation du problème}
 
 \subsection{Capacitated Vehicle Routing Problem (CVRP)}
-
+\footnotesize
 \begin{frame}{Capacitated Vehicle Routing Problem}
-\begin{block}{Données}
+\begin{block}{Notations}
 Instance $I$ : $n$ clients et 1 dépôt
 
 Solution $Sol$ : $k$ tournées
 
 La demande $d_i$ du client $i$, une capacité $C$
 \end{block}
-\begin{block}{Règles}
+\begin{alertblock}{Règles}
 \begin{itemize}
 \item $\forall i > 0 \in I$, $\exists! R_j \in Sol, i \in R_j$;
 \item Chaque tournée doit partir et s'arrêter au dépôt;
 \item $ \forall R_j \in Sol, \sum_{i \in R_j} d_i \leq C$.
 \end{itemize}
-\end{block}
-\begin{block}{Objectif}
+\end{alertblock}
+\begin{exampleblock}{Objectif}
 Déterminer $Sol$ tel que:
 
 \centering
-$ Sol = argmin_{Sol} \sum_{R_j \in Sol} \sum_{i = 0}^{|R_j|-1} dist(R_j[i],R_j[i+1])$
-\end{block}
+$ Sol = argmin_{Sol} \sum_{R_j \in Sol} \sum_{i = 0}^{|R_j|-1} dist(R_j[i],R_j[i+1]) = argmin_{Sol}cost(Sol)$
+\end{exampleblock}
 \end{frame}
 
 \begin{frame}{Exemple}
-Reprenons A-n32-k05, en ajoutant les demandes des clients et une capacité limite:
-\begin{center}
-\includegraphics[scale=0.32]{Instance.png}
-\includegraphics[scale=0.32]{solutionCapacity.png}
-\end{center}
+Instance A-n37-k06:
+ \begin{columns}[t]
+  \begin{column}{5cm}
+  	\centering
+	\includegraphics[scale=0.32]{instanceA3706.png}
+	
+	Représentation instance 
+  \end{column}
+  
+  \begin{column}{5cm}
+  	\centering
+	\includegraphics[scale=0.32]{bestA3706.png}
+ 
+ 	Meilleure solution connue
+  \end{column}
+ \end{columns}
+
 \end{frame}
 
+\subsection{Motivation}
+
 \begin{frame}
-Intégrer de la connaissance au problème
+\begin{block}{Objectif}
+Intégrer de la connaissance lors du calcul d'une solution
+\end{block}
+
+\begin{exampleblock}{Idée}
+Prédire les arêtes optimales en apprenant à partir de solutions initiales de bonne qualité
+\end{exampleblock}
+
+\begin{alertblock}{Problèmes}
 \begin{itemize}
-\item Comment construire une solution initiale de bonne qualité
-\item Comment apprendre
-\item Mettre en oeuvre un algo qui répond au problème
+\item Comment construire une solution initiale de bonne qualité ?
+\item Quelle heuristique utiliser ?
+\item Comment extraire la connaissance ?
+\item Comment intégrer la connaissance dans l'heuristique ?
 \end{itemize}
+\end{alertblock}
 \end{frame}
-\section{Contexte}
+
+\section{Construction solution initiale}
 
 \subsection{Algorithme CW}
 
-\begin{frame}{Algorithme Clarke \& Wright}
-Algorithme glouton. 
 
-\begin{block}{Description}
-Pour chaque couple de clients $(i,j)$ on calcule le saving de $i$ et $j$ avec:
+\begin{frame}{Algorithme Clarke \& Wright (CW)}
+
+CW\footnote{IK. Altinel and T. Öncan, A new enhancement of the Clarke and Wright savings heuristic for the capacitated vehicle routing problem (2005)}$\rightarrow$ Algorithme glouton. 
+
+\begin{exampleblock}{Définition saving}
+Calcul du saving de $i$ et $j$ avec:
 \begin{center}
 $s(i,j) = c_{i0} + c_{0j} - \lambda c_{ij} + \mu \vert c_{i0} - c_{0j} \vert + \nu \frac{d_i + d_j}{\overline{d}}$
 \end{center}
-Tant que le saving maximal est positif:
+$(\lambda,\mu,\nu)$ sont des paramètres à déterminer
+\end{exampleblock}
+
+\begin{block}{Fonctionnement}
+Tant que $max_{(i,j)}s(i,j) > 0$:
 \begin{itemize}
-\item On prend $(i,j)$ tel que $s(i,j)$ soit maximal;
+\item $(i,j) \leftarrow argmax_{(i,j)}s(i,j)$;
 \item Les tournées qui contiennent $i$ et $j$ sont fusionnées (si possible);
-\item On met $s(i,j) = 0$.
+\item $s(i,j) \leftarrow  0$.
 \end{itemize} 
 
 \end{block}
 \end{frame}
 
+\subsection{Exemple d'exécution}
+\begin{frame}{Exécution pour $(\lambda,\mu,\nu) = (1,1,1)$}
+
+ \begin{columns}[t]
+  \begin{column}{4cm}
+  	\centering
+	\includegraphics[scale=0.25]{CWinit.png}
+	
+	Initialisation
+  \end{column}
+  
+  \begin{column}{4cm}
+  	\centering
+	\includegraphics[scale=0.25]{CW1.png}
+ 
+ 	1$^{ere}$ fusion
+  \end{column}
+
+ 
+  \begin{column}{4cm}
+  	\centering
+	\includegraphics[scale=0.25]{CW2.png}
+ 	2$^{eme}$ fusion
+
+  \end{column}
+ \end{columns}
+ 
+ \centering
+ \includegraphics[scale=0.13]{resCW101010.png}
+\end{frame}
+
+\subsection{Problème de $(\lambda,\mu,\nu)$}
+
+\begin{frame}{Choix de $(\lambda,\mu,\nu)$ ?}
+
+ \begin{columns}[t]
+  \begin{column}{4cm}
+  	\centering
+	\includegraphics[scale=0.27]{resCW111.png}
+	
+	$(0.1,0.1,0.1), cost = 1569$
+  \end{column}
+  
+  \begin{column}{4cm}
+  	\centering
+	\includegraphics[scale=0.27]{resCW190105.png}
+ 
+ 	$(1.9,0.1,1.5), cost = 1106$
+  \end{column}
+
+ 
+  \begin{column}{4cm}
+  	\centering
+	\includegraphics[scale=0.27]{resCW001015.png}
+ 	$(0.0,1.0,1.5), cost = 2191$
+
+  \end{column}
+ \end{columns}
+ 
+\begin{alertblock}{Bilan}
+Difficile de prévoir l'influence des paramètres
+\end{alertblock}
+
+\end{frame}
+
+\section{Choix de l'heuristique}
+
 \subsection{Heuristique A \& S}
 
-\begin{frame}{Heuristique A \& S}
-Heuristique développée par Arnold et Sörensen en 2017. 
-
-\underline{Intérêt}: heuristique simple à mettre en place, et performante.
+\begin{frame}{Heuristique Arnold \& Sörensen} 
 
 \begin{algorithm}[H]
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
-\KwIn{L'instance considérée}
-\KwOut{Une solution au problème I}
-$Sol \gets Clarke and Wright$\;
-\While {Pas 3 minutes depuis la dernière amélioration} {
+
+$Sol \gets CW(\lambda,\mu,\nu)$\;
+$NewSol \gets Sol$\;
+\While {Pas d'améliorations depuis 3 min} {
 	Calcul de la pire arête\;
-	Application des opérateurs locaux\;
-	\If {Nouvelle meilleure solution} {
-		Mettre à jour $Sol$\;
+	$NewSol \gets EjectionChain_{BI-O}$\;
+	$NewSol \gets LinKernighan_{BI-O}$\;
+	$NewSol \gets CrossExchange_{BI-O}$\;
+	$NewSol \gets LinKernighan_{BI-O}$\;
+	\If {$cost(NewSol) < cost(Sol)$} {
+		$Sol \gets NewSol$\;
 	}
 }
 \Return{$Sol$}\;
-\caption{{\sc AS} applique l'heuristique A\& S au problème considéré}
-\label{algo:AS}
+
 \end{algorithm}
 
 \end{frame}
 
+\subsection{Détail des opérations}
+
 \begin{frame}{Pire arête}
 \begin{exampleblock}{Pire arête}
-La pire arète du graphe est l'arête $(i,j)$ qui maximise la fonction:
+La pire arête du graphe est l'arête $(i,j)$ qui maximise la fonction:
 \begin{center}
-$b(i,j) = \frac{[\lambda_w w(i,j) + \lambda_c c(i,j)] [\frac{d(i,j)}{max_{k,l}d(k,l)}] ^ {\frac{\lambda_d}{2}}}{1+p(i,j)}$
+$b(i,j) = \frac{[\gamma_w w(i,j) + \gamma_c c(i,j)] [\frac{d(i,j)}{max_{k,l}d(k,l)}] ^ {\frac{\gamma_d}{2}}}{1+p(i,j)}$
 \end{center}
 \end{exampleblock}
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.5]{metrics.png}
+\includegraphics[scale=0.6]{metrics.png}
 \end{figure}
 
 \end{frame}
 
 \begin{frame}{Opérateurs locaux}
 \begin{block}{Ejection-chain}
-Cet opérateur va essayer de déplacer au plus $l$ clients sur des tournées plus adaptées. 
+Déplacer $l$ clients sur des tournées. 
 \end{block}
 \begin{block}{Cross-exchange}
-Essaie d'échanger deux séquences de clients entre deux tournées. 
+Échanger deux séquences de clients entre deux tournées. 
 \end{block}
 \begin{figure}
 	\centering
@@ -155,63 +255,239 @@ Essaie d'échanger deux séquences de clients entre deux tournées.
 \end{figure} 
 \end{frame}
 
-\subsection{Motivation}
+\subsection{Heuristique utilisée}
 
-\begin{frame}{Intégration de connaissances}
-\begin{block}{Objectif}
-Améliorer les performances de l'heuristique en y intégrant de la connaissance.
-\end{block}
+\begin{frame}{Heuristique utilisée ($H_c$)}
 
-\begin{exampleblock}{Idée}
-Utiliser les résultats de CW pour tenter de prédire des arêtes qui appartiendront à la meilleure solution.
-\end{exampleblock}
+\begin{algorithm}[H]
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+
+$Sol \gets CW(\lambda,\mu,\nu)$\;
+$NewSol \gets Sol$\;
+\While {La dernière amélioration date de moins de \textcolor{rouge}{$n/3$ min}} {
+	Calcul de la pire arête\;
+	$NewSol \gets EjectionChain_{\textcolor{rouge}{FI-RD}}$\;
+	$NewSol \gets LinKernighan_{BI-O}$\;
+	$NewSol \gets CrossExchange_{\textcolor{rouge}{FI-RD}}$\;
+	$NewSol \gets LinKernighan_{BI-O}$\;
+	\If {$cost(NewSol) < cost(Sol)$} {
+		$Sol \gets NewSol$\;
+	}
+	\textcolor{rouge}{
+	\If {Pas d'améliorations depuis $n/2$ itérations}{
+		$NewSol \gets Sol$\;
+	}
+	}
+}
+\Return{$Sol$}\;
+
+\end{algorithm}
 \end{frame}
 
-\section{Résultats}
+\begin{frame}{Validation}
 
-\subsection{Algorithme de base}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+   \hline
+    & \multicolumn{3}{c|}{A-n37-k06} & \multicolumn{3}{c|}{A-n65-k09} & \multicolumn{3}{c|}{P-n101-k04} \\
+   \hline
+   Ajout & Best & Mean & Time & Best & Mean & Time & Best & Mean & Time \\
+   \hline
+   Rien &  950 & 957 & 195 & 1197 & 1215 & 395 & 722 & 736 & 783  \\   
+   \hline
+   Divers & 950 & 969 & 200 & 1200 & 1230 & 350 & 698 & 706 & 1500  \\
+   \hline
+\end{tabular}
 
-\begin{frame}{Description}
-L'algorithme utilisé s'inspire de l'heuristique A\&S. 
-\begin{block}{Modifications}
+\begin{block}{Conclusion}
+Diversification plus intéressante pour des grandes instances
+\end{block}
+
+
+
+\end{frame}
+
+
+\section{Extraction des connaissances}
+
+\subsection{Contribution}
+
+\begin{frame}{Exemples}
+ \begin{columns}[t]
+  \begin{column}{4cm}
+  	\centering
+	\includegraphics[scale=0.25]{edges101010.png}
+	
+  \end{column}
+  
+    \begin{column}{4cm}
+  	\centering
+	\includegraphics[scale=0.25]{edges190115.png}
+
+
+  \end{column}
+  
+  \begin{column}{4cm}
+  	\centering
+	\includegraphics[scale=0.25]{edges010101.png}
+
+  \end{column}
+
+ 
+
+ \end{columns}
+ 
+ \centering
+ $\downarrow$
+ 
+ \includegraphics[scale=0.25]{edgesSol.png}
+\end{frame}
+
+\begin{frame}{Protocole}
+\begin{alertblock}{Questions}
 \begin{itemize}
-\item On applique LK à la solution initiale;
-\item Les opérateurs explorent les voisinages de manière aléatoire;
-\item On repart de la dernière meilleure solution obtenue, après N/2 itérations sans améliorations.
+\item Combien de solutions dans l'échantillon ?
+\item Combien de solutions pour apprendre ?
+\item Comment choisir les arêtes à conserver ?
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Protocole}
+
+\begin{block}{Combien de solutions dans l'échantillon ?}
+\begin{itemize}
+\item Considérer tous les $(\lambda,\mu,\nu)$;
+\item Tirer $N$ $(\lambda,\mu,\nu)$ aléatoirement;
 \end{itemize}
 \end{block}
-\end{frame}
 
-\begin{frame}{Résultats}
-
-\end{frame}
-
-\subsection{Extraction de connaissances}
-
-\begin{frame}{Description}
-Création d'une base de solutions pour extraire des connaissances.
-\begin{block}{Protocole}
+\begin{block}{Quelles solutions pour apprendre ?}
 \begin{itemize}
-\item Génération d'une base de 100 solutions aléatoirement;
-\item On garde les solutions qui ont un coût inférieur à $c_{min} + (c_{max}-c_{min})\frac{10}{100}$ : qualité privilégiée. On appelle cette base Qual$_{10}$;
-\item Pour chaque arête (i,j) (resp (j,i) si j<i), on incrémente la valeur de MAT[i][j] (resp MAT[j][i]);
-\item On ne conserve que les $n/2$ premières arêtes dans la matrice.
+\item $x\%$ des meilleures solutions : quantité privilégiée (Quan$_{x}$);
+\item Solutions avec coût inférieur à $c_{min} + (c_{max}-c_{min})\frac{x}{100}$ : qualité privilégiée (Qual$_{x}$);
 \end{itemize}
 \end{block}
+
+\begin{block}{Comment choisir les arêtes à conserver ?}
+Pour chaque arête (i,j), on incrémente la valeur de MAT[i][j];
+\begin{itemize}
+\item Conserver $(i,j) \Leftrightarrow MAT[i][j] > seuil$ (Seuil);
+\item Conserver les $rg$ premières arêtes dans la matrice (Rang).
+\end{itemize}
+\end{block}
+
+
+\end{frame}
+
+\subsection{Validation}
+\begin{frame}{Résultats}
+Instance A-n37-k06
+\begin{table}[H]
+
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+ & \multicolumn{4}{c|}{Quan$_{10}$} & \multicolumn{3}{c|}{Qual$_{10}$} \\
+ \hline
+ & Seuil & Arêtes & Correctes & Proportion & Rang & Correctes & Proportion \\
+ \hline
+ 50 & & & & & & & \\
+ \cline{2-8} 
+    & & & & & & & \\
+  \hline
+   100 & & & & & & & \\
+ \cline{2-8} 
+    & & & & & & & \\
+  \hline
+   500 & & & & & & & \\
+ \cline{2-8} 
+    & & & & & & & \\
+  \hline
+   8000 & & & & & & & \\
+ \cline{2-8} 
+    & & & & & & & \\
+  \hline
+
+\end{tabular}
+\end{table}
 \end{frame}
 
 \begin{frame}{Résultats}
+Instance A-n65-k09
+\begin{table}[H]
 
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+ & \multicolumn{4}{c|}{Quan$_{10}$} & \multicolumn{3}{c|}{Qual$_{10}$} \\
+ \hline
+ & Seuil & Arêtes & Correctes & Proportion & Rang & Correctes & Proportion \\
+ \hline
+ 50 & & & & & & & \\
+ \cline{2-8} 
+    & & & & & & & \\
+  \hline
+   100 & & & & & & & \\
+ \cline{2-8} 
+    & & & & & & & \\
+  \hline
+   500 & & & & & & & \\
+ \cline{2-8} 
+    & & & & & & & \\
+  \hline
+   8000 & & & & & & & \\
+ \cline{2-8} 
+    & & & & & & & \\
+  \hline
+
+\end{tabular}
+\end{table}
 \end{frame}
 
-\subsection{Intégration des connaissances}
+\begin{frame}{Résultats}
+Instance P-n101-k04
+\begin{table}[H]
 
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+ & \multicolumn{4}{c|}{Quan$_{10}$} & \multicolumn{3}{c|}{Qual$_{10}$} \\
+ \hline
+ & Seuil & Arêtes & Correctes & Proportion & Rang & Correctes & Proportion \\
+ \hline
+ 50 & & & & & & & \\
+ \cline{2-8} 
+    & & & & & & & \\
+  \hline
+   100 & & & & & & & \\
+ \cline{2-8} 
+    & & & & & & & \\
+  \hline
+   500 & & & & & & & \\
+ \cline{2-8} 
+    & & & & & & & \\
+  \hline
+   8000 & & & & & & & \\
+ \cline{2-8} 
+    & & & & & & & \\
+  \hline
+
+\end{tabular}
+\end{table}
+\end{frame}
+\section{Intégration des connaissances}
+
+\subsection{Contribution}
 \begin{frame}{Description}
 
 \end{frame}
 
+\subsection{Validation}
 \begin{frame}{Résultats}
 
 \end{frame}
 
+\begin{frame}{Conclusion}
+Ajouter de la diversification dans l'apprentissage
+\end{frame}
 \end{document}
