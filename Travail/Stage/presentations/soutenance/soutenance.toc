@@ -1,4 +1,5 @@
-\babel@toc {english}{}
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
 \beamer@sectionintoc {1}{Pr\IeC {\'e}sentation du probl\IeC {\`e}me}{2}{0}{1}
 \beamer@subsectionintoc {1}{1}{Capacitated Vehicle Routing Problem (CVRP)}{2}{0}{1}
 \beamer@subsectionintoc {1}{2}{Motivation}{4}{0}{1}
@@ -13,6 +14,6 @@
 \beamer@sectionintoc {4}{Extraction des connaissances}{14}{0}{4}
 \beamer@subsectionintoc {4}{1}{Contribution}{14}{0}{4}
 \beamer@subsectionintoc {4}{2}{Validation}{17}{0}{4}
-\beamer@sectionintoc {5}{Int\IeC {\'e}gration des connaissances}{20}{0}{5}
-\beamer@subsectionintoc {5}{1}{Contribution}{20}{0}{5}
-\beamer@subsectionintoc {5}{2}{Validation}{21}{0}{5}
+\beamer@sectionintoc {5}{Int\IeC {\'e}gration des connaissances}{23}{0}{5}
+\beamer@subsectionintoc {5}{1}{Contribution}{23}{0}{5}
+\beamer@subsectionintoc {5}{2}{Validation}{24}{0}{5}
