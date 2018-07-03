@@ -27,7 +27,7 @@ global nu
 ylim = 200
 xlim = 200
 clim = 20
-Capacity = 1000
+Capacity = 550
 KNN = 30
 relocation = 3
 
@@ -717,15 +717,18 @@ def update_matrix(mat, sol):
     return mat
 
 
-def rd_generate(nb, inst, demand):
-    initial = init_routes(inst, demand)
+def rd_generate(nb, inst, demand, initial):
+
     Base = []
     me = 0
     for j in range(nb):
         l = 0.1*rd.randint(1, 20)
         m = 0.1*rd.randint(1, 20)
         n = 0.1*rd.randint(1, 20)
-        detailed_cust = [i for i in range(len(initial))]
+        detailed_cust = [0 for i in range(len(inst))]
+        for r in range(len(initial)):
+            for i in initial[r]:
+                detailed_cust[i-1] = r
         routes = ClarkeWright(copy_sol(initial), inst,
                               demand, l, m, n, detailed_cust)
         for i in range(len(routes)):
@@ -813,13 +816,13 @@ def mat_info_rg(rg, mat):
     return ed
 
 
-def learning_results(iterations, generate, inst, demmand):
+def learning_results(iterations, generate, inst, demmand, initial):
     edges = []
     best = 10**99
     (bl,bm,bn) = (0,0,0)
     for lg in range(iterations):
         tps = time.time()
-        Base, stat, (l,m,n) = rd_generate(generate, inst, demand)
+        Base, stat, (l,m,n) = rd_generate(generate, inst, demand,initial)
         if stat[0]<best:
             best = stat[0]
             (bl,bm,bn) = (l,m,n)
@@ -1011,9 +1014,9 @@ def apply_heuristic(inst, demand, l):
     tps_deb = time.time()
     max_d = max_depth(instance)
     v = voisins(KNN, instance)
-    
+    initial = init_routes(inst,demand)
     print("start learning")
-    edges, (lam,mu,nu) = learning_results(5,50,inst,demand)
+    edges, (lam,mu,nu) = learning_results(5,100,inst,demand,initial)
     initial_routes = complete(destruction2(ignore_0(edges)),inst)
     tps_learn = time.time()
     
@@ -1024,8 +1027,8 @@ def apply_heuristic(inst, demand, l):
     
     new_base = []
     costs = 0
-    initial_routes = init_routes(instance,demand)
-    for i in range(5):
+
+    for i in range(10):
         print(i)
 
 
@@ -1043,7 +1046,7 @@ def apply_heuristic(inst, demand, l):
                 writef(namefile,'')
                 writef(namefile,'init = ' + str(round(c_init,3)))
                 writef(namefile,'res = ' + str(round(c_sol,3)))
-                writef(namefile,'gap = ' + str(round((1-580/c_sol)*100,3)))
+                writef(namefile,'gap = ' + str(round((1-5623/c_sol)*100,3)))
                 writef(namefile,'')
                 writef(namefile,'solution = ' + str(sol))
 
@@ -1060,6 +1063,9 @@ def apply_heuristic(inst, demand, l):
                 if not is_edge_in(e, edges):
                     edges.append(e)
             initial_routes = complete(destruction2(ignore_0(edges)),inst)
+            edges, (lam,mu,nu) = learning_results(5,100,inst,demand,initial_routes)
+            print(lam,mu,nu)
+            new_base = []
             for j in range(5):
                 init, sol = core_heuristic(
                     copy_sol(initial_routes), inst, demand, lam, mu, nu, l, max_d, v)
@@ -1074,7 +1080,7 @@ def apply_heuristic(inst, demand, l):
                 writef(namefile,'')
                 writef(namefile,'init = ' + str(round(c_init,3)))
                 writef(namefile,'res = ' + str(round(c_sol,3)))
-                writef(namefile,'gap = ' + str(round((1-580/c_sol)*100,3)))
+                writef(namefile,'gap = ' + str(round((1-5623/c_sol)*100,3)))
                 writef(namefile,'')
                 writef(namefile,'solution = ' + str(sol))
             
@@ -1113,7 +1119,7 @@ def common_edges(sol1, sol2):
     return E, E_init, E_final
 
 
-t = "Golden_09"
+t = "Golden_01"
 
 instance,demand = read("Instances/"+t+".xml")
 
@@ -1130,6 +1136,7 @@ record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [
  #                                                                                                                                       25, 21], [0, 8, 10, 24, 13, 12, 1, 33], [0, 17, 51, 39, 62, 29, 55], [0, 5, 32, 20, 58, 40, 59, 52, 19, 18], [0, 60, 50, 16, 41, 2, 38, 42, 61, 45]]
 #best = normalize_solution(best)
 #record = [[0,17, 24, 35, 37, 34, 26, 11, 8], [0, 2, 22, 3, 7, 16, 32, 10], [0, 21, 30, 13, 28, 27, 36, 6], [0, 14, 19, 25, 33, 12, 18, 4], [0, 9, 38, 15, 5 ,29, 20, 23, 1 ,31]]
+record = [[0, 1, 7, 21, 40],[0, 10, 63, 11, 24, 6, 23],[0, 13, 74, 60, 39, 3, 77, 51] ,[0, 17, 31, 27, 59, 5, 44, 12, 62] ,[0, 29, 20, 75, 57, 19, 26, 35, 65, 69, 56, 47, 15, 33, 64] , [0, 30, 78, 61, 16, 43, 68, 8, 37, 2, 34 ],[0, 38, 72, 54, 9, 55, 41, 25, 46 ],[0, 42, 53, 66, 67, 36, 73, 49 ],[0, 52, 28, 79, 18, 48, 14, 71 ],[0, 58, 32, 4, 22, 45, 50, 76, 70] ]
 """
 initial_solution = init_routes(instance, demand)
 detailed_cust = [0 for i in range(len(instance))]
@@ -1151,6 +1158,7 @@ print_instance(instance)
 print_edges(aer,instance,'green')
 py.show()
 """
+print(cost_sol(record,instance))
 
 apply_heuristic(instance, demand, relocation)
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  29 JUN 2018 10:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  3 JUL 2018 11:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -724,95 +724,95 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
 <Instance.png, id=9, 462.528pt x 346.896pt>
 File: Instance.png Graphic file (type png)
 <use Instance.png>
-Package pdftex.def Info: Instance.png  used on input line 70.
+Package pdftex.def Info: Instance.png  used on input line 72.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 <solutionNoCapacity.png, id=11, 462.528pt x 346.896pt>
 File: solutionNoCapacity.png Graphic file (type png)
 <use solutionNoCapacity.png>
-Package pdftex.def Info: solutionNoCapacity.png  used on input line 78.
+Package pdftex.def Info: solutionNoCapacity.png  used on input line 80.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
  [2 <./Instance.png> <./solutionNoCapacity.png>]
 <solutionCapacity.png, id=17, 462.528pt x 346.896pt>
 File: solutionCapacity.png Graphic file (type png)
 <use solutionCapacity.png>
-Package pdftex.def Info: solutionCapacity.png  used on input line 96.
+Package pdftex.def Info: solutionCapacity.png  used on input line 98.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
+Underfull \hbox (badness 10000) in paragraph at lines 121--122
 
  []
 
 [3 <./solutionCapacity.png>]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 182.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 184.
 LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <10.95> not available
-(Font)              Font shape `T1/ppl/b/it' tried instead on input line 182.
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 184.
  [4]
 <metrics.png, id=28, 235.88126pt x 164.615pt>
 File: metrics.png Graphic file (type png)
 <use metrics.png>
-Package pdftex.def Info: metrics.png  used on input line 220.
+Package pdftex.def Info: metrics.png  used on input line 222.
 (pdftex.def)             Requested size: 141.52983pt x 98.76976pt.
 <ejection_chain.png, id=29, 445.665pt x 226.8475pt>
 File: ejection_chain.png Graphic file (type png)
 <use ejection_chain.png>
-Package pdftex.def Info: ejection_chain.png  used on input line 235.
+Package pdftex.def Info: ejection_chain.png  used on input line 237.
 (pdftex.def)             Requested size: 178.26283pt x 90.73738pt.
  [5]
 <cross_exchange.png, id=34, 546.04pt x 251.94125pt>
 File: cross_exchange.png Graphic file (type png)
 <use cross_exchange.png>
-Package pdftex.def Info: cross_exchange.png  used on input line 271.
+Package pdftex.def Info: cross_exchange.png  used on input line 273.
 (pdftex.def)             Requested size: 218.41212pt x 100.7747pt.
  [6 <./metrics.png> <./ejection_chain.png>]
 <test4_20_init.png, id=41, 462.528pt x 346.896pt>
 File: test4_20_init.png Graphic file (type png)
 <use test4_20_init.png>
-Package pdftex.def Info: test4_20_init.png  used on input line 306.
+Package pdftex.def Info: test4_20_init.png  used on input line 308.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 <test4_20_LKopt.png, id=42, 462.528pt x 346.896pt>
 File: test4_20_LKopt.png Graphic file (type png)
 <use test4_20_LKopt.png>
-Package pdftex.def Info: test4_20_LKopt.png  used on input line 307.
+Package pdftex.def Info: test4_20_LKopt.png  used on input line 309.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 [7 <./cross_exchange.png>] [8 <./test4_20_init.png> <./test4_20_LKopt.png>]
-[9] [10]
+[9]
 
-LaTeX Warning: Command \^ invalid in math mode on input line 447.
-
-
-LaTeX Warning: Command \^ invalid in math mode on input line 447.
+LaTeX Warning: Command \^ invalid in math mode on input line 448.
 
 
-LaTeX Warning: Command \^ invalid in math mode on input line 447.
+LaTeX Warning: Command \^ invalid in math mode on input line 448.
+
+
+LaTeX Warning: Command \^ invalid in math mode on input line 448.
 
 Missing character: There is no û in font pplr7t!
 Missing character: There is no û in font pplr7t!
 Missing character: There is no û in font pplr7t!
-(./briques.bbl) [11] (./briques.aux) ) 
+[10] (./briques.bbl) [11] (./briques.aux) ) 
 Here is how much of TeX's memory you used:
  7332 strings out of 492982
  107099 string characters out of 6134896
- 293281 words of memory out of 5000000
+ 290281 words of memory out of 5000000
  10748 multiletter control sequences out of 15000+600000
  39679 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,14n,40p,499b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/
-dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
-w/palatino/uplri8a.pfb>
-Output written on briques.pdf (11 pages, 289542 bytes).
+ 42i,14n,40p,499b,489s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/urw/palatino/uplri8a.pfb>
+Output written on briques.pdf (11 pages, 290134 bytes).
 PDF statistics:
  90 PDF objects out of 1000 (max. 8388607)
  52 compressed objects within 1 object stream

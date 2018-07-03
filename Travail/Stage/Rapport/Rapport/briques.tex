@@ -45,9 +45,11 @@ Si de nombreuses heuristiques ont vu le jour pour résoudre ce problème, aucune
 Ce rapport commence par présenter le problème étudié, et introduit les notations et opérateurs utilisés dans la suite. 
 Il décrit ensuite comment a été mise en place l'intégration de connaissances au sein de l'algorithme, puis présente les résultats obtenus.   
 
-\section{Présentations}
+\section{Présentation des notions et notations}
 
 \subsection{Description du problème}
+
+\subsubsection{Problèmes d'optimisations}
 
 \subsubsection{Vehicle Routing Problem (VRP)}
 
@@ -352,12 +354,12 @@ Les auteurs pré-calculent également les $30$ plus proches voisins de chacun de
 $Sol \gets CW(I,D,\lambda,\mu,\nu)$\;
 $N \gets length(D)$\;
 $nextSol \gets Sol$\;
-\While {Pas 3 minutes depuis la dernière amélioration} {
+\While {La dernière amélioration date de moins de 3 min} {
 	$worstEdge \gets argmax_{(i,j)} b(i,j) $\;
 	$nextSol \gets EC_{BI-O}(worstEdge,I,D)$\;
-	Améliorer chaque tournée avec $LK_{BI-O}$\;
+	$nextSol \gets LK_{BI-O}(nextSol)$\;
 	$nextSol \gets CE_{BI-O}(worstEdge,I,D)$\;
-	Améliorer chaque tournée avec $LK_{BI-O}$\;
+	$nextSol \gets LK_{BI-O}(nextSol)$\;
 	\If {$cost(Sol) > cost (nextSol)$} {
 		$ Sol \gets nextSol$\;
 	}
@@ -392,15 +394,15 @@ Cela permet d'obtenir le coût moyen d'une solution renvoyée, et nous retenons 
 \KwIn{Un ensemble de points I, les demandes des clients D, un triplet de flottants $(\lambda,\mu,\nu)$}
 \KwOut{Une solution au problème I}
 $Sol \gets CW(I,D,\lambda,\mu,\nu)$\;
-Améliorer chaque tournée avec $LK_{BI-O}$\;
+
 $N \gets length(D)$\;
 $nextSol \gets Sol$\;
 \While {Pas 1 minute depuis la dernière amélioration} {
 	$worstEdge \gets argmax_{(i,j)} b(i,j) $\;
 	$nextSol \gets EC_{FI-RD}(worstEdge,I,D)$\;
-	Améliorer chaque tournée avec $LK_{BI-O}$\;
+	$nextSol \gets LK_{BI-O}(nextSol)$\;
 	$nextSol \gets CE_{FI-RD}(worstEdge,I,D)$\;
-	Améliorer chaque tournée avec $LK_{BI-O}$\;
+	$nextSol \gets LK_{BI-O}(nextSol)$\;
 	\If {$cost(Sol) > cost (nextSol)$} {
 		$ Sol \gets nextSol$\;
 	}
@@ -410,11 +412,10 @@ $nextSol \gets Sol$\;
 	\If {Pas d'améliorations depuis $2N$ itérations} {
 		Changer de fonction de pénalisation en prenant un autre triplet $(\lambda_w,\lambda_c,\lambda_d)$\;
 		Réinitialiser les pénalités des arêtes\;
-		Améliorer chaque tournée de $Sol$ avec $LK_{BI-O}$\;
 	}
 }
 \Return{$Sol$}\;
-\caption{{\sc A} calcule une solution du problème considéré}
+\caption{{\sc $H_c$} calcule une solution du problème considéré}
 \label{algo:A}
 \end{algorithm}
 

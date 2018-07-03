@@ -312,6 +312,7 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de seuil.
    500 & 38 & 60 & 40 & 0.55  \\
    \hline
    Tout & 600 & 62 & 41 & 0.56 \\
+   \hline
 \end{tabular}
 
 
@@ -338,6 +339,7 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de seuil.
    500 & 3L$_{lb}$/4 & 35 & 28 & 0.39  \\
    \hline
    Tout & 3L$_{lb}$/4 & 35 & 28 & 0.39 \\
+   \hline
 \end{tabular}
 \end{frame}
 
@@ -362,6 +364,7 @@ On utilise la base Tout avec certaines valeurs de seuil.
    500 & 375 & 14 & 9 & 0.13  \\
    \hline
    Tout & 6000 & 13 & 9 & 0.12 \\
+   \hline
 \end{tabular}
 \end{frame}
 
@@ -396,6 +399,7 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de rang.
    500 & 33 & 27 & 0.37  \\
    \hline
    Tout & 33 & 27 & 0.37 \\
+   \hline
 \end{tabular}
 
 \end{frame}
@@ -430,6 +434,7 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de rang.
    500 & 33 & 26 & 0.36  \\
    \hline
    Tout & 33 & 27 & 0.37 \\
+   \hline
 \end{tabular}
 \end{frame}
 
@@ -463,6 +468,7 @@ On utilise la base Tout avec certaines valeurs de rang.
    500 & 33 & 25 & 0.34  \\
    \hline
    Tout & 33 & 25 & 0.34 \\
+   \hline
 \end{tabular}
 \end{frame}
 
@@ -481,7 +487,7 @@ La meilleure solution comporte 104 arêtes.
 
 Pour chaque test on effectue 5 itérations.
 
-Temps de calcul: 38 s (50), 75 s (100), 375 s (500). 
+Temps de calcul: 38 s (50), 75 s (100), 375 s (500), 1060 s (8000). 
 \end{frame}
 
 \begin{frame}{Résultats avec critère Seuil et base Quan$_{10}$}
@@ -500,12 +506,15 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de seuil.
    \hline
    500 & 25 & 83 & 69 & 0.67  \\
    \hline
+   Tout & 400 & 87 & 73 & 0.7 \\
    \hline
    50 & 4 & 54 & 44 & 0.42  \\
    \hline
-   100 & 8 & 45 & 41 & 0.39  \\
+   100 & 8 & 45 & 41 & 0.40  \\
    \hline
-   500 & 38 & 43 & 39 & 0.37  \\
+   500 & 38 & 43 & 39 & 0.38  \\
+   \hline
+   Tout & 600 & 42 & 39 & 0.38 \\
    \hline
 \end{tabular}
 
@@ -524,12 +533,15 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de seuil.
    \hline
    500 & L$_{lb}$/2 & 81 & 68 & 0.66  \\
    \hline
+   Tout & L$_{lb}$/2 & 85 & 71 & 0.68 \\
    \hline
    50 & 3L$_{lb}$/4 & 42 & 37 & 0.36  \\
    \hline
-   100 & 3L$_{lb}$/4 & 42 & 39 & 0.37  \\
+   100 & 3L$_{lb}$/4 & 42 & 39 & 0.38  \\
    \hline
    500 & 3L$_{lb}$/4 & 39 & 36 & 0.35  \\
+   \hline\\
+   Tout & 3L$_{lb}$/4 & 41 & 38 & 0.37 \\
    \hline
 \end{tabular}
 \end{frame}
@@ -546,12 +558,15 @@ On utilise la base Tout avec certaines valeurs de seuil.
    \hline
    500 & 250 & 72 & 63 & 0.60  \\
    \hline
+   Tout & 4000 & 70 & 60 & 0.58 \\
    \hline
    50 & 38 & 24 & 21 & 0.20  \\
    \hline
    100 & 75 & 24 & 22 & 0.21  \\
    \hline
    500 & 375 & 22 & 20 & 0.19  \\
+   \hline
+   Tout & 6000 & 23 & 21 & 0.2 \\
    \hline
 \end{tabular}
 \end{frame}
@@ -570,6 +585,7 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de rang.
    \hline
    500 & 10  & 8 & 0.08  \\
    \hline
+   Tout & 10 & 8 & 0.08 \\
    \hline
    50 & 20 & 18 & 0.17  \\
    \hline
@@ -577,12 +593,15 @@ On utilise la base Quan$_{10}$ avec certaines valeurs de rang.
    \hline
    500 & 20 & 18 & 0.17  \\
    \hline
+   Tout & 20 & 18 & 0.17 \\
    \hline
    50 & 50 & 43 & 0.41  \\
    \hline
    100 & 50 & 45 & 0.43  \\
    \hline
    500 & 50 & 46 & 0.44  \\
+   \hline
+   Tout & 50 & 46 & 0.44 \\
    \hline
 \end{tabular}
 
@@ -601,6 +620,7 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de rang.
    \hline
    500 & 10  & 8 & 0.08  \\
    \hline
+   Tout & 10  & 8 & 0.08  \\
    \hline
    50 & 20  & 17 & 0.16  \\
    \hline
@@ -608,12 +628,15 @@ On utilise la base Qual$_{10}$ avec certaines valeurs de rang.
    \hline
    500 & 20 & 18 & 0.17  \\
    \hline
+   Tout & 20 & 18 & 0.17 \\
    \hline
    50 & 50 & 44 & 0.43  \\
    \hline
    100 & 50 & 45 & 0.43  \\
    \hline
    500 & 50 & 46 & 0.44  \\
+   \hline
+   Tout & 50 & 46 & 0.44 \\
    \hline
 \end{tabular}
 \end{frame}
@@ -631,6 +654,7 @@ On utilise la base Tout avec certaines valeurs de rang.
    \hline
    500 & 10  & 8 & 0.08  \\
    \hline
+   Tout & 10 & 8 & 0.08 \\
    \hline
    50 & 20  & 18 & 0.17  \\
    \hline
@@ -638,6 +662,7 @@ On utilise la base Tout avec certaines valeurs de rang.
    \hline
    500 & 20 & 18 & 0.17  \\
    \hline
+   Tout & 20 & 18 & 0.17 \\
    \hline
    50 & 50 & 44 & 0.43  \\
    \hline
@@ -645,37 +670,11 @@ On utilise la base Tout avec certaines valeurs de rang.
    \hline
    500 & 50 & 46 & 0.44  \\
    \hline
+   Tout & 50 & 46 & 0.44 \\
+   \hline
 \end{tabular}
 \end{frame}
 
-
-\begin{frame}{Résultats avec toutes les SI}
-Temps de calcul pour avoir la base : 1060 s
-
-\centering
-\begin{tabular}{|c|c|c|c|}
-   \hline
-   Seuil & Rés Quan$_{10}$ & Rés Qual$_{10}$ & Tout \\
-   \hline
-   S$_{b}$/2 & 87 - 73 - 0.7 & 85 - 71 - 0.68 & 70 - 60 - 0.58 \\
-   \hline
-   3S$_{b}$/4 & 42 - 39 - 0.38 & 41 - 38 - 0.37  & 23 - 21 - 0.2 \\
-   \hline
-\end{tabular}
-
-\begin{tabular}{|c|c|c|c|}
-   \hline
-   Rang max & Rés Quan$_{10}$ & Rés Qual$_{10}$ & Tout \\
-   \hline
-   10 & 8 - 0.08 & 8 - 0.08 & 8 - 0.08 \\
-   \hline
-   20 & 18 - 0.17 & 18 - 0.17 & 18 - 0.17 \\
-   \hline
-   n/2 & 46 - 0.44 & 46 - 0.44 & 46 - 0.44 \\
-   \hline
-\end{tabular}
-
-\end{frame}
 
 \section{Intégration de la connaissance dans un algorithme}
 

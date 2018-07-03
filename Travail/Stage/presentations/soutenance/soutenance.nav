@@ -1,83 +1,96 @@
-\beamer@endinputifotherversion {3.36pt}
 \headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
 \headcommand {\beamer@framepages {1}{1}}
-\headcommand {\sectionentry {1}{Pr\IeC {\'e}sentation du probl\IeC {\`e}me}{2}{Pr\IeC {\'e}sentation du probl\IeC {\`e}me}{0}}
 \headcommand {\beamer@sectionpages {1}{1}}
 \headcommand {\beamer@subsectionpages {1}{1}}
-\headcommand {\beamer@subsectionentry {0}{1}{1}{2}{Capacitated Vehicle Routing Problem (CVRP)}}\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\sectionentry {1}{Pr\IeC {\'e}sentation du probl\IeC {\`e}me}{2}{Pr\IeC {\'e}sentation du probl\IeC {\`e}me}{0}}
+\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{2}{Capacitated Vehicle Routing Problem (CVRP)}}
 \headcommand {\slideentry {1}{1}{1}{2/2}{Capacitated Vehicle Routing Problem (CVRP)}{0}}
 \headcommand {\beamer@framepages {2}{2}}
 \headcommand {\slideentry {1}{1}{2}{3/3}{Capacitated Vehicle Routing Problem (CVRP)}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\beamer@subsectionentry {0}{1}{2}{4}{Motivation}}\headcommand {\beamer@subsectionpages {2}{3}}
+\headcommand {\beamer@subsectionpages {2}{3}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{4}{Motivation}}
 \headcommand {\slideentry {1}{2}{1}{4/4}{Motivation}{0}}
 \headcommand {\beamer@framepages {4}{4}}
-\headcommand {\sectionentry {2}{Construction solution initiale}{5}{Construction solution initiale}{0}}
 \headcommand {\beamer@sectionpages {2}{4}}
 \headcommand {\beamer@subsectionpages {4}{4}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{5}{Algorithme CW}}\headcommand {\beamer@subsectionpages {5}{4}}
+\headcommand {\sectionentry {2}{Construction solution initiale}{5}{Construction solution initiale}{0}}
+\headcommand {\beamer@subsectionpages {5}{4}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{5}{Algorithme CW}}
 \headcommand {\slideentry {2}{1}{1}{5/5}{Algorithme CW}{0}}
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{6}{Exemple d'ex\IeC {\'e}cution}}\headcommand {\beamer@subsectionpages {5}{5}}
+\headcommand {\beamer@subsectionpages {5}{5}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{6}{Exemple d'ex\IeC {\'e}cution}}
 \headcommand {\slideentry {2}{2}{1}{6/6}{Exemple d'ex\IeC {\'e}cution}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\beamer@subsectionentry {0}{2}{3}{7}{Probl\IeC {\`e}me de $(\lambda ,\mu ,\nu )$}}\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{7}{Probl\IeC {\`e}me de $(\lambda ,\mu ,\nu )$}}
 \headcommand {\slideentry {2}{3}{1}{7/7}{Probl\IeC {\`e}me de $(\lambda ,\mu ,\nu )$}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\sectionentry {3}{Choix de l'heuristique}{8}{Choix de l'heuristique}{0}}
-\headcommand {\beamer@sectionpages {5}{7}}
-\headcommand {\beamer@subsectionpages {7}{7}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{8}{Heuristique A \& S}}\headcommand {\beamer@subsectionpages {8}{7}}
-\headcommand {\slideentry {3}{1}{1}{8/8}{Heuristique A \& S}{0}}
+\headcommand {\slideentry {2}{3}{2}{8/8}{Probl\IeC {\`e}me de $(\lambda ,\mu ,\nu )$}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{9}{D\IeC {\'e}tail des op\IeC {\'e}rations}}\headcommand {\beamer@subsectionpages {8}{8}}
-\headcommand {\slideentry {3}{2}{1}{9/9}{D\IeC {\'e}tail des op\IeC {\'e}rations}{0}}
+\headcommand {\beamer@sectionpages {5}{8}}
+\headcommand {\beamer@subsectionpages {7}{8}}
+\headcommand {\sectionentry {3}{Choix de l'algorithme d'optimisation}{9}{Choix de l'algorithme d'optimisation}{0}}
+\headcommand {\beamer@subsectionpages {9}{8}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{9}{Heuristique A \& S}}
+\headcommand {\slideentry {3}{1}{1}{9/9}{Heuristique A \& S}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {3}{2}{2}{10/10}{D\IeC {\'e}tail des op\IeC {\'e}rations}{0}}
+\headcommand {\beamer@subsectionpages {9}{9}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{10}{D\IeC {\'e}tail des op\IeC {\'e}rations}}
+\headcommand {\slideentry {3}{2}{1}{10/10}{D\IeC {\'e}tail des op\IeC {\'e}rations}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\slideentry {3}{2}{3}{11/11}{D\IeC {\'e}tail des op\IeC {\'e}rations}{0}}
+\headcommand {\slideentry {3}{2}{2}{11/11}{D\IeC {\'e}tail des op\IeC {\'e}rations}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\beamer@subsectionentry {0}{3}{3}{12}{Heuristique utilis\IeC {\'e}e}}\headcommand {\beamer@subsectionpages {9}{11}}
-\headcommand {\slideentry {3}{3}{1}{12/12}{Heuristique utilis\IeC {\'e}e}{0}}
+\headcommand {\slideentry {3}{2}{3}{12/12}{D\IeC {\'e}tail des op\IeC {\'e}rations}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\slideentry {3}{3}{2}{13/13}{Heuristique utilis\IeC {\'e}e}{0}}
+\headcommand {\beamer@subsectionpages {10}{12}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{13}{Algorithme d'optimisation utilis\IeC {\'e}}}
+\headcommand {\slideentry {3}{3}{1}{13/13}{Algorithme d'optimisation utilis\IeC {\'e}}{0}}
 \headcommand {\beamer@framepages {13}{13}}
-\headcommand {\sectionentry {4}{Extraction des connaissances}{14}{Extraction des connaissances}{0}}
-\headcommand {\beamer@sectionpages {8}{13}}
-\headcommand {\beamer@subsectionpages {12}{13}}
-\headcommand {\beamer@subsectionentry {0}{4}{1}{14}{Contribution}}\headcommand {\beamer@subsectionpages {14}{13}}
-\headcommand {\slideentry {4}{1}{1}{14/14}{Contribution}{0}}
+\headcommand {\slideentry {3}{3}{2}{14/14}{Algorithme d'optimisation utilis\IeC {\'e}}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\slideentry {4}{1}{2}{15/15}{Contribution}{0}}
+\headcommand {\beamer@sectionpages {9}{14}}
+\headcommand {\beamer@subsectionpages {13}{14}}
+\headcommand {\sectionentry {4}{Extraction des connaissances}{15}{Extraction des connaissances}{0}}
+\headcommand {\beamer@subsectionpages {15}{14}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{15}{Contribution}}
+\headcommand {\slideentry {4}{1}{1}{15/15}{Contribution}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\slideentry {4}{1}{3}{16/16}{Contribution}{0}}
+\headcommand {\slideentry {4}{1}{2}{16/16}{Contribution}{0}}
 \headcommand {\beamer@framepages {16}{16}}
-\headcommand {\beamer@subsectionentry {0}{4}{2}{17}{Validation}}\headcommand {\beamer@subsectionpages {14}{16}}
-\headcommand {\slideentry {4}{2}{1}{17/17}{Validation}{0}}
+\headcommand {\slideentry {4}{1}{3}{17/17}{Contribution}{0}}
 \headcommand {\beamer@framepages {17}{17}}
-\headcommand {\slideentry {4}{2}{2}{18/18}{Validation}{0}}
+\headcommand {\beamer@subsectionpages {15}{17}}
+\headcommand {\beamer@subsectionentry {0}{4}{2}{18}{Validation}}
+\headcommand {\slideentry {4}{2}{1}{18/18}{Validation}{0}}
 \headcommand {\beamer@framepages {18}{18}}
-\headcommand {\slideentry {4}{2}{3}{19/19}{Validation}{0}}
+\headcommand {\slideentry {4}{2}{2}{19/19}{Validation}{0}}
 \headcommand {\beamer@framepages {19}{19}}
-\headcommand {\slideentry {4}{2}{4}{20/20}{Validation}{0}}
+\headcommand {\slideentry {4}{2}{3}{20/20}{Validation}{0}}
 \headcommand {\beamer@framepages {20}{20}}
-\headcommand {\slideentry {4}{2}{5}{21/21}{Validation}{0}}
+\headcommand {\slideentry {4}{2}{4}{21/21}{Validation}{0}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\slideentry {4}{2}{6}{22/22}{Validation}{0}}
+\headcommand {\slideentry {4}{2}{5}{22/22}{Validation}{0}}
 \headcommand {\beamer@framepages {22}{22}}
-\headcommand {\sectionentry {5}{Int\IeC {\'e}gration des connaissances}{23}{Int\IeC {\'e}gration des connaissances}{0}}
-\headcommand {\beamer@sectionpages {14}{22}}
-\headcommand {\beamer@subsectionpages {17}{22}}
-\headcommand {\beamer@subsectionentry {0}{5}{1}{23}{Contribution}}\headcommand {\beamer@subsectionpages {23}{22}}
-\headcommand {\slideentry {5}{1}{1}{23/23}{Contribution}{0}}
+\headcommand {\slideentry {4}{2}{6}{23/23}{Validation}{0}}
 \headcommand {\beamer@framepages {23}{23}}
-\headcommand {\beamer@subsectionentry {0}{5}{2}{24}{Validation}}\headcommand {\beamer@subsectionpages {23}{23}}
-\headcommand {\slideentry {5}{2}{1}{24/24}{Validation}{0}}
+\headcommand {\beamer@sectionpages {15}{23}}
+\headcommand {\beamer@subsectionpages {18}{23}}
+\headcommand {\sectionentry {5}{Int\IeC {\'e}gration des connaissances}{24}{Int\IeC {\'e}gration des connaissances}{0}}
+\headcommand {\beamer@subsectionpages {24}{23}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{24}{Contribution}}
+\headcommand {\slideentry {5}{1}{1}{24/24}{Contribution}{0}}
 \headcommand {\beamer@framepages {24}{24}}
-\headcommand {\slideentry {5}{2}{2}{25/25}{Validation}{0}}
+\headcommand {\beamer@subsectionpages {24}{24}}
+\headcommand {\beamer@subsectionentry {0}{5}{2}{25}{Validation}}
+\headcommand {\slideentry {5}{2}{1}{25/25}{Validation}{0}}
 \headcommand {\beamer@framepages {25}{25}}
-\headcommand {\beamer@partpages {1}{25}}
-\headcommand {\beamer@subsectionpages {24}{25}}
-\headcommand {\beamer@sectionpages {23}{25}}
-\headcommand {\beamer@documentpages {25}}
-\headcommand {\def \inserttotalframenumber {25}}
+\headcommand {\slideentry {5}{2}{2}{26/26}{Validation}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\beamer@partpages {1}{26}}
+\headcommand {\beamer@subsectionpages {25}{26}}
+\headcommand {\beamer@sectionpages {24}{26}}
+\headcommand {\beamer@documentpages {26}}
+\headcommand {\gdef \inserttotalframenumber {26}}
