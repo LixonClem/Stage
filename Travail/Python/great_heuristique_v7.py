@@ -27,7 +27,7 @@ global nu
 ylim = 200
 xlim = 200
 clim = 20
-Capacity = 550
+Capacity = 100
 KNN = 30
 relocation = 3
 
@@ -418,23 +418,26 @@ def merge_routes(i, j, routes, inst, demand, detailed_cust):
         detailed_cust[j-1] = len(routes)-1
         for k in new_road:
             detailed_cust[k-1] = len(routes)-1
-
+    
 
 def ClarkeWright(routes, inst, demand, lam, mu, nu, detailed_cust):
     new_routes = []
     cpt = 1
-
+    
     savings = compute_savings2(inst, demand, lam, mu, nu)
     [s, (i, j)] = max_savings2(savings, cpt)
     while s > 0 and cpt < len(savings):
+
         savings[-cpt][0] = 0
         cpt += 1
+        
         merge_routes(i, j, routes, inst, demand, detailed_cust)
         [s, (i, j)] = max_savings2(savings, cpt)
     for i in range(len(routes)):
         if routes[i] != []:
             routes[i].pop()
             new_routes.append(routes[i])
+    
     return new_routes
 
  ##################
@@ -832,11 +835,13 @@ def learning_results(iterations, generate, inst, demmand, initial):
         ls_qual = learning_set_quality(Base, quality)
         mat_qual = init_matrix(len(instance))
         mat_qual = learn(mat_qual, ls_qual)
+        print(mat_qual)
         e_qual = mat_info_rg(int(len(demand)/2), mat_qual)
+        e_req = mat_info_req(int(len(ls_qual)/2), mat_qual)
         for e in e_qual:
             if not is_edge_in(e, edges):
                 edges.append(e)
-    return edges,(l,m,n)
+    return e_qual,e_req,(l,m,n)
 
  #############
 # Heuristique #
@@ -1119,7 +1124,7 @@ def common_edges(sol1, sol2):
     return E, E_init, E_final
 
 
-t = "Golden_01"
+t = "A-n37-k06"
 
 instance,demand = read("Instances/"+t+".xml")
 
@@ -1137,8 +1142,9 @@ record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [
 #best = normalize_solution(best)
 #record = [[0,17, 24, 35, 37, 34, 26, 11, 8], [0, 2, 22, 3, 7, 16, 32, 10], [0, 21, 30, 13, 28, 27, 36, 6], [0, 14, 19, 25, 33, 12, 18, 4], [0, 9, 38, 15, 5 ,29, 20, 23, 1 ,31]]
 record = [[0, 1, 7, 21, 40],[0, 10, 63, 11, 24, 6, 23],[0, 13, 74, 60, 39, 3, 77, 51] ,[0, 17, 31, 27, 59, 5, 44, 12, 62] ,[0, 29, 20, 75, 57, 19, 26, 35, 65, 69, 56, 47, 15, 33, 64] , [0, 30, 78, 61, 16, 43, 68, 8, 37, 2, 34 ],[0, 38, 72, 54, 9, 55, 41, 25, 46 ],[0, 42, 53, 66, 67, 36, 73, 49 ],[0, 52, 28, 79, 18, 48, 14, 71 ],[0, 58, 32, 4, 22, 45, 50, 76, 70] ]
-"""
+
 initial_solution = init_routes(instance, demand)
+"""
 detailed_cust = [0 for i in range(len(instance))]
 for r in range(len(initial_solution)):
     for i in initial_solution[r]:
@@ -1146,9 +1152,11 @@ for r in range(len(initial_solution)):
 
 
 initial_solution = ClarkeWright(initial_solution,instance, demand, 0, 1, 1.5,detailed_cust)
+
 for i in range(len(initial_solution)):
     initial_solution[i] = decross_route(initial_solution[i].copy(), instance)
     initial_solution[i] = LK(initial_solution[i].copy(), instance)
+print(cost_sol(initial_solution,instance))
 
 ae = all_edges(initial_solution)
 aer = all_edges(record)
@@ -1158,9 +1166,16 @@ print_instance(instance)
 print_edges(aer,instance,'green')
 py.show()
 """
-print(cost_sol(record,instance))
+e_qual,e_req,c = learning_results(1,100,instance,demand,initial_solution)
+print_instance(instance)
+print_edges(e_qual,instance,'green')
+py.show()
+print_instance(instance)
+print_edges(e_req,instance,'green')
+py.show()
+#print(cost_sol(record,instance))
 
-apply_heuristic(instance, demand, relocation)
+#apply_heuristic(instance, demand, relocation)
 
 
 """

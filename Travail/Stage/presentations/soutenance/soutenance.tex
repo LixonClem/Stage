@@ -11,10 +11,18 @@
 \usetheme{Warsaw}
 \definecolor{rouge}{HTML}{DD0000}
 \definecolor{vert}{HTML}{008000}
+\setbeamertemplate{footline}[frame number]
 
-\title{Présentation stage}
+\title{Création d'une \emph{Learning Heuristic} pour CVRP}
 
-\author{Clément Legrand}
+\author{Clément Legrand \footnote{Stage réalisé dans l'équipe ORKAD du centre CRISTAL à Lille, sous la direction de Laetitia Jourdan ( laetitia.jourdan@univ-lille1.fr), Marie-Éléonore Kessaci (me.kessaci@univ-lille1.fr) et Diego Cattaruzza (diego.cattaruzza@ec-lille.fr)}}
+
+
+
+
+\titlegraphic{
+	\includegraphics[scale=0.5]{ensRennes.jpeg}
+	\includegraphics[scale=0.2]{logo_cristal.png}}
 
 \begin{document}
 
@@ -98,9 +106,9 @@ Réussir à prédire des arêtes qui appartiendront à la solution optimale, et 
 \begin{alertblock}{Problèmes}
 \begin{itemize}
 \item Comment construire une solution initiale de bonne qualité ?
+\item Quel algorithme d'optimisation utiliser ?
 \item Comment extraire la connaissance ?
 \item Comment intégrer la connaissance dans un algorithme d'optimisation ?
-\item Quel algorithme d'optimisation utiliser ?
 \end{itemize}
 \end{alertblock}
 \end{frame}
@@ -112,7 +120,7 @@ Réussir à prédire des arêtes qui appartiendront à la solution optimale, et 
 
 \begin{frame}{Algorithme Clarke \& Wright (CW)}
 
-CW\footnote{IK. Altinel and T. Öncan, A new enhancement of the Clarke and Wright savings heuristic for the capacitated vehicle routing problem (2005)}$\rightarrow$ Algorithme glouton (chaque client est initialement desservi par un véhicule (contrainte de véhicules non respectée), puis la fusion des tournées est basée sur un calcul de saving. 
+CW\footnote{IK. Altinel and T. Öncan, A new enhancement of the Clarke and Wright savings heuristic for the capacitated vehicle routing problem (2005)}$\rightarrow$ Algorithme glouton (chaque client est initialement desservi par un véhicule (contrainte de véhicules non respectée), puis la fusion des tournées est basée sur un calcul de saving). 
 
 
 
@@ -144,7 +152,7 @@ Tant que $max_{(i,j)}s(i,j) > 0$:
   	\centering
   	Initialisation
   	
-	\includegraphics[scale=0.25]{CWinit.png}
+	\includegraphics[scale=0.2]{CWinit.png}
 	
 	
   \end{column}
@@ -153,12 +161,12 @@ Tant que $max_{(i,j)}s(i,j) > 0$:
   	\centering
   	1$^{ere}$ fusion
   	
-	\includegraphics[scale=0.25]{CW1.png}
+	\includegraphics[scale=0.2]{CW1.png}
  
  	 \centering
  $\Downarrow$
  
- Solution
+ Solution (31 fusions, $cost = 1297$)
  
  \includegraphics[scale=0.09]{resCW101010.png}
   \end{column}
@@ -168,7 +176,7 @@ Tant que $max_{(i,j)}s(i,j) > 0$:
   	\centering
   	2$^{eme}$ fusion
   	
-	\includegraphics[scale=0.25]{CW2.png}
+	\includegraphics[scale=0.2]{CW2.png}
  	
 	
 	\begin{block}{Observation}
@@ -187,12 +195,12 @@ Tant que $max_{(i,j)}s(i,j) > 0$:
 \begin{frame}{Choix de $(\lambda,\mu,\nu)$ ?}
 Dans la littérature plusieurs résultats sont disponibles :
 \begin{itemize}
-\item On peut se restreindre à l'intervalle $[0,2]$ pour choisir $\lambda, \mu$ et$ \nu$.
+\item On peut se restreindre à l'intervalle $[0,2]$ pour choisir $\lambda (\neq 0)$, $\mu$ et$ \nu$.
 \item Il est inutile de regarder ce qui se passe au centième.
 \end{itemize}
 
 \begin{exampleblock}{Bilan}
-Ainsi on se contentera pour la suite de prendre des valeurs de $\lambda, \mu$ et$ \nu$ arrondies au dixième, et comprises entre $[0,2]$.
+Ainsi on se contentera pour la suite de prendre des valeurs de $\lambda, \mu$ et$ \nu$ arrondies au dixième, et comprises entre $[0,2]$ (et $\lambda \neq 0$). Donc 8820 triplets possibles.
 \end{exampleblock}
 
 \end{frame}
@@ -221,6 +229,7 @@ Ainsi on se contentera pour la suite de prendre des valeurs de $\lambda, \mu$ et
   \begin{column}{4cm}
   	\centering
 	\includegraphics[scale=0.27]{resCW001015.png}
+	
  	$(0.0,1.0,1.5), cost = 2191$
 
   \end{column}
@@ -245,7 +254,7 @@ Heuristique A \& S \footnote{Florian Arnold and Kenneth Sörensen, A simple, det
 
 $Sol \gets CW(\lambda,\mu,\nu)$\;
 $NewSol \gets Sol$\;
-\While {Pas d'améliorations depuis 3 min} {
+\While {Pas d'amélioration depuis 3 min} {
 	Calcul de la pire arête\;
 	$NewSol \gets EjectionChain_{BI-O}$\;
 	$NewSol \gets LinKernighan_{BI-O}$\;
@@ -324,9 +333,9 @@ $NewSol \gets Sol$\;
 	$NewSol \gets LinKernighan_{BI-O}$\;
 	\If {$cost(NewSol) < cost(Sol)$} {
 		$Sol \gets NewSol$\;
-	}\\
+	}
 	\textcolor{rouge}{
-	\If {Pas d'améliorations depuis $n/2$ itérations} {  
+	\If {Pas d'amélioration depuis $n/2$ itérations} {  
 		$NewSol \gets Sol$ \Comment*[r]{Restart} 
 	}
 	}
@@ -337,19 +346,21 @@ $NewSol \gets Sol$\;
 
 \end{frame}
 
-\begin{frame}{Validation}
+\begin{frame}{Validation du \emph{Restart}}
 
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\begin{table}[H]
+\begin{tabular}{|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
    \hline
     & \multicolumn{3}{c|}{A-n37-k06} & \multicolumn{3}{c|}{A-n65-k09} & \multicolumn{3}{c|}{P-n101-k04} \\
    \hline
-   Ajout & Best & Mean & Time & Best & Mean & Time & Best & Mean & Time \\
+   Restart & Best & Mean$_{10}$ & Time & Best & Mean$_{10}$ & Time & Best & Mean$_{10}$ & Time \\
    \hline
-   Rien &  950 & 957 & 195 & 1197 & 1215 & 395 & 722 & 736 & 783  \\   
+   Sans &  950 & 957 & 195 & 1197 & 1215 & 395 & 722 & 736 & 783  \\   
    \hline
-   Divers & 950 & 969 & 200 & 1200 & 1230 & 350 & 698 & 706 & 1500  \\
+   Avec & 950 & 969 & 200 & 1200 & 1230 & 350 & 698 & 706 & 1500  \\
    \hline
 \end{tabular}
+\end{table}
 
 \begin{exampleblock}{Bilan}
 Diversification plus intéressante pour des grandes instances
@@ -364,35 +375,43 @@ Diversification plus intéressante pour des grandes instances
 
 \subsection{Contribution}
 
-\begin{frame}{Exemples}
+\begin{frame}{Comment extraire de la connaissance ?}
  \begin{columns}[t]
   \begin{column}{4cm}
   	\centering
-	\includegraphics[scale=0.25]{edges101010.png}
+  	$CW(1.9,0.1,1.5)+LK$ 
+  	$cost = 1041$, 19 arêtes opt
+  	\includegraphics[scale=0.2]{edges190115.png}
+	
 	
   \end{column}
   
     \begin{column}{4cm}
   	\centering
-	\includegraphics[scale=0.25]{edges190115.png}
+  	$CW(0.1,0.1,0.1)+LK$ $cost = 1170$, 19 arêtes opt
+	\includegraphics[scale=0.2]{edges101010.png}
 
-
+	
+	 $\downarrow$
+ 
+ 	\includegraphics[scale=0.25]{edgesSol.png}
+ 
+  	$cost = 950$, 42 arêtes 
   \end{column}
   
   \begin{column}{4cm}
   	\centering
-	\includegraphics[scale=0.25]{edges010101.png}
+  	$CW(0.0,1.0,1.5)+LK$ $cost = 1600$, 11 arêtes opt
+	\includegraphics[scale=0.2]{edges010101.png}
 
+	
+	\begin{block}{Observations}
+	Les bonnes solutions semblent contenir davantage d'arêtes optimales. Le problème est donc de trouver les bons $(\lambda,\mu,\nu)$...
+	\end{block}
   \end{column}
 
- 
-
  \end{columns}
- 
- \centering
- $\downarrow$
- 
- \includegraphics[scale=0.25]{edgesSol.png}
+
 \end{frame}
 
 \begin{frame}{Protocole}
@@ -410,7 +429,7 @@ Diversification plus intéressante pour des grandes instances
 \begin{block}{Combien de solutions dans l'échantillon ?}
 \begin{itemize}
 \item Considérer tous les $(\lambda,\mu,\nu)$;
-\item Tirer $N$ $(\lambda,\mu,\nu)$ aléatoirement;
+\item Tirer $N$ $(\lambda,\mu,\nu)$ aléatoirement. \textcolor{green}{$N \in [50,100,500]$};
 \end{itemize}
 \end{block}
 
@@ -420,18 +439,52 @@ Diversification plus intéressante pour des grandes instances
 \item $x\%$ des meilleures solutions : quantité privilégiée (Quan$_{x}$);
 \item Solutions avec coût inférieur à $c_{min} + (c_{max}-c_{min})\frac{x}{100}$ : qualité privilégiée (Qual$_{x}$);
 \end{itemize}
+On choisit \textcolor{green}{$x = 10$}
 \end{block}
+\end{frame}
 
-\begin{block}{Comment choisir les arêtes à conserver ?}
-Pour chaque arête (i,j), on incrémente la valeur de MAT[i][j];
+\begin{frame}{Comment choisir les arêtes à conserver ?}
+On initialise une matrice à 0.
+Pour chaque arête (i,j), on incrémente la valeur [i][j] de la matrice.
+
+\centering
+\includegraphics[scale=0.25]{sousmatrice.png}
+
+\begin{columns}[t]
+
+  \begin{column}{4cm}
+  	\centering
+  	Rang
+	\includegraphics[scale=0.2]{edges_rang.png}
+ 
+
+  \end{column}
+  
+ 
+  \begin{column}{4cm}
+  	\centering
+  	Seuil
+	\includegraphics[scale=0.2]{edges_seuil.png}
+	
+  \end{column}
+\end{columns}  
+\end{frame}
+
+\begin{frame}{Comment choisir les arêtes à conserver ?}
+Deux possibilités pour choisir les arêtes à conserver :
+\begin{block}{Critères de choix}
 \begin{itemize}
-\item Conserver $(i,j) \Leftrightarrow MAT[i][j] > seuil$ (Seuil);
-\item Conserver les $rg$ premières arêtes dans la matrice (Rang).
+\item Conserver $(i,j) \Leftrightarrow MAT[i][j] > seuil$ (Seuil). \textcolor{green}{$seuil \in [S_{lb}/2,3S_{lb}/4]$}, $S_{lb}$ (Size learning base) est la taille de la base d'apprentissage;
+\item Conserver les $rg$ premières arêtes dans la matrice (Rang). \textcolor{green}{$rg \in [10,20,n/2]$}.
 \end{itemize}
 \end{block}
-
-
 \end{frame}
+
+
+
+
+
+
 
 \subsection{Validation}
 \begin{frame}{Résultats A-n37-k06, critère Seuil}
@@ -463,14 +516,15 @@ Pour chaque arête (i,j), on incrémente la valeur de MAT[i][j];
   \hline
 
 \end{tabular}
-
-\begin{block}{Bilan}
-Taille de l'échantillon ne semble pas avoir d'influence sur les résultats.
-Beaucoup de bruit dans Tout.
-Base Quan$_{10}$ trop petite avec échantillon 50 ou 100.
-
-\end{block}
 \end{table}
+\begin{itemize}
+\item Taille de l'échantillon ne semble pas avoir d'influence sur les résultats (\emph{prop} reste semblable quel que soit la taille de l'échantillon).
+\item Avec base \emph{Tout} : valeurs de \emph{prop} plus basses $\rightarrow$ pas la peine d'utiliser tout l'échantillon.
+\end{itemize}
+
+Remarque : Base Quan$_{10}$ trop petite avec échantillon 50 ou 100.
+
+
 \end{frame}
 
 \begin{frame}{Résultats A-n37-k06, critère Rang}
@@ -511,7 +565,7 @@ Base Quan$_{10}$ trop petite avec échantillon 50 ou 100.
 \end{tabular}
 \end{table}
 
-Pas de différences majeures entre les 3 bases d'apprentissage.
+Les 3 bases fournissent des valeurs \emph{prop} similaires.
 
 
 \end{frame}
@@ -549,9 +603,9 @@ Pas de différences majeures entre les 3 bases d'apprentissage.
 
 
 \end{table}
-\begin{block}{Bilan}
-Beaucoup d'arêtes renvoyées avec critère Seuil $\rightarrow$ Solutions infaisables ?
-\end{block}
+
+Si trop d'arêtes renvoyées $\rightarrow$ Solutions infaisables ? (futurs tests)
+
 
 \end{frame}
 
@@ -629,9 +683,8 @@ De nouveau les 3 bases renvoient des résultats similaires.
 
 \end{table}
 
-\begin{block}{Bilan}
 Plus la taille de l'instance augmente, et plus la proportion d'arêtes optimales  renvoyées présentes dans la solution optimale est grande.
-\end{block}
+
 \end{frame}
 
 \begin{frame}{Résultats P-n101-k04, critère Rang}
@@ -671,18 +724,27 @@ Plus la taille de l'instance augmente, et plus la proportion d'arêtes optimales
 
 \end{tabular}
 \end{table}
-Toujours des résultats similaires avec les 3 bases.
+Il faut choisir un rang dépendant de la taille de l'instance (rangs fixés à 10 ou 20 ne revoient plus de bons résultats).
 \end{frame}
+
 \section{Intégration des connaissances}
 
 \subsection{Contribution}
-\begin{frame}{Nouvel algorithme}
+
+\begin{frame}{Où intégrer la connaissance}
+Intégration de connaissance lors de la construction de la solution initiale :
+\begin{itemize}
+\item On regroupe des clients grâce aux connaissances extraites;
+\item On applique CW sur cette initialisation. On choisit l,m,n qui donne le meilleur CW dans l'échantillon.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{\emph{Learning Heuristic}}
 LearnHeuristic (LH)
+
 \begin{algorithm}[H]
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
-Construire $Echantillon$\;
-Déterminer $Init$ par apprentissage\;
-$(\lambda,\mu,\nu) \gets argmin_{(\lambda,\mu,\nu) \in Echantillon}CW(I,D,\lambda,\mu,\nu)$\;
+$(\lambda^*,\mu^*,\nu^*), Init \gets Apprentissage$\;
 $newBase \gets []$\;
 \For {$i \gets 1$ \textbf{to} $10$} {
 	\If {$i = 1$} {
@@ -716,7 +778,7 @@ $newBase \gets []$\;
    \hline
     & \multicolumn{3}{c|}{A-n37-k06} & \multicolumn{3}{c|}{A-n65-k09} & \multicolumn{3}{c|}{P-n101-k04} \\
    \hline
-   Connaissances & Best & Mean & Time & Best & Mean & Time & Best & Mean & Time \\
+   Connaissances & Best & Mean$_5$ & Time & Best & Mean$_5$ & Time & Best & Mean$_5$ & Time \\
    \hline
    Sans &  963 & 974 & 805 & 1189 & 1236 & 776 & 696 & 708 & 1739  \\   
    \hline
@@ -729,13 +791,15 @@ L'intégration de connaissance semble apporter de meilleurs résultats
 \end{exampleblock}
 \end{frame}
 
-\begin{frame}{Conclusion}
-\begin{block}{Améliorations}
+\begin{frame}{Limites}
 \begin{itemize}
-\item Meilleurs critères pour apprendre ?
-\item Base d'apprentissage trop petite dans LH
-\item Ajouter de la diversification dans l'apprentissage
+\item Choix de meilleurs valeurs pour l'apprentissage (Taille échantillon, base, critère);
+\item Pas beaucoup de sol pour nouvel apprentissage;
+\item Toujours même triplet utilisé.
 \end{itemize}
-\end{block}
+\end{frame}
+
+\begin{frame}{Prochain algorithme}
+
 \end{frame}
 \end{document}
