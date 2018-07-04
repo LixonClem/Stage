@@ -11,11 +11,13 @@
 \usetheme{Warsaw}
 \definecolor{rouge}{HTML}{DD0000}
 \definecolor{vert}{HTML}{008000}
-\setbeamertemplate{footline}[frame number]
+
+\addtobeamertemplate{footline}{\insertframenumber/\inserttotalframenumber}
 
 \title{Création d'une \emph{Learning Heuristic} pour CVRP}
 
-\author{Clément Legrand \footnote{Stage réalisé dans l'équipe ORKAD du centre CRISTAL à Lille, sous la direction de Laetitia Jourdan ( laetitia.jourdan@univ-lille1.fr), Marie-Éléonore Kessaci (me.kessaci@univ-lille1.fr) et Diego Cattaruzza (diego.cattaruzza@ec-lille.fr)}}
+\author{Clément Legrand}
+
 
 
 
@@ -29,6 +31,7 @@
 
 \begin{frame}[plain]
 \titlepage
+Equipe ORKAD \footnote{Stage réalisé dans l'équipe ORKAD du centre CRISTAL à Lille, sous la direction de Laetitia Jourdan ( laetitia.jourdan@univ-lille1.fr), Marie-Éléonore Kessaci (me.kessaci@univ-lille1.fr) et Diego Cattaruzza (diego.cattaruzza@ec-lille.fr)}
 \end{frame}
 
 \section{Présentation du problème}
@@ -130,7 +133,7 @@ Calcul du saving de $i$ et $j$ avec:
 \centering
 $s(i,j) = c_{i0} + c_{0j} - \lambda c_{ij} + \mu \vert c_{i0} - c_{0j} \vert + \nu \frac{d_i + d_j}{\overline{d}}$
 
-$(\lambda,\mu,\nu)$ sont des paramètres à déterminer
+\textcolor{rouge}{$(\lambda,\mu,\nu)$ sont des paramètres à déterminer}
 \end{exampleblock}
 
 \begin{block}{Fonctionnement}
