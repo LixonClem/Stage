@@ -27,7 +27,7 @@ global nu
 ylim = 200
 xlim = 200
 clim = 20
-Capacity = 100
+Capacity = 400
 KNN = 30
 relocation = 3
 
@@ -85,7 +85,7 @@ def print_route(route, inst, c):
         y.append(inst[route[i]][1])
     x.append(inst[route[0]][0])
     y.append(inst[route[0]][1])
-    py.plot(x, y)  # , label="route " + str(c))
+    py.plot(x, y, color = 'gray')  # , label="route " + str(c))
 
 
 def print_routes(routes, inst):
@@ -835,13 +835,12 @@ def learning_results(iterations, generate, inst, demmand, initial):
         ls_qual = learning_set_quality(Base, quality)
         mat_qual = init_matrix(len(instance))
         mat_qual = learn(mat_qual, ls_qual)
-        print(mat_qual)
+        print(len(ls_qual))
         e_qual = mat_info_rg(int(len(demand)/2), mat_qual)
-        e_req = mat_info_req(int(len(ls_qual)/2), mat_qual)
         for e in e_qual:
             if not is_edge_in(e, edges):
                 edges.append(e)
-    return e_qual,e_req,(l,m,n)
+    return edges,(l,m,n)
 
  #############
 # Heuristique #
@@ -1124,7 +1123,7 @@ def common_edges(sol1, sol2):
     return E, E_init, E_final
 
 
-t = "A-n37-k06"
+t = "P-n101-k04"
 
 instance,demand = read("Instances/"+t+".xml")
 
@@ -1166,13 +1165,15 @@ print_instance(instance)
 print_edges(aer,instance,'green')
 py.show()
 """
-e_qual,e_req,c = learning_results(1,100,instance,demand,initial_solution)
-print_instance(instance)
-print_edges(e_qual,instance,'green')
-py.show()
-print_instance(instance)
-print_edges(e_req,instance,'green')
-py.show()
+#edges,c = learning_results(1,500,instance,demand,initial_solution)
+namefile = "resultats/Heuristic_results/Values/"+t+"/set_complet.txt"
+File = open(namefile,'rb')
+Base = pickle.load(File)
+namefile = "resultats/Heuristic_results/Values/"+t+"/stat_complet.txt"
+File = open(namefile,'rb')
+stat= pickle.load(File)
+ls_qual = learning_set_quality(Base,(stat[1]-stat[0])/10 + stat[0])
+print(len(ls_qual))
 #print(cost_sol(record,instance))
 
 #apply_heuristic(instance, demand, relocation)

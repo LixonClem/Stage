@@ -38,7 +38,7 @@
 \begin{frame}{Capacitated Vehicle Routing Problem}
 \begin{block}{Instance}
 \begin{itemize}
-\item $n-1$ clients (et leur demande $d_i$)
+\item $n$ points (de coordonnées ($x_i$,$y_i$)), dont 1 dépôt et $n-1$ clients (de  demande $d_i$)
 \item $k$ véhicules disponibles, de capacité $C$ 
 \end{itemize}
 \end{block}
@@ -428,7 +428,7 @@ Diversification plus intéressante pour des grandes instances
 
 \begin{block}{Combien de solutions dans l'échantillon ?}
 \begin{itemize}
-\item Considérer tous les $(\lambda,\mu,\nu)$;
+\item Considérer tous les $(\lambda,\mu,\nu)$ (8820 triplets);
 \item Tirer $N$ $(\lambda,\mu,\nu)$ aléatoirement. \textcolor{green}{$N \in [50,100,500]$};
 \end{itemize}
 \end{block}
@@ -498,21 +498,21 @@ Deux possibilités pour choisir les arêtes à conserver :
  \hline
  & Seuil & Arêtes & Corr & Prop & Seuil & Arêtes & Corr & Prop & Seuil & Arêtes & Corr & Prop \\
  \hline
- 50 & 3 & 34 & 21 & 0.5 & S$_{lb}$/2 & 33 & 21 & 0.50 & 25 & 23 & 15 & 0.35 \\
+ 50 & 3 & 34 & 21 & 0.5 & 11 & 33 & 21 & 0.50 & 25 & 23 & 15 & 0.35 \\
  \cline{2-13} 
-    & 4 & 23 & 14 & 0.33 & 3S$_{lb}$/4 & 17 & 12 & 0.28 & 38 & 10 & 7 & 0.16 \\
+    & 4 & 23 & 14 & 0.33 & 17 & 17 & 12 & 0.28 & 38 & 10 & 7 & 0.16 \\
   \hline
-   100 & 5 & 30 & 21 & 0.5 & S$_{lb}$/2 & 31 & 23 & 0.55 & 50 & 24 & 17 & 0.40 \\
+   100 & 5 & 30 & 21 & 0.5 & 15 & 31 & 23 & 0.55 & 50 & 24 & 17 & 0.40 \\
  \cline{2-13} 
-    & 8 & 16 & 15 & 0.36 & 3S$_{lb}$/4 & 17 & 14 & 0.33 & 75 & 6 & 6 & 0.14 \\
+    & 8 & 16 & 15 & 0.36 & 23 & 17 & 14 & 0.33 & 75 & 6 & 6 & 0.14 \\
   \hline
-   500 & 25 & 32 & 24 & 0.57 & S$_{lb}$/2 & 31 & 22 & 0.52 & 250 & 22 & 15 & 0.36 \\
+   500 & 25 & 32 & 24 & 0.57 & 58 & 31 & 22 & 0.52 & 250 & 22 & 15 & 0.36 \\
  \cline{2-13} 
-    & 38 & 15 & 14 & 0.33 & 3S$_{lb}$/4 & 20 & 16 & 0.38 & 375 & 7 & 7 & 0.18 \\
+    & 38 & 15 & 14 & 0.33 & 88 & 20 & 16 & 0.38 & 375 & 7 & 7 & 0.18 \\
   \hline
-   8000 & 400 & 33 & 24 & 0.57 & S$_{lb}$/2 & 30 & 23 & 0.55 & 4000 & 25 & 16 & 0.38 \\
+   Complet & 400 & 33 & 24 & 0.57 & 732 & 30 & 23 & 0.55 & 4000 & 25 & 16 & 0.38 \\
  \cline{2-13} 
-    & 600 & 15 & 14 & 0.33 & 3S$_{lb}$/4 & 18 & 16 & 0.38 & 6000 & 9 & 6 & 0.14 \\
+    & 600 & 15 & 14 & 0.33 & 1097 & 18 & 16 & 0.38 & 6000 & 9 & 6 & 0.14 \\
   \hline
 
 \end{tabular}
@@ -555,7 +555,7 @@ Remarque : Base Quan$_{10}$ trop petite avec échantillon 50 ou 100.
   \cline{2-10} 
     & 18 & 13 & 0.3 & 18 & 13 & 0.3 & 18 & 12 & 0.28  \\
   \hline
-   8000 & 10 & 8 & 0.19 & 10 & 9 & 0.21 & 10 & 7 & 0.17  \\
+   Complet & 10 & 8 & 0.19 & 10 & 9 & 0.21 & 10 & 7 & 0.17  \\
  \cline{2-10} 
     & 20 & 14 & 0.33 & 20 & 14 & 0.33 & 20 & 14 & 0.33  \\
   \cline{2-10} 
@@ -582,21 +582,21 @@ Les 3 bases fournissent des valeurs \emph{prop} similaires.
  \hline
  & Seuil & Arêtes & Corr & Prop & Seuil & Arêtes & Corr & Prop & Seuil & Arêtes & Corr & Prop \\
  \hline
- 50 & 3 & 73 & 43 & 0.59 & L$_{lb}$/2 & 64 & 44 & 0.60 & 25 & 40 & 31 & 0.43 \\
+ 50 & 3 & 73 & 43 & 0.59 & 10 & 64 & 44 & 0.60 & 25 & 40 & 31 & 0.43 \\
  \cline{2-13} 
-    & 4 & 61 & 40 & 0.55 & 3L$_{lb}$/4 & 39 & 29 & 0.40 & 38 & 14 & 9 & 0.13 \\
+    & 4 & 61 & 40 & 0.55 & 15 & 39 & 29 & 0.40 & 38 & 14 & 9 & 0.13 \\
   \hline
-   100 & 5 & 70 & 44 & 0.6 & L$_{lb}$/2 & 58 & 42 & 0.58 & 50 & 43 & 33 & 0.45 \\
+   100 & 5 & 70 & 44 & 0.6 & 22 & 58 & 42 & 0.58 & 50 & 43 & 33 & 0.45 \\
  \cline{2-13} 
-    & 8 & 63 & 41 & 0.56 & 3L$_{lb}$/4 & 36 & 28 & 0.39 & 75 & 15 & 10 & 0.14 \\
+    & 8 & 63 & 41 & 0.56 & 33 & 36 & 28 & 0.39 & 75 & 15 & 10 & 0.14 \\
   \hline
-   500 & 25 & 71 & 43 & 0.59 & L$_{lb}$/2 & 56 & 41 & 0.56 & 250 & 45 & 35 & 0.48 \\
+   500 & 25 & 71 & 43 & 0.59 & 111 & 56 & 41 & 0.56 & 250 & 45 & 35 & 0.48 \\
  \cline{2-13} 
-    & 38 & 60 & 40 & 0.55 & 3L$_{lb}$/4 & 35 & 28 & 0.39 & 375 & 14 & 9 & 0.13 \\
+    & 38 & 60 & 40 & 0.55 & 167 & 35 & 28 & 0.39 & 375 & 14 & 9 & 0.13 \\
   \hline
-   8000 & 400 & 62 & 41 & 0.56 & L$_{lb}$/2 & 56 & 40 & 0.55 & 4000 & 45 & 35 & 0.48 \\
+   Complet & 400 & 62 & 41 & 0.56 & 1005 & 56 & 40 & 0.55 & 4000 & 45 & 35 & 0.48 \\
  \cline{2-13} 
-    & 600 & 15 & 14 & 0.33 & 3L$_{lb}$/4 & 35 & 28 & 0.39 & 6000 & 13 & 9 & 0.12 \\
+    & 600 & 15 & 14 & 0.33 & 1508 & 35 & 28 & 0.39 & 6000 & 13 & 9 & 0.12 \\
   \hline
 
 \end{tabular}
@@ -637,7 +637,7 @@ Si trop d'arêtes renvoyées $\rightarrow$ Solutions infaisables ? (futurs tests
   \cline{2-10} 
     & 33 & 27 & 0.37 & 33 & 26 & 0.36 & 33 & 25 & 0.34  \\
   \hline
-   8000 & 10 & 7 & 0.1 & 10 & 7 & 0.1 & 10 & 6 & 0.08  \\
+   Complet & 10 & 7 & 0.1 & 10 & 7 & 0.1 & 10 & 6 & 0.08  \\
  \cline{2-10} 
     & 20 & 17 & 0.23 & 20 & 17 & 0.23 & 20 & 13 & 0.18  \\
   \cline{2-10} 
@@ -661,21 +661,21 @@ De nouveau les 3 bases renvoient des résultats similaires.
  \hline
  & Seuil & Arêtes & Corr & Prop & Seuil & Arêtes & Corr & Prop & Seuil & Arêtes & Corr & Prop \\
  \hline
- 50 & 3 & 93 & 65 & 0.62 & L$_{lb}$/2 & 83 & 66 & 0.64 & 25 & 71 & 61 & 0.59 \\
+ 50 & 3 & 93 & 65 & 0.62 & 5 & 83 & 66 & 0.64 & 25 & 71 & 61 & 0.59 \\
  \cline{2-13} 
-    & 4 & 54 & 44 & 0.42 & 3L$_{lb}$/4 & 42 & 37 & 0.36 & 38 & 24 & 21 & 0.20  \\
+    & 4 & 54 & 44 & 0.42 & 8 & 42 & 37 & 0.36 & 38 & 24 & 21 & 0.20  \\
   \hline
-   100 & 5 & 80 & 66 & 0.64 & L$_{lb}$/2 & 79 & 66 & 0.63 & 50 & 72 & 62 & 0.60 \\
+   100 & 5 & 80 & 66 & 0.64 & 9 & 79 & 66 & 0.63 & 50 & 72 & 62 & 0.60 \\
  \cline{2-13} 
-    & 8 & 45 & 41 & 0.40 & 3L$_{lb}$/4 & 42 & 39 & 0.38 & 75 & 24 & 22 & 0.21 \\
+    & 8 & 45 & 41 & 0.40 & 14 & 42 & 39 & 0.38 & 75 & 24 & 22 & 0.21 \\
   \hline
-   500 & 25 & 83 & 69 & 0.67 & L$_{lb}$/2 & 81 & 68 & 0.66 & 250 & 72 & 63 & 0.60 \\
+   500 & 25 & 83 & 69 & 0.67 & 44 & 81 & 68 & 0.66 & 250 & 72 & 63 & 0.60 \\
  \cline{2-13} 
-    & 38 & 43 & 39 & 0.38 & 3L$_{lb}$/4 & 39 & 36 & 0.35 & 375 & 22 & 20 & 0.19 \\
+    & 38 & 43 & 39 & 0.38 & 67 & 39 & 36 & 0.35 & 375 & 22 & 20 & 0.19 \\
   \hline
-   8000 & 400 & 87 & 73 & 0.7 & L$_{lb}$/2 & 85 & 71 & 0.68 & 4000 & 70 & 60 & 0.58 \\
+   Complet & 400 & 87 & 73 & 0.7 & 411 & 85 & 71 & 0.68 & 4000 & 70 & 60 & 0.58 \\
  \cline{2-13} 
-    & 600 & 42 & 39 & 0.38 & 3L$_{lb}$/4 & 41 & 38 & 0.37 & 6000 & 23 & 21 & 0.2 \\
+    & 600 & 42 & 39 & 0.38 & 616 & 41 & 38 & 0.37 & 6000 & 23 & 21 & 0.2 \\
   \hline
 
 \end{tabular}
@@ -715,7 +715,7 @@ Plus la taille de l'instance augmente, et plus la proportion d'arêtes optimales
   \cline{2-10} 
     & 50 & 46 & 0.44 & 50 & 46 & 0.44 & 50 & 46 & 0.44  \\
   \hline
-   8000 & 10  & 8 & 0.08 & 10  & 8 & 0.08 & 10  & 8 & 0.08  \\
+   Complet & 10  & 8 & 0.08 & 10  & 8 & 0.08 & 10  & 8 & 0.08  \\
  \cline{2-10} 
     & 20 & 18 & 0.17 & 20 & 18 & 0.17 & 20 & 18 & 0.17  \\
   \cline{2-10} 
@@ -733,10 +733,27 @@ Il faut choisir un rang dépendant de la taille de l'instance (rangs fixés à 1
 
 \begin{frame}{Où intégrer la connaissance}
 Intégration de connaissance lors de la construction de la solution initiale :
-\begin{itemize}
-\item On regroupe des clients grâce aux connaissances extraites;
-\item On applique CW sur cette initialisation. On choisit l,m,n qui donne le meilleur CW dans l'échantillon.
-\end{itemize}
+\begin{columns}[t]
+
+  \begin{column}{4cm}
+  	\centering
+	\includegraphics[scale=0.27]{CWinit.png}
+ 
+ 	Initialisation habituelle de CW
+  \end{column}
+  
+ 
+  \begin{column}{4cm}
+  	\centering
+	\includegraphics[scale=0.27]{learning.png}
+	
+	Initialisation de CW après apprentissage ($Init$)
+  \end{column}
+\end{columns}
+
+On appliquera ensuite CW à $Init$ $\rightarrow$ $(\lambda,\mu,\nu)$ ?
+
+On choisit $(\lambda^*,\mu^*,\nu^*)$ qui a donné le meilleur CW dans l'échantillon (pour l'apprentissage). 
 \end{frame}
 
 \begin{frame}{\emph{Learning Heuristic}}
@@ -748,12 +765,12 @@ $(\lambda^*,\mu^*,\nu^*), Init \gets Apprentissage$\;
 $newBase \gets []$\;
 \For {$i \gets 1$ \textbf{to} $10$} {
 	\If {$i = 1$} {
-		$Sol \gets H_c(Init,I,D,\lambda,\mu,\nu)$\;
+		$Sol \gets H_c(Init,I,D,\lambda^*,\mu^*,\nu^*)$\;
 		$newBase \gets newBase \cup Sol$\;
 	}
 	\Else {
 		Déterminer $Init$ avec les connaissances de $newBase$\;
-		 $Sol \gets H_c(Init,I,D,\lambda,\mu,\nu)$\;
+		 $Sol \gets H_c(Init,I,D,\lambda^*,\mu^*,\nu^*)$\;
 		$newBase \gets newBase \cup Sol$\;
 	}
 }
@@ -794,12 +811,40 @@ L'intégration de connaissance semble apporter de meilleurs résultats
 \begin{frame}{Limites}
 \begin{itemize}
 \item Choix de meilleurs valeurs pour l'apprentissage (Taille échantillon, base, critère);
-\item Pas beaucoup de sol pour nouvel apprentissage;
-\item Toujours même triplet utilisé.
+\item Pas beaucoup de solutions pour nouvel apprentissage (avec $newBase$);
+\item Toujours même triplet $(\lambda^*,\mu^*,\nu^*)$ utilisé.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Prochain algorithme}
-
+\begin{algorithm}[H]
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+$(\lambda^*,\mu^*,\nu^*), Init \gets Apprentissage()$\;
+$newBase \gets []$\;
+\For {$i \gets 1$ \textbf{to} $10$} {
+	\If {$i = 1$} {
+		\textcolor{rouge} {
+		\For {$j \gets 1$ \textbf{to} $10$} {
+			$Sol \gets H_c(Init,I,D,\lambda^*,\mu^*,\nu^*)$\;
+			$newBase \gets newBase \cup Sol$\;
+			}	
+		}
+	}
+	\Else {
+		Déterminer $Init$ avec les connaissances de $newBase$\;
+		\textcolor{rouge}{
+		$(\lambda^*,\mu^*,\nu^*), Init \gets Apprentissage(Init)$\;
+		}
+		\textcolor{rouge}{
+		\For {$j \gets 1$ \textbf{to} $10$} {
+		 	$Sol \gets H_c(Init,I,D,\lambda^*,\mu^*,\nu^*)$\;
+			$newBase \gets newBase \cup Sol$\;
+		}
+	}
+	}
+}
+\Return{La meilleure solution}\;
+\end{algorithm}
 \end{frame}
+
 \end{document}
