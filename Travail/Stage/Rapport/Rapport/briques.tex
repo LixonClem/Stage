@@ -53,14 +53,20 @@ Il décrit ensuite comment a été mise en place l'intégration de connaissances
 
 \subsubsection{Vehicle Routing Problem (VRP)}
 
-Le problème de tournées de véhicules, est un problème NP-complet, qui consiste à déterminer $k$ tournées pour desservir l'ensemble des $n$ clients présents.  
-Ces tournées doivent toutes passer par un dépôt fixé par l'instance. 
-Ainsi les tournées créées doivent respecter les règles suivantes :
+Le problème de tournées de véhicules, est un problème NP-complet, où sont donnés $n$ points de coordonnées $(x_i,y_i)$, représentant 1 dépôt et $n-1$ clients. $k$ véhicules sont disponibles. 
+L'objectif est alors de minimiser la longueur du réseau (ensemble des tournées). 
+On définit alors $x_{i,j}^v$ qui vaut 1 si $j$ est desservi après $i$ par le véhicule $v$, et 0 sinon. 
+Il faut donc déterminer la solution $Sol$ vérifiant :
+\begin{center}
+$ Sol = argmin_{Sol} \sum_{i = 0}^{n} \sum_{j = 0}^{n} \sum_{v = 1}^{k} distance(i,j) x_{i,j}^v = argmin_{Sol}cost(Sol)$
+\end{center}
+
+Les tournées créées doivent également respecter les contraintes suivantes :
 \begin{itemize}
 \item Chaque client doit être desservi par une et une seule tournée;
 \item Chaque tournée doit partir et s'arrêter au dépôt.
 \end{itemize}
-L'objectif est alors de minimiser la longueur du réseau (ensemble des tournées) et c'est la distance euclidienne, qui est privilégiée pour la majorité des instances. 
+
 Un exemple d'instance est présenté en figure~\ref{Instance3205}, où les points rouges représentent les clients et le point bleu le dépôt. Une solution possible au problème est représenté en figure~\ref{SNC3205} mais n'est à priori pas optimale. 
 De nombreux algorithmes ont vu le jour pour tenter de résoudre ce problème, ainsi que les nombreuses variantes qui existent (ajout de contraintes de capacité, temps ou longueur sur les tournées, ces contraintes sont cumulables). 
 C'est l'ajout de capacité aux tournées qui nous intéressera plus particulièrement.
@@ -84,11 +90,10 @@ C'est l'ajout de capacité aux tournées qui nous intéressera plus particulièr
 
 \subsubsection{Capacitated VRP (CVRP)}
 
-L'une des extensions les plus étudiées du VRP, est celle où l'on rajoute une contrainte de capacités sur les tournées, cette contrainte étant la même pour toutes les tournées. 
-Dorénavant, chaque client a une certaine demande, mais la demande présente sur une tournée ne doit pas excéder la capacité disponible sur celle-ci.
-Les tournées doivent donc respecter la règle suivante, en plus de celles décrites à la section précédente :
+On étend le VRP au CVRP en ajoutant à chaque client $i$ une demande $d_i$, ainsi qu'une capacité $C$ aux véhicules.
+Une nouvelle contrainte vient donc s'ajouter aux contraintes classiques du VRP :
 \begin{itemize}
-\item La demande totale sur chaque tournée ne doit pas excéder la capacité disponible.
+\item La demande totale sur chaque tournée ne doit pas excéder la capacité du véhicule.
 \end{itemize}
 Si on reprend l'instance A-n32-k05, en considérant les demandes des clients ainsi que la capacité disponible pour chaque véhicule, on obtient une solution présente sur la figure~\ref{SC3205}, qui n'est pas optimale. 
 Ce problème est beaucoup étudié car il a de nombreuses applications (comme par exemple la gestion du trafic routier, ou alors la gestion d'un réseau de bus), et peu de solutions optimales ont été trouvées pour des instances de plus de $500$ clients. 

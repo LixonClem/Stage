@@ -27,7 +27,7 @@ global nu
 ylim = 200
 xlim = 200
 clim = 20
-Capacity = 400
+Capacity = 700
 KNN = 30
 relocation = 3
 
@@ -695,6 +695,15 @@ def is_edge_in(e, l):
             return True
     return False
 
+def unfeasable_edge(e,l):
+    c1 = 0
+    c2 = 0
+    for ed in l:
+        if e[0] == ed[0] or e[0] == ed[1]:
+            c1 += 1
+        elif e[1] == ed[0] or e[1] == ed[1]:
+            c2 += 1
+    return (c2>1 or c1 >1)
 
 def normalize_solution(sol):
     for i in range(len(sol)):
@@ -835,10 +844,10 @@ def learning_results(iterations, generate, inst, demmand, initial):
         ls_qual = learning_set_quality(Base, quality)
         mat_qual = init_matrix(len(instance))
         mat_qual = learn(mat_qual, ls_qual)
-        print(len(ls_qual))
+
         e_qual = mat_info_rg(int(len(demand)/2), mat_qual)
         for e in e_qual:
-            if not is_edge_in(e, edges):
+            if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
                 edges.append(e)
     return edges,(l,m,n)
 
@@ -911,7 +920,6 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
     p = [[0 for j in range(len(inst))] for i in range(len(inst))]
     N = 0  # laps without improvement
     gs = 0  # laps for last improvement
-    limit = 0
     detailed_cust = [0 for i in range(len(inst))]
     for r in range(len(initial_routes)):
         for i in initial_routes[r]:
@@ -943,6 +951,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
         routes = ejection_chain(l, cp, v, routes, inst, demand, fixed_edges)
 
         for i in range(len(routes)):
+            routes2[i] = decross_route(routes2[i].copy(), inst)
             routes[i] = LK(routes[i], inst)
         # apply cross-exchange
 
@@ -950,6 +959,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
 
         # apply LK
         for i in range(len(routes)):
+            routes2[i] = decross_route(routes2[i].copy(), inst)
             routes[i] = LK(routes[i], inst)
 
         c_final = cost_sol(routes, inst)
@@ -963,48 +973,49 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
             c_init = cost_sol(routes2, inst)
             print(tps2-tps1, c_init)
             tps1 = time.time()
-            limit = 0
-            
         
         if gs > len(demand)/2:
             # return to the last best solution, for gs iterations
             routes = copy_sol(routes2)
             gs = 0
         
-        if N > 2*len(demand):
-
+        if N > len(demand):
+            print(tps2-tps1)
             b_i += 1
 
+            for i in (routes2):
+                if len(i) == 2:
+                    routes2 = reject(i, routes2, v, inst, demand)
+
+            for i in range(len(routes2)):
+                routes2[i] = decross_route(routes2[i].copy(), inst)
+                routes2[i] = LK(routes2[i], inst)
+
+            routes = copy_sol(routes2)
             if b_i < len(B):
                 b = B[b_i]
                 p = [[0 for j in range(len(inst))]
                      for i in range(len(inst))]
                 N = 0
             else:
-
+                print('pirouette')
+                
                 b_i = 0
                 b = B[b_i]
                 p = [[0 for j in range(len(inst))]
                      for i in range(len(inst))]
                 N = 0
 
-                for i in (routes2):
-                    if len(i) == 2:
-                        routes2 = reject(i, routes2, v, inst, demand)
 
-                for i in range(len(routes2)):
-                    routes2[i] = decross_route(routes2[i].copy(), inst)
-                    routes2[i] = LK(routes2[i], inst)
-
-                routes = copy_sol(routes2)
         gs += 1
         N += 1
         tps2 = time.time()
-        limit += 1
-
+    print(routes2)
     for i in (routes2):
         if len(i) == 2:
             routes2 = reject(i, routes2, v, inst, demand)
+        if len(i) == 1:
+            routes2.remove(i)
 
     for i in range(len(routes2)):
         routes2[i] = decross_route(routes2[i].copy(), inst)
@@ -1020,7 +1031,7 @@ def apply_heuristic(inst, demand, l):
     v = voisins(KNN, instance)
     initial = init_routes(inst,demand)
     print("start learning")
-    edges, (lam,mu,nu) = learning_results(5,100,inst,demand,initial)
+    edges, (lam,mu,nu) = learning_results(2,50,inst,demand,initial)
     initial_routes = complete(destruction2(ignore_0(edges)),inst)
     tps_learn = time.time()
     
@@ -1050,7 +1061,7 @@ def apply_heuristic(inst, demand, l):
                 writef(namefile,'')
                 writef(namefile,'init = ' + str(round(c_init,3)))
                 writef(namefile,'res = ' + str(round(c_sol,3)))
-                writef(namefile,'gap = ' + str(round((1-5623/c_sol)*100,3)))
+                writef(namefile,'gap = ' + str(round((1-8404/c_sol)*100,3)))
                 writef(namefile,'')
                 writef(namefile,'solution = ' + str(sol))
 
@@ -1067,7 +1078,7 @@ def apply_heuristic(inst, demand, l):
                 if not is_edge_in(e, edges):
                     edges.append(e)
             initial_routes = complete(destruction2(ignore_0(edges)),inst)
-            edges, (lam,mu,nu) = learning_results(5,100,inst,demand,initial_routes)
+            edges, (lam,mu,nu) = learning_results(2,50,inst,demand,initial_routes)
             print(lam,mu,nu)
             new_base = []
             for j in range(5):
@@ -1084,7 +1095,7 @@ def apply_heuristic(inst, demand, l):
                 writef(namefile,'')
                 writef(namefile,'init = ' + str(round(c_init,3)))
                 writef(namefile,'res = ' + str(round(c_sol,3)))
-                writef(namefile,'gap = ' + str(round((1-5623/c_sol)*100,3)))
+                writef(namefile,'gap = ' + str(round((1-8404/c_sol)*100,3)))
                 writef(namefile,'')
                 writef(namefile,'solution = ' + str(sol))
             
@@ -1123,7 +1134,7 @@ def common_edges(sol1, sol2):
     return E, E_init, E_final
 
 
-t = "P-n101-k04"
+t = "Golden_02"
 
 instance,demand = read("Instances/"+t+".xml")
 
@@ -1165,18 +1176,8 @@ print_instance(instance)
 print_edges(aer,instance,'green')
 py.show()
 """
-#edges,c = learning_results(1,500,instance,demand,initial_solution)
-namefile = "resultats/Heuristic_results/Values/"+t+"/set_complet.txt"
-File = open(namefile,'rb')
-Base = pickle.load(File)
-namefile = "resultats/Heuristic_results/Values/"+t+"/stat_complet.txt"
-File = open(namefile,'rb')
-stat= pickle.load(File)
-ls_qual = learning_set_quality(Base,(stat[1]-stat[0])/10 + stat[0])
-print(len(ls_qual))
-#print(cost_sol(record,instance))
 
-#apply_heuristic(instance, demand, relocation)
+apply_heuristic(instance, demand, relocation)
 
 
 """
