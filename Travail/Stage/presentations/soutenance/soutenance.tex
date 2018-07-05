@@ -31,7 +31,7 @@
 
 \begin{frame}[plain]
 \titlepage
-Equipe ORKAD \footnote{Stage réalisé dans l'équipe ORKAD du centre CRISTAL à Lille, sous la direction de Laetitia Jourdan ( laetitia.jourdan@univ-lille1.fr), Marie-Éléonore Kessaci (me.kessaci@univ-lille1.fr) et Diego Cattaruzza (diego.cattaruzza@ec-lille.fr)}
+Equipe ORKAD \footnote{Stage réalisé dans l'équipe ORKAD du centre CRIStAL à Lille, sous la direction de Laetitia Jourdan ( laetitia.jourdan@univ-lille.fr), Marie-Éléonore Kessaci (me.kessaci@univ-lille.fr) et Diego Cattaruzza (diego.cattaruzza@ec-lille.fr)}
 \end{frame}
 
 \section{Présentation du problème}
@@ -47,13 +47,12 @@ Equipe ORKAD \footnote{Stage réalisé dans l'équipe ORKAD du centre CRISTAL à
 \end{block}
 
 \begin{exampleblock}{Objectif}
+On note $x_{i,j}^v$ qui vaut 1 si $j$ est desservi après $i$ par le véhicule $v$ (et 0 sinon).
+
 Déterminer $Sol$ (ensemble des tournées) tel que:
 
 \centering
 $ Sol = argmin_{Sol} \sum_{i = 0}^{n} \sum_{j = 0}^{n} \sum_{v = 1}^{k} distance(i,j) x_{i,j}^v = argmin_{Sol}cost(Sol)$
-
-où $x_{i,j}^v = 1$ si $j$ est desservi après $i$ par le véhicule $v$ (et 0 sinon). 
-
 
 
 \begin{alertblock}{Contraintes}
@@ -100,7 +99,7 @@ Intégrer de la connaissance pour trouver une meilleure solution
 \begin{exampleblock}{Méthode}
 Réussir à prédire des arêtes qui appartiendront à la solution optimale, et les exploiter pour construire une nouvelle solution.
 \begin{itemize}
-\item Comparer à des solutions optimales pour des petites instances;
+\item Comparer des solutions initiales à des solutions optimales pour des petites instances;
 \item Établir des règles qui caractérisent ces arêtes;
 \item Exploiter ces arêtes dans un algorithme d'optimisation.
 \end{itemize}
@@ -123,7 +122,7 @@ Réussir à prédire des arêtes qui appartiendront à la solution optimale, et 
 
 \begin{frame}{Algorithme Clarke \& Wright (CW)}
 
-CW\footnote{IK. Altinel and T. Öncan, A new enhancement of the Clarke and Wright savings heuristic for the capacitated vehicle routing problem (2005)}$\rightarrow$ Algorithme glouton (chaque client est initialement desservi par un véhicule (contrainte de véhicules non respectée), puis la fusion des tournées est basée sur un calcul de saving). 
+CW\footnote{IK. Altinel and T. Öncan, A new enhancement of the Clarke and Wright savings heuristic for the capacitated vehicle routing problem (2005)}$\rightarrow$ Algorithme glouton (chaque client est initialement desservi par un véhicule (nombre de véhicules non respectée), puis la fusion des tournées est basée sur un calcul de saving). 
 
 
 
@@ -131,7 +130,7 @@ CW\footnote{IK. Altinel and T. Öncan, A new enhancement of the Clarke and Wrigh
 Calcul du saving de $i$ et $j$ avec:
 
 \centering
-$s(i,j) = c_{i0} + c_{0j} - \lambda c_{ij} + \mu \vert c_{i0} - c_{0j} \vert + \nu \frac{d_i + d_j}{\overline{d}}$
+$s(i,j) = c_{i0} + c_{0j} - \textcolor{rouge}{\lambda} c_{ij} + \textcolor{rouge}{\mu} \vert c_{i0} - c_{0j} \vert + \textcolor{rouge}{\nu} \frac{d_i + d_j}{\overline{d}}$
 
 \textcolor{rouge}{$(\lambda,\mu,\nu)$ sont des paramètres à déterminer}
 \end{exampleblock}
@@ -246,7 +245,7 @@ C'est aussi le cas pour toute instance : l'influence de $(\lambda,\mu,\nu)$ dép
 
 \end{frame}
 
-\section{Choix de l'algorithme d'optimisation}
+\section{Proposition de l'algorithme d'optimisation}
 
 \subsection{Heuristique A \& S}
 
@@ -328,7 +327,7 @@ Déplacer $l$ clients sur des tournées. On fixe \textcolor{vert}{ $l = 3$} d'ap
 
 $Sol \gets CW(\lambda,\mu,\nu)$\;
 $NewSol \gets Sol$\;
-\While {La dernière amélioration date de moins de \textcolor{rouge}{$n/3$ min}} {
+\While {La dernière amélioration date de moins de \textcolor{rouge}{$n/3$ sec}} {
 	Calcul de la pire arête\;
 	$NewSol \gets EjectionChain_{\textcolor{rouge}{FI-RD}}$\;
 	$NewSol \gets LinKernighan_{BI-O}$\;
@@ -477,8 +476,8 @@ Pour chaque arête (i,j), on incrémente la valeur [i][j] de la matrice.
 Deux possibilités pour choisir les arêtes à conserver :
 \begin{block}{Critères de choix}
 \begin{itemize}
-\item Conserver $(i,j) \Leftrightarrow MAT[i][j] > seuil$ (Seuil). \textcolor{green}{$seuil \in [S_{lb}/2,3S_{lb}/4]$}, $S_{lb}$ (Size learning base) est la taille de la base d'apprentissage;
-\item Conserver les $rg$ premières arêtes dans la matrice (Rang). \textcolor{green}{$rg \in [10,20,n/2]$}.
+\item Conserver les $rg$ premières arêtes dans la matrice (Rang). \textcolor{green}{$rg \in [10,20,n/2]$};
+\item Conserver $(i,j) \Leftrightarrow MAT[i][j] > seuil$ (Seuil). \textcolor{green}{$seuil \in [S_{lb}/2,3S_{lb}/4]$}, $S_{lb}$ (Size learning base) est la taille de la base d'apprentissage.
 \end{itemize}
 \end{block}
 \end{frame}

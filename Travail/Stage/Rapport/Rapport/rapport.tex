@@ -146,6 +146,7 @@ On peut remarquer que peu importe le parcours effectué, pour faire une explorat
 \end{tabular}
 \end{center}
 
+
 \subsection{Motivation et objectif}
 
 L'objectif de mon stage d'intégrer de la connaissance à un algorithme d'optimisation utilisé pour résoudre CVRP, afin de le rendre plus performant.
@@ -186,7 +187,7 @@ L'algorithme \ref{algo:CW} présente le fonctionnement de l'algorithme CW.
 }
 Calculer les savings de toutes les arêtes\;
 
-\While{max$_{i,j} s(i,j) > 0$ {
+\While {max$_{i,j} s(i,j) > 0$} {
 	$(i,j) \gets argmax_{(i,j)} s(i,j)$\;
 	$r_i \gets findRoute(Sol,i)$\;
 	$r_j \gets findRoute(Sol,j)$\;
@@ -202,38 +203,43 @@ Calculer les savings de toutes les arêtes\;
 \label{algo:CW}
 \end{algorithm}
 
-Exemple d'exécution de l'algorithme avec $(\lambda, \mu, \nu) = (1,1,1)$, sur l'instance A-n37-k06.
+Exemple d'exécution de l'algorithme avec $(\lambda, \mu, \nu) = (1,1,1)$, sur l'instance A-n37-k06, représenté sur les figures \ref{CWinit} à \ref{resCW101010}.
 
 \begin{figure}
+\begin{center}
 
-  	\begin{figure}
-  	\includegraphics[scale=0.2]{CWinit.png}
+
+
+
+  	\includegraphics[scale=0.4]{CWinit.png}
   	\caption{Initialisation}
-  	\end{figure}
+	\label{CWinit}
 	
   
-  	\begin{figure}
-	\includegraphics[scale=0.2]{CW1.png}
+  
+	\includegraphics[scale=0.4]{CW1.png}
 	\caption{1$^{ere}$ fusion}
-  	\end{figure}
+ 	\label{CW1}
   	
 
-	\begin{figure}
-	\includegraphics[scale=0.2]{CW2.png}
+
+	\includegraphics[scale=0.4]{CW2.png}
 	\caption{2$^{eme}$ fusion}
-	\end{figure}
+	\label{CW2}
 
- 	\begin{figure}
-	 \includegraphics[scale=0.09]{resCW101010.png}
+
+	 \includegraphics[scale=0.15]{resCW101010.png}
 	 \caption{Solution obtenue, $cost = 1297$}
-	\end{figure}
+	\label{resCW101010}
 
-\caption{Exemple d'exécution de CW avec $(\lambda, \mu, \nu) = (1,1,1)$, sur l'instance A-n37-k06}
-
+\end{center}
 \end{figure}
+
+
  
 \subsection{Choix des paramètres $(\lambda, \mu, \nu)$}
-
+Le triplet $(\lambda, \mu, \nu)$ a déjà été étudié de nombreuses fois dans la littérature. L'article~\cite{Altinel_2005} précise qu'il suffit de considérer $(\lambda, \mu, \nu)$ dans $]0,2] \times [0,2]^2$ pour avoir de bonnes solutions. 
+Par ailleurs, il est inutile de considérer  
 
 \section{Proposition d'un algorithme d'optimisation}
 
