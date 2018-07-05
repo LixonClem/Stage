@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+
+\bibitem{Altinel_2005}
+IK. Altinel and T.~Öncan.
+\newblock A new enhancement of the clarke and wright savings heuristic for the
+  capacitated vehicle routing problem.
+\newblock {\em Journal of the Operational Research Society}, 2005.
+
+\bibitem{Sorensen_2017}
+Florian Arnold and Kenneth Sörensen.
+\newblock A simple, deterministic and efficient knowledge-driven heuristic for
+  the vehicle routing problem.
+\newblock {\em Transportation Science}, December 2017.
+
+\end{thebibliography}

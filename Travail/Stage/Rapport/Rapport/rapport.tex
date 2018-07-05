@@ -17,16 +17,15 @@
 \usepackage{listings}%
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage{subcaption}
+\usepackage{xcolor}
 
 \parskip=0.5\baselineskip
-
-
 
 \sloppy
 
 \begin{document}
 
-\title{Rapport de stage}
+\title{Création d'une \emph{Learning Heuristic} pour résoudre le \emph{Capacitated Vehicle Routing Problem}}
 
 \author{Clément Legrand-Lixon}
 
@@ -162,6 +161,7 @@ Nous adopterons la méthodologie suivante pour atteindre notre objectif :
 Cette méthode, nous impose de résoudre les problèmes suivants : Comment construire une solution initiale de bonne qualité ? Quel algorithme d'optimisation utiliser ? Comment extraire la connaissance ? Comment intégrer la connaissance dans l'algorithme d'optimisation retenu ?
 
 \section{Construction d'une solution initiale de bonne qualité}
+\label{SolInit}
 Pour construire une solution initiale nous allons utiliser la dernière version d'un algorithme très répandu dans la littérature : l'algorithme Clarke \& Wright~\cite{Altinel_2005}.
 
 \subsection{Description de l'algorithme}
@@ -203,7 +203,7 @@ Calculer les savings de toutes les arêtes\;
 \label{algo:CW}
 \end{algorithm}
 
-Exemple d'exécution de l'algorithme avec $(\lambda, \mu, \nu) = (1,1,1)$, sur l'instance A-n37-k06, représenté sur les figures \ref{CWinit} à \ref{resCW101010}.
+Exemple d'exécution de l'algorithme avec $(\lambda, \mu, \nu) = (1,1,1)$, sur l'instance A-n37-k06, représenté sur les figures \ref{CWinit} à \ref{resCW101010}. On remarque sur la figure \ref{resCW101010} que l'on pourrait améliorer la solution rien qu'en réorganisant les différentes tournées, pour minimiser leur coût.
 
 \begin{figure}
 \begin{center}
@@ -239,14 +239,335 @@ Exemple d'exécution de l'algorithme avec $(\lambda, \mu, \nu) = (1,1,1)$, sur l
  
 \subsection{Choix des paramètres $(\lambda, \mu, \nu)$}
 Le triplet $(\lambda, \mu, \nu)$ a déjà été étudié de nombreuses fois dans la littérature. L'article~\cite{Altinel_2005} précise qu'il suffit de considérer $(\lambda, \mu, \nu)$ dans $]0,2] \times [0,2]^2$ pour avoir de bonnes solutions. 
-Par ailleurs, il est inutile de considérer  
+Par ailleurs, il est inutile de prendre précision inférieure au dixième lorsqu'on choisit les valeurs des paramètres.
+Les figures \ref{resCW190105} à \ref{resCW001015} représentent différents résultats obtenus pour des triplets $(\lambda, \mu, \nu)$ différents.
+On remarque qu'il n'y a aucun lien entre les résultats et les valeurs de $(\lambda, \mu, \nu)$. 
+On ne peut donc pas prévoir à l'avance si le triplet $(\lambda, \mu, \nu)$ va donner un bon résultat ou non. 
+L'influence de ces paramètres dépend aussi des caractéristiques de l'instance considérée, ainsi on ne peut pas se restreindre au choix d'un triplet qui conviendrait pour toutes les instances. 
+
+
+\begin{figure}
+\begin{center}
+
+	\includegraphics[scale=0.4]{resCW190105.png}
+ 
+ 	\caption{$(1.9,0.1,1.5), cost = 1106$}
+ 	\label{resCW190105}
+
+	\includegraphics[scale=0.4]{resCW111.png}
+	
+	\caption{$(0.1,0.1,0.1), cost = 1569$}
+	\label{resCW111}
+
+	\includegraphics[scale=0.4]{resCW001015.png}
+ 	\caption{$(0.0,1.0,1.5), cost = 2191$}
+ 	\label{resCW001015}
+\end{center}
+\end{figure}
 
 \section{Proposition d'un algorithme d'optimisation}
+Nous proposons dans cette partie un algorithme d'optimisation qui sera utilisé pour y intégrer de la connaissance. Il s'inspire d'un algorithme proposé récemment~\cite{Sorensen_2017}, dont nous détaillons le fonctionnement.
+
+\subsection{Heuristique Arnold \& Sörensen}
+L'heuristique proposée par Arnold et Sörensen, est à la fois simple et efficace. 
+Il semble donc pertinent de vouloir améliorer cet algorithme en y intégrant de la connaissance.
+L'heuristique commence par déterminer une solution initiale via l'algorithme CW, présenté en section~\ref{SolInit}. Différents opérateurs de voisinage sont ensuite appliqués autour d'une arête, considérée comme étant la pire du graphe.
+L'algorithme~\ref{algo:AS} donne le fonctionnement de l'heuristique (A\&S). 
+
+
+\begin{algorithm}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{Un ensemble de points I, les demandes des clients D, un triplet de flottants $(\lambda,\mu,\nu)$}
+\KwOut{Une solution au problème I}
+$Sol \gets CW(I,D,\lambda,\mu,\nu)$\;
+$N \gets Size(D)$\;
+$nextSol \gets Sol$\;
+\While {La dernière amélioration date de moins de 3 min} {
+	$worstEdge \gets$ Calcul de la pire arête\;
+	$nextSol \gets EC_{BI-O}(worstEdge,I,D)$\;
+	$nextSol \gets LK_{BI-O}(nextSol)$\;
+	$nextSol \gets CE_{BI-O}(worstEdge,I,D)$\;
+	$nextSol \gets LK_{BI-O}(nextSol)$\;
+	\If {$cost(Sol) > cost (nextSol)$} {
+		$ Sol \gets nextSol$\;
+	}
+	\If {Pas d'améliorations depuis $N/10$ itérations} {
+		Appliquer les opérateurs sur toutes les arêtes de la solution\;
+	}
+	\If {Pas d'améliorations depuis $20N$ itérations} {
+		Changer de fonction de pénalisation en prenant un autre triplet $(\gamma_w,\gamma_c,\gamma_d)$\;
+	}
+	\If {Pas d'améliorations depuis $100N$ itérations} {
+		Réinitialiser les pénalités des arêtes\;
+	}
+}
+\Return{$Sol$}\;
+\caption{{\sc AS} applique l'heuristique A\& S au problème considéré}
+\label{algo:AS}
+\end{algorithm}
+
+Les prochaines sections détaillent le calcul de la pire arête, ainsi que le fonctionnement des opérateurs utilisés.
+
+
+\subsubsection{Pire arête et pénalisation}
+Afin de pouvoir comparer les différentes arêtes entre elles et déterminer laquelle est la pire, il faut disposer de certaines métriques sur les arêtes pour pouvoir les caractériser.
+
+Trois métriques sont détaillées dans l'article~\cite{Sorensen_2017}:
+\begin{itemize}
+\item Le coût d'une arête $(i,j)$, que l'on note $c(i,j)$ se calcule de la manière suivante:
+
+\begin{center}
+$c(i,j) = c_{ij}(1 + \beta p(i,j)$ 
+\end{center}
+
+Dans l'article~\cite{Sorensen_2017}) $\lambda = 0.1$. $p(i,j)$ correspond au nombre de fois où l'arête $(i,j)$ a été pénalisé;
+\item La profondeur d'une arête $(i,j)$, noté $d(i,j)$ a pour formule :
+
+\begin{center}
+max($c_{0i}$, $c_{0j}$)
+\end{center}
+
+Autrement dit c'est la distance entre le point le plus éloigné du dépôt et le dépôt.
+\item La largeur de l'arête $(i,j)$, noté $w(i,j)$ est la différence de longueur entre les projetés de $i$ et $j$ sur la droite issue du dépôt passant par le centre de gravité de la tournée. Le centre de gravité d'une tournée étant obtenu en faisant la moyenne, pour chaque composante, des points de cette tournée.
+\end{itemize}
+
+Les notions de coût, profondeur et largeur sont illustrées par la figure~\ref{metrics}. 
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{metrics_big.png}
+\caption{Illustration des caractéristiques d'une arête}
+\label{metrics}
+\end{figure}
+
+On définit alors la fonction de pénalisation $b$ de la manière suivante :
+\begin{center}
+$b(i,j) = \frac{[\gamma_w w(i,j) + \gamma_c c(i,j)] [\frac{d(i,j)}{max_{k,l}d(k,l)}] ^ {\frac{\gamma_d}{2}}}{1+p(i,j)}$
+\end{center}
+
+Les paramètres $\lambda_w,\lambda_c,\lambda_d$, prennent comme valeurs $0$ ou $1$, selon les caractéristiques que l'on veut considérer. 
+Il y a ainsi 6 fonctions de pénalisation différentes, que l'on peut choisir au cours de l'exécution (on ne considère pas le cas où $\lambda_w = \lambda_c = 0$, puisqu'il fournit $b(i,j) = 0$.
+
+On peut alors définir ce qu'est la pire arête $(i^*,j^*)$ du graphe :
+
+\begin{center}
+$ (i^*,j^*) = argmax_{i,j} b(i,j)$
+\end{center}
+
+
+
+C'est autour de l'arête calculée ici que vont s'orienter les recherches des opérateurs de voisinage qui suivent.
+ 
+\subsubsection{Ejection-Chain}
+
+Le premier opérateur utilisé est appelé Ejection-Chain. Son objectif est de déplacer au plus $l$ clients sur des tournées. 
+
+Le fonctionnement de cet opérateur est présenté sur la figure~\ref{EC}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.2]{ejection_chain_big.png}
+\caption{Exemple de fonctionnement de l'opérateur ejection-chain}
+\label{EC}
+\end{figure}
+
+Dans l'article~\cite{Sorensen_2017} $l = 3$. En effet l'algorithme~\ref{algo:EC}, qui décrit le fonctionnement de cet opérateur, s'exécute en $O(n^{l-1})$. Il vaut donc mieux choisir une valeur de $l$ assez petite, pour que la complexité n'explose pas. 
+
+\begin{algorithm}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{Une arête $(a,b)$, la liste des plus proches voisins des clients $voisins$, un entier $l$, la solution actuelle $sol$}
+\KwOut{Une nouvelle solution au moins aussi bonne que $sol$}
+$possibleSol \gets sol$\;
+$cand \gets choose(a,b)$\;
+$nextRoute \gets findNextRoute(cand,voisins,possibleSol)$\;
+$possibleSol \gets $ déplacer $cand$ après son voisin sur $nextRoute$\;
+\For{$i \gets 1$ \textbf{to} $l-1$} {
+  $cand \gets $un client de $nextRoute$ différent de celui ajouté\;
+  $nextRoute \gets findNextRoute(cand,voisins,possibleSol)$\;
+  $possibleSol \gets$ déplacer $cand$ après son voisin sur $nextRoute$\;
+}
+\If {$cost(possibleSol) < cost(sol)$} {
+	$sol \gets possibleSol$\;
+}
+\Return{$sol$}\;
+\caption{{\sc Ejection-Chain} applique l'opérateur ejection-chain}
+\label{algo:EC}
+\end{algorithm}
+
+Aux lignes $3, 4, 7$ et $8$ de l'algorithme~\ref{algo:EC}, il est possible d'utiliser les méthodes de la section~\ref{voisinage} pour explorer les voisinages.
+
+\subsubsection{Cross-Exchange}
+
+Un deuxième opérateur utilisé est le Cross-Exchange.
+Son objectif est d'échanger deux séquences de clients entre deux tournées.
+Le fonctionnement de cet opérateur est présenté sur la figure~\ref{CE}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.2]{cross_exchange_big.png}
+\caption{Exemple de fonctionnement de l'opérateur cross-exchange}
+\label{CE}
+\end{figure}
+
+Il est possible de limiter le nombre de clients par séquence échangée.
+L'algorithme~\ref{algo:CE} présente l'exécution de l'opérateur et s'exécute en $O(n^2)$.
+
+\begin{algorithm}
+\DontPrintSemicolon 
+\KwIn{Une arête $(c_1,c_2)$, la liste des plus proches voisins des clients $voisins$, la solution actuelle $sol$}
+\KwOut{Une nouvelle solution au moins aussi bonne que $sol$}
+$possibleSol \gets sol$\;
+$nextRoute \gets findNextRoute(c_1,voisins,possibleSol)$\;
+Considérer l'arête $(c_3,c_4)$ de $nextRoute$, où $c_4$ est le proche voisin de $c_1$ utilisé\;
+$possibleSol \gets exchange(c_1,c_3,possibleSol)$\;
+Choisir 2 clients $c_5$ et $c_6$ qui n'appartiennent pas à la même tournée\;
+$possibleSol \gets exchange(c_5,c_6,possibleSol)$\;
+\If {$cost(possibleSol) < cost(sol)$} {
+	$sol \gets possibleSol$\;
+}
+\Return{$sol$}\;
+\caption{{\sc Cross-Exchange} applique l'opérateur cross-exchange}
+\label{algo:CE}
+\end{algorithm}
+
+A la ligne $6$ de l'algorithme~\ref{algo:CE}, il est possible d'utiliser les méthodes de la section \ref{voisinage} pour explorer les voisinages, et choisir les clients à échanger.
+
+\subsubsection{Lin-Kernighan}
+
+Le dernier opérateur utilisé est l'heuristique Lin-Kernighan. Elle a été créée pour résoudre le problème du voyageur de commerce (TSP). 
+Il effectue une optimisation intra-tournée (c'est-à-dire que la tournée considérée est améliorée indépendamment des autres).
+Cela consiste en une réorganisation des clients sur la tournée. On choisit $k$ tel que \emph{LK} ne dépasse pas \emph{k-opt} au cours de son exécution. 
+On appelle \emph{k-opt}, l'opération qui consiste à échanger $k$ clients différents sur la tournée. 
+On commence alors par appliquer 2-opt, si une amélioration est trouvée, on passe à 3-opt, et ainsi de suite jusqu'à atteindre k-opt. 
+On repart alors de 2-opt, et ce jusqu'à ne plus trouver d'améliorations. 
+D'après l'article~\cite{Sorensen_2017}, on peut prendre $k = 2$.
+ 
+Un exemple d'utilisation de cet opérateur est présent sur la figure~\ref{LK}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{test4_20_init.png}
+\includegraphics[scale=0.4]{test4_20_LKopt.png}
+
+\caption{Exemple de fonctionnement de l'opérateur LK}
+\label{LK}
+\end{figure}
+
+L'algorithme~\ref{algo:LK} décrit l'exécution de l'opérateur.
+
+\begin{algorithm}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{Une tournée $r$ à améliorer}
+\KwOut{Une permutation de $r$ ayant un meilleur coût que $r$}
+$r_{next} \gets 2$-$opt(r) $\;
+\While{$ r_{next} \neq r$} {
+  $r \gets r_{next}$\;
+  $r_{next} \gets 2$-$opt(r)$\;
+}
+\Return{$r$}\;
+\caption{{\sc Lin-Kernighan} applique l'opérateur Lin-Kernighan}
+\label{algo:LK}
+\end{algorithm}
+
+Lorsqu'il s'agit d'appliquer \emph{2-opt}, il est possible d'utiliser les méthodes de la section \ref{voisinage} pour explorer les voisinages.
+
+\subsection{Algorithme d'optimisation utilisé}
+L'algorithme d'optimisation que nous utilisons est un peu différent de l'heuristique A\&S précédente.
+Pour diminuer le temps d'exécution, nous choisissons de diminuer le temps limite entre deux nouvelles solutions à $\frac{n}{3}$ secondes. 
+Pour que l'exploration du voisinage des solutions soit plus efficace, nous décidons de passer les opérateurs \emph{EC} et \emph{CE} en mode $FI-RD$ (ce qui est généralement le cas dans les algorithmes d'optimisation).
+Enfin, nous ajoutons une condition de \emph{Restart}, s'il n'y a pas eu d'améliorations depuis $n$ itérations.
+
+L'algorithme~\ref{algo:HC} présente en rouge les changements effectués.
+
+\begin{algorithm}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{Un ensemble de points I, les demandes des clients D, un triplet de flottants $(\lambda,\mu,\nu)$}
+\KwOut{Une solution au problème I}
+$Sol \gets CW(I,D,\lambda,\mu,\nu)$\;
+$N \gets length(D)$\;
+$nextSol \gets Sol$\;
+\While {La dernière amélioration date de moins de \textcolor{red}{n/3 sec}} {
+	$worstEdge \gets argmax_{(i,j)} b(i,j) $\;
+	$nextSol \gets EC_{\textcolor{red}{FI-RD}}(worstEdge,I,D)$\;
+	$nextSol \gets LK_{BI-O}(nextSol)$\;
+	$nextSol \gets CE_{\textcolor{red}{FI-RD}}(worstEdge,I,D)$\;
+	$nextSol \gets LK_{BI-O}(nextSol)$\;
+	\If {$cost(Sol) > cost (nextSol)$} {
+		$ Sol \gets nextSol$\;
+	}
+	\textcolor{red}{
+	\If {Pas d'améliorations depuis $n$ itérations} {
+		$nextSol \gets Sol$\;
+	}
+	}
+	\If {Pas d'améliorations depuis $n$ itérations} {
+		Changer de fonction de pénalisation en prenant un autre triplet $(\gamma_w,\gamma_c,\gamma_d)$\;
+		Réinitialiser les pénalités des arêtes\;
+	}
+}
+\Return{$Sol$}\;
+\caption{{\sc $H_c$} calcule une solution du problème considéré}
+\label{algo:HC}
+\end{algorithm}
+
+Nous pouvons à présent nous intéresser à l'extraction des connaissances des solutions initiales.
 
 \section{Extraction de la connaissance}
+Cette section s'intéresse à l'extraction de connaissance à partir de solutions initiales générées. 
+
+\subsection{Quelle est la connaissance ?}
+En observant quelques solutions obtenues avec CW, et application de l'opérateur LK, on remarque que plus la solution initiale est bonne et plus elle possède d'arêtes en commun avec la solution optimale. Ce résultat est illustré sur les figures~\ref{edges190115} à \ref{edges010101}, où les arêtes optimales sont vertes.
+
+\begin{figure}
+\begin{center}
+
+
+  	\includegraphics[scale=0.4]{edges190115.png}
+	\caption{$CW(1.9,0.1,1.5)+LK$, $cost = 1041$, 19 arêtes optimales}
+	\label{edges190115}
+  
+	\includegraphics[scale=0.4]{edges101010.png}
+	\caption{$CW(0.1,0.1,0.1)+LK$, $cost = 1170$, 19 arêtes optimales}
+	\label{edges101010}
+
+	\includegraphics[scale=0.4]{edges010101.png}
+	\caption{$CW(0.0,1.0,1.5)+LK$, $cost = 1600$, 11 arêtes optimales}
+	\label{edges010101}	
+	
+\end{center}
+\end{figure}
+
+Il faudrait donc pouvoir déterminer à l'avance les arêtes optimales à partir des solutions initiales fournies par $CW+LK$.
+
+\subsection{Protocole d'apprentissage}
+Pour extraire cette connaissance, nous allons devoir créer un échantillon de solutions initiales, à partir duquel nous allons extraire une base d'apprentissage. Cette base va nous permettre d'extraire des arêtes.
+
+\subsubsection{Génération de l'échantillon}
+Puisque l'on ne peut pas prédire les paramètres $(\lambda,\mu,\nu)$ pour obtenir de bonnes solutions, nous allons devoir en générer un certain nombre :
+\begin{itemize}
+\item Soit on génère l'intégralité des solutions initiales possibles, en parcourant tous les triplets $(\lambda,\mu,\nu)$ (ie génération de 8820 solutions), pour obtenir l'échantillon;
+\item Soit on tire $N$ triplets $(\lambda,\mu,\nu)$ aléatoirement, et les solutions obtenus constitueront notre échantillon. 
+\end{itemize}
+
+Les solutions qui constituent notre échantillon ne sont pas nécessairement toutes différentes.
+
+\subsubsection{Construction de la base d'apprentissage}
+
+\subsubsection{Extraction des arêtes}
+
+\subsection{Résultats}
+
+
 
 \section{Intégration de la connaissance} 
 
+\subsection{Où intégrer la connaissance ?}
+
+\subsection{Learning Heuristic}
+
+\subsection{Résultats}
+
 \bibliographystyle{plain}
 \bibliography{biblio}
+
 \end{document}
