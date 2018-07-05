@@ -13,8 +13,9 @@
 
 \author{Clément Legrand}
 
-\begin{document}
 
+\begin{document}
+\footnotesize
 
 \begin{frame}[plain]
 \titlepage
@@ -81,196 +82,86 @@ Pour chaque test on effectue 5 itérations.
 Temps de calcul: 2 s (50), 4 s (100), 20 s (500), 44 s (1000).
 \end{frame}
 
-\begin{frame}{Résultats avec critère Seuil et base Quan$_{10}$}
+\begin{frame}{Résultats A-n37-k06, critère Seuil}
 
-\begin{tabular}{|c|c|c|c|c|}
-   \hline
-   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
-   \hline
-   50 & 3 & 34 & 21 & 0.5  \\   
-   \hline
-   100 & 5 & 30 & 21 & 0.5  \\
-   \hline
-   500 & 25 & 32 & 24 & 0.57  \\
-   \hline
-   Tout & 400 & 33 & 24 & 0.57 \\
-   \hline
-   \hline
-   50 & 4 & 23 & 14 & 0.33  \\
-   \hline
-   100 & 8 & 16 & 15 & 0.36  \\
-   \hline
-   500 & 38 & 15 & 14 & 0.33  \\
-   \hline
-   Tout & 400 & 15 & 14 & 0.33 \\
-   \hline
+\begin{table}[H]
+
+\begin{tabular}{|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}||@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}||@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
+
+\hline
+ & \multicolumn{4}{c|}{Quan$_{10}$} & \multicolumn{4}{c|}{Qual$_{10}$} & \multicolumn{4}{c|}{Tout} \\
+ \hline
+ & Seuil & Arêtes & Corr & Prop & Seuil & Arêtes & Corr & Prop & Seuil & Arêtes & Corr & Prop \\
+ \hline
+ 50 & 3 & 34 & 21 & 0.5 & 11 & 33 & 21 & 0.50 & 25 & 23 & 15 & 0.35 \\
+ \cline{2-13} 
+    & 4 & 23 & 14 & 0.33 & 17 & 17 & 12 & 0.28 & 38 & 10 & 7 & 0.16 \\
+  \hline
+   100 & 5 & 30 & 21 & 0.5 & 15 & 31 & 23 & 0.55 & 50 & 24 & 17 & 0.40 \\
+ \cline{2-13} 
+    & 8 & 16 & 15 & 0.36 & 23 & 17 & 14 & 0.33 & 75 & 6 & 6 & 0.14 \\
+  \hline
+   500 & 25 & 32 & 24 & 0.57 & 58 & 31 & 22 & 0.52 & 250 & 22 & 15 & 0.36 \\
+ \cline{2-13} 
+    & 38 & 15 & 14 & 0.33 & 88 & 20 & 16 & 0.38 & 375 & 7 & 7 & 0.18 \\
+  \hline
+   Complet & 400 & 33 & 24 & 0.57 & 732 & 30 & 23 & 0.55 & 4000 & 25 & 16 & 0.38 \\
+ \cline{2-13} 
+    & 600 & 15 & 14 & 0.33 & 1097 & 18 & 16 & 0.38 & 6000 & 9 & 6 & 0.14 \\
+  \hline
 
 \end{tabular}
+\end{table}
+\begin{itemize}
+\item Taille de l'échantillon ne semble pas avoir d'influence sur les résultats (\emph{prop} reste semblable quel que soit la taille de l'échantillon).
+\item Avec base \emph{Tout} : valeurs de \emph{prop} plus basses $\rightarrow$ pas la peine d'utiliser tout l'échantillon.
+\end{itemize}
+
+Remarque : Base Quan$_{10}$ trop petite avec échantillon 50 ou 100.
 
 
 \end{frame}
 
-\begin{frame}{Résultats avec critère Seuil et base Qual$_{10}$}
+\begin{frame}{Résultats A-n37-k06, critère Rang}
+\begin{table}[H]
 
-\begin{tabular}{|c|c|c|c|c|}
-   \hline
-   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
-    \hline
-   50 & L$_{lb}$/2 & 33 & 21 & 0.50  \\
-   \hline
-   100 & L$_{lb}$/2 & 31 & 23 & 0.55  \\
-   \hline
-   500 & L$_{lb}$/2 & 31 & 22 & 0.52  \\
-   \hline
-   Tout & L$_{lb}$/2 & 30 & 23 & 0.55 \\
-   \hline
-   \hline
-   50 & 3L$_{lb}$/4 & 17 & 12 & 0.28  \\
-   \hline
-   100 & 3L$_{lb}$/4 & 17 & 14 & 0.33  \\
-   \hline
-   500 & 3L$_{lb}$/4 & 20 & 16 & 0.38  \\
-   \hline
-   Tout & 3L$_{lb}$/4 & 18 & 16 & 0.38 \\
-   \hline
+\begin{tabular}{|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}||@{}c@{}|@{}c@{}|@{}c@{}||@{}c@{}|@{}c@{}|@{}c@{}|}
 
-\end{tabular}
-\end{frame}
-
-\begin{frame}{Résultats avec critère Seuil et base Tout}
-
-\begin{tabular}{|c|c|c|c|c|}
-   \hline
-   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
-   \hline
-   50 & 25 & 23 & 15 & 0.35  \\
-   \hline
-   100 & 50 & 24 & 17 & 0.40  \\
-   \hline
-   500 & 250 & 22 & 15 & 0.36  \\
-   \hline
-   Tout & 4000 & 25 & 16 & 0.38 \\
-   \hline
-   \hline
-   50 & 38 & 10 & 7 & 0.16  \\
-   \hline
-   100 & 75 & 6 & 6 & 0.14  \\
-   \hline
-   500 & 375 & 7 & 7 & 0.18  \\
-   \hline
-   Tout & 4000 & 9 & 6 & 0.14 \\
-   \hline
+\hline
+ & \multicolumn{3}{c|}{Quan$_{10}$} & \multicolumn{3}{c|}{Qual$_{10}$} & \multicolumn{3}{c|}{Tout} \\
+ \hline
+ & Rang & Corr & Prop & Rang & Corr & Prop & Rang & Corr & Prop \\
+ \hline
+ 50 & 10  & 6 & 0.14 & 10  & 6 & 0.14 & 10  & 7 & 0.16  \\
+ \cline{2-10} 
+    & 20 & 13 & 0.31 & 20  & 13 & 0.32 & 20  & 13 & 0.31  \\
+ \cline{2-10} 
+    & 18 & 12 & 0.28 & 18 & 13 & 0.3 & 18 & 12 & 0.28  \\
+  \hline
+   100 & 10  & 9 & 0.21 & 10  & 9 & 0.21 & 10  & 10 & 0.24  \\
+ \cline{2-10} 
+    & 20 & 16 & 0.38 & 20 & 16 & 0.38 & 20 & 15 & 0.36  \\
+  \cline{2-10} 
+    & 18 & 13 & 0.3 & 18 & 13 & 0.3 & 18 & 12 & 0.29  \\
+  \hline
+   500 & 10  & 9 & 0.21 & 10  & 10 & 0.24 & 10  & 9 & 0.21  \\
+ \cline{2-10} 
+    & 20 & 16 & 0.38 & 20 & 16 & 0.38 & 20 & 15 & 0.36  \\
+  \cline{2-10} 
+    & 18 & 13 & 0.3 & 18 & 13 & 0.3 & 18 & 12 & 0.28  \\
+  \hline
+   Complet & 10 & 8 & 0.19 & 10 & 9 & 0.21 & 10 & 7 & 0.17  \\
+ \cline{2-10} 
+    & 20 & 14 & 0.33 & 20 & 14 & 0.33 & 20 & 14 & 0.33  \\
+  \cline{2-10} 
+    & 18 & 12 & 0.29 & 18 & 12 & 0.29 & 18 & 12 & 0.29  \\
+  \hline
 
 \end{tabular}
+\end{table}
+
+Les 3 bases fournissent des valeurs \emph{prop} similaires.
 \end{frame}
-
-
-\begin{frame}{Résultats avec critère Rang et base Quan$_{10}$}
-
-\begin{tabular}{|c|c|c|c|}
-   \hline
-   Taille échantillon & Rang max & Nb correctes & Proportion\\
-   \hline
-   50 & 10  & 6 & 0.14  \\
-   \hline
-   100 & 10  & 9 & 0.21  \\
-   \hline
-   500 & 10  & 9 & 0.21  \\
-   \hline
-   Tout & 10 & 8 & 0.19 \\
-   \hline
-   \hline
-   50 & 20 & 13 & 0.31  \\
-   \hline
-   100 & 20 & 16 & 0.38  \\
-   \hline
-   500 & 20 & 16 & 0.38  \\
-   \hline
-   Tout & 20 & 14 & 0.33 \\
-   \hline
-   \hline
-   50 & 18 & 12 & 0.28  \\
-   \hline
-   100 & 18 & 13 & 0.3  \\
-   \hline
-   500 & 18 & 13 & 0.3  \\
-   \hline
-	Tout & 18 & 12 & 0.29 \\
-	\hline
-\end{tabular}
-
-\end{frame}
-
-\begin{frame}{Résultats avec critère Rang et base Qual$_{10}$}
-
-\begin{tabular}{|c|c|c|c|}
-   \hline
-   Taille échantillon & Rang max & Nb correctes & Proportion\\
-   \hline
-   50 & 10  & 6 & 0.14  \\
-   \hline
-   100 & 10  & 9 & 0.21  \\
-   \hline
-   500 & 10  & 10 & 0.24  \\
-   \hline
-   Tout & 10 & 9 & 0.21 \\
-   \hline
-   \hline
-   50 & 20  & 13 & 0.32  \\
-   \hline
-   100 & 20 & 16 & 0.38  \\
-   \hline
-   500 & 20 & 16 & 0.38  \\
-	\hline
-	Tout & 20 & 14 & 0.33 \\  
-   \hline
-   \hline
-   50 & 18 & 13 & 0.3  \\
-   \hline
-   100 & 18 & 13 & 0.3  \\
-   \hline
-   500 & 18 & 13 & 0.3  \\
-   \hline
-   Tout & 18 & 12 & 0.29 \\
-   \hline
-\end{tabular}
-\end{frame}
-
-\begin{frame}{Résultats avec critère Rang et base Tout}
-
-\begin{tabular}{|c|c|c|c|}
-   \hline
-   Taille échantillon & Rang max & Nb correctes & Proportion\\
-   \hline
-   50 & 10  & 7 & 0.16  \\
-   \hline
-   100 & 10  & 10 & 0.24  \\
-   \hline
-   500 & 10  & 9 & 0.21  \\
-   \hline
-   Tout & 10 & 7 & 0.17  \\
-   \hline
-   \hline
-   50 & 20  & 13 & 0.31  \\
-   \hline
-   100 & 20 & 15 & 0.36  \\
-   \hline
-   500 & 20 & 15 & 0.36  \\
-   \hline
-   Tout & 20 & 14 & 0.33 \\
-   \hline
-   \hline
-   50 & 18 & 12 & 0.28  \\
-   \hline
-   100 & 18 & 12 & 0.29  \\
-   \hline
-   500 & 18 & 12 & 0.28  \\
-   \hline
-   Tout & 18 & 12 & 0.29 \\
-   \hline
-\end{tabular}
-\end{frame}
-
 \subsection{Résultats A-n65-k09}
 
 \begin{frame}{Instance test}
@@ -287,189 +178,83 @@ Pour chaque test on effectue 5 itérations.
 Temps de calcul: 4 s (50), 8 s (100), 42 s (500), 84 s (1000).
 \end{frame}
 
-\begin{frame}{Résultats avec critère Seuil et base Quan$_{10}$}
-\emph{L$_{lb}$} est la taille de la base d'apprentissage. 
+\begin{frame}{Résultats A-n65-k09, critère Seuil}
 
+\begin{table}[H]
 
-On utilise la base Quan$_{10}$ avec certaines valeurs de seuil.
+\begin{tabular}{|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}||@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}||@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
 
-\begin{tabular}{|c|c|c|c|c|}
-   \hline
-   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
-   \hline
-   50 & 3 & 73 & 43 & 0.59  \\   
-   \hline
-   100 & 5 & 70 & 44 & 0.6  \\
-   \hline
-   500 & 25 & 71 & 43 & 0.59  \\
-   \hline
-   Tout & 400 & 73 & 45 & 0.62 \\
-   \hline
-   50 & 4 & 61 & 40 & 0.55  \\
-   \hline
-   100 & 8 & 63 & 41 & 0.56  \\
-   \hline
-   500 & 38 & 60 & 40 & 0.55  \\
-   \hline
-   Tout & 600 & 62 & 41 & 0.56 \\
-   \hline
+\hline
+ & \multicolumn{4}{c|}{Quan$_{10}$} & \multicolumn{4}{c|}{Qual$_{10}$} & \multicolumn{4}{c|}{Tout} \\
+ \hline
+ & Seuil & Arêtes & Corr & Prop & Seuil & Arêtes & Corr & Prop & Seuil & Arêtes & Corr & Prop \\
+ \hline
+ 50 & 3 & 73 & 43 & 0.59 & 10 & 64 & 44 & 0.60 & 25 & 40 & 31 & 0.43 \\
+ \cline{2-13} 
+    & 4 & 61 & 40 & 0.55 & 15 & 39 & 29 & 0.40 & 38 & 14 & 9 & 0.13 \\
+  \hline
+   100 & 5 & 70 & 44 & 0.6 & 22 & 58 & 42 & 0.58 & 50 & 43 & 33 & 0.45 \\
+ \cline{2-13} 
+    & 8 & 63 & 41 & 0.56 & 33 & 36 & 28 & 0.39 & 75 & 15 & 10 & 0.14 \\
+  \hline
+   500 & 25 & 71 & 43 & 0.59 & 111 & 56 & 41 & 0.56 & 250 & 45 & 35 & 0.48 \\
+ \cline{2-13} 
+    & 38 & 60 & 40 & 0.55 & 167 & 35 & 28 & 0.39 & 375 & 14 & 9 & 0.13 \\
+  \hline
+   Complet & 400 & 62 & 41 & 0.56 & 1005 & 56 & 40 & 0.55 & 4000 & 45 & 35 & 0.48 \\
+ \cline{2-13} 
+    & 600 & 15 & 14 & 0.33 & 1508 & 35 & 28 & 0.39 & 6000 & 13 & 9 & 0.12 \\
+  \hline
+
 \end{tabular}
+
+
+\end{table}
+
+Si trop d'arêtes renvoyées $\rightarrow$ Solutions infaisables ? (futurs tests)
 
 
 \end{frame}
 
-\begin{frame}{Résultats avec critère Seuil et base Qual$_{10}$}
-On utilise la base Qual$_{10}$ avec certaines valeurs de seuil.
-\begin{tabular}{|c|c|c|c|c|}
-   \hline
-   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
-    \hline
-   50 & L$_{lb}$/2 & 64 & 44 & 0.60  \\
-   \hline
-   100 & L$_{lb}$/2 & 58 & 42 & 0.58  \\
-   \hline
-   500 & L$_{lb}$/2 & 56 & 41 & 0.56  \\
-   \hline
-   Tout & L$_{lb}$/2 & 56 & 40 & 0.55 \\
-   \hline
-   50 & 3L$_{lb}$/4 & 39 & 29 & 0.40  \\
-   \hline
-   100 & 3L$_{lb}$/4 & 36 & 28 & 0.39  \\
-   \hline
-   500 & 3L$_{lb}$/4 & 35 & 28 & 0.39  \\
-   \hline
-   Tout & 3L$_{lb}$/4 & 35 & 28 & 0.39 \\
-   \hline
+\begin{frame}{Résultats A-n65-k09, critère Rang}
+\begin{table}[H]
+
+\begin{tabular}{|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}||@{}c@{}|@{}c@{}|@{}c@{}||@{}c@{}|@{}c@{}|@{}c@{}|}
+
+\hline
+ & \multicolumn{3}{c|}{Quan$_{10}$} & \multicolumn{3}{c|}{Qual$_{10}$} & \multicolumn{3}{c|}{Tout} \\
+ \hline
+ & Rang & Corr & Prop & Rang & Corr & Prop & Rang & Corr & Prop \\
+ \hline
+ 50 & 10  & 6 & 0.08 & 10  & 7 & 0.1 & 10  & 7 & 0.1  \\
+ \cline{2-10} 
+    & 20 & 14 & 0.2 & 20  & 15 & 0.21 & 20  & 14 & 0.19  \\
+ \cline{2-10} 
+    & 33 & 23 & 0.32 & 33 & 26 & 0.36 & 33 & 24 & 0.33  \\
+  \hline
+   100 & 10  & 6 & 0.08 & 10  & 7 & 0.1 & 10  & 7 & 0.1  \\
+ \cline{2-10} 
+    & 20 & 16 & 0.22 & 20 & 16 & 0.22 & 20 & 14 & 0.19  \\
+  \cline{2-10} 
+    & 33 & 26 & 0.36 & 33 & 26 & 0.36 & 33 & 25 & 0.34  \\
+  \hline
+   500 & 10  & 7 & 0.1 & 10  & 7 & 0.1 & 10  & 6 & 0.08  \\
+ \cline{2-10} 
+    & 20 & 17 & 0.23 & 20 & 15 & 0.21 & 20 & 13 & 0.18  \\
+  \cline{2-10} 
+    & 33 & 27 & 0.37 & 33 & 26 & 0.36 & 33 & 25 & 0.34  \\
+  \hline
+   Complet & 10 & 7 & 0.1 & 10 & 7 & 0.1 & 10 & 6 & 0.08  \\
+ \cline{2-10} 
+    & 20 & 17 & 0.23 & 20 & 17 & 0.23 & 20 & 13 & 0.18  \\
+  \cline{2-10} 
+    & 33 & 27 & 0.37 & 33 & 27 & 0.37 & 33 & 25 & 0.34  \\
+  \hline
+
 \end{tabular}
-\end{frame}
+\end{table}
 
-\begin{frame}{Résultats avec critère Seuil et base Tout}
-On utilise la base Tout avec certaines valeurs de seuil.
-\begin{tabular}{|c|c|c|c|c|}
-   \hline
-   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
-   \hline
-   50 & 25 & 40 & 31 & 0.43  \\
-   \hline
-   100 & 50 & 43 & 33 & 0.45  \\
-   \hline
-   500 & 250 & 45 & 35 & 0.48  \\
-   \hline
-   Tout & 4000 & 45 & 35 & 0.48 \\
-   \hline
-   50 & 38 & 14 & 9 & 0.13  \\
-   \hline
-   100 & 75 & 15 & 10 & 0.14  \\
-   \hline
-   500 & 375 & 14 & 9 & 0.13  \\
-   \hline
-   Tout & 6000 & 13 & 9 & 0.12 \\
-   \hline
-\end{tabular}
-\end{frame}
-
-
-\begin{frame}{Résultats avec critère Rang et base Quan$_{10}$}
-
-On utilise la base Quan$_{10}$ avec certaines valeurs de rang.
-\begin{tabular}{|c|c|c|c|}
-   \hline
-   Taille échantillon & Rang max & Nb correctes & Proportion\\
-   \hline
-   50 & 10  & 6 & 0.08  \\
-   \hline
-   100 & 10  & 6 & 0.08  \\
-   \hline
-   500 & 10  & 7 & 0.1  \\
-   \hline
-   Tout & 10 & 7 & 0.1 \\
-   \hline
-   50 & 20 & 14 & 0.2  \\
-   \hline
-   100 & 20 & 16 & 0.22  \\
-   \hline
-   500 & 20 & 17 & 0.23  \\
-   \hline
-   Tout & 20 & 17 & 0.23 \\
-   \hline
-   50 & 33 & 23 & 0.32  \\
-   \hline
-   100 & 33 & 26 & 0.36  \\
-   \hline
-   500 & 33 & 27 & 0.37  \\
-   \hline
-   Tout & 33 & 27 & 0.37 \\
-   \hline
-\end{tabular}
-
-\end{frame}
-
-\begin{frame}{Résultats avec critère Rang et base Qual$_{10}$}
-
-On utilise la base Qual$_{10}$ avec certaines valeurs de rang.
-\begin{tabular}{|c|c|c|c|}
-   \hline
-   Taille échantillon & Rang max & Nb correctes & Proportion\\
-   \hline
-   50 & 10  & 7 & 0.1  \\
-   \hline
-   100 & 10  & 7 & 0.1  \\
-   \hline
-   500 & 10  & 7 & 0.1  \\
-   \hline
-   Tout & 10 & 7 & 0.1 \\
-   \hline
-   50 & 20  & 15 & 0.21  \\
-   \hline
-   100 & 20 & 16 & 0.22  \\
-   \hline
-   500 & 20 & 15 & 0.21  \\
-   \hline
-   Tout & 20 & 17 & 0.23 \\
-   \hline
-   50 & 33 & 26 & 0.36  \\
-   \hline
-   100 & 33 & 26 & 0.36  \\
-   \hline
-   500 & 33 & 26 & 0.36  \\
-   \hline
-   Tout & 33 & 27 & 0.37 \\
-   \hline
-\end{tabular}
-\end{frame}
-
-\begin{frame}{Résultats avec critère Rang et base Tout}
-
-On utilise la base Tout avec certaines valeurs de rang.
-\begin{tabular}{|c|c|c|c|}
-   \hline
-   Taille échantillon & Rang max & Nb correctes & Proportion\\
-   \hline
-   50 & 10  & 7 & 0.1  \\
-   \hline
-   100 & 10  & 7 & 0.1  \\
-   \hline
-   500 & 10  & 6 & 0.08  \\
-   \hline
-   Tout & 10 & 6 & 0.08 \\
-   \hline
-   50 & 20  & 14 & 0.19  \\
-   \hline
-   100 & 20 & 14 & 0.19  \\
-   \hline
-   500 & 20 & 13 & 0.18  \\
-   \hline
-   Tout & 20 & 13 & 0.18 \\
-   \hline
-   50 & 33 & 24 & 0.33  \\
-   \hline
-   100 & 33 & 25 & 0.34  \\
-   \hline
-   500 & 33 & 25 & 0.34  \\
-   \hline
-   Tout & 33 & 25 & 0.34 \\
-   \hline
-\end{tabular}
+De nouveau les 3 bases renvoient des résultats similaires. 
 \end{frame}
 
 
@@ -489,218 +274,173 @@ Pour chaque test on effectue 5 itérations.
 
 Temps de calcul: 38 s (50), 75 s (100), 375 s (500), 1060 s (8000). 
 \end{frame}
+\begin{frame}{Résultats P-n101-k04, critère Seuil}
 
-\begin{frame}{Résultats avec critère Seuil et base Quan$_{10}$}
-\emph{L$_{lb}$} est la taille de la base d'apprentissage. 
+\begin{table}[H]
+\begin{tabular}{|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}||@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}||@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
 
+\hline
+ & \multicolumn{4}{c|}{Quan$_{10}$} & \multicolumn{4}{c|}{Qual$_{10}$} & \multicolumn{4}{c|}{Tout} \\
+ \hline
+ & Seuil & Arêtes & Corr & Prop & Seuil & Arêtes & Corr & Prop & Seuil & Arêtes & Corr & Prop \\
+ \hline
+ 50 & 3 & 93 & 65 & 0.62 & 5 & 83 & 66 & 0.64 & 25 & 71 & 61 & 0.59 \\
+ \cline{2-13} 
+    & 4 & 54 & 44 & 0.42 & 8 & 42 & 37 & 0.36 & 38 & 24 & 21 & 0.20  \\
+  \hline
+   100 & 5 & 80 & 66 & 0.64 & 9 & 79 & 66 & 0.63 & 50 & 72 & 62 & 0.60 \\
+ \cline{2-13} 
+    & 8 & 45 & 41 & 0.40 & 14 & 42 & 39 & 0.38 & 75 & 24 & 22 & 0.21 \\
+  \hline
+   500 & 25 & 83 & 69 & 0.67 & 44 & 81 & 68 & 0.66 & 250 & 72 & 63 & 0.60 \\
+ \cline{2-13} 
+    & 38 & 43 & 39 & 0.38 & 67 & 39 & 36 & 0.35 & 375 & 22 & 20 & 0.19 \\
+  \hline
+   Complet & 400 & 87 & 73 & 0.7 & 411 & 85 & 71 & 0.68 & 4000 & 70 & 60 & 0.58 \\
+ \cline{2-13} 
+    & 600 & 42 & 39 & 0.38 & 616 & 41 & 38 & 0.37 & 6000 & 23 & 21 & 0.2 \\
+  \hline
 
-On utilise la base Quan$_{10}$ avec certaines valeurs de seuil.
-
-\begin{tabular}{|c|c|c|c|c|}
-   \hline
-   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
-   \hline
-   50 & 3 & 93 & 65 & 0.62  \\   
-   \hline
-   100 & 5 & 80 & 66 & 0.64  \\
-   \hline
-   500 & 25 & 83 & 69 & 0.67  \\
-   \hline
-   Tout & 400 & 87 & 73 & 0.7 \\
-   \hline
-   50 & 4 & 54 & 44 & 0.42  \\
-   \hline
-   100 & 8 & 45 & 41 & 0.40  \\
-   \hline
-   500 & 38 & 43 & 39 & 0.38  \\
-   \hline
-   Tout & 600 & 42 & 39 & 0.38 \\
-   \hline
 \end{tabular}
 
 
+\end{table}
+
+Plus la taille de l'instance augmente, et plus la proportion d'arêtes optimales  renvoyées présentes dans la solution optimale est grande.
+
 \end{frame}
 
-\begin{frame}{Résultats avec critère Seuil et base Qual$_{10}$}
-On utilise la base Qual$_{10}$ avec certaines valeurs de seuil.
-\begin{tabular}{|c|c|c|c|c|}
-   \hline
-   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
-    \hline
-   50 & L$_{lb}$/2 & 83 & 66 & 0.64  \\
-   \hline
-   100 & L$_{lb}$/2 & 79 & 66 & 0.63  \\
-   \hline
-   500 & L$_{lb}$/2 & 81 & 68 & 0.66  \\
-   \hline
-   Tout & L$_{lb}$/2 & 85 & 71 & 0.68 \\
-   \hline
-   50 & 3L$_{lb}$/4 & 42 & 37 & 0.36  \\
-   \hline
-   100 & 3L$_{lb}$/4 & 42 & 39 & 0.38  \\
-   \hline
-   500 & 3L$_{lb}$/4 & 39 & 36 & 0.35  \\
-   \hline\\
-   Tout & 3L$_{lb}$/4 & 41 & 38 & 0.37 \\
-   \hline
+\begin{frame}{Résultats P-n101-k04, critère Rang}
+\begin{table}[H]
+
+\begin{tabular}{|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}||@{}c@{}|@{}c@{}|@{}c@{}||@{}c@{}|@{}c@{}|@{}c@{}|}
+
+\hline
+ & \multicolumn{3}{c|}{Quan$_{10}$} & \multicolumn{3}{c|}{Qual$_{10}$} & \multicolumn{3}{c|}{Tout} \\
+ \hline
+ & Rang & Corr & Prop & Rang & Corr & Prop & Rang & Corr & Prop \\
+ \hline
+ 50 & 10  & 8 & 0.08 & 10  & 8 & 0.08 & 10  & 8 & 0.08 \\
+ \cline{2-10} 
+    & 20 & 18 & 0.17 & 20  & 17 & 0.16 & 20 & 18 & 0.17  \\
+ \cline{2-10} 
+    & 50 & 43 & 0.41 & 50 & 44 & 0.43 & 50 & 44 & 0.43  \\
+  \hline
+   100 & 10  & 8 & 0.08 & 10  & 8 & 0.08 & 10  & 8 & 0.08  \\
+ \cline{2-10} 
+    & 20 & 18 & 0.17 & 20 & 18 & 0.17 & 20 & 18 & 0.17  \\
+  \cline{2-10} 
+    & 50 & 46 & 0.44 & 50 & 46 & 0.44 & 50 & 46 & 0.44  \\
+  \hline
+   500 & 10  & 8 & 0.08 & 10  & 8 & 0.08 & 10  & 8 & 0.08  \\
+ \cline{2-10} 
+    & 20 & 18 & 0.17 & 20 & 18 & 0.17 & 20 & 18 & 0.17  \\
+  \cline{2-10} 
+    & 50 & 46 & 0.44 & 50 & 46 & 0.44 & 50 & 46 & 0.44  \\
+  \hline
+   Complet & 10  & 8 & 0.08 & 10  & 8 & 0.08 & 10  & 8 & 0.08  \\
+ \cline{2-10} 
+    & 20 & 18 & 0.17 & 20 & 18 & 0.17 & 20 & 18 & 0.17  \\
+  \cline{2-10} 
+    & 50 & 46 & 0.44 & 50 & 46 & 0.44 & 50 & 46 & 0.44  \\
+  \hline
+
 \end{tabular}
+\end{table}
+Il faut choisir un rang dépendant de la taille de l'instance (rangs fixés à 10 ou 20 ne revoient plus de bons résultats).
 \end{frame}
 
-\begin{frame}{Résultats avec critère Seuil et base Tout}
-On utilise la base Tout avec certaines valeurs de seuil.
-\begin{tabular}{|c|c|c|c|c|}
-   \hline
-   Taille échantillon & Seuil & Nb arêtes & Nb correctes & Proportion\\
-   \hline
-   50 & 25 & 71 & 61 & 0.59  \\
-   \hline
-   100 & 50 & 72 & 62 & 0.60  \\
-   \hline
-   500 & 250 & 72 & 63 & 0.60  \\
-   \hline
-   Tout & 4000 & 70 & 60 & 0.58 \\
-   \hline
-   50 & 38 & 24 & 21 & 0.20  \\
-   \hline
-   100 & 75 & 24 & 22 & 0.21  \\
-   \hline
-   500 & 375 & 22 & 20 & 0.19  \\
-   \hline
-   Tout & 6000 & 23 & 21 & 0.2 \\
-   \hline
+\begin{frame}{Choix de l'échantillon et de la base}
+D'après les résultats précédents :
+\begin{itemize}
+\item Taille échantillon : 50 (aussi efficace que les tailles plus grandes, et plus rapide)
+\item Base d'apprentissage : Qual (Quan trop petite pour 50, Tout pas intéressante)
+\end{itemize}
+Que choisir comme critère pour extraire les arêtes ?
+\end{frame}
+
+\begin{frame}{Nouveaux résultats pour les critères}
+
+\begin{table}[H]
+\begin{tabular}{{|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}}
+
+\hline
+ \multicolumn{4}{|c|}{A-n37-k06} & \multicolumn{4}{c|}{A-n65-k09} & \multicolumn{4}{c|}{P-n101-k04} \\
+ \hline 
+ Critère & Arêtes & Corr. & Infais. & Critère & Arêtes & Corr. & Infais. &Critère & Arêtes & Corr. & Infais. \\
+ \hline
+ Rg = 18 & 18 & 12 & 0 (0) & & & & & & & & \\
+ \hline
+ Rg = 36 & 36 & 22 & 1 (0) & & & & & & & & \\
+ \hline
+ Se = 8 & 45 & 25 & 0 (0) & & & & & & & & \\
+ \hline
+ Se = 12 & 31 & 20 & 0 (0) & & & & & & & & \\
+ \hline
 \end{tabular}
+\end{table}
 \end{frame}
-
-
-\begin{frame}{Résultats avec critère Rang et base Quan$_{10}$}
-
-On utilise la base Quan$_{10}$ avec certaines valeurs de rang.
-\begin{tabular}{|c|c|c|c|}
-   \hline
-   Taille échantillon & Rang max & Nb correctes & Proportion\\
-   \hline
-   50 & 10  & 8 & 0.08  \\
-   \hline
-   100 & 10  & 8 & 0.08  \\
-   \hline
-   500 & 10  & 8 & 0.08  \\
-   \hline
-   Tout & 10 & 8 & 0.08 \\
-   \hline
-   50 & 20 & 18 & 0.17  \\
-   \hline
-   100 & 20 & 18 & 0.17  \\
-   \hline
-   500 & 20 & 18 & 0.17  \\
-   \hline
-   Tout & 20 & 18 & 0.17 \\
-   \hline
-   50 & 50 & 43 & 0.41  \\
-   \hline
-   100 & 50 & 45 & 0.43  \\
-   \hline
-   500 & 50 & 46 & 0.44  \\
-   \hline
-   Tout & 50 & 46 & 0.44 \\
-   \hline
-\end{tabular}
-
-\end{frame}
-
-\begin{frame}{Résultats avec critère Rang et base Qual$_{10}$}
-
-On utilise la base Qual$_{10}$ avec certaines valeurs de rang.
-\begin{tabular}{|c|c|c|c|}
-   \hline
-   Taille échantillon & Rang max & Nb correctes & Proportion\\
-   \hline
-   50 & 10  & 8 & 0.08  \\
-   \hline
-   100 & 10  & 8 & 0.08  \\
-   \hline
-   500 & 10  & 8 & 0.08  \\
-   \hline
-   Tout & 10  & 8 & 0.08  \\
-   \hline
-   50 & 20  & 17 & 0.16  \\
-   \hline
-   100 & 20 & 18 & 0.17  \\
-   \hline
-   500 & 20 & 18 & 0.17  \\
-   \hline
-   Tout & 20 & 18 & 0.17 \\
-   \hline
-   50 & 50 & 44 & 0.43  \\
-   \hline
-   100 & 50 & 45 & 0.43  \\
-   \hline
-   500 & 50 & 46 & 0.44  \\
-   \hline
-   Tout & 50 & 46 & 0.44 \\
-   \hline
-\end{tabular}
-\end{frame}
-
-\begin{frame}{Résultats avec critère Rang et base Tout}
-
-On utilise la base Tout avec certaines valeurs de rang.
-\begin{tabular}{|c|c|c|c|}
-   \hline
-   Taille échantillon & Rang max & Nb correctes & Proportion\\
-   \hline
-   50 & 10  & 8 & 0.08  \\
-   \hline
-   100 & 10  & 8 & 0.08  \\
-   \hline
-   500 & 10  & 8 & 0.08  \\
-   \hline
-   Tout & 10 & 8 & 0.08 \\
-   \hline
-   50 & 20  & 18 & 0.17  \\
-   \hline
-   100 & 20 & 18 & 0.17  \\
-   \hline
-   500 & 20 & 18 & 0.17  \\
-   \hline
-   Tout & 20 & 18 & 0.17 \\
-   \hline
-   50 & 50 & 44 & 0.43  \\
-   \hline
-   100 & 50 & 46 & 0.44  \\
-   \hline
-   500 & 50 & 46 & 0.44  \\
-   \hline
-   Tout & 50 & 46 & 0.44 \\
-   \hline
-\end{tabular}
-\end{frame}
-
 
 \section{Intégration de la connaissance dans un algorithme}
 
 \subsection{Présentation algorithme}
-\begin{frame}{Algorithme actuel}
+
+\begin{frame}{Algorithme d'optimisation ($H_c$)}
 
 \begin{algorithm}[H]
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
-Déterminer $Init$ par apprentissage\;
-$newBase \gets []$\;
-\For {$i \gets 1$ \textbf{to} $10$} {
-	$(\lambda,\mu,\nu) \gets argmin_{(\lambda,\mu,\nu)}CW(I,D,\lambda,\mu,\nu)$\;
-	\If {$i = 1$} {
-		$Sol \gets Heuristique(Init,I,D,\lambda,\mu,\nu)$\;
-		$newBase \gets newBase \cup Sol$\;
+
+$Sol \gets CW(\lambda,\mu,\nu)$\;
+$NewSol \gets Sol$\;
+\While {La dernière amélioration date de moins de 10 sec} {
+	Calcul de la pire arête\;
+	$NewSol \gets EjectionChain_{FI-RD}$\;
+	$NewSol \gets LinKernighan_{BI-O}$\;
+	$NewSol \gets CrossExchange_{FI-RD}$\;
+	$NewSol \gets LinKernighan_{BI-O}$\;
+	\If {$cost(NewSol) < cost(Sol)$} {
+		$Sol \gets NewSol$\;
 	}
-	\Else {
-		Déterminer $Init$ avec les connaissances de $Base$\;
-		 $Sol \gets Heuristique(Init,I,D,\lambda,\mu,\nu)$\;
-		$newBase \gets newBase \cup Sol$\;
+
+	\If {Pas d'amélioration depuis $n/2$ itérations} {  
+		$NewSol \gets Sol$\;
 	}
 }
-\Return{La meilleure solution}\;
+\Return{$Sol$}\;
 
 \end{algorithm}
 
+\end{frame}
+
+\begin{frame}{Learning Heuristic}
+\begin{algorithm}[H]
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+$(\lambda^*,\mu^*,\nu^*), Init \gets Apprentissage()$\;
+$newBase \gets []$\;
+\For {$i \gets 1$ \textbf{to} $10$} {
+	\If {$i = 1$} {
+		
+		\For {$j \gets 1$ \textbf{to} $10$} {
+			$Sol \gets H_c(Init,I,D,\lambda^*,\mu^*,\nu^*)$\;
+			$newBase \gets newBase \cup Sol$\;
+			}	
+		
+	}
+	\Else {
+		Déterminer $Init$ avec les connaissances de $newBase$\;
+		
+		$(\lambda^*,\mu^*,\nu^*), Init \gets Apprentissage(Init)$\;
+		
+		
+		\For {$j \gets 1$ \textbf{to} $10$} {
+		 	$Sol \gets H_c(Init,I,D,\lambda^*,\mu^*,\nu^*)$\;
+			$newBase \gets newBase \cup Sol$\;
+		}
+	
+	}
+}
+\Return{La meilleure solution}\;
+\end{algorithm}
 \end{frame}
 
 \subsection{Résultats}

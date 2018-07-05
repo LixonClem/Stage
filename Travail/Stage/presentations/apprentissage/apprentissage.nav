@@ -1,77 +1,54 @@
+\beamer@endinputifotherversion {3.36pt}
 \headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
 \headcommand {\beamer@framepages {1}{1}}
+\headcommand {\sectionentry {1}{Apprentissage}{2}{Apprentissage}{0}}
 \headcommand {\beamer@sectionpages {1}{1}}
 \headcommand {\beamer@subsectionpages {1}{1}}
-\headcommand {\sectionentry {1}{Apprentissage}{2}{Apprentissage}{0}}
-\headcommand {\beamer@subsectionpages {2}{1}}
-\headcommand {\beamer@subsectionentry {0}{1}{1}{2}{Description}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{2}{Description}}\headcommand {\beamer@subsectionpages {2}{1}}
 \headcommand {\slideentry {1}{1}{1}{2/2}{Description}{0}}
 \headcommand {\beamer@framepages {2}{2}}
 \headcommand {\slideentry {1}{1}{2}{3/3}{Description}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\beamer@subsectionpages {2}{3}}
-\headcommand {\beamer@subsectionentry {0}{1}{2}{4}{R\IeC {\'e}sultats A-n37-k06}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{4}{R\IeC {\'e}sultats A-n37-k06}}\headcommand {\beamer@subsectionpages {2}{3}}
 \headcommand {\slideentry {1}{2}{1}{4/4}{R\IeC {\'e}sultats A-n37-k06}{0}}
 \headcommand {\beamer@framepages {4}{4}}
 \headcommand {\slideentry {1}{2}{2}{5/5}{R\IeC {\'e}sultats A-n37-k06}{0}}
 \headcommand {\beamer@framepages {5}{5}}
 \headcommand {\slideentry {1}{2}{3}{6/6}{R\IeC {\'e}sultats A-n37-k06}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\slideentry {1}{2}{4}{7/7}{R\IeC {\'e}sultats A-n37-k06}{0}}
+\headcommand {\beamer@subsectionentry {0}{1}{3}{7}{R\IeC {\'e}sultats A-n65-k09}}\headcommand {\beamer@subsectionpages {4}{6}}
+\headcommand {\slideentry {1}{3}{1}{7/7}{R\IeC {\'e}sultats A-n65-k09}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {1}{2}{5}{8/8}{R\IeC {\'e}sultats A-n37-k06}{0}}
+\headcommand {\slideentry {1}{3}{2}{8/8}{R\IeC {\'e}sultats A-n65-k09}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {1}{2}{6}{9/9}{R\IeC {\'e}sultats A-n37-k06}{0}}
+\headcommand {\slideentry {1}{3}{3}{9/9}{R\IeC {\'e}sultats A-n65-k09}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {1}{2}{7}{10/10}{R\IeC {\'e}sultats A-n37-k06}{0}}
+\headcommand {\beamer@subsectionentry {0}{1}{4}{10}{R\IeC {\'e}sultats P-n101-k04}}\headcommand {\beamer@subsectionpages {7}{9}}
+\headcommand {\slideentry {1}{4}{1}{10/10}{R\IeC {\'e}sultats P-n101-k04}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\beamer@subsectionpages {4}{10}}
-\headcommand {\beamer@subsectionentry {0}{1}{3}{11}{R\IeC {\'e}sultats A-n65-k09}}
-\headcommand {\slideentry {1}{3}{1}{11/11}{R\IeC {\'e}sultats A-n65-k09}{0}}
+\headcommand {\slideentry {1}{4}{2}{11/11}{R\IeC {\'e}sultats P-n101-k04}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\slideentry {1}{3}{2}{12/12}{R\IeC {\'e}sultats A-n65-k09}{0}}
+\headcommand {\slideentry {1}{4}{3}{12/12}{R\IeC {\'e}sultats P-n101-k04}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\slideentry {1}{3}{3}{13/13}{R\IeC {\'e}sultats A-n65-k09}{0}}
+\headcommand {\slideentry {1}{4}{4}{13/13}{R\IeC {\'e}sultats P-n101-k04}{0}}
 \headcommand {\beamer@framepages {13}{13}}
-\headcommand {\slideentry {1}{3}{4}{14/14}{R\IeC {\'e}sultats A-n65-k09}{0}}
+\headcommand {\slideentry {1}{4}{5}{14/14}{R\IeC {\'e}sultats P-n101-k04}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\slideentry {1}{3}{5}{15/15}{R\IeC {\'e}sultats A-n65-k09}{0}}
+\headcommand {\sectionentry {2}{Int\IeC {\'e}gration de la connaissance dans un algorithme}{15}{Int\IeC {\'e}gration de la connaissance dans un algorithme}{0}}
+\headcommand {\beamer@sectionpages {2}{14}}
+\headcommand {\beamer@subsectionpages {10}{14}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{15}{Pr\IeC {\'e}sentation algorithme}}\headcommand {\beamer@subsectionpages {15}{14}}
+\headcommand {\slideentry {2}{1}{1}{15/15}{Pr\IeC {\'e}sentation algorithme}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\slideentry {1}{3}{6}{16/16}{R\IeC {\'e}sultats A-n65-k09}{0}}
+\headcommand {\slideentry {2}{1}{2}{16/16}{Pr\IeC {\'e}sentation algorithme}{0}}
 \headcommand {\beamer@framepages {16}{16}}
-\headcommand {\slideentry {1}{3}{7}{17/17}{R\IeC {\'e}sultats A-n65-k09}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{17}{R\IeC {\'e}sultats}}\headcommand {\beamer@subsectionpages {15}{16}}
+\headcommand {\slideentry {2}{2}{1}{17/17}{R\IeC {\'e}sultats}{0}}
 \headcommand {\beamer@framepages {17}{17}}
-\headcommand {\beamer@subsectionpages {11}{17}}
-\headcommand {\beamer@subsectionentry {0}{1}{4}{18}{R\IeC {\'e}sultats P-n101-k04}}
-\headcommand {\slideentry {1}{4}{1}{18/18}{R\IeC {\'e}sultats P-n101-k04}{0}}
+\headcommand {\slideentry {2}{2}{2}{18/18}{R\IeC {\'e}sultats}{0}}
 \headcommand {\beamer@framepages {18}{18}}
-\headcommand {\slideentry {1}{4}{2}{19/19}{R\IeC {\'e}sultats P-n101-k04}{0}}
-\headcommand {\beamer@framepages {19}{19}}
-\headcommand {\slideentry {1}{4}{3}{20/20}{R\IeC {\'e}sultats P-n101-k04}{0}}
-\headcommand {\beamer@framepages {20}{20}}
-\headcommand {\slideentry {1}{4}{4}{21/21}{R\IeC {\'e}sultats P-n101-k04}{0}}
-\headcommand {\beamer@framepages {21}{21}}
-\headcommand {\slideentry {1}{4}{5}{22/22}{R\IeC {\'e}sultats P-n101-k04}{0}}
-\headcommand {\beamer@framepages {22}{22}}
-\headcommand {\slideentry {1}{4}{6}{23/23}{R\IeC {\'e}sultats P-n101-k04}{0}}
-\headcommand {\beamer@framepages {23}{23}}
-\headcommand {\slideentry {1}{4}{7}{24/24}{R\IeC {\'e}sultats P-n101-k04}{0}}
-\headcommand {\beamer@framepages {24}{24}}
-\headcommand {\beamer@sectionpages {2}{24}}
-\headcommand {\beamer@subsectionpages {18}{24}}
-\headcommand {\sectionentry {2}{Int\IeC {\'e}gration de la connaissance dans un algorithme}{25}{Int\IeC {\'e}gration de la connaissance dans un algorithme}{0}}
-\headcommand {\beamer@subsectionpages {25}{24}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{25}{Pr\IeC {\'e}sentation algorithme}}
-\headcommand {\slideentry {2}{1}{1}{25/25}{Pr\IeC {\'e}sentation algorithme}{0}}
-\headcommand {\beamer@framepages {25}{25}}
-\headcommand {\beamer@subsectionpages {25}{25}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{26}{R\IeC {\'e}sultats}}
-\headcommand {\slideentry {2}{2}{1}{26/26}{R\IeC {\'e}sultats}{0}}
-\headcommand {\beamer@framepages {26}{26}}
-\headcommand {\slideentry {2}{2}{2}{27/27}{R\IeC {\'e}sultats}{0}}
-\headcommand {\beamer@framepages {27}{27}}
-\headcommand {\beamer@partpages {1}{27}}
-\headcommand {\beamer@subsectionpages {26}{27}}
-\headcommand {\beamer@sectionpages {25}{27}}
-\headcommand {\beamer@documentpages {27}}
-\headcommand {\gdef \inserttotalframenumber {27}}
+\headcommand {\beamer@partpages {1}{18}}
+\headcommand {\beamer@subsectionpages {17}{18}}
+\headcommand {\beamer@sectionpages {15}{18}}
+\headcommand {\beamer@documentpages {18}}
+\headcommand {\def \inserttotalframenumber {18}}

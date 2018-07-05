@@ -27,7 +27,7 @@ global nu
 ylim = 200
 xlim = 200
 clim = 20
-Capacity = 1000
+Capacity = 100
 KNN = 30
 relocation = 3
 
@@ -975,12 +975,13 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
             print(tps2-tps1, c_init)
             tps1 = time.time()
         
-        if gs > len(demand)/3:
+        if gs > 3*len(demand):
             # return to the last best solution, for gs iterations
+            
             routes = copy_sol(routes2)
             gs = 0
         
-        if N > len(demand)/2:
+        if N > 6*len(demand):
             
             b_i += 1
             
@@ -1021,7 +1022,7 @@ def apply_heuristic(inst, demand, l):
     v = voisins(KNN, instance)
     initial = init_routes(inst,demand)
     print("start learning")
-    edges, (lam,mu,nu) = learning_results(1,50,inst,demand,initial)
+    edges, (lam,mu,nu) = learning_results(5,50,inst,demand,initial)
     initial_routes = complete(destruction2(ignore_0(edges)),inst)
     tps_learn = time.time()
     
@@ -1038,20 +1039,27 @@ def apply_heuristic(inst, demand, l):
 
 
         if new_base==[]:
-            for j in range(5):
+            for j in range(10):
                 init, sol = core_heuristic(
                     copy_sol(initial_routes), inst, demand, lam, mu, nu, l, max_d, v)
                 c_sol = cost_sol(sol, inst)
                 c_init = cost_sol(init, inst)
                 new_base.append(sol)
-
+                edges = []
+                mat_qual = init_matrix(len(instance))
+                mat_qual = learn(mat_qual, new_base)
+                e_qual = mat_info_rg(int(len(demand)/2), mat_qual)
+                for e in e_qual:
+                    if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
+                        edges.append(e)
+                initial_routes = complete(destruction2(ignore_0(edges)),inst)
                 namefile = "resultats/Heuristic_results/Values/"+t+"/results_Learn3.txt"
                 writef(namefile,'\n')
                 writef(namefile,'#################')
                 writef(namefile,'')
                 writef(namefile,'init = ' + str(round(c_init,3)))
                 writef(namefile,'res = ' + str(round(c_sol,3)))
-                writef(namefile,'gap = ' + str(round((1-5623/c_sol)*100,3)))
+                #writef(namefile,'gap = ' + str(round((1-5623/c_sol)*100,3)))
                 writef(namefile,'')
                 writef(namefile,'solution = ' + str(sol))
 
@@ -1068,25 +1076,32 @@ def apply_heuristic(inst, demand, l):
                 if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
                     edges.append(e)
             initial_routes = complete(destruction2(ignore_0(edges)),inst)
-            edges, (lam,mu,nu) = learning_results(1,50,inst,demand,initial_routes)
+            edges, (lam,mu,nu) = learning_results(5,50,inst,demand,initial_routes)
             initial_routes = complete(destruction2(ignore_0(edges)),inst)
             print(lam,mu,nu)
             new_base = []
-            for j in range(5):
+            for j in range(10):
                 init, sol = core_heuristic(
                     copy_sol(initial_routes), inst, demand, lam, mu, nu, l, max_d, v)
                 c_sol = cost_sol(sol, inst)
                 c_init = cost_sol(init, inst)
                 print(c_sol)
                 new_base.append(sol)
-            
+                edges = []
+                mat_qual = init_matrix(len(instance))
+                mat_qual = learn(mat_qual, new_base)
+                e_qual = mat_info_rg(int(len(demand)/2), mat_qual)
+                for e in e_qual:
+                    if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
+                        edges.append(e)
+                initial_routes = complete(destruction2(ignore_0(edges)),inst)
                 namefile = "resultats/Heuristic_results/Values/"+t+"/results_Learn3.txt"
                 writef(namefile,'\n')
                 writef(namefile,'#################')
                 writef(namefile,'')
                 writef(namefile,'init = ' + str(round(c_init,3)))
                 writef(namefile,'res = ' + str(round(c_sol,3)))
-                writef(namefile,'gap = ' + str(round((1-5623/c_sol)*100,3)))
+                #writef(namefile,'gap = ' + str(round((1-5623/c_sol)*100,3)))
                 writef(namefile,'')
                 writef(namefile,'solution = ' + str(sol))
             
@@ -1125,8 +1140,8 @@ def common_edges(sol1, sol2):
     return E, E_init, E_final
 
 
-t = "Golden_09"
-
+#t = "Golden_09"
+t = "A-n44-k06"
 instance,demand = read("Instances/"+t+".xml")
 
 
