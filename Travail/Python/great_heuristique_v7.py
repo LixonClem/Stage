@@ -27,7 +27,7 @@ global nu
 ylim = 200
 xlim = 200
 clim = 20
-Capacity = 100
+Capacity = 550
 KNN = 30
 relocation = 3
 
@@ -938,7 +938,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
     c_init = cost_sol(routes, inst)
     print(c_init)
     tps2 = time.time()
-    while tps2-tps1 < 20:
+    while tps2-tps1 < 60:
         
         # find the worst edge
         worst = bad_edge(b, p, routes, inst, fixed_edges)[1]
@@ -975,13 +975,13 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
             print(tps2-tps1, c_init)
             tps1 = time.time()
         
-        if gs > len(demand):
+        if gs > len(demand)/2:
             # return to the last best solution, for gs iterations
             
             routes = copy_sol(routes2)
             gs = 0
         
-        if N > 2*len(demand):
+        if N > len(demand):
             
             b_i += 1
             
@@ -1022,7 +1022,7 @@ def apply_heuristic(inst, demand, l):
     v = voisins(KNN, instance)
     initial = init_routes(inst,demand)
     print("start learning")
-    edges, (lam,mu,nu) = learning_results(5,50,inst,demand,initial)
+    edges, (lam,mu,nu) = learning_results(5,100,inst,demand,initial)
     initial_routes = complete(destruction2(ignore_0(edges)),inst)
     tps_learn = time.time()
     
@@ -1034,7 +1034,7 @@ def apply_heuristic(inst, demand, l):
     new_base = []
     costs = 0
     edges = []
-    for i in range(5):
+    for i in range(10):
         print(i)
 
 
@@ -1078,7 +1078,7 @@ def apply_heuristic(inst, demand, l):
                 if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
                     edges.append(e)
             initial_routes = complete(destruction2(ignore_0(edges)),inst)
-            edges, (lam,mu,nu) = learning_results(5,50,inst,demand,initial_routes)
+            edges, (lam,mu,nu) = learning_results(5,100,inst,demand,initial_routes)
             initial_routes = complete(destruction2(ignore_0(edges)),inst)
             print(lam,mu,nu)
             new_base = []
@@ -1145,8 +1145,8 @@ def common_edges(sol1, sol2):
     return E, E_init, E_final
 
 
-#t = "Golden_09"
-t = "A-n65-k09"
+t = "Golden_01"
+#t = "A-n65-k09"
 instance,demand = read("Instances/"+t+".xml")
 
 
