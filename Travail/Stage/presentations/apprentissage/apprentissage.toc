@@ -1,5 +1,4 @@
-\beamer@endinputifotherversion {3.36pt}
-\select@language {english}
+\babel@toc {english}{}
 \beamer@sectionintoc {1}{Apprentissage}{2}{0}{1}
 \beamer@subsectionintoc {1}{1}{Description}{2}{0}{1}
 \beamer@subsectionintoc {1}{2}{R\IeC {\'e}sultats A-n37-k06}{4}{0}{1}

@@ -360,7 +360,7 @@ Que choisir comme critère pour extraire les arêtes ?
 \end{frame}
 
 \begin{frame}{Nouveaux résultats pour les critères}
-
+4 critères : Rang = n/2 ou Rang = n et Seuil = S$_{lb}$/2 ou S$_{lb}$/3
 \begin{table}[H]
 \begin{tabular}{{|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}}
 
@@ -369,16 +369,23 @@ Que choisir comme critère pour extraire les arêtes ?
  \hline 
  Critère & Arêtes & Corr. & Infais. & Critère & Arêtes & Corr. & Infais. &Critère & Arêtes & Corr. & Infais. \\
  \hline
- Rg = 18 & 18 & 12 & 0 (0) & & & & & & & & \\
+ Rg = 18 & 18 & 12 & 0 (0) & Rg = 32 & 32 & 25 & 0 (0) & Rg = 50 & 50 & 45 & 0 (0)\\
  \hline
- Rg = 36 & 36 & 22 & 1 (0) & & & & & & & & \\
+ Rg = 36 & 36 & 22 & 1 (0) & Rg = 64 & 64 & 44 & 2 (1) & Rg = 100 & 100 & 67 & 11 (5)\\
  \hline
- Se = 8 & 45 & 25 & 0 (0) & & & & & & & & \\
+ Se = 8 & 45 & 22 & 5 (4) & Se = 9 & 81 & 50 & 17 (11) & Se = 5 & 121 & 56 & 30 (24)\\
  \hline
- Se = 12 & 31 & 20 & 0 (0) & & & & & & & & \\
+ Se = 12 & 31 & 20 & 0 (0) & Se = 13 & 59 & 42 & 0 (0) & Se = 8 & 80 & 62 & 2 (1)\\
  \hline
 \end{tabular}
 \end{table}
+
+\begin{itemize}
+\item Critère Rg = n/2 plus précis mais moins d'arêtes
+\item Critère Se = S$_{lb}$/2 moins mais plus d'arêtes
+\item Les autres critères demandent d'éliminer trop d'arêtes
+\end{itemize}
+
 \end{frame}
 
 \section{Intégration de la connaissance dans un algorithme}
@@ -446,22 +453,19 @@ $newBase \gets []$\;
 \subsection{Résultats}
 
 \begin{frame}{Premiers résultats}
-\begin{block}{Choix}
-Pour extraire les connaissances, je prends :
-\begin{itemize}
-\item Base : Qual$_{10}$
-\item Critère : Rang = n/2
-\end{itemize}
-\end{block}
 
 Résultats pour les coûts obtenus
 \begin{tabular}{|c|c|c|c|}
    \hline
-   Connaissance & A-n37-k06 (952) & A-n65-k09 (1182) & P-n101-k04 (692)  \\
+    & A3706 & A6509 & P10104\\
+   \hline
+   Best & 952 & 1182 & 692 \\
    \hline
    Sans & 963 - 974  & 1189 - 1236 & 696 - 708   \\
    \hline
-   Avec & 950 - 966 & 1186 - 1193 & 694 - 704  \\
+   n/2 & 950 - 954 & 1182 - 1202 & 697 - 714  \\
+   \hline
+   S$_{lb}$/2 & 957 - 968 & 1205 - 1232 & 697 - 718 \\
    \hline
 \end{tabular}
 
@@ -472,7 +476,7 @@ Résultats pour le temps d'exécution (en sec)
    \hline
    Sans & 805  & 776 &  1739  \\
    \hline
-   Avec & 3 - 1073 & 8 - 911 & 78 - 1533  \\
+   Avec & 8 - 707  & 25 - 814 & 98 - 1110  \\
    \hline
 \end{tabular}
 
@@ -481,12 +485,12 @@ Résultats pour le temps d'exécution (en sec)
 \begin{frame}{Nouveau meilleur résultat}
 Pour l'instance Golden-01, nouvelle solution trouvée:
 
-\begin{figure}
-\centering
-\includegraphics[scale=0.2]{NewBestG01}
-\end{figure}
 
-Coût de 5602 au lieu de 5623
+\centering
+\includegraphics[scale=0.22]{NewREALbest}
+
+
+Coût de 5563 au lieu de 5623
 \end{frame}
 
 \end{document}

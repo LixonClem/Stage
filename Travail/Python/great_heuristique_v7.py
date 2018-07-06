@@ -975,13 +975,13 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
             print(tps2-tps1, c_init)
             tps1 = time.time()
         
-        if gs > 3*len(demand):
+        if gs > len(demand):
             # return to the last best solution, for gs iterations
             
             routes = copy_sol(routes2)
             gs = 0
         
-        if N > 6*len(demand):
+        if N > 2*len(demand):
             
             b_i += 1
             
@@ -1033,19 +1033,21 @@ def apply_heuristic(inst, demand, l):
     
     new_base = []
     costs = 0
-
-    for i in range(10):
+    edges = []
+    for i in range(5):
         print(i)
 
 
         if new_base==[]:
-            for j in range(10):
+            for j in range(5):
+                edges = []
                 init, sol = core_heuristic(
                     copy_sol(initial_routes), inst, demand, lam, mu, nu, l, max_d, v)
                 c_sol = cost_sol(sol, inst)
+                
                 c_init = cost_sol(init, inst)
                 new_base.append(sol)
-                edges = []
+                
                 mat_qual = init_matrix(len(instance))
                 mat_qual = learn(mat_qual, new_base)
                 e_qual = mat_info_rg(int(len(demand)/2), mat_qual)
@@ -1080,14 +1082,16 @@ def apply_heuristic(inst, demand, l):
             initial_routes = complete(destruction2(ignore_0(edges)),inst)
             print(lam,mu,nu)
             new_base = []
-            for j in range(10):
+            for j in range(5):
+                edges = []
                 init, sol = core_heuristic(
                     copy_sol(initial_routes), inst, demand, lam, mu, nu, l, max_d, v)
                 c_sol = cost_sol(sol, inst)
+                costs += c_sol
                 c_init = cost_sol(init, inst)
                 print(c_sol)
                 new_base.append(sol)
-                edges = []
+                
                 mat_qual = init_matrix(len(instance))
                 mat_qual = learn(mat_qual, new_base)
                 e_qual = mat_info_rg(int(len(demand)/2), mat_qual)
@@ -1107,6 +1111,7 @@ def apply_heuristic(inst, demand, l):
             
     tps_fin = time.time()
     print(tps_fin-tps_deb)
+    print(costs)
     
     namefile = "resultats/Heuristic_results/Values/"+t+"/results_Learn3.txt"
     writef(namefile,'Execution = ' + str(tps_fin-tps_deb))
@@ -1141,7 +1146,7 @@ def common_edges(sol1, sol2):
 
 
 #t = "Golden_09"
-t = "A-n44-k06"
+t = "A-n65-k09"
 instance,demand = read("Instances/"+t+".xml")
 
 
