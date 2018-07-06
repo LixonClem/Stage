@@ -938,7 +938,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
     c_init = cost_sol(routes, inst)
     print(c_init)
     tps2 = time.time()
-    while tps2-tps1 < 10:
+    while tps2-tps1 < 20:
         
         # find the worst edge
         worst = bad_edge(b, p, routes, inst, fixed_edges)[1]
