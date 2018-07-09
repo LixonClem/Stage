@@ -1093,7 +1093,7 @@ def apply_heuristic(inst, demand, l):
                         edges.append(e)
                 initial_routes = complete(destruction2(ignore_0(edges)),inst)
                 """
-                all_sol.append([c_sol,sol])
+                all_sol.append((c_sol,sol))
     
     all_sol.sort()
     tps_fin = time.time()

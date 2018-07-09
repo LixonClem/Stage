@@ -775,6 +775,7 @@ def mat_info_req(lim,mat):
             if mat[i][j]>lim:
                 ed_brut.append((mat[i][j],i,j))
     ed_brut.sort()
+    ed_brut.reverse()
     for e in ed_brut:
         ed.append((e[1],e[2]))
     return ed
@@ -1206,150 +1207,56 @@ def unfeasable_edge(e,l):
     return (c2>1 or c1 >1)
 
 s = 0
-n11=0
-n12=0
-n21=0
-n22=0
-n31=0
-n32=0
-n41=0
-n42=0
-n13=0
-n14=0
-n23=0
-n24=0
-n33=0
-n34=0
-n43=0
-n44=0
 
 Gen = 50
-for lg in range(10):
+for lg in range(1):
+    
     base,stat = rd_generate(Gen,instance,demand)
     quality = (stat[1]-stat[0])/10 + stat[0]
     ls_qual = learning_set_quality(base,quality)
-
+    all_pre = []
     mat_qual = init_matrix(len(instance))
     mat_qual = learn(mat_qual,ls_qual)
+    for crit in [0.2,0.25,0.33,0.4,0.5,0.6,0.67,0.75,0.8]:
+        e_c = mat_info_req(len(ls_qual)*crit,mat_qual)
+        n1,n2,n3,n4 = 0,0,0,0
+        true_edges = all_edges(record)
+        s += len(ls_qual)
+        n1 = len(e_c)
+        inf = []
+        inf_dist = []
+        infopt = []
+        infopt_dist = []
+        pre = []
+        accuracy = 0
+        for i in e_c:
 
-    e_r1 = mat_info_rg(18,mat_qual)
-    e_r2 = mat_info_rg(36,mat_qual)
-    e_r3 = mat_info_req(len(ls_qual)/2,mat_qual)
-    e_r4 = mat_info_req(len(ls_qual)/3,mat_qual)
+            if unfeasable_edge(i,pre) and is_edge_in(i,true_edges):
+                n4 +=1
+                infopt.append(i)
+            elif unfeasable_edge(i,pre):
+                n3 += 1
+                inf.append(i)
+            elif is_edge_in(i,true_edges) :
+                pre.append(i)
+                n2 += 1
+                accuracy += 1
+            else:
+                pre.append(i)
 
-    true_edges = all_edges(record)
-    s += len(ls_qual)
+        all_pre.append(pre)
 
-    n31 += len(e_r3)
-    n41 += len(e_r4)
-    pre = []
-    accuracy = 0
-    for i in e_r1:
+        tps_fin = time.time()
         
-        if unfeasable_edge(i,pre) and is_edge_in(i,true_edges):
-            n14 +=1
-        elif unfeasable_edge(i,pre):
-            n13 += 1
-        elif is_edge_in(i,true_edges) :
-            pre.append(i)
-            n12 += 1
-            accuracy += 1
-        else:
-            pre.append(i)
-    pre = []
-    accuracy = 0
-    for i in e_r2:
-        if unfeasable_edge(i,pre) and is_edge_in(i,true_edges):
-            n24 +=1
-        elif unfeasable_edge(i,pre):
-            n23 += 1
-        elif is_edge_in(i,true_edges) :
-            pre.append(i)
-            n22 += 1
-            accuracy += 1
-        else:
-            pre.append(i)
-    pre = []
-    accuracy = 0
-    for i in e_r3:
-        if unfeasable_edge(i,pre) and is_edge_in(i,true_edges):
-            n34 +=1
-        elif unfeasable_edge(i,pre):
-            n33 += 1
-        elif is_edge_in(i,true_edges) :
-            pre.append(i)
-            n32 += 1
-            accuracy += 1
-        else:
-            pre.append(i)
-    pre = []
-    accuracy = 0
-    for i in e_r4:
-        if unfeasable_edge(i,pre) and is_edge_in(i,true_edges):
-            n44 +=1
-        elif unfeasable_edge(i,pre):
-            n43 += 1
-        elif is_edge_in(i,true_edges) :
-            pre.append(i)
-            n42 += 1
-            accuracy += 1
-        else:
-            pre.append(i)
-    """
-    namefile = "resultats/Heuristic_results/Values/"+t+"/learn_edges_quantity.txt"
-    writef(namefile,'\n')
-    writef(namefile,'#################')
-    writef(namefile,'Generate = '+ str(Gen))
-    writef(namefile,'Stat = '+ str(stat))
-    writef(namefile,'Percent = '+ str(10))
-    writef(namefile,'Rang = '+ str(33))
-    writef(namefile,'')
-    writef(namefile,'edges = ' + str(e_quan))
-    writef(namefile,'')
-    writef(namefile,'true = ' + str(pre))
-    writef(namefile,'nb corrects = ' + str(accuracy))
-    writef(namefile,'nb aretes = ' + str(len(e_quan)))
-    writef(namefile,'accuracy = ' + str(accuracy/len(e_quan)))
-    writef(namefile,'')
-"""
+        for e in inf:
+            inf_dist.append(distance(instance[e[0]],instance[e[1]]))
 
-"""
-    namefile = "resultats/Heuristic_results/Values/"+t+"/learn_edges_quality.txt"
-    writef(namefile,'\n')
-    writef(namefile,'#################')
-    writef(namefile,'Generate = '+ str(Gen))
-    writef(namefile,'Stat = '+ str(stat))
-    writef(namefile,'Quality = '+ str(10))
-    writef(namefile,'Rang = '+ str(33))
-    writef(namefile,'')
-    writef(namefile,'edges = ' + str(e_qual))
-    writef(namefile,'')
-    writef(namefile,'true = ' + str(pre))
-    writef(namefile,'nb corrects = ' + str(accuracy))
-    writef(namefile,'nb aretes = ' + str(len(e_qual)))
-    writef(namefile,'accuracy = ' + str(accuracy/len(e_qual)))
-    writef(namefile,'')
-"""
-"""
-    namefile = "resultats/Heuristic_results/Values/"+t+"/all_edges.txt"
-    writef(namefile,'\n')
-    writef(namefile,'#################')
-    writef(namefile,'Generate = '+ str(Gen))
-    writef(namefile,'Stat = '+ str(stat))
-    writef(namefile,'Rang = '+ str(33))
-    writef(namefile,'')
-    writef(namefile,'edges = ' + str(e_all))
-    writef(namefile,'')
-    writef(namefile,'true = ' + str(pre))
-    writef(namefile,'nb corrects = ' + str(accuracy))
-    writef(namefile,'nb aretes = ' + str(len(e_all)))
-    writef(namefile,'accuracy = ' + str(accuracy/len(e_all)))
-    writef(namefile,'')
-"""
-tps_fin = time.time()
-print(tps_fin-tps_deb)
-print(s/10)
-print(n11/10,n12/10,n13/10,n14/10,n12/10/42)
-print(n21/10,n22/10,n23/10,n24/10,n22/10/42)
-print(n31/10,n32/10,n33/10,n34/10,n32/10/42)
-print(n41/10,n42/10,n43/10,n44/10,n42/10/42)
+        for e in infopt:
+            infopt_dist.append(distance(instance[e[0]],instance[e[1]]))
+        
+        print(n1,n2,n3,n4)
+        print(inf_dist)
+        print(infopt_dist)
+    print(s)
+
+
