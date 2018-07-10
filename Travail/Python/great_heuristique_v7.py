@@ -302,17 +302,32 @@ def destruction(edges):
             curr.append(e[0])
     return r
 
-
-def complete(routes, inst):
+def complete(routes, inst,demand):
     for i in range(len(routes)):
         routes[i].insert(0, 0)
+    while not verification(routes,demand):
+        for r in routes:
+            if route_demand(r,demand) > Capacity:
+
+                routes.remove(r)
+                d = 0
+                i = 0
+                nr1 = []
+                while i<len(r) and d <= Capacity:
+                    nr1.append(r[i])
+                    i +=1 
+                    d += demand[r[i]]
+                    
+                nr2 = [0] + r[r.index(r[i-1]):]
+                
+                routes.append(nr1)
+                routes.append(nr2)
     for p in range(len(inst)):
         if not is_in_route(p, routes):
             routes.append([0, p])
     for i in range(len(routes)):
         routes[i].append(0)
     return routes
-
 
 def permut(l):
     r = rd.randint(0, len(l)-1)
@@ -1026,7 +1041,7 @@ def apply_heuristic(inst, demand, l):
     v = voisins(KNN, instance)
     initial = init_routes(inst,demand)
     edges, (lam,mu,nu) = learning_results(5,50,inst,demand,initial)
-    initial_routes = complete(destruction2(ignore_0(edges)),inst)
+    initial_routes = complete(destruction2(ignore_0(edges)),inst,demand)
     tps_learn = time.time()
     
     namefile = "resultats/Heuristic_results/Values/all/results.txt"
@@ -1069,9 +1084,9 @@ def apply_heuristic(inst, demand, l):
             for e in e_qual:
                 if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
                     edges.append(e)
-            initial_routes = complete(destruction2(ignore_0(edges)),inst)
+            initial_routes = complete(destruction2(ignore_0(edges)),inst,demand)
             edges, (lam,mu,nu) = learning_results(5,50,inst,demand,initial_routes)
-            initial_routes = complete(destruction2(ignore_0(edges)),inst)
+            initial_routes = complete(destruction2(ignore_0(edges)),inst,demand)
             print(lam,mu,nu)
             new_base = []
             for j in range(10):
