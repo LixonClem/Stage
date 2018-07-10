@@ -31,6 +31,13 @@
 
 \maketitle
 
+\begin{abstract}
+Les problèmes d'optimisation sont des problèmes difficiles à résoudre de manière exacte. 
+Le \emph{Capacitated Routing Vehicle Problem} est l'un de ces problèmes, et est très étudié dans la littérature. 
+Pour approcher les solutions optimales, différents types d'algorithme existent.
+Des méthodes d'extraction de connaissance voient le jour afin d'améliorer les performances d'algorithme existant. 
+
+\end{abstract}
 
 \section*{Introduction}
 Le Vehicle Routing Problem (VRP), consiste à relier un nombre $n$ de clients par des tournées, commençant et finissant toutes à un même point défini, le dépôt. 
@@ -47,6 +54,23 @@ Différents problèmes sont alors soulevés, et sont traités dans chacune des p
 
 \section{Présentation des notions et notations}
 Cette partie introduit le problème étudié ainsi que les différentes notations utilisées ensuite dans le reste du rapport. 
+
+\subsection{Optimisation combinatoire}
+Un problème d'optimisation combinatoire (également appelée optimisation discrète), consiste à   trouver dans un ensemble discret les meilleures solutions réalisables. 
+La notion de meilleure solution étant définie par une fonction objectif.
+Formellement, on a :
+\begin{itemize}
+\item Un ensemble discret $N$;
+\item Une fonction $f : 2^N \rightarrow \Re$, dite fonction objectif;
+\item Un ensemble $R$ de sous-ensembles de $N$, dont les éléments sont appelés solutions réalisables.
+\end{itemize}
+Ainsi, un problème d'optimisation combinatoire consiste à déterminer :
+
+\begin{center}
+$ max_{S \subseteq N} \{ f(S), S \in R \} $
+\end{center}
+
+Beaucoup trop de solutions
 
 \subsection{Description du problème}
 Le problème étudié ici (CVRP) est une extension du problème (VRP). Ces problèmes font partie de la famille des problèmes d'optimisation stochastique.
