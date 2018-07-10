@@ -20,7 +20,7 @@
 \usepackage{xcolor}
 
 \parskip=0.5\baselineskip
-\providecommand{\keywords}[1]{\textbf{\textit{Mots-clés :}} #1}
+\providecommand{\keywords}[1]{\textbf{\textit{Mots-clés : }} #1}
 \sloppy
 
 \begin{document}
@@ -36,7 +36,8 @@ De nombreux algorithmes font régulièrement leur apparition pour tenter de rés
 Dans la plupart des problèmes, il est possible d'extraire de la connaissance de petites instances résolues, afin d'aider les algorithmes lors de la résolution de plus grandes instances. Intégrer de cette manière de la connaissance à un algorithme permet de créer une \emph{Learning Heuristic}, plus performante que l'algorithme initial. 
 \end{abstract}
 
-\keywords{Optimisation stochastique, Connaissances, , four}
+\keywords{\emph{Optimisation stochastique}, \emph{Extraction de connaissance}, \emph{Intégration de connaissance}, \emph{Learning Heuristic}}
+
 \section*{Introduction}
 
 Les problèmes d'optimisation stochastique sont généralement des problèmes difficiles à résoudre, puisque le nombre de solutions à tester varie de manière exponentielle en la taille de l'instance. 
@@ -55,7 +56,7 @@ Différents problèmes sont alors soulevés, et sont traités dans chacune des p
   
 
 \section{Présentation des notions et notations}
-Cette section introduit le problème étudié ainsi que les différentes notations utilisées ensuite dans le reste du rapport. 
+Cette section introduit dans un premier temps le problème étudié, en rappelant au préalable ce qu'est un problème d'optimisation stochastique. Les différentes notations utilisées dans la suite du papier sont ensuite décrites, enfin l'objectif de cet article est présenté. 
 
 
 \subsection{Description du problème}
@@ -64,11 +65,13 @@ De nombreux problèmes sont dits d'optimisation stochastique, dont font notammen
 \subsubsection{Optimisation stochastique}
 Un problème d'optimisation combinatoire (également appelée optimisation discrète), consiste à trouver dans un ensemble discret, les meilleures solutions (au sens d'une certaine fonction, dite \emph{fonction objectif}) réalisables. 
 Formellement, on a :
+
 \begin{itemize}
 \item Un ensemble discret $N$;
 \item Une fonction $f : 2^N \rightarrow \Re$, dite fonction objectif;
 \item Un ensemble $R$ de sous-ensembles de $N$, dont les éléments sont appelés solutions réalisables.
 \end{itemize}
+
 Ainsi, un problème d'optimisation combinatoire consiste à déterminer :
 
 \begin{center}
@@ -90,6 +93,7 @@ $ Sol = argmin_{Sol} \sum_{i = 0}^{n} \sum_{j = 0}^{n} \sum_{v = 1}^{k} c_{i,j} 
 La fonction $cost$ correspond à la fonction objectif de ce problème.
 
 Les tournées créées doivent également respecter les contraintes suivantes :
+
 \begin{itemize}
 \item Chaque client doit être desservi par une et une seule tournée;
 \item Chaque tournée doit partir et s'arrêter au dépôt.
@@ -121,9 +125,11 @@ C'est l'ajout de capacité aux tournées qui nous intéressera plus particulièr
 
 On étend le VRP au CVRP en ajoutant à chaque client $i$ une demande $d_i$, ainsi qu'une capacité $C$ aux véhicules.
 Une nouvelle contrainte vient donc s'ajouter aux contraintes classiques du VRP :
+
 \begin{itemize}
 \item La demande totale sur chaque tournée ne doit pas excéder la capacité du véhicule.
 \end{itemize}
+
 Si on reprend l'instance A-n32-k05, en considérant les demandes des clients ainsi que la capacité disponible pour chaque véhicule, on obtient une solution présente sur la figure~\ref{SC3205}, qui n'est pas optimale. 
 Ce problème est beaucoup étudié car il a de nombreuses applications (comme par exemple la gestion du trafic routier, ou alors la gestion d'un réseau de bus), et peu de solutions optimales ont été trouvées pour des instances de plus de $500$ clients. 
 
@@ -178,6 +184,7 @@ L'objectif de ce papier est d'améliorer les performances d'un algorithme d'opti
 Une idée pour y parvenir serait de réussir à prédire des arêtes qui appartiendront à la solution optimale, en n'observant que des solutions initiales que l'on peut générer rapidement. 
 On pourra ensuite exploiter ces arêtes pour construire une nouvelle solution.
 Nous adopterons la méthodologie suivante pour atteindre notre objectif :
+
 \begin{itemize}
 \item Comparer des solutions initiales à des solutions optimales pour des petites instances;
 \item Établir de l'étude précédente des règles qui permettent de caractériser ces arêtes;
@@ -595,6 +602,7 @@ Pour extraire cette connaissance, nous allons devoir créer un échantillon de s
 
 \subsubsection{Génération de l'échantillon}
 Puisque l'on ne peut pas prédire les paramètres $(\lambda,\mu,\nu)$ pour obtenir de bonnes solutions, nous allons devoir en générer un certain nombre :
+
 \begin{itemize}
 \item Soit on génère l'intégralité des solutions initiales possibles, en parcourant tous les triplets $(\lambda,\mu,\nu)$ (ie génération de 8820 solutions), pour obtenir l'échantillon. On l'appelle échantillon \emph{complet};
 \item Soit on tire $N$ triplets $(\lambda,\mu,\nu)$ aléatoirement, et les solutions obtenus constitueront notre échantillon. 
@@ -609,6 +617,7 @@ Nous nous intéressons à présent, à la construction d'une base d'apprentissag
 \subsubsection{Construction de la base d'apprentissage}
 La base d'apprentissage, contiendra toutes les solutions utilisées ensuite pour apprendre. Cette base correspond à un sous-ensemble de l'échantillon obtenu. 
 Nous avons retenu trois manières différentes pour obtenir cette base :
+
 \begin{itemize}
 \item On conserve l'intégralité de l'échantillon. On appelle cette base \emph{Tout};
 \item On conserve $x\%$ des meilleures solutions. Dans ce cas, on dit qu'on privilégie la quantité. On appelle cette base \emph{Quan$_x$};
@@ -622,6 +631,7 @@ Avant tout, nous considérons que les arêtes $(i,j)$ et $(j,i)$ sont identiques
 
 Pour savoir si une arête $(i,j)$ est souvent prise dans les solutions de notre base d'apprentissage, nous incrémentons la valeur $Learn[i][j]$ d'une matrice $Learn$ de taille $n^2$ (initialement nulle), lorsque cette arête appartient à la solution considérée.
 Une fois toutes les solutions parcourues, nous avons retenu deux critères pour extraire les arêtes potentiellement intéressantes :
+
 \begin{itemize}
 \item Soit nous conservons les $rang$ premières arêtes (pour les valeurs de $Learn$). On appelle ce critère \emph{Rang};
 \item Soit nous conservons $(i,j) \Leftrightarrow Learn[i][j] > seuil$. On appelle ce critère \emph{Seuil}.
@@ -632,6 +642,7 @@ Afin de déterminer quels doivent être la taille de l'échantillon, la base d'a
 \subsection{Résultats}
 
 On choisit de prendre les valeurs suivantes :
+
 \begin{itemize}
 \item Taille de l'échantillon : $N \in [50,100,500]$ et \emph{complet}
 \item Base d'apprentissage : $Base \in [Tout, Quan_{10}, Qual_{10}]$
@@ -946,11 +957,14 @@ $newBase \gets []$\;
 \label{algo:LH}
 \end{algorithm}
 
-L'intérêt de cette heuristique est d'apprendre au départ, mais aussi d'apprendre des solutions trouvées en exécutant $H_c$. 
-Ces solutions sont stockées dans $newBase$, et servent à déterminer un nouvel $Init$.
-On réapprend ensuite en se basant sur le modèle d'$Init$ (ie les solutions de l'échantillon sont obtenues avec des CW ayant $Init$ pour initialisation).
+Cette heuristique a l'avantage de procéder à plusieurs apprentissages. 
+Mis à part l'apprentissage initial qui sert à guider les premiers résultats, les solutions ensuite calculées sont stockées dans une nouvelle base d'apprentissage, utilisée pour déterminer un nouvel $Init$.
+Ce dernier est utilisé pour guider un nouvel apprentissage, et la base d'apprentissage est remise à zéro. 
+
 
 \subsection{Résultats}
+
+La \emph{learning heuristic} précédente a été appliquée aux ensembles d'instance A, B et P.
 
 \section*{Conclusion}
 
