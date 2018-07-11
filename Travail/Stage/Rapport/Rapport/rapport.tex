@@ -32,11 +32,11 @@
 \maketitle
 
 \begin{abstract}
-De nombreux algorithmes font régulièrement leur apparition pour tenter de résoudre des problèmes d'optimisation stochastique, ou d'améliorer les solutions existantes.
-Dans la plupart des problèmes, il est possible d'extraire de la connaissance de petites instances résolues, afin d'aider les algorithmes lors de la résolution de plus grandes instances. Intégrer de cette manière de la connaissance à un algorithme permet de créer une \emph{Learning Heuristic}, plus performante que l'algorithme initial. 
+De nombreux algorithmes font régulièrement leur apparition pour tenter de résoudre des problèmes d'optimisation stochastique, comme le \emph{Capacitated Vehicle Routing Problem}, ou d'améliorer des solutions existantes.
+Dans la plupart des problèmes, il est possible d'extraire de la connaissance de petites instances résolues, afin de guider les algorithmes lors de la résolution de plus grandes instances. Intégrer de cette manière de la connaissance à un algorithme permet de créer une \emph{Learning Heuristic}, souvent plus performante que l'algorithme initial. 
 \end{abstract}
 
-\keywords{\emph{Optimisation stochastique}, \emph{Extraction de connaissance}, \emph{Intégration de connaissance}, \emph{Learning Heuristic}}
+\keywords{\emph{Optimisation stochastique}, \emph{Capacitated Vehicle Routing Problem},\emph{Extraction de connaissance}, \emph{Intégration de connaissance}, \emph{Learning Heuristic}}
 
 \section*{Introduction}
 
@@ -75,7 +75,7 @@ Formellement, on a :
 Ainsi, un problème d'optimisation combinatoire consiste à déterminer :
 
 \begin{center}
-$ max_{S \subseteq N} \{ f(S), S \in R \} $
+$ min_{S \subseteq N} \{ f(S), S \in R \} $
 \end{center}
 
 Toutefois dans ce type de problème, le nombre de solutions réalisables varie généralement de manière exponentielle selon la taille du problème. Cela rend donc impossible une énumération complète des solutions réalisables, d'où la difficulté de trouver la solution optimale à ce type de problème.
@@ -84,7 +84,7 @@ Toutefois dans ce type de problème, le nombre de solutions réalisables varie g
 
 Le problème de tournées de véhicules, est un problème NP-complet d'optimisation stochastique, où sont donnés $n$ points de coordonnées $(x_i,y_i)$, représentant 1 dépôt et $n-1$ clients. On dispose également d'une flotte de $k$ véhicules. 
 L'objectif est de minimiser la longueur du réseau (ie l'ensemble des tournées effectuées par les véhicules). 
-On définit alors $x_{i,j}^v$ qui vaut 1 si $j$ est desservi après $i$ par le véhicule $v$, et 0 sinon. 
+En reprenant les notations de~\cite{cvrp_pres}, on définit $x_{i,j}^v$ qui vaut 1 si $j$ est desservi après $i$ par le véhicule $v$, et 0 sinon. 
 On définit également $c_{i,j}$ comme étant la distance entre $i$ et $j$.
 Il faut donc déterminer la solution $Sol$ vérifiant :
 \begin{center}
@@ -132,6 +132,8 @@ Une nouvelle contrainte vient donc s'ajouter aux contraintes classiques du VRP :
 
 Si on reprend l'instance A-n32-k05, en considérant les demandes des clients ainsi que la capacité disponible pour chaque véhicule, on obtient une solution présente sur la figure~\ref{SC3205}, qui n'est pas optimale. 
 Ce problème est beaucoup étudié car il a de nombreuses applications (comme par exemple la gestion du trafic routier, ou alors la gestion d'un réseau de bus), et peu de solutions optimales ont été trouvées pour des instances de plus de $500$ clients. 
+
+Les instances du CVRP étudiées par la suite, sont disponibles sur~\cite{cvrplib} 
 
 \begin{figure}
 \centering
@@ -195,8 +197,8 @@ Cette méthode, nous impose de résoudre les problèmes suivants : Comment const
 
 \section{Construction d'une solution initiale de bonne qualité}
 \label{SolInit}
-Pour construire une solution initiale nous allons utiliser la dernière version d'un algorithme très répandu dans la littérature : l'algorithme Clarke \& Wright~\cite{Altinel_2005}.
-Ainsi, nous commençons par décrire l'algorithme utilisé, puis décrivons le problème du choix des paramètres pour son exécution.
+Pour construire une solution initiale nous allons utiliser la dernière version d'un algorithme très répandu dans la littérature : l'algorithme Clarke \& Wright~\cite{CW_1964}, amélioré par~\cite{Altinel_2005}.
+Ainsi, nous commençons par décrire l'algorithme utilisé, puis détaillons le problème du choix des paramètres pour son exécution.
 
 \subsection{Description de l'algorithme}
 L'algorithme Clarke \& Wright (CW) est un algorithme glouton. 
@@ -280,26 +282,26 @@ On ne peut donc pas prévoir à l'avance si le triplet $(\lambda, \mu, \nu)$ va 
 L'influence de ces paramètres dépend aussi des caractéristiques de l'instance considérée, ainsi on ne peut pas se restreindre au choix d'un triplet qui conviendrait pour toutes les instances. 
 
 \begin{figure}
-    \begin{minipage}[c]{.5\linewidth}
+    \begin{minipage}[c]{.42\linewidth}
         \centering
 	\includegraphics[scale=0.4]{resCW190105.png}
  
- 	\caption{$(1.9,0.1,1.5), cost = 1106$}
+ 	\caption{$(\lambda, \mu, \nu)=(1.9,0.1,1.5)$, $ cost = 1106$}
  	\label{resCW190105}
     \end{minipage}
 	\hfill%
-    \begin{minipage}[c]{.5\linewidth}
+    \begin{minipage}[c]{.42\linewidth}
         \centering
 	\includegraphics[scale=0.4]{resCW111.png}
 	
-	\caption{$(0.1,0.1,0.1), cost = 1569$}
+	\caption{$(\lambda, \mu, \nu)=(0.1,0.1,0.1)$, $cost = 1569$}
 	\label{resCW111}
     \end{minipage}
     
     
         \centering
 	\includegraphics[scale=0.4]{resCW001015.png}
- 	\caption{$(0.0,1.0,1.5), cost = 2191$}
+ 	\caption{$(\lambda, \mu, \nu)=(0.0,1.0,1.5)$, $cost = 2191$}
  	\label{resCW001015}
     
 \end{figure}
@@ -308,7 +310,7 @@ L'influence de ces paramètres dépend aussi des caractéristiques de l'instance
 Nous proposons dans cette partie un algorithme d'optimisation qui sera utilisé pour y intégrer de la connaissance. Il s'inspire d'un algorithme proposé récemment~\cite{Sorensen_2017}, dont nous détaillons d'abord le fonctionnement, avant de décrire davantage les mécanismes mis en jeu lors de son exécution.
 
 \subsection{Heuristique Arnold \& Sörensen}
-L'heuristique proposée par Arnold et Sörensen, est à la fois simple et efficace. 
+L'heuristique proposée par Arnold et Sörensen~\cite{Sorensen_2017}, est à la fois simple et efficace. 
 Il semble donc pertinent de vouloir améliorer cet algorithme en y intégrant de la connaissance.
 L'heuristique commence par déterminer une solution initiale via l'algorithme CW, présenté en section~\ref{SolInit}. Différents opérateurs de voisinage sont ensuite appliqués autour d'une arête, considérée comme étant la pire du graphe. Ces opérateurs sont tous en mode $BI-O$, c'est-à-dire que tous les voisins sont parcourus et seul le meilleur est retenu.
 
@@ -357,10 +359,10 @@ Trois métriques sont détaillées dans l'article~\cite{Sorensen_2017}:
 \item Le coût d'une arête $(i,j)$, que l'on note $c(i,j)$ se calcule de la manière suivante:
 
 \begin{center}
-$c(i,j) = c_{ij}(1 + \beta p(i,j)$ 
+$c(i,j) = c_{ij}(1 + \beta p(i,j))$ 
 \end{center}
 
-Dans l'article~\cite{Sorensen_2017}) $\lambda = 0.1$. $p(i,j)$ correspond au nombre de fois où l'arête $(i,j)$ a été pénalisé;
+Dans l'article~\cite{Sorensen_2017} $\beta = 0.1$. $p(i,j)$ correspond au nombre de fois où l'arête $(i,j)$ a été pénalisé;
 \item La profondeur d'une arête $(i,j)$, noté $d(i,j)$ a pour formule :
 
 \begin{center}
@@ -394,9 +396,7 @@ On peut alors définir ce qu'est la pire arête $(i^*,j^*)$ du graphe :
 $ (i^*,j^*) = argmax_{i,j} b(i,j)$
 \end{center}
 
-
-
-C'est autour de l'arête calculée ici que vont s'orienter les recherches des opérateurs de voisinage qui suivent.
+Les opérateurs de voisinage, présentés ci-après, vont orienter leurs recherches autour de cette pire arête.
  
 \subsubsection{Ejection-Chain}
 
@@ -542,9 +542,11 @@ $nextSol \gets Sol$\;
 		$nextSol \gets Sol$\;
 	}
 	}
+	\textcolor{red}{
 	\If {Pas d'améliorations depuis $n$ itérations} {
 		Changer de fonction de pénalisation en prenant un autre triplet $(\gamma_w,\gamma_c,\gamma_d)$\;
 		Réinitialiser les pénalités des arêtes\;
+	}
 	}
 }
 \Return{$Sol$}\;
@@ -666,7 +668,7 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
     \begin{minipage}[c]{.46\linewidth}
         \centering
         \includegraphics[scale=0.4]{best3706}
-        \caption{Solution optimale \emph{A-n37-k06}}
+        \caption{Solution optimale \emph{A-n37-k06}, 42 arêtes}
     \end{minipage}
 \end{figure}
 
@@ -740,7 +742,7 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
     \begin{minipage}[c]{.46\linewidth}
         \centering
         \includegraphics[scale=0.4]{Solution6509}
-        \caption{Solution optimale \emph{A-n65-k09}}
+        \caption{Solution optimale \emph{A-n65-k09}, 73 arêtes}
     \end{minipage}
 \end{figure}
 
@@ -812,7 +814,7 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
     \begin{minipage}[c]{.46\linewidth}
         \centering
         \includegraphics[scale=0.4]{Solution10104}
-        \caption{Solution optimale \emph{P-n101-k04}}
+        \caption{Solution optimale \emph{P-n101-k04}, 104 arêtes}
     \end{minipage}
 \end{figure}
 
@@ -960,11 +962,203 @@ $newBase \gets []$\;
 Cette heuristique a l'avantage de procéder à plusieurs apprentissages. 
 Mis à part l'apprentissage initial qui sert à guider les premiers résultats, les solutions ensuite calculées sont stockées dans une nouvelle base d'apprentissage, utilisée pour déterminer un nouvel $Init$.
 Ce dernier est utilisé pour guider un nouvel apprentissage, et la base d'apprentissage est remise à zéro. 
+Répéter ces étapes permet d'affiner l'apprentissage, pour le rendre plus efficace et ainsi approcher d'autant mieux la solution optimale.
 
 
 \subsection{Résultats}
 
-La \emph{learning heuristic} précédente a été appliquée aux ensembles d'instance A, B et P.
+La \emph{learning heuristic} précédente a été appliquée aux ensembles d'instance A, B et P (disponibles sur le site~\cite{cvrplib}.
+
+Les résultats obtenus sont disponibles sur les tableaux~\ref{TA} à~\ref{TP}, la colonne \emph{Best-Known} rappelle le coût de la meilleure solution connue pour l'instance considérée. 
+Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme considéré.
+\emph{Best} renvoie la meilleure solution sur les $100$ obtenues, \emph{Mean$_10$} renvoie la moyenne des $10$ meilleures solutions, \emph{Gap} correspond au pourcentage de différence entre la \emph{Best} et la \emph{Best-Known}, \emph{Time} donne le temps d'exécution de l'algorithme.
+
+\begin{table}
+\caption{Résultats pour l'ensemble A}
+\label{TA}
+\begin{center}
+\begin{tabular}{|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
+
+\hline
+ Instance & Best-Known & \multicolumn{4}{c|}{LearnHeuristic}  \\
+ \hline
+ & & Best & Mean$_{10}$ & Gap (\%) & Time (s) \\ 
+ \hline
+ A-n32-k05 & 784 & 785 & 787 & 0.13 & 1570  \\
+ \hline
+ A-n33-k05   & 661 & 661 & 662 &0 & 1806   \\
+  \hline
+   A-n33-k06 & 742 & 743 & 743 &0.13 & 1419  \\
+ \hline
+   A-n34-k05 & 778 & 786 & 788 &1.01 & 1559  \\
+  \hline
+   A-n36-k05 & 799 & 799 & 799 & 0 & 1740  \\
+ \hline
+  A-n37-k05  & 669 & 670 & 670 & 0.15 & 2030  \\
+  \hline
+  A-n37-k06 & 949 & 949 & 949 & 0 & 1627 \\
+ \hline
+  A-n38-k05  & 730 & 730 & 730 & 0 & 1721 \\
+ \hline
+ A-n39-k05 & 822 & 825 & 827 & 0.36 & 2131 \\
+ \hline
+  A-n39-k06  & 831 & 831 & 831 & 0 & 2054   \\
+ \hline
+   A-n44-k06 & 937 & 937 & 940 & 0 & 2450   \\
+  \hline
+   A-n45-k06 & 944 & 954 & 955 & 1.05 & 2429  \\
+ \hline 
+  A-n45-k07  & 1146 & 1154& 1155 & 0.17 & 2202 \\
+  \hline
+  A-n46-k07  & 914 & 917& 917&0.33 & 2122  \\
+  \hline
+  A-n48-k07 & 1073 & 1073 & 1082 &0 & 2554  \\
+ \hline
+  A-n53-k07  & 1010 & 1014 & 1023 &0.39 & 2975   \\
+  \hline
+  A-n54-k07  & 1167 & 1172 & 1172 &0.43 & 2551   \\
+  \hline
+  A-n55-k09 & 1073 & 1074 & 1075 &0.09 & 3049  \\
+ \hline 
+   A-n60-k09 & 1354 & 1363 & 1366 &0.66 & 3741   \\
+  \hline 
+  A-n61-k09  & 1034 & 1035 & 1039 &0.09 & 4159  \\
+  \hline
+    A-n62-k08  & 1288 & 1308 & 1310 &1.53 & 4299   \\
+  \hline
+    A-n63-k09  & 1616 & 1635 & 1640 &1.16 & 3276   \\
+  \hline
+    A-n63-k10  & 1314 & 1320 &1320 &0.45 & 3559   \\
+  \hline
+    A-n64-k09  & 1401 & 1416 & 1419 &1.06 & 3845   \\
+  \hline
+    A-n65-k09  & 1174 & 1178 & 1181 &0.34 & 3192   \\
+  \hline
+    A-n69-k09  & 1159 &  & 46 & &0.44   \\
+  \hline
+    A-n80-k10  & 1763 & 1767 & 1771 & 0.23 & 5765   \\
+  \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{Résultats pour l'ensemble B}
+\label{TB}
+\begin{center}
+\begin{tabular}{|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
+
+\hline
+ Instance & Best-Known & \multicolumn{4}{c|}{LearnHeuristic}  \\
+ \hline
+ & & Best & Mean$_{10}$ & Gap (\%) & Time (s) \\ 
+ \hline
+ B-n31-k05 & 672 & 672 & 672 & 0 & 1500  \\
+ \hline
+ B-n34-k05   & 788 & 788 & 788&0 & 1476   \\
+  \hline
+   B-n35-k05 & 955 & 958 & 958 &0.31 & 1577  \\
+ \hline
+   B-n38-k06 & 805 & 806 & 806 &0.12 & 2182  \\
+  \hline
+   B-n39-k05 & 549 & 550 & 550 & 0.18 & 1839  \\
+ \hline
+  B-n41-k06  & 829 & 831 & 833 & 0.24 & 1904  \\
+  \hline
+  B-n43-k06 & 742 & 742 & 744 & 0 & 2323 \\
+ \hline
+  B-n44-k07  & 909 &  &  &  &  \\
+ \hline
+ B-n45-k05 & 751 & 753 & 753 & 0.27 & 2120 \\
+ \hline
+  B-n45-k06  & 678 &  &  &  &    \\
+ \hline
+   B-n50-k07 & 741 & 741 & 741 & 0 & 2761   \\
+  \hline
+   B-n50-k08 & 1312 & 1324 & 1327 & 0.91 & 3160  \\
+ \hline 
+  B-n51-k07  & 1032 & & & &  \\
+  \hline
+  B-n52-k07  & 747 & 748 & 750 &0.13 & 2959  \\
+  \hline
+  B-n56-k07 & 707 & 710 & 710 & 0.42 & 2539  \\
+ \hline
+  B-n57-k09  & 1598 & 1599 & 1601 &0.06 & 2627   \\
+  \hline
+  B-n63-k10  & 1496 & 1538 & 1539 & 2.73 & 3289   \\
+  \hline
+  B-n64-k09 & 861 &  &  & &  \\
+ \hline 
+   B-n66-k09 & 1316 & 1321 & 1325 &0.38 & 3577   \\
+  \hline 
+  B-n67-k10  & 1032 & 1049 & 1057 &1.62 & 4046  \\
+  \hline
+    B-n68-k09  & 1272 & 1295 & 1295 &1.78 & 3481   \\
+  \hline
+    B-n78-k10  & 1221 & 1235 & 1244 &1.13 & 4557   \\
+  \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{Résultats pour l'ensemble P}
+\label{TP}
+\begin{center}
+\begin{tabular}{|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
+
+\hline
+ Instance & Best-Known & \multicolumn{4}{c|}{LearnHeuristic}  \\
+ \hline
+ & & Best & Mean$_{10}$ & Gap (\%) & Time (s) \\ 
+ \hline
+ P-n016-k08 & 450 & 450 & 450 & 0 & 534  \\
+ \hline
+ P-n019-k02   & 212 & 219 & 219 & 3.2 & 705   \\
+  \hline
+   P-n020-k02 & 216 & 218 & 218 &0.92 & 755  \\
+ \hline
+   P-n021-k02 & 211 & 211 & 211 &0 & 776  \\
+  \hline
+   P-n022-k02 & 216 & 216 & 216 & 0 & 878  \\
+ \hline
+  P-n023-k08  & 529 & 529 & 529 & 0 & 789  \\
+  \hline
+  P-n040-k05 & 742 & 742 & 744 & 0 & 2323 \\
+ \hline
+  P-n045-k05  & 510 & 510 & 510 & 0 & 2241 \\
+ \hline
+ P-n050-k07 & 554 & 555 & 557 & 0.18 & 2916 \\
+ \hline
+  P-n050-k08  & 631 & 633 & 633 & 0.32 & 3203   \\
+ \hline
+   P-n050-k10 & 696 & 697 & 697 & 0.14 & 2318   \\
+  \hline
+   P-n051-k10 & 741 & 743 & 749 & 0.27 & 2454  \\
+ \hline 
+  P-n055-k07  & 568 & 568& 572& 0&3689  \\
+  \hline
+  P-n055-k10  & 694 & 696 & 699 &0.29 & 3438  \\
+  \hline
+  P-n060-k10 & 744 & 750 & 751 & 0.8 & 3497  \\
+ \hline
+   P-n060-k15  & 968 & 979 & 979 &1.12 & 3514   \\
+  \hline
+  P-n065-k10  & 792 & 792 & 792 & 0 & 4024   \\
+  \hline
+  P-n070-k10 & 827 & 833 & 838 & 0.72 & 4866    \\
+  \hline
+  P-n076-k04 & 593 & 596 &600 & 0.50 & 5854 \\
+ \hline 
+   P-n076-k05 & 627 & 628 & 629 &0.16 & 5612   \\
+  \hline 
+  P-n101-k04  & 681 & 682 & 687 & 0.15 & 9366  \\
+  \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+La plupart des solutions obtenus avec l'algorithme \lstinline|LearnHeuristic| sont très proches des solutions optimales. 
 
 \section*{Conclusion}
 

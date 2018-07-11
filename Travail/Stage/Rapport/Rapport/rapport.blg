@@ -3,44 +3,48 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: rapport.aux
 The style file: plain.bst
 Database file #1: biblio.bib
-You've used 2 entries,
+Warning--entry type for "cvrplib" isn't style-file defined
+--line 17 of file biblio.bib
+Warning--to sort, need author or key in cvrp_pres
+You've used 5 entries,
             2118 wiz_defined-function locations,
-            509 strings with 4377 characters,
-and the built_in function-call counts, 506 in all, are:
-= -- 46
-> -- 26
+            524 strings with 4714 characters,
+and the built_in function-call counts, 1117 in all, are:
+= -- 105
+> -- 47
 < -- 0
-+ -- 12
-- -- 8
-* -- 28
-:= -- 99
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 10
++ -- 21
+- -- 14
+* -- 52
+:= -- 197
+add.period$ -- 14
+call.type$ -- 5
+change.case$ -- 22
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 20
-empty$ -- 35
-format.name$ -- 8
-if$ -- 97
+cite$ -- 6
+duplicate$ -- 44
+empty$ -- 97
+format.name$ -- 14
+if$ -- 232
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 2
-newline$ -- 13
-num.names$ -- 4
-pop$ -- 10
+int.to.str$ -- 5
+missing$ -- 3
+newline$ -- 27
+num.names$ -- 8
+pop$ -- 31
 preamble$ -- 1
-purify$ -- 8
+purify$ -- 17
 quote$ -- 0
-skip$ -- 16
+skip$ -- 38
 stack$ -- 0
-substring$ -- 12
-swap$ -- 2
+substring$ -- 27
+swap$ -- 5
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 8
-warning$ -- 0
-while$ -- 4
-width$ -- 3
-write$ -- 22
+type$ -- 20
+warning$ -- 1
+while$ -- 8
+width$ -- 6
+write$ -- 50
+(There were 2 warnings)

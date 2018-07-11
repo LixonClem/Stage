@@ -1,5 +1,9 @@
 \begin{thebibliography}{1}
 
+\bibitem{cvrp_pres}
+Le probleme de tournees de vehicules : etude et resolution approchee.
+\newblock [Rapportde recherche] RR-2197, INRIA., 1994.
+
 \bibitem{Altinel_2005}
 IK. Altinel and T.~Öncan.
 \newblock A new enhancement of the clarke and wright savings heuristic for the
@@ -11,5 +15,16 @@ Florian Arnold and Kenneth Sörensen.
 \newblock A simple, deterministic and efficient knowledge-driven heuristic for
   the vehicle routing problem.
 \newblock {\em Transportation Science}, December 2017.
+
+\bibitem{CW_1964}
+G.~Clarke and J.~W. Wright.
+\newblock Scheduling of vehicles from a central depot to a number of delivery
+  points.
+\newblock {\em Operations Research}, 1964.
+
+\bibitem{cvrplib}
+Ivan Xavier.
+\newblock Cvrplib.
+\newblock \url{http://vrp.atd-lab.inf.puc-rio.br/index.php/en/}, 2014.
 
 \end{thebibliography}

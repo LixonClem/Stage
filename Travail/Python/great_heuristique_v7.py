@@ -970,7 +970,9 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
         routes = ejection_chain(l, cp, v, routes, inst, demand, fixed_edges)
 
         for i in range(len(routes)):
-            routes2[i] = decross_route(routes2[i].copy(), inst)
+            if len(routes[i])==2:
+                routes = reject(i, routes, v, inst, demand)
+            routes[i] = decross_route(routes[i].copy(), inst)
             routes[i] = LK(routes[i], inst)
         # apply cross-exchange
 
@@ -978,7 +980,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
 
         # apply LK
         for i in range(len(routes)):
-            routes2[i] = decross_route(routes2[i].copy(), inst)
+            routes[i] = decross_route(routes[i].copy(), inst)
             routes[i] = LK(routes[i], inst)
 
         c_final = cost_sol(routes, inst)
@@ -1124,7 +1126,7 @@ def apply_heuristic(inst, demand, l):
 
     namefile = "resultats/Heuristic_results/Values/all/results.txt"
     writef(namefile,'')
-    writef(namefile,'Mean = ' + str(costs/100))
+    writef(namefile,'Mean = ' + str(costs/10))
     writef(namefile,'Execution = ' + str(tps_fin-tps_deb))
     writef(namefile,'')
     

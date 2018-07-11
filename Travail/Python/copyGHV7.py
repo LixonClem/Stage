@@ -1167,7 +1167,7 @@ def common_edges(sol1, sol2):
 
 
 
-t = "Golden_01"
+t = "P-n101-k04"
 instance,demand,Capacity = read("Instances/"+t+".xml")
 
 #record = [[0, 7, 25, 35, 16], [0, 27, 32, 15, 30, 13], [0, 24, 29, 36, 6, 14], [0, 4, 10, 11, 12, 22, 23, 28, 2, 33], [0, 20, 8, 5, 3, 1, 34, 17], [0, 18, 31, 19, 9, 21, 26]]
@@ -1211,20 +1211,21 @@ print_edges(aer,instance,'green')
 py.show()
 """
 
-apply_heuristic(instance, demand, relocation)
-"""
+#apply_heuristic(instance, demand, relocation)
+
 s = 0
 
 Gen = 50
 initial = init_routes(instance,demand)
 all_results = [[[],[],[]] for i in range(9)]
 for lg in range(10):
+    print(lg)
     edges =[]
     base,stat = rd_generate(Gen,instance,demand,initial)
     param = []
     for b in base:
         param.append([b[2]])
-    namefile = "resultats/Heuristic_results/Values/tests/rangA6509.txt"
+    namefile = "resultats/Heuristic_results/Values/tests/seuilP10104.txt"
     writef(namefile,'Base : '+str(lg))
     writef(namefile,''+str(param))
     quality = (stat[1]-stat[0])/10 + stat[0]
@@ -1233,9 +1234,9 @@ for lg in range(10):
     mat_qual = init_matrix(len(instance))
     mat_qual = learn(mat_qual,ls_qual)
     crit_nb = 0
-    for crit in [0.25,0.33,0.4,0.5,0.6,0.67,0.75,0.8,1]:
+    for crit in [0.2,0.25,0.33,0.4,0.5,0.6,0.67,0.75,0.8]:
         edges =[]
-        e_c = mat_info_rg(int(len(demand)*crit),mat_qual)
+        e_c = mat_info_req(int(len(ls_qual)*crit),mat_qual)
         for e in e_c:
             if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
                 edges.append(e)
@@ -1256,13 +1257,13 @@ for lg in range(10):
         crit_nb += 1
 crit_nb = 1
 for i in all_results:
-    namefile = "resultats/Heuristic_results/Values/tests/rangA6509.txt"
+    namefile = "resultats/Heuristic_results/Values/tests/seuilP10104.txt"
     writef(namefile,'critère '+str(crit_nb))
     for j in i:
         writef(namefile,'')
         writef(namefile,str(j))
     crit_nb += 1
-
+"""
 
 
 
