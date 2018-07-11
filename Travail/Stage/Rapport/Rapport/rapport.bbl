@@ -22,6 +22,13 @@ G.~Clarke and J.~W. Wright.
   points.
 \newblock {\em Operations Research}, 1964.
 
+\bibitem{synthese}
+François~Legras Sahbi Ben~Ismail and Gilles Coppin.
+\newblock Synthèse du problème de routage de véhicules.
+\newblock
+  \url{https://portail.telecom-bretagne.eu/publi/public/fic_download.jsp?id=5745},
+  2011.
+
 \bibitem{cvrplib}
 Ivan Xavier.
 \newblock Cvrplib.

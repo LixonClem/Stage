@@ -18,6 +18,7 @@
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage{subcaption}
 \usepackage{xcolor}
+\usepackage{float} 
 
 \parskip=0.5\baselineskip
 \providecommand{\keywords}[1]{\textbf{\textit{Mots-clés : }} #1}
@@ -32,44 +33,46 @@
 \maketitle
 
 \begin{abstract}
-De nombreux algorithmes font régulièrement leur apparition pour tenter de résoudre des problèmes d'optimisation stochastique, comme le \emph{Capacitated Vehicle Routing Problem}, ou d'améliorer des solutions existantes.
+De nombreux algorithmes font régulièrement leur apparition pour tenter de résoudre des problèmes d'optimisation combinatoire, comme le \emph{Capacitated Vehicle Routing Problem}, ou d'améliorer des solutions existantes.
 Dans la plupart des problèmes, il est possible d'extraire de la connaissance de petites instances résolues, afin de guider les algorithmes lors de la résolution de plus grandes instances. Intégrer de cette manière de la connaissance à un algorithme permet de créer une \emph{Learning Heuristic}, souvent plus performante que l'algorithme initial. 
 \end{abstract}
 
-\keywords{\emph{Optimisation stochastique}, \emph{Capacitated Vehicle Routing Problem},\emph{Extraction de connaissance}, \emph{Intégration de connaissance}, \emph{Learning Heuristic}}
+\keywords{\emph{Optimisation combinatoire}, \emph{Capacitated Vehicle Routing Problem},\emph{Extraction de connaissances}, \emph{Intégration de connaissances}, \emph{Learning Heuristic}}
 
 \section*{Introduction}
 
-Les problèmes d'optimisation stochastique sont généralement des problèmes difficiles à résoudre, puisque le nombre de solutions à tester varie de manière exponentielle en la taille de l'instance. 
-Le Vehicle Routing Problem (VRP) est un problème dit d'optimisation stochastique.
+Les problèmes d'optimisation combinatoire sont généralement des problèmes difficiles à résoudre, puisque le nombre de solutions à tester varie de manière exponentielle en la taille de l'instance. 
+Le Vehicle Routing Problem (VRP) est un problème dit d'optimisation combinatoire.
 L'objectif est de relier un nombre $n$ de clients par des véhicules, démarrant et finissant tous à un même point défini, le dépôt. 
 Ce problème est NP-complet, et dispose de nombreuses variantes (ajout d'une contrainte de temps, plusieurs dépôts possibles...). Cela permet de modéliser un grand nombre de situations réelles. 
-L'une des variantes les plus connues consiste à prendre en compte pour chaque client sa demande, de sorte à ce que les tournées créées ne dépassent pas une certaine capacité définie à l'avance. 
+L'une des variantes les plus connues consiste à prendre en compte pour chaque client sa demande, de sorte à ce que les tournées créées ne dépassent pas une certaine capacité définie à l'avance, correspondant à la capacité du véhicule de transport. 
 On nomme ce problème Capacitated Vehicle Routing Problem (CVRP). 
 
-De nombreux types d'algorithme existent pour résoudre ces problèmes d'optimisation (algorithme génétique, colonie de fourmis...), mais ne parviennent pas toujours à trouver la solution optimale.
+De nombreux types d'algorithme existent pour résoudre ces problèmes d'optimisation (algorithme génétique, colonie de fourmis...), comme le montre~\cite{synthese} dans le cas du CVRP, mais ne parviennent pas toujours à trouver la solution optimale. 
 De nombreuses heuristiques ont également vu le jour pour résoudre le CVRP, aucune d'entre elles ne parvient à trouver des solutions optimales pour toutes les instances de la littérature, malgré de très bons résultats dans la plupart des cas. Encore récemment~\cite{Sorensen_2017}, une nouvelle heuristique efficace a vu le jour. 
 L'une des méthodes pour améliorer les algorithmes d'optimisation consiste en l'extraction de connaissances sur des petites instances résolues, puis leur intégration dans l'algorithme d'optimisation choisi.
 
-Ce rapport commence par présenter le problème étudié, et introduit les notations et opérateurs utilisés dans la suite. Il présente ensuite l'objectif du stage et la méthode mise en place pour y parvenir. 
-Différents problèmes sont alors soulevés, et sont traités dans chacune des parties qui suit.
-  
+La section~\ref{presentation} commence par présenter le problème étudié, et introduit les notations et opérateurs utilisés dans la suite. L'objectif fixé et la méthode mise en place pour y parvenir y sont également présentés.
+La section~\ref{SolInit} explique comment obtenir une solution initiale au problème de bonne qualité, puis la section~\ref{opti} propose un algorithme d'optimisation utilisé pour la résolution du problème. 
+La section~\ref{extraction} décrit comment  extraire de la connaissance des instances étudiées. 
+Enfin, la section~\ref{Integration} explique comment intégrer de la connaissance à un algorithme d'optimisation et présente une nouvelle \emph{learning heuristic} pour résoudre le problème. 
 
 \section{Présentation des notions et notations}
-Cette section introduit dans un premier temps le problème étudié, en rappelant au préalable ce qu'est un problème d'optimisation stochastique. Les différentes notations utilisées dans la suite du papier sont ensuite décrites, enfin l'objectif de cet article est présenté. 
+\label{presentation}
+Cette section introduit dans un premier temps le problème étudié, en rappelant au préalable ce qu'est un problème d'optimisation combinatoire. Les différentes notations utilisées dans la suite du papier sont ensuite décrites, enfin l'objectif de cet article est présenté. 
 
 
 \subsection{Description du problème}
-De nombreux problèmes sont dits d'optimisation stochastique, dont font notamment partie le \emph{Traveller Salesman Problem} (TSP), ainsi que le \emph{Capacitated Vehicle Problem} (CVRP). Cette partie détaille de manière formelle ce qu'est un problème d'optimisation stochastique, puis présente le problème étudié : \emph{CVRP}
+De nombreux problèmes sont dits d'optimisation combinatoire, dont font notamment partie le \emph{Traveller Salesman Problem} (TSP), ainsi que le \emph{Capacitated Vehicle Problem} (CVRP). Cette partie détaille de manière formelle ce qu'est un problème d'optimisation combinatoire, puis présente le problème étudié : \emph{CVRP}
 
-\subsubsection{Optimisation stochastique}
+\subsubsection{Optimisation combinatoire}
 Un problème d'optimisation combinatoire (également appelée optimisation discrète), consiste à trouver dans un ensemble discret, les meilleures solutions (au sens d'une certaine fonction, dite \emph{fonction objectif}) réalisables. 
 Formellement, on a :
 
 \begin{itemize}
-\item Un ensemble discret $N$;
+\item Un ensemble discret $N$ de solutions;
 \item Une fonction $f : 2^N \rightarrow \Re$, dite fonction objectif;
-\item Un ensemble $R$ de sous-ensembles de $N$, dont les éléments sont appelés solutions réalisables.
+\item Un ensemble $R \subseteq N$, dont les éléments sont appelés solutions réalisables.
 \end{itemize}
 
 Ainsi, un problème d'optimisation combinatoire consiste à déterminer :
@@ -82,21 +85,22 @@ Toutefois dans ce type de problème, le nombre de solutions réalisables varie g
 
 \subsubsection{Vehicle Routing Problem (VRP)}
 
-Le problème de tournées de véhicules, est un problème NP-complet d'optimisation stochastique, où sont donnés $n$ points de coordonnées $(x_i,y_i)$, représentant 1 dépôt et $n-1$ clients. On dispose également d'une flotte de $k$ véhicules. 
-L'objectif est de minimiser la longueur du réseau (ie l'ensemble des tournées effectuées par les véhicules). 
+Le problème de tournées de véhicules, est un problème NP-complet d'optimisation combinatoire, où sont donnés $n$ points de coordonnées $(x_i,y_i)$, représentant 1 dépôt et $n-1$ clients. On dispose également d'une flotte de $k$ véhicules. 
+L'objectif est de minimiser la longueur du réseau (i.e. l'ensemble des tournées effectuées par les véhicules, une tournée correspondant à l'ensemble des clients desservis par un véhicule). 
 En reprenant les notations de~\cite{cvrp_pres}, on définit $x_{i,j}^v$ qui vaut 1 si $j$ est desservi après $i$ par le véhicule $v$, et 0 sinon. 
 On définit également $c_{i,j}$ comme étant la distance entre $i$ et $j$.
-Il faut donc déterminer la solution $Sol$ vérifiant :
+Ainsi une solution \emph{Sol} du problème est la donnée d'une matrice, telle que $Sol[i][j] = c_{i,j} x_{i,j}^v$.
+On cherche donc à déterminer:
 \begin{center}
-$ Sol = argmin_{Sol} \sum_{i = 0}^{n} \sum_{j = 0}^{n} \sum_{v = 1}^{k} c_{i,j} x_{i,j}^v = argmin_{Sol}cost(Sol)$
+$ min \sum_{i = 0}^{n} \sum_{j = 0}^{n} \sum_{v = 1}^{k} c_{i,j} x_{i,j}^v = min_{Sol}cost(Sol)$
 \end{center}
 La fonction $cost$ correspond à la fonction objectif de ce problème.
 
 Les tournées créées doivent également respecter les contraintes suivantes :
 
 \begin{itemize}
-\item Chaque client doit être desservi par une et une seule tournée;
-\item Chaque tournée doit partir et s'arrêter au dépôt.
+\item Chaque client doit être desservi par une et une seule tournée : $\forall i > 0 \sum_{j = 1}^{n} \sum_{v = 1}^{k} x_{i,j}^v = 1$;
+\item Chaque tournée doit partir et s'arrêter au dépôt : $\forall v \sum_{j = 1}^{n} x_{0,j}^v = 1$ et $\sum_{j = 1}^{n} x_{j,0}^v = 1 $.
 \end{itemize}
 
 Un exemple d'instance est présenté en figure~\ref{Instance3205}, où les points rouges représentent les clients et le point bleu le dépôt. Une solution possible au problème est représenté en figure~\ref{SNC3205} mais n'est à priori pas optimale. 
@@ -109,7 +113,7 @@ C'est l'ajout de capacité aux tournées qui nous intéressera plus particulièr
     \begin{minipage}[c]{.46\linewidth}
         \centering
 		\includegraphics[scale=0.5]{Instance.png}
-		\caption{Représentation de l'instance A-n32-k05 de la littérature}
+		\caption{Représentation de l'instance A-n32-k05 de la littérature (31 clients et 1 dépôt)}
 		\label{Instance3205}
     \end{minipage}
     \hfill%
@@ -127,7 +131,7 @@ On étend le VRP au CVRP en ajoutant à chaque client $i$ une demande $d_i$, ain
 Une nouvelle contrainte vient donc s'ajouter aux contraintes classiques du VRP :
 
 \begin{itemize}
-\item La demande totale sur chaque tournée ne doit pas excéder la capacité du véhicule.
+\item La demande totale sur chaque tournée ne doit pas excéder la capacité du véhicule : $\forall v \sum_{i = 0}^{n} \sum_{j = 0}^{n} x_{i,j}^v d_j < C$.
 \end{itemize}
 
 Si on reprend l'instance A-n32-k05, en considérant les demandes des clients ainsi que la capacité disponible pour chaque véhicule, on obtient une solution présente sur la figure~\ref{SC3205}, qui n'est pas optimale. 
@@ -138,24 +142,50 @@ Les instances du CVRP étudiées par la suite, sont disponibles sur~\cite{cvrpli
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{solutionCapacity.png}
-\caption{Représentation d'une solution de l'instance A-n32-k05, où les demandes des clients sont prises en compte}
+\caption{Représentation d'une solution de l'instance A-n32-k05, où les demandes des clients sont prises en compte. Elle comporte 5 tournées}
 \label{SC3205}
 \end{figure}
+
+\subsubsection{Méthodes de résolution de CVRP}
+L'article~\cite{synthese} présente les différents types d'algorithme et méthodes qui existent pour résoudre le CVRP (et plus généralement un problème d'optimisation combinatoire).
+Il distingue principalement deux types de méthodes : les méthodes exactes et les méthodes approchées.
+
+Les méthodes exactes, ou encore méthodes \emph{complètes}, permettent de trouver la solution optimale au problème. 
+Ces méthodes sont basées sur des explorations exhaustives de l'ensemble des solutions réalisables. 
+Toutefois ces méthodes basiques restent inappropriées aux problèmes d'optimisation combinatoire. 
+Il existe néanmoins des algorithmes qui permettent de restreindre l'ensemble à explorer en éliminant des sous-ensembles de mauvaises solutions à l'aide de techniques, dites d'élagage.
+
+Contrairement aux méthodes exactes, les méthodes approchées sont dites \emph{incomplètes}, car elles permettent de trouver de bonnes solutions, mais ne garantissent pas l'optimalité de celles-ci. 
+Cette méthode regroupe notamment les heuristiques et méta-heuristiques.
+
+\textbf{Une heuristique} est un moyen de guider les choix que doit faire un algorithme pour réduire sa complexité. Une heuristique est spécifique à un problème et ne peut donc pas être généralisée.
+
+\textbf{Une méta-heuristique} peut être considérée comme une heuristique "puissante et évoluée", dans la mesure où elle est généralisable à plusieurs problèmes d'optimisation. On classe souvent les méta-heuristiques en fonction du nombre de solutions qu'elles manipulent. Celles à solution unique (recherche tabou, descente du gradient), et celles à population de solutions (algorithmes génétiques et colonies de fourmis).
+
+De plus les méthodes approchées doivent trouver un équilibre entre deux tendances opposées : l' \emph{intensification} (ou \emph{exploitation}) et la \emph{diversification} (ou \emph{exploration}). \textbf{L'intensification} de la recherche signifie que celle-ci se concentre autour des meilleures solutions rencontrées, considérées prometteuses. 
+Alors que \textbf{la diversification} incite davantage la recherche à explorer des nouvelles zones de l'espace de solutions. 
+
+Ainsi les méta-heuristiques à solution unique ont plus tendance à l'exploitation du voisinage de la solution en question, et les approches à base de population de
+solutions ont plutôt tendance à l'exploration.
+
+
 
 \subsection{Parcours et exploration des voisinages}
 \label{voisinage}
 
-Lorsqu'il s'agit de trouver une solution optimale à un problème d'optimisation, il est souvent intéressant d'explorer les voisinages d'une solution pour voir s'il n'y a pas mieux autour. Selon la méthode d'exploration employée, il peut être intéressant de parcourir le voisinage de différentes manières, pour ne pas toujours favoriser les mêmes voisins.
+Il existe plusieurs moyens pour procéder à une diversification de la solution courante.
+En effet, il est possible qu'en modifiant légèrement la solution courante, on obtienne une autre solution réalisable, appelée \emph{voisin} de la solution courante.
+On appelle alors \emph{voisinage} de la solution courante, l'ensemble des voisins de cette solution.
 
-L'\underline{exploration} d'un voisinage de solutions peut être plus ou moins exhaustif selon la condition d'arrêt utilisée.
-On distingue principalement, deux conditions d'arrêt lorsqu'il s'agit d'explorer des voisinages :
+L'\emph{exploration} d'un voisinage de solutions peut être plus ou moins exhaustif selon la condition d'arrêt utilisée.
+On distingue principalement, deux conditions d'arrêt lorsqu'il s'agit d'explorer un voisinage :
 
 \begin{itemize}
 \item First improvement (\emph{FI}) : on parcourt le voisinage jusqu'à trouver un changement qui améliore la solution actuelle (on s'arrête donc à la première amélioration trouvée);
 \item Best improvement (\emph{BI}) : on parcourt tout le voisinage, et on applique le changement qui va le plus améliorer notre solution actuelle. \\
 \end{itemize}
 
-Pour explorer un voisinage, on peut le \underline{parcourir} de différentes manières de sorte à ne pas toujours favoriser les mêmes voisins. On considérera ici 3 parcours différents : 
+Pour explorer un voisinage, on peut le \emph{parcourir} de différentes manières de sorte à ne pas toujours favoriser les mêmes voisins. On considérera ici trois parcours différents : 
 
 \begin{itemize}
 \item Dans l'ordre (\emph{O}) : les voisins sont parcourus dans un ordre naturel (du premier au dernier);
@@ -163,7 +193,7 @@ Pour explorer un voisinage, on peut le \underline{parcourir} de différentes man
 \item Aléatoirement (\emph{RD}) : on tire aléatoirement l'ordre dans lequel on va parcourir les voisins. \\
 \end{itemize}
 
-On peut remarquer que peu importe le parcours effectué, pour faire une exploration \emph{BI}, il faudra passer par tous les voisins. Pour qu'une exploration \emph{FI} soit efficace, il faut éviter un parcours \emph{O}, car dans ce cas on privilégie une certains voisinages qui seront choisis plus souvent. On retiendra le tableau récapitulatif suivant:
+On peut remarquer que peu importe le parcours effectué, pour faire une exploration \emph{BI}, il faudra passer par tous les voisins. Pour qu'une exploration \emph{FI} soit efficace, il faut éviter un parcours \emph{O}, car dans ce cas on privilégie un certain voisinage qui sera choisi plus souvent. On retiendra le tableau récapitulatif suivant:
 
 \begin{center}
 \begin{tabular}{|c|c|c|}
@@ -273,9 +303,9 @@ Exemple d'exécution de l'algorithme avec $(\lambda, \mu, \nu) = (1,1,1)$, sur l
 \end{figure}
 \subsection{Choix des paramètres $(\lambda, \mu, \nu)$}
 Le triplet $(\lambda, \mu, \nu)$ a déjà été étudié de nombreuses fois dans la littérature. L'article~\cite{Altinel_2005} précise qu'il suffit de considérer $(\lambda, \mu, \nu)$ dans $]0,2] \times [0,2]^2$ pour avoir de bonnes solutions. 
-Par ailleurs, il est inutile de prendre précision inférieure au dixième lorsqu'on choisit les valeurs des paramètres.
+Par ailleurs, il est inutile de prendre une précision inférieure au dixième lorsqu'on choisit les valeurs des paramètres.
 
-Les figures \ref{resCW190105} à \ref{resCW001015} représentent différents résultats obtenus pour des triplets $(\lambda, \mu, \nu)$ différents.
+Les figures \ref{resCW190105} à \ref{resCW001015} présentent différents résultats obtenus pour différents triplets $(\lambda, \mu, \nu)$.
 On remarque qu'il n'y a aucun lien entre les résultats et les valeurs de $(\lambda, \mu, \nu)$. 
 On ne peut donc pas prévoir à l'avance si le triplet $(\lambda, \mu, \nu)$ va donner un bon résultat ou non.
 
@@ -307,9 +337,10 @@ L'influence de ces paramètres dépend aussi des caractéristiques de l'instance
 \end{figure}
 
 \section{Proposition d'un algorithme d'optimisation}
+\label{opti}
 Nous proposons dans cette partie un algorithme d'optimisation qui sera utilisé pour y intégrer de la connaissance. Il s'inspire d'un algorithme proposé récemment~\cite{Sorensen_2017}, dont nous détaillons d'abord le fonctionnement, avant de décrire davantage les mécanismes mis en jeu lors de son exécution.
 
-\subsection{Heuristique Arnold \& Sörensen}
+\subsection{Heuristique de Arnold \& Sörensen}
 L'heuristique proposée par Arnold et Sörensen~\cite{Sorensen_2017}, est à la fois simple et efficace. 
 Il semble donc pertinent de vouloir améliorer cet algorithme en y intégrant de la connaissance.
 L'heuristique commence par déterminer une solution initiale via l'algorithme CW, présenté en section~\ref{SolInit}. Différents opérateurs de voisinage sont ensuite appliqués autour d'une arête, considérée comme étant la pire du graphe. Ces opérateurs sont tous en mode $BI-O$, c'est-à-dire que tous les voisins sont parcourus et seul le meilleur est retenu.
@@ -480,7 +511,7 @@ Cela consiste en une réorganisation des clients sur la tournée. On choisit $k$
 On appelle \emph{k-opt}, l'opération qui consiste à échanger $k$ clients différents sur la tournée.
 
 On commence alors par appliquer 2-opt, si une amélioration est trouvée, on passe à 3-opt, et ainsi de suite jusqu'à atteindre k-opt. 
-On repart alors de 2-opt, et ce jusqu'à ne plus trouver d'améliorations. 
+On repart alors de 2-opt, et ce jusqu'à ne plus trouver d'améliorations, comme le décrit l'algorithme~\ref{algo:LK}.
 D'après l'article~\cite{Sorensen_2017}, on peut prendre $k = 2$.
  
 Un exemple d'utilisation de cet opérateur est présent sur la figure~\ref{LK}
@@ -493,8 +524,6 @@ Un exemple d'utilisation de cet opérateur est présent sur la figure~\ref{LK}
 \caption{Exemple de fonctionnement de l'opérateur LK}
 \label{LK}
 \end{figure}
-
-L'algorithme~\ref{algo:LK} décrit l'exécution de l'opérateur.
 
 \begin{algorithm}
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
@@ -519,7 +548,7 @@ Pour diminuer le temps d'exécution, nous choisissons de diminuer le temps limit
 Pour que l'exploration du voisinage des solutions soit plus efficace, nous décidons de passer les opérateurs \emph{EC} et \emph{CE} en mode $FI-RD$ (ce qui est généralement le cas dans les algorithmes d'optimisation).
 Enfin, nous ajoutons une condition de \emph{Restart}, s'il n'y a pas eu d'améliorations depuis $n$ itérations.
 
-L'algorithme~\ref{algo:HC} présente en rouge les changements effectués, par rapport à l'algorithme~\ref{algo:AS}.
+L'algorithme~\ref{algo:HC} présente en gras les changements effectués, par rapport à l'algorithme~\ref{algo:AS}.
 
 \begin{algorithm}
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
@@ -528,26 +557,26 @@ L'algorithme~\ref{algo:HC} présente en rouge les changements effectués, par ra
 $Sol \gets CW(I,D,\lambda,\mu,\nu)$\;
 $N \gets length(D)$\;
 $nextSol \gets Sol$\;
-\While {La dernière amélioration date de moins de \textcolor{red}{n/3 sec}} {
+\While {La dernière amélioration date de moins de \textbf{n/3 sec}} {
 	$worstEdge \gets argmax_{(i,j)} b(i,j) $\;
-	$nextSol \gets EC_{\textcolor{red}{FI-RD}}(worstEdge,I,D)$\;
+	$nextSol \gets EC_{\textbf{FI-RD}}(worstEdge,I,D)$\;
 	$nextSol \gets LK_{BI-O}(nextSol)$\;
-	$nextSol \gets CE_{\textcolor{red}{FI-RD}}(worstEdge,I,D)$\;
+	$nextSol \gets CE_{\textbf{FI-RD}}(worstEdge,I,D)$\;
 	$nextSol \gets LK_{BI-O}(nextSol)$\;
 	\If {$cost(Sol) > cost (nextSol)$} {
 		$ Sol \gets nextSol$\;
 	}
-	\textcolor{red}{
-	\If {Pas d'améliorations depuis $n/2$ itérations} {
+	
+	\If {\textbf{Pas d'améliorations depuis $n/2$ itérations}} {
 		$nextSol \gets Sol$\;
+	
 	}
-	}
-	\textcolor{red}{
-	\If {Pas d'améliorations depuis $n$ itérations} {
+	
+	\If {\textbf{Pas d'améliorations depuis $n$ itérations}} {
 		Changer de fonction de pénalisation en prenant un autre triplet $(\gamma_w,\gamma_c,\gamma_d)$\;
 		Réinitialiser les pénalités des arêtes\;
 	}
-	}
+	
 }
 \Return{$Sol$}\;
 \caption{{\sc $H_c$} calcule une solution du problème considéré}
@@ -557,11 +586,13 @@ $nextSol \gets Sol$\;
 Nous pouvons à présent nous intéresser à l'extraction des connaissances des solutions initiales.
 
 \section{Extraction de la connaissance}
+\label{extraction}
 Cette section s'intéresse à l'extraction de connaissance à partir de solutions initiales générées. 
-Nous commençons par expliquer quelle va être la connaissance extraite des solutions initiales, puis nous présentons notre protocole d'apprentissage ainsi que les problématiques qu'il soulève.
+Nous expliquons dans un premier temps quelle va être la connaissance extraite des solutions initiales, puis nous décrivons notre protocole d'apprentissage ainsi que les problématiques qu'il soulève.
 Enfin, nous présentons quelques résultats obtenus, servant à déterminer les paramètres choisis lors de l'apprentissage. 
 
 \subsection{Quelle est la connaissance ?}
+
 En observant quelques solutions obtenues avec \emph{CW}, auxquelles est appliquée l'opérateur \emph{LK}, on remarque que plus la solution initiale est bonne et plus elle possède d'arêtes en commun avec la solution optimale. 
 
 Ce résultat est illustré sur les figures~\ref{edges190115} à \ref{edgesSol}, où les arêtes optimales sont vertes.
@@ -606,7 +637,7 @@ Pour extraire cette connaissance, nous allons devoir créer un échantillon de s
 Puisque l'on ne peut pas prédire les paramètres $(\lambda,\mu,\nu)$ pour obtenir de bonnes solutions, nous allons devoir en générer un certain nombre :
 
 \begin{itemize}
-\item Soit on génère l'intégralité des solutions initiales possibles, en parcourant tous les triplets $(\lambda,\mu,\nu)$ (ie génération de 8820 solutions), pour obtenir l'échantillon. On l'appelle échantillon \emph{complet};
+\item Soit on génère l'intégralité des solutions initiales possibles, en parcourant tous les triplets $(\lambda,\mu,\nu)$ (i.e. génération de 8820 solutions), pour obtenir l'échantillon. On l'appelle échantillon \emph{complet};
 \item Soit on tire $N$ triplets $(\lambda,\mu,\nu)$ aléatoirement, et les solutions obtenus constitueront notre échantillon. 
 \end{itemize}
 
@@ -626,7 +657,7 @@ Nous avons retenu trois manières différentes pour obtenir cette base :
 \item On conserve les solutions qui ont un coût inférieur à $c_{min} + (c_{max}-c_{min})\frac{x}{100}$. Dans ce cas, on dit qu'on privilégie la qualité. On appelle cette base \emph{Qual$_x$}.
 \end{itemize}
 
-Avec cette base d'apprentissage, nous allons extraire des arêtes qui ont de grandes chances d'être optimales (ie qui appartiennent à la solution optimale).
+Avec cette base d'apprentissage, nous allons extraire des arêtes qui ont de grandes chances d'être optimales (i.e. qui appartiennent à la solution optimale).
 
 \subsubsection{Extraction des arêtes}
 Avant tout, nous considérons que les arêtes $(i,j)$ et $(j,i)$ sont identiques (ce qui est le cas en pratique). Chaque arêtes $(i,j)$ a donc pour représentant $(i',j')$, avec $(i',j') = (i,j)$ si $i<j$, et $(i',j') = (j,i)$ sinon.
@@ -651,17 +682,18 @@ On choisit de prendre les valeurs suivantes :
 \item Critères : $rang \in [10,20,n/2]$ et $seuil \in [\vert Base \vert /2, 3\vert Base \vert /4]$.
 \end{itemize}
 
-L'apprentissage est réalisé sur trois instances de tailles différentes : \emph{A-n37-k06}, \emph{A-n65-k09} et \emph{P-n101-k04}.
+L'apprentissage est réalisé sur trois instances de tailles différentes : \emph{A-n37-k06}, \emph{A-n65-k09} et \emph{P-n101-k04}. Les figures~\ref{A3706} à~\ref{solP10104}, présentent les trois instances, ainsi que les solutions optimales associées. 
 
 Les résultats obtenus pour chaque instance est présenté dans un tableau (cf tableaux~\ref{T1} à~\ref{T3}). Ils correspondent aux moyennes obtenus sur $10$ échantillons de la taille considérée.
 La colonne \emph{Arêtes} donne le nombre d'arêtes obtenues. 
 La colonne  \emph{Optimales} donne le nombre d'arêtes qui appartiennent effectivement à la solution optimale.
 Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi toutes les arêtes de la solution optimale. 
 
-\begin{figure}[h]
+\begin{figure}[h!]
     \begin{minipage}[c]{.46\linewidth}
         \centering
         \includegraphics[scale=0.4]{instance3706}
+        \label{A3706}
         \caption{Instance \emph{A-n37-k06}}
     \end{minipage}
     \hfill%
@@ -669,6 +701,31 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
         \centering
         \includegraphics[scale=0.4]{best3706}
         \caption{Solution optimale \emph{A-n37-k06}, 42 arêtes}
+    \end{minipage}
+    
+    \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[scale=0.4]{Instance6509}
+        \caption{Instance \emph{A-n65-k09}}
+    \end{minipage}
+    \hfill%
+    \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[scale=0.4]{Solution6509}
+        \caption{Solution optimale \emph{A-n65-k09}, 73 arêtes}
+    \end{minipage}    
+    
+        \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[scale=0.4]{Instance10104}
+        \caption{Instance \emph{P-n101-k04}}
+    \end{minipage}
+    \hfill%
+    \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[scale=0.4]{Solution10104}
+        \label{solP10104}
+        \caption{Solution optimale \emph{P-n101-k04}, 104 arêtes}
     \end{minipage}
 \end{figure}
 
@@ -732,21 +789,6 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
 \end{table}
 
 
-\begin{figure}[h]
-    \begin{minipage}[c]{.46\linewidth}
-        \centering
-        \includegraphics[scale=0.4]{Instance6509}
-        \caption{Instance \emph{A-n65-k09}}
-    \end{minipage}
-    \hfill%
-    \begin{minipage}[c]{.46\linewidth}
-        \centering
-        \includegraphics[scale=0.4]{Solution6509}
-        \caption{Solution optimale \emph{A-n65-k09}, 73 arêtes}
-    \end{minipage}
-\end{figure}
-
-
 \begin{table}[h]
 \caption{Résultats pour l'instance \emph{A-n65-k09}}
 \label{T2}
@@ -803,20 +845,6 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
 \end{tabular}
 \end{center}
 \end{table}
-
-\begin{figure}
-    \begin{minipage}[c]{.46\linewidth}
-        \centering
-        \includegraphics[scale=0.4]{Instance10104}
-        \caption{Instance \emph{P-n101-k04}}
-    \end{minipage}
-    \hfill%
-    \begin{minipage}[c]{.46\linewidth}
-        \centering
-        \includegraphics[scale=0.4]{Solution10104}
-        \caption{Solution optimale \emph{P-n101-k04}, 104 arêtes}
-    \end{minipage}
-\end{figure}
 
 \begin{table}
 \caption{Résultats pour l'instance \emph{P-n101-k04}}
@@ -890,7 +918,8 @@ La base \emph{Qual$_{10}$} semble également être plus intéressante que les au
 
 
 \section{Intégration de la connaissance} 
-Cette section s'intéresse à l'intégration de connaissance dans l'algorithme d'optimisation retenu, ie l'algorithme~\ref{algo:HC}. 
+\label{Integration}
+Cette section s'intéresse à l'intégration de connaissance dans l'algorithme d'optimisation retenu, i.e. l'algorithme~\ref{algo:HC}. 
 Nous commençons par expliquer où la connaissance va être intégrée, puis nous présenterons la \emph{Learning Heuristic} créée. Enfin nous présenterons les résultats obtenus avec cette heuristique sur des instances de la littérature.
 
 \subsection{Où intégrer la connaissance ?}
@@ -901,7 +930,7 @@ En effet, l'algorithme va conserver les morceaux de tournées, qui ont été fix
 
 Cette solution initiale pourra ensuite être utilisée dans l'algorithme d'optimisation $H_c$.
 
-Néanmoins il faut trouver un nouveau triplet de paramètre $(\lambda^*,\mu^*,\nu^*)$ pour pouvoir appliquer CW. Nous décidons pour cela de choisir le triplet associée à la solution de coût le plus faible présente dans l'échantillon, ie vérifiant :
+Néanmoins il faut trouver un nouveau triplet de paramètre $(\lambda^*,\mu^*,\nu^*)$ pour pouvoir appliquer CW. Nous décidons pour cela de choisir le triplet associé à la solution de coût le plus faible présente dans l'échantillon, i.e. vérifiant :
 \begin{center}
 $(\lambda^*,\mu^*,\nu^*) = argmin_{(\lambda,\mu,\nu) \in Echantillon} CW((\lambda,\mu,\nu))$
 \end{center}
@@ -973,7 +1002,7 @@ Les résultats obtenus sont disponibles sur les tableaux~\ref{TA} à~\ref{TP}, l
 Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme considéré.
 \emph{Best} renvoie la meilleure solution sur les $100$ obtenues, \emph{Mean$_10$} renvoie la moyenne des $10$ meilleures solutions, \emph{Gap} correspond au pourcentage de différence entre la \emph{Best} et la \emph{Best-Known}, \emph{Time} donne le temps d'exécution de l'algorithme.
 
-\begin{table}
+\begin{table}[h!]
 \caption{Résultats pour l'ensemble A}
 \label{TA}
 \begin{center}
@@ -1042,7 +1071,7 @@ Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme co
 \end{center}
 \end{table}
 
-\begin{table}
+\begin{table}[h!]
 \caption{Résultats pour l'ensemble B}
 \label{TB}
 \begin{center}
@@ -1101,7 +1130,7 @@ Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme co
 \end{center}
 \end{table}
 
-\begin{table}
+\begin{table}[h!]
 \caption{Résultats pour l'ensemble P}
 \label{TP}
 \begin{center}
