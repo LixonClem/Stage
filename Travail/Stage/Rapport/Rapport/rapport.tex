@@ -39,6 +39,11 @@ Dans la plupart des problèmes, il est possible d'extraire de la connaissance de
 
 \keywords{\emph{Optimisation combinatoire}, \emph{Capacitated Vehicle Routing Problem},\emph{Extraction de connaissances}, \emph{Intégration de connaissances}, \emph{Learning Heuristic}}
 
+\begin{description}
+\item[Référence:] Stage effectué du 22 Mai 2018 au 27 Juillet 2018 au laboratoire CRIStAL à Lille sous la direction de Laetitia Jourdan, Univ Lille, CNRS - UMR 9189, F-59600 Lille, France.
+
+\end{description}
+
 \section*{Introduction}
 
 Les problèmes d'optimisation combinatoire sont généralement des problèmes difficiles à résoudre, puisque le nombre de solutions à tester varie de manière exponentielle en la taille de l'instance. 
@@ -182,7 +187,7 @@ On distingue principalement, deux conditions d'arrêt lorsqu'il s'agit d'explore
 
 \begin{itemize}
 \item First improvement (\emph{FI}) : on parcourt le voisinage jusqu'à trouver un changement qui améliore la solution actuelle (on s'arrête donc à la première amélioration trouvée);
-\item Best improvement (\emph{BI}) : on parcourt tout le voisinage, et on applique le changement qui va le plus améliorer notre solution actuelle. \\
+\item Best improvement (\emph{BI}) : on parcourt tout le voisinage, et on applique le changement qui va le plus améliorer notre solution actuelle. 
 \end{itemize}
 
 Pour explorer un voisinage, on peut le \emph{parcourir} de différentes manières de sorte à ne pas toujours favoriser les mêmes voisins. On considérera ici trois parcours différents : 
@@ -190,7 +195,7 @@ Pour explorer un voisinage, on peut le \emph{parcourir} de différentes manière
 \begin{itemize}
 \item Dans l'ordre (\emph{O}) : les voisins sont parcourus dans un ordre naturel (du premier au dernier);
 \item Dans un semi-ordre (\emph{SO}) : on commence le parcours là où on s'était arrêté au dernier parcours, on parcourt ensuite les voisins dans l'ordre;
-\item Aléatoirement (\emph{RD}) : on tire aléatoirement l'ordre dans lequel on va parcourir les voisins. \\
+\item Aléatoirement (\emph{RD}) : on tire aléatoirement l'ordre dans lequel on va parcourir les voisins. 
 \end{itemize}
 
 On peut remarquer que peu importe le parcours effectué, pour faire une exploration \emph{BI}, il faudra passer par tous les voisins. Pour qu'une exploration \emph{FI} soit efficace, il faut éviter un parcours \emph{O}, car dans ce cas on privilégie un certain voisinage qui sera choisi plus souvent. On retiendra le tableau récapitulatif suivant:
@@ -418,8 +423,8 @@ On définit alors la fonction de pénalisation $b$ de la manière suivante :
 $b(i,j) = \frac{[\gamma_w w(i,j) + \gamma_c c(i,j)] [\frac{d(i,j)}{max_{k,l}d(k,l)}] ^ {\frac{\gamma_d}{2}}}{1+p(i,j)}$
 \end{center}
 
-Les paramètres $\lambda_w,\lambda_c,\lambda_d$, prennent comme valeurs $0$ ou $1$, selon les caractéristiques que l'on veut considérer. 
-Il y a ainsi 6 fonctions de pénalisation différentes, que l'on peut choisir au cours de l'exécution (on ne considère pas le cas où $\lambda_w = \lambda_c = 0$, puisqu'il fournit $b(i,j) = 0$.
+Les paramètres $\gamma_w,\gamma_c,\gamma_d$, prennent comme valeurs $0$ ou $1$, selon les caractéristiques que l'on veut considérer. 
+Il y a ainsi 6 fonctions de pénalisation différentes, que l'on peut choisir au cours de l'exécution (on ne considère pas le cas où $\gamma_w = \gamma_c = 0$, puisqu'il fournit $b(i,j) = 0$.
 
 On peut alors définir ce qu'est la pire arête $(i^*,j^*)$ du graphe :
 
@@ -674,6 +679,9 @@ Afin de déterminer quels doivent être la taille de l'échantillon, la base d'a
 
 \subsection{Résultats}
 
+
+\subsubsection{Choix de l'échantillon et de la base}
+
 On choisit de prendre les valeurs suivantes :
 
 \begin{itemize}
@@ -691,41 +699,53 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
 
 \begin{figure}[h!]
     \begin{minipage}[c]{.46\linewidth}
+
         \centering
         \includegraphics[scale=0.4]{instance3706}
-        \label{A3706}
+        
         \caption{Instance \emph{A-n37-k06}}
+        \label{A3706}
+
     \end{minipage}
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
         \includegraphics[scale=0.4]{best3706}
+        
         \caption{Solution optimale \emph{A-n37-k06}, 42 arêtes}
+        \label{SolA3706}
     \end{minipage}
     
     \begin{minipage}[c]{.46\linewidth}
         \centering
         \includegraphics[scale=0.4]{Instance6509}
+        
         \caption{Instance \emph{A-n65-k09}}
+        \label{A6509}
     \end{minipage}
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
         \includegraphics[scale=0.4]{Solution6509}
+        
         \caption{Solution optimale \emph{A-n65-k09}, 73 arêtes}
+        \label{SolA6509}
     \end{minipage}    
     
         \begin{minipage}[c]{.46\linewidth}
         \centering
         \includegraphics[scale=0.4]{Instance10104}
+        
         \caption{Instance \emph{P-n101-k04}}
+        \label{P10104}
     \end{minipage}
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
         \includegraphics[scale=0.4]{Solution10104}
-        \label{solP10104}
+        
         \caption{Solution optimale \emph{P-n101-k04}, 104 arêtes}
+        \label{solP10104}
     \end{minipage}
 \end{figure}
 
@@ -914,6 +934,70 @@ Voici ce qu'on peut tirer des résultats présents sur les tables~\ref{T1} à~\r
 
 Ces remarques nous incitent à privilégier un échantillon de taille $50$ pour améliorer la vitesse d'apprentissage. 
 La base \emph{Qual$_{10}$} semble également être plus intéressante que les autres bases avec une taille d'échantillon $50$.
+Les résultats obtenus ne nous permettent toutefois pas, de choisir le meilleur critère pour l'apprentissage.
+Nous décidons alors de raffiner nos résultats.
+
+\subsubsection{Étude des critères Rang et Seuil}
+
+Afin de comparer ces deux critères, nous allons étudier la répartition des coûts des solutions initiales obtenues pour différentes valeurs de Rang et de Seuil.  
+Pour chacune des instances ci-dessus, nous générons un échantillon de taille $50$, et utilisons la base \emph{Qual$_{10}$}. Nous conservons aussi les $10$ triplets $(\lambda,\mu,\nu)$ qui donnent les meilleures solutions dans l'échantillon. 
+Pour chaque critère, on apprend à partir de \emph{Qual$_{10}$}, puis on applique CW avec les arêtes conservées et les triplets choisis.
+De cette manière, on dispose de $100$ solutions initiales calculées pour chaque critère.
+
+Les résultats obtenus
+
+\begin{figure}
+    \begin{minipage}[c]{.46\linewidth}
+
+        \centering
+        \includegraphics[scale=0.4]{instance3706}
+        
+        \caption{Instance \emph{A-n37-k06}}
+        \label{A3706}
+
+    \end{minipage}
+    \hfill%
+    \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[scale=0.4]{best3706}
+        
+        \caption{Solution optimale \emph{A-n37-k06}, 42 arêtes}
+        \label{SolA3706}
+    \end{minipage}
+    
+    \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[scale=0.4]{Instance6509}
+        
+        \caption{Instance \emph{A-n65-k09}}
+        \label{A6509}
+    \end{minipage}
+    \hfill%
+    \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[scale=0.4]{Solution6509}
+        
+        \caption{Solution optimale \emph{A-n65-k09}, 73 arêtes}
+        \label{SolA6509}
+    \end{minipage}    
+    
+        \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[scale=0.4]{Instance10104}
+        
+        \caption{Instance \emph{P-n101-k04}}
+        \label{P10104}
+    \end{minipage}
+    \hfill%
+    \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[scale=0.4]{Solution10104}
+        
+        \caption{Solution optimale \emph{P-n101-k04}, 104 arêtes}
+        \label{solP10104}
+    \end{minipage}
+\end{figure}
+
 
 
 
@@ -1000,7 +1084,7 @@ La \emph{learning heuristic} précédente a été appliquée aux ensembles d'ins
 
 Les résultats obtenus sont disponibles sur les tableaux~\ref{TA} à~\ref{TP}, la colonne \emph{Best-Known} rappelle le coût de la meilleure solution connue pour l'instance considérée. 
 Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme considéré.
-\emph{Best} renvoie la meilleure solution sur les $100$ obtenues, \emph{Mean$_10$} renvoie la moyenne des $10$ meilleures solutions, \emph{Gap} correspond au pourcentage de différence entre la \emph{Best} et la \emph{Best-Known}, \emph{Time} donne le temps d'exécution de l'algorithme.
+\emph{Best} renvoie la meilleure solution sur les $100$ obtenues, \emph{Mean$_{10}$} renvoie la moyenne des $10$ meilleures solutions, \emph{Gap} correspond au pourcentage de différence entre la \emph{Best} et la \emph{Best-Known}, \emph{Time} donne le temps d'exécution de l'algorithme.
 
 \begin{table}[h!]
 \caption{Résultats pour l'ensemble A}
@@ -1063,7 +1147,7 @@ Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme co
   \hline
     A-n65-k09  & 1174 & 1178 & 1181 &0.34 & 3192   \\
   \hline
-    A-n69-k09  & 1159 &  & 46 & &0.44   \\
+    A-n69-k09  & 1159 & 1164 & 1167 & 0.43 & 4486   \\
   \hline
     A-n80-k10  & 1763 & 1767 & 1771 & 0.23 & 5765   \\
   \hline
@@ -1096,17 +1180,13 @@ Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme co
   \hline
   B-n43-k06 & 742 & 742 & 744 & 0 & 2323 \\
  \hline
-  B-n44-k07  & 909 &  &  &  &  \\
+  B-n44-k07  & 909 & 910 & 911 & 0.11 & 2055 \\
  \hline
  B-n45-k05 & 751 & 753 & 753 & 0.27 & 2120 \\
- \hline
-  B-n45-k06  & 678 &  &  &  &    \\
  \hline
    B-n50-k07 & 741 & 741 & 741 & 0 & 2761   \\
   \hline
    B-n50-k08 & 1312 & 1324 & 1327 & 0.91 & 3160  \\
- \hline 
-  B-n51-k07  & 1032 & & & &  \\
   \hline
   B-n52-k07  & 747 & 748 & 750 &0.13 & 2959  \\
   \hline
@@ -1116,7 +1196,7 @@ Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme co
   \hline
   B-n63-k10  & 1496 & 1538 & 1539 & 2.73 & 3289   \\
   \hline
-  B-n64-k09 & 861 &  &  & &  \\
+  B-n64-k09 & 861 & 885 & 885 & 2.71 & 3693 \\
  \hline 
    B-n66-k09 & 1316 & 1321 & 1325 &0.38 & 3577   \\
   \hline 
@@ -1153,7 +1233,7 @@ Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme co
  \hline
   P-n023-k08  & 529 & 529 & 529 & 0 & 789  \\
   \hline
-  P-n040-k05 & 742 & 742 & 744 & 0 & 2323 \\
+  P-n040-k05 & 458 & 458 & 458 & 0 & 1811 \\
  \hline
   P-n045-k05  & 510 & 510 & 510 & 0 & 2241 \\
  \hline
@@ -1187,9 +1267,20 @@ Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme co
 \end{center}
 \end{table}
 
-La plupart des solutions obtenus avec l'algorithme \lstinline|LearnHeuristic| sont très proches des solutions optimales. 
+La plupart des solutions obtenus avec l'algorithme \lstinline|LearnHeuristic| sont très proches des solutions optimales.
+En effet, en moyenne on a $0.40\%$ d'erreurs avec les instances de type A, $0.52\%$ d'erreurs avec celles de type B, et $0.42\%$ d'erreurs avec celles de type P.
+Néanmoins, le temps d'exécution reste long (jusque 9366 s, soit plus de deux heures et demie). Cela est dû aux 100 exécutions de $H_c$ et de sa condition d'arrêt.  
 
 \section*{Conclusion}
+A travers cet article, nous avons vu comment créer une \emph{learning heuristic} donnant de très bons résultats sur les instances classiques du CVRP.
+L'avantage aussi de cet algorithme est qu'il vient compléter un algorithme d'optimisation facilement adaptable à d'autres problèmes de tournées de véhicules (comme le problème multi-dépôts~\cite{Sorensen_2017}).
+ 
+Toutefois cette méta-heuristique reste longue à exécuter, il pourrait donc être intéressant de voir si une autre condition d'arrêt à $H_c$ donne d'aussi bons résultats, avec un meilleur temps d'exécution.
+
+
+\section*{Remerciements}
+Je tiens à remercier l'équipe ORKAD, du centre CRIStAL de Lille, qui m'a aidé à réaliser ce projet. Je remercie plus particulièrement Laetitia Jourdan (laetitia.jourdan@univ-lille.fr), Marie-Éléonore Kessaci (me.kessaci@univ-lille.fr), membres de l'équipe ORKAD, ainsi que Diego Cattaruzza (diego.cattaruzza@ec-lille.fr) membre de l'équipe INOCS, qui m'ont encadré pendant la durée de ce projet.
+
 
 
 \bibliographystyle{plain}

@@ -145,6 +145,15 @@ def cost_sol(routes, inst):
         c += distance(inst[r[len(r)-1]], inst[r[0]])
     return c
 
+def cost_sol_int(routes, inst):
+    c = 0
+    for r in routes:
+        for i in range(len(r)-1):
+            a = inst[r[i]]
+            b = inst[r[i+1]]
+            c += distance(a, b)
+        c += round(distance(inst[r[len(r)-1]], inst[r[0]]))
+    return c
 # Compute the kNN for each node
 
 
@@ -945,17 +954,14 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
             detailed_cust[i-1] = r
     initial_routes = ClarkeWright(
         initial_routes, inst, demand, lam, mu, nu, detailed_cust)
-    """
-    for i in range(len(initial_routes)):
-        initial_routes[i] = decross_route(initial_routes[i].copy(), inst)
-        initial_routes[i] = LK(initial_routes[i].copy(), inst)
-    """
     routes = copy_sol(initial_routes)
     routes2 = copy_sol(routes)
     fixed_edges = []
     c_init = cost_sol(routes, inst)
     print(c_init)
     tps2 = time.time()
+    tpsGS = time.time()
+    tpsCH = time.time()
     while tps2-tps1 < len(demand)/3:
         
         # find the worst edge
@@ -969,9 +975,10 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
 
         routes = ejection_chain(l, cp, v, routes, inst, demand, fixed_edges)
 
-        for i in range(len(routes)):
-            if len(routes[i])==2:
+        for i in routes:
+            if len(i)==2:
                 routes = reject(i, routes, v, inst, demand)
+        for i in range(len(routes)):
             routes[i] = decross_route(routes[i].copy(), inst)
             routes[i] = LK(routes[i], inst)
         # apply cross-exchange
@@ -995,13 +1002,13 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
             print(tps2-tps1, c_init)
             tps1 = time.time()
         
-        if gs > len(demand)/2:
+        if gs>len(demand)/2:
             # return to the last best solution, for gs iterations
             
             routes = copy_sol(routes2)
             gs = 0
         
-        if N > len(demand):
+        if N>len(demand):
             
             b_i += 1
             
@@ -1041,21 +1048,23 @@ def apply_heuristic(inst, demand, l):
     tps_deb = time.time()
     max_d = max_depth(instance)
     v = voisins(KNN, instance)
-    initial = init_routes(inst,demand)
-    edges, (lam,mu,nu) = learning_results(5,50,inst,demand,initial)
+    initial_routes = init_routes(inst,demand)
+    
+    edges, (lam,mu,nu) = learning_results(5,50,inst,demand,initial_routes)
+    """
     initial_routes = complete(destruction2(ignore_0(edges)),inst,demand)
     tps_learn = time.time()
     
-    namefile = "resultats/Heuristic_results/Values/all/results.txt"
+    namefile = "resultats/Heuristic_results/Values/all/golden.txt"
     writef(namefile,'Time = '+ str(tps_learn-tps_deb))
-    
+    """
     new_base = []
     costs = 0
     edges = []
     for i in range(10):
         print(i)
 
-        if new_base==[]:
+        if True:
             for j in range(10):
                 edges = []
                 init, sol = core_heuristic(
@@ -1063,11 +1072,12 @@ def apply_heuristic(inst, demand, l):
                 c_sol = cost_sol(sol, inst)
                 
                 c_init = cost_sol(init, inst)
+                """
                 new_base.append(sol)
                 
                 mat_qual = init_matrix(len(instance))
                 mat_qual = learn(mat_qual, new_base)
-                """
+                
                 e_qual = mat_info_rg(int(len(demand)/2), mat_qual)
                 for e in e_qual:
                     if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
@@ -1076,7 +1086,7 @@ def apply_heuristic(inst, demand, l):
                 """
                 all_sol.append((c_sol,sol))
 
-
+    """
         else:
             print("learn")
             edges = []
@@ -1091,7 +1101,7 @@ def apply_heuristic(inst, demand, l):
             initial_routes = complete(destruction2(ignore_0(edges)),inst,demand)
             print(lam,mu,nu)
             new_base = []
-            for j in range(10):
+            for j in range(5):
                 edges = []
                 init, sol = core_heuristic(
                     copy_sol(initial_routes), inst, demand, lam, mu, nu, l, max_d, v)
@@ -1103,15 +1113,15 @@ def apply_heuristic(inst, demand, l):
                 
                 mat_qual = init_matrix(len(instance))
                 mat_qual = learn(mat_qual, new_base)
-                """
+                
                 e_qual = mat_info_rg(int(len(demand)/2), mat_qual)
                 for e in e_qual:
                     if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
                         edges.append(e)
                 initial_routes = complete(destruction2(ignore_0(edges)),inst)
-                """
+                
                 all_sol.append((c_sol,sol))
-    
+    """
     all_sol.sort()
     tps_fin = time.time()
     print(tps_fin-tps_deb)
@@ -1119,12 +1129,13 @@ def apply_heuristic(inst, demand, l):
     for i in range(10):
         c_sol,sol = all_sol[i]
         costs += c_sol
-        namefile = "resultats/Heuristic_results/Values/all/results.txt"
+        namefile = "resultats/Heuristic_results/Values/all/results_nolearn.txt"
         writef(namefile,'')
         writef(namefile,'res = ' + str(round(c_sol,3)))
+        writef(namefile,'res_int = ' + str(round(cost_sol_int(sol,inst),3)))
         writef(namefile,'solution = ' + str(sol))
 
-    namefile = "resultats/Heuristic_results/Values/all/results.txt"
+    namefile = "resultats/Heuristic_results/Values/all/results_nolearn.txt"
     writef(namefile,'')
     writef(namefile,'Mean = ' + str(costs/10))
     writef(namefile,'Execution = ' + str(tps_fin-tps_deb))
@@ -1231,10 +1242,15 @@ print(min(costs))
 print(best)
 """
 
-allinstances = os.listdir('toExecute')
+allinstances = os.listdir('toExecute2')
+allinstances.sort()
+print(allinstances)
+
 for fileinstance in allinstances:
-    namefile = "resultats/Heuristic_results/Values/all/results.txt"
+    namefile = "resultats/Heuristic_results/Values/all/results_nolearn.txt"
+    print(fileinstance)
     writef(namefile,'Instance : ' + fileinstance)
-    instance,demand,Capacity = read('toExecute/'+fileinstance)
+    instance,demand,Capacity = read('toExecute2/'+fileinstance)
     print(Capacity)
+    print("")
     apply_heuristic(instance, demand, relocation)
