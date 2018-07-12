@@ -181,6 +181,7 @@ solutions ont plutôt tendance à l'exploration.
 Il existe plusieurs moyens pour procéder à une diversification de la solution courante.
 En effet, il est possible qu'en modifiant légèrement la solution courante, on obtienne une autre solution réalisable, appelée \emph{voisin} de la solution courante.
 On appelle alors \emph{voisinage} de la solution courante, l'ensemble des voisins de cette solution.
+Une fonction qui attribue à une solution, l'un de ses voisins, est appelée \emph{opérateur de voisinage}.
 
 L'\emph{exploration} d'un voisinage de solutions peut être plus ou moins exhaustif selon la condition d'arrêt utilisée.
 On distingue principalement, deux conditions d'arrêt lorsqu'il s'agit d'explorer un voisinage :
@@ -264,7 +265,7 @@ Calculer les savings de toutes les arêtes\;
 	$r_j \gets findRoute(Sol,j)$\;
 	\If{$r_i$ et $r_j$ peuvent fusionner} {
 		Retirer $r_i$ et $r_j$ de $Sol$\;
-		Si possible fusionner $r_i$ et $r_j$\;
+		Fusionner $r_i$ et $r_j$\;
 		Ajouter le résultat dans $Sol$ et mettre $s(i,j) = 0$\;
 	}
 }
@@ -274,7 +275,7 @@ Calculer les savings de toutes les arêtes\;
 \label{algo:CW}
 \end{algorithm}
 
-Exemple d'exécution de l'algorithme avec $(\lambda, \mu, \nu) = (1,1,1)$, sur l'instance A-n37-k06, représenté sur les figures \ref{CWinit} à \ref{resCW101010}. On remarque sur la figure \ref{resCW101010} que l'on pourrait améliorer la solution rien qu'en réorganisant les différentes tournées, pour minimiser leur coût.
+Un exemple d'exécution de l'algorithme avec $(\lambda, \mu, \nu) = (1,1,1)$, sur l'instance A-n37-k06, est représenté sur les figures \ref{CWinit} à \ref{resCW101010}. On remarque sur la figure \ref{resCW101010} que l'on pourrait améliorer la solution rien qu'en réorganisant les différentes tournées, pour minimiser leur coût. Pour cela il existe une heuristique, appelée \emph{Lin-Kernighan}, que nous décrirons en section~\ref{Lin-Kernighan}.
 
 
 \begin{figure}
@@ -306,6 +307,7 @@ Exemple d'exécution de l'algorithme avec $(\lambda, \mu, \nu) = (1,1,1)$, sur l
 	\label{resCW101010}
     \end{minipage}
 \end{figure}
+
 \subsection{Choix des paramètres $(\lambda, \mu, \nu)$}
 Le triplet $(\lambda, \mu, \nu)$ a déjà été étudié de nombreuses fois dans la littérature. L'article~\cite{Altinel_2005} précise qu'il suffit de considérer $(\lambda, \mu, \nu)$ dans $]0,2] \times [0,2]^2$ pour avoir de bonnes solutions. 
 Par ailleurs, il est inutile de prendre une précision inférieure au dixième lorsqu'on choisit les valeurs des paramètres.
@@ -509,7 +511,7 @@ $possibleSol \gets exchange(c_5,c_6,possibleSol)$\;
 A la ligne $6$ de l'algorithme~\ref{algo:CE}, il est possible d'utiliser les méthodes de la section \ref{voisinage} pour explorer les voisinages, et choisir les clients à échanger.
 
 \subsubsection{Lin-Kernighan}
-
+\label{Lin-Kernighan}
 Le dernier opérateur utilisé est l'heuristique Lin-Kernighan. Elle a été créée pour résoudre le problème du voyageur de commerce (TSP). 
 Il effectue une optimisation intra-tournée (c'est-à-dire que la tournée considérée est améliorée indépendamment des autres).
 Cela consiste en une réorganisation des clients sur la tournée. On choisit $k$ tel que \emph{LK} ne dépasse pas \emph{k-opt} au cours de son exécution. 
@@ -944,57 +946,60 @@ Pour chacune des instances ci-dessus, nous générons un échantillon de taille 
 Pour chaque critère, on apprend à partir de \emph{Qual$_{10}$}, puis on applique CW avec les arêtes conservées et les triplets choisis.
 De cette manière, on dispose de $100$ solutions initiales calculées pour chaque critère.
 
-Les résultats obtenus
+Les résultats obtenus sont présentés sur les figures~\ref{InfRA3706} à~\ref{InfSP10104}.
+Quelle que soit l'instance, on remarque les apprentissages avec le critère Rang donnent de meilleurs résultats que les apprentissages avec le critère Seuil.
+Nous pouvons remarquer qu'avec $ seuil = S_{lb}/2$, nous obtenons les meilleurs résultats avec le critère Seuil.
+En ce qui concerne le critère Rang, plus le rang augmente et plus les solutions obtenues sont de meilleure qualité. Cependant, un grand nombre d'arêtes contraint davantage les solutions initiales. On peut donc préférer par exemple $rang = n/2$, si l'on choisit le critère Rang.
 
 \begin{figure}
     \begin{minipage}[c]{.46\linewidth}
 
         \centering
-        \includegraphics[scale=0.4]{instance3706}
+        \includegraphics[scale=0.25]{InfluenceRangA3706}
         
-        \caption{Instance \emph{A-n37-k06}}
-        \label{A3706}
+        \caption{Influence du Rang lors de l'apprentissage sur l'instance A-n37-k06}
+        \label{InfRA3706}
 
     \end{minipage}
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
-        \includegraphics[scale=0.4]{best3706}
+        \includegraphics[scale=0.25]{InfluenceSeuilA3706}
         
-        \caption{Solution optimale \emph{A-n37-k06}, 42 arêtes}
-        \label{SolA3706}
+        \caption{Influence du Seuil lors de l'apprentissage sur l'instance A-n37-k06}
+        \label{InfSA3706}
     \end{minipage}
     
     \begin{minipage}[c]{.46\linewidth}
         \centering
-        \includegraphics[scale=0.4]{Instance6509}
+        \includegraphics[scale=0.25]{InfluenceRangA6509}
         
-        \caption{Instance \emph{A-n65-k09}}
-        \label{A6509}
+        \caption{Influence du Rang lors de l'apprentissage sur l'instance A-n65-k09}
+        \label{InfRA6509}
     \end{minipage}
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
-        \includegraphics[scale=0.4]{Solution6509}
+        \includegraphics[scale=0.25]{InfluenceSeuilA6509}
         
-        \caption{Solution optimale \emph{A-n65-k09}, 73 arêtes}
-        \label{SolA6509}
+        \caption{Influence du Seuil lors de l'apprentissage sur l'instance A-n65-k09}
+        \label{InfSA6509}
     \end{minipage}    
     
         \begin{minipage}[c]{.46\linewidth}
         \centering
-        \includegraphics[scale=0.4]{Instance10104}
+        \includegraphics[scale=0.25]{InfluenceRangP10104}
         
-        \caption{Instance \emph{P-n101-k04}}
-        \label{P10104}
+        \caption{Influence du Rang lors de l'apprentissage sur l'instance P-n101-k04}
+        \label{InfRP10104}
     \end{minipage}
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
-        \includegraphics[scale=0.4]{Solution10104}
+        \includegraphics[scale=0.25]{InfluenceSeuilP10104}
         
-        \caption{Solution optimale \emph{P-n101-k04}, 104 arêtes}
-        \label{solP10104}
+        \caption{Influence du Seuil lors de l'apprentissage sur l'instance P-n101-k04}
+        \label{InfSP10104}
     \end{minipage}
 \end{figure}
 
@@ -1081,6 +1086,8 @@ Répéter ces étapes permet d'affiner l'apprentissage, pour le rendre plus effi
 \subsection{Résultats}
 
 La \emph{learning heuristic} précédente a été appliquée aux ensembles d'instance A, B et P (disponibles sur le site~\cite{cvrplib}.
+
+Pour effectuer la phase d'apprentissage (décrite dans la section~\ref{extraction}), nous choisissons de prendre un échantillon de taille $50$, nous utilisons la base $Qual_{10}$, et le critère $ rang = n/2$.
 
 Les résultats obtenus sont disponibles sur les tableaux~\ref{TA} à~\ref{TP}, la colonne \emph{Best-Known} rappelle le coût de la meilleure solution connue pour l'instance considérée. 
 Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme considéré.
