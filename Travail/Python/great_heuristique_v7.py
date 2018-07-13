@@ -151,7 +151,7 @@ def cost_sol_int(routes, inst):
         for i in range(len(r)-1):
             a = inst[r[i]]
             b = inst[r[i+1]]
-            c += distance(a, b)
+            c += round(distance(a, b))
         c += round(distance(inst[r[len(r)-1]], inst[r[0]]))
     return c
 # Compute the kNN for each node
@@ -962,7 +962,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
     tps2 = time.time()
     tpsGS = time.time()
     tpsCH = time.time()
-    while tps2-tps1 < len(demand)/3:
+    while tps2-tps1 < 10:
         
         # find the worst edge
         worst = bad_edge(b, p, routes, inst, fixed_edges)[1]
@@ -1002,14 +1002,14 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
             print(tps2-tps1, c_init)
             tps1 = time.time()
         
-        if gs>len(demand)/2:
+        if tps2-tpsGS>0.5:
             # return to the last best solution, for gs iterations
-            
+            tpsGS = time.time()
             routes = copy_sol(routes2)
             gs = 0
         
-        if N>len(demand):
-            
+        if tps2-tpsCH>0.25:
+            tpsCH = time.time()
             b_i += 1
             
             if b_i < len(B):
@@ -1061,11 +1061,11 @@ def apply_heuristic(inst, demand, l):
     new_base = []
     costs = 0
     edges = []
-    for i in range(10):
+    for i in range(5):
         print(i)
 
         if True:
-            for j in range(10):
+            for j in range(5):
                 edges = []
                 init, sol = core_heuristic(
                     copy_sol(initial_routes), inst, demand, lam, mu, nu, l, max_d, v)
@@ -1129,15 +1129,15 @@ def apply_heuristic(inst, demand, l):
     for i in range(10):
         c_sol,sol = all_sol[i]
         costs += c_sol
-        namefile = "resultats/Heuristic_results/Values/all/results_nolearn.txt"
+        namefile = "resultats/Heuristic_results/Values/all/results_nolearnfast.txt"
         writef(namefile,'')
         writef(namefile,'res = ' + str(round(c_sol,3)))
         writef(namefile,'res_int = ' + str(round(cost_sol_int(sol,inst),3)))
         writef(namefile,'solution = ' + str(sol))
 
-    namefile = "resultats/Heuristic_results/Values/all/results_nolearn.txt"
+    namefile = "resultats/Heuristic_results/Values/all/results_nolearnfast.txt"
     writef(namefile,'')
-    writef(namefile,'Mean = ' + str(costs/10))
+    writef(namefile,'Mean = ' + str(costs/25))
     writef(namefile,'Execution = ' + str(tps_fin-tps_deb))
     writef(namefile,'')
     
@@ -1247,7 +1247,7 @@ allinstances.sort()
 print(allinstances)
 
 for fileinstance in allinstances:
-    namefile = "resultats/Heuristic_results/Values/all/results_nolearn.txt"
+    namefile = "resultats/Heuristic_results/Values/all/results_nolearnfast.txt"
     print(fileinstance)
     writef(namefile,'Instance : ' + fileinstance)
     instance,demand,Capacity = read('toExecute2/'+fileinstance)
