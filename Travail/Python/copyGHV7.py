@@ -958,7 +958,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
     tps2 = time.time()
     tpsGS = time.time()
     tpsCH = time.time()
-    while tps2-tps1 < 20:
+    while tps2-tps1 < len(demand)/3:
 
         # find the worst edge
         worst = bad_edge(b, p, routes, inst, fixed_edges)[1]
@@ -997,17 +997,17 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
             c_init = cost_sol(routes2, inst)
             print(tps2-tps1, c_init)
             tps1 = time.time()
-            tpsGS = time.time()
             tpsCH = time.time()
-        
-        if tps2-tpsGS > 0.5:
+            tpsGS = time.time()
+
+        if tps2-tpsGS > len(demand)/50:
             # return to the last best solution, for gs iterations
             
             routes = copy_sol(routes2)
             gs = 0
             tpsGS = time.time()
 
-        if tps2-tpsCH > 1:
+        if tps2-tpsCH > len(demand)/100:
             tpsCH = time.time()
             b_i += 1
             
@@ -1041,6 +1041,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
 
 def apply_heuristic(instance, demand, l):
     # compute global variables
+    namefile ="resultats/Heuristic_results/Values/all/golden3.txt"
     all_sol = []
     tps_deb = time.time()
     max_d = max_depth(instance)
@@ -1050,43 +1051,44 @@ def apply_heuristic(instance, demand, l):
     initial_routes = complete(destruction2(ignore_0(edges)),instance,demand)
     tps_learn = time.time()
     
-    namefile = "resultats/Heuristic_results/Values/all/golden2.txt"
+    
     writef(namefile,'Time = '+ str(tps_learn-tps_deb))
     
     new_base = []
     costs = 0
     edges = []
-
+    best_sol = cost_sol(initial_routes,instance)
     for i in range(10):
         print(i)
 
         if new_base==[]:
-            for j in range(5):
+            for j in range(10):
                 print(j)
                 (lam,mu,nu) = param[j]
-                edges = []
+                
                 init, sol = core_heuristic(
                     copy_sol(initial_routes), instance, demand, lam, mu, nu, l, max_d, v)
                 c_sol = cost_sol(sol, instance)
-                
-                c_init = cost_sol(init, instance)
+                if c_sol < best_sol:
+                    best_sol=c_sol
+                    mat_qual = init_matrix(len(instance))
+                    base = [sol]
+                    mat_qual = learn(mat_qual, base)
+                    edges = []
+                    e_qual = mat_info_rg(int(len(demand)*0.8), mat_qual)
+                    for e in e_qual:
+                        if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
+                            edges.append(e)
+                    initial_routes = complete(destruction2(ignore_0(edges)),instance,demand)
+
+
                 new_base.append(sol)
-                
-                mat_qual = init_matrix(len(instance))
-                mat_qual = learn(mat_qual, new_base)
-                
-                e_qual = mat_info_rg(int(len(demand)), mat_qual)
-                for e in e_qual:
-                    if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
-                        edges.append(e)
-                initial_routes = complete(destruction2(ignore_0(edges)),instance,demand)
-                
                 all_sol.append((c_sol,sol))
         
 
         else:
             print("learn")
-            edges = []
+            edges =[]
             mat_qual = init_matrix(len(instance))
             mat_qual = learn(mat_qual, new_base)
             e_qual = mat_info_rg(int(len(demand)/2), mat_qual)
@@ -1096,29 +1098,31 @@ def apply_heuristic(instance, demand, l):
             initial_routes = complete(destruction2(ignore_0(edges)),instance,demand)
             edges, param = learning_results(0.5-i/20,5,50,instance,demand,initial_routes)
             initial_routes = complete(destruction2(ignore_0(edges)),instance,demand)
-            
+            best_sol = cost_sol(initial_routes,instance)
             new_base = []
-            for j in range(5):
+            for j in range(10):
                 print(j)
                 (lam,mu,nu) = param[j]
-                edges = []
+                
                 init, sol = core_heuristic(
                     copy_sol(initial_routes), instance, demand, lam, mu, nu, l, max_d, v)
                 c_sol = cost_sol(sol, instance)
                 costs += c_sol
                 c_init = cost_sol(init, instance)
-                
+
+                if c_sol < best_sol:
+                    best_sol=c_sol
+                    base = [sol]
+                    mat_qual = init_matrix(len(instance))
+                    mat_qual = learn(mat_qual, base)
+                    e_qual = mat_info_rg(int(len(demand)*0.8), mat_qual)
+                    edges =[]
+                    for e in e_qual:
+                        if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
+                            edges.append(e)
+                    initial_routes = complete(destruction2(ignore_0(edges)),instance,demand)
+
                 new_base.append(sol)
-                
-                mat_qual = init_matrix(len(instance))
-                mat_qual = learn(mat_qual, new_base)
-                
-                e_qual = mat_info_rg(int(len(demand)), mat_qual)
-                for e in e_qual:
-                    if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
-                        edges.append(e)
-                initial_routes = complete(destruction2(ignore_0(edges)),instance,demand)
-                
                 all_sol.append((c_sol,sol))
     
     all_sol.sort()
@@ -1128,14 +1132,13 @@ def apply_heuristic(instance, demand, l):
     for i in range(10):
         c_sol,sol = all_sol[i]
         costs += c_sol
-        namefile = "resultats/Heuristic_results/Values/all/golden2.txt"
+        
         writef(namefile,'')
         writef(namefile,'res = ' + str(round(c_sol,3)))
         writef(namefile,'solution = ' + str(sol))
 
-    namefile = "resultats/Heuristic_results/Values/all/golden2.txt"
     writef(namefile,'')
-    writef(namefile,'Mean = ' + str(costs/50))
+    writef(namefile,'Mean = ' + str(costs/100))
     writef(namefile,'Execution = ' + str(tps_fin-tps_deb))
     writef(namefile,'')
     
@@ -1220,7 +1223,7 @@ allinstances.sort()
 print(allinstances)
 
 for fileinstance in allinstances:
-    namefile = "resultats/Heuristic_results/Values/all/golden2.txt"
+    namefile = "resultats/Heuristic_results/Values/all/golden3.txt"
     print(fileinstance)
     writef(namefile,'Instance : ' + fileinstance)
     instance,demand,Capacity = read('toExecute/'+fileinstance)

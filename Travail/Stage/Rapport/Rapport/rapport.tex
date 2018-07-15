@@ -440,7 +440,12 @@ Les opérateurs de voisinage, présentés ci-après, vont orienter leurs recherc
 
 Le premier opérateur utilisé est appelé Ejection-Chain. Son objectif est de déplacer au plus $l$ clients sur des tournées. 
 
-Le fonctionnement de cet opérateur est présenté sur la figure~\ref{EC}.
+Supposons que l'on veuille supprimer une arête $(c_1^-,c_1)$ d'une tournée $r_1$.
+On commence par chercher le plus proche voisin $c_2$ de $c_1$ appartenant à une tournée $r_2$ dans laquelle il est possible d'ajouter $c_1$.
+On insère alors $c_1$ après $c_2$ sur $r_2$. 
+Ainsi la portion $[...,c_2,c_2^+,...]$ de $r_2$ se transforme en $[...,c_2,c_1,c_2^+,...]$.
+On cherche ensuite une arête à supprimer sur $r_2$, pour éjecter un client sur une tournée $r_3$, et ainsi de suite jusqu'à atteindre la tournée $r_l$.
+Le fonctionnement de cet opérateur est présenté sur la figure~\ref{EC}. 
 
 \begin{figure}
 \centering
@@ -478,6 +483,11 @@ Aux lignes $3, 4, 7$ et $8$ de l'algorithme~\ref{algo:EC}, il est possible d'uti
 
 Un deuxième opérateur utilisé est le Cross-Exchange.
 Son objectif est d'échanger deux séquences de clients entre deux tournées.
+
+Supposons que l'on veuille supprimer une arête $(c_1,c_2)$ appartenant à une tournée $r_1$. 
+On cherche le plus proche voisin $c_4$ de $c_1$ appartenant à une tournée $r_2$.
+On échange alors $c_1$ avec le prédécesseur $c_3$ de $c_4$.
+Il suffit ensuite de considérer deux autres clients entre les deux tournées, pour  échanger deux séquences de clients.
 Le fonctionnement de cet opérateur est présenté sur la figure~\ref{CE}.
 
 \begin{figure}
