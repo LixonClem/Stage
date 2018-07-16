@@ -958,7 +958,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
     tps2 = time.time()
     tpsGS = time.time()
     tpsCH = time.time()
-    while tps2-tps1 < 10:
+    while tps2-tps1 < 5:
 
         # find the worst edge
         worst = bad_edge(b, p, routes, inst, fixed_edges)[1]
@@ -1003,14 +1003,14 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
             tpsCH = time.time()
             tpsGS = time.time()
 
-        if tps2-tpsGS > 0.5:
+        if tps2-tpsGS > 0.25:
             # return to the last best solution, for gs iterations
             
             routes = copy_sol(routes2)
             gs = 0
             tpsGS = time.time()
 
-        if tps2-tpsCH > 0.25:
+        if tps2-tpsCH > 0.125:
             tpsCH = time.time()
             b_i += 1
             
@@ -1044,13 +1044,13 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v):
 
 def apply_heuristic(instance, demand, l):
     # compute global variables
-    namefile = "resultats/Heuristic_results/Values/all/resultsNew2.txt"
+    namefile = "resultats/Heuristic_results/Values/all/resultsFaster.txt"
     all_sol = []
     tps_deb = time.time()
     max_d = max_depth(instance)
     v = voisins(KNN, instance)
     initial = init_routes(instance,demand)
-    edges, param = learning_results(0.7,5,100,instance,demand,initial)
+    edges, param = learning_results(0.7,5,50,instance,demand,initial)
     initial_routes = complete(destruction2(ignore_0(edges)),instance,demand)
     tps_learn = time.time()
     
@@ -1061,7 +1061,7 @@ def apply_heuristic(instance, demand, l):
     costs = 0
     edges = []
     best_sol = cost_sol(initial_routes,instance)
-    for i in range(5):
+    for i in range(10):
         print(i)
 
         if base==[]:
@@ -1079,17 +1079,17 @@ def apply_heuristic(instance, demand, l):
                     base.append(sol)
                     """
                 c_sol = cost_sol(sol, instance)
-                if c_sol < best_sol:
-                    best_sol=c_sol
-                    mat_qual = init_matrix(len(instance))
-                    base.append(sol)
-                    mat_qual = learn(mat_qual, base)
-                    edges = []
-                    e_qual = mat_info_rg(int(len(demand)*0.7), mat_qual)
-                    for e in e_qual:
-                        if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
-                            edges.append(e)
-                    initial_routes = complete(destruction2(ignore_0(edges)),instance,demand)
+                #if c_sol < best_sol:
+                best_sol=c_sol
+                mat_qual = init_matrix(len(instance))
+                base.append(sol)
+                mat_qual = learn(mat_qual, base)
+                edges = []
+                e_qual = mat_info_rg(int(len(demand)*0.7), mat_qual)
+                for e in e_qual:
+                    if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
+                        edges.append(e)
+                initial_routes = complete(destruction2(ignore_0(edges)),instance,demand)
 
 
                 
@@ -1099,6 +1099,7 @@ def apply_heuristic(instance, demand, l):
         else:
             print("learn")
             edges =[]
+            
             mat_qual = init_matrix(len(instance))
             mat_qual = learn(mat_qual, base)
             e_qual = mat_info_rg(int(len(demand)*0.7), mat_qual)
@@ -1106,9 +1107,9 @@ def apply_heuristic(instance, demand, l):
                 if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
                     edges.append(e)
             initial_routes = complete(destruction2(ignore_0(edges)),instance,demand)
-            edges, param = learning_results(0.7-i/10,5,100,instance,demand,initial_routes)
+            edges, param = learning_results(0.7-i/10,5,50,instance,demand,initial_routes)
             initial_routes = complete(destruction2(ignore_0(edges)),instance,demand)
-            
+            base = []
             
             for j in range(5):
                 print(j)
@@ -1127,17 +1128,17 @@ def apply_heuristic(instance, demand, l):
                 costs += c_sol
                 c_init = cost_sol(init, instance)
 
-                if c_sol < best_sol:
-                    best_sol=c_sol
-                    base.append(sol)
-                    mat_qual = init_matrix(len(instance))
-                    mat_qual = learn(mat_qual, base)
-                    e_qual = mat_info_rg(int(len(demand)*0.7), mat_qual)
-                    edges =[]
-                    for e in e_qual:
-                        if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
-                            edges.append(e)
-                    initial_routes = complete(destruction2(ignore_0(edges)),instance,demand)
+                #if c_sol < best_sol:
+                best_sol=c_sol
+                base.append(sol)
+                mat_qual = init_matrix(len(instance))
+                mat_qual = learn(mat_qual, base)
+                e_qual = mat_info_rg(int(len(demand)*0.7), mat_qual)
+                edges =[]
+                for e in e_qual:
+                    if not is_edge_in(e, edges) and not unfeasable_edge(e,edges):
+                        edges.append(e)
+                initial_routes = complete(destruction2(ignore_0(edges)),instance,demand)
 
                 all_sol.append((c_sol,sol))
     
@@ -1154,7 +1155,7 @@ def apply_heuristic(instance, demand, l):
         writef(namefile,'solution = ' + str(sol))
 
     writef(namefile,'')
-    writef(namefile,'Mean = ' + str(costs/25))
+    writef(namefile,'Mean = ' + str(costs/10))
     writef(namefile,'Execution = ' + str(tps_fin-tps_deb))
     writef(namefile,'')
     
@@ -1239,7 +1240,7 @@ allinstances.sort()
 print(allinstances)
 
 for fileinstance in allinstances:
-    namefile = "resultats/Heuristic_results/Values/all/resultsNew2.txt"
+    namefile = "resultats/Heuristic_results/Values/all/resultsFaster.txt"
     print(fileinstance)
     writef(namefile,'Instance : ' + fileinstance)
     instance,demand,Capacity = read('toExecute2/'+fileinstance)
