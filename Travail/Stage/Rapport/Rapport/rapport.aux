@@ -5,8 +5,10 @@
 \catcode `?\active 
 \citation{synthese}
 \citation{Sorensen_2017}
-\providecommand \oddpage@label [2]{}
-\babel@aux{french}{}
+\select@language{french}
+\@writefile{toc}{\select@language{french}}
+\@writefile{lof}{\select@language{french}}
+\@writefile{lot}{\select@language{french}}
 \citation{cvrp_pres}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Pr\IeC {\'e}sentation des notions et notations}{2}}
 \newlabel{presentation}{{1}{2}}
@@ -26,10 +28,10 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1.1.4}M\IeC {\'e}thodes de r\IeC {\'e}solution de CVRP}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Parcours et exploration des voisinages}{5}}
 \newlabel{voisinage}{{1.2}{5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Motivation et objectif}{5}}
 \citation{CW_1964}
 \citation{Altinel_2005}
 \citation{Altinel_2005}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Motivation et objectif}{6}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Construction d'une solution initiale de bonne qualit\IeC {\'e}}{6}}
 \newlabel{SolInit}{{2}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Description de l'algorithme}{6}}
@@ -54,9 +56,9 @@
 \newlabel{resCW001015}{{10}{8}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Proposition d'un algorithme d'optimisation}{8}}
 \newlabel{opti}{{3}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Heuristique de Arnold \& S\IeC {\"o}rensen}{8}}
 \citation{Sorensen_2017}
 \citation{Sorensen_2017}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Heuristique de Arnold \& S\IeC {\"o}rensen}{9}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces {\sc  AS} applique l'heuristique A\& S au probl\IeC {\`e}me consid\IeC {\'e}r\IeC {\'e}\relax }}{9}}
 \newlabel{algo:AS}{{2}{9}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Pire ar\IeC {\^e}te et p\IeC {\'e}nalisation}{9}}
@@ -68,15 +70,16 @@
 \newlabel{EC}{{12}{11}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces {\sc  Ejection-Chain} applique l'op\IeC {\'e}rateur ejection-chain\relax }}{11}}
 \newlabel{algo:EC}{{3}{11}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Cross-Exchange}{11}}
 \@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Exemple de fonctionnement de l'op\IeC {\'e}rateur cross-exchange\relax }}{12}}
 \newlabel{CE}{{13}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Cross-Exchange}{12}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces {\sc  Cross-Exchange} applique l'op\IeC {\'e}rateur cross-exchange\relax }}{12}}
 \newlabel{algo:CE}{{4}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Lin-Kernighan}{12}}
 \citation{Sorensen_2017}
 \@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Exemple de fonctionnement de l'op\IeC {\'e}rateur LK\relax }}{13}}
 \newlabel{LK}{{14}{13}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Lin-Kernighan}{13}}
+\newlabel{Lin-Kernighan}{{3.1.4}{13}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {5}{\ignorespaces {\sc  Lin-Kernighan} applique l'op\IeC {\'e}rateur Lin-Kernighan\relax }}{13}}
 \newlabel{algo:LK}{{5}{13}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Algorithme d'optimisation utilis\IeC {\'e}}{13}}
@@ -85,7 +88,6 @@
 \@writefile{toc}{\contentsline {section}{\numberline {4}Extraction de la connaissance}{14}}
 \newlabel{extraction}{{4}{14}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Quelle est la connaissance ?}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Protocole d'apprentissage}{14}}
 \@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces $CW(1.9,0.1,1.5)+LK$, $cost = 1041$, 19 ar\IeC {\^e}tes optimales\relax }}{15}}
 \newlabel{edges190115}{{15}{15}}
 \@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces $CW(0.1,0.1,0.1)+LK$, $cost = 1170$, 19 ar\IeC {\^e}tes optimales\relax }}{15}}
@@ -94,12 +96,14 @@
 \newlabel{edges010101}{{17}{15}}
 \@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Solution optimale, 42 ar\IeC {\^e}tes\relax }}{15}}
 \newlabel{edgesSol}{{18}{15}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}G\IeC {\'e}n\IeC {\'e}ration de l'\IeC {\'e}chantillon}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Protocole d'apprentissage}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}G\IeC {\'e}n\IeC {\'e}ration de l'\IeC {\'e}chantillon}{15}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Construction de la base d'apprentissage}{16}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Extraction des ar\IeC {\^e}tes}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}R\IeC {\'e}sultats}{17}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Choix de l'\IeC {\'e}chantillon et de la base}{17}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}\IeC {\'E}tude des crit\IeC {\`e}res Rang et Seuil}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}R\IeC {\'e}sultats}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Choix de l'\IeC {\'e}chantillon et de la base}{16}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces R\IeC {\'e}sultats pour l'instance \emph  {A-n37-k06}\relax }}{17}}
+\newlabel{T1}{{1}{17}}
 \@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Instance \emph  {A-n37-k06}\relax }}{18}}
 \newlabel{A3706}{{19}{18}}
 \@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Solution optimale \emph  {A-n37-k06}, 42 ar\IeC {\^e}tes\relax }}{18}}
@@ -112,47 +116,46 @@
 \newlabel{P10104}{{23}{18}}
 \@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Solution optimale \emph  {P-n101-k04}, 104 ar\IeC {\^e}tes\relax }}{18}}
 \newlabel{solP10104}{{24}{18}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Int\IeC {\'e}gration de la connaissance}{18}}
-\newlabel{Integration}{{5}{18}}
-\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Instance \emph  {A-n37-k06}\relax }}{19}}
-\newlabel{A3706}{{25}{19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Solution optimale \emph  {A-n37-k06}, 42 ar\IeC {\^e}tes\relax }}{19}}
-\newlabel{SolA3706}{{26}{19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces Instance \emph  {A-n65-k09}\relax }}{19}}
-\newlabel{A6509}{{27}{19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces Solution optimale \emph  {A-n65-k09}, 73 ar\IeC {\^e}tes\relax }}{19}}
-\newlabel{SolA6509}{{28}{19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces Instance \emph  {P-n101-k04}\relax }}{19}}
-\newlabel{P10104}{{29}{19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces Solution optimale \emph  {P-n101-k04}, 104 ar\IeC {\^e}tes\relax }}{19}}
-\newlabel{solP10104}{{30}{19}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces R\IeC {\'e}sultats pour l'instance \emph  {A-n37-k06}\relax }}{20}}
-\newlabel{T1}{{1}{20}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}O\IeC {\`u} int\IeC {\'e}grer la connaissance ?}{20}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces R\IeC {\'e}sultats pour l'instance \emph  {A-n65-k09}\relax }}{21}}
-\newlabel{T2}{{2}{21}}
-\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces Initialisation habituelle de CW\relax }}{21}}
-\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces Initialisation de CW apr\IeC {\`e}s apprentissage : \emph  {Init}\relax }}{21}}
-\newlabel{newInit}{{32}{21}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Learning Heuristic}{21}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces R\IeC {\'e}sultats pour l'instance \emph  {P-n101-k04}\relax }}{22}}
-\newlabel{T3}{{3}{22}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {7}{\ignorespaces {\sc  LearnHeuristic} renvoie une solution d'une instance du CVRP\relax }}{22}}
-\newlabel{algo:LH}{{7}{22}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces R\IeC {\'e}sultats pour l'instance \emph  {A-n65-k09}\relax }}{19}}
+\newlabel{T2}{{2}{19}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}\IeC {\'E}tude des crit\IeC {\`e}res Rang et Seuil}{19}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces R\IeC {\'e}sultats pour l'instance \emph  {P-n101-k04}\relax }}{20}}
+\newlabel{T3}{{3}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Influence du Rang lors de l'apprentissage sur l'instance A-n37-k06\relax }}{21}}
+\newlabel{InfRA3706}{{25}{21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Influence du Seuil lors de l'apprentissage sur l'instance A-n37-k06\relax }}{21}}
+\newlabel{InfSA3706}{{26}{21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces Influence du Rang lors de l'apprentissage sur l'instance A-n65-k09\relax }}{21}}
+\newlabel{InfRA6509}{{27}{21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces Influence du Seuil lors de l'apprentissage sur l'instance A-n65-k09\relax }}{21}}
+\newlabel{InfSA6509}{{28}{21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces Influence du Rang lors de l'apprentissage sur l'instance P-n101-k04\relax }}{21}}
+\newlabel{InfRP10104}{{29}{21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces Influence du Seuil lors de l'apprentissage sur l'instance P-n101-k04\relax }}{21}}
+\newlabel{InfSP10104}{{30}{21}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Int\IeC {\'e}gration de la connaissance}{22}}
+\newlabel{Integration}{{5}{22}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}O\IeC {\`u} int\IeC {\'e}grer la connaissance ?}{22}}
+\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces Initialisation habituelle de CW\relax }}{22}}
+\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces Initialisation de CW apr\IeC {\`e}s apprentissage : \emph  {Init}\relax }}{22}}
+\newlabel{newInit}{{32}{22}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Learning Heuristic}{22}}
 \citation{cvrplib}
 \citation{Sorensen_2017}
+\@writefile{loa}{\contentsline {algocf}{\numberline {7}{\ignorespaces {\sc  LearnHeuristic} renvoie une solution d'une instance du CVRP\relax }}{23}}
+\newlabel{algo:LH}{{7}{23}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}R\IeC {\'e}sultats}{23}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces R\IeC {\'e}sultats pour l'ensemble A\relax }}{24}}
+\newlabel{TA}{{4}{24}}
 \bibstyle{plain}
 \bibdata{biblio}
 \bibcite{cvrp_pres}{1}
 \bibcite{Altinel_2005}{2}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}R\IeC {\'e}sultats}{23}}
 \bibcite{Sorensen_2017}{3}
 \bibcite{CW_1964}{4}
 \bibcite{synthese}{5}
-\bibcite{cvrplib}{6}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces R\IeC {\'e}sultats pour l'ensemble A\relax }}{24}}
-\newlabel{TA}{{4}{24}}
 \@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces R\IeC {\'e}sultats pour l'ensemble B\relax }}{25}}
 \newlabel{TB}{{5}{25}}
+\bibcite{cvrplib}{6}
 \@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces R\IeC {\'e}sultats pour l'ensemble P\relax }}{26}}
 \newlabel{TP}{{6}{26}}
