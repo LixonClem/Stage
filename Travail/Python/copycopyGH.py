@@ -200,12 +200,12 @@ def all_edges(sol):
     return E
 
 
-def fixed_alea(edges):
+def fixed_alea(edges,nb):
     tirage = edges.copy()
     n = len(edges)
     b = [False for i in range(n)]
     fe = []
-    for i in range(n//2):
+    for i in range(int(n*nb)):
         alea = rd.randint(0, n-i-1)
         choice = tirage[alea]
         tirage.remove(choice)
@@ -963,7 +963,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v, fixed
     tps2 = time.time()
     tpsGS = time.time()
     tpsCH = time.time()
-    while tps2-tps1 < 10:
+    while tps2-tps1 < 7:
         
         # find the worst edge
         worst = bad_edge(b, p, routes, inst, fixed_edges)[1]
@@ -1017,14 +1017,14 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v, fixed
             tpsCH = time.time()
             tpsGS = time.time()
 
-        if tps2-tpsGS > 0.4:
+        if tps2-tpsGS > 0.2:
             # return to the last best solution, for gs iterations
 
             routes = copy_sol(routes2)
             gs = 0
             tpsGS = time.time()
 
-        if tps2-tpsCH > 0.2:
+        if tps2-tpsCH > 0.1:
             tpsCH = time.time()
             b_i += 1
 
@@ -1060,7 +1060,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v, fixed
 
 def apply_heuristic(instance, demand, l):
     # compute global variables
-    namefile = "resultats/Heuristic_results/Values/all/resultsFaster2.txt"
+    namefile = "resultats/Heuristic_results/Values/all/resultsFaster3.txt"
     all_sol = []
     tps_deb = time.time()
     max_d = max_depth(instance)
@@ -1074,8 +1074,8 @@ def apply_heuristic(instance, demand, l):
 
     base = []
     costs = 0
-    fixed_edges = edges.copy()
-    edges = []
+    fixed_edges = []
+   
     best_cost = cost_sol(initial_routes, instance)
     for i in range(5):
         print(i)
@@ -1094,21 +1094,39 @@ def apply_heuristic(instance, demand, l):
                     
                     best_sol = sol
                     best_cost = cost_sol(best_sol, instance)
+                """
                 mat_qual = init_matrix(len(instance))
-
                 mat_qual = learn(mat_qual, base)
-                edges = all_edges(best_sol)
-                edges.sort()
-                e_qual = mat_info_rg(int(len(demand)), mat_qual)
-                fixed_edges = mat_info_rg(int(len(demand)*0.3),mat_qual)
-                new_edges = []
-                for i in range(len(edges)):
-                    if rd.random()>0.3:
-                        new_edges.append(edges[i])
+                learn_edges = mat_info_rg(int(len(demand)*0.7), mat_qual)
+                """
+                simul_best = 1000000
+                for k in range(50):
+                    
+                    print(k)
+                    simul_edges = fixed_alea(all_edges(best_sol),0.7)
+                    initial_routes = complete(destruction2(
+                        ignore_0(simul_edges)), instance, demand)
+                    detailed_cust = [0 for i in range(len(instance))]
+                    for r in range(len(initial_routes)):
+                        for i in initial_routes[r]:
+                            detailed_cust[i-1] = r
+                    simul = ClarkeWright(initial_routes,instance,demand,lam,mu,nu,detailed_cust)
+                    if cost_sol(simul,instance)<simul_best:
+                        simul_best = cost_sol(simul,instance)
+                        print(simul_best)
+                        edges = simul_edges
+
                 initial_routes = complete(destruction2(
-                    ignore_0(new_edges)), instance, demand)
+                    ignore_0(edges)), instance, demand)
+                print("")
+                print(best_cost,cost_sol(initial_routes,instance))
+                print("")
+                edges, param = learning_results((1+j)/5, 2, 50, instance, demand, initial_routes)
+                
+                initial_routes = complete(destruction2(
+                    ignore_0(edges)), instance, demand)   
                
-                print(len(new_edges), len(edges))
+                print(len(edges))
                 all_sol.append((c_sol, sol))
 
         else:
@@ -1123,12 +1141,12 @@ def apply_heuristic(instance, demand, l):
                     edges.append(e)
             initial_routes = complete(destruction2(
                 ignore_0(edges)), instance, demand)
+
             edges, param = learning_results(
-                0.2, 5, 50, instance, demand, initial_routes)
+                0.5, 5, 50, instance, demand, initial_routes)
             initial_routes = complete(destruction2(
                 ignore_0(edges)), instance, demand)
 
-            fixed_edges = edges.copy()
             base = []
 
             for j in range(5):
@@ -1145,21 +1163,17 @@ def apply_heuristic(instance, demand, l):
                 if c_sol < best_cost:
                     best_sol = sol
                     best_cost = cost_sol(best_sol, instance)
-                mat_qual = init_matrix(len(instance))
 
-                mat_qual = learn(mat_qual, base)
-                edges = all_edges(best_sol)
-                edges.sort()
-                e_qual = mat_info_rg(int(len(edges)), mat_qual)
-                fixed_edges = mat_info_rg(int(len(demand)*0.3),mat_qual)
-                new_edges = []
-                for i in range(len(e_qual)):
-                    if rd.random()>0.3 and is_edge_in(e_qual[i],edges) :
-                        new_edges.append(e_qual[i])
+                edges = fixed_alea(all_edges(best_sol),0.7)
+
                 initial_routes = complete(destruction2(
-                    ignore_0(new_edges)), instance, demand)
-                print(len(new_edges), len(edges))
-                
+                    ignore_0(edges)), instance, demand)
+
+                edges, param = learning_results((1+j)/5, 2, 50, instance, demand, initial_routes)
+
+                initial_routes = complete(destruction2(
+                    ignore_0(edges)), instance, demand)
+
                 all_sol.append((c_sol, sol))
 
     all_sol.sort()
