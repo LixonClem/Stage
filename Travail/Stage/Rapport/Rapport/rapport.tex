@@ -46,7 +46,7 @@ Dans la plupart des problèmes, il est possible d'extraire de la connaissance de
 
 \section*{Introduction}
 
-Les problèmes d'optimisation combinatoire sont généralement des problèmes difficiles à résoudre, puisque le nombre de solutions à tester varie de manière exponentielle en la taille de l'instance. 
+Les problèmes d'optimisation combinatoire sont généralement des problèmes difficiles à résoudre~\cite{Papadimitriou_1982}, puisque le nombre de solutions à tester varie de manière exponentielle en la taille de l'instance. 
 Le Vehicle Routing Problem (VRP) est un problème dit d'optimisation combinatoire.
 L'objectif est de relier un nombre $n$ de clients par des véhicules, démarrant et finissant tous à un même point défini, le dépôt. 
 Ce problème est NP-complet, et dispose de nombreuses variantes (ajout d'une contrainte de temps, plusieurs dépôts possibles...). Cela permet de modéliser un grand nombre de situations réelles. 
@@ -178,7 +178,7 @@ solutions ont plutôt tendance à l'exploration.
 \subsection{Parcours et exploration des voisinages}
 \label{voisinage}
 
-Il existe plusieurs moyens pour procéder à une diversification de la solution courante.
+Il existe plusieurs moyens pour procéder à une diversification de la solution courante~\cite{ME_2012}.
 En effet, il est possible qu'en modifiant légèrement la solution courante, on obtienne une autre solution réalisable, appelée \emph{voisin} de la solution courante.
 On appelle alors \emph{voisinage} de la solution courante, l'ensemble des voisins de cette solution.
 Une fonction qui attribue à une solution, l'un de ses voisins, est appelée \emph{opérateur de voisinage}.
