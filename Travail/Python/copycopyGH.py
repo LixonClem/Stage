@@ -446,20 +446,19 @@ def rd_point(edge, routes, inst):
  # Return the nearest route of the edge given
 
 
-def another_routeCE(edge, voisins, routes, inst,demand, fe,mode):
+def another_routeCE(edge, voisins, routes, inst,demand, mode):
     #print(routes)
     c = rd_point(edge,routes,inst)
     r1 = find_route(c, routes)
-    adja = adjacents(c, fe)
     if mode == "RD":
         permut_voisins = permut(voisins[c])
     elif mode == "DE":
         permut_voisins = voisins[c]
     for i in permut_voisins:
         r2 = find_route(i, routes)
-        adjpi = adjacents(r2[r2.index(i)-1], fe)
+
         # we verify that the future demand on the route won't exceed his capacity
-        if r2 != r1 and i != 0 and len(adjpi) == 0 and len(adja) == 0 and route_demand(r1, demand)-demand[c]+demand[i] <= Capacity and route_demand(r2, demand)-demand[i]+demand[c] <= Capacity:
+        if r2 != r1 and i != 0  and route_demand(r1, demand)-demand[c]+demand[i] <= Capacity and route_demand(r2, demand)-demand[i]+demand[c] <= Capacity:
             return ((r1, r2), i ,c)
     # error case, we haven't found a second route, so no modifications
     return ((r1, r1), -1 , -1)
@@ -467,11 +466,11 @@ def another_routeCE(edge, voisins, routes, inst,demand, fe,mode):
 # Apply the cross-exchange operator
 
 
-def cross_exchange(edge, voisins, routes, inst, demand, fe, mode):
+def cross_exchange(edge, voisins, routes, inst, demand,  mode):
 
 
     # compute the two routes considered, and the NN of the point we remove (a). v is a point
-    (r1, r2), v,c = another_routeCE(edge, voisins, routes, inst,demand, fe,mode)
+    (r1, r2), v,c = another_routeCE(edge, voisins, routes, inst,demand, mode)
     if v < 0:
         return routes
 
@@ -500,9 +499,8 @@ def cross_exchange(edge, voisins, routes, inst, demand, fe, mode):
                     p2 = current_cand[1][i+1]
 
                     current_cand[0][j+1], current_cand[1][i + 1] = p2, p1
-                    adj1 = adjacents(p1, fe)
-                    adj2 = adjacents(p2, fe)
-                    if cost_sol(current_cand, inst) < c_init and len(adj1) == 0 and len(adj2) == 0 and route_demand(current_cand[0], demand) <= Capacity and route_demand(current_cand[1], demand) <= Capacity:
+
+                    if cost_sol(current_cand, inst) < c_init and route_demand(current_cand[0], demand) <= Capacity and route_demand(current_cand[1], demand) <= Capacity:
                         if mode == "RD":
                             routes.remove(r1)
                             routes.remove(r2)
@@ -825,7 +823,7 @@ def learning_results(crit, iterations, generate, instance, demand, initial):
         bigBase += Base
         quality = (stat[1]-stat[0])/10 + stat[0]
         tps1 = time.time()
-        print(tps1-tps)
+        
         ls_qual = learning_set_quality(Base, quality)
         mat_qual = init_matrix(len(instance))
         mat_qual = learn(mat_qual, ls_qual)
@@ -922,7 +920,7 @@ def global_opti(solution, inst, demand, v, l):
             routes[i] = LK(routes[i], inst)
         # apply cross-exchange
 
-        routes = cross_exchange(e, v, routes, inst, demand, fixed_edges, "DE")
+        routes = cross_exchange(e, v, routes, inst, demand,  "DE")
 
         # apply LK
         for i in range(len(routes)):
@@ -946,8 +944,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v, fixed
     b_i = 0
     b = B[b_i]
     p = [[0 for j in range(len(inst))] for i in range(len(inst))]
-    N = 0  # laps without improvement
-    gs = 0  # laps for last improvement
+
     detailed_cust = [0 for i in range(len(inst))]
     for r in range(len(initial_routes)):
         for i in initial_routes[r]:
@@ -959,11 +956,12 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v, fixed
     routes2 = copy_sol(routes)
     
     c_init = cost_sol(routes, inst)
-    print(c_init)
+    
     tps2 = time.time()
     tpsGS = time.time()
     tpsCH = time.time()
-    while tps2-tps1 < 7:
+
+    while tps2-tps1 < len(demand)/10:
         
         # find the worst edge
         worst = bad_edge(b, p, routes, inst, fixed_edges)[1]
@@ -987,7 +985,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v, fixed
         # apply cross-exchange
 
         routes = cross_exchange(worst, v, routes, inst,
-                                demand, fixed_edges, "RD")
+                                demand,  "RD")
 
         # apply LK
         for i in range(len(routes)):
@@ -1007,24 +1005,21 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v, fixed
                 if len(i) == 2:
                     routes2 = reject(i, routes2, v, inst, demand)
             c_init = cost_sol(routes2,inst)
-            print(tps2-tps1, c_init)
+            print(round(tps2-tps1,2), round(c_init,3))
 
-
-            gs = 0
-            N = 0
 
             tps1 = time.time()
             tpsCH = time.time()
             tpsGS = time.time()
 
-        if tps2-tpsGS > 0.2:
+        if tps2-tpsGS > len(demand)/100:
             # return to the last best solution, for gs iterations
 
             routes = copy_sol(routes2)
-            gs = 0
+
             tpsGS = time.time()
 
-        if tps2-tpsCH > 0.1:
+        if tps2-tpsCH > len(demand)/50:
             tpsCH = time.time()
             b_i += 1
 
@@ -1032,16 +1027,12 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v, fixed
                 b = B[b_i]
                 p = [[0 for j in range(len(inst))]
                      for i in range(len(inst))]
-                N = 0
+
             else:
                 b_i = 0
                 b = B[b_i]
                 p = [[0 for j in range(len(inst))]
                      for i in range(len(inst))]
-                N = 0
-
-
-
 
         tps2 = time.time()
 
@@ -1060,13 +1051,13 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v, fixed
 
 def apply_heuristic(instance, demand, l):
     # compute global variables
-    namefile = "resultats/Heuristic_results/Values/all/resultsFaster3.txt"
+    namefile = "resultats/Heuristic_results/Values/all/golden4.txt"
     all_sol = []
     tps_deb = time.time()
     max_d = max_depth(instance)
     v = voisins(KNN, instance)
     initial = init_routes(instance, demand)
-    edges, param = learning_results(0, 5, 50, instance, demand, initial)
+    edges, param = learning_results(0.8, 4, 50, instance, demand, initial)
     initial_routes = complete(destruction2(ignore_0(edges)), instance, demand)
     tps_learn = time.time()
 
@@ -1077,104 +1068,49 @@ def apply_heuristic(instance, demand, l):
     fixed_edges = []
    
     best_cost = cost_sol(initial_routes, instance)
-    for i in range(5):
+    for i in range(40):
         print(i)
 
-        if base == []:
-            for j in range(5):
-                print(j)
-                (lam, mu, nu) = param[0]
+        (lam, mu, nu) = param[0]
+        init, sol = core_heuristic(
+            copy_sol(initial_routes), instance, demand, lam, mu, nu, l, max_d, v,fixed_edges)
+        base.append(sol)
+        c_sol = cost_sol(sol, instance)
+        all_sol.append((c_sol, sol))
+        
+        if c_sol < best_cost:
+            
+            best_sol = sol
+            best_cost = cost_sol(best_sol, instance)
 
-                init, sol = core_heuristic(
-                    copy_sol(initial_routes), instance, demand, lam, mu, nu, l, max_d, v,fixed_edges)
 
-                base.append(sol)
-                c_sol = cost_sol(sol, instance)
-                if c_sol < best_cost:
-                    
-                    best_sol = sol
-                    best_cost = cost_sol(best_sol, instance)
-                """
-                mat_qual = init_matrix(len(instance))
-                mat_qual = learn(mat_qual, base)
-                learn_edges = mat_info_rg(int(len(demand)*0.7), mat_qual)
-                """
-                simul_best = 1000000
-                for k in range(50):
-                    
-                    print(k)
-                    simul_edges = fixed_alea(all_edges(best_sol),0.7)
-                    initial_routes = complete(destruction2(
-                        ignore_0(simul_edges)), instance, demand)
-                    detailed_cust = [0 for i in range(len(instance))]
-                    for r in range(len(initial_routes)):
-                        for i in initial_routes[r]:
-                            detailed_cust[i-1] = r
-                    simul = ClarkeWright(initial_routes,instance,demand,lam,mu,nu,detailed_cust)
-                    if cost_sol(simul,instance)<simul_best:
-                        simul_best = cost_sol(simul,instance)
-                        print(simul_best)
-                        edges = simul_edges
-
-                initial_routes = complete(destruction2(
-                    ignore_0(edges)), instance, demand)
-                print("")
-                print(best_cost,cost_sol(initial_routes,instance))
-                print("")
-                edges, param = learning_results((1+j)/5, 2, 50, instance, demand, initial_routes)
-                
-                initial_routes = complete(destruction2(
-                    ignore_0(edges)), instance, demand)   
-               
-                print(len(edges))
-                all_sol.append((c_sol, sol))
-
-        else:
+        if i%4 == 0 and i!=0 :
             print("learn")
             edges = []
-
+            fixed_edges = []
             mat_qual = init_matrix(len(instance))
             mat_qual = learn(mat_qual, base)
-            e_qual = mat_info_rg(int(len(demand)*0.5), mat_qual)
+            e_qual = mat_info_rg(int(len(demand)*0.8), mat_qual)
             for e in e_qual:
                 if not is_edge_in(e, edges) and not unfeasable_edge(e, edges):
                     edges.append(e)
             initial_routes = complete(destruction2(
                 ignore_0(edges)), instance, demand)
-
             edges, param = learning_results(
-                0.5, 5, 50, instance, demand, initial_routes)
+                0.8, 3, 50, instance, demand, initial_routes)
             initial_routes = complete(destruction2(
                 ignore_0(edges)), instance, demand)
-
-            base = []
-
-            for j in range(5):
-                print(j)
-                (lam, mu, nu) = param[0]
-
-                init, sol = core_heuristic(
-                    copy_sol(initial_routes), instance, demand, lam, mu, nu, l, max_d, v,fixed_edges)
-
-                c_sol = cost_sol(sol, instance)
-                costs += c_sol
-                base.append(sol)
-
-                if c_sol < best_cost:
-                    best_sol = sol
-                    best_cost = cost_sol(best_sol, instance)
-
-                edges = fixed_alea(all_edges(best_sol),0.7)
-
-                initial_routes = complete(destruction2(
-                    ignore_0(edges)), instance, demand)
-
-                edges, param = learning_results((1+j)/5, 2, 50, instance, demand, initial_routes)
-
-                initial_routes = complete(destruction2(
-                    ignore_0(edges)), instance, demand)
-
-                all_sol.append((c_sol, sol))
+        
+        else :
+            print("best learn")
+            edges = fixed_alea(all_edges(best_sol),0.8)
+            initial_routes = complete(destruction2(
+                ignore_0(edges)), instance, demand)
+            edges,param = learning_results(0.8,3,50,instance,demand,initial_routes)
+            initial_routes = complete(destruction2(
+                ignore_0(edges)), instance, demand)
+                
+                
 
     all_sol.sort()
     tps_fin = time.time()
@@ -1269,15 +1205,15 @@ py.show()
 
 apply_heuristic(instance, demand, relocation)
 """
-allinstances = os.listdir('toExecute2')
+allinstances = os.listdir('toExecute')
 allinstances.sort()
 print(allinstances)
 
 for fileinstance in allinstances:
-    namefile = "resultats/Heuristic_results/Values/all/resultsFaster2.txt"
+    namefile = "resultats/Heuristic_results/Values/all/golden4.txt"
     print(fileinstance)
     writef(namefile, 'Instance : ' + fileinstance)
-    instance, demand, Capacity = read('toExecute2/'+fileinstance)
+    instance, demand, Capacity = read('toExecute/'+fileinstance)
     print(Capacity)
     print("")
     apply_heuristic(instance, demand, relocation)
