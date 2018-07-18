@@ -270,32 +270,6 @@ def destruction2(edges):
     return r
     
 
-def destruction(edges):
-    edges.append((0,0))
-    r = []
-    curr = [0]
-    for i in range(len(edges)-1):
-        e = edges[i]
-        next_e = edges[i+1]
-        if e[1]==0:
-            curr.append(e[0])
-            r.append(curr)
-            curr = [0]
-        elif e[0]==0 and e[1]!=next_e[0]:
-            curr.append(e[1])
-            r.append(curr)
-            curr= [0]
-        elif e[0]!=0 and e[1]!=next_e[0]:
-            curr.append(e[0])
-            curr.append(e[1])
-            r.append(curr)
-            curr = [0]
-        elif e[0]!=0 and e[1]==next_e[0]:
-            curr.append(e[0])
-    return r
-
-
-
 def complete(routes,inst):
     for i in range(len(routes)):
         routes[i].insert(0,0)
