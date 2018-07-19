@@ -91,7 +91,7 @@ Toutefois dans ce type de problème, le nombre de solutions réalisables varie g
 \subsubsection{Vehicle Routing Problem (VRP)}
 
 Le problème de tournées de véhicules, est un problème NP-complet d'optimisation combinatoire, où sont donnés $n$ points de coordonnées $(x_i,y_i)$, représentant 1 dépôt et $n-1$ clients. On dispose également d'une flotte de $k$ véhicules. 
-L'objectif est de minimiser la longueur du réseau (i.e. l'ensemble des tournées effectuées par les véhicules, une tournée correspondant à l'ensemble des clients desservis par un véhicule). 
+L'objectif est de minimiser la longueur du réseau (i.e. l'ensemble des tournées effectuées par les véhicules, une \emph{tournée} correspondant à l'ensemble des clients desservis par un véhicule). 
 En reprenant les notations de~\cite{cvrp_pres}, on définit $x_{i,j}^v$ qui vaut 1 si $j$ est desservi après $i$ par le véhicule $v$, et 0 sinon. 
 On définit également $c_{i,j}$ comme étant la distance entre $i$ et $j$.
 Ainsi une solution \emph{Sol} du problème est la donnée d'une matrice, telle que $Sol[i][j] = c_{i,j} x_{i,j}^v$.
@@ -118,14 +118,14 @@ C'est l'ajout de capacité aux tournées qui nous intéressera plus particulièr
     \begin{minipage}[c]{.46\linewidth}
         \centering
 		\includegraphics[scale=0.5]{Instance.png}
-		\caption{Représentation de l'instance A-n32-k05 de la littérature (31 clients et 1 dépôt)}
+		\caption{Représentation de l'instance A-n32-k05 de la littérature (31 clients et 1 dépôt).}
 		\label{Instance3205}
     \end{minipage}
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
         \includegraphics[scale=0.5]{solutionNoCapacity.png}
-		\caption{Représentation d'une solution de l'instance A-n32-k05}
+		\caption{Représentation d'une solution de l'instance A-n32-k05.}
 		\label{SNC3205}
     \end{minipage}
 \end{figure}
@@ -147,7 +147,7 @@ Les instances du CVRP étudiées par la suite, sont disponibles sur~\cite{cvrpli
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{solutionCapacity.png}
-\caption{Représentation d'une solution de l'instance A-n32-k05, où les demandes des clients sont prises en compte. Elle comporte 5 tournées}
+\caption{Représentation d'une solution de l'instance A-n32-k05, où les demandes des clients sont prises en compte. Elle comporte 5 tournées.}
 \label{SC3205}
 \end{figure}
 
@@ -236,18 +236,18 @@ Cette méthode, nous impose de résoudre les problèmes suivants : Comment const
 Pour construire une solution initiale nous allons utiliser la dernière version d'un algorithme très répandu dans la littérature : l'algorithme Clarke \& Wright~\cite{CW_1964}, amélioré par~\cite{Altinel_2005}.
 Ainsi, nous commençons par décrire l'algorithme utilisé, puis détaillons le problème du choix des paramètres pour son exécution.
 
-\subsection{Description de l'algorithme}
+\subsection{Description de l'algorithme Clarke \& Wright}
 L'algorithme Clarke \& Wright (CW) est un algorithme glouton. 
-Initialement chaque client est desservi par un véhicule (de cette manière la contrainte sur le nombre de véhicules disponibles n'est pas respectée). Ensuite les tournées sont fusionnées en fonction des \emph{savings} calculées.
+Initialement chaque client est desservi par un véhicule (de cette manière la contrainte sur le nombre de véhicules disponibles n'est pas respectée). Ensuite les tournées sont fusionnées en fonction des \emph{savings} (économies) calculées. L'algorithme \ref{algo:CW} présente le fonctionnement de l'algorithme CW.
+
 On définit le \emph{saving} des clients $i$ et $j$ de la manière suivante :
 
 \begin{center}
 $s(i,j) = c_{i0} + c_{0j} - \lambda c_{ij} + \mu \vert c_{i0} - c_{0j} \vert + \nu \frac{d_i + d_j}{\overline{d}}$
 \end{center}
 
-Les paramètres $(\lambda, \mu, \nu)$ jouent un rôle important dans la formule précédente, ce que nous verrons plus tard. (rôle des paramètres à détailler). 
+Les paramètres $(\lambda, \mu, \nu)$ jouent un rôle important dans la formule précédente, ce que nous verrons plus tard. Le paramètre $\lambda$ a été introduit par Gaskell~\cite{Gaskell} et Yellow~\cite{Yellow}, et est appelé \emph{route shape parameter}. Le paramètre $\mu$ prend en compte l'asymétrie entre les clients $i$ et $j$, en tenant compte de leur distance respective au dépôt. Il a été introduit par Paessens~\cite{Paessens}. Enfin, le paramètre $\nu$ a été ajouté, en s'inspirant d'une méthode de résolution du \emph{bin packing problem} (BPP), développée par Martello et Toth~\cite{Martello}, qui consiste à s'intéresser en priorité aux éléments les plus gros et à les placer en premier. 
 
-L'algorithme \ref{algo:CW} présente le fonctionnement de l'algorithme CW.
 
 \begin{algorithm}
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
@@ -282,28 +282,28 @@ Un exemple d'exécution de l'algorithme avec $(\lambda, \mu, \nu) = (1,1,1)$, su
     \begin{minipage}[c]{.46\linewidth}
         \centering
   	\includegraphics[scale=0.4]{CWinit.png}
-  	\caption{Initialisation}
+  	\caption{Initialisation.}
 	\label{CWinit}
     \end{minipage}
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
 	\includegraphics[scale=0.4]{CW1.png}
-	\caption{1$^{ere}$ fusion}
+	\caption{1$^{ere}$ fusion.}
  	\label{CW1}
     \end{minipage}
 
     \begin{minipage}[c]{.46\linewidth}
         \centering
 	\includegraphics[scale=0.4]{CW2.png}
-	\caption{2$^{eme}$ fusion}
+	\caption{2$^{eme}$ fusion.}
 	\label{CW2}
     \end{minipage}
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
 	 \includegraphics[scale=0.17]{resCW101010.png}
-	 \caption{Solution obtenue, $cost = 1297$}
+	 \caption{Solution obtenue, $cost = 1297$.}
 	\label{resCW101010}
     \end{minipage}
 \end{figure}
@@ -323,7 +323,7 @@ L'influence de ces paramètres dépend aussi des caractéristiques de l'instance
         \centering
 	\includegraphics[scale=0.4]{resCW190105.png}
  
- 	\caption{$(\lambda, \mu, \nu)=(1.9,0.1,1.5)$, $ cost = 1106$}
+ 	\caption{$(\lambda, \mu, \nu)=(1.9,0.1,1.5)$, $ cost = 1106$.}
  	\label{resCW190105}
     \end{minipage}
 	\hfill%
@@ -331,14 +331,14 @@ L'influence de ces paramètres dépend aussi des caractéristiques de l'instance
         \centering
 	\includegraphics[scale=0.4]{resCW111.png}
 	
-	\caption{$(\lambda, \mu, \nu)=(0.1,0.1,0.1)$, $cost = 1569$}
+	\caption{$(\lambda, \mu, \nu)=(0.1,0.1,0.1)$, $cost = 1569$.}
 	\label{resCW111}
     \end{minipage}
     
     
         \centering
 	\includegraphics[scale=0.4]{resCW001015.png}
- 	\caption{$(\lambda, \mu, \nu)=(0.0,1.0,1.5)$, $cost = 2191$}
+ 	\caption{$(\lambda, \mu, \nu)=(0.0,1.0,1.5)$, $cost = 2191$.}
  	\label{resCW001015}
     
 \end{figure}
@@ -416,7 +416,7 @@ Les notions de coût, profondeur et largeur sont illustrées par la figure~\ref{
 \begin{figure}
 \centering
 \includegraphics[scale=0.3]{metrics_big.png}
-\caption{Illustration des caractéristiques d'une arête}
+\caption{Illustration des caractéristiques d'une arête.}
 \label{metrics}
 \end{figure}
 
@@ -450,7 +450,7 @@ Le fonctionnement de cet opérateur est présenté sur la figure~\ref{EC}.
 \begin{figure}
 \centering
 \includegraphics[scale=0.2]{ejection_chain_big.png}
-\caption{Exemple de fonctionnement de l'opérateur ejection-chain}
+\caption{Exemple de fonctionnement de l'opérateur ejection-chain.}
 \label{EC}
 \end{figure}
 
@@ -493,7 +493,7 @@ Le fonctionnement de cet opérateur est présenté sur la figure~\ref{CE}.
 \begin{figure}
 \centering
 \includegraphics[scale=0.2]{cross_exchange_big.png}
-\caption{Exemple de fonctionnement de l'opérateur cross-exchange}
+\caption{Exemple de fonctionnement de l'opérateur cross-exchange.}
 \label{CE}
 \end{figure}
 
@@ -538,7 +538,7 @@ Un exemple d'utilisation de cet opérateur est présent sur la figure~\ref{LK}
 \includegraphics[scale=0.4]{test4_20_init.png}
 \includegraphics[scale=0.4]{test4_20_LKopt.png}
 
-\caption{Exemple de fonctionnement de l'opérateur LK}
+\caption{Exemple de fonctionnement de l'opérateur LK.}
 \label{LK}
 \end{figure}
 
@@ -619,28 +619,28 @@ Ce résultat est illustré sur les figures~\ref{edges190115} à \ref{edgesSol}, 
     \begin{minipage}[c]{.46\linewidth}
         \centering
   	\includegraphics[scale=0.4]{edges190115.png}
-	\caption{$CW(1.9,0.1,1.5)+LK$, $cost = 1041$, 19 arêtes optimales}
+	\caption{$CW(1.9,0.1,1.5)+LK$, $cost = 1041$, 19 arêtes optimales.}
 	\label{edges190115}
     \end{minipage}
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
 	\includegraphics[scale=0.4]{edges101010.png}
-	\caption{$CW(0.1,0.1,0.1)+LK$, $cost = 1170$, 19 arêtes optimales}
+	\caption{$CW(0.1,0.1,0.1)+LK$, $cost = 1170$, 19 arêtes optimales.}
 	\label{edges101010}
     \end{minipage}
 
     \begin{minipage}[c]{.46\linewidth}
         \centering
 	\includegraphics[scale=0.4]{edges010101.png}
-	\caption{$CW(0.0,1.0,1.5)+LK$, $cost = 1600$, 11 arêtes optimales}
+	\caption{$CW(0.0,1.0,1.5)+LK$, $cost = 1600$, 11 arêtes optimales.}
 	\label{edges010101}	
     \end{minipage}
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
 	\includegraphics[scale=0.4]{edgesSol.png}
-	\caption{Solution optimale, 42 arêtes}
+	\caption{Solution optimale, 42 arêtes.}
 	\label{edgesSol}
     \end{minipage}
 \end{figure}
@@ -714,7 +714,7 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
         \centering
         \includegraphics[scale=0.4]{instance3706}
         
-        \caption{Instance \emph{A-n37-k06}}
+        \caption{Instance \emph{A-n37-k06}.}
         \label{A3706}
 
     \end{minipage}
@@ -723,7 +723,7 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
         \centering
         \includegraphics[scale=0.4]{best3706}
         
-        \caption{Solution optimale \emph{A-n37-k06}, 42 arêtes}
+        \caption{Solution optimale \emph{A-n37-k06}, 42 arêtes.}
         \label{SolA3706}
     \end{minipage}
     
@@ -731,7 +731,7 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
         \centering
         \includegraphics[scale=0.4]{Instance6509}
         
-        \caption{Instance \emph{A-n65-k09}}
+        \caption{Instance \emph{A-n65-k09}.}
         \label{A6509}
     \end{minipage}
     \hfill%
@@ -739,7 +739,7 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
         \centering
         \includegraphics[scale=0.4]{Solution6509}
         
-        \caption{Solution optimale \emph{A-n65-k09}, 73 arêtes}
+        \caption{Solution optimale \emph{A-n65-k09}, 73 arêtes.}
         \label{SolA6509}
     \end{minipage}    
     
@@ -747,7 +747,7 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
         \centering
         \includegraphics[scale=0.4]{Instance10104}
         
-        \caption{Instance \emph{P-n101-k04}}
+        \caption{Instance \emph{P-n101-k04}.}
         \label{P10104}
     \end{minipage}
     \hfill%
@@ -755,7 +755,7 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
         \centering
         \includegraphics[scale=0.4]{Solution10104}
         
-        \caption{Solution optimale \emph{P-n101-k04}, 104 arêtes}
+        \caption{Solution optimale \emph{P-n101-k04}, 104 arêtes.}
         \label{solP10104}
     \end{minipage}
 \end{figure}
@@ -966,7 +966,7 @@ En ce qui concerne le critère Rang, plus le rang augmente et plus les solutions
         \centering
         \includegraphics[scale=0.25]{InfluenceRangA3706}
         
-        \caption{Influence du Rang lors de l'apprentissage sur l'instance A-n37-k06}
+        \caption{Influence du Rang lors de l'apprentissage sur l'instance A-n37-k06.}
         \label{InfRA3706}
 
     \end{minipage}
@@ -975,7 +975,7 @@ En ce qui concerne le critère Rang, plus le rang augmente et plus les solutions
         \centering
         \includegraphics[scale=0.25]{InfluenceSeuilA3706}
         
-        \caption{Influence du Seuil lors de l'apprentissage sur l'instance A-n37-k06}
+        \caption{Influence du Seuil lors de l'apprentissage sur l'instance A-n37-k06.}
         \label{InfSA3706}
     \end{minipage}
     
@@ -983,7 +983,7 @@ En ce qui concerne le critère Rang, plus le rang augmente et plus les solutions
         \centering
         \includegraphics[scale=0.25]{InfluenceRangA6509}
         
-        \caption{Influence du Rang lors de l'apprentissage sur l'instance A-n65-k09}
+        \caption{Influence du Rang lors de l'apprentissage sur l'instance A-n65-k09.}
         \label{InfRA6509}
     \end{minipage}
     \hfill%
@@ -991,7 +991,7 @@ En ce qui concerne le critère Rang, plus le rang augmente et plus les solutions
         \centering
         \includegraphics[scale=0.25]{InfluenceSeuilA6509}
         
-        \caption{Influence du Seuil lors de l'apprentissage sur l'instance A-n65-k09}
+        \caption{Influence du Seuil lors de l'apprentissage sur l'instance A-n65-k09.}
         \label{InfSA6509}
     \end{minipage}    
     
@@ -999,7 +999,7 @@ En ce qui concerne le critère Rang, plus le rang augmente et plus les solutions
         \centering
         \includegraphics[scale=0.25]{InfluenceRangP10104}
         
-        \caption{Influence du Rang lors de l'apprentissage sur l'instance P-n101-k04}
+        \caption{Influence du Rang lors de l'apprentissage sur l'instance P-n101-k04.}
         \label{InfRP10104}
     \end{minipage}
     \hfill%
@@ -1007,7 +1007,7 @@ En ce qui concerne le critère Rang, plus le rang augmente et plus les solutions
         \centering
         \includegraphics[scale=0.25]{InfluenceSeuilP10104}
         
-        \caption{Influence du Seuil lors de l'apprentissage sur l'instance P-n101-k04}
+        \caption{Influence du Seuil lors de l'apprentissage sur l'instance P-n101-k04.}
         \label{InfSP10104}
     \end{minipage}
 \end{figure}
@@ -1037,13 +1037,13 @@ $(\lambda^*,\mu^*,\nu^*) = argmin_{(\lambda,\mu,\nu) \in Echantillon} CW((\lambd
     \begin{minipage}[c]{.46\linewidth}
         \centering
         \includegraphics[scale=0.4]{CWinit.png}
-        \caption{Initialisation habituelle de CW}
+        \caption{Initialisation habituelle de CW.}
     \end{minipage}
     \hfill%
     \begin{minipage}[c]{.46\linewidth}
         \centering
         \includegraphics[scale=0.4]{learning.png}
-        \caption{Initialisation de CW après apprentissage : \emph{Init}}
+        \caption{Initialisation de CW après apprentissage : \emph{Init}.}
         \label{newInit}
     \end{minipage}
 \end{figure}
@@ -1058,30 +1058,27 @@ La \emph{Learning Heuristic} est présenté sur l'algorithme~\ref{algo:LH}.
 \KwIn{Un ensemble de points I, les demandes des clients D}
 \KwOut{Une solution au problème I}
 $(\lambda^*,\mu^*,\nu^*), Init \gets Apprentissage()$\;
-$newBase \gets []$\;
+$newBase \gets \{\} $\;
+$bestCost \gets cost(Init)$\;
 \For {$i \gets 1$ \textbf{to} $NbIterations$} {
-	\If {$i = 1$} {
-		
-		\For {$j \gets 1$ \textbf{to} $NbSol$} {
-			$Sol \gets H_c(Init,I,D,\lambda^*,\mu^*,\nu^*)$\;
-			$newBase \gets newBase \cup Sol$\;
-			}	
-		
+	$Sol \gets H_c(I,D,\lambda^*,\mu^*,\nu^*,Init)$\;
+	$newBase \gets newBase \cup \{Sol\}$\;
+	\If {$cost(Sol) < bestCost$ or $i = 0$} {
+		$bestSol \gets Sol$\;
+		$bestCost \gets cost(Sol)$\;
+	}
+	\If {$ i\%4 = 0$ and $i \neq 0$} {
+		Déterminer $Init$ en apprenant de $newBase$\;
+		$(\lambda^*,\mu^*,\nu^*), Init \gets Apprentissage(Init)$\;
 	}
 	\Else {
-		Déterminer $Init$ avec les connaissances de $newBase$\;
-		$newBase \gets []$\;
+		Conserver $p\%$ des arêtes de $bestSol$\;
+		Construire un nouvel $Init$ avec les arêtes conservées\;
 		$(\lambda^*,\mu^*,\nu^*), Init \gets Apprentissage(Init)$\;
-		
-		
-		\For {$j \gets 1$ \textbf{to} $NbSol$} {
-		 	$Sol \gets H_c(Init,I,D,\lambda^*,\mu^*,\nu^*)$\;
-			$newBase \gets newBase \cup Sol$\;
-		}
-	
 	}
 }
-\Return{La meilleure solution}\;
+
+\Return{$bestSol$}\;
 \caption{{\sc LearnHeuristic} renvoie une solution d'une instance du CVRP}
 \label{algo:LH}
 \end{algorithm}
@@ -1093,6 +1090,8 @@ Répéter ces étapes permet d'affiner l'apprentissage, pour le rendre plus effi
 
 
 \subsection{Résultats}
+
+\subsubsection{Comparaison avec des ensembles d'instances résolues}
 
 La \emph{learning heuristic} précédente a été appliquée aux ensembles d'instance A, B et P (disponibles sur le site~\cite{cvrplib}.
 
@@ -1113,59 +1112,59 @@ Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme co
  \hline
  & & Best & Mean$_{10}$ & Gap (\%) & Time (s) \\ 
  \hline
- A-n32-k05 & 784 & 785 & 785 & 0.13 & 422  \\
+ A-n32-k05 & 784 & 785 & 785 & 0.13 & 179  \\
  \hline
- A-n33-k05   & 661 & 661 & 661 &0 & 423   \\
+ A-n33-k05   & 661 & 661 & 661 &0 & 235   \\
   \hline
-   A-n33-k06 & 742 & 742 & 742 &0 & 321  \\
+   A-n33-k06 & 742 & 742 & 742 &0 & 160  \\
  \hline
-   A-n34-k05 & 778 & 779 & 779 &0.13 & 406  \\
+   A-n34-k05 & 778 & 779 & 779 &0.13 & 173  \\
   \hline
-   A-n36-k05 & 799 & 799 & 799 & 0 & 473  \\
+   A-n36-k05 & 799 & 799 & 799 & 0 & 222  \\
  \hline
-  A-n37-k05  & 669 & 670 & 671 & 0.15 & 469  \\
+  A-n37-k05  & 669 & 670 & 671 & 0.15 & 181  \\
   \hline
-  A-n37-k06 & 949 & 949 & 949 & 0 & 335 \\
+  A-n37-k06 & 949 & 949 & 949 & 0 & 174 \\
  \hline
-  A-n38-k05  & 730 & 730 & 736 & 0 & 323 \\
+  A-n38-k05  & 730 & 730 & 736 & 0 & 196 \\
  \hline
- A-n39-k05 & 822 & 822 & 822 & 0 & 345 \\
+ A-n39-k05 & 822 & 822 & 822 & 0 & 212 \\
  \hline
-  A-n39-k06  & 831 & 831 & 831 & 0 & 391   \\
+  A-n39-k06  & 831 & 831 & 831 & 0 & 220   \\
  \hline
-   A-n44-k06 & 937 & 937 & 939 & 0 & 364   \\
+   A-n44-k06 & 937 & 937 & 937 & 0 & 232   \\
   \hline
-   A-n45-k06 & 944 & 953 & 956 & 0.94 & 444  \\
+   A-n45-k06 & 944 & 953 & 954 & 0.94 & 228  \\
  \hline 
   A-n45-k07  & 1146 & 1149 & 1151 & 0.26 & 415 \\
   \hline
-  A-n46-k07  & 914 & 914 & 916 &0 & 384  \\
+  A-n46-k07  & 914 & 914 & 916 &0 & 286  \\
   \hline
   A-n48-k07 & 1073 & 1073 & 1078 &0 & 442  \\
  \hline
   A-n53-k07  & 1010 & 1014 & 1017 &0.39 & 387   \\
   \hline
-  A-n54-k07  & 1167 & 1172 & 1175 & 0.26 & 389   \\
+  A-n54-k07  & 1167 & 1172 & 1172 & 0.26 & 273  \\
   \hline
-  A-n55-k09 & 1073 & 1073 & 1073 &0 & 315  \\
+  A-n55-k09 & 1073 & 1073 & 1073 &0 & 285  \\
  \hline 
-   A-n60-k09 & 1354 & 1354 & 1356 &0 & 462   \\
+   A-n60-k09 & 1354 & 1354 & 1356 &0 & 453   \\
   \hline 
   A-n61-k09  & 1034 & 1035 & 1038 &0.09 & 386  \\
   \hline
-    A-n62-k08  & 1288 & 1308 & 1310 &1.53 & ?   \\
+    A-n62-k08  & 1288 & 1308  & 1310 &1.53 & 440   \\
   \hline
-    A-n63-k09  & 1616 & 1631 & 1631 &0.92 & 353   \\
+    A-n63-k09  & 1616 & 1627 & 1636 &0.68 & 429   \\
   \hline
     A-n63-k10  & 1314 & 1320 &1320 &0.45 & 458   \\
   \hline
     A-n64-k09  & 1401 & 1416 & 1419 &1.06 & 463   \\
   \hline
-    A-n65-k09  & 1174 & 1178 & 1181 &0.34 & 317   \\
+    A-n65-k09  & 1174 & 1176 & 1180 &0.17 & 447   \\
   \hline
     A-n69-k09  & 1159 & 1164 & 1167 & 0.43 & 317   \\
   \hline
-    A-n80-k10  & 1763 & 1767 & 1771 & 0.23 & 575   \\
+    A-n80-k10  & 1763 & 1767 & 1773 & 0.23 & 575   \\
   \hline
 \end{tabular}
 \end{center}
@@ -1182,45 +1181,45 @@ Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme co
  \hline
  & & Best & Mean$_{10}$ & Gap (\%) & Time (s) \\ 
  \hline
- B-n31-k05 & 672 & 672 & 672 & 0 & 351  \\
+ B-n31-k05 & 672 & 672 & 672 & 0 & 161 \\
  \hline
- B-n34-k05   & 788 & 788 & 788 &0 & 316   \\
+ B-n34-k05   & 788 & 788 & 788 &0 & 192  \\
   \hline
-   B-n35-k05 & 955 & 958 & 958 &0.31 & 303  \\
+   B-n35-k05 & 955 & 955 & 957 &0 & 169  \\
  \hline
-   B-n38-k06 & 805 & 806 & 806 &0.12 & 421  \\
+   B-n38-k06 & 805 & 806 & 806 &0.12 & 238  \\
   \hline
-   B-n39-k05 & 549 & 550 & 550 & 0.18 & 395  \\
+   B-n39-k05 & 549 & 550 & 550 & 0.18 & 267  \\
  \hline
-  B-n41-k06  & 829 & 831 & 831 & 0.24 & 350  \\
+  B-n41-k06  & 829 & 831 & 831 & 0.24 & 206  \\
   \hline
-  B-n43-k06 & 742 & 742 & 743 & 0 & 415 \\
+  B-n43-k06 & 742 & 742 & 742 & 0 & 302 \\
  \hline
-  B-n44-k07  & 909 & 910 & 910 & 0.11 & 356 \\
+  B-n44-k07  & 909 & 910 & 910 & 0.11 & 203 \\
  \hline
- B-n45-k05 & 751 & 751 & 751 & 0 & 317 \\
+ B-n45-k05 & 751 & 751 & 751 & 0 & 207 \\
  \hline
-   B-n50-k07 & 741 & 741 & 741 & 0 & 295   \\
+   B-n50-k07 & 741 & 741 & 741 & 0 & 299   \\
   \hline
-   B-n50-k08 & 1312 & 1330 & 1332 & 1.35 & 393  \\
+   B-n50-k08 & 1312 & 1320 & 1327 & 0.61 & 255  \\
   \hline
-  B-n52-k07  & 747 & 747 & 748 &0 & 356  \\
+  B-n52-k07  & 747 & 747 & 748 &0 & 365  \\
   \hline
-  B-n56-k07 & 707 & 710 & 710 & 0.42 & 329  \\
+  B-n56-k07 & 707 & 710 & 710 & 0.42 & 297  \\
  \hline
-  B-n57-k09  & 1598 & 1599 & 1601 &0.06 & 368   \\
+  B-n57-k09  & 1598 & 1599 & 1601 &0.06 & 306   \\
   \hline
-  B-n63-k10  & 1496 & 1537 & 1540 & 2.66 & 334   \\
+  B-n63-k10  & 1496 & 1537 & 1540 & 2.66 & 338   \\
   \hline
-  B-n64-k09 & 861 & 866 & 870 & 0.58 & 337 \\
+  B-n64-k09 & 861 & 866 & 870 & 0.58 & 303 \\
  \hline 
-   B-n66-k09 & 1316 & 1324 & 1326 &0.60 & 391   \\
+   B-n66-k09 & 1316 & 1321 & 1324 &0.38 & 385   \\
   \hline 
-  B-n67-k10  & 1032 & 1049 & 1057 &1.62 & 445  \\
+  B-n67-k10  & 1032 & 1040 & 1041 & 0.77 & 425  \\
   \hline
-    B-n68-k09  & 1272 & 1290 & 1294 &1.40 & 372   \\
+    B-n68-k09  & 1272 & 1289 & 1290 &1.32 & 452   \\
   \hline
-    B-n78-k10  & 1221 & 1240 & 1244 &1.85 & 511   \\
+    B-n78-k10  & 1221 & 1231 & 1238 & 0.57 & 526 \\
   \hline
 \end{tabular}
 \end{center}
@@ -1237,55 +1236,78 @@ Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme co
  \hline
  & & Best & Mean$_{10}$ & Gap (\%) & Time (s) \\ 
  \hline
- P-n016-k08 & 450 & 450 & 450 & 0 & 252  \\
+ P-n016-k08 & 450 & 450 & 450 & 0 & 52  \\
  \hline
- P-n019-k02   & 212 & 212 & 212 & 0 & 257   \\
+ P-n019-k02   & 212 & 212 & 215 & 0 & 65   \\
   \hline
-   P-n020-k02 & 216 & 216 & 216 &0 & 256  \\
+   P-n020-k02 & 216 & 216 & 216 &0 & 72  \\
  \hline
-   P-n021-k02 & 211 & 211 & 211 &0 & 263  \\
+   P-n021-k02 & 211 & 211 & 211 &0 & 83  \\
   \hline
-   P-n022-k02 & 216 & 216 & 216 & 0 & 282  \\
+   P-n022-k02 & 216 & 216 & 216 & 0 & 101  \\
  \hline
-  P-n023-k08  & 529 & 529 & 529 & 0 & 305  \\
+  P-n023-k08  & 529 & 529 & 530 & 0 & 82 \\
   \hline
-  P-n040-k05 & 458 & 458 & 458 & 0 & 332 \\
+  P-n040-k05 & 458 & 458 & 458 & 0 & 171 \\
  \hline
-  P-n045-k05  & 510 & 510 & 510 & 0 & 360 \\
+  P-n045-k05  & 510 & 510 & 510 & 0 & 260 \\
  \hline
- P-n050-k07 & 554 & 554 & 554 & 0 & 424 \\
+ P-n050-k07 & 554 & 554 & 555 & 0 & 342 \\
  \hline
-  P-n050-k08  & 631 & 631 & 633 & 0 & 458   \\
+  P-n050-k08  & 631 & 631 & 633 & 0 & 333   \\
  \hline
-   P-n050-k10 & 696 & 697 & 699 & 0.14 & 368   \\
+   P-n050-k10 & 696 & 699 & 701 & 0.43 & 368   \\
   \hline
-   P-n051-k10 & 741 & 743 & 747 & 0.27 & 401  \\
+   P-n051-k10 & 741 & 742 & 747 & 0.13 & 401  \\
  \hline 
-  P-n055-k07  & 568 & 568& 572& 0 & 541  \\
+  P-n055-k07  & 568 & 568 & 572& 0 & 541  \\
   \hline
-  P-n055-k10  & 694 & 695 & 697 &0.14 & 469  \\
+  P-n055-k10  & 694 & 694 & 699 &0 & 469  \\
   \hline
-  P-n060-k10 & 744 & 750 & 751 & 0.8 & 445  \\
+  P-n060-k10 & 744 & 750 & 751 & 0.8 & 339  \\
  \hline
-   P-n060-k15  & 968 & 979 & 979 &1.12 & 335   \\
+   P-n060-k15  & 968 & 979 & 979 &1.12 & 258   \\
   \hline
-  P-n065-k10  & 792 & 792 & 794 & 0 & 523   \\
+  P-n065-k10  & 792 & 792 & 792 & 0 & 398   \\
   \hline
-  P-n070-k10 & 827 & 833 & 838 & 0.72 & 4866    \\
+  P-n070-k10 & 827 & 833 & 838 & 0.72 & 373    \\
   \hline
-  P-n076-k04 & 593 & 596 &600 & 0.50 & 5854 \\
+  P-n076-k04 & 593 & 596 &600 & 0.50 & 436 \\
  \hline 
-   P-n076-k05 & 627 & 628 & 629 &0.16 & 5612   \\
+   P-n076-k05 & 627 & 631 & 638 &0.63 & 424   \\
   \hline 
-  P-n101-k04  & 681 & 682 & 687 & 0.15 & 9366  \\
+  P-n101-k04  & 681 & 686 & 687 & 0.73 & 573  \\
   \hline
 \end{tabular}
 \end{center}
 \end{table}
 
-La plupart des solutions obtenus avec l'algorithme \lstinline|LearnHeuristic| sont très proches des solutions optimales.
-En effet, en moyenne on a $0.40\%$ d'erreurs avec les instances de type A, $0.52\%$ d'erreurs avec celles de type B, et $0.42\%$ d'erreurs avec celles de type P.
-Néanmoins, le temps d'exécution reste long (jusque 9366 s, soit plus de deux heures et demie). Cela est dû aux 100 exécutions de $H_c$ et de sa condition d'arrêt.  
+La plupart des solutions obtenus avec l'algorithme \lstinline|LearnHeuristic| sont très proches des solutions optimales, comme le montrent les résultats moyens présentés dans le tableau~\ref{Synth}. 
+Il est possible qu'en changeant la méthode d'apprentissage, ou le temps disponible dans $H_c$, on obtienne de meilleurs résultats. Néanmoins les paramètres choisis, permettent d'avoir un algorithme à la fois rapide et efficace. 
+
+\begin{table}[h!]
+\caption{Synthèse des résultats pour les ensembles A, B et P}
+\label{Synth}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+
+\hline
+ Instances & Size & Gap (\%) & Time (s)  \\
+ \hline
+ Group A & 27 & 0.26 & 8468  \\
+ \hline
+ Group B & 20  & 0.40 & 5816   \\
+  \hline
+  Group P & 21 & 0.24 & 6141   \\
+ \hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsubsection{Résultats obtenus sur les problèmes plus difficiles}
+
+Dans cette section sont présentés les résultats obtenus sur les ensembles \emph{Golden} et \emph{Uchoa}.
 
 \section*{Conclusion}
 A travers cet article, nous avons vu comment créer une \emph{learning heuristic} donnant de très bons résultats sur les instances classiques du CVRP.

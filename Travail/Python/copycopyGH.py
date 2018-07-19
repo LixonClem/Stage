@@ -961,7 +961,7 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v, fixed
     tpsGS = time.time()
     tpsCH = time.time()
 
-    while tps2-tps1 < len(demand)/10:
+    while tps2-tps1 < len(demand)/3:
         
         # find the worst edge
         worst = bad_edge(b, p, routes, inst, fixed_edges)[1]
@@ -1012,14 +1012,14 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v, fixed
             tpsCH = time.time()
             tpsGS = time.time()
 
-        if tps2-tpsGS > len(demand)/100:
+        if tps2-tpsGS > len(demand)/60:
             # return to the last best solution, for gs iterations
 
             routes = copy_sol(routes2)
 
             tpsGS = time.time()
 
-        if tps2-tpsCH > len(demand)/50:
+        if tps2-tpsCH > len(demand)/120:
             tpsCH = time.time()
             b_i += 1
 
@@ -1051,13 +1051,13 @@ def core_heuristic(initial_routes, inst, demand, lam, mu, nu, l, max_d, v, fixed
 
 def apply_heuristic(instance, demand, l):
     # compute global variables
-    namefile = "resultats/Heuristic_results/Values/all/golden4.txt"
+    namefile = "resultats/Heuristic_results/Values/all/golden5.txt"
     all_sol = []
     tps_deb = time.time()
     max_d = max_depth(instance)
     v = voisins(KNN, instance)
     initial = init_routes(instance, demand)
-    edges, param = learning_results(0.8, 4, 50, instance, demand, initial)
+    edges, param = learning_results(0.5, 4, 100, instance, demand, initial)
     initial_routes = complete(destruction2(ignore_0(edges)), instance, demand)
     tps_learn = time.time()
 
@@ -1078,35 +1078,36 @@ def apply_heuristic(instance, demand, l):
         c_sol = cost_sol(sol, instance)
         all_sol.append((c_sol, sol))
         
-        if c_sol < best_cost:
+        if c_sol < best_cost or i == 0:
             
             best_sol = sol
             best_cost = cost_sol(best_sol, instance)
 
 
-        if i%4 == 0 and i!=0 :
+        if i%5 == 0 and i!=0 :
             print("learn")
             edges = []
             fixed_edges = []
             mat_qual = init_matrix(len(instance))
             mat_qual = learn(mat_qual, base)
-            e_qual = mat_info_rg(int(len(demand)*0.8), mat_qual)
+            base = []
+            e_qual = mat_info_rg(int(len(demand)*0.5), mat_qual)
             for e in e_qual:
                 if not is_edge_in(e, edges) and not unfeasable_edge(e, edges):
                     edges.append(e)
             initial_routes = complete(destruction2(
                 ignore_0(edges)), instance, demand)
             edges, param = learning_results(
-                0.8, 3, 50, instance, demand, initial_routes)
+                0.5, 1, 100, instance, demand, initial_routes)
             initial_routes = complete(destruction2(
                 ignore_0(edges)), instance, demand)
         
         else :
             print("best learn")
-            edges = fixed_alea(all_edges(best_sol),0.8)
+            edges = fixed_alea(all_edges(best_sol),0.5)
             initial_routes = complete(destruction2(
                 ignore_0(edges)), instance, demand)
-            edges,param = learning_results(0.8,3,50,instance,demand,initial_routes)
+            edges,param = learning_results(0.5,1,100,instance,demand,initial_routes)
             initial_routes = complete(destruction2(
                 ignore_0(edges)), instance, demand)
                 
@@ -1203,21 +1204,21 @@ print_edges(aer,instance,'green')
 py.show()
 """
 
-apply_heuristic(instance, demand, relocation)
-"""
+#apply_heuristic(instance, demand, relocation)
+
 allinstances = os.listdir('toExecute')
 allinstances.sort()
 print(allinstances)
 
 for fileinstance in allinstances:
-    namefile = "resultats/Heuristic_results/Values/all/golden4.txt"
+    namefile = "resultats/Heuristic_results/Values/all/golden5.txt"
     print(fileinstance)
     writef(namefile, 'Instance : ' + fileinstance)
     instance, demand, Capacity = read('toExecute/'+fileinstance)
     print(Capacity)
     print("")
     apply_heuristic(instance, demand, relocation)
-"""
+
 s = 0
 """
 Gen = 50

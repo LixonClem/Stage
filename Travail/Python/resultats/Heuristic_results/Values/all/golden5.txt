@@ -1,0 +1,8 @@
+Instance : Golden_01.xml
+Time = 172.0178303718567
+Instance : Golden_01.xml
+Time = 168.62297177314758
+Instance : Golden_01.xml
+Time = 167.8224217891693
+Instance : Golden_01.xml
+Time = 162.34532737731934
