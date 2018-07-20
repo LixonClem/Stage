@@ -1057,7 +1057,7 @@ def apply_heuristic(instance, demand, l):
     max_d = max_depth(instance)
     v = voisins(KNN, instance)
     initial = init_routes(instance, demand)
-    edges, param = learning_results(0.5, 4, 100, instance, demand, initial)
+    edges, param = learning_results(0.98, 4, 100, instance, demand, initial)
     initial_routes = complete(destruction2(ignore_0(edges)), instance, demand)
     tps_learn = time.time()
 
@@ -1091,23 +1091,23 @@ def apply_heuristic(instance, demand, l):
             mat_qual = init_matrix(len(instance))
             mat_qual = learn(mat_qual, base)
             base = []
-            e_qual = mat_info_rg(int(len(demand)*0.5), mat_qual)
+            e_qual = mat_info_rg(int(len(demand)*0.98), mat_qual)
             for e in e_qual:
                 if not is_edge_in(e, edges) and not unfeasable_edge(e, edges):
                     edges.append(e)
             initial_routes = complete(destruction2(
                 ignore_0(edges)), instance, demand)
             edges, param = learning_results(
-                0.5, 1, 100, instance, demand, initial_routes)
+                0.98, 2, 100, instance, demand, initial_routes)
             initial_routes = complete(destruction2(
                 ignore_0(edges)), instance, demand)
         
         else :
             print("best learn")
-            edges = fixed_alea(all_edges(best_sol),0.5)
+            edges = fixed_alea(all_edges(best_sol),0.98)
             initial_routes = complete(destruction2(
                 ignore_0(edges)), instance, demand)
-            edges,param = learning_results(0.5,1,100,instance,demand,initial_routes)
+            edges,param = learning_results(0.98,2,100,instance,demand,initial_routes)
             initial_routes = complete(destruction2(
                 ignore_0(edges)), instance, demand)
                 
