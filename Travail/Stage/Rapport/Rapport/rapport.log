@@ -1,11 +1,15 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  18 JUL 2018 16:56
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.11)  19 JUL 2018 19:52
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **rapport.tex
 (./rapport.tex
-LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
@@ -28,10 +32,10 @@ Package: fullpage 1999/02/23 1.1 (PWD)
 \FP@margin=\skip43
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
-File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
@@ -40,14 +44,14 @@ Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@posthook=\toks15
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+File: utf8.def 2015/12/03 v1.1r UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
+File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -259,17 +263,11 @@ File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+0219 (decimal 537)
    defining Unicode char U+021A (decimal 538)
    defining Unicode char U+021B (decimal 539)
-   defining Unicode char U+0232 (decimal 562)
-   defining Unicode char U+0233 (decimal 563)
-   defining Unicode char U+1E02 (decimal 7682)
-   defining Unicode char U+1E03 (decimal 7683)
+   defining Unicode char U+01E02 (decimal 7682)
+   defining Unicode char U+01E03 (decimal 7683)
    defining Unicode char U+200C (decimal 8204)
-   defining Unicode char U+2010 (decimal 8208)
-   defining Unicode char U+2011 (decimal 8209)
-   defining Unicode char U+2012 (decimal 8210)
    defining Unicode char U+2013 (decimal 8211)
    defining Unicode char U+2014 (decimal 8212)
-   defining Unicode char U+2015 (decimal 8213)
    defining Unicode char U+2018 (decimal 8216)
    defining Unicode char U+2019 (decimal 8217)
    defining Unicode char U+201A (decimal 8218)
@@ -281,14 +279,12 @@ File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+2039 (decimal 8249)
    defining Unicode char U+203A (decimal 8250)
    defining Unicode char U+2423 (decimal 9251)
-   defining Unicode char U+1E20 (decimal 7712)
-   defining Unicode char U+1E21 (decimal 7713)
 )
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
+File: ot1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -329,7 +325,7 @@ Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
+File: omsenc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
    defining Unicode char U+00B7 (decimal 183)
@@ -353,43 +349,34 @@ Now handling font encoding U ...
    defining Unicode char U+2423 (decimal 9251)
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2018/02/14 3.18 The Babel package
+Package: babel 2016/02/24 3.9q The Babel package
 
-(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2018/02/14 3.18 Babel switching mechanism
-)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-french/french.ldf
-Language: french 2018/02/04 v3.4b French support from the babel system
+(/usr/share/texlive/texmf-dist/tex/generic/babel-french/frenchb.ldf
+Language: frenchb 2016/02/13 v3.1l French support from the babel system
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2018/02/14 3.18 Babel common definitions
+File: babel.def 2016/02/24 3.9q Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
-\bbl@dirlevel=\count88
 )
 \l@acadian = a dialect from \language\l@french 
-\FB@nonchar=\count89
-Package babel Info: Making : an active character on input line 411.
-Package babel Info: Making ; an active character on input line 412.
-Package babel Info: Making ! an active character on input line 413.
-Package babel Info: Making ? an active character on input line 414.
-\FBguill@level=\count90
+\l@canadien = a dialect from \language\l@french 
+\FBcolonskip=\skip44
+\FBthinskip=\skip45
+Package babel Info: Making : an active character on input line 342.
+Package babel Info: Making ; an active character on input line 343.
+Package babel Info: Making ! an active character on input line 344.
+Package babel Info: Making ? an active character on input line 345.
+\FBguillskip=\skip46
+\FBguill@level=\count88
 \FB@everypar=\toks16
 \FB@Mht=\dimen104
-\mc@charclass=\count91
-\mc@charfam=\count92
-\mc@charslot=\count93
-\std@mcc=\count94
-\dec@mcc=\count95
-\c@FBcaption@count=\count96
-\listindentFB=\skip44
-\descindentFB=\skip45
-\labelwidthFB=\skip46
-\leftmarginFB=\skip47
+\std@mcc=\count89
+\dec@mcc=\count90
+\listindentFB=\skip47
+\labelwidthFB=\skip48
+\leftmarginFB=\skip49
 \parindentFFN=\dimen105
-\FBfnindent=\skip48
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
@@ -397,21 +384,29 @@ Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 95.
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count91
 ))
 \Gin@req@height=\dimen106
 \Gin@req@width=\dimen107
@@ -422,36 +417,36 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/abstract/abstract.sty
 Package: abstract 2009/06/08 v1.2a configurable abstracts
-\abstitleskip=\skip49
-\absleftindent=\skip50
-\absrightindent=\skip51
-\absparindent=\skip52
-\absparsep=\skip53
+\abstitleskip=\skip50
+\absleftindent=\skip51
+\absrightindent=\skip52
+\absparindent=\skip53
+\absparsep=\skip54
 )
 (/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
 Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
-\c@lips@count=\count97
+\c@lips@count=\count92
 )
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/mathpazo.sty
 Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
 \symupright=\mathgroup4
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
-\c@tracingmulticols=\count98
+Package: multicol 2015/08/19 v1.8n multicolumn formatting (FMi)
+\c@tracingmulticols=\count93
 \mult@box=\box26
 \multicol@leftmargin=\dimen108
-\c@unbalance=\count99
-\c@collectmore=\count100
-\doublecol@number=\count101
-\multicoltolerance=\count102
-\multicolpretolerance=\count103
+\c@unbalance=\count94
+\c@collectmore=\count95
+\doublecol@number=\count96
+\multicoltolerance=\count97
+\multicolpretolerance=\count98
 \full@width=\dimen109
 \page@free=\dimen110
 \premulticols=\dimen111
 \postmulticols=\dimen112
-\multicolsep=\skip54
-\multicolbaselineskip=\skip55
+\multicolsep=\skip55
+\multicolbaselineskip=\skip56
 \partial@page=\box27
 \last@line=\box28
 \maxbalancingoverflow=\dimen113
@@ -476,33 +471,33 @@ Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
 \@tempa=\box47
 \@tempa=\box48
 \@tempa=\box49
-\c@columnbadness=\count104
-\c@finalcolumnbadness=\count105
+\c@columnbadness=\count99
+\c@finalcolumnbadness=\count100
 \last@try=\dimen114
 \multicolovershoot=\dimen115
 \multicolundershoot=\dimen116
 \mult@nat@firstbox=\box50
 \colbreak@box=\box51
-\mc@col@check@num=\count106
+\mc@col@check@num=\count101
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count107
+\lst@mode=\count102
 \lst@gtempboxa=\box52
 \lst@token=\toks18
-\lst@length=\count108
+\lst@length=\count103
 \lst@currlwidth=\dimen117
-\lst@column=\count109
-\lst@pos=\count110
+\lst@column=\count104
+\lst@pos=\count105
 \lst@lostspace=\dimen118
 \lst@width=\dimen119
-\lst@newlines=\count111
-\lst@lineno=\count112
+\lst@newlines=\count106
+\lst@lineno=\count107
 \lst@maxwidth=\dimen120
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count113
-\lst@skipnumbers=\count114
+\c@lstnumber=\count108
+\lst@skipnumbers=\count109
 \lst@framebox=\box53
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
@@ -511,68 +506,69 @@ File: listings.cfg 2015/06/04 1.6 listings configuration
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
 (/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
-Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count115
+Package: algorithm2e 2013/01/06 v5.00 algorithms environments
+\c@AlgoLine=\count110
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\algocf@hangindent=\skip56
+\algocf@hangindent=\skip57
 
-(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
-Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
-\c@checkoddpage=\count116
-)
 (/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2013/03/29 ver 4.1
 )
-\skiptotal=\skip57
-\skiplinenumber=\skip58
-\skiprule=\skip59
-\skiphlne=\skip60
-\skiptext=\skip61
-\skiplength=\skip62
-\algomargin=\skip63
-\skipalgocfslide=\skip64
+********************************************************
+Package `algorithm2e' Release 5.1 -- october 19 2015 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (christophe.fiorio@umontpellier.fr)
+********************************************************
+\skiptotal=\skip58
+\skiplinenumber=\skip59
+\skiprule=\skip60
+\skiphlne=\skip61
+\skiptext=\skip62
+\skiplength=\skip63
+\algomargin=\skip64
+\skipalgocfslide=\skip65
 \algowidth=\dimen121
 \inoutsize=\dimen122
 \inoutindent=\dimen123
 \interspacetitleruled=\dimen124
 \interspacealgoruled=\dimen125
 \interspacetitleboxruled=\dimen126
-\algocf@ruledwidth=\skip65
+\algocf@ruledwidth=\skip66
 \algocf@inoutbox=\box54
 \algocf@inputbox=\box55
-\AlCapSkip=\skip66
-\AlCapHSkip=\skip67
-\algoskipindent=\skip68
+\AlCapSkip=\skip67
+\AlCapHSkip=\skip68
+\algoskipindent=\skip69
 \algocf@nlbox=\box56
 \algocf@hangingbox=\box57
 \algocf@untilbox=\box58
-\algocf@skipuntil=\skip69
+\algocf@skipuntil=\skip70
 \algocf@capbox=\box59
-\algocf@lcaptionbox=\skip70
 \algoheightruledefault=\skip71
 \algoheightrule=\skip72
 \algotitleheightruledefault=\skip73
 \algotitleheightrule=\skip74
-\c@algocfline=\count117
-\c@algocfproc=\count118
-\c@algocf=\count119
+\c@algocfline=\count111
+\c@algocfproc=\count112
+\c@algocf=\count113
 \algocf@algoframe=\box60
 \algocf@algobox=\box61
-)
-(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+) (/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen127
 \captionmargin@=\dimen128
@@ -582,32 +578,32 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \caption@parindent=\dimen132
 \caption@hangindent=\dimen133
 )
-\c@ContinuedFloat=\count120
+\c@ContinuedFloat=\count114
 Package caption Info: listings package is loaded.
 )
-\c@subfigure=\count121
-\c@subtable=\count122
+\c@subfigure=\count115
+\c@subtable=\count116
 )
 (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count123
+\c@float@type=\count117
 \float@exts=\toks19
 \float@box=\box62
 \@float@everytoks=\toks20
@@ -636,77 +632,69 @@ LaTeX Info: Redefining \degres on input line 27.
 LaTeX Info: Redefining \dots on input line 27.
 LaTeX Info: Redefining \up on input line 27.
 
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count124
+\scratchcounter=\count118
 \scratchdimen=\dimen134
 \scratchbox=\box64
-\nofMPsegments=\count125
-\nofMParguments=\count126
+\nofMPsegments=\count119
+\nofMParguments=\count120
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count127
+\MPscratchCnt=\count121
 \MPscratchDim=\dimen135
-\MPnumerator=\count128
-\makeMPintoPDFobject=\count129
+\MPnumerator=\count122
+\makeMPintoPDFobject=\count123
 \everyMPtoPDFconversion=\toks22
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
-)
-
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
 Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
+(grfext)             \AppendGraphicsExtensions on input line 452.
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \big@size=\dimen136
-\c@lstlisting=\count130
+\c@lstlisting=\count124
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -755,8 +743,8 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
  [2]
 <Instance.png, id=15, 462.528pt x 346.896pt>
 File: Instance.png Graphic file (type png)
-<use Instance.png>
-Package pdftex.def Info: Instance.png  used on input line 120.
+ <use Instance.png>
+Package pdftex.def Info: Instance.png used on input line 120.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
 Overfull \hbox (22.89516pt too wide) in paragraph at lines 120--121
@@ -765,8 +753,9 @@ Overfull \hbox (22.89516pt too wide) in paragraph at lines 120--121
 
 <solutionNoCapacity.png, id=17, 462.528pt x 346.896pt>
 File: solutionNoCapacity.png Graphic file (type png)
+
 <use solutionNoCapacity.png>
-Package pdftex.def Info: solutionNoCapacity.png  used on input line 127.
+Package pdftex.def Info: solutionNoCapacity.png used on input line 127.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
 Overfull \hbox (22.89516pt too wide) in paragraph at lines 127--128
@@ -776,32 +765,36 @@ Overfull \hbox (22.89516pt too wide) in paragraph at lines 127--128
 [3 <./Instance.png> <./solutionNoCapacity.png>]
 <solutionCapacity.png, id=25, 462.528pt x 346.896pt>
 File: solutionCapacity.png Graphic file (type png)
+
 <use solutionCapacity.png>
-Package pdftex.def Info: solutionCapacity.png  used on input line 149.
+Package pdftex.def Info: solutionCapacity.png used on input line 149.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
- [4 <./solutionCapacity.png>]
-[5]
+ [4 <./solutionCapacity.png>] [5]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <8> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 260.
+
 <CWinit.png, id=33, 462.528pt x 346.896pt>
 File: CWinit.png Graphic file (type png)
-<use CWinit.png>
-Package pdftex.def Info: CWinit.png  used on input line 284.
+ <use CWinit.png>
+Package pdftex.def Info: CWinit.png used on input line 284.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+
 <CW1.png, id=34, 462.528pt x 346.896pt>
 File: CW1.png Graphic file (type png)
-<use CW1.png>
-Package pdftex.def Info: CW1.png  used on input line 291.
+ <use CW1.png>
+Package pdftex.def Info: CW1.png used on input line 291.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+
 <CW2.png, id=35, 462.528pt x 346.896pt>
 File: CW2.png Graphic file (type png)
-<use CW2.png>
-Package pdftex.def Info: CW2.png  used on input line 298.
+ <use CW2.png>
+Package pdftex.def Info: CW2.png used on input line 298.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+
 <resCW101010.png, id=36, 1339.1631pt x 802.9197pt>
 File: resCW101010.png Graphic file (type png)
-<use resCW101010.png>
-Package pdftex.def Info: resCW101010.png  used on input line 305.
+ <use resCW101010.png>
+Package pdftex.def Info: resCW101010.png used on input line 305.
 (pdftex.def)             Requested size: 227.65471pt x 136.49454pt.
 
 Overfull \hbox (19.28644pt too wide) in paragraph at lines 305--306
@@ -811,100 +804,144 @@ Overfull \hbox (19.28644pt too wide) in paragraph at lines 305--306
 [6] [7 <./CWinit.png> <./CW1.png> <./CW2.png> <./resCW101010.png>]
 <resCW190105.png, id=49, 462.528pt x 346.896pt>
 File: resCW190105.png Graphic file (type png)
-<use resCW190105.png>
-Package pdftex.def Info: resCW190105.png  used on input line 324.
+ <use resCW190105.png>
+Package pdftex.def Info: resCW190105.png used on input line 324.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+
 <resCW111.png, id=50, 462.528pt x 346.896pt>
 File: resCW111.png Graphic file (type png)
-<use resCW111.png>
-Package pdftex.def Info: resCW111.png  used on input line 332.
+ <use resCW111.png>
+Package pdftex.def Info: resCW111.png used on input line 332.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+
 <resCW001015.png, id=51, 462.528pt x 346.896pt>
 File: resCW001015.png Graphic file (type png)
-<use resCW001015.png>
-Package pdftex.def Info: resCW001015.png  used on input line 340.
+ <use resCW001015.png>
+Package pdftex.def Info: resCW001015.png used on input line 340.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
  [8 <./resCW190105.png> <./resCW111.png> <./resCW001015.png>] [9]
 <metrics_big.png, id=61, 608.2725pt x 495.8525pt>
 File: metrics_big.png Graphic file (type png)
-<use metrics_big.png>
-Package pdftex.def Info: metrics_big.png  used on input line 418.
+ <use metrics_big.png>
+Package pdftex.def Info: metrics_big.png used on input line 418.
 (pdftex.def)             Requested size: 182.48315pt x 148.7569pt.
+
 <ejection_chain_big.png, id=62, 1211.52625pt x 572.1375pt>
 File: ejection_chain_big.png Graphic file (type png)
+
 <use ejection_chain_big.png>
-Package pdftex.def Info: ejection_chain_big.png  used on input line 452.
+Package pdftex.def Info: ejection_chain_big.png used on input line 452.
 (pdftex.def)             Requested size: 242.30095pt x 114.42546pt.
  [10 <./metrics_big.png>]
 <cross_exchange_big.png, id=67, 764.8575pt x 589.20125pt>
 File: cross_exchange_big.png Graphic file (type png)
-<use cross_exchange_big.png>
-Package pdftex.def Info: cross_exchange_big.png  used on input line 495.
-(pdftex.def)             Requested size: 152.96878pt x 117.83815pt.
 
-[11 <./ejection_chain_big.png>] [12 <./cross_exchange_big.png>]
-<test4_20_init.png, id=76, 462.528pt x 346.896pt>
+<use cross_exchange_big.png>
+Package pdftex.def Info: cross_exchange_big.png used on input line 495.
+(pdftex.def)             Requested size: 152.96878pt x 117.83815pt.
+ [11 <./ejection_chain_big.png>] [12 <./cross_exchange_big.png>] <test4_20_init
+.png, id=76, 462.528pt x 346.896pt>
 File: test4_20_init.png Graphic file (type png)
+
 <use test4_20_init.png>
-Package pdftex.def Info: test4_20_init.png  used on input line 538.
+Package pdftex.def Info: test4_20_init.png used on input line 538.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
-<test4_20_LKopt.png, id=77, 462.528pt x 346.896pt>
+ <test4_20_LKopt.png, id=77, 462.528pt x 346.896pt>
 File: test4_20_LKopt.png Graphic file (type png)
+
 <use test4_20_LKopt.png>
-Package pdftex.def Info: test4_20_LKopt.png  used on input line 539.
+Package pdftex.def Info: test4_20_LKopt.png used on input line 539.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
  [13 <./test4_20_init.png> <./test4_20_LKopt.png>]
 <edges190115.png, id=84, 462.528pt x 346.896pt>
 File: edges190115.png Graphic file (type png)
-<use edges190115.png>
-Package pdftex.def Info: edges190115.png  used on input line 621.
+ <use edges190115.png>
+Package pdftex.def Info: edges190115.png used on input line 621.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+
 <edges101010.png, id=85, 462.528pt x 346.896pt>
 File: edges101010.png Graphic file (type png)
-<use edges101010.png>
-Package pdftex.def Info: edges101010.png  used on input line 628.
+ <use edges101010.png>
+Package pdftex.def Info: edges101010.png used on input line 628.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+
 <edges010101.png, id=86, 462.528pt x 346.896pt>
 File: edges010101.png Graphic file (type png)
-<use edges010101.png>
-Package pdftex.def Info: edges010101.png  used on input line 635.
+ <use edges010101.png>
+Package pdftex.def Info: edges010101.png used on input line 635.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+
 <edgesSol.png, id=87, 462.528pt x 346.896pt>
 File: edgesSol.png Graphic file (type png)
-<use edgesSol.png>
-Package pdftex.def Info: edgesSol.png  used on input line 642.
+ <use edgesSol.png>
+Package pdftex.def Info: edgesSol.png used on input line 642.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
  [14] [15 <./edges190115.png> <./edges101010.png> <./edges010101.png> <./edgesS
-ol.png>] [16]
-<instance3706.png, id=101, 462.528pt x 346.896pt>
+ol.png>]
+[16] <instance3706.png, id=101, 462.528pt x 346.896pt>
 File: instance3706.png Graphic file (type png)
+<<<<<<< HEAD
 <use instance3706.png>
 Package pdftex.def Info: instance3706.png  used on input line 715.
+=======
+ <use instance3706.png>
+Package pdftex.def Info: instance3706.png used on input line 715.
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+
 <best3706.png, id=102, 462.528pt x 346.896pt>
 File: best3706.png Graphic file (type png)
+<<<<<<< HEAD
 <use best3706.png>
 Package pdftex.def Info: best3706.png  used on input line 724.
+=======
+ <use best3706.png>
+Package pdftex.def Info: best3706.png used on input line 724.
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+
 <Instance6509.png, id=103, 462.528pt x 346.896pt>
 File: Instance6509.png Graphic file (type png)
+<<<<<<< HEAD
 <use Instance6509.png>
 Package pdftex.def Info: Instance6509.png  used on input line 732.
+=======
+ <use Instance6509.png>
+Package pdftex.def Info: Instance6509.png used on input line 732.
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+
 <Solution6509.png, id=104, 462.528pt x 346.896pt>
 File: Solution6509.png Graphic file (type png)
+<<<<<<< HEAD
 <use Solution6509.png>
 Package pdftex.def Info: Solution6509.png  used on input line 740.
+=======
+ <use Solution6509.png>
+Package pdftex.def Info: Solution6509.png used on input line 740.
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+
 <Instance10104.png, id=105, 462.528pt x 346.896pt>
 File: Instance10104.png Graphic file (type png)
+<<<<<<< HEAD
 <use Instance10104.png>
 Package pdftex.def Info: Instance10104.png  used on input line 748.
+=======
+ <use Instance10104.png>
+Package pdftex.def Info: Instance10104.png used on input line 748.
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+
 <Solution10104.png, id=106, 462.528pt x 346.896pt>
 File: Solution10104.png Graphic file (type png)
+<<<<<<< HEAD
 <use Solution10104.png>
 Package pdftex.def Info: Solution10104.png  used on input line 756.
+=======
+ <use Solution10104.png>
+Package pdftex.def Info: Solution10104.png used on input line 756.
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
 
@@ -917,8 +954,13 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 png> <./Instance10104.png> <./Solution10104.png>] [18]
 <InfluenceRangA3706.png, id=119, 861.9703pt x 625.58719pt>
 File: InfluenceRangA3706.png Graphic file (type png)
+
 <use InfluenceRangA3706.png>
+<<<<<<< HEAD
 Package pdftex.def Info: InfluenceRangA3706.png  used on input line 967.
+=======
+Package pdftex.def Info: InfluenceRangA3706.png used on input line 967.
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 (pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
 
 Overfull \hbox (7.12378pt too wide) in paragraph at lines 967--968
@@ -927,8 +969,13 @@ Overfull \hbox (7.12378pt too wide) in paragraph at lines 967--968
 
 <InfluenceSeuilA3706.png, id=120, 861.9703pt x 625.58719pt>
 File: InfluenceSeuilA3706.png Graphic file (type png)
+
 <use InfluenceSeuilA3706.png>
+<<<<<<< HEAD
 Package pdftex.def Info: InfluenceSeuilA3706.png  used on input line 976.
+=======
+Package pdftex.def Info: InfluenceSeuilA3706.png used on input line 976.
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 (pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
 
 Overfull \hbox (7.12378pt too wide) in paragraph at lines 976--977
@@ -937,8 +984,13 @@ Overfull \hbox (7.12378pt too wide) in paragraph at lines 976--977
 
 <InfluenceRangA6509.png, id=121, 861.9703pt x 625.58719pt>
 File: InfluenceRangA6509.png Graphic file (type png)
+
 <use InfluenceRangA6509.png>
+<<<<<<< HEAD
 Package pdftex.def Info: InfluenceRangA6509.png  used on input line 984.
+=======
+Package pdftex.def Info: InfluenceRangA6509.png used on input line 984.
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 (pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
 
 Overfull \hbox (7.12378pt too wide) in paragraph at lines 984--985
@@ -947,8 +999,13 @@ Overfull \hbox (7.12378pt too wide) in paragraph at lines 984--985
 
 <InfluenceSeuilA6509.png, id=122, 861.9703pt x 625.58719pt>
 File: InfluenceSeuilA6509.png Graphic file (type png)
+
 <use InfluenceSeuilA6509.png>
+<<<<<<< HEAD
 Package pdftex.def Info: InfluenceSeuilA6509.png  used on input line 992.
+=======
+Package pdftex.def Info: InfluenceSeuilA6509.png used on input line 992.
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 (pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
 
 Overfull \hbox (7.12378pt too wide) in paragraph at lines 992--993
@@ -957,8 +1014,13 @@ Overfull \hbox (7.12378pt too wide) in paragraph at lines 992--993
 
 <InfluenceRangP10104.png, id=123, 861.9703pt x 625.58719pt>
 File: InfluenceRangP10104.png Graphic file (type png)
+
 <use InfluenceRangP10104.png>
+<<<<<<< HEAD
 Package pdftex.def Info: InfluenceRangP10104.png  used on input line 1000.
+=======
+Package pdftex.def Info: InfluenceRangP10104.png used on input line 1000.
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 (pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
 
 Overfull \hbox (7.12378pt too wide) in paragraph at lines 1000--1001
@@ -967,8 +1029,13 @@ Overfull \hbox (7.12378pt too wide) in paragraph at lines 1000--1001
 
 <InfluenceSeuilP10104.png, id=124, 861.9703pt x 625.58719pt>
 File: InfluenceSeuilP10104.png Graphic file (type png)
+
 <use InfluenceSeuilP10104.png>
+<<<<<<< HEAD
 Package pdftex.def Info: InfluenceSeuilP10104.png  used on input line 1008.
+=======
+Package pdftex.def Info: InfluenceSeuilP10104.png used on input line 1008.
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 (pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
 
 Overfull \hbox (7.12378pt too wide) in paragraph at lines 1008--1009
@@ -979,13 +1046,24 @@ Overfull \hbox (7.12378pt too wide) in paragraph at lines 1008--1009
 ceRangA6509.png> <./InfluenceSeuilA6509.png> <./InfluenceRangP10104.png> <./Inf
 luenceSeuilP10104.png>]
 File: CWinit.png Graphic file (type png)
+<<<<<<< HEAD
 <use CWinit.png>
 Package pdftex.def Info: CWinit.png  used on input line 1039.
+=======
+ <use CWinit.png>
+Package pdftex.def Info: CWinit.png used on input line 1039.
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+
 <learning.png, id=141, 462.528pt x 346.896pt>
 File: learning.png Graphic file (type png)
+<<<<<<< HEAD
 <use learning.png>
 Package pdftex.def Info: learning.png  used on input line 1045.
+=======
+ <use learning.png>
+Package pdftex.def Info: learning.png used on input line 1045.
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
  [22 <./learning.png>]
 
@@ -997,6 +1075,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+<<<<<<< HEAD
 [23] (./rapport.bbl [24]
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 41.
 
@@ -1024,9 +1103,40 @@ xlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/palatino/uplri8a.pfb>
 Output written on rapport.pdf (26 pages, 1315579 bytes).
+=======
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[23] [24] (./rapport.bbl [25] [26]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 57.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)) [27] (./rapport.aux) ) 
+Here is how much of TeX's memory you used:
+ 8153 strings out of 493029
+ 115947 string characters out of 6136234
+ 352792 words of memory out of 5000000
+ 11498 multiletter control sequences out of 15000+600000
+ 48893 words of font info for 103 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 42i,15n,40p,760b,970s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1
+.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/mathpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/mathpazo/fplmri.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt109
+5.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on rapport.pdf (27 pages, 1554106 bytes).
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 PDF statistics:
- 195 PDF objects out of 1000 (max. 8388607)
- 92 compressed objects within 1 object stream
+ 198 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  161 words of extra memory for PDF output out of 10000 (max. 10000000)
 

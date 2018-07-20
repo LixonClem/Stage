@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{cvrp_pres}
 Le probleme de tournees de vehicules : etude et resolution approchee.
@@ -22,6 +22,14 @@ G.~Clarke and J.~W. Wright.
   points.
 \newblock {\em Operations Research}, 1964.
 
+<<<<<<< HEAD
+=======
+\bibitem{Gaskell}
+T.~J. GASKELL.
+\newblock Bases for vehicle fleet scheduling.
+\newblock {\em Operational Research Quarterly}, 18:281--295, September 1967.
+
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 \bibitem{ME_2012}
 Marie-Eleonore Marmion.
 \newblock {\em Recherche locale et optimisation combinatoire : de l’analyse
@@ -29,6 +37,20 @@ Marie-Eleonore Marmion.
 \newblock PhD thesis, Université des Sciences et Technologie de Lille - Lille
   I, 2011, Mars 2012.
 
+<<<<<<< HEAD
+=======
+\bibitem{Martello}
+Silvano Martello and Paolo Toth.
+\newblock {\em Knapsack problems: algorithms and computer implementations}.
+\newblock John Wiley and Sons, New York, USA, 1990.
+
+\bibitem{Paessens}
+H.~Paessens.
+\newblock The savings algorithm for the vehicle routing problem.
+\newblock {\em European Journal of Operational Research}, 34:336--344, March
+  1988.
+
+>>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 \bibitem{Papadimitriou_1982}
 C.~H. Papadimitriou and K.~Steiglitz.
 \newblock {\em Combinatorial optimization : algorithms and complexity}.
@@ -45,5 +67,11 @@ François~Legras Sahbi Ben~Ismail and Gilles Coppin.
 Ivan Xavier.
 \newblock Cvrplib.
 \newblock \url{http://vrp.atd-lab.inf.puc-rio.br/index.php/en/}, 2014.
+
+\bibitem{Yellow}
+P.~Yellow.
+\newblock A computational modification to the savings method of vehicle
+  scheduling.
+\newblock {\em Operational Research Quarterly}, 21:281--283, 1970.
 
 \end{thebibliography}

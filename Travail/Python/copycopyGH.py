@@ -1080,13 +1080,13 @@ def apply_heuristic(instance, demand, l):
         c_sol = cost_sol(sol, instance)
         all_sol.append((c_sol, sol))
         
-        if c_sol < best_cost:
+        if c_sol < best_cost or i == 0:
             
             best_sol = sol
             best_cost = cost_sol(best_sol, instance)
 
 
-        if i%4 == 0 and i!=0 :
+        if i%5 == 0 and i!=0 :
             print("learn")
             edges = []
             fixed_edges = []
