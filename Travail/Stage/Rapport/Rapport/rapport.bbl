@@ -22,6 +22,18 @@ G.~Clarke and J.~W. Wright.
   points.
 \newblock {\em Operations Research}, 1964.
 
+\bibitem{ME_2012}
+Marie-Eleonore Marmion.
+\newblock {\em Recherche locale et optimisation combinatoire : de l’analyse
+  structurelle d’un problème à la conception d’algorithmes efficaces}.
+\newblock PhD thesis, Université des Sciences et Technologie de Lille - Lille
+  I, 2011, Mars 2012.
+
+\bibitem{Papadimitriou_1982}
+C.~H. Papadimitriou and K.~Steiglitz.
+\newblock {\em Combinatorial optimization : algorithms and complexity}.
+\newblock Dover Publications, Upper Saddle River, NJ, USA, 1982.
+
 \bibitem{synthese}
 François~Legras Sahbi Ben~Ismail and Gilles Coppin.
 \newblock Synthèse du problème de routage de véhicules.

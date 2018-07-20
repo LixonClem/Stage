@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  16 JUL 2018 16:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.22)  18 JUL 2018 16:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -879,99 +879,99 @@ ol.png>] [16]
 <instance3706.png, id=101, 462.528pt x 346.896pt>
 File: instance3706.png Graphic file (type png)
 <use instance3706.png>
-Package pdftex.def Info: instance3706.png  used on input line 716.
+Package pdftex.def Info: instance3706.png  used on input line 715.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 <best3706.png, id=102, 462.528pt x 346.896pt>
 File: best3706.png Graphic file (type png)
 <use best3706.png>
-Package pdftex.def Info: best3706.png  used on input line 725.
+Package pdftex.def Info: best3706.png  used on input line 724.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 <Instance6509.png, id=103, 462.528pt x 346.896pt>
 File: Instance6509.png Graphic file (type png)
 <use Instance6509.png>
-Package pdftex.def Info: Instance6509.png  used on input line 733.
+Package pdftex.def Info: Instance6509.png  used on input line 732.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 <Solution6509.png, id=104, 462.528pt x 346.896pt>
 File: Solution6509.png Graphic file (type png)
 <use Solution6509.png>
-Package pdftex.def Info: Solution6509.png  used on input line 741.
+Package pdftex.def Info: Solution6509.png  used on input line 740.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 <Instance10104.png, id=105, 462.528pt x 346.896pt>
 File: Instance10104.png Graphic file (type png)
 <use Instance10104.png>
-Package pdftex.def Info: Instance10104.png  used on input line 749.
+Package pdftex.def Info: Instance10104.png  used on input line 748.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 <Solution10104.png, id=106, 462.528pt x 346.896pt>
 File: Solution10104.png Graphic file (type png)
 <use Solution10104.png>
-Package pdftex.def Info: Solution10104.png  used on input line 757.
+Package pdftex.def Info: Solution10104.png  used on input line 756.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[17] [18 <./instance3706.png> <./best3706.png> <./Instance6509.png> <./Solution
-6509.png> <./Instance10104.png> <./Solution10104.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[17 <./instance3706.png> <./best3706.png> <./Instance6509.png> <./Solution6509.
+png> <./Instance10104.png> <./Solution10104.png>] [18]
 <InfluenceRangA3706.png, id=119, 861.9703pt x 625.58719pt>
 File: InfluenceRangA3706.png Graphic file (type png)
 <use InfluenceRangA3706.png>
-Package pdftex.def Info: InfluenceRangA3706.png  used on input line 968.
+Package pdftex.def Info: InfluenceRangA3706.png  used on input line 967.
 (pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
 
-Overfull \hbox (7.12378pt too wide) in paragraph at lines 968--969
+Overfull \hbox (7.12378pt too wide) in paragraph at lines 967--968
  [][] 
  []
 
 <InfluenceSeuilA3706.png, id=120, 861.9703pt x 625.58719pt>
 File: InfluenceSeuilA3706.png Graphic file (type png)
 <use InfluenceSeuilA3706.png>
-Package pdftex.def Info: InfluenceSeuilA3706.png  used on input line 977.
+Package pdftex.def Info: InfluenceSeuilA3706.png  used on input line 976.
 (pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
 
-Overfull \hbox (7.12378pt too wide) in paragraph at lines 977--978
+Overfull \hbox (7.12378pt too wide) in paragraph at lines 976--977
  [][] 
  []
 
 <InfluenceRangA6509.png, id=121, 861.9703pt x 625.58719pt>
 File: InfluenceRangA6509.png Graphic file (type png)
 <use InfluenceRangA6509.png>
-Package pdftex.def Info: InfluenceRangA6509.png  used on input line 985.
+Package pdftex.def Info: InfluenceRangA6509.png  used on input line 984.
 (pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
 
-Overfull \hbox (7.12378pt too wide) in paragraph at lines 985--986
+Overfull \hbox (7.12378pt too wide) in paragraph at lines 984--985
  [][] 
  []
 
 <InfluenceSeuilA6509.png, id=122, 861.9703pt x 625.58719pt>
 File: InfluenceSeuilA6509.png Graphic file (type png)
 <use InfluenceSeuilA6509.png>
-Package pdftex.def Info: InfluenceSeuilA6509.png  used on input line 993.
+Package pdftex.def Info: InfluenceSeuilA6509.png  used on input line 992.
 (pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
 
-Overfull \hbox (7.12378pt too wide) in paragraph at lines 993--994
+Overfull \hbox (7.12378pt too wide) in paragraph at lines 992--993
  [][] 
  []
 
 <InfluenceRangP10104.png, id=123, 861.9703pt x 625.58719pt>
 File: InfluenceRangP10104.png Graphic file (type png)
 <use InfluenceRangP10104.png>
-Package pdftex.def Info: InfluenceRangP10104.png  used on input line 1001.
+Package pdftex.def Info: InfluenceRangP10104.png  used on input line 1000.
 (pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
 
-Overfull \hbox (7.12378pt too wide) in paragraph at lines 1001--1002
+Overfull \hbox (7.12378pt too wide) in paragraph at lines 1000--1001
  [][] 
  []
 
 <InfluenceSeuilP10104.png, id=124, 861.9703pt x 625.58719pt>
 File: InfluenceSeuilP10104.png Graphic file (type png)
 <use InfluenceSeuilP10104.png>
-Package pdftex.def Info: InfluenceSeuilP10104.png  used on input line 1009.
+Package pdftex.def Info: InfluenceSeuilP10104.png  used on input line 1008.
 (pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
 
-Overfull \hbox (7.12378pt too wide) in paragraph at lines 1009--1010
+Overfull \hbox (7.12378pt too wide) in paragraph at lines 1008--1009
  [][] 
  []
 
@@ -980,12 +980,12 @@ ceRangA6509.png> <./InfluenceSeuilA6509.png> <./InfluenceRangP10104.png> <./Inf
 luenceSeuilP10104.png>]
 File: CWinit.png Graphic file (type png)
 <use CWinit.png>
-Package pdftex.def Info: CWinit.png  used on input line 1040.
+Package pdftex.def Info: CWinit.png  used on input line 1039.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 <learning.png, id=141, 462.528pt x 346.896pt>
 File: learning.png Graphic file (type png)
 <use learning.png>
-Package pdftex.def Info: learning.png  used on input line 1046.
+Package pdftex.def Info: learning.png  used on input line 1045.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
  [22 <./learning.png>]
 
@@ -997,18 +997,18 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[23] [24] (./rapport.bbl
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 29.
+[23] (./rapport.bbl [24]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 41.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [25]) [26]
+)) [25] [26]
 (./rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 8300 strings out of 492982
- 118505 string characters out of 6134896
- 358256 words of memory out of 5000000
- 11665 multiletter control sequences out of 15000+600000
+ 8302 strings out of 492982
+ 118534 string characters out of 6134896
+ 356264 words of memory out of 5000000
+ 11667 multiletter control sequences out of 15000+600000
  48893 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,18n,40p,488b,970s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1023,7 +1023,7 @@ usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/palatino/uplri8a.pfb>
-Output written on rapport.pdf (26 pages, 1315395 bytes).
+Output written on rapport.pdf (26 pages, 1315579 bytes).
 PDF statistics:
  195 PDF objects out of 1000 (max. 8388607)
  92 compressed objects within 1 object stream
