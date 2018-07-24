@@ -20,6 +20,8 @@
 \usepackage{xcolor}
 \usepackage{float} 
 
+\definecolor{rouge}{HTML}{DD0000}
+
 \parskip=0.5\baselineskip
 \providecommand{\keywords}[1]{\textbf{\textit{Mots-clés : }} #1}
 \sloppy
@@ -238,7 +240,8 @@ Ainsi, nous commençons par décrire l'algorithme utilisé, puis détaillons le 
 
 \subsection{Description de l'algorithme Clarke \& Wright}
 L'algorithme Clarke \& Wright (CW) est un algorithme glouton. 
-Initialement chaque client est desservi par un véhicule (de cette manière la contrainte sur le nombre de véhicules disponibles n'est pas respectée). Ensuite les tournées sont fusionnées en fonction des \emph{savings} (économies) calculées. L'algorithme \ref{algo:CW} présente le fonctionnement de l'algorithme CW.
+L'initialisation $Init$ la plus courante pour cet algorithme est d'attribuer un véhicule à chaque clients (de cette manière la contrainte sur le nombre de véhicules disponibles n'est pas respectée). 
+Ensuite les tournées sont fusionnées en fonction des \emph{savings} (économies en français) calculées. L'algorithme \ref{algo:CW} présente le fonctionnement de l'algorithme CW.
 
 On définit le \emph{saving} des clients $i$ et $j$ de la manière suivante :
 
@@ -251,14 +254,11 @@ Les paramètres $(\lambda, \mu, \nu)$ jouent un rôle important dans la formule 
 
 \begin{algorithm}
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
-\KwIn{Un ensemble de points I, un ensemble d'entiers $D = {d_1,...,d_n}$ et un triplet $(\lambda,\mu,\nu)$ de flottants}
+\KwIn{Une solution initiale $Init$, un ensemble de points $I$, un ensemble d'entiers $D = {d_1,...,d_n}$ et un triplet $(\lambda,\mu,\nu)$ de flottants}
 \KwOut{Une solution au problème I}
 
-\For{$i \gets 1$ \textbf{to} $n$} {
-	$Sol \gets Sol \cup [0,i,0]$\;
-}
-Calculer les savings de toutes les arêtes\;
-
+Calculer les \emph{savings} de toutes les arêtes de $I$\;
+$Sol \gets Init$\;
 \While {max$_{i,j} s(i,j) > 0$} {
 	$(i,j) \gets argmax_{(i,j)} s(i,j)$\;
 	$r_i \gets findRoute(Sol,i)$\;
@@ -528,12 +528,11 @@ Cela consiste en une réorganisation des clients sur la tournée. On choisit $k$
 On appelle \emph{k-opt}, l'opération qui consiste à échanger $k$ clients différents sur la tournée.
 
 On commence alors par appliquer 2-opt, si une amélioration est trouvée, on passe à 3-opt, et ainsi de suite jusqu'à atteindre k-opt. 
-On repart alors de 2-opt, et ce jusqu'à ne plus trouver d'améliorations, comme le décrit l'algorithme~\ref{algo:LK}.
-D'après l'article~\cite{Sorensen_2017}, on peut prendre $k = 2$.
+On repart alors de 2-opt, et ce jusqu'à ne plus trouver d'améliorations. L'algorithme~\ref{algo:LK} décrit le fonctionnement de l'opérateur lorsque $ k = 2$, valeur choisie dans~\cite{Sorensen_2017}.
  
 Un exemple d'utilisation de cet opérateur est présent sur la figure~\ref{LK}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.4]{test4_20_init.png}
 \includegraphics[scale=0.4]{test4_20_LKopt.png}
@@ -561,41 +560,49 @@ Lorsqu'il s'agit d'appliquer \emph{2-opt}, il est possible d'utiliser les métho
 \subsection{Algorithme d'optimisation utilisé}
 L'algorithme d'optimisation que nous utilisons est un peu différent de l'heuristique A\&S précédente.
 
-Pour diminuer le temps d'exécution, nous choisissons de diminuer le temps limite entre deux nouvelles solutions à $limitTime$ secondes. 
-Pour que l'exploration du voisinage des solutions soit plus efficace, nous décidons de passer les opérateurs \emph{EC} et \emph{CE} en mode $FI-RD$ (ce qui est généralement le cas dans les algorithmes d'optimisation).
-Enfin, nous ajoutons une condition de \emph{Restart}, s'il n'y a pas eu d'améliorations depuis \emph{restartTime} secondes.
+Nous changeons la condition d'arrêt, en prenant $limitTime$ secondes (au lieu de 180). Cela permet d'adapter la condition d'arrêt pour chaque instance. 
+Pour que l'exploration du voisinage des solutions soit plus efficace, nous décidons de passer les opérateurs \emph{EC} et \emph{CE} en mode $FI-RD$ (i.e. on prend le premier voisin qui améliore la solution courante, en parcourant le voisinage de manière aléatoire).
+Enfin, nous ajoutons une condition de \emph{Restart} , s'il n'y a pas eu d'améliorations depuis \emph{restartTime} secondes. 
+Cela consiste à conserver $a\%$ des arêtes de la meilleure solution obtenue jusqu'à présent. On relie ensuite les arêtes qui ont un client en commun pour former des tournées.
+On applique alors l'algorithme CW sur les tournées obtenues (en conservant les mêmes paramètres qu'au début de l'algorithme).
 
-L'algorithme~\ref{algo:HC} présente en gras les changements effectués, par rapport à l'algorithme~\ref{algo:AS}.
+L'algorithme~\ref{algo:HC} présente en rouge les changements effectués, par rapport à l'algorithme~\ref{algo:AS}.
 
 \begin{algorithm}
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
 \KwIn{Un ensemble de points I, les demandes des clients D, un triplet de flottants $(\lambda,\mu,\nu)$}
-\KwOut{Une solution au problème I}
+\KwOut{L'ensemble des valeurs prises par $Sol$ au cours de l'algorithme}
+$allSol \gets \{ \}$\;
 $Sol \gets CW(I,D,\lambda,\mu,\nu)$\;
+$allSol \gets allSol \cup \{ (cost(Sol)$,$Sol)\}$\;
 $N \gets length(D)$\;
 $nextSol \gets Sol$\;
-\While {La dernière amélioration date de moins de \textbf{limitTime} secondes} {
+\While {La dernière amélioration date de moins de \textcolor{rouge}{limitTime} secondes} {
 	$worstEdge \gets argmax_{(i,j)} b(i,j) $\;
-	$nextSol \gets EC_{\textbf{FI-RD}}(worstEdge,I,D)$\;
+	$nextSol \gets EC_{\textcolor{rouge}{FI-RD}}(worstEdge,I,D)$\;
 	$nextSol \gets LK_{BI-O}(nextSol)$\;
-	$nextSol \gets CE_{\textbf{FI-RD}}(worstEdge,I,D)$\;
+	$nextSol \gets CE_{\textcolor{rouge}{FI-RD}}(worstEdge,I,D)$\;
 	$nextSol \gets LK_{BI-O}(nextSol)$\;
 	\If {$cost(Sol) > cost (nextSol)$} {
 		$ Sol \gets nextSol$\;
+		$allSol \gets allSol \cup \{ (cost(Sol)$,$Sol)\}$\;
+	}
+	\textcolor{rouge} {
+	\If {Pas d'améliorations depuis $restartTime$ secondes} {
+		fixer $a\%$ des arêtes de $Sol$\;
+		Construire une solution initiale $Init$ avec les arêtes fixées\;
+		$nextSol \gets CW(Init,I,D,\lambda,\mu,\nu)$\;
+		}
 	}
 	
-	\If {\textbf{Pas d'améliorations depuis \textbf{restartTime} secondes}} {
-		$nextSol \gets Sol$\;
-	
-	}
-	
-	\If {\textbf{Pas d'améliorations depuis \textbf{resetTime} secondes}} {
+	\If {\textcolor{rouge}{Pas d'améliorations depuis $resetTime$ secondes}} {
 		Changer de fonction de pénalisation en prenant un autre triplet $(\gamma_w,\gamma_c,\gamma_d)$\;
 		Réinitialiser les pénalités des arêtes\;
 	}
 	
 }
-\Return{$Sol$}\;
+Trier $allSol$\;
+\Return{$allSol$}\;
 \caption{{\sc $H_c$} calcule une solution du problème considéré}
 \label{algo:HC}
 \end{algorithm}
@@ -760,7 +767,7 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
     \end{minipage}
 \end{figure}
 
-\begin{table}[h]
+\begin{table}[p]
 \caption{Résultats pour l'instance \emph{A-n37-k06}}
 \label{T1}
 \begin{center}
@@ -790,29 +797,29 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
   \hline
  & Rang & Arêtes & Optimales & Prop & Rang&Arêtes & Optimales & Prop & Rang &Arêtes& Optimales & Prop \\
  \hline
- 50 & 10 &  & 6 & 0.14 & 10&  & 6 & 0.14 & 10&  & 7 & 0.16  \\
+ 50 & 10 & 10 & 6 & 0.14 & 10& 10 & 6 & 0.14 & 10&10  & 7 & 0.16  \\
  \cline{2-13} 
-    & 20& & 13 & 0.31 & 20&  & 13 & 0.32 & 20&  & 13 & 0.31  \\
+    & 20&20 & 13 & 0.31 & 20& 20 & 13 & 0.32 & 20&20  & 13 & 0.31  \\
  \cline{2-13} 
-    & 18& & 12 & 0.28 & 18& & 13 & 0.3 & 18& & 12 & 0.28  \\
+    & 18&18 & 12 & 0.28 & 18&18 & 13 & 0.3 & 18&18 & 12 & 0.28  \\
   \hline
-   100 & 10&  & 9 & 0.21 & 10&  & 9 & 0.21 & 10&  & 10 & 0.24  \\
+   100 & 10& 10 & 9 & 0.21 & 10& 10 & 9 & 0.21 & 10& 10 & 10 & 0.24  \\
  \cline{2-13} 
-    & 20& & 16 & 0.38 & 20& & 16 & 0.38 & 20& & 15 & 0.36  \\
+    & 20&20 & 16 & 0.38 & 20&20 & 16 & 0.38 & 20&20 & 15 & 0.36  \\
   \cline{2-13} 
-    & 18& & 13 & 0.3 & 18& & 13 & 0.3 & 18& & 12 & 0.29  \\
+    & 18&18 & 13 & 0.3 & 18&18 & 13 & 0.3 & 18&18 & 12 & 0.29  \\
   \hline
-   500 & 10&  & 9 & 0.21 & 10&  & 10 & 0.24 & 10&  & 9 & 0.21  \\
+   500 & 10& 10 & 9 & 0.21 & 10& 10 & 10 & 0.24 & 10& 10 & 9 & 0.21  \\
  \cline{2-13} 
-    & 20& & 16 & 0.38 & 20& & 16 & 0.38 & 20& & 15 & 0.36  \\
+    & 20& 20& 16 & 0.38 & 20&20 & 16 & 0.38 & 20&20 & 15 & 0.36  \\
   \cline{2-13} 
-    & 18& & 13 & 0.3 & 18& & 13 & 0.3 & 18& & 12 & 0.28  \\
+    & 18&18 & 13 & 0.3 & 18&18 & 13 & 0.3 & 18&18 & 12 & 0.28  \\
   \hline
-   Complet & 10& & 8 & 0.19&  10& & 9 & 0.21 & 10& & 7 & 0.17  \\
+   Complet & 10& 10& 8 & 0.19&  10&10 & 9 & 0.21 & 10& 10& 7 & 0.17  \\
  \cline{2-13} 
-    & 20& & 14 & 0.33 & 20& & 14 & 0.33 & 20& & 14 & 0.33  \\
+    & 20&20 & 14 & 0.33 & 20&20 & 14 & 0.33 & 20&20 & 14 & 0.33  \\
   \cline{2-13} 
-    & 18& & 12 & 0.29 & 18& & 12 & 0.29 & 18& & 12 & 0.29  \\
+    & 18&18 & 12 & 0.29 & 18&18 & 12 & 0.29 & 18&18 & 12 & 0.29  \\
   \hline
   
 \end{tabular}
@@ -820,7 +827,7 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
 \end{table}
 
 
-\begin{table}[h]
+\begin{table}[p]
 \caption{Résultats pour l'instance \emph{A-n65-k09}}
 \label{T2}
 \begin{center}
@@ -849,35 +856,35 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
   \hline
  & Rang& Arêtes & Optimales & Prop & Rang& Arêtes & Optimales & Prop & Rang& Arêtes & Optimales & Prop \\
  \hline
- 50 & 10 & & 6 & 0.08 & 10&  & 7 & 0.1 & 10&  & 7 & 0.1  \\
+ 50 & 10 &10 & 6 & 0.08 & 10&10  & 7 & 0.1 & 10& 10 & 7 & 0.1  \\
  \cline{2-13} 
-    & 20& & 14 & 0.2 & 20&  & 15 & 0.21 & 20&  & 14 & 0.19  \\
+    & 20&20 & 14 & 0.2 & 20&20  & 15 & 0.21 & 20&20  & 14 & 0.19  \\
  \cline{2-13} 
-    & 33& & 23 & 0.32 & 33& & 26 & 0.36 & 33& & 24 & 0.33  \\
+    & 33&33 & 23 & 0.32 & 33&33 & 26 & 0.36 & 33&33 & 24 & 0.33  \\
   \hline
-   100 & 10&  & 6 & 0.08 & 10&  & 7 & 0.1 & 10&  & 7 & 0.1  \\
+   100 & 10& 10 & 6 & 0.08 & 10& 10 & 7 & 0.1 & 10& 10 & 7 & 0.1  \\
  \cline{2-13} 
-    & 20& & 16 & 0.22 & 20& & 16 & 0.22 & 20& & 14 & 0.19  \\
+    & 20& 20& 16 & 0.22 & 20&20 & 16 & 0.22 & 20& 20& 14 & 0.19  \\
   \cline{2-13} 
-    & 33& & 26 & 0.36 & 33& & 26 & 0.36 & 33& & 25 & 0.34  \\
+    & 33&33 & 26 & 0.36 & 33&33 & 26 & 0.36 & 33&33 & 25 & 0.34  \\
   \hline
-   500 & 10&  & 7 & 0.1 & 10&  & 7 & 0.1 & 10&  & 6 & 0.08  \\
+   500 & 10& 10 & 7 & 0.1 & 10& 10 & 7 & 0.1 & 10& 10 & 6 & 0.08  \\
  \cline{2-13} 
-    & 20& & 17 & 0.23 & 20& & 15 & 0.21 & 20& & 13 & 0.18  \\
+    & 20&20 & 17 & 0.23 & 20&20 & 15 & 0.21 & 20&20 & 13 & 0.18  \\
   \cline{2-13} 
-    & 33& & 27 & 0.37 & 33& & 26 & 0.36 & 33& & 25 & 0.34  \\
+    & 33&33 & 27 & 0.37 & 33&33 & 26 & 0.36 & 33&33 & 25 & 0.34  \\
   \hline
-   Complet & 10& & 7 & 0.1 & 10& & 7 & 0.1 & 10& & 6 & 0.08  \\
+   Complet & 10&10 & 7 & 0.1 & 10&10 & 7 & 0.1 & 10&10 & 6 & 0.08  \\
  \cline{2-13} 
-    & 20& & 17 & 0.23 & 20& & 17 & 0.23 & 20& & 13 & 0.18  \\
+    & 20&20 & 17 & 0.23 & 20&20 & 17 & 0.23 & 20&20 & 13 & 0.18  \\
   \cline{2-13} 
-    & 33& & 27 & 0.37 & 33& & 27 & 0.37 & 33& & 25 & 0.34  \\
+    & 33&33 & 27 & 0.37 & 33&33 & 27 & 0.37 & 33&33 & 25 & 0.34  \\
   \hline
 \end{tabular}
 \end{center}
 \end{table}
 
-\begin{table}
+\begin{table}[p]
 \caption{Résultats pour l'instance \emph{P-n101-k04}}
 \label{T3}
 \begin{center}
@@ -906,29 +913,29 @@ Enfin, la colonne \emph{Prop}, donne la proportion d'arêtes optimales parmi tou
   \hline
  & Rang& Arêtes & Optimales & Prop & Rang& Arêtes & Optimales & Prop & Rang& Arêtes & Optimales & Prop \\
  \hline
- 50 & 10&  & 8 & 0.08 & 10&  & 8 & 0.08 & 10&  & 8 & 0.08 \\
+ 50 & 10& 10 & 8 & 0.08 & 10& 10 & 8 & 0.08 & 10& 10 & 8 & 0.08 \\
  \cline{2-13} 
-    & 20& & 18 & 0.17 & 20&  & 17 & 0.16 & 20& & 18 & 0.17  \\
+    & 20&20 & 18 & 0.17 & 20& 20 & 17 & 0.16 & 20& 20& 18 & 0.17  \\
  \cline{2-13} 
-    & 50& & 43 & 0.41 & 50& & 44 & 0.43 & 50& & 44 & 0.43  \\
+    & 50& 50& 43 & 0.41 & 50& 50& 44 & 0.43 & 50&50 & 44 & 0.43  \\
   \hline
-   100 & 10&  & 8 & 0.08 & 10&  & 8 & 0.08 & 10&  & 8 & 0.08  \\
+   100 & 10& 10 & 8 & 0.08 & 10& 10 & 8 & 0.08 & 10& 10 & 8 & 0.08  \\
  \cline{2-13} 
-    & 20& & 18 & 0.17 & 20& & 18 & 0.17 & 20& & 18 & 0.17  \\
+    & 20&20 & 18 & 0.17 & 20&20 & 18 & 0.17 & 20&20 & 18 & 0.17  \\
   \cline{2-13} 
-    & 50& & 46 & 0.44 & 50& & 46 & 0.44 & 50& & 46 & 0.44  \\
+    & 50&50 & 46 & 0.44 & 50&50 & 46 & 0.44 & 50&50 & 46 & 0.44  \\
   \hline
-   500 & 10&  & 8 & 0.08 & 10&  & 8 & 0.08 & 10&  & 8 & 0.08  \\
+   500 & 10& 10 & 8 & 0.08 & 10& 10 & 8 & 0.08 & 10&  10& 8 & 0.08  \\
  \cline{2-13} 
-    & 20& & 18 & 0.17 & 20& & 18 & 0.17 & 20& & 18 & 0.17  \\
+    & 20&20 & 18 & 0.17 & 20& 20& 18 & 0.17 & 20&20 & 18 & 0.17  \\
   \cline{2-13} 
-    & 50& & 46 & 0.44 & 50& & 46 & 0.44 & 50& & 46 & 0.44  \\
+    & 50&50 & 46 & 0.44 & 50&50 & 46 & 0.44 & 50& 50 & 46 & 0.44  \\
   \hline
-   Complet & 10&  & 8 & 0.08 & 10&  & 8 & 0.08 & 10&  & 8 & 0.08  \\
+   Complet & 10& 10 & 8 & 0.08 & 10& 10 & 8 & 0.08 & 10& 10 & 8 & 0.08  \\
  \cline{2-13} 
-    & 20& & 18 & 0.17 & 20& & 18 & 0.17 & 20& & 18 & 0.17  \\
+    & 20&20 & 18 & 0.17 & 20&20 & 18 & 0.17 & 20&20 & 18 & 0.17  \\
   \cline{2-13} 
-    & 50& & 46 & 0.44 & 50& & 46 & 0.44 & 50& & 46 & 0.44  \\
+    & 50& 50& 46 & 0.44 & 50&50 & 46 & 0.44 & 50&50 & 46 & 0.44  \\
   \hline
 \end{tabular}
 \end{center}
@@ -945,7 +952,7 @@ Voici ce qu'on peut tirer des résultats présents sur les tables~\ref{T1} à~\r
 
 Ces remarques nous incitent à privilégier un échantillon de taille $50$ pour améliorer la vitesse d'apprentissage. 
 La base \emph{Qual$_{10}$} semble également être plus intéressante que les autres bases avec une taille d'échantillon $50$.
-Les résultats obtenus ne nous permettent toutefois pas, de choisir le meilleur critère pour l'apprentissage.
+Les résultats obtenus ne nous permettent toutefois pas de choisir le meilleur critère pour l'apprentissage.
 Nous décidons alors de raffiner nos résultats.
 
 \subsubsection{Étude des critères Rang et Seuil}
@@ -958,58 +965,53 @@ De cette manière, on dispose de $100$ solutions initiales calculées pour chaqu
 Les résultats obtenus sont présentés sur les figures~\ref{InfRA3706} à~\ref{InfSP10104}.
 Quelle que soit l'instance, on remarque les apprentissages avec le critère Rang donnent de meilleurs résultats que les apprentissages avec le critère Seuil.
 Nous pouvons remarquer qu'avec $ seuil = S_{lb}/2$, nous obtenons les meilleurs résultats avec le critère Seuil.
-En ce qui concerne le critère Rang, plus le rang augmente et plus les solutions obtenues sont de meilleure qualité. Cependant, un grand nombre d'arêtes contraint davantage les solutions initiales. On peut donc préférer par exemple $rang = n/2$, si l'on choisit le critère Rang.
+En ce qui concerne le critère Rang, plus le rang augmente et plus les solutions obtenues sont de meilleure qualité. Cependant, un grand nombre d'arêtes contraint davantage les solutions initiales. On préférera donc un rang compris entre $n/2$ et $4n/5$ selon le nombre d'arêtes que l'on souhaite conserver. 
 
-\begin{figure}
-    \begin{minipage}[c]{.46\linewidth}
+\begin{figure}[p]
+
 
         \centering
-        \includegraphics[scale=0.25]{InfluenceRangA3706}
+        \includegraphics[scale=0.32]{InfluenceRangA3706}
         
         \caption{Influence du Rang lors de l'apprentissage sur l'instance A-n37-k06.}
         \label{InfRA3706}
 
-    \end{minipage}
-    \hfill%
-    \begin{minipage}[c]{.46\linewidth}
+
         \centering
-        \includegraphics[scale=0.25]{InfluenceSeuilA3706}
-        
-        \caption{Influence du Seuil lors de l'apprentissage sur l'instance A-n37-k06.}
-        \label{InfSA3706}
-    \end{minipage}
-    
-    \begin{minipage}[c]{.46\linewidth}
-        \centering
-        \includegraphics[scale=0.25]{InfluenceRangA6509}
+        \includegraphics[scale=0.32]{InfluenceRangA6509}
         
         \caption{Influence du Rang lors de l'apprentissage sur l'instance A-n65-k09.}
         \label{InfRA6509}
-    \end{minipage}
-    \hfill%
-    \begin{minipage}[c]{.46\linewidth}
+
         \centering
-        \includegraphics[scale=0.25]{InfluenceSeuilA6509}
-        
-        \caption{Influence du Seuil lors de l'apprentissage sur l'instance A-n65-k09.}
-        \label{InfSA6509}
-    \end{minipage}    
-    
-        \begin{minipage}[c]{.46\linewidth}
-        \centering
-        \includegraphics[scale=0.25]{InfluenceRangP10104}
+        \includegraphics[scale=0.32]{InfluenceRangP10104}
         
         \caption{Influence du Rang lors de l'apprentissage sur l'instance P-n101-k04.}
         \label{InfRP10104}
-    \end{minipage}
-    \hfill%
-    \begin{minipage}[c]{.46\linewidth}
+
+\end{figure}
+ 
+\begin{figure}[p]
+
+
+      \centering
+      \includegraphics[scale=0.32]{InfluenceSeuilA3706}
+        
+      \caption{Influence du Seuil lors de l'apprentissage sur l'instance A-n37-k06.}
+      \label{InfSA3706}
+
         \centering
-        \includegraphics[scale=0.25]{InfluenceSeuilP10104}
+        \includegraphics[scale=0.32]{InfluenceSeuilA6509}
+        
+        \caption{Influence du Seuil lors de l'apprentissage sur l'instance A-n65-k09.}
+        \label{InfSA6509}
+
+        \centering
+        \includegraphics[scale=0.32]{InfluenceSeuilP10104}
         
         \caption{Influence du Seuil lors de l'apprentissage sur l'instance P-n101-k04.}
         \label{InfSP10104}
-    \end{minipage}
+ 
 \end{figure}
 
 
@@ -1022,7 +1024,7 @@ Nous commençons par expliquer où la connaissance va être intégrée, puis nou
 
 \subsection{Où intégrer la connaissance ?}
 Grâce à l'extraction de connaissances nous disposons désormais d'un ensemble d'arêtes dont la plupart appartiennent à la solution optimale. 
-Nous pouvons donc recréer à partir de ces arêtes des morceaux de tournées et rattacher leurs extrémités aux dépôts, comme le montre la figure~\ref{newInit}.
+Nous pouvons donc recréer à partir de ces arêtes des morceaux de tournées et rattacher leurs extrémités aux dépôts, comme le montre la figure~\ref{newInit}, où les arêtes retenues sont vertes.
 Cette solution temporaire, que l'on appellera \emph{Init}, peut alors être utilisée comme initialisation pour l'algorithme CW.
 En effet, l'algorithme va conserver les morceaux de tournées, qui ont été fixées lors de l'apprentissage, et va fusionner ces morceaux entre eux, pour obtenir au final une nouvelle solution initiale.
 
@@ -1058,35 +1060,30 @@ La \emph{Learning Heuristic} est présenté sur l'algorithme~\ref{algo:LH}.
 \KwIn{Un ensemble de points I, les demandes des clients D}
 \KwOut{Une solution au problème I}
 $(\lambda^*,\mu^*,\nu^*), Init \gets Apprentissage()$\;
-$newBase \gets \{\} $\;
-$bestCost \gets cost(Init)$\;
+$cpt \gets 0$\;
+$ allSolutions \gets \{ \}$\;
 \For {$i \gets 1$ \textbf{to} $NbIterations$} {
-	$Sol \gets H_c(I,D,\lambda^*,\mu^*,\nu^*,Init)$\;
-	$newBase \gets newBase \cup \{Sol\}$\;
-	\If {$cost(Sol) < bestCost$ or $i = 0$} {
-		$bestSol \gets Sol$\;
-		$bestCost \gets cost(Sol)$\;
+	$BaseSolution \gets H_c(Init,I,D,\lambda^*,\mu^*,\nu^*)$\;
+	$allSolutions \gets allSolutions \cup BaseSolution$\;
+	$crit \gets upBound - cpt/10$\;
+	$cpt \gets cpt + 1$\;
+	\If {$crit = lowBound$} {
+		$cpt \gets 0$\;
 	}
-	\If {$ i\%4 = 0$ and $i \neq 0$} {
-		Déterminer $Init$ en apprenant de $newBase$\;
-		$(\lambda^*,\mu^*,\nu^*), Init \gets Apprentissage(Init)$\;
-	}
-	\Else {
-		Conserver $p\%$ des arêtes de $bestSol$\;
-		Construire un nouvel $Init$ avec les arêtes conservées\;
-		$(\lambda^*,\mu^*,\nu^*), Init \gets Apprentissage(Init)$\;
-	}
-}
+	Déterminer un nouvel $Init$ en apprenant à partir de $BaseSolution$ et du critère $rang = n*crit$\;
 
-\Return{$bestSol$}\;
+}
+Trier $allSolutions$\;
+
+\Return{$allSolutions[0]$}\;
 \caption{{\sc LearnHeuristic} renvoie une solution d'une instance du CVRP}
 \label{algo:LH}
 \end{algorithm}
 
-Cette heuristique a l'avantage de procéder à plusieurs apprentissages. 
-Mis à part l'apprentissage initial qui sert à guider les premiers résultats, les solutions ensuite calculées sont stockées dans une nouvelle base d'apprentissage, utilisée pour déterminer un nouvel $Init$.
-Ce dernier est utilisé pour guider un nouvel apprentissage, et la base d'apprentissage est remise à zéro. 
-Répéter ces étapes permet d'affiner l'apprentissage, pour le rendre plus efficace et ainsi approcher d'autant mieux la solution optimale.
+Cette heuristique commence par effectuer un apprentissage, comme vu en section~\ref{extraction}. Nous obtenons de cette manière le triplet $(\lambda^*,\mu^*,\nu^*)$, utilisé ensuite, ainsi qu'une solution initiale $Init$.
+Ensuite, pendant $NbIterations$, on récupère les solutions renvoyées par $H_c$, puis on apprend à partir de ces solutions. Le critère employé est le Rang, et sa valeur varie entre deux bornes au cours de l'exécution. Cela permet de relâcher la contrainte sur le nombre d'arêtes conservées.
+Finalement l'algorithme renvoie la meilleure solution trouvée.
+
 
 
 \subsection{Résultats}
@@ -1094,14 +1091,15 @@ Répéter ces étapes permet d'affiner l'apprentissage, pour le rendre plus effi
 \subsubsection{Comparaison avec des ensembles d'instances résolues}
 
 La \emph{learning heuristic} précédente a été appliquée aux ensembles d'instance A, B et P (disponibles sur le site~\cite{cvrplib}.
+Pour ces instances toutes les distances sont arrondies à l'entier le plus proche.
 
-Pour effectuer la phase d'apprentissage (décrite dans la section~\ref{extraction}), nous choisissons de prendre un échantillon de taille $50$, nous utilisons la base $Qual_{10}$, et le critère $ rang = n/2$. Nous choisissons ensuite les valeurs suivantes dans les algorithmes utilisés : $ NbIterations = 10$, $NbSol = 10$, $limitTime = 10$, $restartTime = 0.5$, $resetTime = 0.25$.
+Pour effectuer la phase d'apprentissage (décrite dans la section~\ref{extraction}), nous choisissons de prendre un échantillon de taille $50$, nous utilisons la base $Qual_{10}$, et le critère $ rang = 0.7$. Nous choisissons ensuite les valeurs suivantes dans les algorithmes utilisés : $ NbIterations = 25$, $limitTime = n/4$, $restartTime = n/40$, $resetTime = n/100$.
 
 Les résultats obtenus sont disponibles sur les tableaux~\ref{TA} à~\ref{TP}, la colonne \emph{Best-Known} rappelle le coût de la meilleure solution connue pour l'instance considérée. 
 Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme considéré.
-\emph{Best} renvoie la meilleure solution sur les $100$ obtenues, \emph{Mean$_{10}$} renvoie la moyenne des $10$ meilleures solutions, \emph{Gap} correspond au pourcentage de différence entre la \emph{Best} et la \emph{Best-Known}, \emph{Time} donne le temps d'exécution de l'algorithme.
+\emph{Best} renvoie la meilleure solution sur les $25\%$ obtenues, \emph{Mean$_{10}$} renvoie la moyenne des $10$ meilleures solutions, \emph{Gap} correspond au pourcentage de différence entre la \emph{Best} et la \emph{Best-Known}, \emph{Time} donne le temps d'exécution de l'algorithme.
 
-\begin{table}[h!]
+\begin{table}[p]
 \caption{Résultats pour l'ensemble A}
 \label{TA}
 \begin{center}
@@ -1112,65 +1110,65 @@ Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme co
  \hline
  & & Best & Mean$_{10}$ & Gap (\%) & Time (s) \\ 
  \hline
- A-n32-k05 & 784 & 785 & 785 & 0.13 & 179  \\
+ A-n32-k05 & 784 & 784 & 785 & 0 & 351  \\
  \hline
- A-n33-k05   & 661 & 661 & 661 &0 & 235   \\
+ A-n33-k05   & 661 & 661 & 661 &0 & 381   \\
   \hline
-   A-n33-k06 & 742 & 742 & 742 &0 & 160  \\
+   A-n33-k06 & 742 & 742 & 742 &0 & 412  \\
  \hline
-   A-n34-k05 & 778 & 779 & 779 &0.13 & 173  \\
+   A-n34-k05 & 778 & 779 & 779 &0.13 & 331  \\
   \hline
-   A-n36-k05 & 799 & 799 & 799 & 0 & 222  \\
+   A-n36-k05 & 799 & 799 & 799 & 0 & 464  \\
  \hline
-  A-n37-k05  & 669 & 670 & 671 & 0.15 & 181  \\
+  A-n37-k05  & 669 & 670 & 671 & 0.15 & 421  \\
   \hline
-  A-n37-k06 & 949 & 949 & 949 & 0 & 174 \\
+  A-n37-k06 & 949 & 949 & 949 & 0 & 465 \\
  \hline
-  A-n38-k05  & 730 & 730 & 736 & 0 & 196 \\
+  A-n38-k05  & 730 & 730 & 730 & 0 & 361 \\
  \hline
- A-n39-k05 & 822 & 822 & 822 & 0 & 212 \\
+ A-n39-k05 & 822 & 822 & 822 & 0 & 405 \\
  \hline
-  A-n39-k06  & 831 & 831 & 831 & 0 & 220   \\
+  A-n39-k06  & 831 & 831 & 831 & 0 & 382   \\
  \hline
-   A-n44-k06 & 937 & 937 & 937 & 0 & 232   \\
+   A-n44-k06 & 937 & 937 & 939 & 0 & 500   \\
   \hline
-   A-n45-k06 & 944 & 953 & 954 & 0.94 & 228  \\
+   A-n45-k06 & 944 & 950 & 958 & 0.63 & 487  \\
  \hline 
-  A-n45-k07  & 1146 & 1149 & 1151 & 0.26 & 415 \\
+  A-n45-k07  & 1146 & 1149 & 1149 & 0.26 & 500 \\
   \hline
-  A-n46-k07  & 914 & 914 & 916 &0 & 286  \\
+  A-n46-k07  & 914 & 914 & 916 &0 & 498  \\
   \hline
-  A-n48-k07 & 1073 & 1073 & 1078 &0 & 442  \\
+  A-n48-k07 & 1073 & 1073 & 1073 &0 & 508 \\
  \hline
-  A-n53-k07  & 1010 & 1014 & 1017 &0.39 & 387   \\
+  A-n53-k07  & 1010 & 1014 & 1017 &0.39 & 515   \\
   \hline
-  A-n54-k07  & 1167 & 1172 & 1172 & 0.26 & 273  \\
+  A-n54-k07  & 1167 & 1167 & 1169 & 0 & 521  \\
   \hline
-  A-n55-k09 & 1073 & 1073 & 1073 &0 & 285  \\
+  A-n55-k09 & 1073 & 1073 & 1073 &0 & 506  \\
  \hline 
-   A-n60-k09 & 1354 & 1354 & 1356 &0 & 453   \\
+   A-n60-k09 & 1354 & 1354 & 1356 &0 & 547  \\
   \hline 
-  A-n61-k09  & 1034 & 1035 & 1038 &0.09 & 386  \\
+  A-n61-k09  & 1034 & 1035 & 1042 &0.09 & 562  \\
   \hline
-    A-n62-k08  & 1288 & 1308  & 1310 &1.53 & 440   \\
+    A-n62-k08  & 1288 & 1308  & 1310 &1.53 & 624   \\
   \hline
-    A-n63-k09  & 1616 & 1627 & 1636 &0.68 & 429   \\
+    A-n63-k09  & 1616 & 1627 & 1636 &0.68 & 641   \\
   \hline
-    A-n63-k10  & 1314 & 1320 &1320 &0.45 & 458   \\
+    A-n63-k10  & 1314 & 1320 &1320 &0.45 & 662   \\
   \hline
-    A-n64-k09  & 1401 & 1416 & 1419 &1.06 & 463   \\
+    A-n64-k09  & 1401 & 1416 & 1419 &1.06 & 684   \\
   \hline
-    A-n65-k09  & 1174 & 1176 & 1180 &0.17 & 447   \\
+    A-n65-k09  & 1174 & 1176 & 1180 &0.17 & 704   \\
   \hline
-    A-n69-k09  & 1159 & 1164 & 1167 & 0.43 & 317   \\
+    A-n69-k09  & 1159 & 1164 & 1167 & 0.43 & 768   \\
   \hline
-    A-n80-k10  & 1763 & 1767 & 1773 & 0.23 & 575   \\
+    A-n80-k10  & 1763 & 1767 & 1773 & 0.23 & 843   \\
   \hline
 \end{tabular}
 \end{center}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[p]
 \caption{Résultats pour l'ensemble B}
 \label{TB}
 \begin{center}
@@ -1181,51 +1179,51 @@ Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme co
  \hline
  & & Best & Mean$_{10}$ & Gap (\%) & Time (s) \\ 
  \hline
- B-n31-k05 & 672 & 672 & 672 & 0 & 161 \\
+ B-n31-k05 & 672 & 672 & 672 & 0 & 319 \\
  \hline
- B-n34-k05   & 788 & 788 & 788 &0 & 192  \\
+ B-n34-k05   & 788 & 788 & 788 &0 & 371  \\
   \hline
-   B-n35-k05 & 955 & 955 & 957 &0 & 169  \\
+   B-n35-k05 & 955 & 955 & 957 &0 & 388  \\
  \hline
-   B-n38-k06 & 805 & 806 & 806 &0.12 & 238  \\
+   B-n38-k06 & 805 & 806 & 806 &0.12 & 413  \\
   \hline
-   B-n39-k05 & 549 & 550 & 550 & 0.18 & 267  \\
+   B-n39-k05 & 549 & 549 & 550 & 0 & 436  \\
  \hline
-  B-n41-k06  & 829 & 831 & 831 & 0.24 & 206  \\
+  B-n41-k06  & 829 & 831 & 831 & 0.24 & 491  \\
   \hline
-  B-n43-k06 & 742 & 742 & 742 & 0 & 302 \\
+  B-n43-k06 & 742 & 742 & 744 & 0 & 534 \\
  \hline
-  B-n44-k07  & 909 & 910 & 910 & 0.11 & 203 \\
+  B-n44-k07  & 909 & 910 & 910 & 0.11 & 463 \\
  \hline
- B-n45-k05 & 751 & 751 & 751 & 0 & 207 \\
+ B-n45-k05 & 751 & 751 & 751 & 0 & 461 \\
  \hline
-   B-n50-k07 & 741 & 741 & 741 & 0 & 299   \\
+   B-n50-k07 & 741 & 741 & 741 & 0 & 604   \\
   \hline
-   B-n50-k08 & 1312 & 1320 & 1327 & 0.61 & 255  \\
+   B-n50-k08 & 1312 & 1320 & 1327 & 0.61 & 587  \\
   \hline
-  B-n52-k07  & 747 & 747 & 748 &0 & 365  \\
+  B-n52-k07  & 747 & 747 & 748 &0 & 562  \\
   \hline
-  B-n56-k07 & 707 & 710 & 710 & 0.42 & 297  \\
+  B-n56-k07 & 707 & 710 & 711 & 0.42 & 473  \\
  \hline
-  B-n57-k09  & 1598 & 1599 & 1601 &0.06 & 306   \\
+  B-n57-k09  & 1598 & 1599 & 1601 &0.06 & 523 \\
   \hline
-  B-n63-k10  & 1496 & 1537 & 1540 & 2.66 & 338   \\
+  B-n63-k10  & 1496 & 1533 & 1537 & 2.41 & 766   \\
   \hline
-  B-n64-k09 & 861 & 866 & 870 & 0.58 & 303 \\
+  B-n64-k09 & 861 & 865 & 868 & 0.46 & 787 \\
  \hline 
-   B-n66-k09 & 1316 & 1321 & 1324 &0.38 & 385   \\
+   B-n66-k09 & 1316 & 1321 & 1324 &0.38 & 770   \\
   \hline 
-  B-n67-k10  & 1032 & 1040 & 1041 & 0.77 & 425  \\
+  B-n67-k10  & 1032 & 1040 & 1041 & 0.77 & 784 \\
   \hline
-    B-n68-k09  & 1272 & 1289 & 1290 &1.32 & 452   \\
+    B-n68-k09  & 1272 & 1289 & 1290 &1.32 & 666  \\
   \hline
-    B-n78-k10  & 1221 & 1231 & 1238 & 0.57 & 526 \\
+    B-n78-k10  & 1221 & 1231 & 1238 & 0.57 & 881 \\
   \hline
 \end{tabular}
 \end{center}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[p]
 \caption{Résultats pour l'ensemble P}
 \label{TP}
 \begin{center}
@@ -1236,47 +1234,47 @@ Les résultats fournis sont ceux obtenus lors de l'exécution de l'algorithme co
  \hline
  & & Best & Mean$_{10}$ & Gap (\%) & Time (s) \\ 
  \hline
- P-n016-k08 & 450 & 450 & 450 & 0 & 52  \\
+ P-n016-k08 & 450 & 450 & 450 & 0 & 132  \\
  \hline
- P-n019-k02   & 212 & 212 & 215 & 0 & 65   \\
+ P-n019-k02   & 212 & 212 & 215 & 0 & 163   \\
   \hline
-   P-n020-k02 & 216 & 216 & 216 &0 & 72  \\
+   P-n020-k02 & 216 & 216 & 216 &0 & 203  \\
  \hline
-   P-n021-k02 & 211 & 211 & 211 &0 & 83  \\
+   P-n021-k02 & 211 & 211 & 211 &0 & 168  \\
   \hline
-   P-n022-k02 & 216 & 216 & 216 & 0 & 101  \\
+   P-n022-k02 & 216 & 216 & 216 & 0 & 227  \\
  \hline
-  P-n023-k08  & 529 & 529 & 530 & 0 & 82 \\
+  P-n023-k08  & 529 & 529 & 530 & 0 & 205 \\
   \hline
-  P-n040-k05 & 458 & 458 & 458 & 0 & 171 \\
+  P-n040-k05 & 458 & 458 & 458 & 0 & 383 \\
  \hline
-  P-n045-k05  & 510 & 510 & 510 & 0 & 260 \\
+  P-n045-k05  & 510 & 510 & 510 & 0 & 580 \\
  \hline
- P-n050-k07 & 554 & 554 & 555 & 0 & 342 \\
+ P-n050-k07 & 554 & 554 & 555 & 0 & 596 \\
  \hline
-  P-n050-k08  & 631 & 631 & 633 & 0 & 333   \\
+  P-n050-k08  & 631 & 631 & 633 & 0 & 485   \\
  \hline
-   P-n050-k10 & 696 & 699 & 701 & 0.43 & 368   \\
+   P-n050-k10 & 696 & 699 & 700 & 0.43 & 584   \\
   \hline
-   P-n051-k10 & 741 & 742 & 747 & 0.13 & 401  \\
+   P-n051-k10 & 741 & 741 & 741 & 0 & 479  \\
  \hline 
-  P-n055-k07  & 568 & 568 & 572& 0 & 541  \\
+  P-n055-k07  & 568 & 568 & 572& 0 & 641  \\
   \hline
-  P-n055-k10  & 694 & 694 & 699 &0 & 469  \\
+  P-n055-k10  & 694 & 694 & 696 &0 & 632  \\
   \hline
-  P-n060-k10 & 744 & 750 & 751 & 0.8 & 339  \\
+  P-n060-k10 & 744 & 750 & 751 & 0.8 & 513  \\
  \hline
-   P-n060-k15  & 968 & 979 & 979 &1.12 & 258   \\
+   P-n060-k15  & 968 & 975 & 978 & 0.72 &596   \\
   \hline
-  P-n065-k10  & 792 & 792 & 792 & 0 & 398   \\
+  P-n065-k10  & 792 & 792 & 792 & 0 &  668   \\
   \hline
-  P-n070-k10 & 827 & 833 & 838 & 0.72 & 373    \\
+  P-n070-k10 & 827 & 839 & 840 & 1.43 &1120    \\
   \hline
-  P-n076-k04 & 593 & 596 &600 & 0.50 & 436 \\
+  P-n076-k04 & 593 & 596 &600 & 0.50 & 863 \\
  \hline 
-   P-n076-k05 & 627 & 631 & 638 &0.63 & 424   \\
+   P-n076-k05 & 627 & 630 & 634 &0.48 & 691   \\
   \hline 
-  P-n101-k04  & 681 & 686 & 687 & 0.73 & 573  \\
+  P-n101-k04  & 681 & 686 & 687 & 0.73 & 1114  \\
   \hline
 \end{tabular}
 \end{center}
@@ -1294,11 +1292,11 @@ Il est possible qu'en changeant la méthode d'apprentissage, ou le temps disponi
 \hline
  Instances & Size & Gap (\%) & Time (s)  \\
  \hline
- Group A & 27 & 0.26 & 8468  \\
+ Set A & 27 & 0.23 & 14043  \\
  \hline
- Group B & 20  & 0.40 & 5816   \\
+ Set B & 20  & 0.37 & 11279   \\
   \hline
-  Group P & 21 & 0.24 & 6141   \\
+  Set P & 21 & 0.24 & 6141   \\
  \hline
 
 \end{tabular}
@@ -1307,13 +1305,105 @@ Il est possible qu'en changeant la méthode d'apprentissage, ou le temps disponi
 
 \subsubsection{Résultats obtenus sur les problèmes plus difficiles}
 
-Dans cette section sont présentés les résultats obtenus sur les ensembles \emph{Golden} et \emph{Uchoa}.
+Dans cette section sont présentés les résultats obtenus sur l'ensemble d'instances \emph{Golden}~\cite{cvrplib}.
+Ces instances ont la particularité d'avoir un grand nombre de clients à desservir (de 200 à  483).
+Peu de solutions exactes ont été trouvées pour ces instances, de ce fait il est toujours possible d'améliorer les solutions existantes. 
+
+\begin{table}[h!]
+\caption{Résultats pour l'ensemble \emph{Golden}}
+\label{TG}
+\begin{center}
+\begin{tabular}{|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
+
+\hline
+ Instance & Nb customers & Best-Known & Optimal & \multicolumn{4}{c|}{LearnHeuristic}  \\
+ \hline
+ & & & & Best & Mean$_{10}$ & Gap (\%) & Time (s) \\ 
+ \hline
+ Golden-01 &240 & 5623.47 & no & 5508.56 & 5531.28 & - 2.09 &   \\
+ \hline
+ Golden-02 &320 & 8404.61 & no& 8441.46 & 8494.86 & 0.44 &    \\
+  \hline
+   Golden-03 &400 & 11036.2 & no& 11300.33 & 11414.55 & 2.34 &  \\
+ \hline
+   Golden-04 &480 &13590.0 & no& 13729.76 & 13741.65 & 1.02 &  \\
+  \hline
+   Golden-05 &200 & 6460.98 & no& 6495.13 & 6506.04 & 0.53 &  \\
+ \hline
+ Golden-06  &280 & 8412.9 &no & 8591.719 & 8633.38 & 2.08 &  \\
+  \hline
+  Golden-07 &360 & 10102.7 &no & 10412.52 & 10449.86 & 2.98 &  \\
+ \hline
+  Golden-08 &440 & 11635.3 &no & 12040.77 & 12138.26 & 3.37 &  \\
+ \hline
+ Golden-09 &255 & 579.71 &no & 606.18 & 610
+ 03 & 4.37 &  \\
+ \hline
+ Golden-10 &323 & 735.66 & no& 772.69 & 773.91 & 4.79 &  \\
+ \hline
+  Golden-11 &399 & 912.03 &no & 963.38 & 966.40 & 5.33 &   \\
+  \hline
+   Golden-12 &483 & 1101.5 &no & 1160.72 & 1177.08 & 5.10 &  \\
+ \hline 
+ Golden-13 &252 & 857.19 &yes & 886.53 & 895.55 & 3.31 & \\
+  \hline
+  Golden-14 &320 & 1080.55 &yes & 1147.72 & 1148.12 & 5.85 &  \\
+  \hline
+  Golden-15 &396 & 1337.87 & no& 1430.69 & 1431.89 & 6.49 &  \\
+ \hline
+   Golden-16 &480 & 1611.56 &no & 1749.97 & 1752.71 &7.90 &   \\
+  \hline
+  Golden-17 &240 & 707.76 & yes& 751.02 & 751.62 & 5.76 &   \\
+  \hline
+  Golden-18 &300 & 995.13 &yes & 1071.55 & 1072.70 & 7.13 &    \\
+  \hline
+  Golden-19 &360 & 1365.6 & yes& 1470.84 & 1472.22 & 7.14 & \\
+ \hline 
+   Golden-20 &420 & 1817.59 &yes & 1982.82 & 1986.61 & 8.51 &  \\
+  \hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+Pour exécuter l'algorithme nous reprenons en partie les valeurs précédentes, mais nous changeons le nombre d'arêtes conservées lors du restart : on garde à présent $95\%$ des arêtes. Pour le relâchement de la contrainte, on prend $upBound = 0.8$ et $lowBound = 0.5$. Les instances étant plus grandes, il faut conserver plus d'arêtes pour que l'apprentissage soit plus efficace.
+
+Les résultats obtenus sont présentés dans le tableau~\ref{TG}. Nous parvenons à obtenir une nouvelle meilleure solution pour l'instance \emph{Golden-01}, toutefois c'est le seul résultat remarquable. Il est possible que pour les autres instances les solutions actuelles soient déjà très bonnes. Un autre choix de paramètres pourrait aussi donner de meilleurs résultats. La figure~\ref{NewBest} montre la nouvelle meilleure solution obtenue pour l'instance \emph{Golden-01}. 
+
+\begin{figure}[p]
+\begin{center}
+
+\includegraphics[scale=0.32]{NewBest5499}
+\caption{Nouvelle \emph{Best-Known} pour l'instance \emph{Golden-01}.}
+
+\label{NewBest}
+
+
+\end{center}
+\end{figure}
+
+\subsection{Limites et perspectives}
+
+Nous avons vu que l'algorithme proposé était efficace pour résoudre les petites instances (inférieures à 100 clients). 
+Il a aussi permis de trouver une nouvelle solution à l'instance \emph{Golden-01}. 
+Néanmoins les autres résultats obtenus ne sont pas aussi bons. 
+Le temps des exécutions pour les plus grandes instances est long, ce qui ne permet pas de tester de nombreuses valeurs de paramètres.
+De plus le premier apprentissage influence fortement les résultats obtenus ensuite. Il va notamment donner les paramètres $(\lambda^*,\mu^*,\nu^*)$, utilisées pendant toute la durée de l'exécution. Une amélioration possible pourrait donc être de pré-calculer le meilleur  
+$(\lambda^*,\mu^*,\nu^*)$, pour le choisir lors de l'exécution, mais cela impose de refaire ce calcul pour chaque instance.
+
+L'un des avantages de l'algorithme proposé est que l'on peut remplacer l'algorithme d'optimisation $H_c$ par celui que l'on veut. Ainsi, nous pourrions privilégier un algorithme efficace sur certains types d'instances afin d'obtenir de meilleurs résultats.
+De plus, l'algorithme A\&S peut facilement être adapté à d'autres extensions du \emph{VRP}~\cite{Sorensen_2017}. Ce qui rend notre algorithme d'optimisation particulièrement intéressant.
 
 \section*{Conclusion}
-A travers cet article, nous avons vu comment créer une \emph{learning heuristic} donnant de très bons résultats sur les instances classiques du CVRP.
-L'avantage aussi de cet algorithme est qu'il vient compléter un algorithme d'optimisation facilement adaptable à d'autres problèmes de tournées de véhicules (comme le problème multi-dépôts~\cite{Sorensen_2017}).
- 
-Toutefois cette méta-heuristique reste longue à exécuter, il pourrait donc être intéressant de voir si une autre condition d'arrêt à $H_c$ donne d'aussi bons résultats, avec un meilleur temps d'exécution.
+A travers cet article, nous nous sommes intéressés dans un premier temps à un algorithme permettant d'obtenir une solution initiale de bonne qualité. Puis nous avons proposé un algorithme d'optimisation, à partir de l'heuristique proposé par Arnold et Sörensen~\cite{Sorensen_2017}. Nous avons ensuite cherché à extraire de la connaissance des solutions initiales obtenues, pour pouvoir finalement l'intégrer dans l'algorithme d'optimisation retenu. 
+L'algorithme résultant de ce travail, est la \emph{Learning Heuristic} décrite dans l'algorithme~\ref{algo:LH}. 
+
+Cette heuristique a donné de très bons résultats sur les petits ensembles d'instances A, B et P. Les résultats obtenus ensuite sur l'ensemble \emph{Golden} étaient moins bons, bien que nous soyons parvenus à trouver une nouvelle meilleure solution à l'instance \emph{Golden-01}.
+
+Bien que l'heuristique puisse être utilisée avec n'importe quel algorithme d'optimisation, celui retenu a l'avantage d'être facilement adaptable à d'autres problèmes de tournées de véhicules (comme le problème multi-dépôts~\cite{Sorensen_2017}). 
+L'un des principaux inconvénients de cette heuristique reste toutefois son temps d'exécution.
+
+Pour améliorer notre \emph{Learning Heuristic}, il faudrait apprendre différemment ou de manière plus efficace, en s'aidant notamment de la meilleure solution courante obtenue pendant l'exécution. 
 
 
 \section*{Remerciements}

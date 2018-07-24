@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.11)  19 JUL 2018 19:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.11)  24 JUL 2018 18:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -607,26 +607,26 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 ) (./rapport.aux)
 \openout1 = `rapport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Try loading font information for T1+ppl on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 29.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
-LaTeX Info: Redefining \degres on input line 27.
-LaTeX Info: Redefining \dots on input line 27.
-LaTeX Info: Redefining \up on input line 27.
+LaTeX Info: Redefining \degres on input line 29.
+LaTeX Info: Redefining \dots on input line 29.
+LaTeX Info: Redefining \up on input line 29.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -694,56 +694,56 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 33.
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 35.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 33.
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 35.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 33.
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 35.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 33.
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 35.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 33.
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 35.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 35.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 37.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 40.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 42.
 LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <10.95> not available
-(Font)              Font shape `T1/ppl/b/it' tried instead on input line 40.
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 42.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 47.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 49.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 70.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 72.
  [2]
 <Instance.png, id=15, 462.528pt x 346.896pt>
 File: Instance.png Graphic file (type png)
  <use Instance.png>
-Package pdftex.def Info: Instance.png used on input line 120.
+Package pdftex.def Info: Instance.png used on input line 122.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (22.89516pt too wide) in paragraph at lines 120--121
+Overfull \hbox (22.89516pt too wide) in paragraph at lines 122--123
  [][] 
  []
 
@@ -751,10 +751,10 @@ Overfull \hbox (22.89516pt too wide) in paragraph at lines 120--121
 File: solutionNoCapacity.png Graphic file (type png)
 
 <use solutionNoCapacity.png>
-Package pdftex.def Info: solutionNoCapacity.png used on input line 127.
+Package pdftex.def Info: solutionNoCapacity.png used on input line 129.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (22.89516pt too wide) in paragraph at lines 127--128
+Overfull \hbox (22.89516pt too wide) in paragraph at lines 129--130
  [][] 
  []
 
@@ -763,7 +763,7 @@ Overfull \hbox (22.89516pt too wide) in paragraph at lines 127--128
 File: solutionCapacity.png Graphic file (type png)
 
 <use solutionCapacity.png>
-Package pdftex.def Info: solutionCapacity.png used on input line 149.
+Package pdftex.def Info: solutionCapacity.png used on input line 151.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
  [4 <./solutionCapacity.png>] [5]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <8> not available
@@ -840,205 +840,181 @@ Package pdftex.def Info: cross_exchange_big.png used on input line 495.
 File: test4_20_init.png Graphic file (type png)
 
 <use test4_20_init.png>
-Package pdftex.def Info: test4_20_init.png used on input line 538.
+Package pdftex.def Info: test4_20_init.png used on input line 537.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
  <test4_20_LKopt.png, id=77, 462.528pt x 346.896pt>
 File: test4_20_LKopt.png Graphic file (type png)
 
 <use test4_20_LKopt.png>
-Package pdftex.def Info: test4_20_LKopt.png used on input line 539.
+Package pdftex.def Info: test4_20_LKopt.png used on input line 538.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
  [13 <./test4_20_init.png> <./test4_20_LKopt.png>]
-<edges190115.png, id=84, 462.528pt x 346.896pt>
+[14] <edges190115.png, id=87, 462.528pt x 346.896pt>
 File: edges190115.png Graphic file (type png)
  <use edges190115.png>
-Package pdftex.def Info: edges190115.png used on input line 621.
+Package pdftex.def Info: edges190115.png used on input line 628.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
-<edges101010.png, id=85, 462.528pt x 346.896pt>
+<edges101010.png, id=88, 462.528pt x 346.896pt>
 File: edges101010.png Graphic file (type png)
  <use edges101010.png>
-Package pdftex.def Info: edges101010.png used on input line 628.
+Package pdftex.def Info: edges101010.png used on input line 635.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
-<edges010101.png, id=86, 462.528pt x 346.896pt>
+<edges010101.png, id=89, 462.528pt x 346.896pt>
 File: edges010101.png Graphic file (type png)
  <use edges010101.png>
-Package pdftex.def Info: edges010101.png used on input line 635.
+Package pdftex.def Info: edges010101.png used on input line 642.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
-<edgesSol.png, id=87, 462.528pt x 346.896pt>
+<edgesSol.png, id=90, 462.528pt x 346.896pt>
 File: edgesSol.png Graphic file (type png)
  <use edgesSol.png>
-Package pdftex.def Info: edgesSol.png used on input line 642.
+Package pdftex.def Info: edgesSol.png used on input line 649.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
- [14] [15 <./edges190115.png> <./edges101010.png> <./edges010101.png> <./edgesS
-ol.png>]
-[16] <instance3706.png, id=101, 462.528pt x 346.896pt>
+ [15 <./edges190115.png> <./edges101010.png> <./edges010101.png> <./edgesSol.pn
+g>] [16]
+<instance3706.png, id=101, 462.528pt x 346.896pt>
 File: instance3706.png Graphic file (type png)
  <use instance3706.png>
-Package pdftex.def Info: instance3706.png used on input line 715.
+Package pdftex.def Info: instance3706.png used on input line 722.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
 <best3706.png, id=102, 462.528pt x 346.896pt>
 File: best3706.png Graphic file (type png)
  <use best3706.png>
-Package pdftex.def Info: best3706.png used on input line 724.
+Package pdftex.def Info: best3706.png used on input line 731.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
 <Instance6509.png, id=103, 462.528pt x 346.896pt>
 File: Instance6509.png Graphic file (type png)
  <use Instance6509.png>
-Package pdftex.def Info: Instance6509.png used on input line 732.
+Package pdftex.def Info: Instance6509.png used on input line 739.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
 <Solution6509.png, id=104, 462.528pt x 346.896pt>
 File: Solution6509.png Graphic file (type png)
  <use Solution6509.png>
-Package pdftex.def Info: Solution6509.png used on input line 740.
+Package pdftex.def Info: Solution6509.png used on input line 747.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
 <Instance10104.png, id=105, 462.528pt x 346.896pt>
 File: Instance10104.png Graphic file (type png)
  <use Instance10104.png>
-Package pdftex.def Info: Instance10104.png used on input line 748.
+Package pdftex.def Info: Instance10104.png used on input line 755.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
 <Solution10104.png, id=106, 462.528pt x 346.896pt>
 File: Solution10104.png Graphic file (type png)
  <use Solution10104.png>
-Package pdftex.def Info: Solution10104.png used on input line 756.
+Package pdftex.def Info: Solution10104.png used on input line 763.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[17 <./instance3706.png> <./best3706.png> <./Instance6509.png> <./Solution6509.
-png> <./Instance10104.png> <./Solution10104.png>] [18]
-<InfluenceRangA3706.png, id=119, 861.9703pt x 625.58719pt>
+[17] [18] [19] [20] <InfluenceRangA3706.png, id=120, 861.9703pt x 625.58719pt>
 File: InfluenceRangA3706.png Graphic file (type png)
 
 <use InfluenceRangA3706.png>
-Package pdftex.def Info: InfluenceRangA3706.png used on input line 967.
-(pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
-
-Overfull \hbox (7.12378pt too wide) in paragraph at lines 967--968
- [][] 
- []
-
-<InfluenceSeuilA3706.png, id=120, 861.9703pt x 625.58719pt>
-File: InfluenceSeuilA3706.png Graphic file (type png)
-
-<use InfluenceSeuilA3706.png>
-Package pdftex.def Info: InfluenceSeuilA3706.png used on input line 976.
-(pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
-
-Overfull \hbox (7.12378pt too wide) in paragraph at lines 976--977
- [][] 
- []
+Package pdftex.def Info: InfluenceRangA3706.png used on input line 974.
+(pdftex.def)             Requested size: 275.83614pt x 200.19199pt.
 
 <InfluenceRangA6509.png, id=121, 861.9703pt x 625.58719pt>
 File: InfluenceRangA6509.png Graphic file (type png)
 
 <use InfluenceRangA6509.png>
-Package pdftex.def Info: InfluenceRangA6509.png used on input line 984.
-(pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
+Package pdftex.def Info: InfluenceRangA6509.png used on input line 981.
+(pdftex.def)             Requested size: 275.83614pt x 200.19199pt.
 
-Overfull \hbox (7.12378pt too wide) in paragraph at lines 984--985
- [][] 
- []
-
-<InfluenceSeuilA6509.png, id=122, 861.9703pt x 625.58719pt>
-File: InfluenceSeuilA6509.png Graphic file (type png)
-
-<use InfluenceSeuilA6509.png>
-Package pdftex.def Info: InfluenceSeuilA6509.png used on input line 992.
-(pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
-
-Overfull \hbox (7.12378pt too wide) in paragraph at lines 992--993
- [][] 
- []
-
-<InfluenceRangP10104.png, id=123, 861.9703pt x 625.58719pt>
+<InfluenceRangP10104.png, id=122, 861.9703pt x 625.58719pt>
 File: InfluenceRangP10104.png Graphic file (type png)
 
 <use InfluenceRangP10104.png>
-Package pdftex.def Info: InfluenceRangP10104.png used on input line 1000.
-(pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
+Package pdftex.def Info: InfluenceRangP10104.png used on input line 987.
+(pdftex.def)             Requested size: 275.83614pt x 200.19199pt.
 
-Overfull \hbox (7.12378pt too wide) in paragraph at lines 1000--1001
- [][] 
- []
 
-<InfluenceSeuilP10104.png, id=124, 861.9703pt x 625.58719pt>
+LaTeX Warning: Float too large for page by 2.86906pt on input line 992.
+
+[21 <./instance3706.png> <./best3706.png> <./Instance6509.png> <./Solution6509.
+png> <./Instance10104.png> <./Solution10104.png>]
+<InfluenceSeuilA3706.png, id=132, 861.9703pt x 625.58719pt>
+File: InfluenceSeuilA3706.png Graphic file (type png)
+
+<use InfluenceSeuilA3706.png>
+Package pdftex.def Info: InfluenceSeuilA3706.png used on input line 998.
+(pdftex.def)             Requested size: 275.83614pt x 200.19199pt.
+
+<InfluenceSeuilA6509.png, id=133, 861.9703pt x 625.58719pt>
+File: InfluenceSeuilA6509.png Graphic file (type png)
+
+<use InfluenceSeuilA6509.png>
+Package pdftex.def Info: InfluenceSeuilA6509.png used on input line 1004.
+(pdftex.def)             Requested size: 275.83614pt x 200.19199pt.
+
+<InfluenceSeuilP10104.png, id=134, 861.9703pt x 625.58719pt>
 File: InfluenceSeuilP10104.png Graphic file (type png)
 
 <use InfluenceSeuilP10104.png>
-Package pdftex.def Info: InfluenceSeuilP10104.png used on input line 1008.
-(pdftex.def)             Requested size: 215.49205pt x 156.39641pt.
+Package pdftex.def Info: InfluenceSeuilP10104.png used on input line 1010.
+(pdftex.def)             Requested size: 275.83614pt x 200.19199pt.
 
-Overfull \hbox (7.12378pt too wide) in paragraph at lines 1008--1009
- [][] 
- []
 
-[19] [20] [21 <./InfluenceRangA3706.png> <./InfluenceSeuilA3706.png> <./Influen
-ceRangA6509.png> <./InfluenceSeuilA6509.png> <./InfluenceRangP10104.png> <./Inf
-luenceSeuilP10104.png>]
+LaTeX Warning: Float too large for page by 2.86906pt on input line 1015.
+
 File: CWinit.png Graphic file (type png)
- <use CWinit.png>
-Package pdftex.def Info: CWinit.png used on input line 1039.
+<use CWinit.png>
+Package pdftex.def Info: CWinit.png used on input line 1041.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
-
-<learning.png, id=141, 462.528pt x 346.896pt>
+ <learning.png, id=135, 462.528pt x 346.896pt>
 File: learning.png Graphic file (type png)
- <use learning.png>
-Package pdftex.def Info: learning.png used on input line 1045.
+
+<use learning.png>
+Package pdftex.def Info: learning.png used on input line 1047.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
- [22 <./learning.png>]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+[22] [23 <./InfluenceRangA3706.png> <./InfluenceRangA6509.png> <./InfluenceRang
+P10104.png>] [24 <./InfluenceSeuilA3706.png> <./InfluenceSeuilA6509.png> <./Inf
+luenceSeuilP10104.png>] [25 <./learning.png>] [26] [27] [28] [29]
+<NewBest5499.png, id=168, 1339.1631pt x 802.9197pt>
+File: NewBest5499.png Graphic file (type png)
+ <use NewBest5499.png>
+Package pdftex.def Info: NewBest5499.png used on input line 1376.
+(pdftex.def)             Requested size: 428.54095pt x 256.93954pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[23] [24] (./rapport.bbl [25] [26]
+[30] (./rapport.bbl
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 57.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)) [27] (./rapport.aux) ) 
+))
+[31] [32 <./NewBest5499.png>] (./rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 8153 strings out of 493029
- 115947 string characters out of 6136234
- 352792 words of memory out of 5000000
- 11498 multiletter control sequences out of 15000+600000
+ 8161 strings out of 493029
+ 116066 string characters out of 6136234
+ 356865 words of memory out of 5000000
+ 11505 multiletter control sequences out of 15000+600000
  48893 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,15n,40p,760b,970s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1
-.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/mathpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/mathpazo/fplmri.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt109
-5.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on rapport.pdf (27 pages, 1554106 bytes).
+{/usr/share/texmf/fonts/enc/dvip
+s/cm-super/cm-super-t1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/
+8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/share/texmf/fonts/type1/p
+ublic/cm-super/sftt1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/pala
+tino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on rapport.pdf (32 pages, 1743159 bytes).
 PDF statistics:
- 198 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
+ 217 PDF objects out of 1000 (max. 8388607)
+ 105 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 166 words of extra memory for PDF output out of 10000 (max. 10000000)
 
