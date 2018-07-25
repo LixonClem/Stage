@@ -22,14 +22,11 @@ G.~Clarke and J.~W. Wright.
   points.
 \newblock {\em Operations Research}, 1964.
 
-<<<<<<< HEAD
-=======
 \bibitem{Gaskell}
 T.~J. GASKELL.
 \newblock Bases for vehicle fleet scheduling.
 \newblock {\em Operational Research Quarterly}, 18:281--295, September 1967.
 
->>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 \bibitem{ME_2012}
 Marie-Eleonore Marmion.
 \newblock {\em Recherche locale et optimisation combinatoire : de l’analyse
@@ -37,8 +34,6 @@ Marie-Eleonore Marmion.
 \newblock PhD thesis, Université des Sciences et Technologie de Lille - Lille
   I, 2011, Mars 2012.
 
-<<<<<<< HEAD
-=======
 \bibitem{Martello}
 Silvano Martello and Paolo Toth.
 \newblock {\em Knapsack problems: algorithms and computer implementations}.
@@ -50,7 +45,6 @@ H.~Paessens.
 \newblock {\em European Journal of Operational Research}, 34:336--344, March
   1988.
 
->>>>>>> d32b03c5726802344b3ef6b4445f10535cd15396
 \bibitem{Papadimitriou_1982}
 C.~H. Papadimitriou and K.~Steiglitz.
 \newblock {\em Combinatorial optimization : algorithms and complexity}.
