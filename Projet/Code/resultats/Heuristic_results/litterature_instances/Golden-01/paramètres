@@ -1,0 +1,8 @@
+obtention de 5540:
+
+tps limite = 60s
+gs > n/2
+N > n
+
+apprentissage : 5 gén de 100, rang = n/2
+boucles : i -> 10 (apprentissage après avoir ts les j), j-> 5 (apprentissage direct)

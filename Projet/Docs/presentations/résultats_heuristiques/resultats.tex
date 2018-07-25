@@ -1,0 +1,194 @@
+\documentclass{beamer}
+
+
+\usepackage[french,english]{babel}
+
+\usepackage[T1]{fontenc}
+
+\usepackage[utf8]{inputenc}
+
+
+\usetheme{Warsaw}
+\title{Résultats de l'heuristique}
+
+\author{Clément Legrand}
+\date{7 Juin 2018}
+
+\begin{document}
+
+\section{Exécution de l'heuristique}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Exécution}
+\begin{block}{Détail}
+\begin{itemize}
+\item Calcul SI avec CW, et amélioration avec LK;
+\item Itérations en exécutant successivement EC, CE, LK.
+\item On repart de la dernière solution globale toutes les $25$ itérations sans améliorations;
+\item Si on trouve une amélioration, on met à jour la solution globale;
+\item Toutes les $100$ itérations sans améliorations, on change de fonction de pénalisation.
+\item On quitte la boucle au bout de $1500$ itérations successives sans améliorations;
+\item A la fin on essaie de supprimer toutes les routes qui n'ont qu'un client.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\section{Présentation résultats}
+
+\subsection{Résultats}
+
+\begin{frame}{Instance A-n37-k06}
+Exécution de l'heuristique sur des instances de la littérature:
+\begin{center}
+\includegraphics[scale=0.3]{initiale_A-n37-k06.png}
+\includegraphics[scale=0.3]{solution_A-n37-k06.png}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Comparaison}
+Pour pouvoir comparer entre la solution optimale et la solution obtenue:
+\begin{center}
+\includegraphics[scale=0.25]{A-n37-k6.png}
+\includegraphics[scale=0.35]{solution_A-n37-k06.png}
+\end{center}
+Coût global de $949$ (à gauche), contre $952$ (à droite).
+\end{frame}
+
+\begin{frame}{Instance A-n39-k05}
+Nouvelle instance choisie:
+\begin{center}
+\includegraphics[scale=0.3]{initiale_A-n39-k05.png}
+\includegraphics[scale=0.3]{solution_A-n39-k05.png}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Comparaison}
+Comparaison avec la solution optimale:
+\begin{center}
+\includegraphics[scale=0.25]{A-n39-k5.png}
+\includegraphics[scale=0.35]{solution_A-n39-k05.png}
+\end{center}
+Coût global de $822$ (à gauche), contre $831$ (à droite).
+\end{frame}
+
+\subsection{Analyse}
+
+\begin{frame}{Paramètres utilisés}
+Paramètres qui restent fixes dans l'heuristique:
+\begin{block}{Valeurs choisies}
+\begin{itemize}
+\item Calcul des 30 pp-voisins;
+\item Au plus 3 déplacements dans EC;
+\item Arrêt au bout de $1500$ itérations sans améliorations.
+\end{itemize}
+\end{block}
+Déterminées grâce à l'article et de manière empirique.
+\end{frame}
+
+\begin{frame}{Analyse}
+Calcul du pourcentage d'erreur avec $1-\frac{c_{opt}}{c_{sol}}$
+\begin{exampleblock}{Pourcentage d'erreur}
+Sur $10$ instances, $0.8\%$ d'erreurs entre les solutions calculées et les solutions optimales. min = 0\% et max = 2.2\%. ($Q_1 = 0.34$, $ med = 0.69$, $Q_3 = 1.18$). 
+\end{exampleblock}
+
+\begin{alertblock}{Influence solution initiale}
+Les solutions obtenues avec l'heuristique dépendent de la solution initiale: meilleures SI $\nRightarrow$ meilleures SG 
+\end{alertblock}
+
+\end{frame}
+
+\begin{frame}{Exemples}
+\begin{center}
+\includegraphics[scale=0.3]{bestInitiale_A-n37-k06.png}
+\includegraphics[scale=0.3]{badSolution_A-n37-k06.png}
+\end{center}
+Passage d'un coût de $1093$ (à gauche), à $1004$ (à droite).
+\end{frame}
+
+\begin{frame}{Exemples}
+\begin{center}
+\includegraphics[scale=0.3]{bestInitiale_A-n39-k05.png}
+\includegraphics[scale=0.3]{badSolution_A-n39-k05.png}
+\end{center}
+Passage d'un coût de $1010$ (à gauche), à $837$ (à droite).
+\end{frame}
+
+\section{Arêtes fixes}
+
+\begin{frame}{Présentation}
+Des arêtes peuvent rester inchangées lors de l'algorithme:
+
+\begin{center}
+\includegraphics[scale=0.30]{commonEdges_A-n37-k06.png}
+\includegraphics[scale=0.30]{commonEdges_A-n39-k05.png}
+\end{center}
+\begin{block}{Objectif}
+Peut-on repérer à l'avance ces arêtes ?
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Comment caractériser ces arêtes ?}
+\begin{block}{Remarques}
+\begin{itemize}
+\item Beaucoup d'arêtes fixes autour du dépôt et en bordure de zone;
+\item Une des tournée initiale n'est presque pas modifiée;
+\end{itemize}
+\end{block}
+
+\begin{alertblock}{Idée}
+
+Utiliser les métriques définies dans l'heuristique: coût, largeur et profondeur.
+
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Rang d'une arête}
+\begin{block}{Calcul du rang moyen}
+\begin{itemize}
+\item Pour chaque arête $(i,j)$, calculer sa profondeur $d$, sa largeur $w$ et son coût $c$;
+\item On trie les arêtes pour chaque métrique, puis lui attribuer un rang avec la métrique considérée;
+\item Chaque arête possède ainsi $3$ rangs ($r_d$,$r_w$,$r_c$); son rang moyen est la moyenne de ses rangs;
+\item Comparaison entre arêtes conservées et arêtes dans la solution.
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Résultats}
+Correspondance sur les premières arêtes. Les arêtes de pire rang moyen ne sont jamais prises.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Nouvelle idée}
+\begin{alertblock}{Idée}
+Regarder les rangs séparément
+\end{alertblock}
+
+\begin{block}{Mise en place}
+\begin{itemize}
+\item Compter le nombre d'arêtes conservées qui possèdent au moins un certain rang (e.g. les arêtes qui ont au moins un rang inférieur à 5);
+\item Comparer avec le nombre total d'arêtes qui ont cette propriété;
+\item Essayer de trouver des rangs critiques, qui permettent de conserver ou d'éliminer une arête.
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Résultats}
+On conserve à coups sûrs des arêtes qui ont leurs trois rangs inférieurs à 10.
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}{Prochainement}
+
+\begin{itemize}
+\item Faire converger l'algorithme indépendamment de la solution initiale ?;
+\item Poursuivre la caractérisation des arêtes conservées.
+\end{itemize}
+
+\end{frame}
+
+\end{document}

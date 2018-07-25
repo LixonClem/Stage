@@ -1,0 +1,8 @@
+Arêtes communes entre la solution initiale de CW et la solution
+obtenue avec l'heuristique (v3). 
+Paramètres choisis:
+	- KNN = 30
+	- Reloc = 3 
+	- lam = 1.4
+	- Capacity = 250 (res1), 100 (res2), 50 (res3)
+	

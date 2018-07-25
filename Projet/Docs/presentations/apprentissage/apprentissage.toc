@@ -1,0 +1,10 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Apprentissage}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Description}{2}{0}{1}
+\beamer@subsectionintoc {1}{2}{R\IeC {\'e}sultats A-n37-k06}{4}{0}{1}
+\beamer@subsectionintoc {1}{3}{R\IeC {\'e}sultats A-n65-k09}{7}{0}{1}
+\beamer@subsectionintoc {1}{4}{R\IeC {\'e}sultats P-n101-k04}{10}{0}{1}
+\beamer@sectionintoc {2}{Int\IeC {\'e}gration de la connaissance dans un algorithme}{15}{0}{2}
+\beamer@subsectionintoc {2}{1}{Pr\IeC {\'e}sentation algorithme}{15}{0}{2}
+\beamer@subsectionintoc {2}{2}{R\IeC {\'e}sultats}{17}{0}{2}

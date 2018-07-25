@@ -1,0 +1,900 @@
+
+
+#################
+Generate = 100
+Stat = [968.3942597476394, 1527.8797591138098, 1122.976369806188]
+Percent = 10
+Requis = 50.0
+
+edges = [(19, 31), (0, 13), (11, 12), (21, 28), (0, 18), (0, 24), (5, 8), (31, 34), (0, 25), (0, 7), (15, 32), (0, 6), (0, 36), (0, 4), (16, 24), (3, 5), (12, 22), (22, 23), (15, 30), (2, 28), (0, 27), (0, 14), (29, 36)]
+
+true = [True, True, True, False, True, True, True, False, False, True, True, False, False, True, False, True, True, True, True, True, True, True, True]
+nb corrects = 17
+nb aretes = 23
+accuracy = 0.7391304347826086
+
+
+
+#################
+Generate = 100
+Stat = [978.7084981153173, 1514.4216686572113, 1116.9758017546574]
+Percent = 10
+Requis = 50.0
+
+edges = [(1, 3), (9, 33), (0, 13), (31, 34), (0, 18), (16, 24), (19, 31), (21, 28), (5, 8), (27, 35), (0, 7), (11, 12), (0, 6), (0, 24), (15, 30), (12, 22), (0, 4), (0, 36), (15, 32), (0, 27), (2, 28), (22, 23), (0, 14), (3, 5), (29, 36)]
+
+true = [True, False, True, False, True, False, True, False, True, False, True, True, False, True, True, True, True, False, True, True, True, True, True, True, True]
+nb corrects = 18
+nb aretes = 25
+accuracy = 0.72
+
+
+
+#################
+Generate = 100
+Stat = [968.3942597476394, 1536.5175459303846, 1113.6390400955313]
+Percent = 10
+Requis = 50.0
+
+edges = [(1, 3), (10, 11), (31, 34), (0, 29), (9, 33), (0, 25), (21, 28), (27, 35), (0, 18), (5, 8), (19, 31), (0, 24), (11, 12), (16, 24), (0, 36), (12, 22), (0, 7), (0, 4), (0, 6), (15, 30), (15, 32), (0, 27), (3, 5), (0, 14), (2, 28), (22, 23), (29, 36)]
+
+true = [True, True, False, False, False, False, False, False, True, True, True, True, True, False, False, True, True, True, False, True, True, True, True, True, True, True, True]
+nb corrects = 18
+nb aretes = 27
+accuracy = 0.6666666666666666
+
+
+
+#################
+Generate = 100
+Stat = [996.1392876032229, 1519.522537054009, 1099.3934157353222]
+Percent = 10
+Requis = 50.0
+
+edges = [(16, 24), (5, 8), (31, 34), (0, 6), (21, 28), (0, 7), (0, 18), (0, 24), (15, 30), (27, 35), (0, 36), (0, 4), (3, 5), (11, 12), (12, 22), (0, 14), (15, 32), (2, 28), (22, 23), (29, 36), (0, 27)]
+
+true = [False, True, False, False, False, True, True, True, True, False, False, True, True, True, True, True, True, True, True, True, True]
+nb corrects = 15
+nb aretes = 21
+accuracy = 0.7142857142857143
+
+
+
+#################
+Generate = 100
+Stat = [983.2063165900754, 1561.1912670288807, 1101.6171067827395]
+Percent = 10
+Requis = 50.0
+
+edges = [(17, 34), (0, 13), (1, 3), (0, 18), (16, 24), (21, 28), (0, 24), (27, 35), (5, 8), (0, 7), (12, 22), (0, 6), (11, 12), (0, 4), (0, 27), (15, 30), (0, 36), (15, 32), (3, 5), (0, 14), (2, 28), (22, 23), (29, 36)]
+
+true = [True, True, True, True, False, False, True, False, True, True, True, False, True, True, True, True, False, True, True, True, True, True, True]
+nb corrects = 18
+nb aretes = 23
+accuracy = 0.782608695652174
+
+
+
+#################
+Generate = 500
+Stat = [968.3942597476394, 1584.642090412441, 1117.6660681484418]
+Percent = 10
+Requis = 250.0
+
+edges = [(31, 34), (27, 35), (0, 25), (5, 8), (21, 28), (16, 24), (0, 18), (0, 6), (0, 24), (0, 7), (15, 30), (0, 36), (11, 12), (12, 22), (15, 32), (0, 4), (3, 5), (0, 14), (0, 27), (2, 28), (22, 23), (29, 36)]
+
+true = [False, False, False, True, False, False, True, False, True, True, True, False, True, True, True, True, True, True, True, True, True, True]
+nb corrects = 15
+nb aretes = 22
+accuracy = 0.6818181818181818
+
+
+
+#################
+Generate = 500
+Stat = [968.3942597476394, 1587.2376243691547, 1109.282018698591]
+Percent = 10
+Requis = 250.0
+
+edges = [(0, 25), (1, 3), (31, 34), (16, 24), (0, 18), (21, 28), (27, 35), (5, 8), (0, 7), (0, 24), (0, 6), (11, 12), (12, 22), (0, 36), (0, 4), (15, 30), (15, 32), (3, 5), (0, 27), (0, 14), (2, 28), (22, 23), (29, 36)]
+
+true = [False, True, False, False, True, False, False, True, True, True, False, True, True, False, True, True, True, True, True, True, True, True, True]
+nb corrects = 16
+nb aretes = 23
+accuracy = 0.6956521739130435
+
+
+
+#################
+Generate = 500
+Stat = [968.3942597476394, 1578.6780184718239, 1114.5977468843264]
+Percent = 10
+Requis = 250.0
+
+edges = [(31, 34), (16, 24), (0, 18), (5, 8), (21, 28), (27, 35), (0, 24), (0, 6), (0, 7), (15, 30), (0, 36), (11, 12), (12, 22), (0, 4), (15, 32), (3, 5), (0, 14), (22, 23), (0, 27), (2, 28), (29, 36)]
+
+true = [False, False, True, True, False, False, True, False, True, True, False, True, True, True, True, True, True, True, True, True, True]
+nb corrects = 15
+nb aretes = 21
+accuracy = 0.7142857142857143
+
+
+
+#################
+Generate = 500
+Stat = [968.3942597476394, 1580.2377876538314, 1114.3839079689371]
+Percent = 10
+Requis = 250.0
+
+edges = [(1, 3), (31, 34), (16, 24), (0, 18), (27, 35), (5, 8), (21, 28), (0, 7), (0, 6), (0, 24), (15, 30), (11, 12), (0, 36), (12, 22), (0, 4), (15, 32), (0, 14), (3, 5), (22, 23), (0, 27), (2, 28), (29, 36)]
+
+true = [True, False, False, True, False, True, False, True, False, True, True, True, False, True, True, True, True, True, True, True, True, True]
+nb corrects = 16
+nb aretes = 22
+accuracy = 0.7272727272727273
+
+
+
+#################
+Generate = 500
+Stat = [968.3942597476394, 1587.2376243691547, 1104.4143033277833]
+Percent = 10
+Requis = 250.0
+
+edges = [(31, 34), (5, 8), (27, 35), (0, 18), (21, 28), (16, 24), (0, 6), (0, 24), (0, 7), (0, 36), (11, 12), (15, 30), (15, 32), (3, 5), (12, 22), (0, 4), (0, 14), (0, 27), (22, 23), (2, 28), (29, 36)]
+
+true = [False, True, False, True, False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, True, True]
+nb corrects = 15
+nb aretes = 21
+accuracy = 0.7142857142857143
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1556.386213198354, 1113.8457030862944]
+Percent = 10
+Requis = 500.0
+
+edges = [(19, 31), (0, 25), (0, 13), (1, 3), (31, 34), (16, 24), (21, 28), (5, 8), (27, 35), (0, 18), (0, 6), (0, 24), (0, 7), (11, 12), (0, 36), (15, 30), (12, 22), (15, 32), (0, 4), (3, 5), (0, 27), (0, 14), (22, 23), (2, 28), (29, 36)]
+
+true = [True, False, True, True, False, False, False, True, False, True, False, True, True, True, False, True, True, True, True, True, True, True, True, True, True]
+nb corrects = 18
+nb aretes = 25
+accuracy = 0.72
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1584.642090412441, 1112.1332836550068]
+Percent = 10
+Requis = 500.0
+
+edges = [(31, 34), (27, 35), (0, 18), (5, 8), (16, 24), (21, 28), (0, 7), (0, 24), (0, 6), (15, 30), (0, 36), (11, 12), (12, 22), (0, 4), (15, 32), (3, 5), (0, 14), (0, 27), (2, 28), (22, 23), (29, 36)]
+
+true = [False, False, True, True, False, False, True, True, False, True, False, True, True, True, True, True, True, True, True, True, True]
+nb corrects = 15
+nb aretes = 21
+accuracy = 0.7142857142857143
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1587.2376243691547, 1099.3349658619854]
+Percent = 10
+Requis = 500.0
+
+edges = [(0, 25), (31, 34), (1, 3), (16, 24), (5, 8), (27, 35), (0, 18), (21, 28), (0, 6), (0, 24), (0, 7), (15, 30), (0, 36), (11, 12), (15, 32), (0, 4), (12, 22), (3, 5), (0, 14), (0, 27), (22, 23), (2, 28), (29, 36)]
+
+true = [False, False, True, False, True, False, True, False, False, True, True, True, False, True, True, True, True, True, True, True, True, True, True]
+nb corrects = 16
+nb aretes = 23
+accuracy = 0.6956521739130435
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1580.2377876538314, 1104.5101229462346]
+Percent = 10
+Requis = 500.0
+
+edges = [(1, 3), (0, 25), (31, 34), (16, 24), (27, 35), (5, 8), (0, 18), (21, 28), (0, 24), (0, 7), (0, 6), (11, 12), (0, 36), (12, 22), (15, 30), (15, 32), (0, 4), (3, 5), (0, 14), (0, 27), (2, 28), (22, 23), (29, 36)]
+
+true = [True, False, False, False, False, True, True, False, True, True, False, True, False, True, True, True, True, True, True, True, True, True, True]
+nb corrects = 16
+nb aretes = 23
+accuracy = 0.6956521739130435
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1551.4255424372293, 1110.1110834092199]
+Percent = 10
+Requis = 500.0
+
+edges = [(31, 34), (5, 8), (16, 24), (27, 35), (0, 18), (21, 28), (0, 6), (0, 24), (0, 7), (15, 30), (12, 22), (11, 12), (0, 4), (0, 36), (15, 32), (3, 5), (0, 14), (0, 27), (22, 23), (2, 28), (29, 36)]
+
+true = [False, True, False, False, True, False, False, True, True, True, True, True, True, False, True, True, True, True, True, True, True]
+nb corrects = 15
+nb aretes = 21
+accuracy = 0.7142857142857143
+
+
+
+#################
+Generate = 100
+Stat = [978.7084981153173, 1495.601184160646, 1113.4884285790033]
+Percent = 10
+Requis = 75.0
+
+edges = [(15, 30), (22, 23), (3, 5), (2, 28), (0, 14), (0, 27), (29, 36)]
+
+true = [True, True, True, True, True, True, True]
+nb corrects = 7
+nb aretes = 7
+accuracy = 1.0
+
+
+
+#################
+Generate = 100
+Stat = [980.020762864307, 1542.4580104180777, 1099.2485308738424]
+Percent = 10
+Requis = 75.0
+
+edges = [(0, 4), (0, 14), (0, 27), (22, 23), (2, 28), (29, 36)]
+
+true = [True, True, True, True, True, True]
+nb corrects = 6
+nb aretes = 6
+accuracy = 1.0
+
+
+
+#################
+Generate = 100
+Stat = [978.7084981153173, 1517.9365118601404, 1100.5611324866595]
+Percent = 10
+Requis = 75.0
+
+edges = [(0, 4), (3, 5), (0, 27), (0, 14), (22, 23), (29, 36), (2, 28)]
+
+true = [True, True, True, True, True, True, True]
+nb corrects = 7
+nb aretes = 7
+accuracy = 1.0
+
+
+
+#################
+Generate = 100
+Stat = [968.3942597476394, 1535.1612686935712, 1089.849822153711]
+Percent = 10
+Requis = 75.0
+
+edges = [(11, 12), (0, 27), (0, 14), (2, 28), (22, 23), (29, 36)]
+
+true = [True, True, True, True, True, True]
+nb corrects = 6
+nb aretes = 6
+accuracy = 1.0
+
+
+
+#################
+Generate = 100
+Stat = [980.020762864307, 1527.8797591138098, 1114.5502313588468]
+Percent = 10
+Requis = 75.0
+
+edges = [(0, 4), (0, 14), (2, 28), (29, 36), (22, 23), (0, 27)]
+
+true = [True, True, True, True, True, True]
+nb corrects = 6
+nb aretes = 6
+accuracy = 1.0
+
+
+
+#################
+Generate = 500
+Stat = [978.7084981153173, 1574.9679465756926, 1104.2914370432434]
+Percent = 10
+Requis = 375.0
+
+edges = [(12, 22), (3, 5), (0, 4), (15, 32), (0, 14), (0, 27), (22, 23), (2, 28), (29, 36)]
+
+true = [True, True, True, True, True, True, True, True, True]
+nb corrects = 9
+nb aretes = 9
+accuracy = 1.0
+
+
+
+#################
+Generate = 500
+Stat = [980.020762864307, 1561.1912670288807, 1107.7605488816544]
+Percent = 10
+Requis = 375.0
+
+edges = [(3, 5), (15, 30), (0, 14), (2, 28), (0, 27), (22, 23), (29, 36)]
+
+true = [True, True, True, True, True, True, True]
+nb corrects = 7
+nb aretes = 7
+accuracy = 1.0
+
+
+
+#################
+Generate = 500
+Stat = [990.1390498576664, 1584.642090412441, 1110.4492718735385]
+Percent = 10
+Requis = 375.0
+
+edges = [(0, 14), (0, 27), (2, 28), (22, 23), (29, 36)]
+
+true = [True, True, True, True, True]
+nb corrects = 5
+nb aretes = 5
+accuracy = 1.0
+
+
+
+#################
+Generate = 500
+Stat = [980.020762864307, 1550.6891073100892, 1107.7411219424341]
+Percent = 10
+Requis = 375.0
+
+edges = [(15, 32), (0, 14), (0, 27), (22, 23), (2, 28), (29, 36)]
+
+true = [True, True, True, True, True, True]
+nb corrects = 6
+nb aretes = 6
+accuracy = 1.0
+
+
+
+#################
+Generate = 500
+Stat = [968.3942597476394, 1521.9867737093891, 1105.479328114938]
+Percent = 10
+Requis = 375.0
+
+edges = [(3, 5), (0, 27), (0, 14), (2, 28), (22, 23), (29, 36)]
+
+true = [True, True, True, True, True, True]
+nb corrects = 6
+nb aretes = 6
+accuracy = 1.0
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1584.642090412441, 1111.1639179377746]
+Percent = 10
+Requis = 750.0
+
+edges = [(0, 14), (0, 27), (2, 28), (22, 23), (29, 36)]
+
+true = [True, True, True, True, True]
+nb corrects = 5
+nb aretes = 5
+accuracy = 1.0
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1580.2377876538314, 1107.3866990928082]
+Percent = 10
+Requis = 750.0
+
+edges = [(3, 5), (0, 27), (0, 14), (22, 23), (2, 28), (29, 36)]
+
+true = [True, True, True, True, True, True]
+nb corrects = 6
+nb aretes = 6
+accuracy = 1.0
+
+
+
+#################
+Generate = 1000
+Stat = [978.7084981153173, 1587.2376243691547, 1108.2750101318265]
+Percent = 10
+Requis = 750.0
+
+edges = [(15, 32), (3, 5), (0, 14), (0, 27), (2, 28), (22, 23), (29, 36)]
+
+true = [True, True, True, True, True, True, True]
+nb corrects = 7
+nb aretes = 7
+accuracy = 1.0
+
+
+
+#################
+Generate = 1000
+Stat = [978.7084981153173, 1580.2377876538314, 1105.246497110045]
+Percent = 10
+Requis = 750.0
+
+edges = [(0, 4), (3, 5), (0, 27), (0, 14), (2, 28), (22, 23), (29, 36)]
+
+true = [True, True, True, True, True, True, True]
+nb corrects = 7
+nb aretes = 7
+accuracy = 1.0
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1584.642090412441, 1103.5241184849463]
+Percent = 10
+Requis = 750.0
+
+edges = [(0, 4), (0, 14), (0, 27), (2, 28), (22, 23), (29, 36)]
+
+true = [True, True, True, True, True, True]
+nb corrects = 6
+nb aretes = 6
+accuracy = 1.0
+
+
+
+#################
+Generate = 1000
+Stat = [980.020762864307, 1536.5175459303846, 1115.4066193797971]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (22, 23), (0, 14), (2, 28), (0, 27), (15, 32), (12, 22), (0, 4), (11, 12), (0, 36)]
+
+true = [True, True, True, True, True, True, True, True, True, False]
+nb corrects = 9
+nb aretes = 10
+accuracy = 0.9
+
+
+
+#################
+Generate = 1000
+Stat = [980.020762864307, 1584.642090412441, 1097.5985194845118]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (0, 14), (0, 27), (22, 23), (2, 28), (0, 4), (3, 5), (11, 12), (15, 32), (12, 22)]
+
+true = [True, True, True, True, True, True, True, True, True, True]
+nb corrects = 10
+nb aretes = 10
+accuracy = 1.0
+
+
+
+#################
+Generate = 1000
+Stat = [978.7084981153173, 1550.6891073100892, 1111.1018555994585]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (22, 23), (3, 5), (2, 28), (15, 32), (0, 27), (0, 4), (0, 14), (11, 12), (0, 36)]
+
+true = [True, True, True, True, True, True, True, True, True, False]
+nb corrects = 9
+nb aretes = 10
+accuracy = 0.9
+
+
+
+#################
+Generate = 1000
+Stat = [1002.0960171613945, 1530.7225507684252, 1113.6810155029564]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (2, 28), (0, 27), (22, 23), (0, 14), (15, 30), (3, 5), (0, 4), (12, 22), (15, 32)]
+
+true = [True, True, True, True, True, True, True, True, True, True]
+nb corrects = 10
+nb aretes = 10
+accuracy = 1.0
+
+
+
+#################
+Generate = 1000
+Stat = [980.020762864307, 1536.715615410759, 1095.0242371749841]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (22, 23), (2, 28), (0, 14), (0, 27), (0, 4), (12, 22), (11, 12), (15, 30), (3, 5)]
+
+true = [True, True, True, True, True, True, True, True, True, True]
+nb corrects = 10
+nb aretes = 10
+accuracy = 1.0
+
+
+
+#################
+Generate = 500
+Stat = [978.7084981153173, 1561.1912670288807, 1108.711370084092]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (2, 28), (0, 14), (22, 23), (0, 27), (3, 5), (15, 32), (0, 4), (0, 36), (15, 30)]
+
+true = [True, True, True, True, True, True, True, True, False, True]
+nb corrects = 9
+nb aretes = 10
+accuracy = 0.9
+
+
+
+#################
+Generate = 500
+Stat = [968.3942597476394, 1580.2377876538314, 1104.131659368914]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (2, 28), (22, 23), (0, 27), (0, 14), (0, 4), (3, 5), (15, 32), (11, 12), (0, 36)]
+
+true = [True, True, True, True, True, True, True, True, True, False]
+nb corrects = 9
+nb aretes = 10
+accuracy = 0.9
+
+
+
+#################
+Generate = 500
+Stat = [968.3942597476394, 1535.1612686935712, 1106.8150562696114]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (22, 23), (0, 27), (2, 28), (0, 14), (3, 5), (0, 4), (15, 32), (12, 22), (0, 36)]
+
+true = [True, True, True, True, True, True, True, True, True, False]
+nb corrects = 9
+nb aretes = 10
+accuracy = 0.9
+
+
+
+#################
+Generate = 500
+Stat = [980.020762864307, 1556.386213198354, 1113.3625584134604]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (22, 23), (2, 28), (0, 14), (0, 27), (3, 5), (0, 4), (15, 32), (11, 12), (12, 22)]
+
+true = [True, True, True, True, True, True, True, True, True, True]
+nb corrects = 10
+nb aretes = 10
+accuracy = 1.0
+
+
+
+#################
+Generate = 500
+Stat = [968.3942597476394, 1578.6780184718239, 1111.3598300220485]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (22, 23), (2, 28), (0, 27), (0, 14), (3, 5), (15, 32), (0, 4), (15, 30), (0, 36)]
+
+true = [True, True, True, True, True, True, True, True, True, False]
+nb corrects = 9
+nb aretes = 10
+accuracy = 0.9
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1584.642090412441, 1106.8493441037624]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (2, 28), (22, 23), (0, 27), (0, 14), (3, 5), (0, 4), (15, 32), (12, 22), (11, 12)]
+
+true = [True, True, True, True, True, True, True, True, True, True]
+nb corrects = 10
+nb aretes = 10
+accuracy = 1.0
+
+
+
+#################
+Generate = 1000
+Stat = [980.020762864307, 1584.642090412441, 1109.061091994698]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (22, 23), (2, 28), (0, 14), (0, 27), (3, 5), (0, 4), (15, 32), (12, 22), (0, 36)]
+
+true = [True, True, True, True, True, True, True, True, True, False]
+nb corrects = 9
+nb aretes = 10
+accuracy = 0.9
+
+
+
+#################
+Generate = 1000
+Stat = [978.7084981153173, 1574.9679465756926, 1109.9377523663404]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (2, 28), (22, 23), (0, 27), (0, 14), (3, 5), (15, 32), (0, 4), (15, 30), (11, 12)]
+
+true = [True, True, True, True, True, True, True, True, True, True]
+nb corrects = 10
+nb aretes = 10
+accuracy = 1.0
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1578.6780184718239, 1103.7939411661196]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (2, 28), (22, 23), (0, 27), (0, 14), (3, 5), (12, 22), (15, 32), (0, 4), (11, 12)]
+
+true = [True, True, True, True, True, True, True, True, True, True]
+nb corrects = 10
+nb aretes = 10
+accuracy = 1.0
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1584.642090412441, 1104.8739730407153]
+Percent = 10
+Rang max = 10
+
+edges = [(29, 36), (2, 28), (22, 23), (0, 27), (0, 14), (3, 5), (0, 4), (15, 32), (12, 22), (11, 12)]
+
+true = [True, True, True, True, True, True, True, True, True, True]
+nb corrects = 10
+nb aretes = 10
+accuracy = 1.0
+
+
+
+#################
+Generate = 100
+Stat = [1002.0960171613945, 1530.7225507684252, 1111.9710176959445]
+Percent = 10
+Rang max = 20
+
+edges = [(29, 36), (22, 23), (0, 27), (2, 28), (0, 14), (11, 12), (15, 32), (15, 30), (0, 4), (3, 5), (0, 24), (12, 22), (0, 7), (0, 6), (0, 36), (21, 28), (27, 35), (16, 24), (0, 18), (0, 25)]
+
+true = [True, True, True, True, True, True, True, True, True, True, True, True, True, False, False, False, False, False, True, False]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 100
+Stat = [980.020762864307, 1517.9365118601404, 1081.8705475505124]
+Percent = 10
+Rang max = 20
+
+edges = [(2, 28), (29, 36), (22, 23), (0, 4), (0, 14), (3, 5), (12, 22), (15, 32), (15, 30), (0, 27), (11, 12), (0, 7), (0, 36), (21, 28), (5, 8), (0, 24), (0, 6), (27, 35), (0, 18), (31, 34)]
+
+true = [True, True, True, True, True, True, True, True, True, True, True, True, False, False, True, True, False, False, True, False]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 100
+Stat = [1002.0960171613945, 1519.522537054009, 1085.9474866703836]
+Percent = 10
+Rang max = 20
+
+edges = [(29, 36), (2, 28), (22, 23), (0, 14), (12, 22), (3, 5), (0, 27), (0, 24), (0, 36), (15, 30), (0, 7), (0, 6), (0, 4), (15, 32), (11, 12), (5, 8), (0, 18), (27, 35), (21, 28), (0, 25)]
+
+true = [True, True, True, True, True, True, True, True, False, True, True, False, True, True, True, True, True, False, False, False]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 100
+Stat = [1002.0960171613945, 1527.8797591138098, 1112.6866153804385]
+Percent = 10
+Rang max = 20
+
+edges = [(29, 36), (22, 23), (2, 28), (0, 14), (15, 32), (0, 27), (3, 5), (11, 12), (0, 36), (0, 4), (12, 22), (21, 28), (15, 30), (0, 24), (0, 6), (0, 7), (27, 35), (5, 8), (0, 18), (16, 24)]
+
+true = [True, True, True, True, True, True, True, True, False, True, True, False, True, True, False, True, False, True, True, False]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 100
+Stat = [1002.0960171613945, 1532.5609644509093, 1114.4226161514239]
+Percent = 10
+Rang max = 20
+
+edges = [(29, 36), (0, 27), (2, 28), (22, 23), (11, 12), (0, 14), (15, 32), (0, 6), (15, 30), (12, 22), (3, 5), (0, 36), (0, 24), (0, 4), (21, 28), (5, 8), (0, 29), (31, 34), (27, 35), (0, 7)]
+
+true = [True, True, True, True, True, True, True, False, True, True, True, False, True, True, False, True, False, False, False, True]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 500
+Stat = [968.3942597476394, 1536.715615410759, 1100.3769615939714]
+Percent = 10
+Rang max = 20
+
+edges = [(29, 36), (22, 23), (2, 28), (0, 27), (3, 5), (0, 14), (0, 4), (0, 36), (11, 12), (15, 32), (12, 22), (15, 30), (0, 24), (0, 7), (0, 6), (21, 28), (5, 8), (0, 18), (27, 35), (1, 3)]
+
+true = [True, True, True, True, True, True, True, False, True, True, True, True, True, True, False, False, True, True, False, True]
+nb corrects = 16
+nb aretes = 20
+accuracy = 0.8
+
+
+
+#################
+Generate = 500
+Stat = [968.3942597476394, 1535.1612686935712, 1111.4554060114942]
+Percent = 10
+Rang max = 20
+
+edges = [(29, 36), (2, 28), (22, 23), (0, 14), (0, 27), (3, 5), (0, 4), (15, 32), (15, 30), (12, 22), (11, 12), (0, 36), (0, 7), (0, 24), (0, 6), (5, 8), (0, 18), (16, 24), (21, 28), (27, 35)]
+
+true = [True, True, True, True, True, True, True, True, True, True, True, False, True, True, False, True, True, False, False, False]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 500
+Stat = [968.3942597476394, 1561.1912670288807, 1108.2654685230707]
+Percent = 10
+Rang max = 20
+
+edges = [(29, 36), (2, 28), (22, 23), (0, 27), (0, 14), (3, 5), (15, 32), (0, 4), (11, 12), (12, 22), (15, 30), (0, 36), (0, 24), (0, 7), (0, 6), (21, 28), (0, 18), (5, 8), (16, 24), (27, 35)]
+
+true = [True, True, True, True, True, True, True, True, True, True, True, False, True, True, False, False, True, True, False, False]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 500
+Stat = [983.2063165900754, 1584.642090412441, 1099.054550109003]
+Percent = 10
+Rang max = 20
+
+edges = [(29, 36), (2, 28), (22, 23), (0, 27), (0, 14), (3, 5), (11, 12), (0, 4), (15, 32), (12, 22), (0, 7), (0, 36), (15, 30), (0, 6), (0, 24), (21, 28), (0, 18), (5, 8), (31, 34), (27, 35)]
+
+true = [True, True, True, True, True, True, True, True, True, True, True, False, True, False, True, False, True, True, False, False]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 500
+Stat = [978.7084981153173, 1587.2376243691547, 1110.158116822203]
+Percent = 10
+Rang max = 20
+
+edges = [(29, 36), (2, 28), (22, 23), (0, 14), (0, 27), (3, 5), (0, 4), (15, 32), (0, 36), (0, 7), (0, 24), (11, 12), (12, 22), (15, 30), (0, 6), (21, 28), (0, 18), (16, 24), (31, 34), (5, 8)]
+
+true = [True, True, True, True, True, True, True, True, False, True, True, True, True, True, False, False, True, False, False, True]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 1000
+Stat = [983.2063165900754, 1587.2376243691547, 1107.0042111873622]
+Percent = 10
+Rang max = 20
+
+edges = [(29, 36), (2, 28), (22, 23), (0, 27), (0, 14), (3, 5), (15, 32), (0, 4), (15, 30), (12, 22), (0, 36), (11, 12), (0, 7), (0, 24), (0, 6), (21, 28), (0, 18), (5, 8), (16, 24), (27, 35)]
+
+true = [True, True, True, True, True, True, True, True, True, True, False, True, True, True, False, False, True, True, False, False]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1550.6891073100892, 1103.472392550541]
+Percent = 10
+Rang max = 20
+
+edges = [(29, 36), (2, 28), (22, 23), (0, 27), (0, 14), (3, 5), (15, 32), (12, 22), (11, 12), (0, 4), (0, 36), (15, 30), (0, 24), (0, 7), (0, 6), (21, 28), (0, 18), (27, 35), (16, 24), (5, 8)]
+
+true = [True, True, True, True, True, True, True, True, True, True, False, True, True, True, False, False, True, False, False, True]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1561.1912670288807, 1109.4380348011678]
+Percent = 10
+Rang max = 20
+
+edges = [(29, 36), (22, 23), (2, 28), (0, 27), (0, 14), (3, 5), (0, 4), (15, 32), (12, 22), (11, 12), (0, 36), (15, 30), (0, 24), (0, 7), (0, 6), (21, 28), (0, 18), (5, 8), (27, 35), (16, 24)]
+
+true = [True, True, True, True, True, True, True, True, True, True, False, True, True, True, False, False, True, True, False, False]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1536.715615410759, 1100.517727784241]
+Percent = 10
+Rang max = 20
+
+edges = [(29, 36), (2, 28), (22, 23), (0, 27), (0, 14), (0, 4), (15, 32), (3, 5), (12, 22), (11, 12), (15, 30), (0, 36), (0, 24), (0, 7), (0, 6), (21, 28), (27, 35), (5, 8), (0, 18), (16, 24)]
+
+true = [True, True, True, True, True, True, True, True, True, True, True, False, True, True, False, False, False, True, True, False]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 1000
+Stat = [968.3942597476394, 1584.642090412441, 1110.555650443396]
+Percent = 10
+Rang max = 20
+
+edges = [(29, 36), (2, 28), (22, 23), (0, 27), (3, 5), (0, 14), (0, 4), (12, 22), (15, 30), (15, 32), (0, 36), (11, 12), (0, 24), (0, 6), (0, 7), (21, 28), (0, 18), (5, 8), (16, 24), (27, 35)]
+
+true = [True, True, True, True, True, True, True, True, True, True, False, True, True, False, True, False, True, True, False, False]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+

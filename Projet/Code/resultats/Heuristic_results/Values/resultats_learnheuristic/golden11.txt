@@ -1,0 +1,10 @@
+apprentisage sur toutes les solutions trouvées lors de Hc avec crit = 0.8, ajout de la best à l'apprentissage si on a pas trouvé mieux.
+iterations = 40
+time = 60 s
+restart = 4 s
+reset = 2 s
+
+Instance : Golden_01.xml
+Time = 108.47850370407104
+Instance : Golden_01.xml
+Time = 96.3589437007904

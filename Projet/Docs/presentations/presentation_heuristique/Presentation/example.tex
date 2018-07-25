@@ -1,0 +1,54 @@
+\documentclass[info]{ensrennesbeamer}
+
+%\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{minted}
+\usepackage{datetime}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\setminted{fontsize=\scriptsize,baselinestretch=1}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=0.5cm,
+						text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=0.5cm, text centered,
+					   draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\title[SECU: Projet]{Projet : Memory}
+\author[V. Attias\and V. Careil\and J-M. Gorius]{Vidal Attias\and Victor Careil\and Jean-Michel Gorius}
+\institute[]{ENS Rennes}
+\newdate{date}{13}{12}{2017}
+\date{\displaydate{date}}
+
+\sloppy
+
+\begin{document}
+
+{
+\setbeamerfont{frametitle}{size=\Huge}
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+}
+
+\section{Test}
+
+\begin{frame}[fragile]
+\frametitle{Hello world!}
+\begin{mdframed}[roundcorner=10pt,backgroundcolor=black!5!white]
+\begin{minted}[linenos,tabsize=4,breaklines]{c}
+#include <stdio.h>
+
+int main() {
+	printf("Hello world!\n");
+	return 0;
+}
+\end{minted}
+\end{mdframed}
+\end{frame}
+
+\end{document}

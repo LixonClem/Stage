@@ -1,0 +1,1432 @@
+
+
+#################
+Generate = 50
+Stat = [1349.5303963029144, 2443.81820009297, 1567.1835894779824]
+Percent = 10
+Seuil = 2.5
+
+edges = [(0, 63), (7, 54), (0, 29), (0, 32), (0, 47), (2, 45), (3, 17), (4, 35), (5, 45), (8, 19), (10, 52), (16, 41), (18, 62), (24, 52), (37, 50), (39, 51), (41, 60), (53, 55), (58, 61), (0, 5), (0, 15), (0, 19), (0, 25), (0, 28), (0, 30), (0, 33), (0, 40), (0, 43), (0, 49), (0, 51), (0, 60), (0, 62), (2, 38), (3, 36), (4, 49), (6, 26), (6, 46), (7, 11), (8, 10), (9, 14), (9, 22), (11, 63), (12, 13), (12, 33), (13, 24), (14, 27), (15, 22), (16, 50), (18, 21), (20, 32), (20, 58), (21, 53), (23, 28), (23, 57), (25, 44), (26, 31), (27, 43), (29, 55), (30, 37), (31, 34), (34, 47), (35, 36), (38, 42), (39, 46), (40, 59), (42, 61), (44, 56), (48, 54), (48, 57), (56, 59), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, True, True, False, False, False, False, True, False, True, False, True, False, True, False, False, False, True, True, False, False, True, True, True, False, True, True, False, True, False, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, True, False, True, True, False, True, True, False, True, True, True, True, True, True, True, True, False, True, True, False, True, True, False, True, False, False]
+nb corrects = 45
+nb aretes = 73
+accuracy = 0.6164383561643836
+
+
+
+#################
+Generate = 50
+Stat = [1353.5759951566113, 2372.849949897279, 1565.141084909435]
+Percent = 10
+Seuil = 2.5
+
+edges = [(0, 30), (18, 62), (53, 55), (0, 19), (0, 25), (0, 29), (0, 32), (0, 33), (0, 63), (2, 45), (3, 17), (4, 35), (5, 45), (7, 54), (8, 19), (13, 24), (16, 41), (18, 21), (21, 53), (25, 44), (29, 55), (41, 60), (58, 61), (0, 5), (0, 15), (0, 28), (0, 40), (0, 43), (0, 47), (0, 49), (0, 51), (0, 60), (0, 62), (2, 38), (3, 36), (4, 49), (6, 26), (6, 46), (7, 11), (8, 10), (9, 14), (9, 22), (10, 52), (11, 63), (12, 13), (12, 33), (14, 27), (15, 22), (16, 50), (20, 32), (20, 58), (23, 28), (23, 57), (24, 52), (26, 31), (27, 43), (30, 37), (31, 34), (34, 47), (35, 36), (38, 42), (39, 46), (39, 51), (40, 59), (42, 61), (44, 56), (48, 54), (48, 57), (56, 59), (0, 17), (0, 1), (0, 64)]
+
+true = [True, False, False, False, False, False, True, True, False, False, False, False, False, False, True, True, True, False, False, False, True, False, False, True, True, True, False, True, True, True, False, True, False, True, True, True, True, False, True, True, True, True, False, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, False, True, True, False, True, False, False]
+nb corrects = 45
+nb aretes = 72
+accuracy = 0.625
+
+
+
+#################
+Generate = 50
+Stat = [1354.715307199209, 2430.9668153544403, 1517.01505418606]
+Percent = 10
+Seuil = 2.5
+
+edges = [(0, 47), (8, 52), (10, 24), (19, 52), (39, 51), (0, 5), (0, 15), (0, 17), (0, 19), (0, 25), (0, 28), (0, 29), (0, 30), (0, 32), (0, 33), (0, 40), (0, 43), (0, 49), (0, 51), (0, 60), (0, 62), (0, 63), (2, 38), (2, 45), (3, 17), (3, 36), (4, 35), (4, 49), (5, 45), (6, 26), (6, 46), (7, 11), (7, 54), (8, 10), (9, 14), (9, 22), (11, 63), (12, 13), (12, 33), (13, 24), (14, 27), (15, 22), (16, 41), (16, 50), (18, 21), (18, 62), (20, 32), (20, 58), (21, 53), (23, 28), (23, 57), (25, 44), (26, 31), (27, 43), (29, 55), (30, 37), (31, 34), (34, 47), (35, 36), (37, 50), (38, 42), (39, 46), (40, 59), (41, 60), (42, 61), (44, 56), (48, 54), (48, 57), (53, 55), (56, 59), (58, 61), (0, 1), (0, 64)]
+
+true = [True, False, False, False, True, True, True, True, False, False, True, False, True, True, True, False, True, True, False, True, False, False, True, False, False, True, False, True, False, True, False, True, False, True, True, True, True, True, False, True, True, True, True, True, False, False, True, True, False, True, True, False, True, True, True, True, True, True, True, False, True, False, True, False, True, False, True, True, False, False, False, False, False]
+nb corrects = 43
+nb aretes = 73
+accuracy = 0.589041095890411
+
+
+
+#################
+Generate = 50
+Stat = [1350.3073177940373, 2262.9623940607858, 1564.4602721621181]
+Percent = 10
+Seuil = 2.5
+
+edges = [(0, 7), (0, 30), (0, 39), (37, 50), (47, 51), (54, 63), (8, 19), (10, 52), (24, 52), (0, 5), (0, 15), (0, 17), (0, 19), (0, 25), (0, 28), (0, 29), (0, 32), (0, 33), (0, 40), (0, 43), (0, 49), (0, 51), (0, 60), (0, 62), (2, 38), (2, 45), (3, 17), (3, 36), (4, 35), (4, 49), (5, 45), (6, 26), (6, 46), (7, 11), (8, 10), (9, 14), (9, 22), (11, 63), (12, 13), (12, 33), (13, 24), (14, 27), (15, 22), (16, 41), (16, 50), (18, 21), (18, 62), (20, 32), (20, 58), (21, 53), (23, 28), (23, 57), (25, 44), (26, 31), (27, 43), (29, 55), (30, 37), (31, 34), (34, 47), (35, 36), (38, 42), (39, 46), (40, 59), (41, 60), (42, 61), (44, 56), (48, 54), (48, 57), (53, 55), (56, 59), (58, 61), (0, 1), (0, 64)]
+
+true = [True, True, False, False, False, True, True, False, True, True, True, True, False, False, True, False, True, True, False, True, True, False, True, False, True, False, False, True, False, True, False, True, False, True, True, True, True, True, True, False, True, True, True, True, True, False, False, True, True, False, True, True, False, True, True, True, True, True, True, True, True, False, True, False, True, False, True, True, False, False, False, False, False]
+nb corrects = 45
+nb aretes = 73
+accuracy = 0.6164383561643836
+
+
+
+#################
+Generate = 50
+Stat = [1350.4905259325049, 1810.8835257629748, 1463.9066501688026]
+Percent = 10
+Seuil = 2.5
+
+edges = [(0, 7), (0, 29), (0, 39), (0, 45), (0, 60), (3, 17), (8, 19), (10, 52), (18, 62), (24, 52), (47, 51), (53, 55), (54, 63), (0, 32), (4, 35), (15, 22), (16, 41), (27, 43), (37, 50), (41, 60), (58, 61), (0, 5), (0, 15), (0, 19), (0, 25), (0, 28), (0, 30), (0, 33), (0, 40), (0, 43), (0, 49), (0, 51), (0, 62), (2, 38), (3, 36), (4, 49), (6, 26), (6, 46), (7, 11), (8, 10), (9, 14), (9, 22), (11, 63), (12, 13), (12, 33), (13, 24), (14, 27), (16, 50), (18, 21), (20, 32), (20, 58), (21, 53), (23, 28), (23, 57), (25, 44), (26, 31), (29, 55), (30, 37), (31, 34), (34, 47), (35, 36), (38, 42), (39, 46), (40, 59), (42, 61), (44, 56), (48, 54), (48, 57), (56, 59), (0, 17), (0, 1), (0, 64)]
+
+true = [True, False, False, True, True, False, True, False, False, True, False, False, True, True, False, True, True, True, False, False, False, True, True, False, False, True, True, True, False, True, True, False, False, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, False, True, True, False, True, True, False, True, True, True, True, True, True, True, False, True, True, False, True, True, False, True, False, False]
+nb corrects = 46
+nb aretes = 72
+accuracy = 0.6388888888888888
+
+
+
+#################
+Generate = 100
+Stat = [1349.5303963029144, 2401.216373903558, 1534.3245793471162]
+Percent = 10
+Seuil = 5.0
+
+edges = [(0, 59), (5, 20), (7, 62), (12, 53), (15, 34), (17, 22), (17, 62), (26, 43), (28, 39), (30, 42), (37, 49), (41, 50), (55, 62), (0, 3), (0, 16), (4, 36), (5, 32), (7, 28), (10, 19), (11, 18), (13, 29), (13, 52), (15, 43), (18, 55), (25, 29), (26, 47), (28, 63), (32, 59), (34, 46), (36, 37), (8, 56), (17, 39), (18, 28), (32, 49), (34, 51), (40, 44), (0, 12), (0, 22), (4, 27), (8, 24), (17, 49), (25, 56), (26, 46), (35, 60), (39, 54), (62, 63), (0, 54), (3, 27), (5, 42), (16, 60), (20, 53), (22, 27), (23, 63), (48, 63), (53, 56), (0, 36), (0, 44), (12, 57), (13, 57), (39, 62), (46, 47), (4, 30), (6, 34), (8, 59), (13, 18), (14, 15), (51, 62), (10, 44), (11, 48), (23, 62), (32, 53), (33, 57), (37, 60), (0, 34), (0, 56), (0, 58), (5, 60), (10, 59), (31, 47), (44, 55), (55, 56), (4, 37), (25, 53), (0, 24), (2, 5), (19, 25), (21, 55), (28, 29), (30, 50), (43, 51), (45, 61), (41, 61), (5, 30), (9, 31), (18, 29), (0, 6), (0, 35), (5, 49), (6, 31), (8, 19), (19, 21), (20, 42), (23, 48), (0, 41), (0, 57), (5, 55), (18, 62), (23, 33), (0, 14), (18, 33), (29, 53), (32, 45), (0, 10), (0, 48), (35, 50), (38, 41), (0, 26), (12, 18), (47, 51), (53, 58), (0, 61), (3, 17), (10, 24), (41, 45), (0, 20), (17, 51), (26, 34), (0, 63), (32, 58), (37, 50), (3, 43), (17, 47), (29, 62), (3, 14), (10, 53), (13, 19), (15, 17), (14, 22), (18, 25), (46, 51), (0, 37), (43, 49), (8, 25), (20, 61), (30, 60), (0, 11), (2, 45), (32, 40), (44, 59), (53, 55), (6, 47), (9, 34), (0, 27), (0, 31), (39, 51), (40, 58), (0, 50), (18, 19), (19, 52), (11, 54), (0, 4), (2, 16), (45, 60), (7, 63), (39, 46), (0, 33), (0, 23), (21, 53), (0, 13), (18, 21), (25, 44), (0, 19), (0, 53), (41, 60), (3, 4), (7, 54), (0, 18), (2, 41), (50, 60), (0, 7), (0, 60), (15, 27), (35, 37), (0, 28), (5, 45), (10, 52), (0, 25), (28, 33), (7, 11), (7, 39), (23, 28), (28, 62), (4, 35), (27, 43), (19, 24), (0, 30), (13, 24), (0, 47), (58, 61), (21, 25), (0, 46), (20, 32), (54, 63), (0, 40), (29, 55), (31, 34), (0, 55), (4, 49), (8, 52), (15, 22), (6, 26), (56, 59), (0, 21), (0, 45), (0, 29), (0, 32), (9, 14), (0, 15), (16, 41), (24, 52), (34, 47), (48, 54), (14, 27), (0, 39), (0, 5), (12, 13), (20, 58), (48, 57), (11, 63), (23, 57), (0, 62), (38, 42), (40, 59), (26, 31), (35, 36), (0, 49), (6, 46), (0, 43), (8, 10), (12, 33), (0, 51), (30, 37), (42, 61), (16, 50), (44, 56), (2, 38), (3, 36), (9, 22), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, True, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, True, True, False, True, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, True, False, True, True, True, True, True, False, True, True, False, False, False, False, True, False, True, False, False, True, False, True, True, True, False, True, True, True, True, False, True, True, True, True, False, True, True, False, True, True, False, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, True, True, False, True, True, False, False, True, True, True, False, True, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 251
+accuracy = 0.26294820717131473
+
+
+
+#################
+Generate = 100
+Stat = [1349.5303963029144, 2401.216373903558, 1538.27748748096]
+Percent = 10
+Seuil = 5.0
+
+edges = [(3, 35), (5, 20), (10, 44), (13, 57), (17, 31), (19, 53), (20, 49), (22, 34), (25, 55), (34, 46), (38, 40), (38, 45), (40, 53), (44, 53), (62, 63), (3, 27), (5, 32), (8, 24), (17, 43), (21, 29), (29, 51), (39, 43), (40, 44), (43, 47), (49, 60), (0, 16), (0, 34), (0, 59), (6, 34), (11, 28), (11, 62), (12, 53), (17, 62), (26, 46), (26, 47), (26, 51), (51, 62), (0, 3), (4, 37), (5, 60), (8, 59), (14, 15), (16, 60), (32, 53), (43, 51), (44, 55), (0, 2), (0, 9), (0, 22), (18, 53), (0, 36), (0, 44), (4, 27), (11, 48), (13, 52), (19, 21), (21, 56), (30, 50), (36, 37), (5, 42), (9, 31), (17, 39), (23, 62), (23, 63), (28, 29), (41, 61), (52, 56), (0, 54), (12, 24), (18, 33), (31, 47), (39, 62), (46, 47), (48, 63), (0, 12), (0, 58), (4, 30), (12, 23), (13, 33), (23, 48), (0, 20), (13, 18), (19, 25), (19, 44), (21, 55), (39, 54), (0, 14), (0, 56), (2, 5), (8, 21), (10, 53), (18, 28), (18, 29), (18, 55), (0, 35), (20, 53), (41, 45), (0, 24), (8, 19), (12, 18), (29, 53), (37, 60), (45, 61), (0, 10), (5, 30), (5, 55), (18, 25), (25, 53), (33, 57), (6, 47), (0, 26), (0, 63), (5, 49), (10, 59), (53, 58), (18, 62), (20, 42), (20, 61), (23, 33), (35, 50), (38, 41), (0, 6), (17, 47), (17, 51), (32, 58), (43, 49), (0, 11), (0, 57), (3, 14), (32, 45), (0, 48), (6, 31), (14, 22), (15, 17), (46, 51), (0, 31), (0, 50), (3, 43), (30, 60), (0, 41), (18, 19), (0, 23), (0, 37), (0, 61), (3, 17), (26, 34), (29, 62), (40, 58), (44, 59), (0, 4), (10, 24), (11, 54), (0, 27), (2, 16), (47, 51), (0, 13), (9, 34), (8, 25), (19, 52), (45, 60), (7, 54), (13, 19), (37, 50), (2, 45), (32, 40), (39, 51), (0, 53), (15, 27), (2, 41), (21, 25), (7, 63), (35, 37), (3, 4), (7, 39), (21, 53), (53, 55), (28, 62), (28, 33), (10, 52), (50, 60), (0, 18), (0, 46), (13, 24), (19, 24), (41, 60), (25, 44), (0, 55), (0, 60), (18, 21), (39, 46), (0, 33), (0, 19), (0, 47), (5, 45), (0, 40), (8, 52), (4, 35), (23, 28), (0, 21), (0, 7), (20, 32), (27, 43), (0, 28), (54, 63), (7, 11), (0, 25), (0, 30), (58, 61), (0, 45), (0, 39), (56, 59), (0, 29), (6, 26), (4, 49), (31, 34), (9, 14), (29, 55), (0, 32), (12, 33), (0, 15), (24, 52), (34, 47), (15, 22), (16, 41), (0, 5), (48, 57), (26, 31), (48, 54), (14, 27), (20, 58), (12, 13), (23, 57), (6, 46), (38, 42), (11, 63), (35, 36), (0, 49), (0, 62), (40, 59), (42, 61), (0, 43), (0, 51), (8, 10), (30, 37), (16, 50), (44, 56), (2, 38), (9, 22), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, True, True, False, True, True, False, False, False, False, False, False, True, True, True, True, False, False, False, True, True, False, False, True, False, True, False, False, False, False, True, True, True, True, True, True, True, True, False, True, False, True, False, False, False, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, False, True, True, True, False, True, True, True, False, True, True, True, True, False, False]
+nb corrects = 65
+nb aretes = 252
+accuracy = 0.25793650793650796
+
+
+
+#################
+Generate = 100
+Stat = [1349.5303963029144, 2336.966538802001, 1510.1078769904561]
+Percent = 10
+Seuil = 5.0
+
+edges = [(0, 12), (3, 27), (7, 23), (11, 62), (13, 29), (13, 53), (17, 49), (18, 53), (24, 56), (24, 57), (26, 47), (29, 49), (35, 60), (52, 53), (0, 34), (0, 59), (4, 5), (10, 40), (29, 33), (33, 62), (34, 46), (43, 51), (51, 62), (0, 58), (5, 32), (8, 21), (12, 55), (15, 43), (26, 46), (28, 39), (32, 53), (42, 58), (44, 53), (46, 47), (62, 63), (0, 24), (5, 49), (8, 24), (11, 28), (12, 57), (17, 43), (21, 44), (23, 62), (28, 63), (39, 43), (49, 60), (53, 56), (55, 62), (0, 22), (0, 54), (5, 60), (16, 60), (21, 29), (30, 50), (31, 47), (33, 57), (0, 44), (0, 56), (5, 30), (10, 59), (12, 24), (18, 33), (44, 55), (0, 36), (5, 20), (7, 62), (11, 48), (22, 27), (37, 60), (39, 62), (4, 30), (21, 55), (25, 53), (45, 61), (48, 63), (6, 31), (6, 34), (9, 31), (18, 55), (19, 25), (39, 54), (0, 6), (0, 10), (5, 42), (17, 51), (19, 21), (23, 48), (14, 22), (17, 62), (28, 29), (36, 37), (0, 48), (8, 19), (20, 53), (2, 5), (53, 58), (0, 20), (29, 53), (41, 61), (32, 45), (0, 35), (0, 63), (5, 55), (18, 62), (0, 14), (0, 57), (13, 18), (20, 42), (35, 50), (0, 26), (18, 29), (20, 61), (12, 18), (0, 11), (17, 47), (18, 19), (0, 50), (3, 14), (3, 43), (10, 53), (32, 58), (9, 34), (15, 17), (18, 25), (44, 59), (38, 41), (43, 49), (0, 41), (3, 17), (8, 25), (41, 45), (0, 23), (0, 37), (0, 61), (37, 50), (0, 27), (53, 55), (11, 54), (23, 33), (29, 62), (45, 60), (47, 51), (7, 63), (13, 19), (2, 41), (26, 34), (0, 4), (2, 45), (7, 54), (46, 51), (30, 60), (40, 58), (39, 51), (15, 27), (32, 40), (6, 47), (28, 33), (0, 31), (10, 24), (0, 46), (2, 16), (0, 13), (7, 39), (21, 25), (10, 52), (21, 53), (0, 60), (41, 60), (19, 52), (3, 4), (28, 62), (0, 47), (5, 45), (13, 24), (35, 37), (18, 21), (39, 46), (0, 33), (0, 19), (0, 53), (19, 24), (0, 18), (0, 40), (50, 60), (4, 35), (25, 44), (0, 7), (0, 28), (0, 29), (23, 28), (27, 43), (0, 21), (20, 32), (0, 30), (7, 11), (6, 26), (0, 25), (58, 61), (0, 55), (31, 34), (54, 63), (8, 52), (29, 55), (24, 52), (0, 45), (16, 41), (0, 39), (4, 49), (56, 59), (0, 15), (0, 62), (0, 32), (15, 22), (9, 14), (12, 13), (48, 54), (20, 58), (34, 47), (14, 27), (0, 5), (23, 57), (35, 36), (48, 57), (38, 42), (11, 63), (12, 33), (0, 49), (26, 31), (6, 46), (0, 43), (40, 59), (42, 61), (8, 10), (30, 37), (16, 50), (0, 51), (9, 22), (44, 56), (3, 36), (2, 38), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, False, False, False, True, True, False, False, False, False, False, False, True, False, False, False, True, False, False, True, False, False, True, False, True, False, True, True, False, False, True, False, False, False, True, False, True, False, False, True, True, False, True, True, True, True, True, True, True, False, False, True, True, True, False, True, True, True, True, False, True, False, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, False, True, True, True, True, True, True, False, True, False, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 243
+accuracy = 0.2716049382716049
+
+
+
+#################
+Generate = 100
+Stat = [1350.337326019168, 2427.584824852081, 1537.560410465587]
+Percent = 10
+Seuil = 5.0
+
+edges = [(7, 57), (11, 28), (12, 57), (17, 28), (19, 40), (22, 27), (23, 48), (24, 33), (30, 50), (33, 55), (36, 50), (37, 42), (40, 44), (44, 53), (49, 60), (52, 53), (52, 56), (0, 2), (0, 3), (0, 9), (3, 27), (5, 62), (6, 34), (7, 62), (8, 59), (10, 44), (11, 26), (13, 52), (16, 60), (17, 22), (17, 49), (21, 56), (38, 45), (46, 47), (51, 62), (0, 16), (0, 42), (5, 29), (10, 56), (15, 43), (19, 44), (57, 63), (0, 54), (4, 5), (4, 27), (4, 30), (17, 62), (26, 46), (28, 63), (34, 51), (0, 34), (0, 59), (8, 24), (19, 53), (21, 29), (26, 47), (28, 39), (33, 57), (39, 62), (58, 59), (10, 59), (12, 24), (17, 43), (28, 29), (31, 47), (0, 24), (5, 60), (8, 19), (43, 51), (48, 63), (0, 6), (5, 20), (13, 29), (13, 33), (11, 48), (12, 23), (17, 39), (18, 28), (55, 56), (0, 14), (0, 22), (0, 44), (4, 37), (9, 31), (13, 18), (21, 55), (0, 20), (0, 58), (5, 42), (18, 55), (19, 21), (37, 60), (39, 54), (44, 55), (45, 61), (53, 58), (0, 36), (0, 56), (17, 51), (20, 53), (25, 53), (36, 37), (41, 45), (0, 12), (2, 5), (19, 25), (23, 62), (5, 55), (32, 53), (41, 61), (0, 57), (0, 10), (5, 49), (17, 47), (0, 26), (0, 63), (6, 31), (10, 53), (32, 58), (3, 43), (18, 29), (18, 62), (20, 61), (29, 53), (15, 17), (0, 11), (14, 22), (20, 42), (32, 45), (12, 18), (3, 17), (0, 61), (3, 14), (18, 25), (0, 27), (0, 37), (0, 48), (39, 51), (43, 49), (0, 50), (38, 41), (0, 4), (6, 47), (13, 19), (23, 33), (26, 34), (29, 62), (37, 50), (0, 35), (7, 54), (35, 50), (40, 58), (0, 31), (0, 41), (9, 34), (18, 19), (53, 55), (2, 45), (8, 25), (46, 51), (47, 51), (0, 13), (0, 23), (44, 59), (10, 24), (2, 41), (19, 52), (0, 60), (30, 60), (2, 16), (35, 37), (10, 52), (21, 53), (32, 40), (11, 54), (45, 60), (0, 33), (15, 27), (39, 46), (0, 19), (0, 18), (0, 46), (7, 39), (50, 60), (0, 28), (3, 4), (7, 63), (13, 24), (23, 28), (25, 44), (41, 60), (18, 21), (21, 25), (28, 62), (5, 45), (0, 47), (19, 24), (4, 35), (0, 40), (7, 11), (27, 43), (0, 7), (0, 53), (28, 33), (54, 63), (0, 25), (20, 32), (0, 55), (0, 21), (0, 29), (0, 30), (0, 45), (6, 26), (56, 59), (58, 61), (8, 52), (29, 55), (16, 41), (31, 34), (4, 49), (24, 52), (15, 22), (0, 32), (0, 15), (0, 5), (9, 14), (12, 33), (34, 47), (0, 39), (35, 36), (38, 42), (48, 54), (48, 57), (20, 58), (12, 13), (26, 31), (0, 49), (14, 27), (11, 63), (0, 62), (42, 61), (23, 57), (40, 59), (6, 46), (0, 43), (8, 10), (30, 37), (0, 51), (9, 22), (44, 56), (16, 50), (2, 38), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, True, False, True, False, True, False, False, True, False, False, False, False, False, True, False, False, False, True, True, False, True, True, True, False, True, True, False, False, False, True, False, False, True, False, False, False, True, True, True, False, False, True, False, True, True, True, False, True, True, True, False, False, False, True, True, True, True, True, True, True, True, True, True, False, True, False, True, True, True, True, True, True, True, True, True, True, False, True, True, True, False, True, True, True, False, True, False, True, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 256
+accuracy = 0.2578125
+
+
+
+#################
+Generate = 100
+Stat = [1349.5303963029144, 2291.5475370457475, 1545.0608508532148]
+Percent = 10
+Seuil = 5.0
+
+edges = [(0, 2), (4, 14), (5, 32), (6, 17), (8, 21), (8, 24), (8, 59), (10, 40), (11, 62), (12, 29), (12, 53), (13, 43), (15, 34), (15, 47), (22, 27), (24, 57), (26, 46), (33, 62), (57, 63), (0, 16), (12, 23), (12, 24), (12, 57), (17, 22), (17, 43), (19, 40), (19, 44), (20, 59), (28, 63), (29, 33), (36, 50), (40, 44), (43, 51), (53, 56), (0, 8), (4, 30), (5, 20), (11, 19), (11, 28), (18, 55), (21, 56), (22, 34), (25, 56), (28, 39), (37, 42), (38, 45), (45, 61), (0, 58), (3, 27), (5, 60), (13, 33), (13, 52), (14, 15), (17, 49), (18, 28), (19, 21), (23, 63), (34, 51), (35, 60), (44, 53), (55, 56), (0, 22), (4, 27), (4, 37), (5, 30), (5, 55), (26, 47), (0, 59), (12, 18), (17, 39), (21, 55), (25, 53), (36, 37), (37, 60), (39, 62), (51, 62), (0, 3), (0, 9), (0, 14), (0, 34), (0, 44), (0, 54), (6, 34), (13, 29), (32, 53), (0, 10), (0, 12), (8, 19), (16, 60), (19, 25), (0, 36), (6, 31), (10, 59), (20, 53), (23, 62), (41, 61), (0, 20), (0, 56), (0, 61), (20, 42), (28, 29), (46, 47), (11, 48), (15, 17), (18, 33), (23, 48), (30, 50), (33, 57), (3, 43), (10, 53), (44, 55), (0, 24), (0, 57), (3, 14), (9, 31), (29, 62), (2, 5), (5, 42), (5, 49), (31, 47), (32, 45), (53, 58), (0, 63), (0, 11), (23, 33), (6, 47), (13, 18), (17, 47), (29, 53), (35, 50), (39, 54), (0, 4), (0, 6), (26, 34), (43, 49), (0, 35), (20, 61), (32, 58), (0, 27), (18, 25), (18, 29), (41, 45), (0, 37), (0, 26), (0, 41), (0, 48), (7, 54), (40, 58), (0, 13), (0, 50), (46, 51), (9, 34), (17, 51), (18, 62), (30, 60), (47, 51), (0, 31), (14, 22), (2, 41), (38, 41), (32, 40), (13, 19), (18, 19), (0, 23), (3, 17), (10, 24), (7, 39), (39, 51), (44, 59), (37, 50), (45, 60), (2, 45), (50, 60), (2, 16), (19, 52), (8, 25), (15, 27), (11, 54), (25, 44), (35, 37), (53, 55), (3, 4), (0, 18), (0, 33), (0, 46), (0, 53), (13, 24), (28, 33), (39, 46), (0, 19), (28, 62), (21, 25), (18, 21), (21, 53), (0, 60), (7, 63), (10, 52), (4, 35), (0, 25), (0, 28), (0, 47), (5, 45), (19, 24), (41, 60), (7, 11), (54, 63), (8, 52), (23, 28), (0, 55), (0, 45), (27, 43), (0, 7), (20, 32), (0, 29), (56, 59), (0, 30), (0, 40), (0, 21), (31, 34), (15, 22), (24, 52), (0, 39), (6, 26), (16, 41), (29, 55), (58, 61), (9, 14), (34, 47), (38, 42), (0, 32), (4, 49), (48, 54), (0, 15), (35, 36), (12, 13), (20, 58), (12, 33), (14, 27), (11, 63), (48, 57), (0, 5), (26, 31), (23, 57), (40, 59), (0, 49), (6, 46), (0, 62), (0, 43), (0, 51), (8, 10), (30, 37), (16, 50), (42, 61), (9, 22), (44, 56), (2, 38), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, True, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, False, False, True, False, False, False, True, False, False, False, False, True, True, False, False, False, True, False, False, False, False, False, False, True, False, True, True, True, True, False, True, False, False, False, False, True, False, False, True, False, False, False, False, True, True, False, False, False, True, True, False, True, True, True, True, True, True, False, False, True, False, True, True, True, True, False, True, True, True, False, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, False, False, True, False, True, True, True, True, True, False, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 260
+accuracy = 0.25384615384615383
+
+
+
+#################
+Generate = 500
+Stat = [1349.5303963029144, 2518.3502364865567, 1527.8315806716341]
+Percent = 10
+Seuil = 25.0
+
+edges = [(10, 40), (21, 29), (5, 20), (6, 17), (11, 28), (40, 44), (44, 53), (13, 25), (18, 28), (19, 53), (23, 63), (0, 2), (0, 59), (8, 21), (8, 56), (21, 44), (25, 29), (13, 52), (12, 23), (29, 33), (53, 56), (8, 59), (10, 44), (17, 31), (22, 34), (45, 61), (0, 16), (13, 57), (15, 43), (37, 42), (41, 50), (28, 39), (12, 24), (28, 63), (62, 63), (5, 32), (21, 56), (51, 62), (0, 9), (48, 63), (7, 62), (46, 47), (13, 29), (17, 39), (26, 46), (34, 51), (49, 60), (12, 57), (30, 50), (35, 60), (3, 27), (0, 42), (4, 27), (10, 59), (17, 43), (33, 57), (0, 3), (17, 49), (37, 60), (44, 55), (39, 62), (6, 34), (17, 62), (0, 12), (0, 58), (43, 51), (8, 24), (26, 47), (11, 19), (14, 15), (0, 44), (4, 37), (23, 48), (36, 37), (18, 55), (32, 53), (0, 34), (0, 54), (4, 30), (21, 55), (23, 62), (53, 58), (0, 24), (0, 22), (16, 60), (39, 54), (19, 21), (25, 53), (11, 48), (55, 56), (41, 61), (0, 6), (5, 30), (9, 31), (13, 18), (0, 14), (28, 29), (5, 42), (5, 60), (8, 19), (6, 31), (19, 25), (0, 36), (20, 42), (5, 55), (0, 10), (17, 51), (3, 43), (18, 33), (20, 53), (12, 18), (31, 47), (0, 56), (0, 57), (0, 63), (5, 49), (0, 26), (15, 17), (29, 53), (0, 41), (0, 48), (0, 61), (17, 47), (18, 29), (35, 50), (0, 35), (32, 45), (10, 53), (23, 33), (3, 14), (2, 5), (18, 25), (18, 62), (0, 11), (14, 22), (0, 37), (29, 62), (43, 49), (20, 61), (0, 20), (18, 19), (32, 58), (46, 51), (0, 50), (38, 41), (0, 27), (2, 45), (6, 47), (41, 45), (3, 17), (26, 34), (39, 51), (13, 19), (0, 31), (7, 54), (8, 25), (0, 4), (30, 60), (47, 51), (9, 34), (40, 58), (10, 24), (37, 50), (2, 41), (0, 23), (32, 40), (2, 16), (53, 55), (0, 13), (19, 52), (0, 60), (11, 54), (44, 59), (45, 60), (5, 45), (3, 4), (39, 46), (50, 60), (0, 33), (28, 33), (15, 27), (35, 37), (7, 63), (21, 53), (0, 19), (10, 52), (0, 47), (0, 18), (21, 25), (0, 53), (25, 44), (18, 21), (13, 24), (41, 60), (7, 39), (0, 46), (28, 62), (0, 7), (0, 28), (0, 40), (7, 11), (19, 24), (0, 25), (4, 35), (23, 28), (20, 32), (27, 43), (0, 21), (54, 63), (0, 30), (0, 55), (29, 55), (31, 34), (8, 52), (56, 59), (6, 26), (0, 29), (58, 61), (16, 41), (24, 52), (4, 49), (15, 22), (9, 14), (0, 45), (34, 47), (0, 32), (0, 15), (0, 39), (0, 5), (20, 58), (35, 36), (38, 42), (48, 54), (12, 13), (14, 27), (48, 57), (0, 49), (11, 63), (0, 62), (26, 31), (12, 33), (23, 57), (0, 43), (6, 46), (40, 59), (42, 61), (8, 10), (30, 37), (44, 56), (0, 51), (16, 50), (9, 22), (2, 38), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, True, False, False, True, False, False, False, False, False, False, True, False, True, False, False, True, False, True, True, False, False, True, False, False, False, False, True, True, True, False, False, False, True, False, False, True, False, True, True, False, True, False, False, False, True, True, True, True, True, True, True, True, True, False, False, True, False, False, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, False, True, False, True, True, False, True, True, True, True, False, False, True, True, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 257
+accuracy = 0.25680933852140075
+
+
+
+#################
+Generate = 500
+Stat = [1346.9617935570889, 2490.1825569277703, 1543.325093357894]
+Percent = 10
+Seuil = 25.0
+
+edges = [(12, 53), (25, 29), (36, 50), (21, 44), (52, 53), (11, 28), (15, 43), (19, 40), (4, 36), (13, 33), (0, 2), (0, 59), (8, 59), (19, 44), (35, 60), (10, 44), (17, 22), (17, 31), (5, 29), (21, 29), (18, 28), (37, 42), (13, 57), (23, 63), (46, 47), (17, 62), (29, 33), (0, 16), (5, 32), (19, 53), (49, 60), (53, 56), (0, 3), (5, 20), (12, 23), (28, 39), (28, 63), (7, 62), (17, 43), (55, 62), (10, 59), (4, 37), (13, 29), (16, 60), (25, 56), (26, 46), (48, 63), (0, 9), (12, 24), (3, 27), (18, 55), (37, 60), (51, 62), (0, 58), (8, 24), (0, 44), (33, 57), (55, 56), (62, 63), (0, 24), (17, 39), (17, 49), (21, 55), (12, 57), (21, 56), (44, 55), (45, 61), (0, 22), (0, 42), (14, 15), (39, 62), (43, 51), (0, 34), (25, 53), (30, 50), (4, 27), (32, 53), (5, 42), (36, 37), (26, 47), (41, 61), (4, 30), (39, 54), (31, 47), (0, 12), (5, 60), (6, 34), (0, 54), (19, 25), (23, 48), (5, 30), (6, 31), (29, 53), (53, 58), (0, 36), (20, 53), (8, 19), (0, 6), (2, 5), (11, 48), (19, 21), (23, 62), (5, 49), (9, 31), (28, 29), (12, 18), (17, 47), (0, 14), (5, 55), (18, 33), (0, 10), (0, 48), (13, 18), (0, 26), (0, 63), (0, 56), (0, 57), (15, 17), (18, 29), (29, 62), (3, 43), (23, 33), (32, 45), (0, 20), (10, 53), (17, 51), (0, 35), (18, 25), (20, 42), (35, 50), (20, 61), (3, 14), (0, 11), (14, 22), (0, 50), (41, 45), (18, 62), (32, 58), (0, 41), (38, 41), (43, 49), (0, 61), (18, 19), (37, 50), (6, 47), (9, 34), (0, 27), (26, 34), (46, 51), (3, 17), (0, 31), (0, 4), (39, 51), (13, 19), (0, 37), (47, 51), (40, 58), (45, 60), (8, 25), (0, 23), (7, 54), (10, 24), (2, 16), (32, 40), (30, 60), (2, 45), (2, 41), (19, 52), (0, 13), (11, 54), (21, 53), (44, 59), (3, 4), (15, 27), (53, 55), (39, 46), (28, 62), (7, 63), (0, 19), (41, 60), (0, 33), (0, 18), (35, 37), (10, 52), (7, 39), (25, 44), (21, 25), (0, 60), (28, 33), (5, 45), (13, 24), (50, 60), (18, 21), (0, 53), (0, 46), (0, 47), (19, 24), (0, 7), (0, 40), (7, 11), (23, 28), (4, 35), (0, 28), (0, 30), (54, 63), (0, 25), (20, 32), (0, 21), (27, 43), (0, 55), (8, 52), (56, 59), (29, 55), (0, 29), (31, 34), (0, 45), (6, 26), (58, 61), (16, 41), (24, 52), (4, 49), (9, 14), (15, 22), (0, 32), (0, 15), (0, 39), (34, 47), (0, 5), (20, 58), (12, 13), (48, 54), (38, 42), (14, 27), (48, 57), (35, 36), (12, 33), (0, 62), (0, 49), (11, 63), (23, 57), (26, 31), (0, 43), (6, 46), (42, 61), (40, 59), (8, 10), (0, 51), (30, 37), (44, 56), (16, 50), (9, 22), (2, 38), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, True, False, False, False, False, True, True, False, False, False, False, False, False, False, True, True, True, False, False, False, True, True, False, False, True, True, False, False, True, True, False, True, False, True, True, False, True, True, True, False, True, True, True, True, False, False, True, False, True, True, True, False, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, False, False, True, True, True, True, True, False, True, True, True, False, True, False, True, True, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 256
+accuracy = 0.2578125
+
+
+
+#################
+Generate = 500
+Stat = [1350.115732793578, 2428.561120142698, 1524.6695103532509]
+Percent = 10
+Seuil = 25.0
+
+edges = [(7, 62), (10, 56), (34, 46), (4, 36), (5, 20), (17, 22), (52, 53), (5, 32), (10, 40), (11, 19), (11, 62), (13, 53), (28, 48), (28, 63), (21, 29), (41, 50), (23, 63), (5, 29), (8, 59), (11, 28), (15, 43), (53, 56), (0, 2), (33, 62), (44, 53), (0, 16), (13, 57), (19, 53), (28, 39), (35, 60), (18, 28), (22, 34), (0, 3), (0, 9), (17, 31), (34, 51), (40, 44), (0, 59), (26, 46), (17, 43), (17, 62), (49, 60), (8, 21), (13, 33), (18, 55), (4, 27), (17, 49), (3, 27), (12, 23), (30, 50), (39, 62), (51, 62), (10, 59), (0, 58), (12, 57), (26, 47), (37, 42), (13, 29), (14, 15), (17, 39), (48, 63), (12, 24), (62, 63), (6, 34), (0, 42), (0, 54), (4, 37), (37, 60), (29, 33), (45, 61), (0, 22), (0, 44), (8, 24), (46, 47), (16, 60), (0, 24), (21, 55), (25, 53), (0, 34), (21, 56), (44, 55), (32, 53), (36, 37), (55, 56), (43, 51), (11, 48), (41, 61), (8, 19), (33, 57), (5, 60), (19, 21), (4, 30), (39, 54), (0, 12), (18, 33), (5, 30), (5, 55), (23, 48), (31, 47), (53, 58), (0, 6), (5, 42), (23, 62), (0, 36), (19, 25), (5, 49), (9, 31), (0, 10), (12, 18), (28, 29), (0, 57), (0, 63), (0, 14), (15, 17), (2, 5), (17, 51), (20, 53), (29, 53), (6, 31), (3, 43), (13, 18), (18, 29), (0, 56), (0, 26), (0, 48), (0, 20), (17, 47), (20, 42), (18, 62), (32, 45), (10, 53), (29, 62), (0, 11), (18, 25), (23, 33), (0, 61), (20, 61), (0, 35), (3, 14), (0, 41), (14, 22), (41, 45), (0, 50), (39, 51), (43, 49), (32, 58), (35, 50), (0, 27), (6, 47), (3, 17), (46, 51), (0, 31), (0, 37), (18, 19), (26, 34), (37, 50), (2, 45), (10, 24), (40, 58), (7, 54), (38, 41), (0, 4), (9, 34), (30, 60), (13, 19), (0, 23), (2, 41), (47, 51), (8, 25), (19, 52), (21, 53), (0, 13), (53, 55), (32, 40), (0, 19), (11, 54), (45, 60), (2, 16), (44, 59), (0, 33), (0, 60), (13, 24), (3, 4), (35, 37), (39, 46), (7, 63), (15, 27), (5, 45), (25, 44), (50, 60), (28, 33), (0, 47), (7, 39), (21, 25), (41, 60), (28, 62), (10, 52), (0, 53), (0, 18), (18, 21), (0, 46), (0, 40), (4, 35), (0, 28), (23, 28), (7, 11), (20, 32), (0, 7), (0, 25), (27, 43), (19, 24), (0, 30), (8, 52), (54, 63), (0, 21), (56, 59), (29, 55), (31, 34), (0, 29), (0, 55), (6, 26), (16, 41), (58, 61), (0, 45), (9, 14), (4, 49), (15, 22), (24, 52), (34, 47), (0, 32), (0, 15), (38, 42), (0, 5), (0, 39), (48, 54), (35, 36), (12, 13), (20, 58), (12, 33), (14, 27), (48, 57), (0, 49), (11, 63), (23, 57), (26, 31), (0, 62), (6, 46), (0, 43), (42, 61), (40, 59), (30, 37), (8, 10), (0, 51), (16, 50), (44, 56), (9, 22), (3, 36), (2, 38), (0, 17), (0, 1), (0, 64)]
+
+true = [False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, True, True, True, True, True, True, False, False, False, False, False, True, False, True, False, True, False, False, False, False, True, False, True, False, False, True, True, True, True, True, False, True, False, True, False, True, True, False, True, True, False, True, True, True, False, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, False, True, True, True, True, True, True, False, False, True, True, True, True, True, False, True, False, True, True, True, True, False, False]
+nb corrects = 67
+nb aretes = 261
+accuracy = 0.2567049808429119
+
+
+
+#################
+Generate = 500
+Stat = [1349.5303963029144, 2487.6776982222013, 1525.8771043159363]
+Percent = 10
+Seuil = 25.0
+
+edges = [(4, 36), (11, 62), (17, 22), (4, 27), (21, 29), (0, 2), (13, 29), (29, 51), (34, 46), (0, 59), (5, 29), (5, 53), (17, 31), (19, 44), (49, 60), (53, 56), (11, 28), (62, 63), (12, 23), (51, 62), (0, 9), (15, 43), (10, 56), (13, 33), (28, 39), (28, 63), (37, 42), (0, 16), (0, 34), (26, 46), (40, 44), (8, 21), (12, 24), (23, 63), (5, 32), (0, 3), (22, 27), (22, 34), (21, 56), (14, 15), (17, 43), (17, 49), (25, 56), (3, 27), (6, 34), (8, 59), (44, 53), (26, 47), (29, 33), (0, 44), (5, 20), (0, 22), (0, 42), (4, 37), (17, 62), (18, 28), (46, 47), (48, 63), (0, 58), (12, 57), (10, 59), (39, 62), (8, 24), (43, 51), (55, 56), (0, 24), (17, 39), (4, 30), (5, 60), (31, 47), (44, 55), (11, 48), (0, 54), (16, 60), (30, 50), (32, 53), (37, 60), (25, 53), (33, 57), (36, 37), (21, 55), (45, 61), (18, 55), (23, 62), (28, 29), (41, 61), (39, 54), (5, 42), (8, 19), (12, 18), (19, 25), (5, 30), (9, 31), (53, 58), (19, 21), (5, 55), (0, 56), (0, 6), (0, 12), (2, 5), (23, 48), (20, 53), (5, 49), (13, 18), (18, 33), (20, 42), (0, 36), (6, 31), (32, 45), (0, 14), (15, 17), (0, 10), (3, 43), (17, 47), (20, 61), (0, 20), (0, 57), (17, 51), (0, 61), (18, 25), (0, 48), (18, 29), (0, 26), (10, 53), (29, 53), (0, 63), (32, 58), (14, 22), (23, 33), (0, 50), (3, 14), (0, 11), (0, 27), (0, 41), (18, 62), (0, 35), (43, 49), (41, 45), (35, 50), (40, 58), (46, 51), (9, 34), (26, 34), (6, 47), (18, 19), (38, 41), (13, 19), (0, 37), (29, 62), (37, 50), (0, 4), (30, 60), (47, 51), (0, 23), (8, 25), (3, 17), (0, 31), (7, 54), (2, 41), (44, 59), (39, 51), (45, 60), (0, 13), (2, 45), (10, 24), (32, 40), (11, 54), (2, 16), (53, 55), (15, 27), (28, 33), (7, 39), (35, 37), (19, 52), (7, 63), (21, 25), (0, 53), (3, 4), (10, 52), (21, 53), (28, 62), (0, 18), (0, 19), (0, 46), (50, 60), (39, 46), (0, 60), (5, 45), (0, 33), (18, 21), (41, 60), (13, 24), (25, 44), (0, 47), (19, 24), (4, 35), (0, 28), (0, 40), (7, 11), (0, 21), (0, 7), (23, 28), (54, 63), (0, 30), (0, 25), (0, 55), (20, 32), (27, 43), (29, 55), (8, 52), (0, 29), (56, 59), (0, 45), (31, 34), (24, 52), (6, 26), (16, 41), (58, 61), (0, 39), (4, 49), (15, 22), (9, 14), (0, 32), (0, 15), (38, 42), (34, 47), (48, 54), (35, 36), (12, 33), (48, 57), (0, 5), (14, 27), (20, 58), (12, 13), (23, 57), (0, 49), (26, 31), (11, 63), (0, 62), (0, 43), (6, 46), (40, 59), (8, 10), (42, 61), (0, 51), (44, 56), (30, 37), (16, 50), (9, 22), (3, 36), (2, 38), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False, True, False, False, True, False, True, False, False, False, True, False, True, True, False, True, False, True, False, False, True, False, True, False, False, True, False, True, True, True, True, True, True, False, True, True, True, True, False, False, False, True, True, True, True, True, False, False, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, False, True, False, True, True, True, False, False, True, True, True, True, True, True, False, False]
+nb corrects = 68
+nb aretes = 254
+accuracy = 0.2677165354330709
+
+
+
+#################
+Generate = 500
+Stat = [1349.5303963029144, 2518.3502364865567, 1541.8711186792182]
+Percent = 10
+Seuil = 25.0
+
+edges = [(12, 53), (18, 44), (19, 40), (4, 14), (11, 28), (13, 57), (25, 29), (36, 50), (37, 42), (0, 2), (19, 44), (21, 29), (8, 21), (28, 48), (17, 22), (22, 27), (41, 50), (49, 60), (15, 47), (11, 19), (13, 29), (40, 44), (5, 20), (10, 40), (15, 43), (23, 63), (22, 34), (28, 63), (62, 63), (26, 47), (55, 62), (0, 16), (5, 29), (13, 52), (25, 56), (0, 3), (3, 27), (12, 23), (30, 50), (34, 51), (44, 53), (51, 62), (4, 37), (13, 33), (14, 15), (21, 55), (53, 56), (26, 46), (0, 9), (0, 22), (17, 62), (43, 51), (0, 59), (4, 27), (8, 24), (29, 33), (39, 62), (18, 28), (0, 42), (44, 55), (45, 61), (17, 43), (25, 53), (0, 34), (10, 59), (46, 47), (12, 24), (17, 49), (33, 57), (0, 44), (5, 32), (11, 48), (16, 60), (17, 39), (48, 63), (55, 56), (4, 30), (6, 34), (8, 19), (0, 54), (5, 60), (0, 58), (0, 10), (23, 62), (39, 54), (18, 55), (36, 37), (37, 60), (5, 42), (32, 53), (41, 61), (0, 24), (5, 30), (21, 56), (0, 14), (5, 49), (31, 47), (6, 31), (20, 53), (9, 31), (19, 21), (0, 6), (0, 36), (53, 58), (12, 57), (0, 12), (13, 18), (23, 48), (0, 56), (12, 18), (18, 62), (28, 29), (19, 25), (29, 53), (0, 63), (17, 47), (5, 55), (17, 51), (18, 33), (20, 42), (0, 57), (0, 20), (3, 43), (15, 17), (32, 45), (2, 5), (3, 14), (0, 48), (10, 53), (0, 26), (32, 58), (20, 61), (0, 35), (41, 45), (18, 29), (0, 50), (23, 33), (35, 50), (0, 61), (43, 49), (14, 22), (0, 11), (18, 25), (0, 41), (0, 37), (18, 19), (38, 41), (9, 34), (29, 62), (0, 27), (3, 17), (39, 51), (40, 58), (47, 51), (26, 34), (7, 54), (6, 47), (0, 4), (37, 50), (46, 51), (2, 45), (13, 19), (30, 60), (0, 31), (2, 41), (8, 25), (0, 23), (10, 24), (32, 40), (2, 16), (0, 13), (53, 55), (45, 60), (21, 53), (15, 27), (11, 54), (44, 59), (19, 52), (0, 19), (0, 60), (7, 63), (39, 46), (3, 4), (25, 44), (5, 45), (21, 25), (35, 37), (0, 33), (13, 24), (10, 52), (28, 33), (0, 46), (18, 21), (0, 18), (41, 60), (50, 60), (0, 28), (0, 47), (7, 39), (28, 62), (23, 28), (0, 53), (4, 35), (0, 7), (19, 24), (7, 11), (0, 40), (0, 25), (54, 63), (20, 32), (27, 43), (0, 29), (56, 59), (0, 30), (0, 55), (8, 52), (31, 34), (0, 21), (29, 55), (6, 26), (58, 61), (24, 52), (0, 45), (16, 41), (4, 49), (0, 32), (15, 22), (0, 15), (9, 14), (34, 47), (0, 39), (12, 33), (38, 42), (0, 5), (12, 13), (48, 54), (48, 57), (20, 58), (35, 36), (14, 27), (23, 57), (0, 49), (11, 63), (0, 62), (26, 31), (6, 46), (0, 43), (40, 59), (42, 61), (30, 37), (8, 10), (0, 51), (16, 50), (44, 56), (9, 22), (3, 36), (2, 38), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, True, False, False, True, True, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, True, False, False, True, False, False, True, False, False, True, True, True, True, False, False, True, False, True, False, True, True, True, False, False, True, False, False, True, False, True, False, False, True, True, True, False, False, True, True, False, True, True, True, True, False, True, True, True, True, True, True, True, True, True, False, False, True, True, True, True, True, True, True, True, True, True, True, False, True, False, True, True, True, True, True, False, True, False, True, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 260
+accuracy = 0.25384615384615383
+
+
+
+#################
+Generate = 1000
+Stat = [1349.5303963029144, 2487.6776982222013, 1521.0046697720593]
+Percent = 10
+Seuil = 50.0
+
+edges = [(12, 53), (35, 60), (3, 35), (13, 52), (55, 62), (10, 44), (19, 53), (25, 29), (10, 56), (28, 39), (5, 29), (19, 44), (34, 51), (53, 56), (8, 56), (21, 29), (8, 59), (13, 57), (22, 27), (41, 50), (49, 60), (11, 28), (23, 63), (37, 42), (0, 59), (25, 56), (8, 21), (15, 43), (44, 53), (5, 32), (7, 62), (17, 31), (17, 62), (13, 29), (0, 9), (40, 44), (12, 23), (62, 63), (11, 19), (28, 63), (13, 33), (51, 62), (26, 46), (4, 37), (5, 20), (46, 47), (12, 24), (0, 22), (17, 43), (18, 28), (3, 27), (17, 49), (29, 33), (0, 16), (26, 47), (0, 42), (0, 3), (4, 27), (8, 24), (12, 57), (30, 50), (6, 34), (21, 56), (0, 58), (16, 60), (43, 51), (48, 63), (36, 37), (14, 15), (17, 39), (55, 56), (0, 34), (10, 59), (21, 55), (18, 55), (44, 55), (32, 53), (23, 62), (45, 61), (0, 24), (5, 42), (0, 44), (37, 60), (39, 62), (4, 30), (11, 48), (0, 54), (0, 12), (33, 57), (5, 60), (9, 31), (25, 53), (0, 36), (8, 19), (5, 30), (19, 21), (20, 53), (5, 49), (0, 6), (39, 54), (28, 29), (31, 47), (19, 25), (2, 5), (18, 33), (6, 31), (13, 18), (29, 53), (5, 55), (23, 48), (0, 14), (41, 61), (0, 10), (0, 56), (0, 35), (0, 63), (17, 47), (53, 58), (12, 18), (0, 26), (17, 51), (0, 20), (18, 29), (0, 48), (35, 50), (0, 57), (3, 14), (20, 42), (3, 43), (10, 53), (18, 62), (23, 33), (32, 45), (14, 22), (43, 49), (0, 11), (3, 17), (20, 61), (15, 17), (29, 62), (18, 25), (0, 61), (37, 50), (41, 45), (32, 58), (18, 19), (38, 41), (0, 50), (0, 41), (39, 51), (6, 47), (26, 34), (0, 31), (46, 51), (47, 51), (9, 34), (0, 37), (8, 25), (0, 27), (40, 58), (7, 54), (0, 4), (10, 24), (13, 19), (2, 45), (45, 60), (30, 60), (0, 23), (2, 41), (32, 40), (0, 13), (53, 55), (19, 52), (15, 27), (44, 59), (11, 54), (2, 16), (41, 60), (39, 46), (0, 19), (21, 53), (0, 33), (3, 4), (7, 63), (28, 33), (25, 44), (0, 60), (21, 25), (10, 52), (0, 53), (13, 24), (0, 18), (7, 39), (18, 21), (5, 45), (35, 37), (0, 46), (28, 62), (0, 47), (50, 60), (0, 28), (0, 7), (4, 35), (7, 11), (0, 40), (19, 24), (23, 28), (0, 25), (0, 30), (54, 63), (20, 32), (27, 43), (0, 55), (0, 21), (8, 52), (56, 59), (58, 61), (31, 34), (29, 55), (0, 29), (6, 26), (0, 45), (16, 41), (24, 52), (4, 49), (0, 32), (9, 14), (0, 15), (15, 22), (0, 39), (34, 47), (48, 54), (20, 58), (0, 5), (12, 13), (38, 42), (12, 33), (14, 27), (48, 57), (23, 57), (35, 36), (0, 62), (11, 63), (26, 31), (0, 49), (0, 43), (6, 46), (42, 61), (40, 59), (8, 10), (0, 51), (30, 37), (16, 50), (44, 56), (9, 22), (3, 36), (2, 38), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, True, False, True, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, True, False, False, False, False, False, True, False, False, False, False, False, False, True, True, False, False, False, True, True, False, False, True, True, False, False, False, True, True, False, True, True, True, True, False, True, False, False, True, False, True, True, True, True, True, True, False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, True, False, True, True, True, True, False, True, True, True, False, True, True, False, True, True, True, True, False, False]
+nb corrects = 67
+nb aretes = 260
+accuracy = 0.25769230769230766
+
+
+
+#################
+Generate = 1000
+Stat = [1349.5303963029144, 2487.027017525013, 1526.0335104251226]
+Percent = 10
+Seuil = 50.0
+
+edges = [(5, 32), (7, 62), (3, 35), (0, 2), (10, 56), (28, 39), (11, 62), (35, 60), (40, 44), (8, 59), (44, 53), (53, 56), (0, 59), (10, 40), (22, 34), (15, 43), (22, 27), (37, 42), (13, 57), (23, 63), (25, 29), (0, 42), (11, 19), (11, 28), (13, 52), (21, 29), (49, 60), (17, 31), (17, 49), (13, 29), (13, 33), (25, 56), (34, 51), (0, 16), (17, 62), (51, 62), (62, 63), (0, 9), (0, 3), (4, 27), (12, 23), (28, 63), (26, 46), (5, 20), (17, 43), (8, 21), (12, 24), (29, 33), (19, 44), (21, 56), (3, 27), (16, 60), (17, 39), (8, 24), (26, 47), (46, 47), (12, 57), (18, 28), (45, 61), (14, 15), (10, 59), (44, 55), (0, 22), (18, 55), (30, 50), (43, 51), (0, 44), (4, 37), (48, 63), (0, 34), (6, 34), (0, 58), (39, 62), (11, 48), (0, 54), (36, 37), (37, 60), (39, 54), (5, 30), (55, 56), (33, 57), (4, 30), (32, 53), (23, 62), (25, 53), (0, 24), (21, 55), (9, 31), (53, 58), (5, 42), (0, 12), (5, 60), (8, 19), (0, 14), (19, 21), (41, 61), (0, 6), (13, 18), (19, 25), (0, 36), (31, 47), (5, 55), (6, 31), (23, 48), (20, 53), (29, 53), (28, 29), (0, 10), (5, 49), (12, 18), (17, 51), (0, 56), (18, 33), (0, 63), (2, 5), (0, 57), (18, 29), (0, 20), (20, 42), (0, 26), (35, 50), (0, 48), (3, 43), (32, 45), (17, 47), (0, 35), (0, 11), (15, 17), (20, 61), (29, 62), (41, 45), (0, 61), (23, 33), (10, 53), (18, 25), (3, 14), (14, 22), (18, 62), (0, 50), (32, 58), (43, 49), (18, 19), (38, 41), (26, 34), (0, 41), (3, 17), (46, 51), (6, 47), (0, 37), (0, 4), (0, 31), (8, 25), (37, 50), (0, 27), (13, 19), (39, 51), (40, 58), (0, 23), (47, 51), (9, 34), (7, 54), (2, 45), (10, 24), (30, 60), (2, 41), (45, 60), (0, 13), (2, 16), (32, 40), (11, 54), (19, 52), (44, 59), (53, 55), (7, 63), (15, 27), (3, 4), (0, 60), (28, 33), (10, 52), (21, 25), (35, 37), (0, 33), (21, 53), (39, 46), (0, 18), (0, 19), (7, 39), (28, 62), (41, 60), (13, 24), (50, 60), (25, 44), (5, 45), (0, 47), (0, 53), (0, 46), (18, 21), (0, 28), (19, 24), (4, 35), (23, 28), (7, 11), (0, 40), (0, 7), (27, 43), (0, 25), (20, 32), (0, 21), (0, 30), (54, 63), (0, 55), (8, 52), (56, 59), (31, 34), (0, 29), (29, 55), (58, 61), (6, 26), (0, 45), (16, 41), (24, 52), (15, 22), (9, 14), (4, 49), (0, 15), (0, 32), (34, 47), (0, 39), (0, 5), (48, 54), (20, 58), (12, 33), (38, 42), (12, 13), (35, 36), (48, 57), (14, 27), (23, 57), (11, 63), (26, 31), (0, 62), (0, 49), (6, 46), (0, 43), (40, 59), (42, 61), (30, 37), (8, 10), (0, 51), (16, 50), (44, 56), (9, 22), (2, 38), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, True, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, True, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, False, False, False, False, False, True, False, False, False, False, False, False, True, False, False, False, True, True, False, False, True, True, True, False, False, True, False, False, False, False, True, True, False, False, True, False, True, False, True, False, False, True, True, False, True, True, False, True, True, True, True, True, False, False, True, False, True, False, True, True, True, True, True, True, True, True, True, True, False, True, True, True, False, True, True, True, True, True, True, True, True, False, True, False, True, True, True, True, True, False, True, False, True, True, True, True, False, False]
+nb corrects = 67
+nb aretes = 257
+accuracy = 0.2607003891050584
+
+
+
+#################
+Generate = 1000
+Stat = [1348.0165167051973, 2518.3502364865567, 1532.6276571531523]
+Percent = 10
+Seuil = 50.0
+
+edges = [(19, 44), (7, 62), (25, 29), (15, 43), (19, 53), (8, 59), (25, 56), (38, 45), (41, 50), (13, 57), (3, 35), (13, 52), (17, 22), (22, 34), (22, 27), (40, 44), (5, 29), (11, 28), (23, 63), (35, 60), (5, 20), (8, 21), (10, 44), (8, 56), (11, 19), (34, 51), (62, 63), (5, 32), (49, 60), (53, 56), (55, 62), (13, 33), (21, 29), (13, 29), (17, 62), (0, 59), (28, 39), (37, 42), (0, 3), (29, 33), (10, 56), (18, 28), (4, 27), (26, 46), (17, 43), (12, 24), (28, 63), (12, 23), (0, 16), (0, 9), (51, 62), (21, 56), (48, 63), (44, 53), (4, 37), (8, 24), (0, 42), (14, 15), (17, 39), (3, 27), (16, 60), (46, 47), (55, 56), (0, 34), (6, 34), (17, 49), (26, 47), (12, 57), (0, 22), (5, 42), (10, 59), (0, 58), (37, 60), (36, 37), (44, 55), (45, 61), (39, 62), (32, 53), (30, 50), (33, 57), (0, 12), (20, 53), (11, 48), (18, 55), (23, 62), (39, 54), (43, 51), (0, 44), (5, 60), (9, 31), (0, 54), (4, 30), (0, 24), (21, 55), (31, 47), (25, 53), (0, 36), (19, 21), (41, 61), (28, 29), (29, 53), (19, 25), (23, 48), (5, 30), (13, 18), (53, 58), (2, 5), (8, 19), (5, 49), (18, 33), (6, 31), (0, 14), (0, 10), (0, 6), (0, 63), (5, 55), (0, 56), (12, 18), (17, 51), (0, 57), (0, 26), (32, 45), (0, 20), (3, 43), (3, 14), (17, 47), (0, 35), (15, 17), (0, 48), (18, 29), (35, 50), (20, 61), (20, 42), (0, 11), (23, 33), (18, 25), (14, 22), (32, 58), (10, 53), (41, 45), (0, 50), (29, 62), (18, 62), (0, 61), (38, 41), (37, 50), (43, 49), (18, 19), (6, 47), (0, 41), (26, 34), (46, 51), (3, 17), (0, 27), (0, 31), (8, 25), (9, 34), (40, 58), (39, 51), (47, 51), (7, 54), (13, 19), (0, 4), (0, 37), (10, 24), (30, 60), (0, 23), (45, 60), (2, 41), (32, 40), (0, 13), (2, 45), (2, 16), (44, 59), (19, 52), (11, 54), (53, 55), (15, 27), (21, 53), (28, 33), (7, 63), (0, 18), (0, 19), (10, 52), (41, 60), (3, 4), (39, 46), (0, 60), (35, 37), (7, 39), (21, 25), (28, 62), (0, 33), (13, 24), (18, 21), (25, 44), (0, 46), (0, 53), (0, 47), (5, 45), (50, 60), (4, 35), (0, 28), (19, 24), (0, 30), (23, 28), (7, 11), (0, 40), (0, 7), (0, 25), (0, 21), (27, 43), (0, 55), (54, 63), (20, 32), (0, 45), (56, 59), (0, 29), (8, 52), (58, 61), (29, 55), (31, 34), (6, 26), (24, 52), (16, 41), (4, 49), (15, 22), (9, 14), (0, 32), (0, 15), (34, 47), (0, 39), (48, 54), (0, 5), (38, 42), (20, 58), (12, 33), (14, 27), (0, 49), (35, 36), (12, 13), (23, 57), (48, 57), (11, 63), (0, 62), (26, 31), (6, 46), (0, 43), (42, 61), (40, 59), (8, 10), (30, 37), (0, 51), (44, 56), (16, 50), (9, 22), (2, 38), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, True, True, False, False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, False, False, False, False, True, False, False, False, True, False, True, True, False, True, False, True, True, False, False, True, False, True, False, True, False, True, False, True, True, True, False, True, False, True, True, True, True, True, True, False, False, False, False, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, False, True, True, True, True, True, True, True, False, True, False, True, True, True, True, True, False, False, True, True, True, True, True, False, False]
+nb corrects = 67
+nb aretes = 261
+accuracy = 0.2567049808429119
+
+
+
+#################
+Generate = 1000
+Stat = [1349.5303963029144, 2469.245921967649, 1532.576529093221]
+Percent = 10
+Seuil = 50.0
+
+edges = [(13, 57), (41, 50), (40, 44), (0, 2), (25, 29), (8, 56), (37, 42), (4, 36), (10, 44), (58, 59), (13, 52), (5, 29), (11, 28), (22, 27), (25, 56), (35, 60), (7, 62), (49, 60), (5, 32), (17, 31), (15, 43), (21, 29), (53, 56), (23, 63), (11, 62), (10, 40), (17, 62), (13, 33), (22, 34), (0, 59), (11, 19), (13, 29), (17, 43), (55, 62), (28, 63), (19, 44), (62, 63), (28, 39), (29, 33), (51, 62), (3, 27), (5, 20), (0, 58), (0, 3), (0, 9), (0, 42), (12, 23), (55, 56), (8, 21), (16, 60), (21, 56), (0, 16), (17, 39), (10, 59), (17, 49), (18, 28), (37, 60), (26, 46), (46, 47), (4, 27), (48, 63), (0, 22), (4, 37), (14, 15), (43, 51), (44, 55), (8, 24), (26, 47), (39, 62), (0, 34), (12, 24), (12, 57), (30, 50), (32, 53), (33, 57), (4, 30), (0, 44), (36, 37), (5, 42), (45, 61), (18, 55), (6, 34), (0, 54), (11, 48), (39, 54), (19, 21), (31, 47), (5, 60), (21, 55), (0, 36), (20, 53), (0, 24), (13, 18), (25, 53), (0, 12), (6, 31), (9, 31), (5, 30), (23, 62), (41, 61), (23, 48), (5, 55), (53, 58), (29, 53), (0, 6), (28, 29), (8, 19), (12, 18), (0, 10), (0, 14), (19, 25), (17, 47), (5, 49), (18, 33), (2, 5), (17, 51), (0, 56), (0, 26), (20, 42), (0, 57), (18, 29), (0, 20), (0, 35), (32, 45), (0, 48), (3, 43), (14, 22), (15, 17), (0, 63), (35, 50), (18, 25), (0, 11), (20, 61), (3, 14), (0, 61), (10, 53), (0, 50), (18, 19), (41, 45), (23, 33), (29, 62), (0, 41), (38, 41), (43, 49), (18, 62), (32, 58), (26, 34), (6, 47), (8, 25), (46, 51), (9, 34), (0, 27), (0, 23), (0, 31), (13, 19), (3, 17), (0, 37), (0, 4), (40, 58), (39, 51), (37, 50), (32, 40), (2, 41), (45, 60), (7, 54), (30, 60), (47, 51), (10, 24), (2, 16), (2, 45), (11, 54), (44, 59), (0, 13), (15, 27), (19, 52), (3, 4), (7, 63), (53, 55), (28, 33), (0, 18), (21, 25), (7, 39), (28, 62), (35, 37), (10, 52), (21, 53), (0, 46), (50, 60), (0, 60), (39, 46), (0, 19), (0, 33), (0, 53), (41, 60), (5, 45), (13, 24), (0, 47), (25, 44), (19, 24), (18, 21), (0, 7), (0, 28), (23, 28), (4, 35), (0, 21), (0, 40), (7, 11), (0, 55), (0, 25), (0, 30), (54, 63), (27, 43), (20, 32), (8, 52), (0, 29), (0, 45), (56, 59), (58, 61), (31, 34), (29, 55), (6, 26), (24, 52), (16, 41), (4, 49), (9, 14), (15, 22), (0, 15), (0, 39), (0, 32), (34, 47), (48, 54), (0, 5), (12, 33), (20, 58), (14, 27), (38, 42), (12, 13), (35, 36), (23, 57), (48, 57), (11, 63), (0, 62), (0, 49), (26, 31), (6, 46), (0, 43), (40, 59), (42, 61), (8, 10), (0, 51), (30, 37), (44, 56), (16, 50), (9, 22), (3, 36), (2, 38), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, True, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, True, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, True, True, False, False, True, False, False, True, True, True, False, False, True, False, False, False, True, True, False, False, False, True, True, True, False, True, False, True, True, False, True, True, True, True, False, False, True, False, False, True, True, True, True, True, True, True, True, True, False, True, True, True, True, False, True, True, True, True, True, True, True, True, False, True, True, False, True, True, True, True, False, True, False, True, True, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 259
+accuracy = 0.2548262548262548
+
+
+
+#################
+Generate = 1000
+Stat = [1349.3388113024553, 2419.7456525058114, 1524.505311915159]
+Percent = 10
+Seuil = 50.0
+
+edges = [(4, 14), (7, 62), (12, 53), (17, 31), (58, 59), (33, 62), (37, 42), (13, 33), (22, 34), (19, 44), (10, 44), (41, 50), (5, 29), (5, 32), (13, 57), (21, 56), (21, 29), (19, 53), (0, 42), (29, 33), (0, 59), (23, 63), (44, 53), (11, 28), (22, 27), (62, 63), (15, 43), (12, 57), (8, 21), (0, 9), (8, 59), (49, 60), (11, 19), (28, 39), (40, 44), (13, 29), (5, 20), (17, 39), (0, 3), (3, 27), (28, 63), (26, 46), (53, 56), (4, 27), (17, 62), (25, 56), (13, 52), (14, 15), (36, 37), (46, 47), (12, 24), (17, 43), (0, 16), (16, 60), (26, 47), (0, 22), (4, 37), (12, 23), (55, 56), (18, 28), (37, 60), (32, 53), (51, 62), (0, 44), (43, 51), (30, 50), (48, 63), (39, 62), (5, 42), (10, 59), (8, 24), (33, 57), (17, 49), (0, 12), (6, 34), (4, 30), (18, 55), (45, 61), (11, 48), (0, 34), (20, 53), (0, 24), (25, 53), (0, 58), (5, 60), (39, 54), (44, 55), (5, 30), (23, 62), (23, 48), (0, 36), (0, 54), (21, 55), (31, 47), (28, 29), (41, 61), (53, 58), (0, 6), (8, 19), (13, 18), (19, 21), (9, 31), (19, 25), (0, 14), (0, 56), (6, 31), (18, 33), (5, 49), (17, 51), (5, 55), (0, 10), (2, 5), (29, 53), (0, 63), (0, 35), (17, 47), (0, 26), (0, 57), (20, 42), (0, 20), (41, 45), (35, 50), (12, 18), (3, 43), (0, 48), (14, 22), (15, 17), (18, 29), (18, 25), (32, 45), (38, 41), (20, 61), (0, 11), (3, 14), (43, 49), (32, 58), (0, 61), (23, 33), (10, 53), (18, 62), (0, 50), (18, 19), (29, 62), (26, 34), (6, 47), (46, 51), (0, 31), (8, 25), (0, 41), (9, 34), (3, 17), (37, 50), (0, 27), (40, 58), (7, 54), (0, 23), (47, 51), (13, 19), (0, 4), (39, 51), (2, 16), (0, 37), (10, 24), (11, 54), (44, 59), (45, 60), (32, 40), (30, 60), (53, 55), (0, 13), (2, 45), (2, 41), (19, 52), (7, 63), (15, 27), (3, 4), (0, 18), (28, 33), (10, 52), (21, 53), (0, 60), (7, 39), (0, 19), (35, 37), (41, 60), (21, 25), (0, 33), (28, 62), (18, 21), (39, 46), (13, 24), (0, 46), (25, 44), (50, 60), (0, 53), (5, 45), (0, 47), (19, 24), (23, 28), (0, 28), (0, 40), (4, 35), (0, 30), (0, 25), (0, 7), (7, 11), (20, 32), (27, 43), (0, 55), (0, 21), (54, 63), (0, 45), (8, 52), (0, 29), (29, 55), (58, 61), (56, 59), (31, 34), (6, 26), (24, 52), (4, 49), (16, 41), (0, 39), (0, 15), (9, 14), (15, 22), (0, 32), (34, 47), (0, 5), (48, 54), (20, 58), (12, 13), (14, 27), (12, 33), (48, 57), (38, 42), (0, 62), (35, 36), (11, 63), (0, 49), (23, 57), (26, 31), (6, 46), (0, 43), (40, 59), (42, 61), (8, 10), (30, 37), (0, 51), (16, 50), (44, 56), (9, 22), (2, 38), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, True, False, False, False, False, True, False, False, False, False, False, False, True, False, False, False, True, True, False, False, False, True, False, False, True, False, True, True, False, False, False, True, True, False, True, False, False, True, False, True, True, False, False, True, False, True, True, True, True, True, True, True, True, False, False, True, False, False, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, False, True, True, False, True, True, True, True, True, False, True, True, True, True, True, False, True, False, True, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 257
+accuracy = 0.25680933852140075
+
+----------------------------
+NOUVELLE SERIE DE TESTS (3/4) 
+-----------------------------
+
+#################
+Generate = 50
+Stat = [1350.115732793578, 2187.039637431316, 1524.5856941971383]
+Percent = 10
+Seuil = 3.75
+
+edges = [(0, 8), (0, 24), (3, 27), (7, 62), (10, 59), (11, 48), (11, 62), (12, 24), (13, 43), (13, 53), (17, 43), (18, 53), (19, 44), (20, 53), (23, 63), (25, 29), (32, 53), (39, 54), (44, 55), (62, 63), (0, 3), (0, 59), (8, 19), (11, 28), (17, 22), (17, 49), (18, 28), (21, 56), (27, 36), (28, 39), (39, 62), (40, 44), (48, 63), (49, 60), (51, 62), (58, 59), (0, 22), (0, 36), (0, 63), (4, 30), (4, 37), (5, 60), (6, 34), (25, 53), (26, 46), (29, 53), (32, 45), (34, 51), (36, 37), (41, 61), (45, 61), (46, 47), (53, 56), (55, 56), (0, 10), (0, 34), (0, 44), (5, 42), (5, 49), (9, 31), (18, 25), (19, 25), (21, 55), (23, 62), (30, 50), (41, 45), (53, 58), (0, 6), (0, 56), (0, 57), (5, 30), (26, 34), (31, 47), (43, 51), (0, 12), (0, 48), (0, 54), (12, 57), (17, 51), (18, 29), (23, 48), (37, 60), (0, 35), (6, 31), (18, 33), (22, 27), (0, 11), (18, 62), (28, 29), (0, 14), (0, 20), (0, 31), (6, 47), (12, 18), (17, 47), (38, 41), (0, 23), (3, 17), (5, 55), (14, 22), (18, 55), (20, 61), (32, 58), (35, 50), (46, 51), (0, 26), (0, 50), (3, 14), (10, 53), (18, 19), (39, 51), (2, 5), (7, 54), (0, 61), (2, 16), (23, 33), (37, 50), (8, 25), (9, 34), (43, 49), (0, 4), (2, 41), (40, 58), (0, 60), (20, 42), (30, 60), (32, 40), (44, 59), (0, 13), (0, 37), (0, 41), (13, 19), (15, 17), (0, 27), (3, 43), (28, 33), (29, 62), (53, 55), (0, 18), (3, 4), (7, 39), (11, 54), (35, 37), (7, 63), (28, 62), (0, 47), (2, 45), (10, 52), (5, 45), (0, 46), (10, 24), (21, 53), (45, 60), (0, 55), (19, 24), (27, 43), (50, 60), (19, 52), (47, 51), (41, 60), (15, 27), (0, 21), (21, 25), (25, 44), (0, 19), (0, 30), (0, 40), (13, 24), (39, 46), (23, 28), (0, 33), (0, 53), (18, 21), (4, 35), (0, 25), (0, 28), (0, 29), (7, 11), (20, 32), (56, 59), (24, 52), (54, 63), (0, 7), (15, 22), (0, 45), (0, 15), (8, 52), (31, 34), (58, 61), (4, 49), (6, 26), (14, 27), (29, 55), (9, 14), (34, 47), (48, 54), (16, 41), (20, 58), (0, 5), (0, 43), (12, 13), (12, 33), (42, 61), (0, 32), (0, 49), (23, 57), (38, 42), (6, 46), (0, 39), (0, 62), (48, 57), (11, 63), (26, 31), (35, 36), (40, 59), (8, 10), (0, 51), (30, 37), (3, 36), (9, 22), (16, 50), (44, 56), (2, 38), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, False, False, False, False, False, False, False, False, True, True, True, False, False, False, True, False, False, False, False, False, False, False, False, True, False, True, True, False, False, True, False, False, True, False, False, False, True, False, False, False, True, False, True, True, False, False, False, False, True, True, False, False, True, False, True, False, True, True, False, False, False, False, True, False, True, True, False, True, True, True, True, True, True, False, True, False, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, False, False, False, True, True, True, True, True, True, False, True, True, True, True, False, True, True, False, False]
+nb corrects = 66
+nb aretes = 226
+accuracy = 0.2920353982300885
+
+
+
+#################
+Generate = 50
+Stat = [1350.337326019168, 2203.279849573047, 1547.3849859720583]
+Percent = 10
+Seuil = 3.75
+
+edges = [(0, 12), (0, 42), (0, 59), (4, 30), (4, 36), (4, 37), (11, 33), (11, 62), (12, 23), (12, 53), (17, 49), (17, 62), (18, 33), (20, 53), (26, 46), (26, 47), (39, 62), (40, 44), (0, 36), (0, 56), (0, 58), (0, 63), (5, 60), (6, 34), (7, 23), (8, 24), (12, 57), (13, 33), (13, 52), (17, 43), (19, 21), (21, 56), (23, 48), (28, 63), (33, 62), (34, 46), (37, 60), (41, 50), (44, 53), (48, 63), (55, 56), (0, 9), (0, 16), (0, 34), (0, 54), (8, 19), (11, 48), (13, 57), (17, 31), (20, 42), (23, 62), (29, 33), (46, 47), (0, 44), (5, 49), (5, 55), (10, 53), (17, 39), (20, 61), (36, 37), (41, 45), (0, 6), (0, 10), (0, 57), (4, 27), (18, 55), (19, 25), (28, 29), (30, 50), (38, 41), (39, 54), (40, 58), (0, 3), (0, 14), (0, 61), (6, 31), (9, 31), (13, 18), (18, 62), (32, 58), (0, 24), (16, 60), (23, 33), (7, 54), (9, 34), (12, 18), (15, 17), (3, 43), (13, 29), (14, 22), (18, 29), (43, 49), (53, 58), (0, 11), (0, 35), (17, 51), (18, 25), (41, 61), (0, 4), (0, 20), (0, 26), (0, 48), (2, 5), (3, 17), (29, 53), (0, 13), (29, 62), (32, 45), (0, 27), (0, 37), (0, 50), (2, 45), (3, 14), (44, 55), (15, 27), (37, 50), (0, 33), (2, 41), (13, 19), (21, 53), (26, 34), (35, 50), (47, 51), (10, 24), (11, 54), (19, 52), (44, 59), (53, 55), (0, 60), (3, 4), (46, 51), (0, 41), (6, 47), (18, 21), (32, 40), (50, 60), (0, 31), (2, 16), (18, 19), (25, 44), (35, 37), (0, 19), (39, 46), (39, 51), (0, 23), (30, 60), (0, 46), (0, 25), (7, 63), (13, 24), (7, 39), (8, 25), (41, 60), (0, 47), (23, 28), (45, 60), (0, 18), (28, 33), (8, 52), (28, 62), (29, 55), (0, 28), (5, 45), (10, 52), (0, 7), (19, 24), (0, 30), (7, 11), (4, 35), (31, 34), (0, 45), (6, 26), (20, 32), (0, 53), (0, 40), (21, 25), (27, 43), (0, 55), (16, 41), (0, 29), (54, 63), (58, 61), (0, 15), (0, 21), (0, 39), (9, 14), (12, 13), (24, 52), (56, 59), (0, 32), (4, 49), (15, 22), (35, 36), (48, 54), (11, 63), (34, 47), (0, 5), (14, 27), (20, 58), (48, 57), (0, 43), (0, 49), (0, 62), (26, 31), (38, 42), (6, 46), (12, 33), (23, 57), (40, 59), (0, 51), (8, 10), (16, 50), (42, 61), (9, 22), (30, 37), (44, 56), (3, 36), (2, 38), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, True, True, False, False, False, False, False, False, False, False, True, False, True, True, False, False, False, False, False, True, False, False, True, False, True, False, False, True, False, False, True, False, False, True, False, False, False, True, True, False, True, False, False, False, True, True, False, False, True, False, True, True, False, True, True, True, True, False, False, True, True, True, True, False, True, False, True, True, False, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, False, False, True, True, False, True, True, True, True, True, False, True, True, True, False, False]
+nb corrects = 64
+nb aretes = 221
+accuracy = 0.2895927601809955
+
+
+
+#################
+Generate = 50
+Stat = [1353.1929817998914, 2314.6857886185967, 1527.433097498836]
+Percent = 10
+Seuil = 3.75
+
+edges = [(0, 2), (0, 8), (3, 27), (5, 49), (11, 48), (12, 53), (12, 57), (13, 52), (15, 34), (17, 22), (18, 56), (21, 56), (23, 63), (24, 56), (25, 29), (34, 51), (36, 37), (36, 55), (41, 50), (43, 51), (48, 63), (49, 60), (53, 56), (0, 22), (4, 27), (8, 56), (13, 25), (18, 28), (26, 47), (29, 49), (37, 42), (39, 54), (51, 62), (55, 62), (0, 6), (0, 16), (0, 44), (0, 63), (6, 34), (7, 62), (8, 19), (10, 56), (10, 59), (11, 28), (12, 55), (17, 62), (18, 55), (22, 27), (28, 48), (28, 63), (40, 44), (53, 58), (0, 58), (0, 59), (4, 30), (14, 15), (18, 19), (33, 57), (44, 53), (0, 10), (0, 12), (0, 14), (0, 34), (5, 60), (8, 21), (9, 31), (11, 19), (17, 39), (19, 25), (35, 50), (8, 25), (15, 43), (17, 47), (18, 33), (20, 53), (23, 48), (23, 62), (25, 53), (28, 29), (29, 53), (29, 62), (39, 62), (0, 48), (0, 54), (2, 5), (5, 42), (5, 55), (19, 21), (21, 55), (31, 47), (37, 60), (41, 61), (0, 24), (0, 26), (0, 57), (3, 17), (0, 20), (17, 49), (37, 50), (43, 49), (0, 35), (0, 56), (3, 14), (5, 30), (13, 18), (14, 22), (17, 51), (18, 62), (20, 61), (26, 34), (12, 18), (32, 45), (32, 58), (0, 11), (0, 31), (7, 54), (41, 45), (6, 47), (15, 17), (39, 51), (46, 51), (0, 4), (0, 50), (3, 43), (18, 25), (38, 41), (2, 45), (9, 34), (23, 33), (0, 37), (0, 41), (10, 53), (15, 27), (18, 29), (0, 13), (0, 23), (2, 41), (30, 60), (41, 60), (0, 18), (20, 42), (44, 59), (0, 19), (0, 27), (40, 58), (53, 55), (10, 24), (10, 52), (45, 60), (0, 60), (0, 61), (21, 25), (21, 53), (0, 40), (2, 16), (23, 28), (0, 33), (13, 19), (47, 51), (11, 54), (19, 52), (5, 45), (7, 39), (18, 21), (0, 47), (0, 53), (13, 24), (20, 32), (39, 46), (3, 4), (28, 62), (0, 46), (7, 11), (4, 35), (32, 40), (7, 63), (27, 43), (0, 28), (0, 30), (28, 33), (35, 37), (19, 24), (0, 7), (50, 60), (25, 44), (54, 63), (29, 55), (0, 25), (0, 55), (56, 59), (0, 21), (58, 61), (31, 34), (24, 52), (0, 15), (16, 41), (0, 45), (0, 29), (15, 22), (4, 49), (6, 26), (8, 52), (9, 14), (0, 32), (12, 13), (34, 47), (0, 5), (0, 39), (38, 42), (42, 61), (48, 54), (0, 49), (0, 62), (12, 33), (14, 27), (11, 63), (20, 58), (35, 36), (48, 57), (23, 57), (30, 37), (0, 51), (6, 46), (8, 10), (40, 59), (0, 17), (0, 43), (26, 31), (44, 56), (16, 50), (2, 38), (9, 22), (3, 36), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, True, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, True, False, True, False, False, True, False, False, False, False, True, False, True, False, False, False, True, True, False, False, False, False, False, False, False, True, False, True, True, False, True, False, True, True, False, False, False, True, True, True, False, True, False, True, True, False, True, True, False, True, False, True, False, True, True, True, True, True, False, True, True, True, False, True, True, True, True, True, False, True, True, True, True, False, False, True, True, True, True, True, True, True, False, False, True, True, True, True, True, False, True, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 235
+accuracy = 0.28085106382978725
+
+
+
+#################
+Generate = 50
+Stat = [1351.8613505087737, 2402.8027444861414, 1572.642914617579]
+Percent = 10
+Seuil = 3.75
+
+edges = [(0, 58), (3, 9), (4, 37), (7, 62), (10, 19), (10, 40), (10, 56), (11, 62), (13, 29), (13, 43), (17, 26), (20, 59), (21, 29), (22, 31), (22, 34), (25, 56), (26, 47), (28, 63), (35, 60), (36, 50), (39, 54), (40, 55), (43, 51), (49, 53), (52, 56), (0, 16), (4, 27), (8, 56), (10, 59), (15, 34), (19, 53), (22, 27), (29, 51), (33, 62), (34, 51), (37, 42), (38, 40), (44, 55), (53, 58), (58, 59), (0, 22), (0, 36), (5, 49), (6, 34), (9, 31), (11, 28), (11, 48), (12, 24), (19, 25), (23, 63), (26, 46), (28, 39), (30, 50), (45, 61), (55, 56), (0, 3), (0, 24), (0, 54), (5, 42), (13, 18), (17, 43), (37, 60), (51, 62), (0, 9), (0, 20), (3, 14), (5, 20), (12, 57), (21, 56), (23, 62), (29, 53), (36, 37), (39, 62), (41, 61), (0, 26), (0, 48), (0, 56), (5, 30), (5, 55), (8, 19), (8, 24), (17, 39), (18, 25), (18, 33), (18, 62), (23, 48), (31, 47), (41, 45), (0, 6), (0, 12), (6, 31), (17, 51), (18, 28), (19, 21), (20, 42), (21, 55), (0, 10), (0, 14), (0, 44), (0, 63), (3, 17), (20, 53), (0, 50), (9, 34), (10, 24), (17, 47), (20, 61), (32, 45), (35, 50), (0, 61), (2, 5), (2, 41), (14, 22), (29, 62), (38, 41), (47, 51), (0, 11), (0, 35), (0, 57), (3, 43), (12, 18), (19, 52), (21, 53), (32, 58), (37, 50), (8, 25), (25, 53), (0, 4), (0, 23), (0, 41), (15, 17), (18, 29), (10, 53), (18, 19), (43, 49), (46, 51), (0, 37), (7, 63), (11, 54), (30, 60), (39, 51), (6, 47), (13, 19), (26, 34), (0, 27), (0, 31), (2, 16), (2, 45), (40, 58), (28, 33), (32, 40), (45, 60), (0, 19), (7, 54), (23, 33), (0, 60), (5, 45), (35, 37), (39, 46), (18, 21), (53, 55), (13, 24), (25, 44), (0, 33), (15, 27), (28, 62), (3, 4), (0, 13), (0, 40), (10, 52), (7, 39), (50, 60), (44, 59), (0, 7), (0, 47), (0, 53), (21, 25), (27, 43), (41, 60), (0, 18), (0, 46), (20, 32), (0, 21), (19, 24), (0, 28), (0, 25), (0, 55), (4, 35), (23, 28), (7, 11), (56, 59), (0, 30), (8, 52), (6, 26), (0, 29), (54, 63), (31, 34), (58, 61), (0, 15), (0, 39), (0, 45), (29, 55), (16, 41), (4, 49), (15, 22), (23, 57), (12, 13), (20, 58), (34, 47), (24, 52), (9, 14), (12, 33), (0, 62), (48, 54), (0, 43), (14, 27), (0, 5), (35, 36), (38, 42), (0, 32), (26, 31), (8, 10), (11, 63), (40, 59), (48, 57), (6, 46), (0, 49), (42, 61), (30, 37), (9, 22), (44, 56), (0, 51), (16, 50), (2, 38), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, True, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, True, False, False, False, False, False, False, False, True, False, False, False, False, False, False, True, False, True, False, False, False, True, False, True, False, False, True, False, False, False, False, True, True, True, True, False, True, True, False, True, True, True, True, False, True, False, True, False, True, True, False, True, False, True, False, True, True, False, True, False, True, True, True, True, True, True, True, True, True, True, True, False, False, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, False, False, True, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 238
+accuracy = 0.2773109243697479
+
+
+
+#################
+Generate = 50
+Stat = [1354.715307199209, 2139.4093959292927, 1493.3073910689857]
+Percent = 10
+Seuil = 3.75
+
+edges = [(0, 54), (0, 59), (8, 19), (10, 40), (12, 23), (17, 51), (18, 28), (21, 56), (26, 46), (30, 50), (34, 51), (36, 37), (43, 47), (53, 56), (5, 60), (6, 34), (7, 57), (17, 46), (17, 62), (21, 55), (25, 29), (29, 51), (37, 42), (40, 44), (44, 53), (62, 63), (0, 58), (4, 30), (5, 30), (5, 49), (6, 31), (11, 48), (14, 15), (16, 60), (22, 27), (33, 57), (0, 34), (5, 20), (5, 55), (17, 39), (28, 29), (45, 61), (55, 56), (0, 6), (0, 36), (5, 42), (10, 59), (11, 19), (13, 52), (23, 48), (28, 39), (31, 47), (32, 45), (43, 51), (44, 55), (48, 63), (0, 35), (0, 48), (13, 18), (18, 33), (29, 62), (0, 20), (9, 31), (14, 22), (19, 21), (41, 45), (43, 49), (0, 14), (0, 24), (20, 53), (35, 50), (39, 54), (0, 50), (0, 57), (2, 5), (17, 47), (19, 25), (20, 61), (0, 56), (23, 33), (23, 62), (0, 11), (0, 63), (18, 62), (0, 4), (0, 26), (12, 18), (18, 25), (47, 51), (3, 14), (8, 25), (18, 19), (20, 42), (29, 53), (38, 41), (39, 51), (0, 61), (3, 43), (9, 34), (15, 17), (26, 34), (32, 58), (40, 58), (0, 41), (2, 16), (13, 19), (0, 23), (11, 54), (0, 27), (3, 17), (6, 47), (7, 54), (0, 18), (0, 19), (0, 31), (0, 37), (2, 41), (3, 4), (7, 63), (10, 52), (10, 53), (37, 50), (46, 51), (53, 55), (0, 33), (18, 29), (0, 60), (2, 45), (15, 27), (30, 60), (39, 46), (44, 59), (0, 28), (18, 21), (0, 13), (10, 24), (13, 24), (45, 60), (19, 52), (21, 25), (35, 37), (0, 40), (0, 46), (7, 39), (20, 32), (41, 60), (0, 47), (21, 53), (25, 44), (32, 40), (50, 60), (23, 28), (0, 53), (28, 33), (0, 7), (0, 25), (5, 45), (19, 24), (27, 43), (28, 62), (0, 30), (54, 63), (0, 55), (56, 59), (24, 52), (0, 45), (4, 35), (7, 11), (31, 34), (0, 29), (6, 26), (29, 55), (0, 15), (0, 21), (9, 14), (58, 61), (0, 39), (15, 22), (16, 41), (8, 52), (12, 13), (34, 47), (4, 49), (20, 58), (38, 42), (23, 57), (14, 27), (35, 36), (48, 57), (0, 5), (48, 54), (11, 63), (0, 32), (42, 61), (0, 62), (12, 33), (0, 43), (0, 49), (6, 46), (26, 31), (40, 59), (16, 50), (8, 10), (30, 37), (0, 17), (0, 51), (2, 38), (44, 56), (3, 36), (9, 22), (0, 1), (0, 64)]
+
+true = [False, False, True, False, False, True, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, True, False, False, False, True, True, False, False, False, False, False, False, True, False, True, False, False, False, False, True, True, False, False, False, True, False, False, True, True, False, True, False, True, False, True, False, False, False, True, True, False, False, True, False, False, False, True, False, True, True, True, False, True, True, False, True, True, False, True, True, True, True, True, False, False, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, False, True, True, False, True, True, True, True, True, True, False, True, False, True, True, False, False]
+nb corrects = 64
+nb aretes = 212
+accuracy = 0.3018867924528302
+
+
+
+#################
+Generate = 100
+Stat = [1350.337326019168, 2299.480593827121, 1539.8053506127842]
+Percent = 10
+Seuil = 7.5
+
+edges = [(4, 30), (5, 60), (7, 62), (8, 24), (10, 44), (10, 59), (11, 62), (12, 23), (21, 29), (25, 29), (25, 56), (0, 16), (11, 18), (17, 43), (21, 56), (25, 53), (28, 63), (34, 46), (37, 42), (40, 44), (43, 51), (51, 62), (0, 3), (0, 34), (0, 44), (3, 27), (12, 29), (14, 15), (18, 55), (22, 34), (33, 57), (35, 60), (44, 55), (45, 61), (46, 47), (48, 63), (0, 22), (0, 42), (5, 20), (8, 59), (13, 33), (22, 27), (26, 47), (28, 29), (39, 62), (0, 36), (0, 54), (2, 5), (3, 43), (4, 37), (5, 55), (34, 51), (0, 24), (0, 27), (12, 57), (13, 29), (17, 39), (47, 51), (16, 60), (21, 55), (55, 56), (5, 30), (8, 19), (12, 18), (15, 17), (18, 29), (18, 33), (29, 62), (37, 60), (0, 56), (0, 58), (9, 31), (11, 48), (20, 42), (23, 48), (29, 53), (19, 21), (19, 25), (36, 37), (37, 50), (39, 54), (0, 20), (0, 57), (0, 61), (5, 42), (30, 50), (20, 53), (41, 61), (53, 58), (6, 31), (3, 17), (20, 61), (0, 14), (5, 49), (13, 18), (3, 14), (10, 24), (18, 25), (32, 53), (0, 10), (0, 48), (10, 53), (17, 51), (23, 33), (32, 58), (0, 63), (31, 47), (32, 45), (0, 37), (17, 47), (26, 34), (0, 6), (18, 62), (0, 11), (0, 50), (2, 45), (6, 47), (13, 19), (0, 26), (46, 51), (0, 35), (0, 41), (2, 41), (0, 4), (35, 50), (30, 60), (41, 45), (0, 13), (43, 49), (0, 31), (32, 40), (40, 58), (14, 22), (19, 52), (18, 19), (45, 60), (0, 33), (7, 54), (53, 55), (39, 51), (21, 53), (25, 44), (8, 25), (9, 34), (39, 46), (0, 19), (38, 41), (0, 23), (18, 21), (13, 24), (41, 60), (4, 35), (7, 11), (44, 59), (11, 54), (0, 60), (35, 37), (0, 7), (0, 28), (5, 45), (28, 33), (50, 60), (0, 53), (7, 39), (0, 18), (0, 25), (2, 16), (21, 25), (10, 52), (54, 63), (0, 46), (7, 63), (3, 4), (15, 27), (28, 62), (23, 28), (0, 40), (8, 52), (20, 32), (0, 47), (27, 43), (16, 41), (19, 24), (56, 59), (31, 34), (0, 21), (15, 22), (0, 30), (29, 55), (0, 55), (58, 61), (0, 45), (6, 26), (9, 14), (0, 39), (0, 29), (34, 47), (0, 32), (38, 42), (4, 49), (20, 58), (48, 54), (0, 5), (24, 52), (14, 27), (35, 36), (11, 63), (26, 31), (0, 15), (6, 46), (12, 13), (23, 57), (48, 57), (0, 62), (0, 49), (40, 59), (12, 33), (0, 43), (8, 10), (30, 37), (16, 50), (44, 56), (0, 51), (42, 61), (9, 22), (3, 36), (2, 38), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, True, False, False, True, False, True, False, False, True, False, False, False, False, False, False, False, False, False, True, False, False, True, True, False, True, True, True, True, False, False, True, False, False, True, False, False, True, False, True, True, False, True, False, False, True, False, False, True, True, True, True, False, False, True, True, True, True, True, True, False, True, True, True, False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, False, True, True, False, True, True, True, True, False, False, True, True, True, True, True, False, False]
+nb corrects = 65
+nb aretes = 230
+accuracy = 0.2826086956521739
+
+
+
+#################
+Generate = 100
+Stat = [1346.9617935570889, 2361.196584757687, 1563.9567329567292]
+Percent = 10
+Seuil = 7.5
+
+edges = [(0, 3), (0, 54), (3, 27), (5, 32), (21, 29), (21, 56), (22, 34), (29, 33), (38, 40), (52, 59), (0, 34), (0, 44), (8, 59), (11, 62), (13, 29), (17, 62), (18, 28), (31, 47), (46, 47), (51, 62), (5, 42), (12, 23), (18, 55), (19, 44), (25, 53), (26, 47), (39, 62), (43, 51), (44, 53), (0, 9), (6, 34), (8, 19), (10, 59), (12, 57), (37, 60), (41, 50), (0, 14), (0, 16), (0, 20), (0, 24), (13, 33), (23, 63), (4, 30), (8, 24), (11, 48), (14, 15), (28, 29), (2, 5), (17, 39), (33, 57), (44, 55), (48, 63), (0, 12), (4, 37), (5, 20), (13, 18), (0, 22), (4, 27), (5, 30), (5, 55), (17, 43), (19, 25), (41, 61), (45, 61), (0, 58), (9, 31), (12, 18), (16, 60), (18, 62), (0, 6), (0, 36), (0, 56), (20, 53), (23, 48), (29, 53), (41, 45), (0, 10), (15, 17), (17, 47), (0, 35), (20, 42), (20, 61), (32, 45), (39, 54), (53, 58), (0, 63), (3, 17), (3, 43), (17, 51), (18, 33), (19, 21), (6, 31), (29, 62), (47, 51), (0, 37), (6, 47), (18, 25), (14, 22), (18, 29), (0, 41), (35, 50), (0, 57), (10, 53), (32, 58), (43, 49), (0, 48), (26, 34), (38, 41), (0, 26), (0, 27), (0, 50), (0, 61), (3, 14), (10, 24), (13, 19), (23, 33), (0, 11), (0, 31), (5, 49), (18, 19), (40, 58), (46, 51), (2, 45), (39, 51), (7, 54), (0, 23), (9, 34), (30, 60), (8, 25), (0, 4), (19, 52), (37, 50), (0, 33), (45, 60), (53, 55), (44, 59), (2, 41), (39, 46), (2, 16), (15, 27), (21, 53), (0, 19), (32, 40), (0, 13), (10, 52), (11, 54), (0, 18), (13, 24), (25, 44), (28, 33), (41, 60), (3, 4), (21, 25), (50, 60), (7, 39), (18, 21), (0, 60), (7, 11), (4, 35), (7, 63), (0, 28), (0, 53), (35, 37), (0, 25), (5, 45), (54, 63), (0, 40), (20, 32), (23, 28), (28, 62), (0, 7), (0, 46), (19, 24), (58, 61), (27, 43), (0, 21), (0, 30), (0, 47), (0, 29), (0, 45), (8, 52), (0, 55), (29, 55), (4, 49), (56, 59), (6, 26), (16, 41), (31, 34), (9, 14), (15, 22), (0, 5), (0, 32), (24, 52), (48, 54), (0, 39), (12, 33), (34, 47), (0, 15), (26, 31), (48, 57), (38, 42), (23, 57), (20, 58), (11, 63), (14, 27), (0, 49), (12, 13), (35, 36), (0, 43), (0, 62), (6, 46), (40, 59), (30, 37), (42, 61), (8, 10), (16, 50), (0, 51), (9, 22), (2, 38), (44, 56), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, True, False, False, False, False, False, False, False, False, True, False, False, True, True, False, False, False, False, False, False, False, False, False, True, True, False, False, False, True, True, True, False, False, True, True, False, False, True, False, True, False, False, True, False, True, True, False, True, True, False, False, True, True, True, True, False, True, False, True, True, True, False, True, True, True, True, True, True, True, True, True, False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, False, False, True, True, True, True, True, False, True, True, False, True, True, False, False]
+nb corrects = 65
+nb aretes = 224
+accuracy = 0.29017857142857145
+
+
+
+#################
+Generate = 100
+Stat = [1351.455930679178, 2469.245921967649, 1551.906915671874]
+Percent = 10
+Seuil = 7.5
+
+edges = [(0, 34), (0, 44), (8, 21), (8, 44), (12, 24), (18, 55), (19, 44), (29, 33), (39, 43), (0, 3), (10, 44), (12, 57), (13, 53), (14, 15), (17, 31), (17, 62), (28, 39), (45, 61), (53, 58), (62, 63), (0, 16), (0, 42), (0, 58), (4, 37), (7, 62), (13, 29), (19, 53), (34, 51), (55, 56), (0, 22), (4, 27), (5, 42), (7, 28), (10, 59), (13, 52), (13, 57), (17, 43), (22, 34), (23, 63), (26, 46), (26, 47), (33, 57), (36, 37), (37, 42), (44, 55), (48, 63), (49, 60), (4, 30), (5, 30), (35, 60), (39, 62), (43, 51), (5, 60), (6, 34), (19, 21), (23, 62), (32, 53), (41, 61), (0, 12), (0, 20), (2, 5), (13, 18), (21, 55), (0, 24), (0, 36), (19, 25), (20, 53), (29, 53), (39, 54), (18, 28), (28, 29), (0, 54), (5, 55), (9, 31), (11, 48), (8, 24), (32, 45), (5, 49), (15, 17), (25, 53), (30, 50), (46, 47), (0, 56), (3, 43), (20, 42), (23, 48), (8, 19), (18, 33), (35, 50), (0, 10), (31, 47), (0, 35), (0, 14), (18, 19), (18, 62), (17, 51), (18, 29), (0, 6), (0, 41), (0, 48), (0, 61), (0, 63), (10, 53), (37, 50), (46, 51), (47, 51), (0, 50), (10, 24), (12, 18), (20, 61), (0, 57), (3, 14), (41, 45), (0, 11), (6, 47), (0, 26), (6, 31), (29, 62), (32, 58), (2, 41), (17, 47), (0, 23), (45, 60), (14, 22), (0, 31), (8, 25), (18, 25), (23, 33), (38, 41), (11, 54), (0, 4), (19, 52), (43, 49), (3, 4), (3, 17), (0, 27), (26, 34), (40, 58), (0, 13), (30, 60), (32, 40), (2, 16), (7, 63), (9, 34), (13, 19), (35, 37), (44, 59), (28, 33), (0, 18), (0, 37), (7, 39), (39, 51), (7, 54), (28, 62), (39, 46), (2, 45), (0, 33), (0, 53), (53, 55), (13, 24), (21, 53), (18, 21), (25, 44), (15, 27), (0, 19), (21, 25), (41, 60), (50, 60), (0, 47), (0, 60), (0, 30), (0, 25), (5, 45), (0, 7), (19, 24), (10, 52), (8, 52), (0, 28), (27, 43), (0, 40), (0, 46), (7, 11), (20, 32), (23, 28), (4, 35), (31, 34), (54, 63), (6, 26), (0, 21), (29, 55), (0, 55), (0, 45), (56, 59), (9, 14), (0, 29), (34, 47), (58, 61), (4, 49), (0, 39), (16, 41), (0, 15), (15, 22), (48, 54), (24, 52), (0, 32), (12, 13), (23, 57), (0, 5), (26, 31), (14, 27), (38, 42), (48, 57), (20, 58), (35, 36), (6, 46), (0, 62), (11, 63), (12, 33), (0, 49), (0, 43), (8, 10), (42, 61), (40, 59), (44, 56), (0, 51), (30, 37), (0, 17), (9, 22), (16, 50), (3, 36), (2, 38), (0, 1), (0, 64)]
+
+true = [False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, True, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, True, True, False, True, False, False, True, False, False, False, False, True, False, False, True, False, False, False, False, False, True, False, True, True, True, True, False, False, True, False, False, False, True, True, False, True, True, True, True, False, True, True, True, True, True, True, True, False, True, False, True, False, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, False, True, False, True, True, True, True, True, False, False, True, True, True, True, True, True, False, False]
+nb corrects = 65
+nb aretes = 233
+accuracy = 0.27896995708154504
+
+
+
+#################
+Generate = 100
+Stat = [1350.337326019168, 2361.196584757687, 1560.1607281956399]
+Percent = 10
+Seuil = 7.5
+
+edges = [(0, 54), (3, 35), (4, 37), (15, 43), (19, 44), (26, 46), (39, 43), (41, 61), (55, 62), (8, 24), (12, 23), (21, 55), (23, 62), (24, 56), (28, 63), (0, 22), (0, 24), (17, 43), (17, 49), (20, 53), (25, 29), (29, 53), (62, 63), (11, 48), (13, 18), (17, 39), (19, 25), (36, 37), (39, 62), (5, 20), (11, 19), (12, 57), (23, 63), (32, 53), (34, 46), (41, 45), (45, 61), (53, 56), (0, 12), (5, 60), (6, 34), (12, 18), (16, 60), (18, 55), (48, 63), (0, 34), (3, 27), (39, 54), (46, 47), (51, 62), (0, 36), (0, 58), (3, 43), (26, 34), (2, 5), (4, 30), (8, 19), (14, 15), (18, 29), (19, 21), (25, 53), (43, 51), (5, 49), (6, 31), (30, 50), (0, 35), (9, 31), (15, 17), (31, 47), (46, 51), (0, 10), (28, 29), (0, 63), (5, 30), (10, 59), (17, 51), (5, 55), (8, 25), (13, 19), (33, 57), (35, 50), (37, 60), (47, 51), (0, 57), (6, 47), (29, 62), (37, 50), (38, 41), (0, 31), (23, 48), (32, 45), (0, 20), (0, 23), (23, 33), (0, 48), (18, 33), (0, 14), (2, 16), (3, 14), (20, 42), (0, 26), (10, 24), (18, 19), (0, 6), (0, 37), (0, 41), (14, 22), (3, 17), (11, 54), (17, 47), (30, 60), (0, 56), (18, 62), (0, 27), (0, 61), (10, 53), (28, 33), (32, 40), (2, 45), (20, 61), (39, 51), (0, 18), (53, 55), (0, 4), (0, 13), (0, 50), (7, 63), (9, 34), (44, 59), (45, 60), (0, 11), (21, 25), (50, 60), (18, 25), (43, 49), (10, 52), (7, 39), (7, 54), (32, 58), (0, 60), (39, 46), (41, 60), (3, 4), (0, 53), (2, 41), (19, 52), (40, 58), (18, 21), (15, 27), (20, 32), (28, 62), (0, 33), (0, 19), (4, 35), (35, 37), (5, 45), (0, 30), (19, 24), (25, 44), (0, 25), (0, 40), (7, 11), (27, 43), (0, 28), (13, 24), (21, 53), (58, 61), (0, 7), (0, 47), (0, 29), (23, 28), (0, 46), (0, 55), (56, 59), (0, 21), (54, 63), (4, 49), (9, 14), (0, 45), (15, 22), (34, 47), (8, 52), (0, 39), (24, 52), (29, 55), (31, 34), (6, 26), (0, 15), (0, 32), (0, 5), (20, 58), (11, 63), (48, 57), (14, 27), (48, 54), (6, 46), (0, 43), (23, 57), (0, 49), (16, 41), (12, 33), (26, 31), (0, 62), (35, 36), (38, 42), (42, 61), (40, 59), (12, 13), (30, 37), (8, 10), (0, 51), (16, 50), (0, 17), (44, 56), (3, 36), (9, 22), (2, 38), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, True, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, False, False, False, False, True, False, False, True, True, False, False, False, False, False, False, True, False, False, True, False, True, False, True, False, False, True, False, True, False, False, True, False, True, False, False, False, False, True, True, True, True, False, False, True, True, False, True, True, True, False, True, True, True, True, True, True, True, False, False, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, False, True, False, True, True, True, True, True, True, True, False, True, True, False, True, True, True, False, False]
+nb corrects = 65
+nb aretes = 219
+accuracy = 0.2968036529680365
+
+
+
+#################
+Generate = 100
+Stat = [1349.5303963029144, 2462.5028780174384, 1509.4196512560586]
+Percent = 10
+Seuil = 7.5
+
+edges = [(0, 16), (0, 58), (3, 35), (11, 48), (13, 18), (19, 44), (26, 47), (28, 39), (28, 63), (0, 54), (4, 27), (4, 37), (5, 32), (6, 34), (13, 25), (17, 49), (17, 62), (23, 48), (23, 62), (32, 53), (39, 62), (40, 44), (44, 53), (0, 14), (0, 59), (13, 52), (15, 43), (17, 39), (25, 53), (29, 33), (35, 60), (48, 63), (49, 60), (5, 30), (11, 19), (23, 63), (28, 48), (0, 12), (0, 22), (0, 44), (9, 31), (12, 18), (16, 60), (0, 34), (3, 27), (10, 59), (21, 55), (44, 55), (46, 47), (18, 55), (39, 54), (19, 21), (20, 42), (28, 29), (45, 61), (0, 10), (4, 30), (55, 56), (0, 57), (5, 42), (18, 33), (31, 47), (41, 61), (0, 63), (33, 57), (0, 36), (0, 61), (5, 49), (5, 60), (6, 31), (23, 33), (30, 50), (36, 37), (53, 58), (0, 24), (0, 56), (5, 55), (14, 15), (19, 25), (43, 51), (0, 6), (3, 43), (17, 51), (0, 26), (8, 19), (20, 53), (32, 45), (0, 20), (3, 14), (10, 53), (15, 17), (0, 41), (35, 50), (0, 11), (0, 48), (2, 5), (29, 53), (29, 62), (17, 47), (20, 61), (13, 19), (41, 45), (14, 22), (18, 62), (32, 58), (46, 51), (0, 35), (18, 25), (47, 51), (38, 41), (6, 47), (0, 50), (18, 29), (26, 34), (3, 17), (18, 19), (0, 37), (37, 50), (40, 58), (43, 49), (2, 45), (30, 60), (15, 27), (7, 54), (0, 4), (8, 25), (0, 31), (11, 54), (44, 59), (0, 13), (9, 34), (10, 24), (0, 27), (2, 41), (32, 40), (0, 23), (53, 55), (45, 60), (2, 16), (19, 52), (7, 63), (28, 33), (0, 18), (0, 53), (0, 60), (39, 51), (35, 37), (0, 46), (50, 60), (7, 39), (21, 25), (0, 33), (3, 4), (5, 45), (10, 52), (25, 44), (0, 19), (39, 46), (18, 21), (41, 60), (13, 24), (19, 24), (28, 62), (4, 35), (21, 53), (0, 25), (0, 28), (23, 28), (0, 47), (0, 30), (7, 11), (0, 7), (0, 21), (0, 40), (20, 32), (27, 43), (8, 52), (29, 55), (54, 63), (0, 55), (58, 61), (0, 29), (56, 59), (6, 26), (24, 52), (31, 34), (0, 45), (0, 39), (16, 41), (4, 49), (9, 14), (15, 22), (34, 47), (0, 15), (0, 32), (0, 49), (48, 54), (35, 36), (0, 5), (20, 58), (38, 42), (14, 27), (26, 31), (12, 33), (48, 57), (11, 63), (0, 43), (6, 46), (0, 62), (12, 13), (23, 57), (40, 59), (16, 50), (0, 51), (42, 61), (30, 37), (44, 56), (3, 36), (8, 10), (9, 22), (2, 38), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, True, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, True, False, False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, False, False, False, False, False, True, False, True, True, True, True, True, False, True, True, True, False, False, False, False, False, False, False, True, False, False, False, False, False, True, True, True, True, True, True, True, False, True, True, False, True, True, True, False, False, False, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, False, False, True, True, True, True, False, True, True, False, True, True, True, True, True, False, False]
+nb corrects = 65
+nb aretes = 224
+accuracy = 0.29017857142857145
+
+
+
+#################
+Generate = 500
+Stat = [1349.5303963029144, 2443.81820009297, 1532.3986453386117]
+Percent = 10
+Seuil = 37.5
+
+edges = [(28, 39), (29, 33), (13, 33), (17, 49), (46, 47), (62, 63), (0, 3), (17, 43), (49, 60), (4, 27), (28, 63), (32, 53), (3, 27), (18, 28), (19, 44), (16, 60), (48, 63), (0, 16), (13, 29), (21, 56), (0, 44), (37, 60), (45, 61), (55, 56), (36, 37), (51, 62), (5, 42), (0, 22), (4, 37), (12, 24), (17, 39), (12, 57), (6, 34), (14, 15), (26, 47), (8, 24), (0, 34), (30, 50), (10, 59), (18, 55), (0, 58), (0, 24), (0, 54), (39, 62), (43, 51), (0, 12), (39, 54), (4, 30), (31, 47), (5, 30), (33, 57), (5, 60), (9, 31), (19, 25), (20, 53), (23, 48), (44, 55), (11, 48), (19, 21), (0, 36), (23, 62), (18, 33), (25, 53), (12, 18), (0, 14), (18, 29), (21, 55), (0, 56), (53, 58), (0, 10), (5, 55), (29, 53), (13, 18), (41, 61), (0, 6), (2, 5), (28, 29), (5, 49), (0, 57), (17, 47), (0, 35), (6, 31), (0, 20), (15, 17), (20, 42), (35, 50), (8, 19), (0, 48), (17, 51), (18, 25), (14, 22), (41, 45), (0, 26), (10, 53), (20, 61), (38, 41), (3, 14), (3, 43), (0, 11), (32, 45), (23, 33), (32, 58), (0, 61), (0, 50), (6, 47), (29, 62), (18, 62), (0, 63), (26, 34), (43, 49), (13, 19), (46, 51), (0, 41), (0, 31), (0, 4), (0, 23), (0, 27), (40, 58), (10, 24), (3, 17), (9, 34), (18, 19), (0, 37), (8, 25), (47, 51), (37, 50), (45, 60), (11, 54), (44, 59), (39, 51), (2, 41), (30, 60), (2, 16), (32, 40), (0, 13), (19, 52), (2, 45), (7, 63), (7, 54), (28, 33), (53, 55), (15, 27), (3, 4), (7, 39), (35, 37), (28, 62), (21, 53), (0, 19), (21, 25), (0, 33), (39, 46), (0, 60), (0, 18), (41, 60), (50, 60), (0, 46), (0, 53), (25, 44), (18, 21), (10, 52), (13, 24), (19, 24), (0, 47), (5, 45), (4, 35), (0, 7), (0, 28), (23, 28), (0, 55), (0, 21), (0, 30), (0, 40), (27, 43), (54, 63), (0, 25), (7, 11), (8, 52), (20, 32), (0, 45), (0, 29), (58, 61), (6, 26), (29, 55), (31, 34), (56, 59), (16, 41), (24, 52), (4, 49), (9, 14), (0, 39), (15, 22), (0, 32), (0, 15), (34, 47), (0, 5), (48, 54), (12, 33), (48, 57), (20, 58), (14, 27), (35, 36), (26, 31), (38, 42), (0, 49), (12, 13), (11, 63), (23, 57), (0, 62), (0, 43), (6, 46), (40, 59), (42, 61), (0, 51), (8, 10), (30, 37), (44, 56), (16, 50), (9, 22), (2, 38), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False, True, False, True, False, False, False, True, True, False, True, True, False, True, True, False, False, False, False, True, False, True, False, False, True, True, True, True, True, True, False, True, True, False, True, False, True, True, False, False, True, True, True, False, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, False, True, False, True, True, False, True, True, False, True, True, True, True, True, False, False]
+nb corrects = 65
+nb aretes = 223
+accuracy = 0.2914798206278027
+
+
+
+#################
+Generate = 500
+Stat = [1349.3388113024553, 2397.2424858834515, 1529.1322859513264]
+Percent = 10
+Seuil = 37.5
+
+edges = [(8, 21), (8, 59), (17, 39), (17, 62), (22, 27), (4, 37), (12, 23), (26, 46), (30, 50), (0, 9), (17, 43), (3, 27), (4, 27), (29, 33), (22, 34), (26, 47), (0, 16), (0, 58), (5, 32), (10, 59), (12, 24), (14, 15), (21, 55), (33, 57), (44, 55), (55, 56), (0, 22), (0, 34), (0, 42), (21, 56), (46, 47), (12, 57), (8, 24), (43, 51), (48, 63), (53, 56), (0, 44), (37, 60), (0, 54), (45, 61), (17, 49), (39, 62), (18, 55), (25, 53), (6, 34), (16, 60), (32, 53), (19, 21), (11, 48), (36, 37), (5, 42), (5, 60), (31, 47), (4, 30), (39, 54), (23, 62), (0, 24), (0, 12), (0, 36), (23, 48), (5, 55), (8, 19), (41, 61), (13, 18), (53, 58), (5, 30), (9, 31), (0, 6), (18, 33), (20, 53), (28, 29), (5, 49), (0, 56), (0, 63), (0, 14), (19, 25), (29, 53), (6, 31), (32, 45), (12, 18), (0, 10), (2, 5), (3, 43), (10, 53), (0, 20), (15, 17), (20, 42), (17, 51), (0, 35), (0, 57), (0, 26), (0, 48), (14, 22), (17, 47), (18, 29), (0, 11), (23, 33), (18, 62), (20, 61), (35, 50), (18, 19), (0, 41), (3, 14), (29, 62), (0, 61), (18, 25), (32, 58), (3, 17), (41, 45), (0, 50), (8, 25), (0, 27), (38, 41), (43, 49), (6, 47), (46, 51), (26, 34), (37, 50), (9, 34), (0, 37), (2, 45), (13, 19), (0, 31), (0, 23), (39, 51), (7, 54), (40, 58), (47, 51), (30, 60), (11, 54), (0, 4), (2, 41), (32, 40), (0, 13), (2, 16), (53, 55), (10, 24), (45, 60), (44, 59), (7, 63), (10, 52), (0, 60), (15, 27), (3, 4), (21, 53), (7, 39), (19, 52), (41, 60), (39, 46), (5, 45), (35, 37), (0, 18), (21, 25), (28, 33), (0, 33), (0, 47), (0, 46), (28, 62), (0, 19), (50, 60), (19, 24), (0, 53), (25, 44), (13, 24), (18, 21), (0, 40), (4, 35), (0, 28), (23, 28), (20, 32), (0, 25), (0, 30), (7, 11), (0, 7), (27, 43), (0, 21), (54, 63), (0, 55), (56, 59), (29, 55), (0, 29), (6, 26), (24, 52), (8, 52), (58, 61), (31, 34), (16, 41), (4, 49), (0, 45), (15, 22), (9, 14), (0, 15), (0, 32), (34, 47), (0, 39), (0, 5), (20, 58), (38, 42), (48, 54), (14, 27), (35, 36), (48, 57), (12, 33), (12, 13), (0, 49), (26, 31), (23, 57), (0, 62), (11, 63), (0, 43), (6, 46), (42, 61), (40, 59), (8, 10), (0, 51), (30, 37), (16, 50), (44, 56), (9, 22), (2, 38), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, True, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, True, False, False, False, False, True, False, False, False, False, False, False, True, False, False, True, False, True, False, False, False, False, False, False, True, True, True, False, True, True, True, False, False, True, False, False, False, True, False, False, False, True, True, True, False, True, True, True, True, True, True, True, False, True, False, True, True, False, False, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, False, True, True, True, True, False, True, True, False, True, True, True, False, True, True, False, True, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 224
+accuracy = 0.29464285714285715
+
+
+
+#################
+Generate = 500
+Stat = [1348.3910842603163, 2443.81820009297, 1527.8474155124757]
+Percent = 10
+Seuil = 37.5
+
+edges = [(53, 56), (8, 24), (14, 15), (17, 43), (18, 28), (13, 33), (0, 42), (8, 21), (46, 47), (21, 29), (43, 51), (48, 63), (51, 62), (55, 62), (0, 3), (44, 55), (4, 27), (26, 47), (28, 63), (15, 43), (30, 50), (32, 53), (4, 37), (21, 56), (0, 58), (33, 57), (12, 57), (55, 56), (17, 39), (16, 60), (17, 62), (0, 34), (4, 30), (39, 54), (0, 44), (19, 25), (25, 53), (37, 60), (0, 22), (41, 61), (0, 24), (6, 34), (10, 59), (0, 14), (5, 60), (17, 49), (11, 48), (5, 42), (23, 62), (36, 37), (39, 62), (0, 12), (21, 55), (53, 58), (0, 54), (18, 55), (19, 21), (23, 48), (45, 61), (0, 6), (2, 5), (5, 30), (9, 31), (6, 31), (31, 47), (0, 56), (18, 33), (28, 29), (0, 36), (13, 18), (5, 49), (29, 53), (8, 19), (20, 53), (5, 55), (0, 10), (32, 45), (15, 17), (0, 48), (0, 57), (20, 61), (0, 26), (0, 63), (12, 18), (0, 20), (18, 25), (10, 53), (17, 51), (17, 47), (3, 43), (0, 11), (0, 35), (14, 22), (43, 49), (35, 50), (32, 58), (41, 45), (18, 29), (20, 42), (3, 14), (23, 33), (18, 62), (0, 50), (18, 19), (46, 51), (29, 62), (38, 41), (0, 27), (26, 34), (0, 61), (6, 47), (0, 41), (3, 17), (9, 34), (37, 50), (39, 51), (0, 23), (0, 31), (8, 25), (40, 58), (0, 37), (45, 60), (0, 4), (10, 24), (7, 54), (13, 19), (30, 60), (47, 51), (2, 16), (2, 41), (0, 13), (11, 54), (44, 59), (2, 45), (19, 52), (53, 55), (15, 27), (7, 63), (32, 40), (0, 18), (21, 53), (28, 33), (3, 4), (28, 62), (7, 39), (21, 25), (35, 37), (41, 60), (0, 47), (0, 60), (0, 46), (0, 19), (10, 52), (39, 46), (0, 33), (13, 24), (0, 53), (50, 60), (5, 45), (18, 21), (25, 44), (19, 24), (0, 40), (4, 35), (0, 7), (20, 32), (0, 21), (23, 28), (0, 28), (0, 55), (0, 30), (7, 11), (54, 63), (27, 43), (0, 25), (8, 52), (0, 29), (56, 59), (0, 45), (29, 55), (31, 34), (6, 26), (58, 61), (16, 41), (24, 52), (4, 49), (15, 22), (9, 14), (0, 15), (0, 39), (34, 47), (0, 32), (12, 13), (0, 5), (38, 42), (48, 54), (35, 36), (20, 58), (12, 33), (0, 62), (48, 57), (0, 49), (23, 57), (14, 27), (11, 63), (26, 31), (42, 61), (6, 46), (40, 59), (0, 43), (8, 10), (30, 37), (0, 51), (44, 56), (16, 50), (9, 22), (0, 17), (2, 38), (3, 36), (0, 1), (0, 64)]
+
+true = [True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, True, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, True, False, False, True, False, False, False, False, False, False, True, False, False, True, False, False, True, True, False, True, True, True, False, False, False, True, True, False, True, False, False, False, False, False, False, True, True, True, True, True, True, True, True, True, True, False, False, False, False, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, False, False, True, True, True, True, True, True, True, False, True, True, True, True, False, False, True, True, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 221
+accuracy = 0.2986425339366516
+
+
+
+#################
+Generate = 500
+Stat = [1348.0165167051973, 2487.6776982222013, 1519.9678413029003]
+Percent = 10
+Seuil = 37.5
+
+edges = [(53, 56), (14, 15), (23, 63), (62, 63), (28, 39), (0, 42), (26, 46), (44, 53), (0, 3), (0, 16), (29, 33), (12, 23), (13, 29), (51, 62), (4, 37), (5, 20), (17, 43), (21, 56), (0, 22), (0, 34), (36, 37), (26, 47), (0, 58), (17, 49), (8, 24), (12, 24), (16, 60), (18, 55), (43, 51), (10, 59), (48, 63), (5, 42), (6, 34), (39, 62), (55, 56), (0, 54), (17, 39), (44, 55), (12, 57), (0, 44), (4, 30), (5, 60), (37, 60), (30, 50), (33, 57), (45, 61), (0, 24), (11, 48), (21, 55), (25, 53), (32, 53), (39, 54), (0, 12), (20, 53), (0, 14), (5, 30), (19, 21), (31, 47), (6, 31), (53, 58), (13, 18), (8, 19), (23, 62), (2, 5), (29, 53), (41, 61), (0, 6), (0, 10), (19, 25), (0, 36), (5, 49), (0, 56), (9, 31), (23, 48), (18, 33), (28, 29), (5, 55), (12, 18), (0, 57), (0, 63), (32, 45), (0, 35), (17, 47), (0, 26), (17, 51), (18, 29), (20, 61), (3, 43), (23, 33), (15, 17), (14, 22), (35, 50), (0, 20), (0, 48), (20, 42), (29, 62), (18, 25), (41, 45), (0, 11), (10, 53), (18, 62), (38, 41), (0, 50), (32, 58), (3, 14), (0, 61), (43, 49), (46, 51), (3, 17), (26, 34), (6, 47), (0, 31), (0, 41), (37, 50), (0, 27), (18, 19), (0, 23), (9, 34), (39, 51), (8, 25), (13, 19), (40, 58), (0, 4), (0, 37), (10, 24), (45, 60), (47, 51), (7, 54), (30, 60), (2, 41), (2, 16), (0, 13), (11, 54), (32, 40), (44, 59), (2, 45), (19, 52), (53, 55), (7, 63), (15, 27), (21, 53), (0, 19), (3, 4), (7, 39), (0, 33), (28, 33), (39, 46), (0, 60), (28, 62), (10, 52), (35, 37), (41, 60), (25, 44), (21, 25), (0, 47), (18, 21), (0, 18), (13, 24), (50, 60), (0, 53), (0, 46), (5, 45), (0, 28), (19, 24), (4, 35), (7, 11), (0, 40), (23, 28), (0, 7), (0, 30), (0, 25), (20, 32), (27, 43), (0, 55), (54, 63), (0, 21), (0, 29), (8, 52), (0, 45), (31, 34), (56, 59), (58, 61), (29, 55), (6, 26), (24, 52), (16, 41), (4, 49), (9, 14), (15, 22), (0, 15), (0, 32), (0, 39), (48, 54), (34, 47), (0, 5), (20, 58), (12, 13), (12, 33), (38, 42), (35, 36), (48, 57), (14, 27), (23, 57), (0, 49), (11, 63), (0, 62), (26, 31), (6, 46), (0, 43), (42, 61), (40, 59), (8, 10), (0, 51), (30, 37), (44, 56), (16, 50), (9, 22), (3, 36), (2, 38), (0, 17), (0, 1), (0, 64)]
+
+true = [True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, True, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, True, False, False, True, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, False, False, False, False, True, False, True, False, False, True, False, False, True, False, False, True, True, False, True, True, True, False, True, False, True, False, False, True, False, True, True, True, False, True, True, True, True, True, False, False, True, True, False, False, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, False, True, True, True, True, True, True, True, False, True, False, True, True, True, True, False, True, False, True, True, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 222
+accuracy = 0.2972972972972973
+
+
+
+#################
+Generate = 500
+Stat = [1349.3388113024553, 2443.81820009297, 1535.570102400591]
+Percent = 10
+Seuil = 37.5
+
+edges = [(5, 20), (41, 50), (3, 27), (0, 58), (5, 32), (17, 39), (17, 43), (48, 63), (51, 62), (0, 3), (0, 9), (12, 57), (26, 46), (18, 28), (43, 51), (44, 55), (17, 49), (17, 62), (10, 59), (8, 24), (14, 15), (29, 33), (39, 62), (45, 61), (0, 16), (12, 24), (26, 47), (4, 37), (21, 56), (37, 60), (4, 30), (6, 34), (0, 42), (5, 42), (0, 34), (0, 44), (0, 22), (4, 27), (18, 55), (30, 50), (33, 57), (0, 36), (19, 21), (9, 31), (32, 53), (39, 54), (0, 54), (21, 55), (0, 12), (23, 62), (36, 37), (0, 24), (11, 48), (31, 47), (25, 53), (53, 58), (13, 18), (20, 53), (23, 48), (0, 6), (5, 60), (41, 61), (5, 30), (28, 29), (29, 53), (17, 47), (5, 55), (0, 14), (0, 10), (5, 49), (18, 33), (19, 25), (8, 19), (12, 18), (3, 43), (6, 31), (0, 26), (0, 63), (0, 56), (0, 20), (0, 57), (20, 42), (15, 17), (0, 48), (17, 51), (10, 53), (35, 50), (41, 45), (0, 41), (2, 5), (32, 45), (14, 22), (0, 61), (3, 14), (0, 35), (18, 29), (23, 33), (18, 25), (20, 61), (0, 11), (18, 19), (29, 62), (38, 41), (18, 62), (43, 49), (0, 50), (46, 51), (8, 25), (6, 47), (0, 37), (32, 58), (26, 34), (3, 17), (0, 31), (0, 4), (9, 34), (37, 50), (0, 27), (7, 54), (13, 19), (39, 51), (11, 54), (2, 45), (30, 60), (32, 40), (40, 58), (0, 23), (47, 51), (10, 24), (2, 41), (2, 16), (15, 27), (44, 59), (0, 13), (19, 52), (45, 60), (7, 63), (28, 33), (0, 18), (53, 55), (5, 45), (7, 39), (0, 60), (21, 25), (10, 52), (3, 4), (50, 60), (28, 62), (21, 53), (35, 37), (0, 33), (0, 46), (0, 53), (39, 46), (0, 19), (25, 44), (13, 24), (19, 24), (41, 60), (18, 21), (0, 47), (4, 35), (0, 40), (0, 7), (0, 28), (23, 28), (0, 30), (0, 25), (0, 21), (0, 55), (7, 11), (20, 32), (27, 43), (54, 63), (8, 52), (56, 59), (0, 29), (29, 55), (6, 26), (31, 34), (58, 61), (24, 52), (0, 45), (16, 41), (4, 49), (0, 32), (0, 15), (9, 14), (15, 22), (34, 47), (0, 39), (20, 58), (0, 5), (48, 57), (38, 42), (48, 54), (12, 33), (14, 27), (12, 13), (35, 36), (11, 63), (0, 49), (0, 62), (23, 57), (26, 31), (0, 43), (6, 46), (42, 61), (40, 59), (8, 10), (0, 51), (30, 37), (44, 56), (16, 50), (9, 22), (2, 38), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, True, False, False, True, False, False, False, False, False, True, False, False, False, True, True, False, True, True, False, False, True, True, True, False, False, False, False, True, False, False, False, True, False, False, True, True, True, True, False, True, True, True, True, True, True, False, False, False, True, True, True, False, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, False, True, True, True, True, True, False, True, True, True, False, True, True, True, False, True, False, True, True, True, True, True, False, False]
+nb corrects = 65
+nb aretes = 220
+accuracy = 0.29545454545454547
+
+
+
+#################
+Generate = 1000
+Stat = [1348.0165167051973, 2527.214074864815, 1522.6347838608494]
+Percent = 10
+Seuil = 75.0
+
+edges = [(4, 27), (28, 63), (28, 39), (51, 62), (0, 42), (3, 27), (12, 57), (17, 43), (62, 63), (0, 3), (22, 27), (0, 16), (46, 47), (4, 37), (53, 56), (0, 22), (18, 28), (17, 39), (37, 60), (8, 21), (21, 56), (48, 63), (6, 34), (14, 15), (29, 33), (44, 55), (0, 58), (8, 24), (26, 47), (39, 62), (17, 49), (16, 60), (18, 55), (10, 59), (12, 24), (55, 56), (45, 61), (0, 34), (32, 53), (0, 24), (0, 44), (0, 54), (21, 55), (30, 50), (39, 54), (11, 48), (4, 30), (43, 51), (36, 37), (33, 57), (25, 53), (5, 42), (9, 31), (0, 6), (5, 60), (19, 21), (41, 61), (8, 19), (0, 36), (13, 18), (0, 12), (18, 33), (23, 62), (28, 29), (31, 47), (53, 58), (23, 48), (5, 30), (19, 25), (5, 49), (0, 10), (20, 53), (5, 55), (29, 53), (6, 31), (12, 18), (0, 63), (0, 26), (0, 14), (0, 57), (0, 56), (17, 51), (0, 20), (17, 47), (0, 48), (2, 5), (20, 42), (32, 45), (20, 61), (0, 11), (18, 29), (3, 43), (3, 14), (41, 45), (15, 17), (10, 53), (0, 35), (23, 33), (29, 62), (0, 41), (14, 22), (18, 25), (18, 62), (32, 58), (0, 61), (18, 19), (43, 49), (35, 50), (6, 47), (0, 50), (46, 51), (3, 17), (26, 34), (38, 41), (0, 27), (37, 50), (0, 31), (39, 51), (13, 19), (8, 25), (7, 54), (9, 34), (0, 23), (2, 45), (40, 58), (0, 37), (0, 4), (47, 51), (10, 24), (30, 60), (32, 40), (2, 41), (2, 16), (44, 59), (19, 52), (0, 13), (11, 54), (45, 60), (53, 55), (0, 60), (21, 53), (35, 37), (15, 27), (7, 63), (28, 33), (3, 4), (21, 25), (0, 18), (50, 60), (0, 19), (10, 52), (0, 33), (5, 45), (7, 39), (28, 62), (13, 24), (39, 46), (0, 53), (0, 46), (41, 60), (25, 44), (18, 21), (0, 47), (0, 40), (0, 28), (23, 28), (4, 35), (7, 11), (19, 24), (0, 30), (0, 7), (0, 25), (27, 43), (20, 32), (54, 63), (0, 21), (0, 55), (8, 52), (29, 55), (56, 59), (31, 34), (58, 61), (0, 29), (0, 45), (6, 26), (16, 41), (24, 52), (4, 49), (15, 22), (9, 14), (0, 15), (0, 32), (0, 39), (34, 47), (48, 54), (38, 42), (0, 5), (35, 36), (12, 33), (14, 27), (20, 58), (0, 49), (48, 57), (12, 13), (0, 62), (11, 63), (26, 31), (23, 57), (0, 43), (6, 46), (42, 61), (40, 59), (8, 10), (0, 51), (30, 37), (44, 56), (16, 50), (9, 22), (3, 36), (2, 38), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, True, False, False, False, False, False, False, True, False, True, False, False, False, False, False, True, False, True, False, False, False, True, True, True, True, False, False, True, False, False, False, True, False, False, True, False, False, False, True, False, True, True, False, True, False, True, True, False, True, True, True, True, True, False, True, False, True, False, False, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, False, True, True, True, True, True, False, True, True, True, True, False, True, True, True, False, True, False, True, True, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 223
+accuracy = 0.29596412556053814
+
+
+
+#################
+Generate = 1000
+Stat = [1346.9617935570889, 2518.3502364865567, 1544.6669676677109]
+Percent = 10
+Seuil = 75.0
+
+edges = [(19, 44), (4, 37), (15, 43), (18, 28), (0, 42), (3, 27), (11, 19), (17, 39), (51, 62), (21, 56), (0, 16), (12, 24), (0, 9), (0, 58), (13, 29), (26, 46), (46, 47), (48, 63), (0, 3), (0, 22), (17, 49), (32, 53), (55, 56), (26, 47), (30, 50), (12, 57), (17, 43), (5, 42), (14, 15), (16, 60), (10, 59), (0, 44), (4, 27), (0, 24), (45, 61), (33, 57), (39, 62), (8, 24), (18, 55), (21, 55), (43, 51), (36, 37), (44, 55), (37, 60), (0, 54), (6, 34), (19, 21), (39, 54), (0, 12), (25, 53), (0, 34), (4, 30), (11, 48), (5, 60), (19, 25), (8, 19), (23, 62), (41, 61), (5, 30), (20, 53), (13, 18), (31, 47), (0, 36), (23, 48), (0, 6), (0, 10), (29, 53), (53, 58), (18, 33), (28, 29), (5, 55), (9, 31), (6, 31), (12, 18), (0, 14), (2, 5), (0, 63), (5, 49), (0, 56), (17, 47), (15, 17), (0, 57), (0, 20), (3, 43), (41, 45), (18, 29), (0, 48), (20, 42), (32, 45), (0, 26), (0, 35), (17, 51), (10, 53), (18, 62), (35, 50), (29, 62), (18, 25), (14, 22), (20, 61), (0, 61), (23, 33), (3, 14), (0, 11), (46, 51), (38, 41), (3, 17), (0, 41), (43, 49), (26, 34), (18, 19), (6, 47), (32, 58), (0, 50), (37, 50), (0, 31), (13, 19), (0, 27), (0, 4), (39, 51), (7, 54), (0, 37), (8, 25), (9, 34), (40, 58), (10, 24), (47, 51), (0, 23), (2, 45), (32, 40), (2, 41), (30, 60), (2, 16), (45, 60), (53, 55), (19, 52), (44, 59), (0, 13), (11, 54), (0, 18), (3, 4), (35, 37), (0, 60), (15, 27), (39, 46), (0, 33), (21, 53), (50, 60), (28, 33), (10, 52), (7, 63), (7, 39), (21, 25), (25, 44), (41, 60), (28, 62), (0, 19), (13, 24), (0, 53), (5, 45), (0, 47), (0, 46), (18, 21), (7, 11), (0, 28), (23, 28), (19, 24), (4, 35), (0, 40), (0, 7), (0, 25), (0, 30), (27, 43), (20, 32), (54, 63), (0, 21), (0, 55), (8, 52), (56, 59), (29, 55), (31, 34), (58, 61), (0, 45), (0, 29), (6, 26), (16, 41), (4, 49), (24, 52), (9, 14), (15, 22), (34, 47), (0, 32), (0, 15), (0, 5), (48, 54), (0, 39), (20, 58), (14, 27), (38, 42), (12, 13), (35, 36), (48, 57), (12, 33), (11, 63), (26, 31), (23, 57), (0, 49), (0, 62), (0, 43), (6, 46), (42, 61), (40, 59), (8, 10), (30, 37), (0, 51), (16, 50), (44, 56), (9, 22), (3, 36), (2, 38), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, True, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, False, False, True, False, False, False, False, False, True, False, False, True, True, True, True, False, False, True, False, True, False, False, False, False, True, False, False, False, False, True, False, False, True, True, False, True, True, True, False, False, False, True, False, True, True, True, True, True, True, False, False, True, True, False, True, False, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, True, False, True, False, True, True, True, True, False, True, False, True, True, True, True, False, False]
+nb corrects = 65
+nb aretes = 222
+accuracy = 0.2927927927927928
+
+
+
+#################
+Generate = 1000
+Stat = [1346.9617935570889, 2443.81820009297, 1539.9145566183347]
+Percent = 10
+Seuil = 75.0
+
+edges = [(22, 27), (0, 3), (12, 23), (30, 50), (13, 33), (17, 43), (17, 49), (3, 27), (51, 62), (0, 9), (26, 46), (43, 51), (46, 47), (4, 37), (48, 63), (13, 29), (21, 56), (5, 42), (26, 47), (39, 62), (4, 27), (29, 33), (8, 24), (12, 57), (16, 60), (55, 56), (14, 15), (18, 28), (10, 59), (36, 37), (0, 58), (19, 21), (23, 62), (13, 18), (17, 39), (12, 24), (0, 34), (18, 55), (0, 22), (0, 42), (21, 55), (6, 34), (33, 57), (45, 61), (4, 30), (37, 60), (0, 24), (11, 48), (31, 47), (0, 44), (32, 53), (0, 12), (5, 60), (0, 36), (39, 54), (20, 53), (0, 54), (25, 53), (8, 19), (23, 48), (44, 55), (5, 30), (18, 33), (28, 29), (41, 61), (53, 58), (9, 31), (0, 6), (12, 18), (6, 31), (29, 53), (0, 56), (19, 25), (0, 63), (5, 49), (0, 10), (5, 55), (15, 17), (2, 5), (3, 43), (0, 14), (18, 29), (0, 35), (35, 50), (20, 42), (0, 57), (0, 26), (0, 20), (10, 53), (17, 47), (17, 51), (14, 22), (32, 45), (0, 48), (0, 61), (20, 61), (38, 41), (41, 45), (3, 14), (0, 11), (18, 25), (26, 34), (43, 49), (6, 47), (23, 33), (32, 58), (0, 27), (18, 62), (0, 50), (0, 41), (29, 62), (46, 51), (0, 37), (9, 34), (0, 31), (13, 19), (7, 54), (18, 19), (0, 4), (0, 23), (3, 17), (39, 51), (40, 58), (8, 25), (37, 50), (32, 40), (30, 60), (47, 51), (45, 60), (11, 54), (2, 16), (10, 24), (2, 41), (2, 45), (44, 59), (0, 13), (7, 63), (19, 52), (28, 33), (53, 55), (15, 27), (3, 4), (7, 39), (21, 53), (10, 52), (25, 44), (0, 46), (35, 37), (0, 19), (28, 62), (0, 18), (0, 33), (41, 60), (0, 53), (50, 60), (13, 24), (39, 46), (0, 60), (5, 45), (21, 25), (18, 21), (0, 47), (19, 24), (0, 25), (4, 35), (0, 28), (23, 28), (0, 40), (0, 21), (0, 7), (7, 11), (0, 30), (0, 55), (20, 32), (27, 43), (8, 52), (29, 55), (54, 63), (56, 59), (0, 29), (58, 61), (0, 45), (31, 34), (6, 26), (24, 52), (16, 41), (4, 49), (0, 32), (15, 22), (9, 14), (0, 39), (0, 15), (0, 5), (34, 47), (48, 54), (14, 27), (20, 58), (12, 33), (48, 57), (38, 42), (12, 13), (23, 57), (35, 36), (11, 63), (26, 31), (0, 49), (0, 62), (6, 46), (0, 43), (40, 59), (42, 61), (8, 10), (30, 37), (0, 51), (44, 56), (16, 50), (9, 22), (2, 38), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, True, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, True, False, False, False, True, True, False, False, False, False, False, False, False, False, False, True, False, True, False, False, False, False, False, False, True, False, False, False, False, True, True, False, False, True, True, False, False, True, True, False, True, False, True, False, True, False, False, False, True, True, False, True, True, True, True, True, True, True, False, True, True, False, False, False, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, False, False, True, True, True, True, True, False, False, True, True, True, True, True, False, False]
+nb corrects = 65
+nb aretes = 222
+accuracy = 0.2927927927927928
+
+
+
+#################
+Generate = 1000
+Stat = [1349.5303963029144, 2469.245921967649, 1522.7447045192698]
+Percent = 10
+Seuil = 75.0
+
+edges = [(0, 16), (3, 27), (8, 21), (4, 27), (11, 19), (29, 33), (0, 3), (5, 20), (28, 39), (53, 56), (17, 62), (51, 62), (12, 57), (13, 33), (21, 56), (26, 46), (12, 23), (46, 47), (0, 58), (18, 55), (12, 24), (14, 15), (18, 28), (26, 47), (39, 62), (8, 24), (17, 49), (4, 37), (16, 60), (0, 22), (55, 56), (33, 57), (48, 63), (17, 39), (37, 60), (32, 53), (44, 55), (43, 51), (11, 48), (10, 59), (21, 55), (0, 36), (30, 50), (0, 54), (45, 61), (4, 30), (6, 34), (36, 37), (0, 24), (0, 44), (0, 34), (25, 53), (5, 42), (23, 48), (0, 12), (5, 30), (9, 31), (19, 21), (39, 54), (53, 58), (0, 6), (5, 60), (5, 49), (13, 18), (28, 29), (23, 62), (0, 14), (41, 61), (31, 47), (19, 25), (8, 19), (0, 10), (18, 33), (20, 53), (5, 55), (6, 31), (0, 56), (12, 18), (17, 51), (20, 42), (15, 17), (2, 5), (0, 57), (29, 53), (0, 63), (0, 26), (0, 20), (3, 43), (17, 47), (0, 48), (29, 62), (0, 35), (18, 29), (32, 45), (0, 11), (35, 50), (3, 14), (0, 41), (0, 61), (20, 61), (43, 49), (10, 53), (23, 33), (41, 45), (14, 22), (18, 25), (18, 62), (18, 19), (38, 41), (46, 51), (0, 50), (32, 58), (6, 47), (0, 27), (26, 34), (0, 37), (3, 17), (0, 31), (39, 51), (8, 25), (13, 19), (37, 50), (0, 4), (30, 60), (40, 58), (7, 54), (0, 23), (9, 34), (2, 45), (10, 24), (47, 51), (0, 13), (2, 41), (32, 40), (45, 60), (11, 54), (44, 59), (2, 16), (53, 55), (19, 52), (15, 27), (7, 63), (7, 39), (0, 18), (3, 4), (21, 25), (21, 53), (0, 19), (28, 33), (0, 60), (0, 33), (39, 46), (10, 52), (0, 53), (50, 60), (35, 37), (41, 60), (0, 47), (5, 45), (13, 24), (25, 44), (28, 62), (0, 46), (18, 21), (0, 28), (4, 35), (19, 24), (23, 28), (0, 40), (0, 25), (20, 32), (7, 11), (0, 7), (0, 55), (27, 43), (54, 63), (0, 30), (0, 21), (8, 52), (56, 59), (58, 61), (29, 55), (31, 34), (0, 29), (6, 26), (0, 45), (16, 41), (24, 52), (15, 22), (9, 14), (4, 49), (34, 47), (0, 39), (0, 32), (0, 15), (48, 54), (12, 33), (0, 5), (20, 58), (38, 42), (12, 13), (14, 27), (35, 36), (48, 57), (23, 57), (26, 31), (11, 63), (0, 62), (0, 49), (0, 43), (6, 46), (40, 59), (42, 61), (8, 10), (30, 37), (0, 51), (16, 50), (44, 56), (9, 22), (2, 38), (3, 36), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, True, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, True, True, True, False, False, False, True, True, False, False, False, True, True, False, True, False, True, False, False, True, False, True, False, False, True, False, False, True, True, True, True, True, True, True, True, False, False, False, True, True, False, True, True, True, True, True, True, True, True, False, True, True, True, False, True, True, True, True, True, True, True, True, True, True, False, True, True, False, True, True, True, True, False, True, False, True, True, True, True, False, False]
+nb corrects = 66
+nb aretes = 224
+accuracy = 0.29464285714285715
+
+
+
+#################
+Generate = 1000
+Stat = [1346.9617935570889, 2518.3502364865567, 1533.1602140577866]
+Percent = 10
+Seuil = 75.0
+
+edges = [(8, 21), (18, 28), (62, 63), (44, 53), (55, 56), (13, 57), (3, 27), (5, 20), (17, 49), (26, 46), (29, 33), (46, 47), (51, 62), (0, 22), (14, 15), (21, 56), (17, 39), (30, 50), (4, 27), (16, 60), (28, 63), (4, 37), (10, 59), (17, 62), (26, 47), (0, 42), (0, 58), (37, 60), (0, 12), (33, 57), (12, 57), (36, 37), (0, 44), (6, 34), (8, 24), (32, 53), (48, 63), (18, 55), (45, 61), (0, 34), (25, 53), (12, 24), (39, 62), (4, 30), (23, 62), (44, 55), (43, 51), (5, 42), (0, 24), (21, 55), (39, 54), (8, 19), (0, 54), (31, 47), (41, 61), (5, 60), (5, 30), (53, 58), (9, 31), (28, 29), (23, 48), (0, 6), (0, 36), (11, 48), (6, 31), (19, 21), (5, 55), (20, 53), (13, 18), (5, 49), (18, 33), (2, 5), (0, 63), (0, 10), (0, 48), (0, 56), (19, 25), (0, 14), (17, 51), (29, 53), (18, 29), (0, 26), (18, 62), (0, 20), (20, 42), (0, 57), (17, 47), (12, 18), (3, 43), (0, 35), (15, 17), (35, 50), (3, 14), (32, 45), (0, 11), (14, 22), (20, 61), (10, 53), (18, 25), (3, 17), (0, 61), (41, 45), (0, 41), (29, 62), (18, 19), (23, 33), (32, 58), (0, 50), (47, 51), (37, 50), (38, 41), (0, 37), (8, 25), (43, 49), (0, 27), (39, 51), (9, 34), (46, 51), (7, 54), (40, 58), (0, 4), (2, 45), (13, 19), (26, 34), (6, 47), (10, 24), (0, 31), (0, 23), (30, 60), (45, 60), (53, 55), (2, 41), (19, 52), (32, 40), (2, 16), (11, 54), (44, 59), (21, 53), (39, 46), (0, 33), (0, 13), (10, 52), (0, 19), (15, 27), (41, 60), (13, 24), (0, 60), (7, 63), (28, 33), (3, 4), (25, 44), (5, 45), (21, 25), (18, 21), (35, 37), (28, 62), (0, 18), (7, 39), (50, 60), (0, 53), (0, 47), (0, 46), (4, 35), (0, 28), (0, 7), (19, 24), (7, 11), (0, 40), (23, 28), (20, 32), (0, 25), (27, 43), (54, 63), (0, 30), (0, 21), (0, 55), (31, 34), (6, 26), (29, 55), (8, 52), (0, 29), (58, 61), (56, 59), (0, 45), (16, 41), (4, 49), (24, 52), (9, 14), (15, 22), (0, 32), (0, 15), (0, 39), (34, 47), (0, 5), (48, 54), (12, 13), (38, 42), (20, 58), (14, 27), (12, 33), (0, 62), (48, 57), (35, 36), (0, 49), (23, 57), (11, 63), (26, 31), (0, 43), (6, 46), (42, 61), (40, 59), (30, 37), (8, 10), (0, 51), (44, 56), (16, 50), (9, 22), (3, 36), (2, 38), (0, 17), (0, 1), (0, 64)]
+
+true = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, False, False, False, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, True, False, False, False, False, True, False, False, True, False, False, False, False, False, True, True, False, False, True, False, False, True, False, True, False, True, False, True, False, True, True, False, True, True, False, True, False, True, True, False, True, True, True, True, True, True, True, True, False, False, False, False, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, False, False, True, True, True, True, True, True, True, False, True, True, True, True, False, False, True, True, True, True, True, False, False]
+nb corrects = 65
+nb aretes = 222
+accuracy = 0.2927927927927928
+
+------------------------------
+NOUVELLE SERIE DE TESTS (RANG)
+------------------------------
+
+
+
+
+#################
+Generate = 50
+Stat = [1348.3910842603163, 2171.8266177361684, 1495.5118826232115]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (0, 51), (9, 22), (44, 56), (30, 37), (3, 36), (16, 50)]
+
+true = [False, False, True, True, False, True, False, True, True, True]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 50
+Stat = [1348.3910842603163, 1949.6985448680057, 1509.0924669778833]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (9, 22), (2, 38), (8, 10), (42, 61), (16, 50), (44, 56)]
+
+true = [False, False, True, True, True, True, True, True, True, False]
+nb corrects = 7
+nb aretes = 10
+accuracy = 0.7
+
+
+
+#################
+Generate = 50
+Stat = [1355.6754368287995, 2419.2740935164047, 1543.7027493895637]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (3, 36), (2, 38), (16, 50), (0, 51), (9, 22), (0, 17), (44, 56), (42, 61)]
+
+true = [False, False, True, True, True, False, True, True, False, True]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 50
+Stat = [1350.4905259325049, 2215.9758244061136, 1557.9196868645408]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (0, 17), (9, 22), (44, 56), (3, 36), (0, 51), (42, 61), (16, 50), (2, 38)]
+
+true = [False, False, True, True, False, True, False, True, True, True]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 50
+Stat = [1349.5303963029144, 2021.8548956831653, 1518.56173668745]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (3, 36), (0, 17), (9, 22), (2, 38), (16, 50), (44, 56), (8, 10), (30, 37)]
+
+true = [False, False, True, True, True, True, True, False, True, True]
+nb corrects = 7
+nb aretes = 10
+accuracy = 0.7
+
+
+
+#################
+Generate = 100
+Stat = [1350.115732793578, 2419.2740935164047, 1525.7142059184239]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (0, 17), (9, 22), (3, 36), (2, 38), (8, 10), (44, 56), (16, 50), (42, 61)]
+
+true = [False, False, True, True, True, True, True, False, True, True]
+nb corrects = 7
+nb aretes = 10
+accuracy = 0.7
+
+
+
+#################
+Generate = 100
+Stat = [1349.5303963029144, 2406.502065456827, 1528.2778875159038]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (3, 36), (0, 17), (44, 56), (9, 22), (2, 38), (8, 10), (0, 43), (30, 37)]
+
+true = [False, False, True, True, False, True, True, True, True, True]
+nb corrects = 7
+nb aretes = 10
+accuracy = 0.7
+
+
+
+#################
+Generate = 100
+Stat = [1349.5303963029144, 2344.605199472956, 1511.3058961189986]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (9, 22), (2, 38), (16, 50), (44, 56), (30, 37), (42, 61)]
+
+true = [False, False, True, True, True, True, True, False, True, True]
+nb corrects = 7
+nb aretes = 10
+accuracy = 0.7
+
+
+
+#################
+Generate = 100
+Stat = [1355.6754368287995, 2368.577402371389, 1538.1976138952002]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (2, 38), (3, 36), (0, 17), (9, 22), (44, 56), (16, 50), (0, 51), (8, 10)]
+
+true = [False, False, True, True, True, True, False, True, False, True]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 100
+Stat = [1352.4160603087685, 2462.5028780174384, 1554.5807639743646]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (3, 36), (2, 38), (0, 17), (30, 37), (16, 50), (9, 22), (0, 51), (44, 56)]
+
+true = [False, False, True, True, True, True, True, True, False, False]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 500
+Stat = [1348.0165167051973, 2469.245921967649, 1537.3267147157596]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (3, 36), (9, 22), (30, 37), (44, 56), (16, 50), (0, 51)]
+
+true = [False, False, True, True, True, True, True, False, True, False]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 500
+Stat = [1346.9617935570889, 2518.3502364865567, 1541.3620124099734]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (2, 38), (3, 36), (0, 17), (9, 22), (44, 56), (0, 51), (16, 50), (30, 37)]
+
+true = [False, False, True, True, True, True, False, False, True, True]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 500
+Stat = [1349.5303963029144, 2442.434537418306, 1527.9780664351047]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (2, 38), (3, 36), (0, 17), (9, 22), (16, 50), (44, 56), (30, 37), (0, 51)]
+
+true = [False, False, True, True, True, True, True, False, True, False]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 500
+Stat = [1346.9617935570889, 2428.561120142698, 1545.1218180114436]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (2, 38), (9, 22), (16, 50), (44, 56), (30, 37), (0, 51)]
+
+true = [False, False, True, True, True, True, True, False, True, False]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 500
+Stat = [1346.9617935570889, 2443.81820009297, 1517.605431716935]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (3, 36), (9, 22), (30, 37), (44, 56), (16, 50), (0, 51)]
+
+true = [False, False, True, True, True, True, True, False, True, False]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 1000
+Stat = [1346.9617935570889, 2490.1825569277703, 1540.6050324650316]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (2, 38), (9, 22), (16, 50), (44, 56), (0, 51), (30, 37)]
+
+true = [False, False, True, True, True, True, True, False, False, True]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 1000
+Stat = [1346.9617935570889, 2518.3502364865567, 1527.6839525614455]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (9, 22), (3, 36), (16, 50), (44, 56), (0, 51), (30, 37)]
+
+true = [False, False, True, True, True, True, True, False, False, True]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 1000
+Stat = [1348.0165167051973, 2518.3502364865567, 1528.1124883688142]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (2, 38), (9, 22), (16, 50), (44, 56), (30, 37), (0, 51)]
+
+true = [False, False, True, True, True, True, True, False, True, False]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 1000
+Stat = [1346.9617935570889, 2527.214074864815, 1542.961902879303]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (2, 38), (9, 22), (44, 56), (16, 50), (0, 51), (30, 37)]
+
+true = [False, False, True, True, True, True, False, True, False, True]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 1000
+Stat = [1349.5303963029144, 2496.53165953401, 1541.259386048254]
+Percent = 10
+Rang = 10
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (3, 36), (9, 22), (44, 56), (30, 37), (16, 50), (0, 51)]
+
+true = [False, False, True, True, True, True, False, True, True, False]
+nb corrects = 6
+nb aretes = 10
+accuracy = 0.6
+
+
+
+#################
+Generate = 50
+Stat = [1351.455930679178, 2336.966538802001, 1531.2321814427692]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (3, 36), (2, 38), (42, 61), (16, 50), (9, 22), (44, 56), (0, 51), (30, 37), (8, 10), (0, 17), (26, 31), (40, 59), (12, 13), (11, 63), (6, 46), (0, 43), (20, 58), (12, 33)]
+
+true = [False, False, True, True, True, True, True, False, False, True, True, True, True, True, True, True, False, True, True, False]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 50
+Stat = [1348.3910842603163, 2258.7809710464785, 1485.1452635305086]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (9, 22), (0, 17), (2, 38), (3, 36), (44, 56), (40, 59), (16, 50), (8, 10), (30, 37), (26, 31), (11, 63), (0, 62), (0, 51), (35, 36), (38, 42), (0, 43), (42, 61), (15, 22)]
+
+true = [False, False, True, True, True, True, False, True, True, True, True, True, True, False, False, True, True, True, True, True]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 50
+Stat = [1353.1929817998914, 2158.9160953171804, 1490.5239563943353]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (9, 22), (3, 36), (30, 37), (44, 56), (23, 57), (16, 50), (0, 51), (8, 10), (40, 59), (6, 46), (0, 43), (42, 61), (11, 63), (48, 57), (0, 49), (26, 31)]
+
+true = [False, False, True, True, True, True, True, False, True, True, False, True, True, False, True, True, True, True, True, True]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 50
+Stat = [1350.337326019168, 2299.612392215694, 1580.2615065975865]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (44, 56), (3, 36), (2, 38), (30, 37), (9, 22), (0, 17), (0, 51), (16, 50), (0, 62), (42, 61), (8, 10), (23, 57), (12, 13), (6, 46), (0, 43), (40, 59), (12, 33), (26, 31)]
+
+true = [False, False, False, True, True, True, True, True, False, True, False, True, True, True, True, False, True, True, False, True]
+nb corrects = 13
+nb aretes = 20
+accuracy = 0.65
+
+
+
+#################
+Generate = 50
+Stat = [1350.115732793578, 2336.966538802001, 1512.6935290873125]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (2, 38), (9, 22), (3, 36), (0, 17), (8, 10), (44, 56), (30, 37), (40, 59), (16, 50), (6, 46), (0, 51), (0, 43), (42, 61), (26, 31), (23, 57), (0, 39), (12, 13), (11, 63)]
+
+true = [False, False, True, True, True, True, True, False, True, True, True, False, False, True, True, True, True, False, True, True]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 100
+Stat = [1349.5303963029144, 2462.5028780174384, 1514.5169911295757]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (9, 22), (3, 36), (16, 50), (44, 56), (8, 10), (0, 43), (30, 37), (0, 51), (40, 59), (12, 13), (6, 46), (42, 61), (0, 49), (26, 31), (14, 27), (0, 62)]
+
+true = [False, False, True, True, True, True, True, False, True, True, True, False, True, True, False, True, True, True, True, False]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 100
+Stat = [1352.4160603087685, 2475.2581571515702, 1573.607556346957]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (2, 38), (9, 22), (0, 51), (44, 56), (16, 50), (30, 37), (42, 61), (40, 59), (6, 46), (0, 43), (8, 10), (11, 63), (0, 62), (48, 57), (23, 57), (12, 13)]
+
+true = [False, False, True, True, True, True, False, False, True, True, True, True, False, True, True, True, False, True, True, True]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 100
+Stat = [1349.5303963029144, 2401.216373903558, 1526.7599575308]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (2, 38), (9, 22), (16, 50), (0, 51), (44, 56), (0, 43), (42, 61), (30, 37), (8, 10), (40, 59), (6, 46), (11, 63), (48, 57), (26, 31), (23, 57), (0, 62)]
+
+true = [False, False, True, True, True, True, True, False, False, True, True, True, True, True, False, True, True, True, True, False]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 100
+Stat = [1349.5303963029144, 2356.9887154367616, 1508.9011065011632]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (2, 38), (44, 56), (9, 22), (30, 37), (16, 50), (0, 51), (8, 10), (40, 59), (42, 61), (6, 46), (12, 13), (0, 43), (11, 63), (23, 57), (20, 58), (0, 49)]
+
+true = [False, False, True, True, True, False, True, True, True, False, True, True, True, False, True, True, True, True, True, True]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 100
+Stat = [1349.5303963029144, 2171.8266177361684, 1489.7434436838935]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (9, 22), (3, 36), (44, 56), (42, 61), (30, 37), (8, 10), (16, 50), (40, 59), (0, 51), (0, 43), (0, 49), (12, 13), (6, 46), (23, 57), (26, 31), (48, 57)]
+
+true = [False, False, True, True, True, True, False, True, True, True, True, True, False, True, True, True, False, True, True, True]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 500
+Stat = [1349.5303963029144, 2442.434537418306, 1528.4997703147985]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (3, 36), (9, 22), (44, 56), (0, 51), (16, 50), (8, 10), (30, 37), (40, 59), (42, 61), (0, 43), (6, 46), (0, 62), (0, 49), (11, 63), (26, 31), (23, 57)]
+
+true = [False, False, True, True, True, True, False, False, True, True, True, True, True, True, False, False, True, True, True, True]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 500
+Stat = [1348.0165167051973, 2475.2581571515702, 1530.664791339843]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (3, 36), (9, 22), (44, 56), (16, 50), (30, 37), (0, 51), (8, 10), (40, 59), (42, 61), (6, 46), (0, 49), (0, 43), (23, 57), (11, 63), (26, 31), (0, 62)]
+
+true = [False, False, True, True, True, True, False, True, True, False, True, True, True, False, True, True, True, True, True, False]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 500
+Stat = [1348.3910842603163, 2487.027017525013, 1534.7216073228958]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (3, 36), (0, 17), (2, 38), (9, 22), (44, 56), (16, 50), (30, 37), (0, 51), (8, 10), (40, 59), (42, 61), (6, 46), (0, 49), (0, 62), (11, 63), (0, 43), (48, 57), (26, 31)]
+
+true = [False, False, True, True, True, True, False, True, True, False, True, True, True, False, True, False, True, True, True, True]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 500
+Stat = [1349.5303963029144, 2475.2581571515702, 1517.5555773269805]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (3, 36), (9, 22), (16, 50), (44, 56), (8, 10), (30, 37), (0, 51), (40, 59), (42, 61), (6, 46), (0, 43), (26, 31), (11, 63), (0, 62), (0, 49), (23, 57)]
+
+true = [False, False, True, True, True, True, True, False, True, True, False, True, True, False, True, True, True, False, True, True]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 500
+Stat = [1348.3910842603163, 2518.3502364865567, 1531.114226009216]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (2, 38), (9, 22), (16, 50), (44, 56), (0, 51), (30, 37), (8, 10), (40, 59), (42, 61), (0, 43), (6, 46), (26, 31), (11, 63), (0, 49), (23, 57), (35, 36)]
+
+true = [False, False, True, True, True, True, True, False, False, True, True, True, True, True, False, True, True, True, True, True]
+nb corrects = 15
+nb aretes = 20
+accuracy = 0.75
+
+
+
+#################
+Generate = 1000
+Stat = [1349.5303963029144, 2490.1825569277703, 1538.1196987653855]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (3, 36), (2, 38), (0, 17), (9, 22), (16, 50), (30, 37), (44, 56), (0, 51), (42, 61), (8, 10), (40, 59), (0, 43), (6, 46), (0, 49), (23, 57), (0, 62), (26, 31), (35, 36)]
+
+true = [False, False, True, True, True, True, True, True, False, False, True, True, True, True, False, True, True, False, True, True]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 1000
+Stat = [1348.3910842603163, 2527.214074864815, 1527.4646392836785]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (3, 36), (9, 22), (16, 50), (44, 56), (0, 51), (30, 37), (8, 10), (40, 59), (42, 61), (0, 43), (6, 46), (26, 31), (0, 49), (23, 57), (11, 63), (0, 62)]
+
+true = [False, False, True, True, True, True, True, False, False, True, True, True, True, True, False, True, True, True, True, False]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 1000
+Stat = [1348.0165167051973, 2443.81820009297, 1539.742712050976]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (2, 38), (9, 22), (16, 50), (44, 56), (0, 51), (8, 10), (30, 37), (42, 61), (40, 59), (6, 46), (0, 43), (0, 62), (11, 63), (0, 49), (26, 31), (23, 57)]
+
+true = [False, False, True, True, True, True, True, False, False, True, True, True, True, False, True, False, True, True, True, True]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 1000
+Stat = [1348.3910842603163, 2475.2581571515702, 1526.8090983955974]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (2, 38), (9, 22), (16, 50), (44, 56), (0, 51), (30, 37), (8, 10), (42, 61), (40, 59), (0, 43), (6, 46), (26, 31), (0, 49), (0, 62), (23, 57), (12, 13)]
+
+true = [False, False, True, True, True, True, True, False, False, True, True, True, True, True, False, True, True, False, True, True]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 1000
+Stat = [1349.5303963029144, 2428.561120142698, 1523.7827951464417]
+Percent = 10
+Rang = 20
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (3, 36), (9, 22), (44, 56), (16, 50), (0, 51), (30, 37), (8, 10), (42, 61), (40, 59), (0, 43), (6, 46), (0, 49), (11, 63), (23, 57), (26, 31), (0, 62)]
+
+true = [False, False, True, True, True, True, False, True, False, True, True, True, True, True, False, True, True, True, True, False]
+nb corrects = 14
+nb aretes = 20
+accuracy = 0.7
+
+
+
+#################
+Generate = 50
+Stat = [1357.434283819835, 2345.711250315913, 1555.522964298438]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (16, 50), (3, 36), (2, 38), (30, 37), (42, 61), (9, 22), (0, 51), (0, 17), (44, 56), (8, 10), (0, 49), (0, 43), (48, 57), (40, 59), (6, 46), (0, 62), (12, 13), (23, 57), (20, 58), (14, 27), (11, 63), (0, 39), (29, 55), (38, 42), (26, 31), (0, 32), (34, 47), (12, 33), (35, 36), (0, 5), (9, 14)]
+
+true = [False, False, True, True, True, True, True, True, False, True, False, True, True, True, True, True, False, False, True, True, True, True, True, False, True, True, True, True, True, False, True, True, True]
+nb corrects = 25
+nb aretes = 33
+accuracy = 0.7575757575757576
+
+
+
+#################
+Generate = 50
+Stat = [1352.4160603087685, 2037.1981722652997, 1495.6297863278603]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (2, 38), (9, 22), (16, 50), (44, 56), (30, 37), (8, 10), (0, 43), (40, 59), (6, 46), (0, 49), (35, 36), (23, 57), (12, 13), (42, 61), (14, 27), (26, 31), (0, 62), (0, 51), (38, 42), (11, 63), (48, 57), (48, 54), (20, 58), (34, 47), (15, 22), (0, 5), (9, 14), (24, 52), (12, 33)]
+
+true = [False, False, True, True, True, True, True, False, True, True, True, True, False, True, True, True, True, True, True, True, False, False, True, True, True, True, True, True, True, True, True, True, False]
+nb corrects = 26
+nb aretes = 33
+accuracy = 0.7878787878787878
+
+
+
+#################
+Generate = 50
+Stat = [1355.052176666873, 2430.9668153544403, 1512.187018060814]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (9, 22), (16, 50), (0, 51), (30, 37), (44, 56), (3, 36), (40, 59), (6, 46), (26, 31), (8, 10), (0, 62), (35, 36), (0, 43), (38, 42), (34, 47), (14, 27), (11, 63), (12, 13), (0, 49), (48, 57), (23, 57), (0, 39), (42, 61), (9, 14), (48, 54), (20, 58), (16, 41), (8, 52), (0, 32)]
+
+true = [False, False, True, True, True, True, False, True, False, True, True, False, True, True, False, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, False, True]
+nb corrects = 25
+nb aretes = 33
+accuracy = 0.7575757575757576
+
+
+
+#################
+Generate = 50
+Stat = [1349.5303963029144, 2037.1981722652997, 1499.659787811349]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (9, 22), (3, 36), (0, 17), (2, 38), (30, 37), (0, 51), (44, 56), (16, 50), (40, 59), (8, 10), (42, 61), (6, 46), (0, 49), (35, 36), (23, 57), (0, 43), (38, 42), (0, 62), (26, 31), (11, 63), (48, 57), (14, 27), (0, 32), (20, 58), (34, 47), (12, 13), (0, 5), (12, 33), (6, 26), (0, 39), (15, 22)]
+
+true = [False, False, True, True, True, True, True, False, False, True, True, True, True, False, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, False, True, False, True]
+nb corrects = 25
+nb aretes = 33
+accuracy = 0.7575757575757576
+
+
+
+#################
+Generate = 50
+Stat = [1348.3910842603163, 2109.653931676837, 1491.996555567409]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (2, 38), (30, 37), (42, 61), (9, 22), (16, 50), (44, 56), (0, 51), (40, 59), (0, 43), (11, 63), (0, 49), (23, 57), (6, 46), (26, 31), (8, 10), (48, 54), (38, 42), (14, 27), (0, 32), (35, 36), (48, 57), (20, 58), (12, 33), (0, 5), (15, 22), (0, 15), (9, 14), (34, 47), (0, 62)]
+
+true = [False, False, True, True, True, True, True, True, True, False, False, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, False]
+nb corrects = 26
+nb aretes = 33
+accuracy = 0.7878787878787878
+
+
+
+#################
+Generate = 100
+Stat = [1346.9617935570889, 2475.2581571515702, 1529.8450932578087]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (3, 36), (0, 17), (9, 22), (2, 38), (30, 37), (16, 50), (42, 61), (44, 56), (40, 59), (0, 51), (0, 43), (8, 10), (6, 46), (0, 49), (26, 31), (23, 57), (11, 63), (14, 27), (48, 57), (0, 62), (20, 58), (12, 33), (48, 54), (35, 36), (12, 13), (0, 39), (0, 5), (38, 42), (0, 45), (4, 49), (34, 47)]
+
+true = [False, False, True, True, True, True, True, True, True, False, True, False, True, True, False, True, True, True, True, True, True, False, True, False, True, True, True, False, True, True, True, True, True]
+nb corrects = 25
+nb aretes = 33
+accuracy = 0.7575757575757576
+
+
+
+#################
+Generate = 100
+Stat = [1350.4905259325049, 2425.2629480260534, 1550.9593610181598]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (2, 38), (9, 22), (44, 56), (30, 37), (16, 50), (8, 10), (40, 59), (0, 51), (11, 63), (0, 43), (42, 61), (0, 62), (48, 57), (6, 46), (26, 31), (0, 49), (0, 5), (38, 42), (20, 58), (23, 57), (12, 13), (35, 36), (14, 27), (34, 47), (0, 15), (24, 52), (48, 54), (12, 33), (4, 49)]
+
+true = [False, False, True, True, True, True, False, True, True, True, True, False, True, True, True, False, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True]
+nb corrects = 26
+nb aretes = 33
+accuracy = 0.7878787878787878
+
+
+
+#################
+Generate = 100
+Stat = [1353.452828956659, 2356.9887154367616, 1545.2941519192234]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (3, 36), (0, 17), (9, 22), (2, 38), (30, 37), (44, 56), (0, 51), (42, 61), (16, 50), (8, 10), (0, 43), (40, 59), (0, 49), (0, 62), (6, 46), (11, 63), (26, 31), (23, 57), (14, 27), (0, 5), (20, 58), (0, 39), (38, 42), (12, 13), (48, 54), (4, 49), (48, 57), (35, 36), (24, 52), (0, 32), (0, 15)]
+
+true = [False, False, True, True, True, True, True, False, False, True, True, True, True, True, True, False, False, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True]
+nb corrects = 26
+nb aretes = 33
+accuracy = 0.7878787878787878
+
+
+
+#################
+Generate = 100
+Stat = [1346.9617935570889, 2368.577402371389, 1514.6149110518975]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (9, 22), (3, 36), (0, 51), (44, 56), (16, 50), (8, 10), (42, 61), (30, 37), (40, 59), (26, 31), (0, 62), (11, 63), (23, 57), (0, 43), (35, 36), (12, 13), (6, 46), (48, 57), (0, 49), (0, 15), (14, 27), (48, 54), (38, 42), (12, 33), (20, 58), (0, 5), (34, 47), (15, 22), (16, 41)]
+
+true = [False, False, True, True, True, True, False, False, True, True, True, True, True, True, False, True, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, True, True]
+nb corrects = 26
+nb aretes = 33
+accuracy = 0.7878787878787878
+
+
+
+#################
+Generate = 100
+Stat = [1349.5303963029144, 2327.961489148111, 1529.056832311602]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (3, 36), (16, 50), (9, 22), (30, 37), (8, 10), (44, 56), (40, 59), (0, 51), (0, 62), (42, 61), (23, 57), (0, 43), (11, 63), (35, 36), (6, 46), (48, 57), (0, 49), (48, 54), (12, 33), (26, 31), (20, 58), (34, 47), (12, 13), (14, 27), (38, 42), (4, 49), (0, 5), (9, 14), (15, 22)]
+
+true = [False, False, True, True, True, True, True, True, True, False, True, False, False, True, True, True, True, True, False, True, True, True, False, True, True, True, True, True, True, True, True, True, True]
+nb corrects = 26
+nb aretes = 33
+accuracy = 0.7878787878787878
+
+
+
+#################
+Generate = 500
+Stat = [1350.115732793578, 2490.1825569277703, 1530.9441014192125]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (0, 17), (3, 36), (2, 38), (9, 22), (44, 56), (16, 50), (30, 37), (0, 51), (8, 10), (42, 61), (40, 59), (6, 46), (0, 43), (26, 31), (23, 57), (0, 49), (0, 62), (11, 63), (35, 36), (14, 27), (20, 58), (38, 42), (12, 13), (48, 57), (0, 5), (12, 33), (48, 54), (0, 39), (34, 47), (0, 15), (0, 32)]
+
+true = [False, False, True, True, True, True, False, True, True, False, True, True, True, False, True, True, True, True, False, True, True, True, True, True, True, True, True, False, True, False, True, True, True]
+nb corrects = 25
+nb aretes = 33
+accuracy = 0.7575757575757576
+
+
+
+#################
+Generate = 500
+Stat = [1349.5303963029144, 2518.3502364865567, 1561.0351364318715]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (3, 36), (9, 22), (44, 56), (16, 50), (0, 51), (30, 37), (42, 61), (8, 10), (40, 59), (0, 43), (6, 46), (23, 57), (26, 31), (0, 49), (35, 36), (48, 57), (0, 62), (11, 63), (20, 58), (14, 27), (12, 33), (38, 42), (0, 5), (48, 54), (12, 13), (0, 39), (34, 47), (0, 32), (0, 15)]
+
+true = [False, False, True, True, True, True, False, True, False, True, True, True, True, True, False, True, True, True, True, True, False, True, True, True, False, True, True, True, True, False, True, True, True]
+nb corrects = 25
+nb aretes = 33
+accuracy = 0.7575757575757576
+
+
+
+#################
+Generate = 500
+Stat = [1349.5303963029144, 2475.2581571515702, 1524.2834332762536]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (3, 36), (0, 17), (2, 38), (9, 22), (44, 56), (16, 50), (30, 37), (8, 10), (0, 51), (40, 59), (6, 46), (0, 43), (26, 31), (42, 61), (23, 57), (35, 36), (12, 13), (11, 63), (0, 62), (48, 57), (0, 49), (14, 27), (38, 42), (20, 58), (48, 54), (12, 33), (34, 47), (0, 5), (0, 39), (0, 15), (0, 32)]
+
+true = [False, False, True, True, True, True, False, True, True, True, False, True, False, True, True, True, True, True, True, True, False, True, True, True, True, True, True, False, True, True, False, True, True]
+nb corrects = 25
+nb aretes = 33
+accuracy = 0.7575757575757576
+
+
+
+#################
+Generate = 500
+Stat = [1349.5303963029144, 2518.3502364865567, 1524.8529438746777]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (3, 36), (9, 22), (44, 56), (8, 10), (16, 50), (0, 51), (30, 37), (40, 59), (0, 43), (42, 61), (6, 46), (26, 31), (11, 63), (0, 62), (0, 49), (35, 36), (12, 13), (14, 27), (23, 57), (48, 57), (20, 58), (38, 42), (48, 54), (0, 5), (12, 33), (34, 47), (15, 22), (0, 15), (9, 14)]
+
+true = [False, False, True, True, True, True, False, True, True, False, True, True, True, True, False, True, True, False, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True]
+nb corrects = 26
+nb aretes = 33
+accuracy = 0.7878787878787878
+
+
+
+#################
+Generate = 500
+Stat = [1349.5303963029144, 2518.3502364865567, 1534.3619593831916]
+Percent = 10
+Rang = 33
+
+edges = [(0, 64), (0, 1), (0, 17), (2, 38), (3, 36), (9, 22), (44, 56), (0, 51), (16, 50), (30, 37), (8, 10), (42, 61), (40, 59), (6, 46), (0, 43), (0, 49), (26, 31), (11, 63), (23, 57), (0, 62), (12, 13), (48, 57), (14, 27), (35, 36), (12, 33), (20, 58), (38, 42), (48, 54), (0, 5), (34, 47), (0, 39), (0, 15), (0, 32)]
+
+true = [False, False, True, True, True, True, False, False, True, True, True, True, True, False, True, True, True, True, True, False, True, True, True, True, False, True, True, True, True, True, False, True, True]
+nb corrects = 25
+nb aretes = 33
+accuracy = 0.7575757575757576
+

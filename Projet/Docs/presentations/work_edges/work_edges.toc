@@ -1,0 +1,8 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Stochastisation}{2}{0}{1}
+\beamer@sectionintoc {2}{Utilisation des ar\IeC {\^e}tes conserv\IeC {\'e}es}{3}{0}{2}
+\beamer@subsectionintoc {2}{1}{Conservation}{4}{0}{2}
+\beamer@subsectionintoc {2}{2}{Destruction}{7}{0}{2}
+\beamer@sectionintoc {3}{Comment choisir les ar\IeC {\^e}tes conserv\IeC {\'e}es ?}{10}{0}{3}
+\beamer@subsectionintoc {3}{1}{Utilisation de la meilleure solution}{11}{0}{3}
+\beamer@subsectionintoc {3}{2}{Choix al\IeC {\'e}atoire d'ar\IeC {\^e}tes}{13}{0}{3}

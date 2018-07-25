@@ -1,0 +1,71 @@
+\begin{thebibliography}{10}
+
+\bibitem{cvrp_pres}
+Le probleme de tournees de vehicules : etude et resolution approchee.
+\newblock [Rapportde recherche] RR-2197, INRIA., 1994.
+
+\bibitem{Altinel_2005}
+IK. Altinel and T.~Öncan.
+\newblock A new enhancement of the clarke and wright savings heuristic for the
+  capacitated vehicle routing problem.
+\newblock {\em Journal of the Operational Research Society}, 2005.
+
+\bibitem{Sorensen_2017}
+Florian Arnold and Kenneth Sörensen.
+\newblock A simple, deterministic and efficient knowledge-driven heuristic for
+  the vehicle routing problem.
+\newblock {\em Transportation Science}, December 2017.
+
+\bibitem{CW_1964}
+G.~Clarke and J.~W. Wright.
+\newblock Scheduling of vehicles from a central depot to a number of delivery
+  points.
+\newblock {\em Operations Research}, 1964.
+
+\bibitem{Gaskell}
+T.~J. GASKELL.
+\newblock Bases for vehicle fleet scheduling.
+\newblock {\em Operational Research Quarterly}, 18:281--295, September 1967.
+
+\bibitem{ME_2012}
+Marie-Eleonore Marmion.
+\newblock {\em Recherche locale et optimisation combinatoire : de l’analyse
+  structurelle d’un problème à la conception d’algorithmes efficaces}.
+\newblock PhD thesis, Université des Sciences et Technologie de Lille - Lille
+  I, 2011, Mars 2012.
+
+\bibitem{Martello}
+Silvano Martello and Paolo Toth.
+\newblock {\em Knapsack problems: algorithms and computer implementations}.
+\newblock John Wiley and Sons, New York, USA, 1990.
+
+\bibitem{Paessens}
+H.~Paessens.
+\newblock The savings algorithm for the vehicle routing problem.
+\newblock {\em European Journal of Operational Research}, 34:336--344, March
+  1988.
+
+\bibitem{Papadimitriou_1982}
+C.~H. Papadimitriou and K.~Steiglitz.
+\newblock {\em Combinatorial optimization : algorithms and complexity}.
+\newblock Dover Publications, Upper Saddle River, NJ, USA, 1982.
+
+\bibitem{synthese}
+François~Legras Sahbi Ben~Ismail and Gilles Coppin.
+\newblock Synthèse du problème de routage de véhicules.
+\newblock
+  \url{https://portail.telecom-bretagne.eu/publi/public/fic_download.jsp?id=5745},
+  2011.
+
+\bibitem{cvrplib}
+Ivan Xavier.
+\newblock Cvrplib.
+\newblock \url{http://vrp.atd-lab.inf.puc-rio.br/index.php/en/}, 2014.
+
+\bibitem{Yellow}
+P.~Yellow.
+\newblock A computational modification to the savings method of vehicle
+  scheduling.
+\newblock {\em Operational Research Quarterly}, 21:281--283, 1970.
+
+\end{thebibliography}

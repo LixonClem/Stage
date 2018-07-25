@@ -1,0 +1,42 @@
+
+Projet : Création d'une learning heuristic pour le capacitated vehicle rounting problem (2018)
+-------
+Auteur : Clément,Roland Legrand
+-------
+Résumé :
+De nombreux algorithmes font régulièrement leur apparition pour tenter de résoudre des problèmes d'optimisation combinatoire, comme le Capacitated Vehicle Routing Problem, ou d'améliorer des solutions existantes.
+Dans la plupart des problèmes, il est possible d'extraire de la connaissance de petites instances résolues, afin de guider les algorithmes lors de la résolution de plus grandes instances. Intégrer de cette manière de la connaissance à un algorithme permet de créer une Learning Heuristic, souvent plus performante que l'algorithme initial. 
+
+Ce dossier contient entre autres :
+
+	- Le Code écrit et les résultats obtenus (répertoire Code):
+		- Le module cvrp, contenant la learning heuristic (commenté)
+		- Le code R utilisé
+		- Des scripts python brouillon (non commenté)
+		- Les instances sur lesquelles j'ai travaillé
+		- Les résultats obtenus
+
+	- Le travail réalisé et les documents utilisés (répertoire Docs):
+		- Articles utilisés
+		- Travail déjà effectué
+		- Présentations réalisées
+		- Rapport scientifique détaillant le travail réalisé
+
+Ce projet a été réalisé lors d'un stage au sein de l'équipe ORKAD, sous la direction de Laetitia Jourdan, dans le centre CRIStAL de Lille.
+------------
+Utilisation :
+
+Tout est dans le module cvrp.
+
+Il suffit de lancer le script execution.py.
+
+Il est possible de changer les paramètres (globaux) utilisés dans :
+	- const.py
+	- execution.py
+
+Il est aussi possible de changer les accès aux fichiers d'écriture et de lecture dans execution.py
+---------
+Contact : clement.legrand-lixon@ens-rennes.fr
+---------
+
+
