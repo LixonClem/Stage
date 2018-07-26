@@ -26,15 +26,14 @@ Ce projet a été réalisé lors d'un stage au sein de l'équipe ORKAD, sous la 
 ------------
 Utilisation :
 
-Tout est dans le module cvrp.
+Tout est dans le dossier module.
 
-Il suffit de lancer le script execution.py.
+Il suffit de lancer le script main.py
 
 Il est possible de changer les paramètres (globaux) utilisés dans :
 	- const.py
-	- execution.py
 
-Il est aussi possible de changer les accès aux fichiers d'écriture et de lecture dans execution.py
+Il est aussi possible de changer les accès aux fichiers d'écriture et de lecture directement dans main.py
 ---------
 Contact : clement.legrand-lixon@ens-rennes.fr
 ---------

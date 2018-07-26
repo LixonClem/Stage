@@ -11,7 +11,5 @@ import cvrp.ejectionChain as EC
 import cvrp.crossExchange as CE
 import cvrp.ClarkeWright as CW
 import cvrp.optimisation as opt
-import cvrp.execution as execute
-import cvrp.tests as tests
 import cvrp.affichage as aff
 import cvrp.learnHeuristic as LH

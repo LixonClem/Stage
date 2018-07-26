@@ -8,17 +8,17 @@ import cvrp.const as const
 # Apply the cross-exchange operator
 
 
-def cross_exchange(point, voisins, routes, inst, demand, capacity, fixedEdges, mode):
+def cross_exchange(point, voisins, routes, fixedEdges, mode):
     # compute the two routes considered, and the nearest neighbor of the point we remove.
     (r1, r2), neigh, c = route.another_route(point, voisins,
-                                             routes, inst, demand, capacity, fixedEdges, "CE", mode)
+                                             routes,  fixedEdges, "CE", mode)
     if neigh < 0:
         return routes
 
     # copy of the current solution
     current_cand = [r1.copy(), r2.copy()]
     cand = []
-    c_init = route.cost_sol(current_cand, inst, const.quality_cost)
+    c_init = route.cost_sol(current_cand, const.quality_cost)
 
     i_neigh = current_cand[1].index(neigh)
     i_c = current_cand[0].index(c)
@@ -50,7 +50,7 @@ def cross_exchange(point, voisins, routes, inst, demand, capacity, fixedEdges, m
 
                     current_cand[0][j+1], current_cand[1][i + 1] = p2, p1
 
-                    if route.cost_sol(current_cand, inst, const.quality_cost) < c_init and route.route_demand(current_cand[0], demand) <= capacity and route.route_demand(current_cand[1], demand) <= capacity:
+                    if route.cost_sol(current_cand,  const.quality_cost) < c_init and route.route_demand(current_cand[0]) <= const.capacity and route.route_demand(current_cand[1]) <= const.capacity:
 
                         # first improve
                         if mode == "RD":
@@ -62,7 +62,7 @@ def cross_exchange(point, voisins, routes, inst, demand, capacity, fixedEdges, m
                         # return the best
                         elif mode == "DE":
                             c_init = route.cost_sol(
-                                current_cand, inst, const.quality_cost)
+                                current_cand, const.quality_cost)
                             cand = route.copy_sol(current_cand)
 
                 # reset the modification

@@ -11,14 +11,13 @@ import cvrp.linKernighan as LK
 import cvrp.ejectionChain as EC
 import cvrp.crossExchange as CE
 import cvrp.ClarkeWright as CW
-#import cvrp.optimisation as opt
-#import cvrp.execution as execute
+import cvrp.optimisation as opt
 
 
-def learning_heuristic(instance, demand, capacity):
+def learning_heuristic():
     # compute global variables
-    namefile = execute.namefile
-
+    instance, demand = const.instance, const.demand
+    namefile = const.namefile
     costs = 0
     all_sol = []
     fixed_edges = []
@@ -26,11 +25,11 @@ def learning_heuristic(instance, demand, capacity):
     tps_deb = time.time()
 
     # learning
-    initial = CW.init_routes(instance, demand)
+    initial = CW.init_routes()
     edges, param = learn.learning_results(
-        0.7, 2, 50, instance, demand, capacity, initial,const.typeBase,const.percent,const.learningCriterion)
-    initial_routes = utile.complete(utile.destruction(
-        utile.ignore_0(edges)), instance, demand, capacity)
+        0.7, 2, 50,  initial, const.typeBase, const.percent, const.learningCriterion)
+    initial_routes = route.complete(utile.destruction(
+        utile.ignore_0(edges)))
 
     tps_learn = time.time()
 
@@ -44,7 +43,7 @@ def learning_heuristic(instance, demand, capacity):
         edges = []
         (lam, mu, nu) = param[0]  # best tuple of the learning phase
         BaseSolution = opt.optimisation_heuristic(
-            route.copy_sol(initial_routes), instance, demand, capacity, lam, mu, nu, fixed_edges)
+            route.copy_sol(initial_routes), lam, mu, nu, fixed_edges)
 
         all_sol += BaseSolution
         # conserve best and worst costs
@@ -61,8 +60,8 @@ def learning_heuristic(instance, demand, capacity):
         mat_qual = learn.learn(mat_qual, ls_qual)
         e_qual = learn.mat_info_rg(int(len(demand)*crit), mat_qual)
 
-        initial_routes = utile.complete(utile.destruction(
-            utile.ignore_0(e_qual)), instance, demand, capacity)
+        initial_routes = route.complete(utile.destruction(
+            utile.ignore_0(e_qual)))
 
     # write results in a file
 
@@ -77,7 +76,7 @@ def learning_heuristic(instance, demand, capacity):
         rw.writef(namefile, '')
         rw.writef(namefile, 'res = ' + str(round(c_sol, 3)))
         rw.writef(namefile, 'res_int = ' +
-                  str(round(route.cost_sol(sol, instance, "Int"))))
+                  str(round(route.cost_sol(sol, "Int"))))
         rw.writef(namefile, 'solution = ' + str(sol))
 
     rw.writef(namefile, '')

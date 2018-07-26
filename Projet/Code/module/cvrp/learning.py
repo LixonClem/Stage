@@ -1,15 +1,14 @@
 # This module contains functions used for the learning phase
 
-#import cvrp.route as route
-#import cvrp.utile as utile
+import cvrp.route as route
+import cvrp.utile as utile
 import cvrp.const as const
-
-import random as rd
-import cvrp.ClarkeWright as CW
 import cvrp.linKernighan as LK
+import cvrp.ClarkeWright as CW
+import random as rd
+
+
 import time
-
-
 
 
 # Initialise a matrix of size nb*nb
@@ -17,6 +16,8 @@ def init_matrix(nb):
     return [[0 for i in range(nb)] for j in range(nb)]
 
 # Update the matrix with the edges of sol
+
+
 def update_matrix(mat, sol):
     for r in sol:
         for i in range(len(r)-1):
@@ -26,8 +27,11 @@ def update_matrix(mat, sol):
         mat[0][r[len(r)-1]] += 1
     return mat
 
+
 # Generate nb tuples (lam,mu,nu), and create a base of CW solution
-def rd_generate(nb, instance, demand,capacity, initial):
+
+
+def rd_generate(nb, initial):
 
     Base = []
     me = 0
@@ -35,22 +39,25 @@ def rd_generate(nb, instance, demand,capacity, initial):
         l = round(0.1*rd.randint(1, 20), 1)
         m = round(0.1*rd.randint(1, 20), 1)
         n = round(0.1*rd.randint(1, 20), 1)
-        detailed_cust = [0 for i in range(len(instance))]
+        detailed_cust = [0 for i in range(len(const.instance))]
         for r in range(len(initial)):
             for i in initial[r]:
                 detailed_cust[i-1] = r
-        routes = CW.ClarkeWright(route.copy_sol(initial), instance,
-                              demand,capacity, l, m, n, detailed_cust)
+        routes = CW.ClarkeWright(route.copy_sol(
+            initial), l, m, n, detailed_cust)
         for i in range(len(routes)):
-            routes[i] = LK.LK(routes[i].copy(), instance)
+            routes[i] = LK.LK(routes[i].copy())
         routes = route.normalize_solution(routes)
-        me += route.cost_sol(routes, instance,const.quality_cost)
-        Base.append((route.cost_sol(routes, instance,const.quality_cost), routes, (l, m, n)))
+        me += route.cost_sol(routes, const.quality_cost)
+        Base.append(
+            (route.cost_sol(routes, const.quality_cost), routes, (l, m, n)))
     Base.sort()
 
     return Base, [Base[0][0], Base[len(Base)-1][0], me/nb]
 
 # Build a learning set with quantity criterion
+
+
 def learning_set_quantity(Base, percent):
     ens = Base[:len(Base)//percent]
     ls = []
@@ -59,6 +66,8 @@ def learning_set_quantity(Base, percent):
     return ls
 
 # Build a learning set with quality criterion
+
+
 def learning_set_quality(Base, lim):
     ls = []
     i = 0
@@ -68,12 +77,16 @@ def learning_set_quality(Base, lim):
     return ls
 
 # Update the matrix for all solutions in the learning set (ls)
+
+
 def learn(mat, ls):
     for sol in ls:
         update_matrix(mat, sol)
     return mat
 
 # Return the edges we conserve with the threshold criterion
+
+
 def mat_info_req(lim, mat):
     ed_brut = []
     ed = []
@@ -87,6 +100,8 @@ def mat_info_req(lim, mat):
     return ed
 
 # Return the edges we conserve with the rank criterion
+
+
 def mat_info_rg(rg, mat):
     ed_brut = []
     ed = []
@@ -102,26 +117,30 @@ def mat_info_rg(rg, mat):
     return ed
 
 # Combine all previous functions to do the learning phase
-def learning_results(crit, iterations, generate, instance, demand,capacity, initial, typeBase, percent, learningCriterion):
+
+
+def learning_results(crit, iterations, generate, initial, typeBase, percent, learningCriterion):
     edges = []
     bigBase = []
     for lg in range(iterations):
-        
-        Base, stat = rd_generate(generate, instance, demand,capacity, initial)
+
+        Base, stat = rd_generate(generate, initial)
         bigBase += Base
         if typeBase == "Quality":
             quality = (stat[1]-stat[0])*percent/100 + stat[0]
             learning_set = learning_set_quality(Base, quality)
         if typeBase == "Quantity":
-            learning_set = learning_set_quantity(Base,percent)
+            learning_set = learning_set_quantity(Base, percent)
 
-        learningMatrix = init_matrix(len(instance))
+        learningMatrix = init_matrix(len(const.instance))
         learningMatrix = learn(learningMatrix, learning_set)
 
         if learningCriterion == "Rank":
-            learningEdges = mat_info_rg(int(len(demand)*crit), learningMatrix)
+            learningEdges = mat_info_rg(
+                int(len(const.demand)*crit), learningMatrix)
         if learningCriterion == "Threshold":
-            learningEdges = mat_info_req(int(len(learning_set)*crit), learningMatrix)
+            learningEdges = mat_info_req(
+                int(len(learning_set)*crit), learningMatrix)
 
         for e in learningEdges:
             if not utile.is_edge_in(e, edges) and not utile.unfeasable_edge(e, edges):

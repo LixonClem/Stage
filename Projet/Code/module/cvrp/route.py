@@ -1,42 +1,55 @@
 # This module contains the possible operations we can make on solutions and routes
 
 import cvrp.utile as utile
-import cvrp.learning as learn
 import numpy as np
-
+import cvrp.const as const
 # Compute the demand of the route given
 
 
-def route_demand(route, demand):
+def route_demand(route):
     d = 0
     for i in route:
-        d += demand[i]
+
+        d += const.demand[i]
     return d
 
 # Compute the cost of the solution given
 
 
-def cost_sol(solution, inst, mode):
+def cost_sol(solution, mode):
     c = 0
     for r in solution:
 
         # Distances are floating numbers
         if mode == "Float":
             for i in range(len(r)-1):
-                a = inst[r[i]]
-                b = inst[r[i+1]]
+                a = const.instance[r[i]]
+                b = const.instance[r[i+1]]
 
                 c += utile.distance(a, b)
-            c += utile.distance(inst[r[len(r)-1]], inst[r[0]])
+            c += utile.distance(const.instance[r[len(r)-1]],
+                                const.instance[r[0]])
 
         # Distances are int
         elif mode == "Int":
             for i in range(len(r)-1):
-                a = inst[r[i]]
-                b = inst[r[i+1]]
+                a = const.instance[r[i]]
+                b = const.instance[r[i+1]]
                 c += round(utile.distance(a, b))
-            c += round(utile.distance(inst[r[len(r)-1]], inst[r[0]]))
+            c += round(utile.distance(
+                const.instance[r[len(r)-1]], const.instance[r[0]]))
     return c
+
+# Verify if the solution is correct
+# (ie if each route doesn't exceed his capacity)
+
+
+def verification(sol):
+    for r in sol:
+        if route_demand(r) > const.capacity:
+            return False
+    return True
+
 
 # Find the route, which contains the customer i
 
@@ -45,6 +58,17 @@ def find_route(i, routes):
     for k in range(len(routes)):
         if i in routes[k]:
             return routes[k]
+
+
+# Verify if the customer i is in the current solution
+
+
+def is_in_route(i, routes):
+    booleen = False
+    for r in routes:
+        if i in r:
+            booleen = True
+    return booleen
 
 # Return a true copy of the sol given
 
@@ -59,7 +83,7 @@ def copy_sol(sol):
  # Return the nearest route of the point given
 
 
-def another_route(point, voisins, routes, inst, demand, capacity, fixedEdges, operator, mode):
+def another_route(point, voisins, routes, fixedEdges, operator, mode):
 
     r1 = find_route(point, routes)
     adja = utile.fixed_adjacents(point, fixedEdges)
@@ -74,7 +98,7 @@ def another_route(point, voisins, routes, inst, demand, capacity, fixedEdges, op
             r2 = find_route(i, routes)
             # we verify that the future demand on the route won't exceed his capacity
 
-            if r2 != r1 and i != 0 and route_demand(r1, demand)-demand[point]+demand[i] <= capacity and route_demand(r2, demand)-demand[i]+demand[point] <= capacity:
+            if (r2 != r1 and i != 0) and (route_demand(r1)-const.demand[point]+const.demand[i] <= const.capacity) and (route_demand(r2)-const.demand[i]+const.demand[point] <= const.capacity):
                 return ((r1, r2), i, point)
 
         # error case, we haven't found a second route, so no modifications
@@ -83,7 +107,7 @@ def another_route(point, voisins, routes, inst, demand, capacity, fixedEdges, op
     elif operator == "EC":
         for i in permut_voisins:
             r2 = find_route(i, routes)
-            if r2 != r1 and i != 0 and len(adja) == 0 and route_demand(r2, demand)+demand[point] <= capacity:
+            if r2 != r1 and i != 0 and len(adja) == 0 and route_demand(r2)+const.demand[point] <= const.capacity:
                 return ((r1, r2), i)
         return (r1, r1), -1
 
@@ -99,6 +123,40 @@ def normalize_solution(sol):
     sol.sort()
     return sol
 
+# Complete a partial solution by adding customers which haven't route.
+# And verify if the solution given is correct
+
+
+def complete(routes):
+    for i in range(len(routes)):
+        routes[i].insert(0, 0)
+    while not verification(routes):
+
+        for ri in routes:
+
+            if route_demand(ri) > const.capacity:
+
+                routes.remove(ri)
+                d = 0
+                i = 0
+                nr1 = []
+                while i < len(ri) and d <= const.capacity:
+
+                    nr1.append(ri[i])
+                    i += 1
+                    d += const.demand[ri[i]]
+
+                nr2 = [0] + ri[ri.index(ri[i-1]):]
+
+                routes.append(nr1)
+                routes.append(nr2)
+    for p in range(len(const.instance)):
+        if not is_in_route(p, routes):
+            routes.append([0, p])
+    for i in range(len(routes)):
+        routes[i].append(0)
+    return routes
+
 # Return all edges of the solution given
 
 
@@ -111,3 +169,25 @@ def all_edges(sol):
             E.append((pi, pj))
         E.append((r[len(r)-1], r[0]))
     return E
+
+# Return the list of edges in common between two solutions
+
+
+def common_edges(sol1, sol2):
+    E1 = all_edges(sol1)
+    E2 = all_edges(sol2)
+    E = []
+    E_init = []
+    E_final = []
+    for i in E1:
+        for j in E2:
+            if utile.are_equal(i, j) and (i[0], i[1]) not in E and (i[1], i[0]) not in E:
+                E.append(i)
+
+    for i in E1:
+        if i not in E and (i[1], i[0]) not in E:
+            E_init.append(i)
+    for j in E2:
+        if j not in E and (j[1], j[0]) not in E:
+            E_final.append(j)
+    return E, E_init, E_final

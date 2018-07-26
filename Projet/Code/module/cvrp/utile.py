@@ -3,8 +3,7 @@
 import random as rd
 import math as m
 import itertools as it
-import cvrp.tests as tests
-import cvrp.route as route
+
 
 # Compute the euclidean distance between two points p1 and p2
 
@@ -12,43 +11,6 @@ import cvrp.route as route
 def distance(p1, p2):
     return m.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
 
-# Compute the k nearest neighbors (kNN) for each customer
-
-
-def voisins(k, inst):
-    v = []
-    for i in range(len(inst)):
-        vi = []
-        couples = []
-        for j in range(len(inst)):
-            if i != j:
-                vi.append([distance(inst[i], inst[j]), j])
-        vi.sort()
-        for l in vi:
-            couples.append(l[1])
-        v.append(couples[:k])
-    return v
-
-# Compute the maximal depth of the instance given
-
-
-def max_depth(inst):
-    d = 0
-    for i in inst:
-        di = distance(i, (0, 0))
-        if di > d:
-            d = di
-    return d
-
-# Compute the mean of demands of the instance
-
-
-def mean_demand(demand):
-    n = len(demand)
-    d = 0
-    for i in demand:
-        d += i
-    return d/(n-1)
 
 # Return n*nb edges randomly
 
@@ -83,7 +45,7 @@ def permut(l):
 # (except if a or b is the depot)
 
 
-def rd_point(edge, routes, inst):
+def rd_point(edge, routes):
     (a, b) = edge
     if a == 0:
         return b
@@ -146,39 +108,6 @@ def destruction(edges):
         r.append(l)
     return r
 
-# Complete a partial solution by adding customers which haven't route.
-# And verify if the solution given is correct
-
-
-def complete(routes, inst, demand, capacity):
-    for i in range(len(routes)):
-        routes[i].insert(0, 0)
-    while not tests.verification(routes, demand, capacity):
-
-        for ri in routes:
-
-            if route.route_demand(ri, demand) > capacity:
-
-                routes.remove(ri)
-                d = 0
-                i = 0
-                nr1 = []
-                while i < len(ri) and d <= capacity:
-
-                    nr1.append(ri[i])
-                    i += 1
-                    d += demand[ri[i]]
-
-                nr2 = [0] + ri[ri.index(ri[i-1]):]
-
-                routes.append(nr1)
-                routes.append(nr2)
-    for p in range(len(inst)):
-        if not tests.is_in_route(p, routes):
-            routes.append([0, p])
-    for i in range(len(routes)):
-        routes[i].append(0)
-    return routes
 
 # Return the list of neighbors of pi which are fixed by fixed_edges
 
@@ -220,25 +149,3 @@ def unfeasable_edge(e, l):
         elif e[1] == ed[0] or e[1] == ed[1]:
             c2 += 1
     return (c2 > 1 or c1 > 1)
-
-# Return the list of edges in common between two solutions
-
-
-def common_edges(sol1, sol2):
-    E1 = route.all_edges(sol1)
-    E2 = route.all_edges(sol2)
-    E = []
-    E_init = []
-    E_final = []
-    for i in E1:
-        for j in E2:
-            if are_equal(i, j) and (i[0], i[1]) not in E and (i[1], i[0]) not in E:
-                E.append(i)
-
-    for i in E1:
-        if i not in E and (i[1], i[0]) not in E:
-            E_init.append(i)
-    for j in E2:
-        if j not in E and (j[1], j[0]) not in E:
-            E_final.append(j)
-    return E, E_init, E_final

@@ -1,14 +1,16 @@
 # Ce module rassemble les fonctions permettant d'utiliser l'opérateur LK
 # Code for LK, take only one route in argument
 
-#import cvrp.route as route
-#import cvrp.utile as utile
+import cvrp.route as route
+import cvrp.utile as utile
 import cvrp.const as const
+
 
 # Try to improve the cost of the route by making a 2-opt around the depot
 
 
-def decross_route(route, inst):
+def decross_route(route):
+    inst = const.instance
     route.append(0)
     d = (utile.distance(inst[route[2]], inst[route[1]]) +
          utile.distance(inst[route[0]], inst[route[-2]]) -
@@ -27,17 +29,17 @@ def decross_route(route, inst):
 # Code for 2-opt operator
 
 
-def DeuxOpt(route, inst):
+def DeuxOpt(route):
     l = len(route)-1
     best_tuple = (0, 0)
     best = 2e-5  # to avoid floating errors
     for i in range(l-1):
-        pi = inst[route[i]]
-        spi = inst[route[i+1]]
+        pi = const.instance[route[i]]
+        spi = const.instance[route[i+1]]
 
         for j in range(i+2, l-1):
-            pj = inst[route[j]]
-            spj = inst[route[j+1]]
+            pj = const.instance[route[j]]
+            spj = const.instance[route[j+1]]
             d = (utile.distance(pi, spi) + utile.distance(pj, spj)) - \
                 utile.distance(pi, pj) - utile.distance(spi, spj)
 
@@ -56,13 +58,13 @@ def DeuxOpt(route, inst):
 # The code for LK corresponds of an iteration of 2-opt
 # because we don't need to apply an other k-opt
 
-def LK(route, inst):
+def LK(route):
     route.append(0)
-    next_cand = DeuxOpt(route, inst)
+    next_cand = DeuxOpt(route)
     while route != next_cand:
         if len(route) >= 3:
-            route = decross_route(route, inst)
+            route = decross_route(route)
         route = next_cand.copy()
-        next_cand = DeuxOpt(route, inst)
+        next_cand = DeuxOpt(route)
     route.pop()
     return next_cand
