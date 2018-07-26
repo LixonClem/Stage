@@ -1,3 +1,5 @@
+diminution du temps d'exxécution à 10 s, restart à 0.5 s, reset à 0.25 s
+
 Instance : A-n32-k05.xml
 Time = 0.7303562164306641
 

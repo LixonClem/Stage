@@ -1,0 +1,3 @@
+Véfification du fonctionnement de l'algorithme d'optimisation.
+
+Instances aléatoires : on vérifie qu'on obtient à la fin une solution de coût plus faible

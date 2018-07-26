@@ -1,0 +1,20 @@
+Tous les fichiers suivent la même structure :
+	- Nom de l'instance
+	- Temps d'apprentissage (Time)
+	- Les 10 meilleures solutions obtenues
+	- La moyenne des résultats obtenus
+	- Le temps d'exécution 
+
+Les fichiers golden contiennent les résultats sur les instances du même nom. L'en-tête des fichiers décrit comment les résultats ont été obtenus. Les meilleurs résultats sont dans golden*.
+
+De même les fichiers results, contiennent les résultats des instances A, B et P. Les meilleurs résultats sont dans results* (results*_2 correspond à une deuxième exécution de l'algorithme).
+
+Le fichier resultsFaster montre les résultats obtenus sur A,B, P avec des temps d'exécution plus court.
+
+Le fichier resultsnolearn présente des résultats obtenus sans aprentissage (sur A, B et P)
+
+Uchoa1 présente les résultats obtenus pour une instance X
+
+
+
+

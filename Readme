@@ -1,7 +1,7 @@
 
 Projet : Création d'une learning heuristic pour le capacitated vehicle rounting problem (2018)
 -------
-Auteur : Clément,Roland Legrand
+Auteur : Clément (, Roland) Legrand (, Lixon)
 -------
 Résumé :
 De nombreux algorithmes font régulièrement leur apparition pour tenter de résoudre des problèmes d'optimisation combinatoire, comme le Capacitated Vehicle Routing Problem, ou d'améliorer des solutions existantes.
@@ -26,7 +26,7 @@ Ce projet a été réalisé lors d'un stage au sein de l'équipe ORKAD, sous la 
 ------------
 Utilisation :
 
-Tout est dans le dossier module.
+Tout est dans le dossier module_final.
 
 Il suffit de lancer le script main.py
 
@@ -34,8 +34,13 @@ Il est possible de changer les paramètres (globaux) utilisés dans :
 	- const.py
 
 Il est aussi possible de changer les accès aux fichiers d'écriture et de lecture directement dans main.py
+
 ---------
-Contact : clement.legrand-lixon@ens-rennes.fr
+Contact : 
+	- mail : clement.legrand-lixon@ens-rennes.fr
+	- git : https://github.com/LixonClem/Stage.git
 ---------
+
+
 
 
